@@ -6,6 +6,9 @@ import java.util.UUID;
 
 import de.digitalcollections.model.api.identifiable.resource.MimeType;
 import de.digitalcollections.model.api.identifiable.resource.FileResource;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 public class FileResourceImpl extends ResourceImpl implements FileResource {
 
@@ -105,7 +108,7 @@ public class FileResourceImpl extends ResourceImpl implements FileResource {
 
   @Override
   public void setLastModified(long lastModified) {
-    // convert long to localdatetime
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    LocalDateTime date = LocalDateTime.ofInstant(Instant.ofEpochMilli(lastModified), ZoneId.systemDefault());
+    setLastModified(date);
   }
 }
