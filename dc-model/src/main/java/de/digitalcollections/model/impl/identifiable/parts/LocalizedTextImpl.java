@@ -1,34 +1,34 @@
 package de.digitalcollections.model.impl.identifiable.parts;
 
-import de.digitalcollections.model.api.identifiable.parts.Text;
 import de.digitalcollections.model.api.identifiable.parts.Translation;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
 
-public class TextImpl implements Text {
+public class LocalizedTextImpl implements LocalizedText {
 
   private Set<Translation> translations;
 
-  public TextImpl() {
+  public LocalizedTextImpl() {
     translations = new HashSet<>();
   }
 
-  public TextImpl(Locale locale, String text) {
+  public LocalizedTextImpl(Locale locale, String text) {
     this();
     translations.add(new TranslationImpl(locale, text));
   }
 
-  public TextImpl(List<Locale> locales, String text) {
+  public LocalizedTextImpl(List<Locale> locales, String text) {
     this();
     for (Locale locale : locales) {
       translations.add(new TranslationImpl(locale, text));
     }
   }
 
-  public TextImpl(Text text) {
+  public LocalizedTextImpl(LocalizedText text) {
     this();
     for (Translation translation : text.getTranslations()) {
       translations.add(new TranslationImpl(translation.getLocale(), translation.getText()));

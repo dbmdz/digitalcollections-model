@@ -12,17 +12,17 @@ public interface LocalizedStructuredContent {
   /**
    * @return (multilingual) text content
    */
-  Map<Locale, StructuredContent> get();
+  Map<Locale, StructuredContent> getLocalizedStructuredContent();
 
   /**
    * @param localizedStructuredContent the (multilingual) text content
    */
-  void set(Map<Locale, StructuredContent> localizedStructuredContent);
+  void setLocalizedStructuredContent(Map<Locale, StructuredContent> localizedStructuredContent);
 
-  default void addDocument(Locale locale, StructuredContent structuredContent) {
-    if (get() == null) {
-      set(new HashMap<>());
+  default void add(Locale locale, StructuredContent structuredContent) {
+    if (getLocalizedStructuredContent() == null) {
+      setLocalizedStructuredContent(new HashMap<>());
     }
-    get().put(locale, structuredContent);
+    getLocalizedStructuredContent().put(locale, structuredContent);
   }
 }

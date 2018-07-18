@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Locale;
 import java.util.Set;
 
-public interface Text {
+public interface LocalizedText {
 
   /**
    *

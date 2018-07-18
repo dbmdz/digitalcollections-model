@@ -1,10 +1,10 @@
 package de.digitalcollections.model.api.identifiable;
 
-import de.digitalcollections.model.api.identifiable.parts.Text;
 import de.digitalcollections.model.api.identifiable.resource.IiifImage;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
+import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
 
 public interface Identifiable {
 
@@ -12,7 +12,7 @@ public interface Identifiable {
 
   LocalizedStructuredContent getDescription();
 
-  Text getLabel();
+  LocalizedText getLabel();
 
   LocalDateTime getLastModified();
 
@@ -26,7 +26,7 @@ public interface Identifiable {
 
   void setDescription(LocalizedStructuredContent description);
 
-  void setLabel(Text label);
+  void setLabel(LocalizedText label);
 
   void setLastModified(LocalDateTime lastModified);
 

@@ -10,12 +10,12 @@ public class LocalizedStructuredContentImpl implements LocalizedStructuredConten
   private Map<Locale, StructuredContent> localizedStructuredContent;
 
   @Override
-  public Map<Locale, StructuredContent> get() {
+  public Map<Locale, StructuredContent> getLocalizedStructuredContent() {
     return localizedStructuredContent;
   }
 
   @Override
-  public void set(Map<Locale, StructuredContent> localizedStructuredContent) {
+  public void setLocalizedStructuredContent(Map<Locale, StructuredContent> localizedStructuredContent) {
     this.localizedStructuredContent = localizedStructuredContent;
   }
 

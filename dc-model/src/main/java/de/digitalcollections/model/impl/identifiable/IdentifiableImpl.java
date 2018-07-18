@@ -2,18 +2,18 @@ package de.digitalcollections.model.impl.identifiable;
 
 import de.digitalcollections.model.api.identifiable.Identifiable;
 import de.digitalcollections.model.api.identifiable.IdentifiableType;
-import de.digitalcollections.model.api.identifiable.parts.Text;
 import de.digitalcollections.model.api.identifiable.resource.IiifImage;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
+import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
 
 public class IdentifiableImpl implements Identifiable {
 
   private UUID uuid;
   protected LocalDateTime created;
   protected LocalizedStructuredContent description;
-  protected Text label;
+  protected LocalizedText label;
   protected LocalDateTime lastModified;
   protected IiifImage iiifImage;
   protected IdentifiableType type;
@@ -39,7 +39,7 @@ public class IdentifiableImpl implements Identifiable {
   }
 
   @Override
-  public Text getLabel() {
+  public LocalizedText getLabel() {
     return label;
   }
 
@@ -64,7 +64,7 @@ public class IdentifiableImpl implements Identifiable {
   }
 
   @Override
-  public void setLabel(Text label) {
+  public void setLabel(LocalizedText label) {
     this.label = label;
   }
 

@@ -15,5 +15,5 @@ public interface Webpage extends Resource, Node<Webpage> {
 
   LocalizedStructuredContent getText();
 
-  void setText(LocalizedStructuredContent multilanguageDocument);
+  void setText(LocalizedStructuredContent localizedStructuredContent);
 }
