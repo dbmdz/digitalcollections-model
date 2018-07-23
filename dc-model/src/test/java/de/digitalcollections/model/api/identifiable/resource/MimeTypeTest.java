@@ -1,10 +1,12 @@
 package de.digitalcollections.model.api.identifiable.resource;
 
 import java.net.URI;
-import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class MimeTypeTest {
+
   @Test
   public void getTypeName() throws Exception {
     assertThat(MimeType.MIME_APPLICATION_JSON.getTypeName()).isEqualTo("application/json");

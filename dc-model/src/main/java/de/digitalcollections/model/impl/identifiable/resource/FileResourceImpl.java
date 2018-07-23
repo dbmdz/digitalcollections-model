@@ -1,14 +1,13 @@
 package de.digitalcollections.model.impl.identifiable.resource;
 
+import de.digitalcollections.model.api.identifiable.resource.FileResource;
+import de.digitalcollections.model.api.identifiable.resource.MimeType;
 import java.net.MalformedURLException;
 import java.net.URI;
-import java.util.UUID;
-
-import de.digitalcollections.model.api.identifiable.resource.MimeType;
-import de.digitalcollections.model.api.identifiable.resource.FileResource;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.UUID;
 
 public class FileResourceImpl extends ResourceImpl implements FileResource {
 

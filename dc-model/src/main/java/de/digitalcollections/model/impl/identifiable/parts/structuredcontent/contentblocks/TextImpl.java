@@ -1,7 +1,7 @@
 package de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks;
 
-import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Text;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Mark;
+import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Text;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.ContentBlockImpl;
 import java.util.ArrayList;
 import java.util.List;

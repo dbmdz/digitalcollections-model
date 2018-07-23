@@ -1,12 +1,12 @@
 package de.digitalcollections.model.impl.identifiable.parts;
 
+import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
 import de.digitalcollections.model.api.identifiable.parts.Translation;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
-import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
 
 public class LocalizedTextImpl implements LocalizedText {
 

@@ -1,8 +1,8 @@
 package de.digitalcollections.model.impl.identifiable.entity;
 
+import de.digitalcollections.model.api.identifiable.Identifiable;
 import de.digitalcollections.model.api.identifiable.entity.Article;
 import de.digitalcollections.model.api.identifiable.entity.EntityType;
-import de.digitalcollections.model.api.identifiable.Identifiable;
 import java.util.List;
 
 public class ArticleImpl extends EntityImpl implements Article {

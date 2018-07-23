@@ -1,10 +1,10 @@
 package de.digitalcollections.model.impl.identifiable.resource;
 
+import de.digitalcollections.model.api.identifiable.resource.IiifManifest;
+import de.digitalcollections.model.api.identifiable.resource.ResourceType;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Locale;
-import de.digitalcollections.model.api.identifiable.resource.IiifManifest;
-import de.digitalcollections.model.api.identifiable.resource.ResourceType;
 
 public class IiifManifestImpl extends ResourceImpl implements IiifManifest {
 

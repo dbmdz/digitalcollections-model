@@ -8,10 +8,10 @@ import de.digitalcollections.model.api.identifiable.parts.structuredcontent.cont
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.CodeBlockImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.ParagraphImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TextImpl;
-
-import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CodeBlockTest extends BaseSerializationTest {
 
@@ -21,7 +21,7 @@ public class CodeBlockTest extends BaseSerializationTest {
   public void setUp() {
     mapper = getMapper();
   }
-  
+
   @Test
   public void testDefaultConstructor() throws Exception {
     CodeBlockImpl codeBlock = new CodeBlockImpl();

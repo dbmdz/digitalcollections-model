@@ -1,7 +1,7 @@
 package de.digitalcollections.model.impl.identifiable.resource;
 
-import de.digitalcollections.model.api.identifiable.resource.MimeType;
 import de.digitalcollections.model.api.identifiable.resource.BinaryContent;
+import de.digitalcollections.model.api.identifiable.resource.MimeType;
 import de.digitalcollections.model.api.identifiable.resource.ResourceType;
 import java.net.URL;
 

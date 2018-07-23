@@ -2,11 +2,11 @@ package de.digitalcollections.model.impl.identifiable;
 
 import de.digitalcollections.model.api.identifiable.Identifiable;
 import de.digitalcollections.model.api.identifiable.IdentifiableType;
+import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
+import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
 import de.digitalcollections.model.api.identifiable.resource.IiifImage;
 import java.time.LocalDateTime;
 import java.util.UUID;
-import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
-import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
 
 public class IdentifiableImpl implements Identifiable {
 

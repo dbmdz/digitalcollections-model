@@ -1,8 +1,8 @@
 package de.digitalcollections.model.api.identifiable.resource;
 
 import de.digitalcollections.model.api.identifiable.Node;
-import java.util.List;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
+import java.util.List;
 
 /**
  * A Webpage.

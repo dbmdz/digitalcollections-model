@@ -2,11 +2,11 @@ package de.digitalcollections.model.impl.identifiable.resource;
 
 import de.digitalcollections.model.api.identifiable.Identifiable;
 import de.digitalcollections.model.api.identifiable.Node;
+import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
 import de.digitalcollections.model.api.identifiable.resource.ResourceType;
 import de.digitalcollections.model.api.identifiable.resource.Webpage;
 import de.digitalcollections.model.impl.identifiable.NodeImpl;
 import java.util.List;
-import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
 
 public class WebpageImpl extends ResourceImpl implements Webpage, Node<Webpage> {
 

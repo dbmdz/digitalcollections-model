@@ -9,9 +9,10 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.Str
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TextImpl;
 import java.util.ArrayList;
 import java.util.List;
-import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class StructuredContentTest extends BaseSerializationTest {
 
@@ -30,7 +31,7 @@ public class StructuredContentTest extends BaseSerializationTest {
   public void setUp() {
     mapper = getMapper();
   }
-  
+
   @Test
   public void testSerialization() throws Exception {
     StructuredContent structuredContent = new StructuredContentImpl();

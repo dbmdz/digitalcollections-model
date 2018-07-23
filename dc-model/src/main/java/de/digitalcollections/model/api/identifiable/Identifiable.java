@@ -1,10 +1,10 @@
 package de.digitalcollections.model.api.identifiable;
 
+import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
+import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
 import de.digitalcollections.model.api.identifiable.resource.IiifImage;
 import java.time.LocalDateTime;
 import java.util.UUID;
-import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
-import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
 
 public interface Identifiable {
 
