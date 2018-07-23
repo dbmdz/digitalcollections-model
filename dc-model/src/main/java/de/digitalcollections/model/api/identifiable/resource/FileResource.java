@@ -3,8 +3,8 @@ package de.digitalcollections.model.api.identifiable.resource;
 import java.net.URI;
 
 /**
- * Eine FileResource (Quelle) beschreibt eine beliebige Datei, unabhaengig von deren physikalischen Speicherort, verwendete Speichertechnologie oder benoetigten Anzeigemittel (aka "Viewer"). Eine
- * FileResource kann z.B. ein Bild, eine Videodatei, eine XML-Dokument oder eine JSON-Datei beinhalten.
+ * A FileResource (source) describes any file, regardless of its physical location, used storage technology or required display means (aka "Viewer").
+ * A FileResource can e.g. include an image, a video file, an XML document, or a JSON file.
  */
 public interface FileResource extends Resource {
 
