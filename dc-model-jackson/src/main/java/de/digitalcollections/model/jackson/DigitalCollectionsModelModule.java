@@ -19,6 +19,7 @@ import de.digitalcollections.model.api.identifiable.parts.structuredcontent.cont
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.OrderedList;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Paragraph;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Text;
+import de.digitalcollections.model.api.identifiable.resource.ContentNode;
 import de.digitalcollections.model.api.identifiable.resource.IiifImage;
 import de.digitalcollections.model.api.identifiable.resource.Webpage;
 import de.digitalcollections.model.api.paging.Order;
@@ -43,6 +44,7 @@ import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredco
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.OrderedListMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.ParagraphMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.TextMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.resource.ContentNodeMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.IiifImageMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.WebpageMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.OrderMixIn;
@@ -69,6 +71,7 @@ public class DigitalCollectionsModelModule extends Module {
     context.setMixInAnnotations(BulletList.class, BulletListMixIn.class);
     context.setMixInAnnotations(CodeBlock.class, CodeBlockMixIn.class);
     context.setMixInAnnotations(ContentBlock.class, ContentBlockMixIn.class);
+    context.setMixInAnnotations(ContentNode.class, ContentNodeMixIn.class);
     context.setMixInAnnotations(ContentTree.class, ContentTreeMixIn.class);
     //    context.setMixInAnnotations(Entity.class, EntityMixIn.class); // FIXME not needed/working, switched back to wrapper info...
     context.setMixInAnnotations(Heading.class, HeadingMixIn.class);
