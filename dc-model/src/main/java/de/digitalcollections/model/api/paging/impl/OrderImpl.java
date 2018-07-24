@@ -1,4 +1,4 @@
-package de.digitalcollections.model.impl.paging;
+package de.digitalcollections.model.api.paging.impl;
 
 import de.digitalcollections.model.api.paging.Order;
 import de.digitalcollections.model.api.paging.Sorting;
@@ -22,6 +22,13 @@ public class OrderImpl implements Order {
   private String property;
 
   public OrderImpl() {
+  }
+
+  public OrderImpl(Direction direction, boolean ignoreCase, NullHandling nullHandling, String property) {
+    this.direction = direction;
+    this.ignoreCase = ignoreCase;
+    this.nullHandling = nullHandling;
+    this.property = property;
   }
 
   public void setDirection(Direction direction) {

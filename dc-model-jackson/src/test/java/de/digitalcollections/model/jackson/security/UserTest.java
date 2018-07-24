@@ -2,8 +2,8 @@ package de.digitalcollections.model.jackson.security;
 
 import de.digitalcollections.cudami.model.jackson.BaseSerializationTest;
 import de.digitalcollections.model.api.paging.PageRequest;
-import de.digitalcollections.model.impl.paging.PageRequestImpl;
-import de.digitalcollections.model.impl.paging.PageResponseImpl;
+import de.digitalcollections.model.api.paging.impl.PageRequestImpl;
+import de.digitalcollections.model.api.paging.impl.PageResponseImpl;
 import de.digitalcollections.model.impl.security.UserImpl;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package de.digitalcollections.model.impl.paging;
+package de.digitalcollections.model.api.paging.impl;
 
 import de.digitalcollections.model.api.paging.PageRequest;
 import de.digitalcollections.model.api.paging.PageResponse;

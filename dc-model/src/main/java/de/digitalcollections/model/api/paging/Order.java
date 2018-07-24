@@ -2,6 +2,7 @@ package de.digitalcollections.model.api.paging;
 
 import de.digitalcollections.model.api.paging.enums.Direction;
 import de.digitalcollections.model.api.paging.enums.NullHandling;
+import de.digitalcollections.model.api.paging.impl.OrderImpl;
 
 public interface Order {
 
@@ -106,5 +107,40 @@ public interface Order {
    * @return a new Order
    */
   Order withProperty(String property);
+
+  static Builder defaultBuilder() {
+    return new Builder();
+  }
+
+  class Builder {
+    private Direction direction;
+    private boolean ignoreCase;
+    private NullHandling nullHandling;
+    private String property;
+
+    public Builder direction(Direction direction) {
+      this.direction = direction;
+      return this;
+    }
+
+    public Builder ignoreCase(boolean ignoreCase) {
+      this.ignoreCase = ignoreCase;
+      return this;
+    }
+
+    public Builder nullHandling(NullHandling nullHandling) {
+      this.nullHandling = nullHandling;
+      return this;
+    }
+
+    public Builder property(String property) {
+      this.property = property;
+      return this;
+    }
+
+    public Order build() {
+      return new OrderImpl(direction, ignoreCase, nullHandling, property);
+    }
+  }
 
 }
