@@ -7,7 +7,7 @@ import de.digitalcollections.model.impl.paging.PageResponseImpl;
 import de.digitalcollections.model.impl.security.UserImpl;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class UserTest extends BaseSerializationTest {
 

@@ -8,7 +8,7 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.Loc
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.StructuredContentImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.ParagraphImpl;
 import java.util.Locale;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class LocalizedStructuredContentTest extends BaseSerializationTest {
 

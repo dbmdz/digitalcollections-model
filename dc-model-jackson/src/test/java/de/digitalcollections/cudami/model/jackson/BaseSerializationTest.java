@@ -1,5 +1,7 @@
 package de.digitalcollections.cudami.model.jackson;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.digitalcollections.model.jackson.DigitalCollectionsObjectMapper;
@@ -7,8 +9,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import org.apache.commons.beanutils.BeanUtils;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public abstract class BaseSerializationTest {
 

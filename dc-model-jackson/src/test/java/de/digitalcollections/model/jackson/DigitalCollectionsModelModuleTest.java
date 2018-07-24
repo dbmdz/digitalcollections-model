@@ -1,5 +1,7 @@
 package de.digitalcollections.model.jackson;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.digitalcollections.model.api.paging.PageRequest;
@@ -11,10 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import org.apache.commons.beanutils.BeanUtils;
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class DigitalCollectionsModelModuleTest {
 
@@ -27,7 +27,7 @@ public class DigitalCollectionsModelModuleTest {
     return list;
   }
 
-  @Before
+  @BeforeEach
   public void setUp() {
     mapper = new ObjectMapper();
     mapper.registerModule(new DigitalCollectionsModelModule());

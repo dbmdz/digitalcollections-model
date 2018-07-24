@@ -1,5 +1,7 @@
 package de.digitalcollections.model.jackson.identifiable.parts.structuredcontent.contentblocks;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.digitalcollections.cudami.model.jackson.BaseSerializationTest;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.CodeBlock;
@@ -8,16 +10,14 @@ import de.digitalcollections.model.api.identifiable.parts.structuredcontent.cont
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.CodeBlockImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.ParagraphImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TextImpl;
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class CodeBlockTest extends BaseSerializationTest {
 
   public ObjectMapper mapper;
 
-  @Before
+  @BeforeEach
   public void setUp() {
     mapper = getMapper();
   }
