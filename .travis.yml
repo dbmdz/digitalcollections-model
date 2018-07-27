@@ -7,6 +7,7 @@ script:
 - mvn clean install
 after_success:
 - bash <(curl -s https://codecov.io/bash)
+- if [ -z "$TRAVIS_TAG" ]; then mvn deploy -B -DskipTests=true --settings settings.xml; fi
 deploy:
   provider: releases
   api_key:
@@ -17,3 +18,7 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+env:
+  global:
+  - secure: ffjKkXyXsp7H/OBCUUOlY/Aptc7ibiYstrMvfiVqVQljDiDKczG4/vLk6dsSOQK62hOXxgweUGv6+mFJHvgx0hKrkb0NhWj8zk7OC9k6EEaiHdgxtZktCl4gBBFy3URydPF/KM1/tz1gtLtXiutAE9ByQft9oV1P7gvHcbYlOx277IE7cma/VbkL69yLGGKNaMR/BwxtwnKKfmSqC13oxIvJ/GXLADTkylbAc7HrDCwphstE2fLXRn/dMCuva8c/+0UxpCRG3qiRo27gW0eq0Y3LtENmD1yCc7zIr5c2Dc1HyqKXaITg2rzjvyITkl3+r/OGXnA1TUVN+ruIa2o3bD1qnMiB/h6XJdPDvpQTZQEgJ1WWycvqbtAfeZpBlFunNU5yoWNUmSlDJ5pvlps14IxLNBpqpKT09jlI2x9OTQyFRIzFoubPdfoF1f5V+A4tukecypGa0BCmAEE0Ygj1wsmQm38ufiihyugNcX+BLNVKl68ZodKt8bC9hES/4SslrEvPMIIY2wbRc4pPOmxJ3wHozkiOR1FLm/xIw3e3Hnijyh4fxV8m0g2PXsYZ5hiuUrUAtjtHxeOeqhUb3BUOgbvRl1QQppP0QXDm8crXT9eR129OMc4EhdZ9kNzuSfI4JI9mjd4rkwRrnxH+T4sTUCqH/oguleAU40wDWZObJkI=
+  - secure: H8YAHrYzicNDTIc6V3Ldtj5RJPHASZTwOUOxMNC4HbOVihwWP5UYQgfdjTq3wLC9UTniqssiDxl6rbpGGkrp1Ja4SUKPkWzOLoV+zmKY2Fqdt7S6XkDFwqf9KZImx79U69/hQ1bmo/UQxyy/kj1fanIrRe0nNez0kTaeY4LltLOaMDX9EJROpXAqKllw78UAY6qKi7Fwdfp4K3uvmCqqfa4ZupZoIJxTIePK9eaRDSAUizmtqQYGBYN/q8tdJxHhGT9hVA2hgp98AO8kEcdr09X4iengSAFS1VNPOMeo5Ea+s7i3y2ee+z/wqJbSa5z72CgScT3xJI44FkrQLYPZA+eC3SzRJ7DSEnjBfaOn1v6ba5EscdaEEgK3yV6airr0Ro2ohnKexC+xrz/SJJd1XGZYyW9gP+L0n1AhyKX7NOzaMnQV5VxEb6ZHJR0iSs5XFc/k/kA0i49YrdKIjRCSionfd9tlBFHH7apjB50opYR7wFD/4blsu4A53XOINg7wBVOL0ZxZ8djHnZ2hpCgy9pkF5pd280WiifXegRexFrgByfLj5v7SuTMmcVIEbOzfaNovcvsEEKC0OOdbcKLaRNNOViwP+jP8SZZRiu+zlH7ydEq76wIjYSGuRY5NPyvmNZghQG1qujSueswSteZCHzyNsrdQ7VeMuhWeyHEbdao=
