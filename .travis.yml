@@ -7,3 +7,13 @@ script:
 - mvn clean install
 after_success:
 - bash <(curl -s https://codecov.io/bash)
+deploy:
+  provider: releases
+  api_key:
+    secure: MQh2jUPH43NNm3I8Dl3DJ2ZsQqz0xOS3aswMljk6kuNl1ZULEhP7oVy6L3WZsqG3aFAW0fFFH6k1vEWboCZTUY/mztcRk2xW4NroVMk7Vi67+Vb6FxxOESaLQS4NMXpLml8BlMPMR2nEa0xKJgB2Xv/HRw8vkh6CtjhjU4VFUo1yQ/VSvvAfk6PvcGoKWO+nzuJidluxDbqCOj0xfyQmOqTIH9B24+9FSwnCmjIB6Bjun7RALN0DfAGlO6SDeNmunKqdGoHnVKlVoQJvFRTxGMwSRCOgyPWXFJ5x6kG5qlU/UuXy97jnLsdCO4MD/BzvappE+5Rmu2NJUgUQyeGP582ZQh+0vxudie1/ASnL6wVMvk0/+cm3wIY591ReT5nQdmLXB7Lei5YTMY0PVA8YAH1JNxZGUnu0POQDyhshIMyDKR2iOFvY1/M+vHnKB9hgYdrREcDIax85YKYykuelmE2Dj8Veq+bH74mLUuXoHmoTKixrG4DsmF/PaZokjovvmdsZeX4TuKZBuV9NWdgV6E82ffcSFFj4dguxo8DQxfFz22KDw7F7u56s6hAp2DfSLpTcZ46w9jf+yK9Dhv+8ovWafRB69lSzKzCwuwLREM/t/HMyyUaSI4vkcE1HthLBjmPQUuX+ZJUcm/azPUNZA3u7Eh6NlXxjEu0YdoZLW4M=
+  file_glob: true
+  file:
+  - "**/target/*.jar"
+  skip_cleanup: true
+  on:
+    tags: true
