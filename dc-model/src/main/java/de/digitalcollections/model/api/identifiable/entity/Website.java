@@ -10,9 +10,9 @@ import java.util.List;
  */
 public interface Website extends Entity {
 
-  List<Webpage> getRootPages();
+  List<? extends Webpage> getRootPages();
 
-  void setRootPages(List<Webpage> rootPages);
+  void setRootPages(List<? extends Webpage> rootPages);
 
   LocalDate getRegistrationDate();
 

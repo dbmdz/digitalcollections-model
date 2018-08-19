@@ -2,6 +2,7 @@ package de.digitalcollections.model.jackson;
 
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.Module;
+import de.digitalcollections.model.api.identifiable.entity.Article;
 import de.digitalcollections.model.api.identifiable.entity.ContentTree;
 import de.digitalcollections.model.api.identifiable.entity.Website;
 import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
@@ -27,6 +28,7 @@ import de.digitalcollections.model.api.paging.PageRequest;
 import de.digitalcollections.model.api.paging.PageResponse;
 import de.digitalcollections.model.api.paging.Sorting;
 import de.digitalcollections.model.api.security.User;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.ArticleMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.ContentTreeMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.WebsiteMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.LocalizedTextMixIn;
@@ -67,6 +69,8 @@ public class DigitalCollectionsModelModule extends Module {
   @Override
   public void setupModule(SetupContext context) {
     LOGGER.info("Using DigitalCollectionsModelModule");
+    
+    context.setMixInAnnotations(Article.class, ArticleMixIn.class);
     context.setMixInAnnotations(Blockquote.class, BlockquoteMixIn.class);
     context.setMixInAnnotations(BulletList.class, BulletListMixIn.class);
     context.setMixInAnnotations(CodeBlock.class, CodeBlockMixIn.class);

@@ -9,6 +9,7 @@ public class ResourceImpl extends IdentifiableImpl implements Resource {
   protected ResourceType resourceType;
 
   public ResourceImpl() {
+    super();
     this.type = IdentifiableType.RESOURCE;
   }
   

@@ -1,6 +1,6 @@
 package de.digitalcollections.model.impl.identifiable.entity;
 
-import de.digitalcollections.model.api.identifiable.entity.EntityType;
+import de.digitalcollections.model.api.identifiable.entity.enums.EntityType;
 import de.digitalcollections.model.api.identifiable.entity.Website;
 import de.digitalcollections.model.api.identifiable.resource.Webpage;
 import java.net.URL;
@@ -13,7 +13,7 @@ import java.util.List;
 public class WebsiteImpl extends EntityImpl implements Website {
 
   private LocalDate registrationDate;
-  private List<Webpage> rootPages;
+  private List<? extends Webpage> rootPages;
   private URL url;
 
   public WebsiteImpl() {
@@ -53,12 +53,12 @@ public class WebsiteImpl extends EntityImpl implements Website {
   }
 
   @Override
-  public List<Webpage> getRootPages() {
+  public List<? extends Webpage> getRootPages() {
     return rootPages;
   }
 
   @Override
-  public void setRootPages(List<Webpage> rootPages) {
+  public void setRootPages(List<? extends Webpage> rootPages) {
     this.rootPages = rootPages;
   }
 

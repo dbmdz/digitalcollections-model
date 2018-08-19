@@ -15,6 +15,12 @@ public interface PageResponse<T> extends Iterable<T> {
    * @return
    */
   List<T> getContent();
+  
+  /**
+   * Allows to set the content (needed in case of content has to be converted/casted)
+   * @param content 
+   */
+  void setContent(List<T> content);
 
   /**
    * Returns the number of the current {@link PageResponse}. Is always non-negative.

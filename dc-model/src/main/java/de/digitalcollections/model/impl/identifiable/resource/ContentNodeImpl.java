@@ -1,31 +1,19 @@
 package de.digitalcollections.model.impl.identifiable.resource;
 
 import de.digitalcollections.model.api.identifiable.Identifiable;
-import de.digitalcollections.model.api.identifiable.Node;
 import de.digitalcollections.model.api.identifiable.resource.ContentNode;
 import de.digitalcollections.model.api.identifiable.resource.ResourceType;
 import de.digitalcollections.model.impl.identifiable.NodeImpl;
 import java.util.List;
 
-public class ContentNodeImpl extends ResourceImpl implements ContentNode, Node<ContentNode> {
+public class ContentNodeImpl extends ResourceImpl implements ContentNode<ContentNode> {
 
   private final NodeImpl<ContentNode> node;
-  private List<ContentNode> subNodes;
 
   public ContentNodeImpl() {
     super();
-    this.node = new NodeImpl<>();
     this.resourceType = ResourceType.CONTENT_NODE;
-  }
-
-  @Override
-  public void addChild(ContentNode child) {
-    node.addChild(child);
-  }
-
-  @Override
-  public void addContent(Identifiable identifiable) {
-    node.addContent(identifiable);
+    this.node = new NodeImpl<>();
   }
 
   @Override
@@ -57,25 +45,4 @@ public class ContentNodeImpl extends ResourceImpl implements ContentNode, Node<C
   public void setParent(ContentNode parent) {
     node.setParent(parent);
   }
-
-  @Override
-  public ResourceType getResourceType() {
-    return resourceType;
-  }
-
-  @Override
-  public void setResourceType(ResourceType resourceType) {
-    this.resourceType = resourceType;
-  }
-
-  @Override
-  public List<ContentNode> getSubNodes() {
-    return subNodes;
-  }
-
-  @Override
-  public void setSubNodes(List<ContentNode> subNodes) {
-    this.subNodes = subNodes;
-  }
-
 }

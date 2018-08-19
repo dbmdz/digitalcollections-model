@@ -2,18 +2,14 @@ package de.digitalcollections.model.api.identifiable.resource;
 
 import de.digitalcollections.model.api.identifiable.Node;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
-import java.util.List;
 
 /**
  * A Webpage.
+ * @param <W> a webpage instance
  */
-public interface Webpage extends Resource, Node<Webpage> {
-
-  List<Webpage> getSubPages();
-
-  void setSubPages(List<Webpage> subPages);
+public interface Webpage<W extends Webpage> extends Resource, Node<W> {
 
   LocalizedStructuredContent getText();
 
-  void setText(LocalizedStructuredContent localizedStructuredContent);
+  void setText(LocalizedStructuredContent text);
 }

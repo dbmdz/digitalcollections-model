@@ -67,6 +67,7 @@ public class PageResponseImpl<T> implements PageResponse<T> {
     return Collections.unmodifiableList(content);
   }
 
+  @Override
   public void setContent(List<T> content) {
     this.content = content;
   }

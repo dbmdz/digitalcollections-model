@@ -1,4 +1,4 @@
-package de.digitalcollections.model.api.identifiable.entity;
+package de.digitalcollections.model.api.identifiable.entity.enums;
 
 /**
  * All {@link Entity} types cudami can handle
