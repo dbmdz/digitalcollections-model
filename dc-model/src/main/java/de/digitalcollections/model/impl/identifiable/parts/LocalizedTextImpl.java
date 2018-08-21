@@ -3,7 +3,7 @@ package de.digitalcollections.model.impl.identifiable.parts;
 import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
 import de.digitalcollections.model.api.identifiable.parts.Translation;
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
@@ -13,7 +13,7 @@ public class LocalizedTextImpl implements LocalizedText {
   private Set<Translation> translations;
 
   public LocalizedTextImpl() {
-    translations = new HashSet<>();
+    translations = new LinkedHashSet<>();
   }
 
   public LocalizedTextImpl(Locale locale, String text) {
@@ -46,7 +46,7 @@ public class LocalizedTextImpl implements LocalizedText {
 
   @Override
   public Collection<Locale> getLocales() {
-    Set<Locale> locales = new HashSet<>();
+    Set<Locale> locales = new LinkedHashSet<>();
     for (Translation translation : translations) {
       locales.add(translation.getLocale());
     }
