@@ -1,30 +1,28 @@
 package de.digitalcollections.model.impl.identifiable.resource;
 
 import de.digitalcollections.model.api.identifiable.resource.FileResource;
-import de.digitalcollections.model.api.identifiable.resource.MimeType;
+import de.digitalcollections.model.api.identifiable.resource.ResourceType;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.UUID;
 
-public class FileResourceImpl extends ResourceImpl implements FileResource {
+public class FileResourceImpl extends BinaryContentImpl implements FileResource {
 
+  private String filename;
   private String filenameExtension;
   private boolean readonly = false;
-  private long size = -1;
-  private MimeType mimeType;
   private URI uri;
-  private UUID uuid = UUID.randomUUID();
 
   public FileResourceImpl() {
+    super();
+    this.resourceType = ResourceType.FILE;
   }
 
   @Override
   public String getFilename() {
-    String filename = null;
-    if (uri != null) {
+    if (filename == null && uri != null) {
       try {
         filename = uri.toURL().getFile();
       } catch (MalformedURLException ex) {
@@ -32,6 +30,11 @@ public class FileResourceImpl extends ResourceImpl implements FileResource {
       }
     }
     return filename;
+  }
+
+  @Override
+  public void setFilename(String filename) {
+    this.filename = filename;
   }
 
   @Override
@@ -45,26 +48,6 @@ public class FileResourceImpl extends ResourceImpl implements FileResource {
   }
 
   @Override
-  public MimeType getMimeType() {
-    return this.mimeType;
-  }
-
-  @Override
-  public void setMimeType(MimeType mimeType) {
-    this.mimeType = mimeType;
-  }
-
-  @Override
-  public long getSize() {
-    return size;
-  }
-
-  @Override
-  public void setSize(long size) {
-    this.size = size;
-  }
-
-  @Override
   public URI getUri() {
     return this.uri;
   }
@@ -72,16 +55,6 @@ public class FileResourceImpl extends ResourceImpl implements FileResource {
   @Override
   public void setUri(URI uri) {
     this.uri = uri;
-  }
-
-  @Override
-  public UUID getUuid() {
-    return uuid;
-  }
-
-  @Override
-  public void setUuid(UUID uuid) {
-    this.uuid = uuid;
   }
 
   @Override
@@ -98,9 +71,9 @@ public class FileResourceImpl extends ResourceImpl implements FileResource {
   public String toString() {
     return "ResourceImpl"
             + "\n{"
-            + "\n  uuid=" + String.valueOf(uuid)
+            + "\n  uuid=" + getUuid().toString()
             + ",\n  uri=" + String.valueOf(uri)
-            + ",\n  mimetype=" + String.valueOf(mimeType)
+            + ",\n  mimetype=" + String.valueOf(getMimeType())
             + ",\n  lastModified=" + lastModified
             + "\n}";
   }
