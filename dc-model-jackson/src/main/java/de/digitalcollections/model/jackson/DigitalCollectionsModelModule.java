@@ -20,9 +20,10 @@ import de.digitalcollections.model.api.identifiable.parts.structuredcontent.cont
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.OrderedList;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Paragraph;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Text;
-import de.digitalcollections.model.api.identifiable.resource.ContentNode;
+import de.digitalcollections.model.api.identifiable.entity.parts.ContentNode;
 import de.digitalcollections.model.api.identifiable.resource.IiifImage;
-import de.digitalcollections.model.api.identifiable.resource.Webpage;
+import de.digitalcollections.model.api.identifiable.resource.Resource;
+import de.digitalcollections.model.api.identifiable.entity.parts.Webpage;
 import de.digitalcollections.model.api.paging.Order;
 import de.digitalcollections.model.api.paging.PageRequest;
 import de.digitalcollections.model.api.paging.PageResponse;
@@ -46,9 +47,10 @@ import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredco
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.OrderedListMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.ParagraphMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.TextMixIn;
-import de.digitalcollections.model.jackson.mixin.identifiable.resource.ContentNodeMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.parts.ContentNodeMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.IiifImageMixIn;
-import de.digitalcollections.model.jackson.mixin.identifiable.resource.WebpageMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.resource.ResourceMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.parts.WebpageMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.OrderMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.PageRequestMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.PageResponseMixIn;
@@ -90,6 +92,7 @@ public class DigitalCollectionsModelModule extends Module {
     context.setMixInAnnotations(PageRequest.class, PageRequestMixIn.class);
     context.setMixInAnnotations(PageResponse.class, PageResponseMixIn.class);
     context.setMixInAnnotations(Paragraph.class, ParagraphMixIn.class);
+    context.setMixInAnnotations(Resource.class, ResourceMixIn.class);
     context.setMixInAnnotations(Sorting.class, SortingMixIn.class);
     context.setMixInAnnotations(StructuredContent.class, StructuredContentMixIn.class);
     context.setMixInAnnotations(Text.class, TextMixIn.class);

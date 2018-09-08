@@ -20,16 +20,37 @@ public class UserTest extends BaseSerializationTest {
     pageResponse.setPageRequest(pageRequest);
 
     checkSerializeDeserialize(pageResponse);
+    
+    checkSerializeDeserialize(createUser1());
   }
 
   private List<UserImpl> createContent() {
     List<UserImpl> list = new ArrayList<>();
-    UserImpl user1 = new UserImpl();
-    user1.setEmail("test1@user.de");
+    UserImpl user1 = createUser1();
     list.add(user1);
     UserImpl user2 = new UserImpl();
     user2.setEmail("test2@user.de");
     list.add(user2);
     return list;
+  }
+  
+  /*{
+"email": "ralf.eichinger@gmail.com",
+"enabled": true,
+"firstname": "Ralf",
+"lastname": "Eichinger",
+"passwordHash": "$2a$10$b9tOSUNjxCeQiipFl/QhzeckLGCAOyQLgFs5teAVruvSkL3.tdGdO",
+"roles": [
+"ADMIN"
+],
+"uuid": "a8a7f05d-cf90-43d6-a404-3377766bdcbd"
+}
+  */
+
+  public UserImpl createUser1() {
+    UserImpl user1 = new UserImpl();
+    user1.setEmail("test1@user.de");
+    user1.setPasswordHash("$2a$10$bSUNjxCeQiipFl/QhzeckLGCAOyQLgFs5teAVruvSkL3.tdGdO");
+    return user1;
   }
 }

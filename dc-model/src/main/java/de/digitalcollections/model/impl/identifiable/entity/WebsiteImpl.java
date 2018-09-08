@@ -2,7 +2,7 @@ package de.digitalcollections.model.impl.identifiable.entity;
 
 import de.digitalcollections.model.api.identifiable.entity.enums.EntityType;
 import de.digitalcollections.model.api.identifiable.entity.Website;
-import de.digitalcollections.model.api.identifiable.resource.Webpage;
+import de.digitalcollections.model.api.identifiable.entity.parts.Webpage;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;

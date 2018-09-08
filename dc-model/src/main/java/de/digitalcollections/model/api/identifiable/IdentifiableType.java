@@ -4,7 +4,7 @@ package de.digitalcollections.model.api.identifiable;
  * All {@link Identifiable} types cudami can handle
  */
 public enum IdentifiableType {
-  ENTITY, RESOURCE;
+  ENTITY, ENTITY_PART, RESOURCE, RESOURCE_PART;
 
   @Override
   public String toString() {

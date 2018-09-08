@@ -1,13 +1,14 @@
-package de.digitalcollections.model.impl.identifiable.resource;
+package de.digitalcollections.model.impl.identifiable.entity.parts;
 
 import de.digitalcollections.model.api.identifiable.Identifiable;
+import de.digitalcollections.model.api.identifiable.IdentifiableType;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
-import de.digitalcollections.model.api.identifiable.resource.ResourceType;
-import de.digitalcollections.model.api.identifiable.resource.Webpage;
+import de.digitalcollections.model.api.identifiable.entity.parts.Webpage;
+import de.digitalcollections.model.impl.identifiable.IdentifiableImpl;
 import de.digitalcollections.model.impl.identifiable.NodeImpl;
 import java.util.List;
 
-public class WebpageImpl extends ResourceImpl implements Webpage<Webpage> {
+public class WebpageImpl extends IdentifiableImpl implements Webpage<Webpage> {
 
   private final NodeImpl<Webpage> node;
   private LocalizedStructuredContent text;
@@ -15,13 +16,11 @@ public class WebpageImpl extends ResourceImpl implements Webpage<Webpage> {
   public WebpageImpl() {
     super();
     this.node = new NodeImpl<>();
-    this.resourceType = ResourceType.WEBPAGE;
+    this.type = IdentifiableType.ENTITY_PART;
   }
 
   public WebpageImpl(List<Webpage> children) {
-    super();
-    this.resourceType = ResourceType.WEBPAGE;
-    this.node = new NodeImpl<>();
+    this();
     this.node.setChildren(children);
   }
 

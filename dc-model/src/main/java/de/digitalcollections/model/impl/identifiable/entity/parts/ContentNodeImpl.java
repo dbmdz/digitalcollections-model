@@ -1,19 +1,20 @@
-package de.digitalcollections.model.impl.identifiable.resource;
+package de.digitalcollections.model.impl.identifiable.entity.parts;
 
 import de.digitalcollections.model.api.identifiable.Identifiable;
-import de.digitalcollections.model.api.identifiable.resource.ContentNode;
-import de.digitalcollections.model.api.identifiable.resource.ResourceType;
+import de.digitalcollections.model.api.identifiable.IdentifiableType;
+import de.digitalcollections.model.api.identifiable.entity.parts.ContentNode;
+import de.digitalcollections.model.impl.identifiable.IdentifiableImpl;
 import de.digitalcollections.model.impl.identifiable.NodeImpl;
 import java.util.List;
 
-public class ContentNodeImpl extends ResourceImpl implements ContentNode<ContentNode> {
+public class ContentNodeImpl extends IdentifiableImpl implements ContentNode<ContentNode> {
 
   private final NodeImpl<ContentNode> node;
 
   public ContentNodeImpl() {
     super();
-    this.resourceType = ResourceType.CONTENT_NODE;
     this.node = new NodeImpl<>();
+    this.type = IdentifiableType.ENTITY_PART;
   }
 
   @Override

@@ -1,6 +1,6 @@
 package de.digitalcollections.model.api.identifiable.entity;
 
-import de.digitalcollections.model.api.identifiable.resource.ContentNode;
+import de.digitalcollections.model.api.identifiable.entity.parts.ContentNode;
 import java.util.List;
 
 /**
