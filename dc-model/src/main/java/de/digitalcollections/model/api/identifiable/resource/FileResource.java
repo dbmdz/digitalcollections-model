@@ -18,10 +18,6 @@ public interface FileResource extends BinaryContent {
 
   void setLastModified(long lastModified);
 
-  MimeType getMimeType();
-
-  void setMimeType(MimeType mimeType);
-
   boolean isReadonly();
 
   void setReadonly(boolean readonly);
