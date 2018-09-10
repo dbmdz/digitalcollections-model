@@ -24,6 +24,7 @@ import de.digitalcollections.model.api.identifiable.entity.parts.ContentNode;
 import de.digitalcollections.model.api.identifiable.resource.IiifImage;
 import de.digitalcollections.model.api.identifiable.resource.Resource;
 import de.digitalcollections.model.api.identifiable.entity.parts.Webpage;
+import de.digitalcollections.model.api.identifiable.resource.FileResource;
 import de.digitalcollections.model.api.paging.Order;
 import de.digitalcollections.model.api.paging.PageRequest;
 import de.digitalcollections.model.api.paging.PageResponse;
@@ -51,6 +52,7 @@ import de.digitalcollections.model.jackson.mixin.identifiable.entity.parts.Conte
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.IiifImageMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.ResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.parts.WebpageMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.resource.FileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.OrderMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.PageRequestMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.PageResponseMixIn;
@@ -71,7 +73,7 @@ public class DigitalCollectionsModelModule extends Module {
   @Override
   public void setupModule(SetupContext context) {
     LOGGER.info("Using DigitalCollectionsModelModule");
-    
+
     context.setMixInAnnotations(Article.class, ArticleMixIn.class);
     context.setMixInAnnotations(Blockquote.class, BlockquoteMixIn.class);
     context.setMixInAnnotations(BulletList.class, BulletListMixIn.class);
@@ -80,6 +82,7 @@ public class DigitalCollectionsModelModule extends Module {
     context.setMixInAnnotations(ContentNode.class, ContentNodeMixIn.class);
     context.setMixInAnnotations(ContentTree.class, ContentTreeMixIn.class);
     //    context.setMixInAnnotations(Entity.class, EntityMixIn.class); // FIXME not needed/working, switched back to wrapper info...
+    context.setMixInAnnotations(FileResource.class, FileResourceMixIn.class);
     context.setMixInAnnotations(Heading.class, HeadingMixIn.class);
     context.setMixInAnnotations(IFrame.class, IFrameMixIn.class);
     context.setMixInAnnotations(IiifImage.class, IiifImageMixIn.class);
