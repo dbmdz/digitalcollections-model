@@ -71,7 +71,7 @@ public class FileResourceImpl extends BinaryContentImpl implements FileResource 
   public String toString() {
     return "ResourceImpl"
             + "\n{"
-            + "\n  uuid=" + getUuid().toString()
+            + "\n  uuid=" + String.valueOf(getUuid())
             + ",\n  uri=" + String.valueOf(uri)
             + ",\n  mimetype=" + String.valueOf(getMimeType())
             + ",\n  lastModified=" + lastModified
