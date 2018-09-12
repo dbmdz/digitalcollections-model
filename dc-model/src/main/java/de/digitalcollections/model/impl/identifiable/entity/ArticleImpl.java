@@ -1,20 +1,25 @@
 package de.digitalcollections.model.impl.identifiable.entity;
 
 import de.digitalcollections.model.api.identifiable.Identifiable;
+import de.digitalcollections.model.api.identifiable.IdentifiablesContainer;
+import de.digitalcollections.model.api.identifiable.Node;
 import de.digitalcollections.model.api.identifiable.entity.Article;
 import de.digitalcollections.model.api.identifiable.entity.enums.EntityType;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
+import de.digitalcollections.model.impl.identifiable.IdentifiablesContainerImpl;
 import de.digitalcollections.model.impl.identifiable.NodeImpl;
 import java.util.List;
 
 public class ArticleImpl extends EntityImpl implements Article<Article> {
 
-  private final NodeImpl<Article> node;
+  private final IdentifiablesContainer identifiablesContainer;
+  private final Node<Article> node;
   private LocalizedStructuredContent text;
 
   public ArticleImpl() {
     super();
     this.entityType = EntityType.ARTICLE;
+    this.identifiablesContainer = new IdentifiablesContainerImpl();
     this.node = new NodeImpl<>();
   }
 
@@ -39,13 +44,13 @@ public class ArticleImpl extends EntityImpl implements Article<Article> {
   }
 
   @Override
-  public List<Identifiable> getContent() {
-    return node.getContent();
+  public List<Identifiable> getIdentifiables() {
+    return identifiablesContainer.getIdentifiables();
   }
 
   @Override
-  public void setContent(List<Identifiable> content) {
-    node.setContent(content);
+  public void setIdentifiables(List<Identifiable> identifiables) {
+    identifiablesContainer.setIdentifiables(identifiables);
   }
 
   @Override

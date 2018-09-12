@@ -23,15 +23,4 @@ public interface Node<N extends Node> extends Identifiable {
     }
     getChildren().add(child);
   }
-
-  List<Identifiable> getContent();
-
-  void setContent(List<Identifiable> content);
-
-  default void addContent(Identifiable identifiable) {
-    if (getContent() == null) {
-      setContent(new ArrayList<>());
-    }
-    getContent().add(identifiable);
-  }
 }
