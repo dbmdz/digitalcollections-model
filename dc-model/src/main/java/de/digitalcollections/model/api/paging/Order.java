@@ -2,7 +2,7 @@ package de.digitalcollections.model.api.paging;
 
 import de.digitalcollections.model.api.paging.enums.Direction;
 import de.digitalcollections.model.api.paging.enums.NullHandling;
-import de.digitalcollections.model.api.paging.impl.OrderImpl;
+import de.digitalcollections.model.impl.paging.OrderImpl;
 
 public interface Order {
 

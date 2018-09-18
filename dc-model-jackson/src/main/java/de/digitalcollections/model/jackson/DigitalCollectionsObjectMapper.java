@@ -14,12 +14,12 @@ public class DigitalCollectionsObjectMapper extends ObjectMapper {
   }
 
   public static ObjectMapper customize(ObjectMapper objectMapper) {
-    objectMapper.registerModule(new JavaTimeModule());
-    objectMapper.registerModule(new DigitalCollectionsModelModule());
     objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
     objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
     objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
     objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+    objectMapper.registerModule(new JavaTimeModule());
+    objectMapper.registerModule(new DigitalCollectionsModelModule());
     return objectMapper;
   }
 }
