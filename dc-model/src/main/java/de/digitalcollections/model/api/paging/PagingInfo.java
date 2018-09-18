@@ -1,6 +1,6 @@
 package de.digitalcollections.model.api.paging;
 
-import de.digitalcollections.model.api.paging.impl.PagingInfoImpl.PageItem;
+import de.digitalcollections.model.impl.paging.PagingInfoImpl.PageItem;
 import java.util.List;
 
 public interface PagingInfo {

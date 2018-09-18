@@ -1,4 +1,4 @@
-package de.digitalcollections.model.api.paging.impl;
+package de.digitalcollections.model.impl.paging;
 
 import de.digitalcollections.model.api.paging.PagingInfo;
 import java.util.ArrayList;
