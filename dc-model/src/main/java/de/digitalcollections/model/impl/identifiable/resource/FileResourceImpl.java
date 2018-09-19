@@ -1,23 +1,24 @@
 package de.digitalcollections.model.impl.identifiable.resource;
 
+import de.digitalcollections.model.api.identifiable.IdentifiableType;
 import de.digitalcollections.model.api.identifiable.resource.FileResource;
-import de.digitalcollections.model.api.identifiable.resource.ResourceType;
+import de.digitalcollections.model.api.identifiable.resource.MimeType;
+import de.digitalcollections.model.impl.identifiable.IdentifiableImpl;
 import java.net.MalformedURLException;
 import java.net.URI;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 
-public class FileResourceImpl extends BinaryContentImpl implements FileResource {
+public class FileResourceImpl extends IdentifiableImpl implements FileResource {
 
   private String filename;
   private String filenameExtension;
+  private MimeType mimeType;
   private boolean readonly = false;
+  private long sizeInBytes;
   private URI uri;
 
   public FileResourceImpl() {
     super();
-    this.resourceType = ResourceType.FILE;
+    this.type = IdentifiableType.RESOURCE;
   }
 
   @Override
@@ -48,6 +49,16 @@ public class FileResourceImpl extends BinaryContentImpl implements FileResource 
   }
 
   @Override
+  public long getSizeInBytes() {
+    return sizeInBytes;
+  }
+
+  @Override
+  public void setSizeInBytes(long sizeInBytes) {
+    this.sizeInBytes = sizeInBytes;
+  }
+
+  @Override
   public URI getUri() {
     return this.uri;
   }
@@ -68,19 +79,23 @@ public class FileResourceImpl extends BinaryContentImpl implements FileResource 
   }
 
   @Override
-  public String toString() {
-    return "ResourceImpl"
-            + "\n{"
-            + "\n  uuid=" + String.valueOf(getUuid())
-            + ",\n  uri=" + String.valueOf(uri)
-            + ",\n  mimetype=" + String.valueOf(getMimeType())
-            + ",\n  lastModified=" + lastModified
-            + "\n}";
+  public MimeType getMimeType() {
+    return mimeType;
   }
 
   @Override
-  public void setLastModified(long lastModified) {
-    LocalDateTime date = LocalDateTime.ofInstant(Instant.ofEpochMilli(lastModified), ZoneId.systemDefault());
-    setLastModified(date);
+  public void setMimeType(MimeType mimeType) {
+    this.mimeType = mimeType;
+  }
+
+  @Override
+  public String toString() {
+    return this.getClass().getSimpleName() + ":"
+            + "\n{"
+            + "\n  uuid=" + String.valueOf(getUuid())
+            + ",\n  uri=" + String.valueOf(uri)
+            + ",\n  mimetype=" + getMimeType().getTypeName()
+            + ",\n  lastModified=" + lastModified
+            + "\n}";
   }
 }

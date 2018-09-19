@@ -22,6 +22,7 @@
     <version.junit-jupiter-api>5.2.0</version.junit-jupiter-api>
     <version.junit-jupiter-engine>5.2.0</version.junit-jupiter-engine>
     <version.junit-platform-surefire-provider>1.2.0</version.junit-platform-surefire-provider>
+    <version.log4j>1.2.17</version.log4j>
     <version.maven-compiler-plugin>3.7.0</version.maven-compiler-plugin>
     <version.maven-surefire-plugin>2.22.0</version.maven-surefire-plugin>
     <version.slf4j-api>1.7.25</version.slf4j-api>
@@ -52,7 +53,7 @@
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
-      <version>1.2.17</version>
+      <version>${version.log4j}</version>
       <scope>test</scope>
     </dependency>
     <dependency>

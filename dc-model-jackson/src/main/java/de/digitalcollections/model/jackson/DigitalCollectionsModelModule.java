@@ -1,11 +1,10 @@
 package de.digitalcollections.model.jackson;
 
 import com.fasterxml.jackson.core.Version;
+import com.fasterxml.jackson.core.util.VersionUtil;
 import com.fasterxml.jackson.databind.Module.SetupContext;
 import com.fasterxml.jackson.databind.deser.std.StdDelegatingDeserializer;
-import com.fasterxml.jackson.databind.module.SimpleDeserializers;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.fasterxml.jackson.databind.module.SimpleSerializers;
 import com.fasterxml.jackson.databind.ser.std.StdDelegatingSerializer;
 import com.fasterxml.jackson.databind.util.Converter;
 import com.fasterxml.jackson.databind.util.StdConverter;
@@ -30,9 +29,7 @@ import de.digitalcollections.model.api.identifiable.parts.structuredcontent.cont
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Paragraph;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Text;
 import de.digitalcollections.model.api.identifiable.resource.FileResource;
-import de.digitalcollections.model.api.identifiable.resource.IiifImage;
 import de.digitalcollections.model.api.identifiable.resource.MimeType;
-import de.digitalcollections.model.api.identifiable.resource.Resource;
 import de.digitalcollections.model.api.paging.Order;
 import de.digitalcollections.model.api.paging.PageRequest;
 import de.digitalcollections.model.api.paging.PageResponse;
@@ -59,8 +56,6 @@ import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredco
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.ParagraphMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.TextMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.FileResourceMixIn;
-import de.digitalcollections.model.jackson.mixin.identifiable.resource.IiifImageMixIn;
-import de.digitalcollections.model.jackson.mixin.identifiable.resource.ResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.OrderMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.PageRequestMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.PageResponseMixIn;
@@ -74,23 +69,29 @@ public class DigitalCollectionsModelModule extends SimpleModule {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(DigitalCollectionsModelModule.class);
 
+  public DigitalCollectionsModelModule() {
+    super();
+
+    // Just use MimeType's getTypeName and String constructor for serializing/deserializing it
+    addSerializer(new StdDelegatingSerializer(MimeType.class, toString(MimeType::getTypeName)));
+    addDeserializer(MimeType.class, new StdDelegatingDeserializer<>(fromString(MimeType::fromTypename)));
+  }
+
   @Override
   public String getModuleName() {
     return "DigitalCollections Model jackson module";
   }
 
   @Override
+  public Version version() {
+    return VersionUtil.parseVersion("2.0.0-SNAPSHOT", "de.digitalcollections.model", "dc-model-jackson");
+  }
+
+  @Override
   public void setupModule(SetupContext context) {
+    super.setupModule(context);
+
     LOGGER.info("Using DigitalCollectionsModelModule");
-
-    // Just use MimeType's getTypeName and String constructor for serializing/deserializing it
-    SimpleSerializers serializers = new SimpleSerializers();
-    serializers.addSerializer(new StdDelegatingSerializer(MimeType.class, toString(MimeType::getTypeName)));
-    context.addSerializers(serializers);
-
-    SimpleDeserializers deserializers = new SimpleDeserializers();
-    deserializers.addDeserializer(MimeType.class, new StdDelegatingDeserializer<>(fromString(MimeType::fromTypename)));
-    context.addDeserializers(deserializers);
 
     context.setMixInAnnotations(Article.class, ArticleMixIn.class);
     context.setMixInAnnotations(Blockquote.class, BlockquoteMixIn.class);
@@ -99,11 +100,9 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(ContentBlock.class, ContentBlockMixIn.class);
     context.setMixInAnnotations(ContentNode.class, ContentNodeMixIn.class);
     context.setMixInAnnotations(ContentTree.class, ContentTreeMixIn.class);
-    //    context.setMixInAnnotations(Entity.class, EntityMixIn.class); // FIXME not needed/working, switched back to wrapper info...
     context.setMixInAnnotations(FileResource.class, FileResourceMixIn.class);
     context.setMixInAnnotations(Heading.class, HeadingMixIn.class);
     context.setMixInAnnotations(IFrame.class, IFrameMixIn.class);
-    context.setMixInAnnotations(IiifImage.class, IiifImageMixIn.class);
     context.setMixInAnnotations(ListItem.class, ListItemMixIn.class);
     context.setMixInAnnotations(LocalizedStructuredContent.class, LocalizedStructuredContentMixIn.class);
     context.setMixInAnnotations(LocalizedText.class, LocalizedTextMixIn.class);
@@ -113,7 +112,6 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(PageRequest.class, PageRequestMixIn.class);
     context.setMixInAnnotations(PageResponse.class, PageResponseMixIn.class);
     context.setMixInAnnotations(Paragraph.class, ParagraphMixIn.class);
-    context.setMixInAnnotations(Resource.class, ResourceMixIn.class);
     context.setMixInAnnotations(Sorting.class, SortingMixIn.class);
     context.setMixInAnnotations(StructuredContent.class, StructuredContentMixIn.class);
     context.setMixInAnnotations(Text.class, TextMixIn.class);
@@ -121,11 +119,6 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(User.class, UserMixIn.class);
     context.setMixInAnnotations(Webpage.class, WebpageMixIn.class);
     context.setMixInAnnotations(Website.class, WebsiteMixIn.class);
-  }
-
-  @Override
-  public Version version() {
-    return new Version(2, 0, 0, "SNAPSHOT", "de.digitalcollections.model", "dc-model-jackson");
   }
 
   /**

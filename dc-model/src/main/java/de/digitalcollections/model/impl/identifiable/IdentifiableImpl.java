@@ -4,7 +4,6 @@ import de.digitalcollections.model.api.identifiable.Identifiable;
 import de.digitalcollections.model.api.identifiable.IdentifiableType;
 import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
-import de.digitalcollections.model.api.identifiable.resource.IiifImage;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -15,7 +14,6 @@ public class IdentifiableImpl implements Identifiable {
   protected LocalizedStructuredContent description;
   protected LocalizedText label;
   protected LocalDateTime lastModified;
-  protected IiifImage iiifImage;
   protected IdentifiableType type;
 
   @Override
@@ -49,11 +47,6 @@ public class IdentifiableImpl implements Identifiable {
   }
 
   @Override
-  public IiifImage getIiifImage() {
-    return iiifImage;
-  }
-
-  @Override
   public void setCreated(LocalDateTime created) {
     this.created = created;
   }
@@ -71,11 +64,6 @@ public class IdentifiableImpl implements Identifiable {
   @Override
   public void setLastModified(LocalDateTime lastModified) {
     this.lastModified = lastModified;
-  }
-
-  @Override
-  public void setIiifImage(IiifImage iiifImage) {
-    this.iiifImage = iiifImage;
   }
 
   @Override
