@@ -61,6 +61,7 @@ import de.digitalcollections.model.jackson.mixin.paging.PageRequestMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.PageResponseMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.SortingMixIn;
 import de.digitalcollections.model.jackson.mixin.security.UserMixIn;
+import java.util.ResourceBundle;
 import java.util.function.Function;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -68,6 +69,7 @@ import org.slf4j.LoggerFactory;
 public class DigitalCollectionsModelModule extends SimpleModule {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(DigitalCollectionsModelModule.class);
+  private static ResourceBundle rb = ResourceBundle.getBundle("dc-model-jackson-version");
 
   public DigitalCollectionsModelModule() {
     super();
@@ -84,14 +86,17 @@ public class DigitalCollectionsModelModule extends SimpleModule {
 
   @Override
   public Version version() {
-    return VersionUtil.parseVersion("2.0.0-SNAPSHOT", "de.digitalcollections.model", "dc-model-jackson");
+    return VersionUtil.parseVersion(
+            rb.getString("project.version"),
+            rb.getString("project.groupId"),
+            rb.getString("project.artifactId"));
   }
 
   @Override
   public void setupModule(SetupContext context) {
     super.setupModule(context);
 
-    LOGGER.info("Using DigitalCollectionsModelModule");
+    LOGGER.info("Using DigitalCollectionsModelModule " + version().toFullString());
 
     context.setMixInAnnotations(Article.class, ArticleMixIn.class);
     context.setMixInAnnotations(Blockquote.class, BlockquoteMixIn.class);
