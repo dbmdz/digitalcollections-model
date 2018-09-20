@@ -19,7 +19,6 @@ public class FileResourceTest extends BaseSerializationTest {
   public FileResource createObject() {
     FileResource obj = new FileResourceImpl();
     obj.setFilename("filename.jpg");
-    obj.setFilenameExtension("jpg");
     obj.setMimeType(MimeType.MIME_IMAGE_JPEG);
     obj.setLastModified(LocalDateTime.ofInstant(Instant.ofEpochMilli(1000000), ZoneId.systemDefault()));
     return obj;

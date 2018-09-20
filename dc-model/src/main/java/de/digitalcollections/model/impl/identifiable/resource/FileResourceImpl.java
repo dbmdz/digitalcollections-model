@@ -10,7 +10,6 @@ import java.net.URI;
 public class FileResourceImpl extends IdentifiableImpl implements FileResource {
 
   private String filename;
-  private String filenameExtension;
   private MimeType mimeType;
   private boolean readonly = false;
   private long sizeInBytes;
@@ -40,12 +39,20 @@ public class FileResourceImpl extends IdentifiableImpl implements FileResource {
 
   @Override
   public String getFilenameExtension() {
-    return filenameExtension;
-  }
-
-  @Override
-  public void setFilenameExtension(String filenameExtension) {
-    this.filenameExtension = filenameExtension;
+    if (filename == null) {
+      return null;
+    } else {
+      int lastDotPosition = filename.lastIndexOf(".");
+      if (lastDotPosition >= 0 && lastDotPosition < filename.length()) {
+        String result = filename.substring(lastDotPosition + 1);
+        if (result.trim().length() == 0) {
+          return null;
+        }
+        return result;
+      } else {
+        return null;
+      }
+    }
   }
 
   @Override

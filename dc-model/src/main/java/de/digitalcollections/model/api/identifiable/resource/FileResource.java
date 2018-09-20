@@ -25,8 +25,6 @@ public interface FileResource extends Identifiable {
 
   String getFilenameExtension();
 
-  void setFilenameExtension(String filenameExtension);
-
   boolean isReadonly();
 
   void setReadonly(boolean readonly);
