@@ -5,6 +5,7 @@ import java.util.List;
 /**
  * Abstract interface for pagination information.
  * See Spring Data Commons, but more flat design and independent of Spring libraries.
+ * TODO: add Builder, @see PageRequest
  * @param <T> object type listed in page
  */
 public interface PageResponse<T> extends Iterable<T> {

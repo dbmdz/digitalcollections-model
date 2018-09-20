@@ -1,32 +1,33 @@
 package de.digitalcollections.model.api.identifiable.resource;
 
+import de.digitalcollections.model.api.identifiable.Identifiable;
 import java.net.URI;
 
 /**
- * A FileResource (source) describes any file, regardless of its physical location, used storage technology or required display means (aka "Viewer").
- * A FileResource can e.g. include an image, a video file, an XML document, or a JSON file.
+ * A FileResource (source) describes any file, regardless of its physical
+ * location, used storage technology or required display means (aka "Viewer"). A
+ * FileResource can e.g. include an image, a video file, an XML document, or a
+ * JSON file.
  */
-public interface FileResource extends Resource {
+public interface FileResource extends Identifiable {
 
-  String getFilename();
+  long getSizeInBytes();
 
-  String getFilenameExtension();
-
-  void setFilenameExtension(String filenameExtension);
-
-  void setLastModified(long lastModified);
+  void setSizeInBytes(long sizeInBytes);
 
   MimeType getMimeType();
 
   void setMimeType(MimeType mimeType);
 
+  String getFilename();
+
+  void setFilename(String filename);
+
+  String getFilenameExtension();
+
   boolean isReadonly();
 
   void setReadonly(boolean readonly);
-
-  long getSize();
-
-  void setSize(long size);
 
   URI getUri();
 

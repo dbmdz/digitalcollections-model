@@ -1,30 +1,28 @@
 package de.digitalcollections.model.impl.identifiable.resource;
 
+import de.digitalcollections.model.api.identifiable.IdentifiableType;
 import de.digitalcollections.model.api.identifiable.resource.FileResource;
 import de.digitalcollections.model.api.identifiable.resource.MimeType;
+import de.digitalcollections.model.impl.identifiable.IdentifiableImpl;
 import java.net.MalformedURLException;
 import java.net.URI;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.UUID;
 
-public class FileResourceImpl extends ResourceImpl implements FileResource {
+public class FileResourceImpl extends IdentifiableImpl implements FileResource {
 
-  private String filenameExtension;
-  private boolean readonly = false;
-  private long size = -1;
+  private String filename;
   private MimeType mimeType;
+  private boolean readonly = false;
+  private long sizeInBytes;
   private URI uri;
-  private UUID uuid = UUID.randomUUID();
 
   public FileResourceImpl() {
+    super();
+    this.type = IdentifiableType.RESOURCE;
   }
 
   @Override
   public String getFilename() {
-    String filename = null;
-    if (uri != null) {
+    if (filename == null && uri != null) {
       try {
         filename = uri.toURL().getFile();
       } catch (MalformedURLException ex) {
@@ -35,33 +33,36 @@ public class FileResourceImpl extends ResourceImpl implements FileResource {
   }
 
   @Override
+  public void setFilename(String filename) {
+    this.filename = filename;
+  }
+
+  @Override
   public String getFilenameExtension() {
-    return filenameExtension;
+    if (filename == null) {
+      return null;
+    } else {
+      int lastDotPosition = filename.lastIndexOf(".");
+      if (lastDotPosition >= 0 && lastDotPosition < filename.length()) {
+        String result = filename.substring(lastDotPosition + 1);
+        if (result.trim().length() == 0) {
+          return null;
+        }
+        return result;
+      } else {
+        return null;
+      }
+    }
   }
 
   @Override
-  public void setFilenameExtension(String filenameExtension) {
-    this.filenameExtension = filenameExtension;
+  public long getSizeInBytes() {
+    return sizeInBytes;
   }
 
   @Override
-  public MimeType getMimeType() {
-    return this.mimeType;
-  }
-
-  @Override
-  public void setMimeType(MimeType mimeType) {
-    this.mimeType = mimeType;
-  }
-
-  @Override
-  public long getSize() {
-    return size;
-  }
-
-  @Override
-  public void setSize(long size) {
-    this.size = size;
+  public void setSizeInBytes(long sizeInBytes) {
+    this.sizeInBytes = sizeInBytes;
   }
 
   @Override
@@ -75,16 +76,6 @@ public class FileResourceImpl extends ResourceImpl implements FileResource {
   }
 
   @Override
-  public UUID getUuid() {
-    return uuid;
-  }
-
-  @Override
-  public void setUuid(UUID uuid) {
-    this.uuid = uuid;
-  }
-
-  @Override
   public boolean isReadonly() {
     return this.readonly;
   }
@@ -95,19 +86,23 @@ public class FileResourceImpl extends ResourceImpl implements FileResource {
   }
 
   @Override
-  public String toString() {
-    return "ResourceImpl"
-            + "\n{"
-            + "\n  uuid=" + String.valueOf(uuid)
-            + ",\n  uri=" + String.valueOf(uri)
-            + ",\n  mimetype=" + String.valueOf(mimeType)
-            + ",\n  lastModified=" + lastModified
-            + "\n}";
+  public MimeType getMimeType() {
+    return mimeType;
   }
 
   @Override
-  public void setLastModified(long lastModified) {
-    LocalDateTime date = LocalDateTime.ofInstant(Instant.ofEpochMilli(lastModified), ZoneId.systemDefault());
-    setLastModified(date);
+  public void setMimeType(MimeType mimeType) {
+    this.mimeType = mimeType;
+  }
+
+  @Override
+  public String toString() {
+    return this.getClass().getSimpleName() + ":"
+            + "\n{"
+            + "\n  uuid=" + String.valueOf(getUuid())
+            + ",\n  uri=" + String.valueOf(uri)
+            + ",\n  mimetype=" + getMimeType().getTypeName()
+            + ",\n  lastModified=" + lastModified
+            + "\n}";
   }
 }

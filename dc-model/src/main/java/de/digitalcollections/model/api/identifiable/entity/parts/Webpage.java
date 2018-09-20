@@ -1,4 +1,4 @@
-package de.digitalcollections.model.api.identifiable.resource;
+package de.digitalcollections.model.api.identifiable.entity.parts;
 
 import de.digitalcollections.model.api.identifiable.Node;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
@@ -7,7 +7,7 @@ import de.digitalcollections.model.api.identifiable.parts.structuredcontent.Loca
  * A Webpage.
  * @param <W> a webpage instance
  */
-public interface Webpage<W extends Webpage> extends Resource, Node<W> {
+public interface Webpage<W extends Webpage> extends Node<W> {
 
   LocalizedStructuredContent getText();
 

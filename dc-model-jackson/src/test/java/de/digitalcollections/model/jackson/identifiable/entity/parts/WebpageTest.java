@@ -1,17 +1,17 @@
-package de.digitalcollections.model.jackson.identifiable.resource;
+package de.digitalcollections.model.jackson.identifiable.entity.parts;
 
 import de.digitalcollections.cudami.model.jackson.BaseSerializationTest;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.ContentBlock;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.StructuredContent;
-import de.digitalcollections.model.api.identifiable.resource.Webpage;
+import de.digitalcollections.model.api.identifiable.entity.parts.Webpage;
 import de.digitalcollections.model.impl.identifiable.parts.LocalizedTextImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.LocalizedStructuredContentImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.StructuredContentImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.HardBreakImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.HeadingImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.ParagraphImpl;
-import de.digitalcollections.model.impl.identifiable.resource.WebpageImpl;
+import de.digitalcollections.model.impl.identifiable.entity.parts.WebpageImpl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;

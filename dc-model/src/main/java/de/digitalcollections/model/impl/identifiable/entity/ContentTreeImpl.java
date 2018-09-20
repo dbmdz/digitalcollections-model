@@ -2,7 +2,7 @@ package de.digitalcollections.model.impl.identifiable.entity;
 
 import de.digitalcollections.model.api.identifiable.entity.ContentTree;
 import de.digitalcollections.model.api.identifiable.entity.enums.EntityType;
-import de.digitalcollections.model.api.identifiable.resource.ContentNode;
+import de.digitalcollections.model.api.identifiable.entity.parts.ContentNode;
 import java.util.List;
 
 /**

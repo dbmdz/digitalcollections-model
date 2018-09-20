@@ -1,7 +1,5 @@
 package de.digitalcollections.cudami.model.jackson;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.digitalcollections.model.jackson.DigitalCollectionsObjectMapper;
@@ -9,8 +7,13 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import org.apache.commons.beanutils.BeanUtils;
+import static org.assertj.core.api.Assertions.assertThat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class BaseSerializationTest {
+
+  private static final Logger LOGGER = LoggerFactory.getLogger(BaseSerializationTest.class);
 
   protected <T> void checkSerializeDeserialize(T objectIn) throws Exception {
     T objectOut = (T) serializeDeserialize(objectIn);
@@ -45,7 +48,9 @@ public abstract class BaseSerializationTest {
   }
 
   private Object serializeDeserialize(Object o) throws JsonProcessingException, IOException {
-    String serializedObject = getMapper().writeValueAsString(o);
+    final ObjectMapper mapper = getMapper();
+    String serializedObject = mapper.writeValueAsString(o);
+    LOGGER.info("serialized object: '" + serializedObject + "'");
     Class valueType = o.getClass();
     Object deserializedObject = getMapper().readValue(serializedObject, valueType);
     return deserializedObject;

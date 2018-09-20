@@ -24,7 +24,9 @@ public class MimeType {
   private static Map<String, MimeType> knownTypes;
   private static Map<String, String> extensionMapping;
 
-  /** Regular Expression used for decoding a MIME type **/
+  /**
+   * Regular Expression used for decoding a MIME type *
+   */
   private static final Pattern MIME_PATTERN = Pattern.compile(
           "^(?<primaryType>[-a-z]+?)/(?<subType>[-\\\\.a-z0-9*]+?)(?:\\+(?<suffix>\\w+))?$");
 
@@ -75,7 +77,9 @@ public class MimeType {
     }
   }
 
-  /** Convenience definitions for commonly used MIME types */
+  /**
+   * Convenience definitions for commonly used MIME types
+   */
   public static final MimeType MIME_WILDCARD = new MimeType("*", Collections.emptyList());
   public static final MimeType MIME_IMAGE = new MimeType("image/*", Collections.emptyList());
   public static final MimeType MIME_APPLICATION_JSON = knownTypes.get("application/json");
@@ -89,7 +93,9 @@ public class MimeType {
   private final String suffix;
   private List<String> extensions;
 
-  /** Determine MIME type for the given file extension */
+  /**
+   * Determine MIME type for the given file extension
+   */
   public static MimeType fromExtension(String ext) {
     final String extension;
     if (ext.startsWith(".")) {
@@ -106,14 +112,15 @@ public class MimeType {
   }
 
   /**
-   * Determine MIME type from filename string.
-   * Returns null if no matching MIME type was found.
+   * Determine MIME type from filename string. Returns null if no matching MIME type was found.
    */
   public static MimeType fromFilename(String filename) {
     return fromExtension(FilenameUtils.getExtension(filename));
   }
 
-  /** Determine MIME type from URI. **/
+  /**
+   * Determine MIME type from URI. *
+   */
   public static MimeType fromURI(URI uri) {
     try {
       return fromFilename(Paths.get(uri).toString());
@@ -123,10 +130,12 @@ public class MimeType {
     }
   }
 
-  /** Given an existing MIME type name, look up the corresponding instance.
+  /**
+   * Given an existing MIME type name, look up the corresponding instance.
    *
-   *  An exception is made for vendor-specific types or non-standard types.
-   * **/
+   * An exception is made for vendor-specific types or non-standard types.
+   * *
+   */
   public static MimeType fromTypename(String typeName) {
     MimeType knownType = knownTypes.get(typeName);
     if (knownType != null) {
@@ -164,7 +173,9 @@ public class MimeType {
     }
   }
 
-  /** Get the MIME type's name (e.g. "application/json") */
+  /**
+   * Get the MIME type's name (e.g. "application/json")
+   */
   public String getTypeName() {
     StringBuilder sb = new StringBuilder(primaryType)
             .append("/")
@@ -175,7 +186,9 @@ public class MimeType {
     return sb.toString();
   }
 
-  /** Get the known file extensions for the MIME type */
+  /**
+   * Get the known file extensions for the MIME type
+   */
   public List<String> getExtensions() {
     return extensions;
   }
@@ -196,9 +209,10 @@ public class MimeType {
     return suffix;
   }
 
-  /** Check if the MIME type "matches" another MIME type.
+  /**
+   * Check if the MIME type "matches" another MIME type.
    *
-   * @param other   Other MIME type to compare against
+   * @param other Other MIME type to compare against
    * @return Whether the other type matches this type
    */
   public boolean matches(Object other) {

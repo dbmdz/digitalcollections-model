@@ -1,6 +1,6 @@
 package de.digitalcollections.model.api.paging;
 
-import de.digitalcollections.model.api.paging.impl.PageRequestImpl;
+import de.digitalcollections.model.impl.paging.PageRequestImpl;
 
 /**
  * Abstract interface for pagination information.
