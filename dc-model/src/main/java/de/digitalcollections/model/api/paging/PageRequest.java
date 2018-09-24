@@ -64,6 +64,20 @@ public interface PageRequest {
    */
   boolean hasPrevious();
 
+  /**
+   * Sets the number of items.
+   *
+   * @param pageSize the number of items of that page
+   */
+  void setPageSize(int pageSize);
+
+  /**
+   * Sets the sorting parameters.
+   *
+   * @param sorting the sorting parameters
+   */
+  void setSorting(Sorting sorting);
+
   static Builder defaultBuilder() {
     return new Builder();
   }

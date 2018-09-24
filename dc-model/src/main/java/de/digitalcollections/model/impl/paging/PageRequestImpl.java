@@ -21,21 +21,6 @@ public class PageRequestImpl implements PageRequest, Serializable {
   public PageRequestImpl() {
   }
 
-  // TODO: just introduced for jackson deserializing... (see mixin)
-  public void setPageNumber(int page) {
-    this.page = page;
-  }
-
-  // TODO: just introduced for jackson deserializing... (see mixin)
-  public void setPageSize(int size) {
-    this.size = size;
-  }
-
-  // TODO: just introduced for jackson deserializing... (see mixin)
-  public void setSorting(Sorting sort) {
-    this.sort = sort;
-  }
-
   /**
    * Creates a new {@link PageRequest}. Pages are zero indexed, thus providing 0 for {@code page} will return the first
    * page.
@@ -156,6 +141,20 @@ public class PageRequestImpl implements PageRequest, Serializable {
   @Override
   public PageRequest previousOrFirst() {
     return hasPrevious() ? previous() : first();
+  }
+
+  public void setPageNumber(int page) {
+    this.page = page;
+  }
+
+  @Override
+  public void setPageSize(int size) {
+    this.size = size;
+  }
+
+  @Override
+  public void setSorting(Sorting sort) {
+    this.sort = sort;
   }
 
   @Override
