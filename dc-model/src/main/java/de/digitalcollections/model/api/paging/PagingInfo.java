@@ -1,6 +1,5 @@
 package de.digitalcollections.model.api.paging;
 
-import de.digitalcollections.model.impl.paging.PagingInfoImpl.PageItem;
 import java.util.List;
 
 public interface PagingInfo {
@@ -21,7 +20,7 @@ public interface PagingInfo {
 
   boolean isLastPage();
 
-  boolean isHasPreviousPage();
+  boolean hasPreviousPage();
 
-  boolean isHasNextPage();
+  boolean hasNextPage();
 }

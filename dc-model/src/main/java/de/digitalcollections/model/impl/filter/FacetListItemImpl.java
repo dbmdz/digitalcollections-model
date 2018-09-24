@@ -1,15 +1,15 @@
-package de.digitalcollections.model.impl.view;
+package de.digitalcollections.model.impl.filter;
 
-import de.digitalcollections.model.api.view.SelectedFacetItem;
+import de.digitalcollections.model.api.filter.FacetListItem;
 
-public class SelectedFacetItemImpl implements SelectedFacetItem {
+public class FacetListItemImpl implements FacetListItem {
 
   String name;
   long count;
   String link;
   boolean selected;
 
-  public SelectedFacetItemImpl(String name, Long count) {
+  public FacetListItemImpl(String name, Long count) {
     this.name = name;
     this.count = count;
   }
@@ -56,11 +56,11 @@ public class SelectedFacetItemImpl implements SelectedFacetItem {
 
   @Override
   public String toString() {
-    return "SelectedFacetItemImpl{"
-        + "name='" + name + '\''
-        + ", count=" + count
-        + ", link='" + link + '\''
-        + ", selected=" + selected
-        + '}';
+    return "FacetListItemImpl{"
+            + "name='" + name + '\''
+            + ", count=" + count
+            + ", link='" + link + '\''
+            + ", selected=" + selected
+            + '}';
   }
 }

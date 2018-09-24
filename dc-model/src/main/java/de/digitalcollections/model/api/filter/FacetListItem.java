@@ -1,6 +1,9 @@
-package de.digitalcollections.model.api.view;
+package de.digitalcollections.model.api.filter;
 
-public interface SelectedFacetItem {
+/**
+ * A facet value of a specific facet, e.g. value "image" of facet "mediatype"
+ */
+public interface FacetListItem {
 
   String getName();
 

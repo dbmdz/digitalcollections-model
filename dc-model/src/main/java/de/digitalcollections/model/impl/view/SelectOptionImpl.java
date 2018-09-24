@@ -1,8 +1,8 @@
 package de.digitalcollections.model.impl.view;
 
-import de.digitalcollections.model.api.view.SelectedListItem;
+import de.digitalcollections.model.api.view.SelectOption;
 
-public class SelectedListItemImpl implements SelectedListItem {
+public class SelectOptionImpl implements SelectOption {
 
   String id;
   String title;
@@ -10,7 +10,7 @@ public class SelectedListItemImpl implements SelectedListItem {
   String link;
   boolean selected;
 
-  public SelectedListItemImpl(String id, String title) {
+  public SelectOptionImpl(String id, String title) {
     this.id = id;
     this.title = title;
   }
@@ -67,12 +67,12 @@ public class SelectedListItemImpl implements SelectedListItem {
 
   @Override
   public String toString() {
-    return "SelectedListItemImpl{"
-        + "id='" + id + '\''
-        + ", title='" + title + '\''
-        + ", subTitle='" + subTitle + '\''
-        + ", link='" + link + '\''
-        + ", selected=" + selected
-        + '}';
+    return "SelectOptionImpl{"
+            + "id='" + id + '\''
+            + ", title='" + title + '\''
+            + ", subTitle='" + subTitle + '\''
+            + ", link='" + link + '\''
+            + ", selected=" + selected
+            + '}';
   }
 }

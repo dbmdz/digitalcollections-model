@@ -1,14 +1,14 @@
-package de.digitalcollections.model.impl.view;
+package de.digitalcollections.model.impl.filter;
 
-import de.digitalcollections.model.api.view.FacetList;
-import de.digitalcollections.model.api.view.SelectedFacetItem;
+import de.digitalcollections.model.api.filter.FacetList;
 import java.util.LinkedList;
 import java.util.List;
+import de.digitalcollections.model.api.filter.FacetListItem;
 
 public class FacetListImpl implements FacetList {
 
   String title;
-  List<SelectedFacetItem> items = new LinkedList<>();
+  List<FacetListItem> items = new LinkedList<>();
 
   @Override
   public String getTitle() {
@@ -21,19 +21,19 @@ public class FacetListImpl implements FacetList {
   }
 
   @Override
-  public List<SelectedFacetItem> getItems() {
+  public List<FacetListItem> getItems() {
     return items;
   }
 
   @Override
-  public void setFacetItems(List<SelectedFacetItem> items) {
+  public void setItems(List<FacetListItem> items) {
     if (items != null) {
       this.items = items;
     }
   }
 
   @Override
-  public void addFacetItem(SelectedFacetItem item) {
+  public void addItem(FacetListItem item) {
     items.add(item);
   }
 

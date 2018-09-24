@@ -1,5 +1,6 @@
 package de.digitalcollections.model.impl.paging;
 
+import de.digitalcollections.model.api.paging.PageItem;
 import de.digitalcollections.model.api.paging.PagingInfo;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +17,12 @@ public class PagingInfoImpl implements PagingInfo {
 
   /**
    * PagingInfo
-   * @param totalItems Total number of items to be paged
-   * @param currentPage Number of the current page, starting with 0
+   * @param totalItems total number of items to be paged
+   * @param currentPage number of the current page, starting with 0
    * @param totalPages maximum page number
-   * @param maxPageItemsToDisplay maximum number of page items to be displayed
+   * @param maxPageItemsToDisplay maximum number of page navigation items to be displayed
    * @param pageSize page size
-   * @param url Base url
+   * @param url base url
    */
   public PagingInfoImpl(long totalItems, int currentPage, int totalPages, int maxPageItemsToDisplay, int pageSize, String url) {
     this.totalItems = totalItems;
@@ -50,7 +51,7 @@ public class PagingInfoImpl implements PagingInfo {
     }
 
     for (int i = 0; i < size; i++) {
-      items.add(new PageItem(start + i, (start + i) == currentNumber));
+      items.add(new PageItemImpl(start + i, (start + i) == currentNumber));
     }
   }
 
@@ -95,53 +96,26 @@ public class PagingInfoImpl implements PagingInfo {
   }
 
   @Override
-  public boolean isHasPreviousPage() {
+  public boolean hasPreviousPage() {
     return currentNumber > 1;
   }
 
   @Override
-  public boolean isHasNextPage() {
+  public boolean hasNextPage() {
     return currentNumber < totalPages;
 
-  }
-
-  public class PageItem {
-
-    private final int number;
-    private final boolean current;
-
-    public PageItem(int number, boolean current) {
-      this.number = number;
-      this.current = current;
-    }
-
-    public int getNumber() {
-      return this.number;
-    }
-
-    public boolean isCurrent() {
-      return this.current;
-    }
-
-    @Override
-    public String toString() {
-      return "PageItem{"
-          + "number=" + number
-          + ", current=" + current
-          + '}';
-    }
   }
 
   @Override
   public String toString() {
     return "PagingInfoImpl{"
-        + "maxPageItemsToDisplay=" + maxPageItemsToDisplay
-        + ", items=" + items
-        + ", currentNumber=" + currentNumber
-        + ", totalItems=" + totalItems
-        + ", totalPages=" + totalPages
-        + ", pageSize=" + pageSize
-        + ", url='" + url + '\''
-        + '}';
+            + "maxPageItemsToDisplay=" + maxPageItemsToDisplay
+            + ", items=" + items
+            + ", currentNumber=" + currentNumber
+            + ", totalItems=" + totalItems
+            + ", totalPages=" + totalPages
+            + ", pageSize=" + pageSize
+            + ", url='" + url + '\''
+            + '}';
   }
 }
