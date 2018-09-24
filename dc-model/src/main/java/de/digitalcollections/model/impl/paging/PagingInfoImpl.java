@@ -122,5 +122,26 @@ public class PagingInfoImpl implements PagingInfo {
     public boolean isCurrent() {
       return this.current;
     }
+
+    @Override
+    public String toString() {
+      return "PageItem{"
+          + "number=" + number
+          + ", current=" + current
+          + '}';
+    }
+  }
+
+  @Override
+  public String toString() {
+    return "PagingInfoImpl{"
+        + "maxPageItemsToDisplay=" + maxPageItemsToDisplay
+        + ", items=" + items
+        + ", currentNumber=" + currentNumber
+        + ", totalItems=" + totalItems
+        + ", totalPages=" + totalPages
+        + ", pageSize=" + pageSize
+        + ", url='" + url + '\''
+        + '}';
   }
 }
