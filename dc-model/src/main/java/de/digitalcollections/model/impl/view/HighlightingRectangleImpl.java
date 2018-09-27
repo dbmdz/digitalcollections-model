@@ -1,10 +1,9 @@
 package de.digitalcollections.model.impl.view;
 
 import de.digitalcollections.model.api.view.HighlightingRectangle;
-import java.io.Serializable;
 import java.util.Objects;
 
-public class HighlightingRectangleImpl implements Serializable, HighlightingRectangle {
+public class HighlightingRectangleImpl implements HighlightingRectangle {
 
   private final double ulx;
 
@@ -16,20 +15,20 @@ public class HighlightingRectangleImpl implements Serializable, HighlightingRect
 
   private final int ref;
 
-  private final String keywords;
+  private final String text;
 
-  public HighlightingRectangleImpl(String keywords, int ref, double ulx, double uly, double lrx, double lry) {
+  public HighlightingRectangleImpl(String text, int ref, double ulx, double uly, double lrx, double lry) {
     this.ulx = ulx;
     this.uly = uly;
     this.lrx = lrx;
     this.lry = lry;
     this.ref = ref;
-    this.keywords = keywords;
+    this.text = text;
   }
 
   @Override
-  public String getKeywords() {
-    return keywords;
+  public String getText() {
+    return text;
   }
 
   @Override
@@ -60,7 +59,7 @@ public class HighlightingRectangleImpl implements Serializable, HighlightingRect
   @Override
   public String toString() {
     return "HighlightingRectangleImpl{"
-        + "keywords='" + keywords + '\''
+        + "text='" + text + '\''
         + ", ulx=" + ulx
         + ", uly=" + uly
         + ", lrx=" + lrx
@@ -77,7 +76,7 @@ public class HighlightingRectangleImpl implements Serializable, HighlightingRect
     hash = 31 * hash + (int) (Double.doubleToLongBits(this.lrx) ^ (Double.doubleToLongBits(this.lrx) >>> 32));
     hash = 31 * hash + (int) (Double.doubleToLongBits(this.lry) ^ (Double.doubleToLongBits(this.lry) >>> 32));
     hash = 31 * hash + this.ref;
-    hash = 31 * hash + Objects.hashCode(this.keywords);
+    hash = 31 * hash + Objects.hashCode(this.text);
     return hash;
   }
 
@@ -108,7 +107,7 @@ public class HighlightingRectangleImpl implements Serializable, HighlightingRect
     if (this.ref != other.getRef()) {
       return false;
     }
-    return Objects.equals(this.keywords, other.getKeywords());
+    return Objects.equals(this.text, other.getText());
   }
 
 }
