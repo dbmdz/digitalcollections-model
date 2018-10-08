@@ -87,6 +87,7 @@ public class MimeType {
   public static final MimeType MIME_IMAGE_JPEG = knownTypes.get("image/jpeg");
   public static final MimeType MIME_IMAGE_TIF = knownTypes.get("image/tiff");
   public static final MimeType MIME_IMAGE_PNG = knownTypes.get("image/png");
+  public static final MimeType MIME_TYPE_MARKDOWN = knownTypes.get("text/markdown");
 
   private final String primaryType;
   private final String subType;
