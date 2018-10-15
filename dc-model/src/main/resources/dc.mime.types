@@ -1686,7 +1686,7 @@ text/csv					csv
 text/html					html htm
 # text/javascript
 # text/jcr-cnd
-# text/markdown
+text/markdown					md
 # text/mizar
 text/n3						n3
 # text/parameters

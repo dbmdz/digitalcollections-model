@@ -68,5 +68,6 @@ public class MimeTypeTest {
   @Test
   public void knowsOfTypesWithoutExtensions() throws Exception {
     assertThat(MimeType.fromTypename("text/xml")).isNotNull();
+    assertThat(MimeType.fromTypename("text/markdown")).isNotNull();
   }
 }
