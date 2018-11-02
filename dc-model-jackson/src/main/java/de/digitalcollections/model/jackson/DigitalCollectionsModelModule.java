@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ser.std.StdDelegatingSerializer;
 import com.fasterxml.jackson.databind.util.Converter;
 import com.fasterxml.jackson.databind.util.StdConverter;
 import de.digitalcollections.model.api.identifiable.entity.Article;
+import de.digitalcollections.model.api.identifiable.entity.Collection;
 import de.digitalcollections.model.api.identifiable.entity.ContentTree;
 import de.digitalcollections.model.api.identifiable.entity.Website;
 import de.digitalcollections.model.api.identifiable.entity.parts.ContentNode;
@@ -28,14 +29,20 @@ import de.digitalcollections.model.api.identifiable.parts.structuredcontent.cont
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.OrderedList;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Paragraph;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Text;
+import de.digitalcollections.model.api.identifiable.resource.ApplicationFileResource;
+import de.digitalcollections.model.api.identifiable.resource.AudioFileResource;
 import de.digitalcollections.model.api.identifiable.resource.FileResource;
+import de.digitalcollections.model.api.identifiable.resource.ImageFileResource;
 import de.digitalcollections.model.api.identifiable.resource.MimeType;
+import de.digitalcollections.model.api.identifiable.resource.TextFileResource;
+import de.digitalcollections.model.api.identifiable.resource.VideoFileResource;
 import de.digitalcollections.model.api.paging.Order;
 import de.digitalcollections.model.api.paging.PageRequest;
 import de.digitalcollections.model.api.paging.PageResponse;
 import de.digitalcollections.model.api.paging.Sorting;
 import de.digitalcollections.model.api.security.User;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.ArticleMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.CollectionMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.ContentTreeMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.WebsiteMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.parts.ContentNodeMixIn;
@@ -55,7 +62,12 @@ import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredco
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.OrderedListMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.ParagraphMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.TextMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.resource.ApplicationFileResourceMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.resource.AudioFileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.FileResourceMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.resource.ImageFileResourceMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.resource.TextFileResourceMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.resource.VideoFileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.OrderMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.PageRequestMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.PageResponseMixIn;
@@ -98,16 +110,20 @@ public class DigitalCollectionsModelModule extends SimpleModule {
 
     LOGGER.info("Using DigitalCollectionsModelModule " + version().toFullString());
 
+    context.setMixInAnnotations(ApplicationFileResource.class, ApplicationFileResourceMixIn.class);
     context.setMixInAnnotations(Article.class, ArticleMixIn.class);
+    context.setMixInAnnotations(AudioFileResource.class, AudioFileResourceMixIn.class);
     context.setMixInAnnotations(Blockquote.class, BlockquoteMixIn.class);
     context.setMixInAnnotations(BulletList.class, BulletListMixIn.class);
     context.setMixInAnnotations(CodeBlock.class, CodeBlockMixIn.class);
+    context.setMixInAnnotations(Collection.class, CollectionMixIn.class);
     context.setMixInAnnotations(ContentBlock.class, ContentBlockMixIn.class);
     context.setMixInAnnotations(ContentNode.class, ContentNodeMixIn.class);
     context.setMixInAnnotations(ContentTree.class, ContentTreeMixIn.class);
     context.setMixInAnnotations(FileResource.class, FileResourceMixIn.class);
     context.setMixInAnnotations(Heading.class, HeadingMixIn.class);
     context.setMixInAnnotations(IFrame.class, IFrameMixIn.class);
+    context.setMixInAnnotations(ImageFileResource.class, ImageFileResourceMixIn.class);
     context.setMixInAnnotations(ListItem.class, ListItemMixIn.class);
     context.setMixInAnnotations(LocalizedStructuredContent.class, LocalizedStructuredContentMixIn.class);
     context.setMixInAnnotations(LocalizedText.class, LocalizedTextMixIn.class);
@@ -120,8 +136,10 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(Sorting.class, SortingMixIn.class);
     context.setMixInAnnotations(StructuredContent.class, StructuredContentMixIn.class);
     context.setMixInAnnotations(Text.class, TextMixIn.class);
+    context.setMixInAnnotations(TextFileResource.class, TextFileResourceMixIn.class);
     context.setMixInAnnotations(Translation.class, TranslationMixIn.class);
     context.setMixInAnnotations(User.class, UserMixIn.class);
+    context.setMixInAnnotations(VideoFileResource.class, VideoFileResourceMixIn.class);
     context.setMixInAnnotations(Webpage.class, WebpageMixIn.class);
     context.setMixInAnnotations(Website.class, WebsiteMixIn.class);
   }
