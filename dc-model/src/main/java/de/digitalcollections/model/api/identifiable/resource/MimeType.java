@@ -96,6 +96,9 @@ public class MimeType {
 
   /**
    * Determine MIME type for the given file extension
+   *
+   * @param ext file extension
+   * @return corresponding MimeType
    */
   public static MimeType fromExtension(String ext) {
     final String extension;
@@ -113,14 +116,21 @@ public class MimeType {
   }
 
   /**
-   * Determine MIME type from filename string. Returns null if no matching MIME type was found.
+   * Determine MIME type from filename string.
+   * Returns null if no matching MIME type was found.
+   *
+   * @param filename filename including extension
+   * @return corresponding MimeType
    */
   public static MimeType fromFilename(String filename) {
     return fromExtension(FilenameUtils.getExtension(filename));
   }
 
   /**
-   * Determine MIME type from URI. *
+   * Determine MIME type from URI.
+   *
+   * @param uri uri including filename with extension
+   * @return corresponding MimeType
    */
   public static MimeType fromURI(URI uri) {
     try {
@@ -133,9 +143,10 @@ public class MimeType {
 
   /**
    * Given an existing MIME type name, look up the corresponding instance.
-   *
    * An exception is made for vendor-specific types or non-standard types.
-   * *
+   *
+   * @param typeName mietype name as String, e.g. "image/jpeg"
+   * @return  corresponding MimeType
    */
   public static MimeType fromTypename(String typeName) {
     MimeType knownType = knownTypes.get(typeName);
@@ -175,7 +186,8 @@ public class MimeType {
   }
 
   /**
-   * Get the MIME type's name (e.g. "application/json")
+   * Get the MIME type's name (e.g."application/json")
+   * @return the MimeType's type name as String
    */
   public String getTypeName() {
     StringBuilder sb = new StringBuilder(primaryType)
@@ -189,6 +201,7 @@ public class MimeType {
 
   /**
    * Get the known file extensions for the MIME type
+   * @return List of known file extensions for given MiemType
    */
   public List<String> getExtensions() {
     return extensions;
