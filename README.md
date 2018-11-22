@@ -1,4 +1,4 @@
-# Project Digitalcollections Model
+# Digitalcollections Model
 
 [![Build Status](https://travis-ci.org/dbmdz/digitalcollections-model.svg?branch=master)](https://travis-ci.org/dbmdz/digitalcollections-model)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
