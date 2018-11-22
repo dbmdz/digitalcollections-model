@@ -68,9 +68,6 @@
             </goals>
           </execution>
         </executions>
-        <configuration>
-          <excludePackageNames>org.libjpegturbo.turbojpeg</excludePackageNames>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
