@@ -40,7 +40,7 @@ public interface HighlightingRectangle extends Serializable {
 
   /**
    * the relative ordinate of the lower right point of the rectangle
-   * @return
+   * @return a value in the range [0..1]
    */
   double getLry();
 }

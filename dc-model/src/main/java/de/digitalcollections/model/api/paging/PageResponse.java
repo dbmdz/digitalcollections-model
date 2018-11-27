@@ -11,15 +11,13 @@ import java.util.List;
 public interface PageResponse<T> extends Iterable<T> {
 
   /**
-   * Returns the page content as {@link List}.
-   *
-   * @return
+   * @return the page content/objects as {@link List}.
    */
   List<T> getContent();
-  
+
   /**
    * Allows to set the content (needed in case of content has to be converted/casted)
-   * @param content 
+   * @param content list of content/objects of this page
    */
   void setContent(List<T> content);
 
@@ -50,9 +48,7 @@ public interface PageResponse<T> extends Iterable<T> {
   int getSize();
 
   /**
-   * Returns the sorting parameters for the {@link PageResponse}.
-   *
-   * @return
+   * @return the sorting parameters for the {@link PageResponse}.
    */
   Sorting getSorting();
 
@@ -73,7 +69,7 @@ public interface PageResponse<T> extends Iterable<T> {
   /**
    * Returns whether the {@link PageResponse} has content at all.
    *
-   * @return
+   * @return whether the {@link PageResponse} has content at all.
    */
   boolean hasContent();
 
@@ -94,14 +90,14 @@ public interface PageResponse<T> extends Iterable<T> {
   /**
    * Returns whether the current {@link PageResponse} is the first one.
    *
-   * @return
+   * @return whether the current {@link PageResponse} is the first one.
    */
   boolean isFirst();
 
   /**
    * Returns whether the current {@link PageResponse} is the last one.
    *
-   * @return
+   * @return whether the current {@link PageResponse} is the last one.
    */
   boolean isLast();
 
@@ -110,7 +106,7 @@ public interface PageResponse<T> extends Iterable<T> {
    * {@link PageResponse} is already the last one. Clients should check {@link #hasNext()} before calling this method to make
    * sure they receive a non-{@literal null} value.
    *
-   * @return
+   * @return the {@link PageRequest} to request the next {@link PageResponse}
    */
   PageRequest nextPageRequest();
 
@@ -119,7 +115,7 @@ public interface PageResponse<T> extends Iterable<T> {
    * {@link PageResponse} is already the first one. Clients should check {@link #hasPrevious()} before calling this method make
    * sure receive a non-{@literal null} value.
    *
-   * @return
+   * @return the {@link PageRequest} to request the previous {@link PageResponse}
    */
   PageRequest previousPageRequest();
 
