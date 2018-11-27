@@ -2,12 +2,58 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <name>DigitalCollections: Model (Parent)</name>
   <groupId>de.digitalcollections.model</groupId>
   <artifactId>dc-model-parent</artifactId>
   <version>2.0.0</version>
   <packaging>pom</packaging>
+  
+  <modules>
+    <module>dc-model</module>
+    <module>dc-model-jackson</module>
+  </modules>
 
+  <name>DigitalCollections: Model (Parent)</name>
+  <description>Java library containing Domain Object classes of the Digital Collection's and Digital Humanities ecosystem.</description>
+  <url>https://github.com/dbmdz/digitalcollections-model</url>
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://github.com/dbmdz/digitalcollections-model/blob/master/LICENSE</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <name>Ralf Eichinger</name>
+      <id>datazuul</id>
+    </developer>
+    <developer>
+      <name>Matthias Lindinger</name>
+      <id>morpheus-87</id>
+    </developer>
+    <developer>
+      <name>Christoph Lorenz</name>
+      <id>clorenz</id>
+    </developer>
+    <developer>
+      <name>Stefan Schweter</name>
+      <id>stefan-it</id>
+    </developer>
+  </developers>
+  <ciManagement>
+    <url>https://travis-ci.org/dbmdz/digitalcollections-model</url>
+    <system>Travis CI</system>
+  </ciManagement>
+  <issueManagement>
+    <url>https://github.com/dbmdz/digitalcollections-model/issues</url>
+    <system>GitHub Issues</system>
+  </issueManagement>
+  <scm>
+    <connection>https://github.com/dbmdz/digitalcollections-model.git</connection>
+    <developerConnection>git@github.com:dbmdz/digitalcollections-model.git</developerConnection>
+    <url>https://github.com/dbmdz/digitalcollections-model</url>
+  </scm>
+  
   <properties>
     <java.version>1.8</java.version>
     <maven.compiler.source>1.8</maven.compiler.source> <!-- default configuration property name used by maven compiler plugin -->
@@ -24,11 +70,6 @@
     <version.nexus-staging-maven-plugin>1.6.7</version.nexus-staging-maven-plugin>
   </properties>
   
-  <modules>
-    <module>dc-model</module>
-    <module>dc-model-jackson</module>
-  </modules>
-
   <build>
     <plugins>
       <plugin>
@@ -125,6 +166,16 @@
     </repository>
   </repositories>
 
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>${version.jacoco-maven-plugin}</version>
+      </plugin>
+    </plugins>
+  </reporting>
+  
   <profiles>
     <profile>
       <id>deploy</id>
