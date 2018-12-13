@@ -17,6 +17,14 @@
       </entry>
     </documents>
   </description>
+  <label>
+    <translations>
+      <translation>
+        <locale>de_DE</locale>
+        <text>Meine Homepage</text>
+      </translation>
+    </translations>
+  </label>
   <type>ENTITY_PART</type>
   <identifiablesContainer/>
   <node/>
