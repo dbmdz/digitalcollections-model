@@ -1,0 +1,77 @@
+<webpage>
+  <description>
+    <documents>
+      <entry>
+        <locale>de_DE</locale>
+        <document>
+          <content>
+            <paragraph>
+              <content>
+                <text>
+                  <body><![CDATA[]]></body>
+                </text>
+              </content>
+            </paragraph>
+          </content>
+        </document>
+      </entry>
+    </documents>
+  </description>
+  <type>ENTITY_PART</type>
+  <identifiablesContainer/>
+  <node/>
+  <text>
+    <documents>
+      <entry>
+        <locale>de_DE</locale>
+        <document>
+          <content>
+            <heading>
+              <content>
+                <text>
+                  <body><![CDATA[Bayerische Staatsbibliothek]]></body>
+                  <marks>
+                    <mark type="strong"/>
+                  </marks>
+                </text>
+              </content>
+              <attributes>
+                <level>4</level>
+              </attributes>
+            </heading>
+            <paragraph>
+              <content>
+                <text>
+                  <body><![CDATA[Internet:]]></body>
+                  <marks>
+                    <mark type="strong"/>
+                  </marks>
+                </text>
+                <text>
+                  <body><![CDATA[   ]]></body>
+                </text>
+                <text>
+                  <body><![CDATA[www.bsb-muenchen.de]]></body>
+                  <marks>
+                    <mark type="link">
+                      <attributes>
+                        <href>https://www.bsb-muenchen.de/</href>
+                      </attributes>
+                    </mark>
+                  </marks>
+                </text>
+              </content>
+            </paragraph>
+            <iframe>
+              <attributes>
+                <src>https://external.content.org/index.php?language=de&amp;action=test</src>
+                <width>90%</width>
+                <height>150px</height>
+              </attributes>
+            </iframe>
+          </content>
+        </document>
+      </entry>
+    </documents>
+  </text>
+</webpage>
