@@ -11,9 +11,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public abstract class BaseSerializationTest {
+public abstract class BaseJsonSerializationTest {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(BaseSerializationTest.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(BaseJsonSerializationTest.class);
 
   protected <T> void checkSerializeDeserialize(T objectIn) throws Exception {
     T objectOut = (T) serializeDeserialize(objectIn);

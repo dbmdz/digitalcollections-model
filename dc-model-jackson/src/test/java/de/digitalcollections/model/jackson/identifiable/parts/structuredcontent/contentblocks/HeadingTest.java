@@ -3,7 +3,7 @@ package de.digitalcollections.model.jackson.identifiable.parts.structuredcontent
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.digitalcollections.cudami.model.jackson.BaseSerializationTest;
+import de.digitalcollections.cudami.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Heading;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Text;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.HeadingImpl;
@@ -11,7 +11,7 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.con
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class HeadingTest extends BaseSerializationTest {
+public class HeadingTest extends BaseJsonSerializationTest {
 
   public ObjectMapper mapper;
 

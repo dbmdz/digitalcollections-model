@@ -3,7 +3,7 @@ package de.digitalcollections.model.jackson.identifiable.parts.structuredcontent
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.digitalcollections.cudami.model.jackson.BaseSerializationTest;
+import de.digitalcollections.cudami.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Blockquote;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Paragraph;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Text;
@@ -13,7 +13,7 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.con
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class BlockquoteTest extends BaseSerializationTest {
+public class BlockquoteTest extends BaseJsonSerializationTest {
 
   public ObjectMapper mapper;
 

@@ -3,7 +3,7 @@ package de.digitalcollections.model.jackson.identifiable.parts.structuredcontent
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.digitalcollections.cudami.model.jackson.BaseSerializationTest;
+import de.digitalcollections.cudami.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.ContentBlock;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.StructuredContent;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Text;
@@ -14,7 +14,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class StructuredContentTest extends BaseSerializationTest {
+public class StructuredContentTest extends BaseJsonSerializationTest {
 
   private static final String JSON = "{      \"type\": \"doc\",\n"
           + "  \"content\": [\n"
