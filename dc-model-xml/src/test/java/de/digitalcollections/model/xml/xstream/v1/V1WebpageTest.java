@@ -23,15 +23,19 @@ import java.nio.charset.Charset;
 import java.util.Locale;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.oxm.XmlMappingException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class V1DigitalCollectionsXStreamMarshallerTest {
+public class V1WebpageTest {
+
+  private static final Logger LOGGER = LoggerFactory.getLogger(V1WebpageTest.class);
 
   private static V1DigitalCollectionsXStreamMarshaller marshaller;
 
-  public V1DigitalCollectionsXStreamMarshallerTest() {
+  public V1WebpageTest() {
   }
 
   @BeforeAll
@@ -80,7 +84,9 @@ public class V1DigitalCollectionsXStreamMarshallerTest {
     final StringWriter sw = new StringWriter();
     marshaller.marshalWriter(webpage, sw);
     String result = sw.toString();
-    System.out.println(result);
+
+    LOGGER.info(result);
+
     assertThat(result).doesNotContain("localizedStructuredContent");
     assertThat(result).doesNotContain("structuredContent");
     assertThat(result).doesNotContain("contentBlocks");
