@@ -10,16 +10,21 @@ public class DigitalCollectionsObjectMapper extends ObjectMapper {
 
   public DigitalCollectionsObjectMapper() {
     super();
-    customize(this);
+    configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+    configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+    setSerializationInclusion(JsonInclude.Include.NON_NULL);
+    disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+    registerModule(new JavaTimeModule());
+    registerModule(new DigitalCollectionsModelModule());
   }
 
-  public static ObjectMapper customize(ObjectMapper objectMapper) {
-    objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
-    objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-    objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-    objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-    objectMapper.registerModule(new JavaTimeModule());
-    objectMapper.registerModule(new DigitalCollectionsModelModule());
-    return objectMapper;
+  private DigitalCollectionsObjectMapper(DigitalCollectionsObjectMapper objectMapper) {
+    super(objectMapper);
   }
+
+  @Override
+  public ObjectMapper copy() {
+    return new DigitalCollectionsObjectMapper(this);
+  }
+
 }
