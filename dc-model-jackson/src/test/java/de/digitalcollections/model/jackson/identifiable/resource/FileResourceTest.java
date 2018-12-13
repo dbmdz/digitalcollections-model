@@ -1,6 +1,6 @@
 package de.digitalcollections.model.jackson.identifiable.resource;
 
-import de.digitalcollections.cudami.model.jackson.BaseJsonSerializationTest;
+import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.api.identifiable.resource.FileResource;
 import de.digitalcollections.model.api.identifiable.resource.MimeType;
 import de.digitalcollections.model.impl.identifiable.resource.FileResourceImpl;

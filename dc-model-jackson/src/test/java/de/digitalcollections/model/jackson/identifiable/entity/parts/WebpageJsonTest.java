@@ -1,6 +1,6 @@
 package de.digitalcollections.model.jackson.identifiable.entity.parts;
 
-import de.digitalcollections.cudami.model.jackson.BaseJsonSerializationTest;
+import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.api.identifiable.entity.parts.Webpage;
 import org.junit.jupiter.api.Test;
 

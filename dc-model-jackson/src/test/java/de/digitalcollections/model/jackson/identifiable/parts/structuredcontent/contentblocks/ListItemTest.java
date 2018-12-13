@@ -3,7 +3,7 @@ package de.digitalcollections.model.jackson.identifiable.parts.structuredcontent
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.digitalcollections.cudami.model.jackson.BaseJsonSerializationTest;
+import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.ListItem;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Paragraph;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Text;

@@ -1,6 +1,6 @@
 package de.digitalcollections.model.jackson.security;
 
-import de.digitalcollections.cudami.model.jackson.BaseJsonSerializationTest;
+import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.api.security.User;
 import de.digitalcollections.model.impl.security.UserImpl;
 import org.junit.jupiter.api.Test;

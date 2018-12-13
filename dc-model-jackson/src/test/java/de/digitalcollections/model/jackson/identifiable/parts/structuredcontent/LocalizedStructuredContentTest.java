@@ -1,6 +1,6 @@
 package de.digitalcollections.model.jackson.identifiable.parts.structuredcontent;
 
-import de.digitalcollections.cudami.model.jackson.BaseJsonSerializationTest;
+import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.ContentBlock;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.StructuredContent;

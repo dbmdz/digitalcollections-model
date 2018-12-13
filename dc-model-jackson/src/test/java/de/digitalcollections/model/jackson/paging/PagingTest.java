@@ -1,6 +1,6 @@
 package de.digitalcollections.model.jackson.paging;
 
-import de.digitalcollections.cudami.model.jackson.BaseJsonSerializationTest;
+import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.api.paging.PageRequest;
 import de.digitalcollections.model.impl.paging.PageRequestImpl;
 import de.digitalcollections.model.impl.paging.PageResponseImpl;

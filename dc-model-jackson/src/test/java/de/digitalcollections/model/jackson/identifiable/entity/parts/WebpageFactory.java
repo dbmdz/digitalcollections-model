@@ -1,41 +1,65 @@
 package de.digitalcollections.model.jackson.identifiable.entity.parts;
 
 import de.digitalcollections.model.api.identifiable.entity.parts.Webpage;
-import de.digitalcollections.model.api.identifiable.parts.structuredcontent.ContentBlock;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.StructuredContent;
+import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Heading;
+import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.IFrame;
+import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Mark;
+import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Paragraph;
+import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Text;
 import de.digitalcollections.model.impl.identifiable.entity.parts.WebpageImpl;
 import de.digitalcollections.model.impl.identifiable.parts.LocalizedTextImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.LocalizedStructuredContentImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.StructuredContentImpl;
-import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.HardBreakImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.HeadingImpl;
+import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.IFrameImpl;
+import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.MarkImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.ParagraphImpl;
-import java.util.ArrayList;
-import java.util.List;
+import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TextImpl;
 import java.util.Locale;
 
 public class WebpageFactory {
 
   public static Webpage create() {
-    List<ContentBlock> contents = new ArrayList<>();
-
-    contents.add(new HeadingImpl(3, "Imprint"));
-    contents.add(new HeadingImpl(4, "Example Company"));
-    contents.add(new ParagraphImpl("Teststreet 16"));
-    contents.add(new HardBreakImpl());
-    contents.add(new HeadingImpl(4, "Legal representative:"));
-    contents.add(new ParagraphImpl("Big Boss Boba"));
-
-    StructuredContent structuredContent = new StructuredContentImpl();
-    structuredContent.setContentBlocks(contents);
-
     Webpage webpage = new WebpageImpl();
-    webpage.setLabel(new LocalizedTextImpl(Locale.ENGLISH, "My Webpage"));
 
-    LocalizedStructuredContent localizedStructuredContent = new LocalizedStructuredContentImpl();
-    localizedStructuredContent.add(Locale.ENGLISH, structuredContent);
-    webpage.setText(localizedStructuredContent);
+    webpage.setLabel(new LocalizedTextImpl(Locale.GERMANY, "Meine Homepage"));
+
+    LocalizedStructuredContent description = new LocalizedStructuredContentImpl();
+    StructuredContent structuredContent = new StructuredContentImpl();
+    Paragraph p = new ParagraphImpl("");
+    structuredContent.addContentBlock(p);
+    description.add(Locale.GERMANY, structuredContent);
+    webpage.setDescription(description);
+
+    LocalizedStructuredContent text = new LocalizedStructuredContentImpl();
+    structuredContent = new StructuredContentImpl();
+
+    Heading h = new HeadingImpl();
+    h.addAttribute("level", 4);
+    Text t = new TextImpl("Bayerische Staatsbibliothek");
+    Mark m = new MarkImpl("strong");
+    t.addMark(m);
+    h.addContentBlock(t);
+    structuredContent.addContentBlock(h);
+
+    Paragraph p2 = new ParagraphImpl();
+    p2.addContentBlock(new TextImpl("Internet:", "strong"));
+    p2.addContentBlock(new TextImpl("   "));
+    Text link = new TextImpl("www.bsb-muenchen.de");
+    Mark linkMark = new MarkImpl("link");
+    linkMark.addAttribute("href", "https://www.bsb-muenchen.de/");
+    link.addMark(linkMark);
+    p2.addContentBlock(link);
+    structuredContent.addContentBlock(p2);
+
+    IFrame iFrame = new IFrameImpl("https://external.content.org/index.php?language=de&action=test", "90%", "150px");
+    structuredContent.addContentBlock(iFrame);
+
+    text.add(Locale.GERMANY, structuredContent);
+    webpage.setText(text);
+
     return webpage;
   }
 }

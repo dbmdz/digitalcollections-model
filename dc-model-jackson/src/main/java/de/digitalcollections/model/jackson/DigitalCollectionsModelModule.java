@@ -83,7 +83,7 @@ import org.slf4j.LoggerFactory;
 public class DigitalCollectionsModelModule extends SimpleModule {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(DigitalCollectionsModelModule.class);
-  private static ResourceBundle rb = ResourceBundle.getBundle("dc-model-jackson-version");
+  protected static ResourceBundle rb = ResourceBundle.getBundle("dc-model-jackson-version");
 
   public DigitalCollectionsModelModule() {
     super();
