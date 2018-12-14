@@ -1,15 +1,6 @@
 package de.digitalcollections.model.xml.xstream.v1;
 
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.converters.MarshallingContext;
-import com.thoughtworks.xstream.converters.UnmarshallingContext;
-import com.thoughtworks.xstream.converters.collections.MapConverter;
-import com.thoughtworks.xstream.core.util.QuickWriter;
-import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
-import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
-import com.thoughtworks.xstream.io.xml.XppDriver;
-import com.thoughtworks.xstream.mapper.Mapper;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.ContentBlock;
 import de.digitalcollections.model.impl.identifiable.entity.parts.WebpageImpl;
 import de.digitalcollections.model.impl.identifiable.parts.TranslationImpl;
@@ -27,10 +18,10 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.con
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.ParagraphImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TextImpl;
 import de.digitalcollections.model.impl.identifiable.resource.FileResourceImpl;
-import java.io.Writer;
+import de.digitalcollections.model.xml.xstream.CdataXppDriver;
+import de.digitalcollections.model.xml.xstream.MapToFlatConverter;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 import org.springframework.oxm.xstream.XStreamMarshaller;
 
 public class V1DigitalCollectionsXStreamMarshaller extends XStreamMarshaller {
@@ -85,69 +76,4 @@ public class V1DigitalCollectionsXStreamMarshaller extends XStreamMarshaller {
     aliases.put("webpage", WebpageImpl.class);
     return aliases;
   }
-
-  class CdataXppDriver extends XppDriver {
-
-    @Override
-    public HierarchicalStreamWriter createWriter(Writer out) {
-      return new PrettyPrintWriter(out) {
-
-        boolean cdata = false;
-
-        @SuppressWarnings("rawtypes")
-        @Override
-        public void startNode(String name, Class clazz) {
-          cdata = "body".equalsIgnoreCase(name);
-          super.startNode(name, clazz);
-        }
-
-        @Override
-        protected void writeText(QuickWriter writer, String text) {
-          if (cdata) {
-            writer.write("<![CDATA[");
-            writer.write(text);
-            writer.write("]]>");
-          } else {
-            super.writeText(writer, text);
-          }
-        }
-      };
-    }
-  }
-
-  class MapToFlatConverter extends MapConverter {
-
-    public MapToFlatConverter(Mapper mapper) {
-      super(mapper);
-    }
-
-    @Override
-    public boolean canConvert(Class type) {
-      return Map.class.isAssignableFrom(type);
-    }
-
-    @Override
-    public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
-      Map<Object, Object> map = (Map<Object, Object>) source;
-
-      Set<Object> keySet = map.keySet();
-      if (keySet != null && !keySet.isEmpty() && keySet.iterator().next() instanceof String) {
-        for (Map.Entry<Object, Object> entry : map.entrySet()) {
-          if (entry.getValue() != null) {
-            writer.startNode(entry.getKey().toString());
-            writer.setValue(entry.getValue().toString());
-            writer.endNode();
-          }
-        }
-      } else {
-        super.marshal(source, writer, context);
-      }
-    }
-
-    @Override
-    public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-      return null;
-    }
-  }
-
 }
