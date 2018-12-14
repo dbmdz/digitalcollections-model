@@ -1,11 +1,11 @@
 package de.digitalcollections.model.jackson.security;
 
-import de.digitalcollections.cudami.model.jackson.BaseSerializationTest;
+import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.api.security.User;
 import de.digitalcollections.model.impl.security.UserImpl;
 import org.junit.jupiter.api.Test;
 
-public class UserTest extends BaseSerializationTest {
+public class UserTest extends BaseJsonSerializationTest {
 
   @Test
   public void testSerialisationInBothWays() throws Exception {

@@ -1,19 +1,21 @@
-package de.digitalcollections.cudami.model.jackson;
+package de.digitalcollections.model.jackson;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.digitalcollections.model.jackson.DigitalCollectionsObjectMapper;
+import com.google.common.io.Resources;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.Charset;
 import java.util.Set;
 import org.apache.commons.beanutils.BeanUtils;
-import static org.assertj.core.api.Assertions.assertThat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public abstract class BaseSerializationTest {
+import static org.assertj.core.api.Assertions.assertThat;
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(BaseSerializationTest.class);
+public abstract class BaseJsonSerializationTest {
+
+  private static final Logger LOGGER = LoggerFactory.getLogger(BaseJsonSerializationTest.class);
 
   protected <T> void checkSerializeDeserialize(T objectIn) throws Exception {
     T objectOut = (T) serializeDeserialize(objectIn);
@@ -64,4 +66,7 @@ public abstract class BaseSerializationTest {
     return new DigitalCollectionsObjectMapper();
   }
 
+  protected String readFromResources(String filename) throws IOException {
+    return Resources.toString(Resources.getResource(filename), Charset.defaultCharset());
+  }
 }

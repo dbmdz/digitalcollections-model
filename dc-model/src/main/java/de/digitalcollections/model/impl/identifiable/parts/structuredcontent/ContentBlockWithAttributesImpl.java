@@ -27,9 +27,6 @@ public abstract class ContentBlockWithAttributesImpl extends ContentBlockImpl im
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    if (!super.equals(o)) {
-      return false;
-    }
     ContentBlockWithAttributesImpl that = (ContentBlockWithAttributesImpl) o;
     return Objects.equals(attributes, that.attributes);
   }

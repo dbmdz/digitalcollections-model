@@ -1,6 +1,6 @@
 package de.digitalcollections.model.jackson.identifiable.entity;
 
-import de.digitalcollections.cudami.model.jackson.BaseSerializationTest;
+import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.ContentBlock;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.StructuredContent;
@@ -12,7 +12,7 @@ import java.net.URL;
 import java.util.Locale;
 import org.junit.jupiter.api.Test;
 
-public class WebsiteTest extends BaseSerializationTest {
+public class WebsiteTest extends BaseJsonSerializationTest {
 
   @Test
   public void testSerialisationInBothWays() throws Exception {

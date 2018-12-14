@@ -1,6 +1,6 @@
 package de.digitalcollections.model.jackson.paging;
 
-import de.digitalcollections.cudami.model.jackson.BaseSerializationTest;
+import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.api.paging.PageRequest;
 import de.digitalcollections.model.impl.paging.PageRequestImpl;
 import de.digitalcollections.model.impl.paging.PageResponseImpl;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-public class PagingTest extends BaseSerializationTest {
+public class PagingTest extends BaseJsonSerializationTest {
 
   private List<UserImpl> createContent() {
     List<UserImpl> list = new ArrayList<>();
