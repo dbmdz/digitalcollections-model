@@ -13,7 +13,7 @@ public class MarkImpl implements Mark {
 
   public MarkImpl() {}
 
-  public MarkImpl(String type ) {
+  public MarkImpl(String type) {
     this.type = type;
   }
 
