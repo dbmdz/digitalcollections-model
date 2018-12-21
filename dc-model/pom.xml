@@ -19,7 +19,7 @@
     <version.commons-io>2.6</version.commons-io>
     <version.guava>27.0.1-jre</version.guava>
     <version.junit-jupiter-api>5.3.1</version.junit-jupiter-api>
-    <version.spring-security-core>5.1.1.RELEASE</version.spring-security-core>
+    <version.spring-security-core>5.1.2.RELEASE</version.spring-security-core>
     <version.validation-api>2.0.1.Final</version.validation-api>
   </properties>
 
