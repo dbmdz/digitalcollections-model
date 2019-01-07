@@ -1,7 +1,8 @@
 package de.digitalcollections.model.impl.identifiable.resource;
 
-import static org.junit.Assert.assertEquals;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class FileResourceImplTest {
 
@@ -12,50 +13,50 @@ public class FileResourceImplTest {
   public void testGetFilenameExtension() {
     System.out.println("getFilenameExtension");
     FileResourceImpl instance = new FileResourceImpl();
-    
+
     instance.setFilename("image001.jpg");
     String expResult = "jpg";
     String result = instance.getFilenameExtension();
-    assertEquals(expResult, result);
+    assertThat(result).isEqualTo(expResult);
 
     instance.setFilename("image001.txt.jpg");
     expResult = "jpg";
     result = instance.getFilenameExtension();
-    assertEquals(expResult, result);
+    assertThat(result).isEqualTo(expResult);
 
     instance.setFilename(".bashrc");
     expResult = "bashrc";
     result = instance.getFilenameExtension();
-    assertEquals(expResult, result);
+    assertThat(result).isEqualTo(expResult);
 
     instance.setFilename("image.j");
     expResult = "j";
     result = instance.getFilenameExtension();
-    assertEquals(expResult, result);
+    assertThat(result).isEqualTo(expResult);
 
     instance.setFilename("image.");
     expResult = null;
     result = instance.getFilenameExtension();
-    assertEquals(expResult, result);
+    assertThat(result).isEqualTo(expResult);
 
     instance.setFilename("image");
     expResult = null;
     result = instance.getFilenameExtension();
-    assertEquals(expResult, result);
+    assertThat(result).isEqualTo(expResult);
 
     instance.setFilename(".");
     expResult = null;
     result = instance.getFilenameExtension();
-    assertEquals(expResult, result);
+    assertThat(result).isEqualTo(expResult);
 
     instance.setFilename("..");
     expResult = null;
     result = instance.getFilenameExtension();
-    assertEquals(expResult, result);
+    assertThat(result).isEqualTo(expResult);
 
     instance.setFilename(null);
     expResult = null;
     result = instance.getFilenameExtension();
-    assertEquals(expResult, result);
+    assertThat(result).isEqualTo(expResult);
   }
 }
