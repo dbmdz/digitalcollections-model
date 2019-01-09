@@ -32,19 +32,12 @@ public abstract class BaseJsonSerializationTest {
         }
       }
     } catch (InvocationTargetException e) {
-      System.out.println(e);
+      LOGGER.warn(e.toString());
     }
-
-    /*
-     * try { Method methodGetUuid = objectIn.getClass().getMethod("getUUID"); UUID uuid = (UUID)
-     * methodGetUuid.invoke(objectIn); Method methodSetUUid = objectOut.getClass().getMethod("setUUID", UUID.class);
-     * methodSetUUid.invoke(objectOut, uuid); } catch (NoSuchMethodException ignore) { }
-     */
     try {
       assertThat(objectOut).isEqualToComparingFieldByFieldRecursively(objectIn);
-      // System.out.println("IN=" + dump(objectIn) + "\nOUT=" + dump(objectOut) + "\n\n");
     } catch (Throwable e) {
-      System.err.println("ERR: IN=" + dump(objectIn) + "\nOUT=" + dump(objectOut) + "\n\nERROR=" + e.getClass() + "=" + e.getMessage());
+      LOGGER.error("ERR: IN=" + dump(objectIn) + "\nOUT=" + dump(objectOut) + "\n\nERROR=" + e.getClass() + "=" + e.getMessage());
       throw e;
     }
   }

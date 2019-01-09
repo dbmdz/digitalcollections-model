@@ -99,9 +99,6 @@ public class TextTest extends BaseJsonSerializationTest {
 
     Mark strong = new MarkImpl("strong");
     Mark em = new MarkImpl("em");
-
-    System.out.println("text.getMarks()=" + text.getMarks());
-
     assertThat(text.getMarks()).containsExactly(strong, em);
   }
 
