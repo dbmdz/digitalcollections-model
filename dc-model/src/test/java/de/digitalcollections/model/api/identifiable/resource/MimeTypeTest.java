@@ -46,7 +46,7 @@ public class MimeTypeTest {
   @Test
   public void testTotalWildcard() throws Exception {
     MimeType mime = MimeType.fromTypename("application/ecmascript");
-    assertThat(mime.matches(MimeType.MIME_WILDCARD));
+    assertThat(mime.matches(MimeType.MIME_WILDCARD)).isTrue();
     assertThat(MimeType.MIME_WILDCARD.matches(mime)).isTrue();
   }
 
@@ -62,7 +62,7 @@ public class MimeTypeTest {
 
   @Test
   public void testHandlesUppercase() throws Exception {
-    assertThat(MimeType.fromFilename("INFO.TIF").matches(MimeType.MIME_IMAGE_TIF));
+    assertThat(MimeType.fromFilename("INFO.TIF").matches(MimeType.MIME_IMAGE_TIF)).isTrue();
   }
 
   @Test

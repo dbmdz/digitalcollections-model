@@ -5,7 +5,7 @@
   <parent>
     <groupId>de.digitalcollections.model</groupId>
     <artifactId>dc-model-parent</artifactId>
-    <version>2.2.0-SNAPSHOT</version>
+    <version>2.2.0</version>
   </parent>
 
   <name>DigitalCollections: Model (Jackson)</name>
@@ -13,14 +13,13 @@
   <packaging>jar</packaging>
 
   <properties>
-    <version.assertj-core>3.11.1</version.assertj-core>
     <version.commons-beanutils>1.9.3</version.commons-beanutils>
     <version.jackson>2.9.8</version.jackson>
-    <version.junit-jupiter-api>5.3.1</version.junit-jupiter-api>
-    <version.junit-jupiter-engine>5.3.1</version.junit-jupiter-engine>
     <version.logback-classic>1.2.3</version.logback-classic>
+    <version.slf4j>1.7.25</version.slf4j>
+
+    <!-- Plugin versions -->
     <version.maven-resources-plugin>3.1.0</version.maven-resources-plugin>
-    <version.slf4j-api>1.7.25</version.slf4j-api>
   </properties>
 
   <dependencies>
@@ -54,30 +53,27 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>${version.assertj-core}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>${version.junit-jupiter-api}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <version>${version.junit-jupiter-engine}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>${version.slf4j-api}</version>
+      <version>${version.slf4j}</version>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
-      <version>${version.slf4j-api}</version>
+      <version>${version.slf4j}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

@@ -1,9 +1,9 @@
 package de.digitalcollections.model.impl.filter;
 
 import de.digitalcollections.model.api.filter.FacetList;
+import de.digitalcollections.model.api.filter.FacetListItem;
 import java.util.LinkedList;
 import java.util.List;
-import de.digitalcollections.model.api.filter.FacetListItem;
 
 public class FacetListImpl implements FacetList {
 
@@ -40,8 +40,8 @@ public class FacetListImpl implements FacetList {
   @Override
   public String toString() {
     return "FacetListImpl{"
-        + "title='" + title + '\''
-        + ", items=" + items
-        + '}';
+            + "title='" + title + '\''
+            + ", items=" + items
+            + '}';
   }
 }

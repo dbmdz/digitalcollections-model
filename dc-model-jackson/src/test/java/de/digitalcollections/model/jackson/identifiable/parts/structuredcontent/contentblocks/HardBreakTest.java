@@ -1,13 +1,13 @@
 package de.digitalcollections.model.jackson.identifiable.parts.structuredcontent.contentblocks;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.HardBreak;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.HardBreakImpl;
+import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class HardBreakTest extends BaseJsonSerializationTest {
 

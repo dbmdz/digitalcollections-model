@@ -1,8 +1,8 @@
 package de.digitalcollections.model.jackson.security;
 
-import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.api.security.User;
 import de.digitalcollections.model.impl.security.UserImpl;
+import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import org.junit.jupiter.api.Test;
 
 public class UserTest extends BaseJsonSerializationTest {
