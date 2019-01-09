@@ -12,12 +12,10 @@ import java.io.Serializable;
  */
 public class PageRequestImpl implements PageRequest, Serializable {
 
-  // TODO: just removed final for jackson deserializing... (see mixin)
   private int page;
   private int size;
   private Sorting sort;
 
-  // TODO: just introduced for jackson deserializing... (see mixin)
   public PageRequestImpl() {
   }
 
