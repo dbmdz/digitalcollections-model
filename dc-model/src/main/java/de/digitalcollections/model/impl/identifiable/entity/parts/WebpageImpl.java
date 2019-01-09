@@ -61,7 +61,7 @@ public class WebpageImpl extends IdentifiableImpl implements Webpage<Webpage>, I
   @Override
   public List<Identifiable> getIdentifiables() {
     return identifiablesContainer.getIdentifiables();
-}
+  }
 
   @Override
   public void setIdentifiables(List<Identifiable> identifiables) {

@@ -13,7 +13,8 @@ public class CdataXppDriver extends XppDriver {
     return new PrettyPrintWriter(out) {
       boolean cdata = false;
 
-      @SuppressWarnings(value = "rawtypes") @Override
+      @Override
+      @SuppressWarnings(value = "rawtypes")
       public void startNode(String name, Class clazz) {
         cdata = "body".equalsIgnoreCase(name);
         super.startNode(name, clazz);

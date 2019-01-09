@@ -27,7 +27,6 @@ public interface Sorting extends Iterable<Order>, Serializable {
    */
   Order getOrderFor(String property);
 
-
   static Builder defaultBuilder() {
     return new Builder();
   }
@@ -37,7 +36,7 @@ public interface Sorting extends Iterable<Order>, Serializable {
     private List<Order> orders;
 
     public Builder order(Order order) {
-      if ( orders == null ) {
+      if (orders == null) {
         orders = new ArrayList<>();
       }
       orders.add(order);
