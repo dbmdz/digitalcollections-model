@@ -11,7 +11,8 @@ public class MarkImpl implements Mark {
 
   Map<String, Object> attributes = null;
 
-  public MarkImpl() {}
+  public MarkImpl() {
+  }
 
   public MarkImpl(String type) {
     this.type = type;
@@ -29,7 +30,7 @@ public class MarkImpl implements Mark {
 
   @Override
   public void addAttribute(String key, Object value) {
-    if ( attributes == null ) {
+    if (attributes == null) {
       attributes = new HashMap<>();
     }
 
@@ -38,13 +39,12 @@ public class MarkImpl implements Mark {
 
   @Override
   public Object getAttribute(String key) {
-    if ( attributes == null ) {
+    if (attributes == null) {
       return null;
     }
 
     return attributes.get(key);
   }
-
 
   @Override
   public String getType() {
@@ -77,7 +77,7 @@ public class MarkImpl implements Mark {
   @Override
   public String toString() {
     return "MarkImpl{"
-        + "type='" + type + '\''
-        + '}';
+            + "type='" + type + '\''
+            + '}';
   }
 }

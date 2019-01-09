@@ -33,7 +33,6 @@ public class WebpageFactory {
     description.add(Locale.GERMANY, structuredContent);
     webpage.setDescription(description);
 
-    LocalizedStructuredContent text = new LocalizedStructuredContentImpl();
     structuredContent = new StructuredContentImpl();
 
     Heading h = new HeadingImpl();
@@ -57,6 +56,7 @@ public class WebpageFactory {
     IFrame iFrame = new IFrameImpl("https://external.content.org/index.php?language=de&action=test", "90%", "150px");
     structuredContent.addContentBlock(iFrame);
 
+    LocalizedStructuredContent text = new LocalizedStructuredContentImpl();
     text.add(Locale.GERMANY, structuredContent);
     webpage.setText(text);
 
