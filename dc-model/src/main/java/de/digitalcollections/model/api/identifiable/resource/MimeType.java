@@ -28,35 +28,35 @@ public class MimeType {
    * Regular Expression used for decoding a MIME type *
    */
   private static final Pattern MIME_PATTERN = Pattern.compile(
-          "^(?<primaryType>[-a-z]+?)/(?<subType>[-\\\\.a-z0-9*]+?)(?:\\+(?<suffix>\\w+))?$");
+      "^(?<primaryType>[-a-z]+?)/(?<subType>[-\\\\.a-z0-9*]+?)(?:\\+(?<suffix>\\w+))?$");
 
   static {
     // Load list of known MIME types and their extensions from the IANA list in the
     // package resources (obtained from https://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types)
     InputStream mimeStream = MimeType.class
-            .getClassLoader().getResourceAsStream("dc.mime.types");
+        .getClassLoader().getResourceAsStream("dc.mime.types");
     BufferedReader mimeReader = new BufferedReader(new InputStreamReader(mimeStream));
     List<String> typeStrings = mimeReader.lines()
-            .map(l -> l.replaceAll("^# ", ""))
-            .filter(l -> !l.isEmpty())
-            .filter(l -> MIME_PATTERN.matcher(Splitter.on('\t').trimResults().omitEmptyStrings().split(l).iterator().next()).matches())
-            .collect(Collectors.toList());
+        .map(l -> l.replaceAll("^# ", ""))
+        .filter(l -> !l.isEmpty())
+        .filter(l -> MIME_PATTERN.matcher(Splitter.on('\t').trimResults().omitEmptyStrings().split(l).iterator().next()).matches())
+        .collect(Collectors.toList());
 
     knownTypes = typeStrings.stream()
-            // Strip comments
-            .filter(l -> l.contains("\t"))
-            // Normalize multiple tab-delimiters to a single one for easier parsing
-            // and split into (type, extensions) pairs
-            .map(l -> l.replaceAll("\\t+", "\t").split("\\t"))
-            // From those pairs, make a list of the extensions and create MimeType instances
-            .map(p -> new MimeType(p[0], Arrays.asList(p[1].split(" "))))
-            .collect(Collectors.toMap(
-                    MimeType::getTypeName,
-                    Function.identity()));
+        // Strip comments
+        .filter(l -> l.contains("\t"))
+        // Normalize multiple tab-delimiters to a single one for easier parsing
+        // and split into (type, extensions) pairs
+        .map(l -> l.replaceAll("\\t+", "\t").split("\\t"))
+        // From those pairs, make a list of the extensions and create MimeType instances
+        .map(p -> new MimeType(p[0], Arrays.asList(p[1].split(" "))))
+        .collect(Collectors.toMap(
+            MimeType::getTypeName,
+            Function.identity()));
     typeStrings.stream()
-            .filter(l -> !l.contains("\t"))
-            .map(t -> new MimeType(t, Collections.emptyList()))
-            .forEach(m -> knownTypes.put(m.getTypeName(), m));
+        .filter(l -> !l.contains("\t"))
+        .map(t -> new MimeType(t, Collections.emptyList()))
+        .forEach(m -> knownTypes.put(m.getTypeName(), m));
 
     // Some custom overrides to influence the order of file extensions
     // Since these are added to the end of the list, they take precedence over the
@@ -83,6 +83,7 @@ public class MimeType {
   public static final MimeType MIME_WILDCARD = new MimeType("*", Collections.emptyList());
   public static final MimeType MIME_IMAGE = new MimeType("image/*", Collections.emptyList());
   public static final MimeType MIME_APPLICATION_JSON = knownTypes.get("application/json");
+  public static final MimeType MIME_APPLICATION_OCTET_STREAM = knownTypes.get("application/octet-stream");
   public static final MimeType MIME_APPLICATION_XML = knownTypes.get("application/xml");
   public static final MimeType MIME_IMAGE_JPEG = knownTypes.get("image/jpeg");
   public static final MimeType MIME_IMAGE_TIF = knownTypes.get("image/tiff");
@@ -145,7 +146,7 @@ public class MimeType {
    * Given an existing MIME type name, look up the corresponding instance.
    * An exception is made for vendor-specific types or non-standard types.
    *
-   * @param typeName mietype name as String, e.g. "image/jpeg"
+   * @param typeName mimetype name as String, e.g. "image/jpeg"
    * @return  corresponding MimeType
    */
   public static MimeType fromTypename(String typeName) {
@@ -155,8 +156,8 @@ public class MimeType {
     }
     MimeType unknownType = new MimeType(typeName);
     if (!unknownType.getPrimaryType().startsWith("x-")
-            || !unknownType.getSubType().startsWith("vnd.")
-            || !unknownType.getSubType().startsWith("prs.")) {
+        || !unknownType.getSubType().startsWith("vnd.")
+        || !unknownType.getSubType().startsWith("prs.")) {
       return null;
     } else {
       return unknownType;
@@ -191,8 +192,8 @@ public class MimeType {
    */
   public String getTypeName() {
     StringBuilder sb = new StringBuilder(primaryType)
-            .append("/")
-            .append(subType);
+        .append("/")
+        .append(subType);
     if (suffix != null) {
       sb.append("+").append(suffix);
     }
@@ -235,7 +236,7 @@ public class MimeType {
       if (mime == MIME_WILDCARD || this == MIME_WILDCARD) {
         return true;
       } else if (((mime.getSubType().equals("*") || this.getSubType().equals("*")))
-              && this.getPrimaryType().equals(mime.getPrimaryType())) {
+                 && this.getPrimaryType().equals(mime.getPrimaryType())) {
         return true;
       } else {
         return super.equals(other);
