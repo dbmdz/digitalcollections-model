@@ -146,7 +146,7 @@ public class MimeType {
    * Given an existing MIME type name, look up the corresponding instance.
    * An exception is made for vendor-specific types or non-standard types.
    *
-   * @param typeName mietype name as String, e.g. "image/jpeg"
+   * @param typeName mimetype name as String, e.g. "image/jpeg"
    * @return  corresponding MimeType
    */
   public static MimeType fromTypename(String typeName) {
