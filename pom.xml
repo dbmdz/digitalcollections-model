@@ -5,7 +5,7 @@
 
   <groupId>de.digitalcollections.model</groupId>
   <artifactId>dc-model-parent</artifactId>
-  <version>2.2.1-SNAPSHOT</version>
+  <version>3.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <modules>
@@ -14,7 +14,7 @@
     <module>dc-model-xml</module>
   </modules>
 
-  <name>DigitalCollections: Model (Parent)</name>
+  <name>DigitalCollections: Model</name>
   <description>Java library containing Domain Object classes of the Digital Collection's and Digital Humanities ecosystem.</description>
   <url>https://github.com/dbmdz/digitalcollections-model</url>
   <licenses>
