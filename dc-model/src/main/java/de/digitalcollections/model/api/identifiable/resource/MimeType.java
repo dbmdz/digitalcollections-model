@@ -13,6 +13,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -244,5 +245,21 @@ public class MimeType {
     } else {
       return false;
     }
+  }
+
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null || !(obj.getClass().isAssignableFrom(MimeType.class))) {
+      return false;
+    }
+    return this.hashCode() == ((MimeType) obj).hashCode();
+  }
+
+  @Override
+  public int hashCode() {
+    int hash = 3;
+    hash = 37 * hash + Objects.hashCode(getTypeName());
+    return hash;
   }
 }
