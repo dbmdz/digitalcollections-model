@@ -247,7 +247,6 @@ public class MimeType {
     }
   }
 
-
   @Override
   public boolean equals(Object obj) {
     if (obj == null || !(obj.getClass().isAssignableFrom(MimeType.class))) {
@@ -262,4 +261,10 @@ public class MimeType {
     hash = 37 * hash + Objects.hashCode(getTypeName());
     return hash;
   }
+
+  @Override
+  public String toString() {
+    return getTypeName();
+  }
+
 }
