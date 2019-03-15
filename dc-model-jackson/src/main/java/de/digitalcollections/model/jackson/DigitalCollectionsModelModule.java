@@ -2,6 +2,7 @@ package de.digitalcollections.model.jackson;
 
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.core.util.VersionUtil;
+import com.fasterxml.jackson.databind.Module.SetupContext;
 import com.fasterxml.jackson.databind.deser.std.StdDelegatingDeserializer;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.std.StdDelegatingSerializer;
@@ -36,7 +37,6 @@ import de.digitalcollections.model.api.identifiable.resource.ImageFileResource;
 import de.digitalcollections.model.api.identifiable.resource.MimeType;
 import de.digitalcollections.model.api.identifiable.resource.TextFileResource;
 import de.digitalcollections.model.api.identifiable.resource.VideoFileResource;
-import de.digitalcollections.model.api.navigation.BreadcrumbList;
 import de.digitalcollections.model.api.paging.Order;
 import de.digitalcollections.model.api.paging.PageRequest;
 import de.digitalcollections.model.api.paging.PageResponse;
@@ -70,7 +70,6 @@ import de.digitalcollections.model.jackson.mixin.identifiable.resource.FileResou
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.ImageFileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.TextFileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.VideoFileResourceMixIn;
-import de.digitalcollections.model.jackson.mixin.navigation.BreadcrumbListMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.OrderMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.PageRequestMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.PageResponseMixIn;
@@ -117,7 +116,6 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(Article.class, ArticleMixIn.class);
     context.setMixInAnnotations(AudioFileResource.class, AudioFileResourceMixIn.class);
     context.setMixInAnnotations(Blockquote.class, BlockquoteMixIn.class);
-    context.setMixInAnnotations(BreadcrumbList.class, BreadcrumbListMixIn.class);
     context.setMixInAnnotations(BulletList.class, BulletListMixIn.class);
     context.setMixInAnnotations(CodeBlock.class, CodeBlockMixIn.class);
     context.setMixInAnnotations(Collection.class, CollectionMixIn.class);
@@ -130,7 +128,6 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(IFrame.class, IFrameMixIn.class);
     context.setMixInAnnotations(ImageFileResource.class, ImageFileResourceMixIn.class);
     context.setMixInAnnotations(ListItem.class, ListItemMixIn.class);
-    context.setMixInAnnotations(de.digitalcollections.model.api.navigation.ListItem.class, de.digitalcollections.model.jackson.mixin.navigation.ListItemMixIn.class);
     context.setMixInAnnotations(LocalizedStructuredContent.class, LocalizedStructuredContentMixIn.class);
     context.setMixInAnnotations(LocalizedText.class, LocalizedTextMixIn.class);
     context.setMixInAnnotations(Mark.class, MarkMixIn.class);
