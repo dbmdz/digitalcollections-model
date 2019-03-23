@@ -2,11 +2,11 @@ package de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredc
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.HeadingImpl;
+import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TableHeaderImpl;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.ContentBlockNodeMixin;
 
-@JsonDeserialize(as = HeadingImpl.class)
+@JsonDeserialize(as = TableHeaderImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface HeadingMixIn extends ContentBlockNodeMixin, AttributesMixIn {
+public interface TableHeaderMixIn extends ContentBlockNodeMixin, AttributesMixIn {
 
 }

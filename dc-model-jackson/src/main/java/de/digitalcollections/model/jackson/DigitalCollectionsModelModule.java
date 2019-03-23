@@ -29,6 +29,10 @@ import de.digitalcollections.model.api.identifiable.parts.structuredcontent.cont
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Mark;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.OrderedList;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Paragraph;
+import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Table;
+import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.TableCell;
+import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.TableHeader;
+import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.TableRow;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Text;
 import de.digitalcollections.model.api.identifiable.resource.ApplicationFileResource;
 import de.digitalcollections.model.api.identifiable.resource.AudioFileResource;
@@ -63,6 +67,10 @@ import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredco
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.MarkMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.OrderedListMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.ParagraphMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.TableCellMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.TableHeaderMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.TableMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.TableRowMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.TextMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.ApplicationFileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.AudioFileResourceMixIn;
@@ -138,6 +146,10 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(Paragraph.class, ParagraphMixIn.class);
     context.setMixInAnnotations(Sorting.class, SortingMixIn.class);
     context.setMixInAnnotations(StructuredContent.class, StructuredContentMixIn.class);
+    context.setMixInAnnotations(Table.class, TableMixIn.class);
+    context.setMixInAnnotations(TableCell.class, TableCellMixIn.class);
+    context.setMixInAnnotations(TableHeader.class, TableHeaderMixIn.class);
+    context.setMixInAnnotations(TableRow.class, TableRowMixIn.class);
     context.setMixInAnnotations(Text.class, TextMixIn.class);
     context.setMixInAnnotations(TextFileResource.class, TextFileResourceMixIn.class);
     context.setMixInAnnotations(Translation.class, TranslationMixIn.class);
