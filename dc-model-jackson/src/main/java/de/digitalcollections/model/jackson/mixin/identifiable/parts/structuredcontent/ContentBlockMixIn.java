@@ -15,6 +15,10 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.con
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.ListItemImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.OrderedListImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.ParagraphImpl;
+import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TableCellImpl;
+import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TableHeaderImpl;
+import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TableImpl;
+import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TableRowImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TextImpl;
 import java.util.List;
 
@@ -34,6 +38,11 @@ import java.util.List;
   @JsonSubTypes.Type(value = ListItemImpl.class, name = "list_item"),
   @JsonSubTypes.Type(value = OrderedListImpl.class, name = "ordered_list"),
   @JsonSubTypes.Type(value = ParagraphImpl.class, name = "paragraph"),
+  // see https://github.com/ProseMirror/prosemirror-tables/blob/master/src/schema.js
+  @JsonSubTypes.Type(value = TableCellImpl.class, name = "table_cell"),
+  @JsonSubTypes.Type(value = TableHeaderImpl.class, name = "table_header"),
+  @JsonSubTypes.Type(value = TableImpl.class, name = "table"),
+  @JsonSubTypes.Type(value = TableRowImpl.class, name = "table_row"),
   @JsonSubTypes.Type(value = TextImpl.class, name = "text")
 })
 public interface ContentBlockMixIn {
