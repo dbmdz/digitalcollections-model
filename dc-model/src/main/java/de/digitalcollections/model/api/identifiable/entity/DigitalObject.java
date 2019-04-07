@@ -1,9 +1,9 @@
-package de.digitalcollections.model.api.identifiable.resource;
+package de.digitalcollections.model.api.identifiable.entity;
 
-import de.digitalcollections.model.api.identifiable.Identifiable;
+import de.digitalcollections.model.api.identifiable.resource.FileResource;
 import java.util.LinkedHashSet;
 
-public interface FileResourceBundle extends Identifiable {
+public interface DigitalObject extends Entity {
 
   LinkedHashSet<FileResource> getFileResources();
 
