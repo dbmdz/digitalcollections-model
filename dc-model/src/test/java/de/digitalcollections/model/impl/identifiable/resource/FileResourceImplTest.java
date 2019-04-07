@@ -11,7 +11,7 @@ public class FileResourceImplTest {
    */
   @Test
   public void testGetFilenameExtension() {
-    FileResourceImpl instance = new FileResourceImpl();
+    FileResourceImpl instance = new ImageFileResourceImpl();
 
     instance.setFilename("image001.jpg");
     String expResult = "jpg";
