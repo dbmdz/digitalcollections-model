@@ -10,16 +10,14 @@ import de.digitalcollections.model.impl.identifiable.IdentifiablesContainerImpl;
 import de.digitalcollections.model.impl.identifiable.NodeImpl;
 import java.util.List;
 
-public class WebpageImpl extends IdentifiableImpl implements Webpage<Webpage>, IdentifiablesContainer {
+public class WebpageImpl extends IdentifiableImpl implements Webpage<Webpage> {
 
-  private final IdentifiablesContainer identifiablesContainer;
-  private final NodeImpl<Webpage> node;
+  private final IdentifiablesContainer identifiablesContainer = new IdentifiablesContainerImpl();
+  private final NodeImpl<Webpage> node = new NodeImpl<>();
   private LocalizedStructuredContent text;
 
   public WebpageImpl() {
     super();
-    this.identifiablesContainer = new IdentifiablesContainerImpl();
-    this.node = new NodeImpl<>();
     this.type = IdentifiableType.ENTITY_PART;
   }
 
