@@ -13,7 +13,7 @@ public class DigitalObjectImpl extends EntityImpl implements DigitalObject {
     super();
     this.entityType = EntityType.DIGITAL_OBJECT;
   }
-  
+
   @Override
   public LinkedHashSet<FileResource> addFileResource(FileResource fileResource) {
     fileResources.add(fileResource);
