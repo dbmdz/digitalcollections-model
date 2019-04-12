@@ -9,7 +9,7 @@ import de.digitalcollections.model.impl.identifiable.IdentifiablesContainerImpl;
 import de.digitalcollections.model.impl.identifiable.NodeImpl;
 import java.util.List;
 
-public class ContentNodeImpl extends IdentifiableImpl implements ContentNode<ContentNode>, IdentifiablesContainer {
+public class ContentNodeImpl extends IdentifiableImpl implements ContentNode<ContentNode> {
   private final IdentifiablesContainer identifiablesContainer;
   private final NodeImpl<ContentNode> node;
 
