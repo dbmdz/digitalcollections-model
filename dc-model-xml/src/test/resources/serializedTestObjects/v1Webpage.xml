@@ -26,7 +26,7 @@
     </translations>
   </label>
   <type>ENTITY_PART</type>
-  <identifiablesContainer/>
+  <entityPartType>WEBPAGE</entityPartType>
   <node/>
   <text>
     <documents>
