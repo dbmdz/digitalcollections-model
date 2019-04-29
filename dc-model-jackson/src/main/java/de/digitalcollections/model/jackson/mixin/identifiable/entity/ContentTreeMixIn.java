@@ -7,7 +7,7 @@ import de.digitalcollections.model.impl.identifiable.entity.ContentTreeImpl;
 
 @JsonDeserialize(as = ContentTreeImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeName("contentTree")
+@JsonTypeName("CONTENT_TREE")
 public interface ContentTreeMixIn {
 
 }

@@ -12,6 +12,8 @@ import de.digitalcollections.model.api.identifiable.entity.Article;
 import de.digitalcollections.model.api.identifiable.entity.Collection;
 import de.digitalcollections.model.api.identifiable.entity.ContentTree;
 import de.digitalcollections.model.api.identifiable.entity.DigitalObject;
+import de.digitalcollections.model.api.identifiable.entity.Entity;
+import de.digitalcollections.model.api.identifiable.entity.EntityRelation;
 import de.digitalcollections.model.api.identifiable.entity.Website;
 import de.digitalcollections.model.api.identifiable.entity.parts.ContentNode;
 import de.digitalcollections.model.api.identifiable.entity.parts.Webpage;
@@ -50,6 +52,8 @@ import de.digitalcollections.model.jackson.mixin.identifiable.entity.ArticleMixI
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.CollectionMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.ContentTreeMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.DigitalObjectMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.EntityMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.EntityRelationMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.WebsiteMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.parts.ContentNodeMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.parts.WebpageMixIn;
@@ -131,6 +135,8 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(ContentNode.class, ContentNodeMixIn.class);
     context.setMixInAnnotations(ContentTree.class, ContentTreeMixIn.class);
     context.setMixInAnnotations(DigitalObject.class, DigitalObjectMixIn.class);
+    context.setMixInAnnotations(Entity.class, EntityMixIn.class);
+    context.setMixInAnnotations(EntityRelation.class, EntityRelationMixIn.class);
     context.setMixInAnnotations(FileResource.class, FileResourceMixIn.class);
     context.setMixInAnnotations(Heading.class, HeadingMixIn.class);
     context.setMixInAnnotations(IFrame.class, IFrameMixIn.class);

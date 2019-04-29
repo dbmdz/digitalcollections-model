@@ -10,7 +10,7 @@ import java.util.LinkedHashSet;
 
 @JsonDeserialize(as = DigitalObjectImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeName("digital_object")
+@JsonTypeName("DIGITAL_OBJECT")
 public interface DigitalObjectMixIn {
 
   @JsonIgnore
