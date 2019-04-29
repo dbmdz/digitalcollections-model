@@ -1,6 +1,5 @@
 package de.digitalcollections.model.api.identifiable.entity;
 
-import de.digitalcollections.model.api.identifiable.IdentifiablesContainer;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
 
 /**
@@ -8,7 +7,7 @@ import de.digitalcollections.model.api.identifiable.parts.structuredcontent.Loca
  *
  * @param <A> an article instance
  */
-public interface Article<A extends Article> extends Entity, IdentifiablesContainer {
+public interface Article<A extends Article> extends Entity {
 
   LocalizedStructuredContent getText();
 

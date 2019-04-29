@@ -1,24 +1,19 @@
 package de.digitalcollections.model.impl.identifiable.entity.parts;
 
-import de.digitalcollections.model.api.identifiable.Identifiable;
-import de.digitalcollections.model.api.identifiable.IdentifiableType;
-import de.digitalcollections.model.api.identifiable.IdentifiablesContainer;
 import de.digitalcollections.model.api.identifiable.entity.parts.Webpage;
+import de.digitalcollections.model.api.identifiable.entity.parts.enums.EntityPartType;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
-import de.digitalcollections.model.impl.identifiable.IdentifiableImpl;
-import de.digitalcollections.model.impl.identifiable.IdentifiablesContainerImpl;
 import de.digitalcollections.model.impl.identifiable.NodeImpl;
 import java.util.List;
 
-public class WebpageImpl extends IdentifiableImpl implements Webpage<Webpage> {
+public class WebpageImpl extends EntityPartImpl implements Webpage<Webpage> {
 
-  private final IdentifiablesContainer identifiablesContainer = new IdentifiablesContainerImpl();
   private final NodeImpl<Webpage> node = new NodeImpl<>();
   private LocalizedStructuredContent text;
 
   public WebpageImpl() {
     super();
-    this.type = IdentifiableType.ENTITY_PART;
+    this.entityPartType = EntityPartType.WEBPAGE;
   }
 
   public WebpageImpl(List<Webpage> children) {
@@ -54,15 +49,5 @@ public class WebpageImpl extends IdentifiableImpl implements Webpage<Webpage> {
   @Override
   public void setParent(Webpage parent) {
     node.setParent(parent);
-  }
-
-  @Override
-  public List<Identifiable> getIdentifiables() {
-    return identifiablesContainer.getIdentifiables();
-  }
-
-  @Override
-  public void setIdentifiables(List<Identifiable> identifiables) {
-    identifiablesContainer.setIdentifiables(identifiables);
   }
 }
