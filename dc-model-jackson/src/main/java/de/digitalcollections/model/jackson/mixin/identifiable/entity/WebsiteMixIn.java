@@ -7,7 +7,7 @@ import de.digitalcollections.model.impl.identifiable.entity.WebsiteImpl;
 
 @JsonDeserialize(as = WebsiteImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeName("website")
+@JsonTypeName("WEBSITE")
 public interface WebsiteMixIn {
 
 }
