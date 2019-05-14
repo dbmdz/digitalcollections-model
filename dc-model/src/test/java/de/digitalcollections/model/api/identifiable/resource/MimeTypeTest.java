@@ -66,6 +66,12 @@ public class MimeTypeTest {
   }
 
   @Test
+  public void testFromFilename() throws Exception {
+    assertThat(MimeType.fromFilename("hahaha.tar.gz")).isNull();
+    assertThat(MimeType.fromFilename("hahaha.zip").getTypeName()).isEqualTo("application/zip");
+  }
+
+  @Test
   public void knowsOfTypesWithoutExtensions() throws Exception {
     assertThat(MimeType.fromTypename("text/xml")).isNotNull();
     assertThat(MimeType.fromTypename("text/markdown")).isNotNull();
