@@ -3,31 +3,38 @@ package de.digitalcollections.model.api.identifiable;
 import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 public interface Identifiable {
 
   LocalDateTime getCreated();
 
-  LocalizedStructuredContent getDescription();
-
-  LocalizedText getLabel();
-
-  LocalDateTime getLastModified();
-
-  IdentifiableType getType();
-
-  UUID getUuid();
-
   void setCreated(LocalDateTime created);
+
+  LocalizedStructuredContent getDescription();
 
   void setDescription(LocalizedStructuredContent description);
 
+  void addIdentifier(Identifier identifier);
+
+  List<Identifier> getIdentifiers();
+
+  void setIdentifiers(List<Identifier> identifiers);
+
+  LocalizedText getLabel();
+
   void setLabel(LocalizedText label);
+
+  LocalDateTime getLastModified();
 
   void setLastModified(LocalDateTime lastModified);
 
+  IdentifiableType getType();
+
   void setType(IdentifiableType identifiableType);
+
+  UUID getUuid();
 
   void setUuid(UUID uuid);
 }
