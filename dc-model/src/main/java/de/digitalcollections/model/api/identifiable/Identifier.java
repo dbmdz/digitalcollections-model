@@ -4,15 +4,19 @@ import java.util.UUID;
 
 public interface Identifier {
 
+  UUID getUuid();
+
+  void setUuid(UUID uuid);
+
   String getId();
 
-  UUID getIdentifiableUuid();
+  UUID getIdentifiable();
 
   String getNamespace();
 
   void setId(String id);
 
-  void setIdentifiableUuid(UUID identifiableUuid);
+  void setIdentifiable(UUID identifiableUuid);
 
   void setNamespace(String namespace);
 }

@@ -7,17 +7,16 @@ import java.util.UUID;
 public class IdentifierImpl implements Identifier, Serializable {
 
   private String id;
-
-  private UUID identifiableUuid;
-
+  private UUID identifiable;
   private String namespace;
+  private UUID uuid;
 
   public IdentifierImpl() {
   }
 
-  public IdentifierImpl(UUID identifiableUuid, String namespace, String id) {
+  public IdentifierImpl(UUID identifiable, String namespace, String id) {
     this.id = id;
-    this.identifiableUuid = identifiableUuid;
+    this.identifiable = identifiable;
     this.namespace = namespace;
   }
 
@@ -32,13 +31,13 @@ public class IdentifierImpl implements Identifier, Serializable {
   }
 
   @Override
-  public UUID getIdentifiableUuid() {
-    return this.identifiableUuid;
+  public UUID getIdentifiable() {
+    return this.identifiable;
   }
 
   @Override
-  public void setIdentifiableUuid(UUID identifiableUuid) {
-    this.identifiableUuid = identifiableUuid;
+  public void setIdentifiable(UUID identifiable) {
+    this.identifiable = identifiable;
   }
 
   @Override
@@ -51,8 +50,16 @@ public class IdentifierImpl implements Identifier, Serializable {
     this.namespace = namespace;
   }
 
+  public UUID getUuid() {
+    return uuid;
+  }
+
+  public void setUuid(UUID uuid) {
+    this.uuid = uuid;
+  }
+
   @Override
   public String toString() {
-    return namespace + ":" + id + ":" + identifiableUuid;
+    return namespace + ":" + id + ":" + identifiable;
   }
 }
