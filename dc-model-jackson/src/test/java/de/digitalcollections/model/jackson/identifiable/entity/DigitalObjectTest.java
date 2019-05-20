@@ -14,7 +14,7 @@ public class DigitalObjectTest extends BaseJsonSerializationTest {
   public void testSerialisationInBothWays() throws Exception {
     DigitalObjectImpl digitalObject = new DigitalObjectImpl();
 
-    digitalObject.addIdentifier(new IdentifierImpl("zend", "bsb10001234"));
+    digitalObject.addIdentifier(new IdentifierImpl(null, "zend", "bsb10001234"));
 
     ImageFileResource image = new ImageFileResourceImpl();
     image.setHeight(100);
