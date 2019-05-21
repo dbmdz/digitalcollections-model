@@ -4,20 +4,19 @@ import de.digitalcollections.model.api.identifiable.IdentifierType;
 
 public class IdentifierTypeImpl implements IdentifierType {
 
-  private String idPattern;
-
+  private long id;
   private String label;
-
   private String namespace;
+  private String pattern;
 
   @Override
-  public String getIdPattern() {
-    return idPattern;
+  public long getId() {
+    return id;
   }
 
   @Override
-  public void setIdPattern(String idPattern) {
-    this.idPattern = idPattern;
+  public void setId(long id) {
+    this.id = id;
   }
 
   @Override
@@ -38,5 +37,15 @@ public class IdentifierTypeImpl implements IdentifierType {
   @Override
   public void setNamespace(String namespace) {
     this.namespace = namespace;
+  }
+
+  @Override
+  public String getPattern() {
+    return pattern;
+  }
+
+  @Override
+  public void setPattern(String pattern) {
+    this.pattern = pattern;
   }
 }

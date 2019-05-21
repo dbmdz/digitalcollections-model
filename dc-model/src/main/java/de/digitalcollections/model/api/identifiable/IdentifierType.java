@@ -2,15 +2,19 @@ package de.digitalcollections.model.api.identifiable;
 
 public interface IdentifierType {
 
-  String getIdPattern();
+  long getId();
+
+  void setId(long id);
 
   String getLabel();
 
-  String getNamespace();
-
-  void setIdPattern(String idPattern);
-
   void setLabel(String label);
 
+  String getNamespace();
+
   void setNamespace(String namespace);
+
+  String getPattern();
+
+  void setPattern(String pattern);
 }
