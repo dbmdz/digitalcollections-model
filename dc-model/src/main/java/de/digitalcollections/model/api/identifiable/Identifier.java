@@ -16,7 +16,7 @@ public interface Identifier {
 
   void setId(String id);
 
-  void setIdentifiable(UUID identifiableUuid);
+  void setIdentifiable(UUID identifiable);
 
   void setNamespace(String namespace);
 }
