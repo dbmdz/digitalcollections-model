@@ -9,7 +9,8 @@ public class IdentifierTypeTest extends BaseJsonSerializationTest {
   @Test
   public void testSerialisationInBothWays() throws Exception {
     IdentifierTypeImpl identifierType = new IdentifierTypeImpl();
-    identifierType.setIdPattern("^(\\w{3})(\\d{4})(\\d{4})$");
+    identifierType.setId(4711);
+    identifierType.setPattern("^(\\w{3})(\\d{4})(\\d{4})$");
     identifierType.setLabel("Digital object id");
     identifierType.setNamespace("digId");
 
