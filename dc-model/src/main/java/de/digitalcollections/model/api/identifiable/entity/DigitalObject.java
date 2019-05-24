@@ -1,5 +1,6 @@
 package de.digitalcollections.model.api.identifiable.entity;
 
+import de.digitalcollections.model.api.identifiable.Version;
 import de.digitalcollections.model.api.identifiable.resource.FileResource;
 import java.util.LinkedHashSet;
 
@@ -10,4 +11,8 @@ public interface DigitalObject extends Entity {
   void setFileResources(LinkedHashSet<FileResource> fileResources);
 
   LinkedHashSet<FileResource> addFileResource(FileResource fileResource);
+
+  Version getVersion();
+
+  void setVersion(Version version);
 }
