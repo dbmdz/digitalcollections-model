@@ -1,5 +1,6 @@
 package de.digitalcollections.model.impl.identifiable.entity;
 
+import de.digitalcollections.model.api.identifiable.Version;
 import de.digitalcollections.model.api.identifiable.entity.DigitalObject;
 import de.digitalcollections.model.api.identifiable.entity.enums.EntityType;
 import de.digitalcollections.model.api.identifiable.resource.FileResource;
@@ -8,6 +9,8 @@ import java.util.LinkedHashSet;
 public class DigitalObjectImpl extends EntityImpl implements DigitalObject {
 
   private LinkedHashSet<FileResource> fileResources = new LinkedHashSet<>();
+
+  private Version version;
 
   public DigitalObjectImpl() {
     super();
@@ -18,6 +21,16 @@ public class DigitalObjectImpl extends EntityImpl implements DigitalObject {
   public LinkedHashSet<FileResource> addFileResource(FileResource fileResource) {
     fileResources.add(fileResource);
     return fileResources;
+  }
+
+  @Override
+  public Version getVersion() {
+    return version;
+  }
+
+  @Override
+  public void setVersion(Version version) {
+    this.version = version;
   }
 
   @Override
