@@ -7,11 +7,13 @@ import java.util.UUID;
 public class VersionImpl implements Version {
 
   UUID uuid;
-  String externalKey;
   int value;
   Date creationDate;
   String description;
   String status;
+  String typeKey;
+  String instanceKey;
+  String instanceVersionKey;
 
   public VersionImpl() {
   }
@@ -24,16 +26,6 @@ public class VersionImpl implements Version {
   @Override
   public void setUuid(UUID uuid) {
     this.uuid = uuid;
-  }
-
-  @Override
-  public String getExternalKey() {
-    return externalKey;
-  }
-
-  @Override
-  public void setExternalKey(String externalKey) {
-    this.externalKey = externalKey;
   }
 
   @Override
@@ -66,12 +58,54 @@ public class VersionImpl implements Version {
   }
 
   @Override
-  public String getStatus(String status) {
+  public String getStatus() {
     return status;
   }
 
   @Override
   public void setStatus(String status) {
     this.status = status;
+  }
+
+  @Override
+  public String getTypeKey() {
+    return typeKey;
+  }
+
+  @Override
+  public void setTypeKey(String typeKey) {
+    this.typeKey = typeKey;
+  }
+
+  @Override
+  public String getInstanceKey() {
+    return instanceKey;
+  }
+
+  @Override
+  public void setInstanceKey(String instanceKey) {
+    this.instanceKey = instanceKey;
+  }
+
+  @Override
+  public String getInstanceVersionKey() {
+    return instanceVersionKey;
+  }
+
+  @Override
+  public void setInstanceVersionKey(String instanceVersionKey) {
+    this.instanceVersionKey = instanceVersionKey;
+  }
+
+  @Override
+  public String toString() {
+    return "VersionImpl{"
+           + "uuid=" + uuid
+           + ", value=" + value
+           + ", status='" + status + '\''
+           + ", typeKey='" + typeKey + '\''
+           + ", instanceKey='" + instanceKey + '\''
+           + ", instanceVersionKey='" + instanceVersionKey + '\''
+           + '}';
   }
 }
