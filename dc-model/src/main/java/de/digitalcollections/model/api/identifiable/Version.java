@@ -9,10 +9,6 @@ public interface Version {
 
   void setUuid(UUID uuid);
 
-  String getExternalKey();
-
-  void setExternalKey(String externalKey);
-
   int getValue();
 
   void setValue(int value);
@@ -25,7 +21,19 @@ public interface Version {
 
   void setDescription(String description);
 
-  String getStatus(String status);
+  String getStatus();
 
   void setStatus(String status);
+
+  String getTypeKey();
+
+  void setTypeKey(String typeKey);
+
+  String getInstanceKey();
+
+  void setInstanceKey(String instanceKey);
+
+  String getInstanceVersionKey();
+
+  void setInstanceVersionKey(String instanceVersionKey);
 }
