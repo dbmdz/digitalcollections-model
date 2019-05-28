@@ -1,23 +1,14 @@
 package de.digitalcollections.model.impl.identifiable;
 
 import de.digitalcollections.model.api.identifiable.IdentifierType;
+import java.util.UUID;
 
 public class IdentifierTypeImpl implements IdentifierType {
 
-  private long id;
   private String label;
   private String namespace;
   private String pattern;
-
-  @Override
-  public long getId() {
-    return id;
-  }
-
-  @Override
-  public void setId(long id) {
-    this.id = id;
-  }
+  private UUID uuid;
 
   @Override
   public String getLabel() {
@@ -47,5 +38,15 @@ public class IdentifierTypeImpl implements IdentifierType {
   @Override
   public void setPattern(String pattern) {
     this.pattern = pattern;
+  }
+
+  @Override
+  public UUID getUuid() {
+    return uuid;
+  }
+
+  @Override
+  public void setUuid(UUID uuid) {
+    this.uuid = uuid;
   }
 }
