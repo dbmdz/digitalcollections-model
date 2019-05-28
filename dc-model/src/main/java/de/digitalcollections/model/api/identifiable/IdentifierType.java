@@ -1,10 +1,8 @@
 package de.digitalcollections.model.api.identifiable;
 
+import java.util.UUID;
+
 public interface IdentifierType {
-
-  long getId();
-
-  void setId(long id);
 
   String getLabel();
 
@@ -17,4 +15,8 @@ public interface IdentifierType {
   String getPattern();
 
   void setPattern(String pattern);
+
+  UUID getUuid();
+
+  void setUuid(UUID uuid);
 }
