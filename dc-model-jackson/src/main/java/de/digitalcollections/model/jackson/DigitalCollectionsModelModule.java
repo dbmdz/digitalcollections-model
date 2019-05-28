@@ -2,7 +2,6 @@ package de.digitalcollections.model.jackson;
 
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.core.util.VersionUtil;
-import com.fasterxml.jackson.databind.Module.SetupContext;
 import com.fasterxml.jackson.databind.deser.std.StdDelegatingDeserializer;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.std.StdDelegatingSerializer;
@@ -52,6 +51,7 @@ import de.digitalcollections.model.api.paging.Sorting;
 import de.digitalcollections.model.api.security.User;
 import de.digitalcollections.model.jackson.mixin.identifiable.IdentifierMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.IdentifierTypeMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.VersionMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.ArticleMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.CollectionMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.ContentTreeMixIn;
@@ -166,6 +166,7 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(TextFileResource.class, TextFileResourceMixIn.class);
     context.setMixInAnnotations(Translation.class, TranslationMixIn.class);
     context.setMixInAnnotations(User.class, UserMixIn.class);
+    context.setMixInAnnotations(de.digitalcollections.model.api.identifiable.Version.class, VersionMixIn.class);
     context.setMixInAnnotations(VideoFileResource.class, VideoFileResourceMixIn.class);
     context.setMixInAnnotations(Webpage.class, WebpageMixIn.class);
     context.setMixInAnnotations(Website.class, WebsiteMixIn.class);
