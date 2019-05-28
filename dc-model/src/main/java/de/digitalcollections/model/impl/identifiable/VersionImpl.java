@@ -7,8 +7,8 @@ import java.util.UUID;
 public class VersionImpl implements Version {
 
   UUID uuid;
-  int value;
-  Date creationDate;
+  int versionValue;
+  Date created;
   String description;
   String status;
   String typeKey;
@@ -17,6 +17,7 @@ public class VersionImpl implements Version {
 
   public VersionImpl() {
   }
+
 
   @Override
   public UUID getUuid() {
@@ -29,22 +30,23 @@ public class VersionImpl implements Version {
   }
 
   @Override
-  public int getValue() {
-    return value;
-  }
-
-  public void setValue(int value) {
-    this.value = value;
+  public int getVersionValue() {
+    return versionValue;
   }
 
   @Override
-  public Date getCreationDate() {
-    return creationDate;
+  public void setVersionValue(int versionValue) {
+    this.versionValue = versionValue;
   }
 
   @Override
-  public void setCreationDate(Date creationDate) {
-    this.creationDate = creationDate;
+  public Date getCreated() {
+    return created;
+  }
+
+  @Override
+  public void setCreated(Date created) {
+    this.created = created;
   }
 
   @Override
@@ -101,7 +103,7 @@ public class VersionImpl implements Version {
   public String toString() {
     return "VersionImpl{"
            + "uuid=" + uuid
-           + ", value=" + value
+           + ", value=" + versionValue
            + ", status='" + status + '\''
            + ", typeKey='" + typeKey + '\''
            + ", instanceKey='" + instanceKey + '\''
