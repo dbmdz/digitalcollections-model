@@ -9,13 +9,13 @@ public interface Version {
 
   void setUuid(UUID uuid);
 
-  int getValue();
+  int getVersionValue();
 
-  void setValue(int value);
+  void setVersionValue(int value);
 
-  Date getCreationDate();
+  Date getCreated();
 
-  void setCreationDate(Date date);
+  void setCreated(Date date);
 
   String getDescription();
 
