@@ -22,6 +22,8 @@ public interface Identifiable {
 
   void setIdentifiers(List<Identifier> identifiers);
 
+  Identifier getIdentifierByNamespace(String namespace);
+
   LocalizedText getLabel();
 
   void setLabel(LocalizedText label);

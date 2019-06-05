@@ -49,6 +49,19 @@ public class IdentifiableImpl implements Identifiable {
   }
 
   @Override
+  public Identifier getIdentifierByNamespace(String namespace) {
+    if (namespace == null || identifiers == null || identifiers.isEmpty()) {
+      return null;
+    }
+    for (Identifier identifier : identifiers) {
+      if (namespace.equals(identifier.getNamespace())) {
+        return identifier;
+      }
+    }
+    return null;
+  }
+
+  @Override
   public List<Identifier> getIdentifiers() {
     return identifiers;
   }
