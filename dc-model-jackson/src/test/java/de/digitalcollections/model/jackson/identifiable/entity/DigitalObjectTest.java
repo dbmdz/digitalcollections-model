@@ -21,6 +21,8 @@ public class DigitalObjectTest extends BaseJsonSerializationTest {
     image.setWidth(400);
     digitalObject.getFileResources().add(image);
 
+    digitalObject.setPreviewImage(image);
+    
     ApplicationFileResourceImpl appFile = new ApplicationFileResourceImpl();
     appFile.setFilename("dings.pdf");
     digitalObject.getFileResources().add(appFile);
