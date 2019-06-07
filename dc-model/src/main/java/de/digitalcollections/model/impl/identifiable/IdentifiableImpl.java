@@ -5,6 +5,7 @@ import de.digitalcollections.model.api.identifiable.IdentifiableType;
 import de.digitalcollections.model.api.identifiable.Identifier;
 import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
+import de.digitalcollections.model.api.identifiable.resource.ImageFileResource;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ public class IdentifiableImpl implements Identifiable {
   private List<Identifier> identifiers;
   protected LocalizedText label;
   protected LocalDateTime lastModified;
+  protected ImageFileResource previewImage;
   protected IdentifiableType type;
   private UUID uuid;
 
@@ -89,6 +91,16 @@ public class IdentifiableImpl implements Identifiable {
   @Override
   public void setLastModified(LocalDateTime lastModified) {
     this.lastModified = lastModified;
+  }
+
+  @Override
+  public ImageFileResource getPreviewImage() {
+    return previewImage;
+  }
+
+  @Override
+  public void setPreviewImage(ImageFileResource previewImage) {
+    this.previewImage = previewImage;
   }
 
   @Override
