@@ -17,6 +17,7 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.con
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.MarkImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.ParagraphImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TextImpl;
+import java.time.LocalDateTime;
 import java.util.Locale;
 
 public class WebpageFactory {
@@ -25,6 +26,9 @@ public class WebpageFactory {
     Webpage webpage = new WebpageImpl();
 
     webpage.setLabel(new LocalizedTextImpl(Locale.GERMANY, "Meine Homepage"));
+
+    webpage.setCreated(LocalDateTime.now());
+    webpage.setLastModified(LocalDateTime.now());
 
     LocalizedStructuredContent description = new LocalizedStructuredContentImpl();
     StructuredContent structuredContent = new StructuredContentImpl();
