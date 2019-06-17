@@ -17,6 +17,9 @@ public class V1WebpageTest extends V1BaseJsonSerializationTest {
   @Test
   public void testSerialization() throws Exception {
     Webpage webpage = WebpageFactory.create();
+    webpage.setCreated(null);
+    webpage.setLastModified(null);
+
     final ObjectMapper mapper = getMapper();
     mapper.enable(SerializationFeature.INDENT_OUTPUT);
     String result = mapper.writeValueAsString(webpage);
