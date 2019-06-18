@@ -8,6 +8,7 @@ import de.digitalcollections.model.api.identifiable.parts.structuredcontent.Loca
 import de.digitalcollections.model.api.identifiable.resource.ImageFileResource;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,7 +16,7 @@ public class IdentifiableImpl implements Identifiable {
 
   protected LocalDateTime created;
   protected LocalizedStructuredContent description;
-  private List<Identifier> identifiers;
+  private List<Identifier> identifiers = new LinkedList<>();
   protected LocalizedText label;
   protected LocalDateTime lastModified;
   protected ImageFileResource previewImage;
