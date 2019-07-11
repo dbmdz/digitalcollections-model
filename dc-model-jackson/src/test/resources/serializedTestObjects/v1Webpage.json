@@ -13,6 +13,7 @@
       }
     }
   },
+  "identifiers" : [ ],
   "label" : {
     "translations" : [ {
       "locale" : "de_DE",
