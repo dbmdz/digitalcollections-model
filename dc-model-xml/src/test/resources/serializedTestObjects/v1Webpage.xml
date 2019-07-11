@@ -17,6 +17,7 @@
       </entry>
     </documents>
   </description>
+  <identifiers/>
   <label>
     <translations>
       <translation>
@@ -27,7 +28,9 @@
   </label>
   <type>ENTITY_PART</type>
   <entityPartType>WEBPAGE</entityPartType>
-  <node/>
+  <node>
+    <identifiers/>
+  </node>
   <text>
     <documents>
       <entry>
