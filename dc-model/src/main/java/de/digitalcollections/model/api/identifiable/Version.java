@@ -8,6 +8,17 @@ import java.util.UUID;
  */
 public interface Version {
 
+  enum Status {
+    INITIAL,
+    ACTIVE,
+    INACTIVE,
+    DELETED
+  }
+
+  enum TypeKey {
+    DIGITALOBJECT
+  }
+
   /**
    * @return id of the version
    */
@@ -37,21 +48,21 @@ public interface Version {
   void setDescription(String description);
 
   /**
-   * @return status of the version, one of 'initial', 'active', 'inactive'
+   * @return status of the version, one of 'INITIAL', 'ACTIVIE', 'INACTIVE', 'DELETED'
    */
-  String getStatus();
+  Status getStatus();
 
-  void setStatus(String status);
+  void setStatus(Status status);
 
   /**
    * @return type of the versioned object, e.g. 'DigitalObject'
    */
-  String getTypeKey();
+  TypeKey getTypeKey();
 
-  void setTypeKey(String typeKey);
+  void setTypeKey(TypeKey typeKey);
 
   /**
-   * @return version independend identifier of the versioned object, e.g. Zend id
+   * @return version independent identifier of the versioned object, e.g. Zend id
    */
   String getInstanceKey();
 
