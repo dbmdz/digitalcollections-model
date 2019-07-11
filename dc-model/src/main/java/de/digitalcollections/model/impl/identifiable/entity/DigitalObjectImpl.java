@@ -4,12 +4,13 @@ import de.digitalcollections.model.api.identifiable.Version;
 import de.digitalcollections.model.api.identifiable.entity.DigitalObject;
 import de.digitalcollections.model.api.identifiable.entity.enums.EntityType;
 import de.digitalcollections.model.api.identifiable.resource.FileResource;
+import de.digitalcollections.model.api.legal.License;
 import java.util.LinkedHashSet;
 
 public class DigitalObjectImpl extends EntityImpl implements DigitalObject {
 
   private LinkedHashSet<FileResource> fileResources = new LinkedHashSet<>();
-
+  private License license;
   private Version version;
 
   public DigitalObjectImpl() {
@@ -21,6 +22,16 @@ public class DigitalObjectImpl extends EntityImpl implements DigitalObject {
   public LinkedHashSet<FileResource> addFileResource(FileResource fileResource) {
     fileResources.add(fileResource);
     return fileResources;
+  }
+
+  @Override
+  public License getLicense() {
+    return license;
+  }
+
+  @Override
+  public void setLicense(License license) {
+    this.license = license;
   }
 
   @Override

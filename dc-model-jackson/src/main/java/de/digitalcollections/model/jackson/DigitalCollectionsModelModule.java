@@ -44,6 +44,7 @@ import de.digitalcollections.model.api.identifiable.resource.ImageFileResource;
 import de.digitalcollections.model.api.identifiable.resource.MimeType;
 import de.digitalcollections.model.api.identifiable.resource.TextFileResource;
 import de.digitalcollections.model.api.identifiable.resource.VideoFileResource;
+import de.digitalcollections.model.api.legal.License;
 import de.digitalcollections.model.api.paging.Order;
 import de.digitalcollections.model.api.paging.PageRequest;
 import de.digitalcollections.model.api.paging.PageResponse;
@@ -86,6 +87,7 @@ import de.digitalcollections.model.jackson.mixin.identifiable.resource.FileResou
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.ImageFileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.TextFileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.VideoFileResourceMixIn;
+import de.digitalcollections.model.jackson.mixin.legal.LicenseMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.OrderMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.PageRequestMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.PageResponseMixIn;
@@ -117,9 +119,9 @@ public class DigitalCollectionsModelModule extends SimpleModule {
   @Override
   public Version version() {
     return VersionUtil.parseVersion(
-            rb.getString("project.version"),
-            rb.getString("project.groupId"),
-            rb.getString("project.artifactId"));
+      rb.getString("project.version"),
+      rb.getString("project.groupId"),
+      rb.getString("project.artifactId"));
   }
 
   @Override
@@ -147,6 +149,7 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(IdentifierType.class, IdentifierTypeMixIn.class);
     context.setMixInAnnotations(IFrame.class, IFrameMixIn.class);
     context.setMixInAnnotations(ImageFileResource.class, ImageFileResourceMixIn.class);
+    context.setMixInAnnotations(License.class, LicenseMixIn.class);
     context.setMixInAnnotations(ListItem.class, ListItemMixIn.class);
     context.setMixInAnnotations(LocalizedStructuredContent.class, LocalizedStructuredContentMixIn.class);
     context.setMixInAnnotations(LocalizedText.class, LocalizedTextMixIn.class);
