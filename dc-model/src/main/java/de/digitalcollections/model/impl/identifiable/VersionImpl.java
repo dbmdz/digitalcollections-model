@@ -10,8 +10,8 @@ public class VersionImpl implements Version {
   int versionValue;
   Date created;
   String description;
-  String status;
-  String typeKey;
+  Status status = Status.INITIAL;
+  TypeKey typeKey = TypeKey.DIGITALOBJECT;
   String instanceKey;
   String instanceVersionKey;
 
@@ -60,22 +60,22 @@ public class VersionImpl implements Version {
   }
 
   @Override
-  public String getStatus() {
+  public Status getStatus() {
     return status;
   }
 
   @Override
-  public void setStatus(String status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 
   @Override
-  public String getTypeKey() {
+  public TypeKey getTypeKey() {
     return typeKey;
   }
 
   @Override
-  public void setTypeKey(String typeKey) {
+  public void setTypeKey(TypeKey typeKey) {
     this.typeKey = typeKey;
   }
 
