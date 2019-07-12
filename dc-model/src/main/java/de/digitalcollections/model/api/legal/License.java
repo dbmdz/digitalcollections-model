@@ -27,7 +27,7 @@ public interface License {
   void setCreated(LocalDateTime created);
 
   /**
-   * @return Anzeigetext in mehreren Sprachen, e.g. "URHEBERRECHTSSCHUTZ - NICHT KOMMERZIELLE NUTZUNG GESTATTET", "IN COPYRIGHT - NON-COMMERCIAL USE PERMITTED"
+   * @return multilingual license title, e.g. "URHEBERRECHTSSCHUTZ - NICHT KOMMERZIELLE NUTZUNG GESTATTET", "IN COPYRIGHT - NON-COMMERCIAL USE PERMITTED"
    */
   LocalizedText getLabel();
 
