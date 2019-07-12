@@ -30,7 +30,7 @@ public class WebpageFactory {
     StructuredContent structuredContent = new StructuredContentImpl();
     Paragraph p = new ParagraphImpl("");
     structuredContent.addContentBlock(p);
-    description.add(Locale.GERMANY, structuredContent);
+    description.put(Locale.GERMANY, structuredContent);
     webpage.setDescription(description);
 
     structuredContent = new StructuredContentImpl();
@@ -57,7 +57,7 @@ public class WebpageFactory {
     structuredContent.addContentBlock(iFrame);
 
     LocalizedStructuredContent text = new LocalizedStructuredContentImpl();
-    text.add(Locale.GERMANY, structuredContent);
+    text.put(Locale.GERMANY, structuredContent);
     webpage.setText(text);
 
     return webpage;

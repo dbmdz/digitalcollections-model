@@ -18,7 +18,7 @@ public class LocalizedStructuredContentTest extends BaseJsonSerializationTest {
     StructuredContent structuredContent = new StructuredContentImpl();
     ContentBlock contentBlock = new ParagraphImpl("Buon Giorno!");
     structuredContent.addContentBlock(contentBlock);
-    localizedStructuredContent.add(Locale.ITALY, structuredContent);
+    localizedStructuredContent.put(Locale.ITALY, structuredContent);
 
     checkSerializeDeserialize(localizedStructuredContent);
   }
