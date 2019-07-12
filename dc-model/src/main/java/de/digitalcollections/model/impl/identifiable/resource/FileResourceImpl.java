@@ -3,6 +3,7 @@ package de.digitalcollections.model.impl.identifiable.resource;
 import de.digitalcollections.model.api.identifiable.IdentifiableType;
 import de.digitalcollections.model.api.identifiable.resource.FileResource;
 import de.digitalcollections.model.api.identifiable.resource.MimeType;
+import de.digitalcollections.model.api.legal.License;
 import de.digitalcollections.model.impl.identifiable.IdentifiableImpl;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -10,6 +11,7 @@ import java.net.URI;
 public class FileResourceImpl extends IdentifiableImpl implements FileResource {
 
   private String filename;
+  private License license;
   private MimeType mimeType;
   private boolean readonly = false;
   private long sizeInBytes;
@@ -56,6 +58,16 @@ public class FileResourceImpl extends IdentifiableImpl implements FileResource {
   }
 
   @Override
+  public License getLicense() {
+    return license;
+  }
+
+  @Override
+  public void setLicense(License license) {
+    this.license = license;
+  }
+
+  @Override
   public long getSizeInBytes() {
     return sizeInBytes;
   }
@@ -98,11 +110,11 @@ public class FileResourceImpl extends IdentifiableImpl implements FileResource {
   @Override
   public String toString() {
     return this.getClass().getSimpleName() + ":"
-            + "\n{"
-            + "\n  uuid=" + String.valueOf(getUuid())
-            + ",\n  uri=" + String.valueOf(uri)
-            + ",\n  mimetype=" + getMimeType().getTypeName()
-            + ",\n  lastModified=" + lastModified
-            + "\n}";
+           + "\n{"
+           + "\n  uuid=" + String.valueOf(getUuid())
+           + ",\n  uri=" + String.valueOf(uri)
+           + ",\n  mimetype=" + getMimeType().getTypeName()
+           + ",\n  lastModified=" + lastModified
+           + "\n}";
   }
 }

@@ -1,6 +1,7 @@
 package de.digitalcollections.model.api.identifiable.resource;
 
 import de.digitalcollections.model.api.identifiable.Identifiable;
+import de.digitalcollections.model.api.legal.License;
 import java.net.URI;
 
 /**
@@ -24,6 +25,10 @@ public interface FileResource extends Identifiable {
   void setFilename(String filename);
 
   String getFilenameExtension();
+
+  License getLicense();
+
+  void setLicense(License license);
 
   boolean isReadonly();
 
