@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Locale;
+import java.util.Set;
 
 public class LocalizedTextImpl extends HashMap<Locale, String> implements LocalizedText {
 
@@ -18,7 +19,7 @@ public class LocalizedTextImpl extends HashMap<Locale, String> implements Locali
   }
 
   @Override
-  public Collection<Locale> getLocales() {
+  public Set<Locale> getLocales() {
     return new LinkedHashSet<>(this.keySet());
   }
 
