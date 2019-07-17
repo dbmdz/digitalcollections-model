@@ -1,56 +1,25 @@
 package de.digitalcollections.model.impl.identifiable.parts;
 
 import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
-import de.digitalcollections.model.api.identifiable.parts.Translation;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Locale;
-import java.util.Set;
 
-public class LocalizedTextImpl implements LocalizedText {
-
-  private Set<Translation> translations;
+public class LocalizedTextImpl extends HashMap<Locale, String> implements LocalizedText {
 
   public LocalizedTextImpl() {
-    translations = new LinkedHashSet<>();
+    super();
   }
 
   public LocalizedTextImpl(Locale locale, String text) {
     this();
-    translations.add(new TranslationImpl(locale, text));
-  }
-
-  public LocalizedTextImpl(List<Locale> locales, String text) {
-    this();
-    for (Locale locale : locales) {
-      translations.add(new TranslationImpl(locale, text));
-    }
-  }
-
-  public LocalizedTextImpl(LocalizedText text) {
-    this();
-    for (Translation translation : text.getTranslations()) {
-      translations.add(new TranslationImpl(translation.getLocale(), translation.getText()));
-    }
-  }
-
-  private Translation findTranslation(Locale locale) {
-    for (Translation translation : translations) {
-      if (translation.has(locale)) {
-        return translation;
-      }
-    }
-    return null;
+    this.put(locale, text);
   }
 
   @Override
   public Collection<Locale> getLocales() {
-    Set<Locale> locales = new LinkedHashSet<>();
-    for (Translation translation : translations) {
-      locales.add(translation.getLocale());
-    }
-    return locales;
+    return new LinkedHashSet<>(this.keySet());
   }
 
   @Override
@@ -64,31 +33,15 @@ public class LocalizedTextImpl implements LocalizedText {
 
   @Override
   public String getText(Locale locale) {
-    Translation translation = findTranslation(locale);
-    if (translation != null) {
-      return translation.getText();
+    if (this.containsKey(locale)) {
+      return this.get(locale);
     }
     return getText();
   }
 
   @Override
   public void setText(Locale locale, String text) {
-    Translation translation = findTranslation(locale);
-    if (translation != null) {
-      translation.setText(text);
-    } else {
-      translations.add(new TranslationImpl(locale, text));
-    }
-  }
-
-  @Override
-  public Set<Translation> getTranslations() {
-    return translations;
-  }
-
-  @Override
-  public void setTranslations(Set<Translation> translations) {
-    this.translations = translations;
+    this.put(locale, text);
   }
 
 }
