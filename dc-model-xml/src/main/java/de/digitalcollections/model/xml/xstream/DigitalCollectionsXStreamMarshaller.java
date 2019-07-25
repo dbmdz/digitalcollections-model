@@ -4,7 +4,6 @@ import com.thoughtworks.xstream.XStream;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.ContentBlock;
 import de.digitalcollections.model.impl.identifiable.entity.parts.WebpageImpl;
 import de.digitalcollections.model.impl.identifiable.parts.TranslationImpl;
-import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.LocalizedStructuredContentImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.StructuredContentImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.BlockquoteImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.BulletListImpl;
@@ -48,7 +47,6 @@ public class DigitalCollectionsXStreamMarshaller extends XStreamMarshaller {
     xStream.aliasField("content", ListItemImpl.class, "contentBlocks");
     xStream.aliasField("content", OrderedListImpl.class, "contentBlocks");
     xStream.aliasField("content", ParagraphImpl.class, "contentBlocks");
-
     xStream.setMode(XStream.NO_REFERENCES);
   }
 
@@ -63,7 +61,6 @@ public class DigitalCollectionsXStreamMarshaller extends XStreamMarshaller {
     aliases.put("heading", HeadingImpl.class);
     aliases.put("iframe", IFrameImpl.class);
     aliases.put("listItem", ListItemImpl.class);
-    aliases.put("localizedStructuredContent", LocalizedStructuredContentImpl.class);
     aliases.put("mark", MarkImpl.class);
     aliases.put("orderedList", OrderedListImpl.class);
     aliases.put("paragraph", ParagraphImpl.class);

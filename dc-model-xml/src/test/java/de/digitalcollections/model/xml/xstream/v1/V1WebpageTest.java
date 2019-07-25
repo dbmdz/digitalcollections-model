@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +27,6 @@ public class V1WebpageTest {
     marshaller = new V1DigitalCollectionsXStreamMarshaller();
   }
 
-  @Disabled
   @Test
   public void testMarshallWebpage() throws XmlMappingException, IOException {
     Webpage webpage = WebpageFactory.create();
@@ -39,7 +37,6 @@ public class V1WebpageTest {
 
     LOGGER.info(result);
 
-    assertThat(result).doesNotContain("localizedStructuredContent");
     assertThat(result).doesNotContain("structuredContent");
     assertThat(result).doesNotContain("contentBlocks");
 
