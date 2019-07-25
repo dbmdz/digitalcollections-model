@@ -1,8 +1,8 @@
 package de.digitalcollections.model.api.identifiable.parts;
 
+import java.util.Collection;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * LocalizedText is used for simple text content.
@@ -13,7 +13,7 @@ public interface LocalizedText extends Map<Locale, String> {
    *
    * @return all locales for which translated texts are available.
    */
-  Set<Locale> getLocales();
+  Collection<Locale> getLocales();
 
   /**
    * @return first found text
