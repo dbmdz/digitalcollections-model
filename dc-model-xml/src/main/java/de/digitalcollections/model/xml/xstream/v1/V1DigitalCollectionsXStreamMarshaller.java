@@ -53,7 +53,7 @@ public class V1DigitalCollectionsXStreamMarshaller extends XStreamMarshaller {
     xStream.setMode(XStream.NO_REFERENCES);
   }
 
-  protected Map<String, Class> getAliases() {
+  private Map<String, Class> getAliases() {
     Map<String, Class> aliases = new HashMap<>();
     aliases.put("blockquote", BlockquoteImpl.class);
     aliases.put("bulletList", BulletListImpl.class);
