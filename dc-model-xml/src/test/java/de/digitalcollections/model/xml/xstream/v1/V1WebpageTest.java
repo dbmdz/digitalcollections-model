@@ -37,7 +37,6 @@ public class V1WebpageTest {
 
     LOGGER.info(result);
 
-    assertThat(result).doesNotContain("localizedStructuredContent");
     assertThat(result).doesNotContain("structuredContent");
     assertThat(result).doesNotContain("contentBlocks");
 

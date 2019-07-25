@@ -2,12 +2,14 @@ package de.digitalcollections.model.api.identifiable.parts;
 
 import java.util.Collection;
 import java.util.Locale;
-import java.util.Set;
+import java.util.Map;
 
-public interface LocalizedText {
+/**
+ * LocalizedText is used for unformatted text content in multiple languages.
+ */
+public interface LocalizedText extends Map<Locale, String> {
 
   /**
-   *
    * @return all locales for which translated texts are available.
    */
   Collection<Locale> getLocales();
@@ -23,10 +25,6 @@ public interface LocalizedText {
    */
   String getText(Locale locale);
 
-  Set<Translation> getTranslations();
-
-  void setTranslations(Set<Translation> translations);
-
   /**
    * sets (means: "add" or "replace") a text with a given locale
    *
@@ -34,5 +32,4 @@ public interface LocalizedText {
    * @param text the text content
    */
   void setText(Locale locale, String text);
-
 }
