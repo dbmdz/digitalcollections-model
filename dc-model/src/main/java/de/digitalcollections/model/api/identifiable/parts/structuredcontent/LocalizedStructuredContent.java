@@ -4,7 +4,7 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * LocalizedStructuredContent is used for text content.
+ * LocalizedStructuredContent is used for formatted text content in multiple languages.
  */
 public interface LocalizedStructuredContent extends Map<Locale, StructuredContent> {
 }

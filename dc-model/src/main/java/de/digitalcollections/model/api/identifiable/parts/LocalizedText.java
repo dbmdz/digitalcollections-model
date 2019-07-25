@@ -5,7 +5,7 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * LocalizedText is used for simple text content.
+ * LocalizedText is used for unformatted text content in multiple languages.
  */
 public interface LocalizedText extends Map<Locale, String> {
 
