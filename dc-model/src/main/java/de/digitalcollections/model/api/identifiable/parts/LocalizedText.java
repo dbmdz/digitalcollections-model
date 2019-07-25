@@ -10,7 +10,6 @@ import java.util.Map;
 public interface LocalizedText extends Map<Locale, String> {
 
   /**
-   *
    * @return all locales for which translated texts are available.
    */
   Collection<Locale> getLocales();
