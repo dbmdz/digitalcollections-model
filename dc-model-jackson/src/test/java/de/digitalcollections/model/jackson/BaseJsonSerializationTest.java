@@ -35,7 +35,7 @@ public abstract class BaseJsonSerializationTest {
       LOGGER.warn(e.toString());
     }
     try {
-      assertThat(objectOut).isEqualToComparingFieldByFieldRecursively(objectIn);
+      assertThat(objectOut).usingRecursiveComparison().isEqualTo(objectIn);
     } catch (Throwable e) {
       LOGGER.error("ERR: IN=" + dump(objectIn) + "\nOUT=" + dump(objectOut) + "\n\nERROR=" + e.getClass() + "=" + e.getMessage());
       throw e;
