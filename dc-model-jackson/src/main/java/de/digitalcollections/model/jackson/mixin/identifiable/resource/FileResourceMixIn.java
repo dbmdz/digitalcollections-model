@@ -7,6 +7,7 @@ import de.digitalcollections.model.impl.identifiable.resource.ApplicationFileRes
 import de.digitalcollections.model.impl.identifiable.resource.AudioFileResourceImpl;
 import de.digitalcollections.model.impl.identifiable.resource.FileResourceImpl;
 import de.digitalcollections.model.impl.identifiable.resource.ImageFileResourceImpl;
+import de.digitalcollections.model.impl.identifiable.resource.LinkedDataFileResourceImpl;
 import de.digitalcollections.model.impl.identifiable.resource.TextFileResourceImpl;
 import de.digitalcollections.model.impl.identifiable.resource.VideoFileResourceImpl;
 
@@ -21,6 +22,7 @@ import de.digitalcollections.model.impl.identifiable.resource.VideoFileResourceI
   @JsonSubTypes.Type(value = AudioFileResourceImpl.class, name = "audio_fileresource"),
   @JsonSubTypes.Type(value = FileResourceImpl.class, name = "fileresource"),
   @JsonSubTypes.Type(value = ImageFileResourceImpl.class, name = "image_fileresource"),
+  @JsonSubTypes.Type(value = LinkedDataFileResourceImpl.class, name = "linked_data_fileresource"),
   @JsonSubTypes.Type(value = TextFileResourceImpl.class, name = "text_fileresource"),
   @JsonSubTypes.Type(value = VideoFileResourceImpl.class, name = "video_fileresource")
 })
