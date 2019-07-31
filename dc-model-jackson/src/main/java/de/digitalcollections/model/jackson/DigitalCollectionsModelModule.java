@@ -41,6 +41,7 @@ import de.digitalcollections.model.api.identifiable.resource.ApplicationFileReso
 import de.digitalcollections.model.api.identifiable.resource.AudioFileResource;
 import de.digitalcollections.model.api.identifiable.resource.FileResource;
 import de.digitalcollections.model.api.identifiable.resource.ImageFileResource;
+import de.digitalcollections.model.api.identifiable.resource.LinkedDataFileResource;
 import de.digitalcollections.model.api.identifiable.resource.MimeType;
 import de.digitalcollections.model.api.identifiable.resource.TextFileResource;
 import de.digitalcollections.model.api.identifiable.resource.VideoFileResource;
@@ -85,6 +86,7 @@ import de.digitalcollections.model.jackson.mixin.identifiable.resource.Applicati
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.AudioFileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.FileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.ImageFileResourceMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.resource.LinkedDataFileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.TextFileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.VideoFileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.legal.LicenseMixIn;
@@ -150,6 +152,7 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(IFrame.class, IFrameMixIn.class);
     context.setMixInAnnotations(ImageFileResource.class, ImageFileResourceMixIn.class);
     context.setMixInAnnotations(License.class, LicenseMixIn.class);
+    context.setMixInAnnotations(LinkedDataFileResource.class, LinkedDataFileResourceMixIn.class);
     context.setMixInAnnotations(ListItem.class, ListItemMixIn.class);
     context.setMixInAnnotations(LocalizedStructuredContent.class, LocalizedStructuredContentMixIn.class);
     context.setMixInAnnotations(LocalizedText.class, LocalizedTextMixIn.class);

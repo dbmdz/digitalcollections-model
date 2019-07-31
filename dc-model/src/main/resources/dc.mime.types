@@ -157,7 +157,7 @@ application/jsonml+json				jsonml
 # application/jwt
 # application/kpml-request+xml
 # application/kpml-response+xml
-# application/ld+json
+application/ld+json
 # application/lgr+xml
 # application/link-format
 # application/load-control+xml
