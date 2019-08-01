@@ -4,7 +4,7 @@ import java.net.URI;
 
 /**
  * This class represents a linked data file resource, referenced through an uri and specified by the context definition and the corresponding (object) type.
- * A linked data file resource can be of format JSON-LD (mimetype 'application/ld+json'), e.g. an IIIF Presentation Manifest, what is the first use case being in focus.<br>
+ * A linked data file resource can be of format JSON-LD (mimetype 'application/ld+json'), e.g. an IIIF Presentation Manifest or an Entity Facts person description, what is the first use case being in focus.<br>
  * <br>
  * JSON-LD is designed around the concept of a "context" to provide additional mappings from JSON to an RDF model.<br>
  * <br>
@@ -17,6 +17,7 @@ import java.net.URI;
  * <li><a href="https://en.wikipedia.org/wiki/JSON-LD">JSON-LD</a></li>
  * <li><a href="https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier">Internationalized Resource Identifier (IRI)</a></li>
  * <li><a href="https://iiif.io/api/presentation/2.1/">IIIF Presentation API</a></li>
+ * <li><a href="https://www.culturegraph.org/DE/Service/DigitaleDienste/EntityFacts/entityfacts_node.html">Entity Facts der Deutschen Nationalbibliothek (DNB)</a></li>
  * </ul>
  */
 public interface LinkedDataFileResource extends FileResource {
