@@ -14,7 +14,7 @@
   <packaging>jar</packaging>
 
   <properties>
-    <version.slf4j>1.7.27</version.slf4j>
+    <version.slf4j>1.7.28</version.slf4j>
     <version.spring-oxm>5.1.9.RELEASE</version.spring-oxm>
     <version.xstream>1.4.11.1</version.xstream>
 
