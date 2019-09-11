@@ -14,7 +14,7 @@
   <packaging>jar</packaging>
 
   <properties>
-    <version.commons-beanutils>1.9.3</version.commons-beanutils>
+    <version.commons-beanutils>1.9.4</version.commons-beanutils>
     <version.jackson>2.10.0.pr2</version.jackson>
     <version.slf4j>1.7.27</version.slf4j>
 
