@@ -2,16 +2,12 @@ package de.digitalcollections.model.api.security.enums;
 
 import org.springframework.security.core.GrantedAuthority;
 
-/**
- * A user's role.
- */
+/** A user's role. */
 public enum Role implements GrantedAuthority {
+  ADMIN,
+  CONTENT_MANAGER;
 
-  ADMIN, CONTENT_MANAGER;
-
-  /**
-   * Prefix needed by Spring Security
-   */
+  /** Prefix needed by Spring Security */
   public static final String PREFIX = "ROLE_";
 
   @Override

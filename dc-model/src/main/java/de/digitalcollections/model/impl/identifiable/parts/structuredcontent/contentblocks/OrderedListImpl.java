@@ -5,11 +5,9 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.Con
 
 public class OrderedListImpl extends ContentBlockNodeWithAttributesImpl implements OrderedList {
 
-  public OrderedListImpl() {
-  }
+  public OrderedListImpl() {}
 
   public OrderedListImpl(int order) {
     addAttribute("order", 1);
   }
-
 }

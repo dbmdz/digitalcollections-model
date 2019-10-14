@@ -5,12 +5,10 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.Con
 
 public class HeadingImpl extends ContentBlockNodeWithAttributesImpl implements Heading {
 
-  public HeadingImpl() {
-  }
+  public HeadingImpl() {}
 
   public HeadingImpl(int level, String text) {
     addContentBlock(new TextImpl(text));
     addAttribute("level", level);
   }
-
 }

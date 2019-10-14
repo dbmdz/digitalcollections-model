@@ -20,5 +20,4 @@ public interface TextMixIn {
 
   @JsonIgnore
   void addMark(Mark mark);
-
 }

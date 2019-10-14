@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public abstract class ContentBlockWithAttributesImpl extends ContentBlockImpl implements Attributes {
+public abstract class ContentBlockWithAttributesImpl extends ContentBlockImpl
+    implements Attributes {
 
   Map<String, Object> attributes = null;
 
@@ -58,8 +59,6 @@ public abstract class ContentBlockWithAttributesImpl extends ContentBlockImpl im
 
   @Override
   public String toString() {
-    return getClass().getSimpleName() + "{"
-            + "attributes=" + attributes
-            + '}';
+    return getClass().getSimpleName() + "{" + "attributes=" + attributes + '}';
   }
 }

@@ -5,8 +5,7 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.Con
 
 public class ListItemImpl extends ContentBlockNodeImpl implements ListItem {
 
-  public ListItemImpl() {
-  }
+  public ListItemImpl() {}
 
   public ListItemImpl(String text) {
     addContentBlock(new ParagraphImpl(text));

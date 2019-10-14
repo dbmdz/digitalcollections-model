@@ -1,13 +1,13 @@
 package de.digitalcollections.model.jackson.identifiable.parts.structuredcontent.contentblocks;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.IFrame;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.IFrameImpl;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class IFrameTest extends BaseJsonSerializationTest {
 
@@ -27,7 +27,8 @@ public class IFrameTest extends BaseJsonSerializationTest {
 
   @Test
   public void testDeserialization() throws Exception {
-    String jsonString = "{\n"
+    String jsonString =
+        "{\n"
             + "  \"type\": \"iframe\",\n"
             + "  \"attrs\": {\n"
             + "    \"src\": \"https://www.example.org/index.php?module=CoreAdminHome&amp;action=optOut&amp;language=de\",\n"
@@ -40,9 +41,9 @@ public class IFrameTest extends BaseJsonSerializationTest {
 
     assertThat(iframe).isNotNull();
     assertThat(((String) iframe.getAttribute("src")))
-            .isEqualTo("https://www.example.org/index.php?module=CoreAdminHome&amp;action=optOut&amp;language=de");
+        .isEqualTo(
+            "https://www.example.org/index.php?module=CoreAdminHome&amp;action=optOut&amp;language=de");
     assertThat(((String) iframe.getAttribute("height"))).isEqualTo("auto");
     assertThat(((String) iframe.getAttribute("width"))).isEqualTo("98%");
   }
-
 }

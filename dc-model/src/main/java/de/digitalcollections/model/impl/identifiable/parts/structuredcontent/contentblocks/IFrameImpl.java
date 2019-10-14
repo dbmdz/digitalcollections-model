@@ -5,8 +5,7 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.Con
 
 public class IFrameImpl extends ContentBlockWithAttributesImpl implements IFrame {
 
-  public IFrameImpl() {
-  }
+  public IFrameImpl() {}
 
   public IFrameImpl(String src, String width, String height) {
     super();
@@ -14,5 +13,4 @@ public class IFrameImpl extends ContentBlockWithAttributesImpl implements IFrame
     addAttribute("width", width);
     addAttribute("height", height);
   }
-
 }

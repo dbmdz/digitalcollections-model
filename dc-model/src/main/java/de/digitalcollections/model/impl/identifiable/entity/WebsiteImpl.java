@@ -7,9 +7,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 
-/**
- * see {@link Website}
- */
+/** see {@link Website} */
 public class WebsiteImpl extends EntityImpl implements Website {
 
   private LocalDate registrationDate;
@@ -61,5 +59,4 @@ public class WebsiteImpl extends EntityImpl implements Website {
   public void setRootPages(List<? extends Webpage> rootPages) {
     this.rootPages = rootPages;
   }
-
 }

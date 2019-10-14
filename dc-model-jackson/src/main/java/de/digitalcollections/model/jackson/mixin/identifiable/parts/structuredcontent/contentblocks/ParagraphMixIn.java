@@ -7,6 +7,4 @@ import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredco
 
 @JsonDeserialize(as = ParagraphImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface ParagraphMixIn extends ContentBlockNodeMixin {
-
-}
+public interface ParagraphMixIn extends ContentBlockNodeMixin {}

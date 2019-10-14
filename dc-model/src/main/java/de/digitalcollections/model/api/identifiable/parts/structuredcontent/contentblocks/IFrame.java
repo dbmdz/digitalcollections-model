@@ -2,6 +2,4 @@ package de.digitalcollections.model.api.identifiable.parts.structuredcontent.con
 
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.ContentBlock;
 
-public interface IFrame extends ContentBlock, Attributes {
-
-}
+public interface IFrame extends ContentBlock, Attributes {}

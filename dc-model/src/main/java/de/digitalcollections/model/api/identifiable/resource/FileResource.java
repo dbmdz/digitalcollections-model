@@ -5,10 +5,9 @@ import de.digitalcollections.model.api.legal.License;
 import java.net.URI;
 
 /**
- * A FileResource (source) describes any file, regardless of its physical
- * location, used storage technology or required display means (aka "Viewer"). A
- * FileResource can e.g. include an image, a video file, an XML document, or a
- * JSON file.
+ * A FileResource (source) describes any file, regardless of its physical location, used storage
+ * technology or required display means (aka "Viewer"). A FileResource can e.g. include an image, a
+ * video file, an XML document, or a JSON file.
  */
 public interface FileResource extends Identifiable {
 
@@ -37,5 +36,4 @@ public interface FileResource extends Identifiable {
   URI getUri();
 
   void setUri(URI uri);
-
 }

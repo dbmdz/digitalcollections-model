@@ -1,5 +1,7 @@
 package de.digitalcollections.model.jackson.identifiable.parts;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
 import de.digitalcollections.model.impl.identifiable.parts.LocalizedTextImpl;
@@ -9,13 +11,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class LocalizedTextTest extends BaseJsonSerializationTest {
 
-  private static final String JSON = "{\n"
-                                     + "\"it_IT\": \"Buon Giorno!\"\n"
-                                     + "}";
+  private static final String JSON = "{\n" + "\"it_IT\": \"Buon Giorno!\"\n" + "}";
 
   private static LocalizedText localizedText;
   private ObjectMapper mapper;

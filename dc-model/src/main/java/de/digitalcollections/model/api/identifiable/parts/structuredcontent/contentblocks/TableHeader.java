@@ -2,6 +2,4 @@ package de.digitalcollections.model.api.identifiable.parts.structuredcontent.con
 
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.ContentBlockNode;
 
-public interface TableHeader extends ContentBlockNode, Attributes {
-
-}
+public interface TableHeader extends ContentBlockNode, Attributes {}

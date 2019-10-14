@@ -14,5 +14,4 @@ public interface Text extends ContentBlock {
   void setMarks(List<Mark> marks);
 
   void addMark(Mark mark);
-
 }

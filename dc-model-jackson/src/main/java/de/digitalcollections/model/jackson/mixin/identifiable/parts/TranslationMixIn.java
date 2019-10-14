@@ -6,6 +6,4 @@ import de.digitalcollections.model.impl.identifiable.parts.TranslationImpl;
 
 @JsonDeserialize(as = TranslationImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface TranslationMixIn {
-
-}
+public interface TranslationMixIn {}

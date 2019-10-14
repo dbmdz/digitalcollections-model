@@ -12,18 +12,17 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class PageResponseMixIn<T> extends PageResponseImpl<T> {
 
-//  @JsonCreator
-//  public PageResponseMixIn(
-//          @JsonProperty("content") List<T> content,
-//          @JsonProperty("pageRequest") PageRequest pageRequest,
-//          @JsonProperty("totalElements") long totalElements) {
-//    super(content, pageRequest, totalElements);
-//  }
+  //  @JsonCreator
+  //  public PageResponseMixIn(
+  //          @JsonProperty("content") List<T> content,
+  //          @JsonProperty("pageRequest") PageRequest pageRequest,
+  //          @JsonProperty("totalElements") long totalElements) {
+  //    super(content, pageRequest, totalElements);
+  //  }
   @JsonTypeInfo(
-          use = JsonTypeInfo.Id.CLASS,
-          include = JsonTypeInfo.As.WRAPPER_OBJECT,
-          visible = true
-  )
+      use = JsonTypeInfo.Id.CLASS,
+      include = JsonTypeInfo.As.WRAPPER_OBJECT,
+      visible = true)
   @Override
   public abstract List<T> getContent();
 
@@ -43,9 +42,9 @@ public abstract class PageResponseMixIn<T> extends PageResponseImpl<T> {
   @Override
   public abstract Sorting getSorting();
 
-//  @JsonIgnore
-//  @Override
-//  public abstract long getTotalElements();
+  //  @JsonIgnore
+  //  @Override
+  //  public abstract long getTotalElements();
   @JsonIgnore
   @Override
   public abstract int getTotalPages();

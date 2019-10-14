@@ -4,19 +4,13 @@ import java.util.Collection;
 import java.util.Locale;
 import java.util.Map;
 
-/**
- * LocalizedText is used for unformatted text content in multiple languages.
- */
+/** LocalizedText is used for unformatted text content in multiple languages. */
 public interface LocalizedText extends Map<Locale, String> {
 
-  /**
-   * @return all locales for which translated texts are available.
-   */
+  /** @return all locales for which translated texts are available. */
   Collection<Locale> getLocales();
 
-  /**
-   * @return first found text
-   */
+  /** @return first found text */
   String getText();
 
   /**

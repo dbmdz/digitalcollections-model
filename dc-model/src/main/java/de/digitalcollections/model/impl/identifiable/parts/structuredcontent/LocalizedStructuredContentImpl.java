@@ -5,7 +5,8 @@ import de.digitalcollections.model.api.identifiable.parts.structuredcontent.Stru
 import java.util.HashMap;
 import java.util.Locale;
 
-public class LocalizedStructuredContentImpl extends HashMap<Locale, StructuredContent> implements LocalizedStructuredContent {
+public class LocalizedStructuredContentImpl extends HashMap<Locale, StructuredContent>
+    implements LocalizedStructuredContent {
 
   public LocalizedStructuredContentImpl() {
     super();

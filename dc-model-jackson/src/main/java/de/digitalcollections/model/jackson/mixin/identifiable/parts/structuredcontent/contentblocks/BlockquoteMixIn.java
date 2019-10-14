@@ -7,6 +7,4 @@ import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredco
 
 @JsonDeserialize(as = BlockquoteImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface BlockquoteMixIn extends ContentBlockNodeMixin {
-
-}
+public interface BlockquoteMixIn extends ContentBlockNodeMixin {}

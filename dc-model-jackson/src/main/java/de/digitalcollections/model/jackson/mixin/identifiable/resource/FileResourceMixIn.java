@@ -12,10 +12,10 @@ import de.digitalcollections.model.impl.identifiable.resource.TextFileResourceIm
 import de.digitalcollections.model.impl.identifiable.resource.VideoFileResourceImpl;
 
 @JsonTypeInfo(
-        use = JsonTypeInfo.Id.NAME,
-        include = JsonTypeInfo.As.PROPERTY,
-        property = "fileresourceType",
-        visible = true)
+    use = JsonTypeInfo.Id.NAME,
+    include = JsonTypeInfo.As.PROPERTY,
+    property = "fileresourceType",
+    visible = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = ApplicationFileResourceImpl.class, name = "application_fileresource"),
@@ -26,6 +26,4 @@ import de.digitalcollections.model.impl.identifiable.resource.VideoFileResourceI
   @JsonSubTypes.Type(value = TextFileResourceImpl.class, name = "text_fileresource"),
   @JsonSubTypes.Type(value = VideoFileResourceImpl.class, name = "video_fileresource")
 })
-public interface FileResourceMixIn {
-
-}
+public interface FileResourceMixIn {}

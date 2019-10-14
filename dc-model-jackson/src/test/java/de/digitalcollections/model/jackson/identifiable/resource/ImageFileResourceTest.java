@@ -14,5 +14,4 @@ public class ImageFileResourceTest extends BaseJsonSerializationTest {
 
     checkSerializeDeserialize(image);
   }
-
 }

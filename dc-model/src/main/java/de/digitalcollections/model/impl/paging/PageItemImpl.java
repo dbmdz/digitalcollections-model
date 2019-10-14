@@ -24,10 +24,6 @@ public class PageItemImpl implements PageItem {
 
   @Override
   public String toString() {
-    return "PageItemImpl{"
-            + "number=" + number
-            + ", current=" + current
-            + '}';
+    return "PageItemImpl{" + "number=" + number + ", current=" + current + '}';
   }
-
 }

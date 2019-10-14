@@ -8,6 +8,4 @@ import de.digitalcollections.model.impl.identifiable.entity.parts.ContentNodeImp
 @JsonDeserialize(as = ContentNodeImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("contentNode")
-public interface ContentNodeMixIn {
-
-}
+public interface ContentNodeMixIn {}

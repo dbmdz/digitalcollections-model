@@ -17,6 +17,7 @@ public class PagingInfoImpl implements PagingInfo {
 
   /**
    * PagingInfo
+   *
    * @param totalItems total number of items to be paged
    * @param currentPage number of the current page, starting with 0
    * @param totalPages maximum page number
@@ -24,7 +25,13 @@ public class PagingInfoImpl implements PagingInfo {
    * @param pageSize page size
    * @param url base url
    */
-  public PagingInfoImpl(long totalItems, int currentPage, int totalPages, int maxPageItemsToDisplay, int pageSize, String url) {
+  public PagingInfoImpl(
+      long totalItems,
+      int currentPage,
+      int totalPages,
+      int maxPageItemsToDisplay,
+      int pageSize,
+      String url) {
     this.totalItems = totalItems;
     this.totalPages = totalPages;
     this.maxPageItemsToDisplay = maxPageItemsToDisplay;
@@ -103,19 +110,26 @@ public class PagingInfoImpl implements PagingInfo {
   @Override
   public boolean hasNextPage() {
     return currentNumber < totalPages;
-
   }
 
   @Override
   public String toString() {
     return "PagingInfoImpl{"
-            + "maxPageItemsToDisplay=" + maxPageItemsToDisplay
-            + ", items=" + items
-            + ", currentNumber=" + currentNumber
-            + ", totalItems=" + totalItems
-            + ", totalPages=" + totalPages
-            + ", pageSize=" + pageSize
-            + ", url='" + url + '\''
-            + '}';
+        + "maxPageItemsToDisplay="
+        + maxPageItemsToDisplay
+        + ", items="
+        + items
+        + ", currentNumber="
+        + currentNumber
+        + ", totalItems="
+        + totalItems
+        + ", totalPages="
+        + totalPages
+        + ", pageSize="
+        + pageSize
+        + ", url='"
+        + url
+        + '\''
+        + '}';
   }
 }

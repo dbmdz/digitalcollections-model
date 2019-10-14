@@ -2,8 +2,7 @@ package de.digitalcollections.model.api.identifiable.resource.exceptions;
 
 public class ResourceNotFoundException extends Exception {
 
-  public ResourceNotFoundException() {
-  }
+  public ResourceNotFoundException() {}
 
   public ResourceNotFoundException(String message) {
     super(message);

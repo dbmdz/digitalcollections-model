@@ -8,6 +8,4 @@ import de.digitalcollections.model.impl.identifiable.entity.parts.WebpageImpl;
 @JsonDeserialize(as = WebpageImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("webpage")
-public interface WebpageMixIn {
-
-}
+public interface WebpageMixIn {}

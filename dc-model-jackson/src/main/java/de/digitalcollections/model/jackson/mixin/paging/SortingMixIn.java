@@ -6,6 +6,4 @@ import de.digitalcollections.model.impl.paging.SortingImpl;
 
 @JsonDeserialize(as = SortingImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public abstract class SortingMixIn {
-
-}
+public abstract class SortingMixIn {}

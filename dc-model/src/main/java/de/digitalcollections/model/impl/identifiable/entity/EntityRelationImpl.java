@@ -9,9 +9,7 @@ public class EntityRelationImpl implements EntityRelation<Entity> {
   private String predicate;
   private Entity subject;
 
-  public EntityRelationImpl() {
-
-  }
+  public EntityRelationImpl() {}
 
   public EntityRelationImpl(Entity subject, String predicate, Entity object) {
     this.subject = subject;
@@ -48,5 +46,4 @@ public class EntityRelationImpl implements EntityRelation<Entity> {
   public void setSubject(Entity subjectEntity) {
     this.subject = subjectEntity;
   }
-
 }

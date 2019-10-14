@@ -32,5 +32,4 @@ public class CdataXppDriver extends XppDriver {
       }
     };
   }
-
 }

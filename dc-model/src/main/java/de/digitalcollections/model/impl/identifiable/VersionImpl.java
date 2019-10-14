@@ -15,9 +15,7 @@ public class VersionImpl implements Version {
   String instanceKey;
   String instanceVersionKey;
 
-  public VersionImpl() {
-  }
-
+  public VersionImpl() {}
 
   @Override
   public UUID getUuid() {
@@ -102,12 +100,22 @@ public class VersionImpl implements Version {
   @Override
   public String toString() {
     return "VersionImpl{"
-           + "uuid=" + uuid
-           + ", value=" + versionValue
-           + ", status='" + status + '\''
-           + ", typeKey='" + typeKey + '\''
-           + ", instanceKey='" + instanceKey + '\''
-           + ", instanceVersionKey='" + instanceVersionKey + '\''
-           + '}';
+        + "uuid="
+        + uuid
+        + ", value="
+        + versionValue
+        + ", status='"
+        + status
+        + '\''
+        + ", typeKey='"
+        + typeKey
+        + '\''
+        + ", instanceKey='"
+        + instanceKey
+        + '\''
+        + ", instanceVersionKey='"
+        + instanceVersionKey
+        + '\''
+        + '}';
   }
 }

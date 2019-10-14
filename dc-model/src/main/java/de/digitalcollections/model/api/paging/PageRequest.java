@@ -3,8 +3,8 @@ package de.digitalcollections.model.api.paging;
 import de.digitalcollections.model.impl.paging.PageRequestImpl;
 
 /**
- * Abstract interface for pagination information.
- * See Spring Data Commons, but more flat design and independent of Spring libraries.
+ * Abstract interface for pagination information. See Spring Data Commons, but more flat design and
+ * independent of Spring libraries.
  */
 public interface PageRequest {
 
@@ -44,9 +44,11 @@ public interface PageRequest {
   PageRequest next();
 
   /**
-   * Returns the previous {@link PageRequest} or the first {@link PageRequest} if the current one already is the first one.
+   * Returns the previous {@link PageRequest} or the first {@link PageRequest} if the current one
+   * already is the first one.
    *
-   * @return the previous PageRequest or the first PageRequest if the current one already is the first one
+   * @return the previous PageRequest or the first PageRequest if the current one already is the
+   *     first one
    */
   PageRequest previousOrFirst();
 
@@ -58,7 +60,9 @@ public interface PageRequest {
   PageRequest first();
 
   /**
-   * Returns whether there's a previous {@link PageRequest} we can access from the current one. Will return {@literal false} in case the current {@link PageRequest} already refers to the first page.
+   * Returns whether there's a previous {@link PageRequest} we can access from the current one. Will
+   * return {@literal false} in case the current {@link PageRequest} already refers to the first
+   * page.
    *
    * @return whether there's a previous PageRequest
    */

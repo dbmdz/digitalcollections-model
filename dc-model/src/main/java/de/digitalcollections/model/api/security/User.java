@@ -5,9 +5,7 @@ import java.util.List;
 import java.util.UUID;
 import org.springframework.security.core.GrantedAuthority;
 
-/**
- * An user of the system.
- */
+/** An user of the system. */
 public interface User {
 
   String getEmail();

@@ -1,14 +1,12 @@
 package de.digitalcollections.model.impl.identifiable.resource;
 
-import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.Test;
 
 public class FileResourceImplTest {
 
-  /**
-   * Test of getFilenameExtension method, of class FileResourceImpl.
-   */
+  /** Test of getFilenameExtension method, of class FileResourceImpl. */
   @Test
   public void testGetFilenameExtension() {
     FileResourceImpl instance = new ImageFileResourceImpl();

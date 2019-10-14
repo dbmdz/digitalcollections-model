@@ -41,5 +41,4 @@ public class MapToFlatConverter extends MapConverter {
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     return null;
   }
-
 }

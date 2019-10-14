@@ -1,8 +1,6 @@
 package de.digitalcollections.model.api.filter;
 
-/**
- * A facet value of a specific facet, e.g. value "image" of facet "mediatype"
- */
+/** A facet value of a specific facet, e.g. value "image" of facet "mediatype" */
 public interface FacetListItem {
 
   String getName();
@@ -20,5 +18,4 @@ public interface FacetListItem {
   boolean isSelected();
 
   void setSelected(boolean selected);
-
 }

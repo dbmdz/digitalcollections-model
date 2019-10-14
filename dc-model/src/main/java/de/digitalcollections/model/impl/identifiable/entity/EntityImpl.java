@@ -13,7 +13,7 @@ public class EntityImpl extends IdentifiableImpl implements Entity {
     super();
     this.type = IdentifiableType.ENTITY;
   }
-  
+
   @Override
   public EntityType getEntityType() {
     return entityType;

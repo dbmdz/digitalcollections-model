@@ -5,6 +5,7 @@ import de.digitalcollections.model.api.identifiable.parts.structuredcontent.Loca
 
 /**
  * A Webpage.
+ *
  * @param <W> a webpage instance
  */
 public interface Webpage<W extends Webpage> extends Node<W>, EntityPart {

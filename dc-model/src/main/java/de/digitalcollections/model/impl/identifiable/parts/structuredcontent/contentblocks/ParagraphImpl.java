@@ -5,11 +5,9 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.Con
 
 public class ParagraphImpl extends ContentBlockNodeImpl implements Paragraph {
 
-  public ParagraphImpl() {
-  }
+  public ParagraphImpl() {}
 
   public ParagraphImpl(String text) {
     addContentBlock(new TextImpl(text));
   }
-
 }

@@ -11,5 +11,4 @@ public interface Attributes {
   void addAttribute(String key, Object value);
 
   Object getAttribute(String key);
-
 }

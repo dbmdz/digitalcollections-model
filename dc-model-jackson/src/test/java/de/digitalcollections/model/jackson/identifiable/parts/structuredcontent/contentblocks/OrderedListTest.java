@@ -1,5 +1,7 @@
 package de.digitalcollections.model.jackson.identifiable.parts.structuredcontent.contentblocks;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.ListItem;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.OrderedList;
@@ -14,8 +16,6 @@ import java.util.HashMap;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class OrderedListTest extends BaseJsonSerializationTest {
 
@@ -57,7 +57,8 @@ public class OrderedListTest extends BaseJsonSerializationTest {
 
   @Test
   public void testDeserializationWithContents() throws Exception {
-    String jsonString = "{\n"
+    String jsonString =
+        "{\n"
             + "  \"type\": \"ordered_list\",\n"
             + "  \"attrs\": {\"order\": 1},\n"
             + "  \"content\": [\n"
@@ -128,5 +129,4 @@ public class OrderedListTest extends BaseJsonSerializationTest {
     attributes.put("order", 1);
     assertThat(orderedList.getAttributes()).isEqualTo(attributes);
   }
-
 }

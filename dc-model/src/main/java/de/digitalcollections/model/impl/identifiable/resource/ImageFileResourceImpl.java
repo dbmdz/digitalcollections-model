@@ -26,5 +26,4 @@ public class ImageFileResourceImpl extends FileResourceImpl implements ImageFile
   public void setHeight(int height) {
     this.height = height;
   }
-
 }

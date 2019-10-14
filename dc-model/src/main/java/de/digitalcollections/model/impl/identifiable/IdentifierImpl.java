@@ -11,8 +11,7 @@ public class IdentifierImpl implements Identifier, Serializable {
   private String namespace;
   private UUID uuid;
 
-  public IdentifierImpl() {
-  }
+  public IdentifierImpl() {}
 
   public IdentifierImpl(UUID identifiable, String namespace, String id) {
     this.id = id;

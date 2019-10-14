@@ -123,5 +123,4 @@ public class IdentifiableImpl implements Identifiable {
   public void setUuid(UUID uuid) {
     this.uuid = uuid;
   }
-
 }

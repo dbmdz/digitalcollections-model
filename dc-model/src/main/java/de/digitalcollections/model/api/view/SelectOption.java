@@ -1,8 +1,6 @@
 package de.digitalcollections.model.api.view;
 
-/**
- * A List item with an identifier, a title, a sub title, a link and a flag for being selected
- */
+/** A List item with an identifier, a title, a sub title, a link and a flag for being selected */
 public interface SelectOption {
 
   String getId();
@@ -24,5 +22,4 @@ public interface SelectOption {
   boolean isSelected();
 
   void setSelected(boolean selected);
-
 }

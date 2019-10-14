@@ -8,6 +8,4 @@ import de.digitalcollections.model.impl.security.UserImpl;
 @JsonDeserialize(as = UserImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("user")
-public interface UserMixIn {
-
-}
+public interface UserMixIn {}

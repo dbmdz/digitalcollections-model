@@ -9,16 +9,16 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * SortingImpl option for queries. You have to provide at least a list of properties to sort for that must not include
- * {@literal null} or empty strings. The direction defaults to {@link Sorting#DEFAULT_DIRECTION}.
- * See Spring Data Commons, but more flat design and independent of Spring libraries.
+ * SortingImpl option for queries. You have to provide at least a list of properties to sort for
+ * that must not include {@literal null} or empty strings. The direction defaults to {@link
+ * Sorting#DEFAULT_DIRECTION}. See Spring Data Commons, but more flat design and independent of
+ * Spring libraries.
  */
 public class SortingImpl implements Sorting {
 
   private List<Order> orders;
 
-  public SortingImpl() {
-  }
+  public SortingImpl() {}
 
   public List<Order> getOrders() {
     return orders;
@@ -45,7 +45,8 @@ public class SortingImpl implements Sorting {
   public SortingImpl(List<Order> orders) {
 
     if (null == orders || orders.isEmpty()) {
-      throw new IllegalArgumentException("You have to provide at least one sort property to sort by!");
+      throw new IllegalArgumentException(
+          "You have to provide at least one sort property to sort by!");
     }
 
     this.orders = orders;
@@ -64,7 +65,8 @@ public class SortingImpl implements Sorting {
    * Creates a new {@link Sorting} instance.
    *
    * @param direction defaults to {@link Sorting#DEFAULT_DIRECTION} (for {@literal null} cases, too)
-   * @param properties must not be {@literal null}, empty or contain {@literal null} or empty strings.
+   * @param properties must not be {@literal null}, empty or contain {@literal null} or empty
+   *     strings.
    */
   public SortingImpl(Direction direction, String... properties) {
     this(direction, properties == null ? new ArrayList<String>() : Arrays.asList(properties));
@@ -90,8 +92,8 @@ public class SortingImpl implements Sorting {
   }
 
   /**
-   * Returns a new {@link SortingImpl} consisting of the {@link Order}s of the current {@link SortingImpl} combined with the given
-   * ones.
+   * Returns a new {@link SortingImpl} consisting of the {@link Order}s of the current {@link
+   * SortingImpl} combined with the given ones.
    *
    * @param sort can be {@literal null}.
    * @return a new combined sort

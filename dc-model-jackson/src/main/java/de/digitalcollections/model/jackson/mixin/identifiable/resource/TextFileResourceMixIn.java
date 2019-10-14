@@ -6,6 +6,4 @@ import de.digitalcollections.model.impl.identifiable.resource.TextFileResourceIm
 
 @JsonDeserialize(as = TextFileResourceImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface TextFileResourceMixIn {
-
-}
+public interface TextFileResourceMixIn {}
