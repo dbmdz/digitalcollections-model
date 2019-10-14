@@ -12,9 +12,11 @@ import de.digitalcollections.model.api.identifiable.IdentifierType;
 import de.digitalcollections.model.api.identifiable.entity.Article;
 import de.digitalcollections.model.api.identifiable.entity.Collection;
 import de.digitalcollections.model.api.identifiable.entity.ContentTree;
+import de.digitalcollections.model.api.identifiable.entity.Corporation;
 import de.digitalcollections.model.api.identifiable.entity.DigitalObject;
 import de.digitalcollections.model.api.identifiable.entity.Entity;
 import de.digitalcollections.model.api.identifiable.entity.EntityRelation;
+import de.digitalcollections.model.api.identifiable.entity.Project;
 import de.digitalcollections.model.api.identifiable.entity.Website;
 import de.digitalcollections.model.api.identifiable.entity.parts.ContentNode;
 import de.digitalcollections.model.api.identifiable.entity.parts.Webpage;
@@ -57,9 +59,11 @@ import de.digitalcollections.model.jackson.mixin.identifiable.VersionMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.ArticleMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.CollectionMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.ContentTreeMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.CorporationMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.DigitalObjectMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.EntityMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.EntityRelationMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.ProjectMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.WebsiteMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.parts.ContentNodeMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.parts.WebpageMixIn;
@@ -110,7 +114,8 @@ public class DigitalCollectionsModelModule extends SimpleModule {
 
     // Just use MimeType's getTypeName and String constructor for serializing/deserializing it
     addSerializer(new StdDelegatingSerializer(MimeType.class, toString(MimeType::getTypeName)));
-    addDeserializer(MimeType.class, new StdDelegatingDeserializer<>(fromString(MimeType::fromTypename)));
+    addDeserializer(
+        MimeType.class, new StdDelegatingDeserializer<>(fromString(MimeType::fromTypename)));
   }
 
   @Override
@@ -121,9 +126,9 @@ public class DigitalCollectionsModelModule extends SimpleModule {
   @Override
   public Version version() {
     return VersionUtil.parseVersion(
-      rb.getString("project.version"),
-      rb.getString("project.groupId"),
-      rb.getString("project.artifactId"));
+        rb.getString("project.version"),
+        rb.getString("project.groupId"),
+        rb.getString("project.artifactId"));
   }
 
   @Override
@@ -142,6 +147,7 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(ContentBlock.class, ContentBlockMixIn.class);
     context.setMixInAnnotations(ContentNode.class, ContentNodeMixIn.class);
     context.setMixInAnnotations(ContentTree.class, ContentTreeMixIn.class);
+    context.setMixInAnnotations(Corporation.class, CorporationMixIn.class);
     context.setMixInAnnotations(DigitalObject.class, DigitalObjectMixIn.class);
     context.setMixInAnnotations(Entity.class, EntityMixIn.class);
     context.setMixInAnnotations(EntityRelation.class, EntityRelationMixIn.class);
@@ -154,7 +160,8 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(License.class, LicenseMixIn.class);
     context.setMixInAnnotations(LinkedDataFileResource.class, LinkedDataFileResourceMixIn.class);
     context.setMixInAnnotations(ListItem.class, ListItemMixIn.class);
-    context.setMixInAnnotations(LocalizedStructuredContent.class, LocalizedStructuredContentMixIn.class);
+    context.setMixInAnnotations(
+        LocalizedStructuredContent.class, LocalizedStructuredContentMixIn.class);
     context.setMixInAnnotations(LocalizedText.class, LocalizedTextMixIn.class);
     context.setMixInAnnotations(Mark.class, MarkMixIn.class);
     context.setMixInAnnotations(Order.class, OrderMixIn.class);
@@ -162,6 +169,7 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(PageRequest.class, PageRequestMixIn.class);
     context.setMixInAnnotations(PageResponse.class, PageResponseMixIn.class);
     context.setMixInAnnotations(Paragraph.class, ParagraphMixIn.class);
+    context.setMixInAnnotations(Project.class, ProjectMixIn.class);
     context.setMixInAnnotations(Sorting.class, SortingMixIn.class);
     context.setMixInAnnotations(StructuredContent.class, StructuredContentMixIn.class);
     context.setMixInAnnotations(Table.class, TableMixIn.class);
@@ -172,15 +180,14 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(TextFileResource.class, TextFileResourceMixIn.class);
     context.setMixInAnnotations(Translation.class, TranslationMixIn.class);
     context.setMixInAnnotations(User.class, UserMixIn.class);
-    context.setMixInAnnotations(de.digitalcollections.model.api.identifiable.Version.class, VersionMixIn.class);
+    context.setMixInAnnotations(
+        de.digitalcollections.model.api.identifiable.Version.class, VersionMixIn.class);
     context.setMixInAnnotations(VideoFileResource.class, VideoFileResourceMixIn.class);
     context.setMixInAnnotations(Webpage.class, WebpageMixIn.class);
     context.setMixInAnnotations(Website.class, WebsiteMixIn.class);
   }
 
-  /**
-   * Helper function to create Converter from lambda *
-   */
+  /** Helper function to create Converter from lambda * */
   private <T> Converter<String, T> fromString(Function<String, ? extends T> fun) {
     return new StdConverter<String, T>() {
       @Override
@@ -190,9 +197,7 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     };
   }
 
-  /**
-   * Helper function to create Converter from lambda *
-   */
+  /** Helper function to create Converter from lambda * */
   private <T> Converter<T, String> toString(Function<T, String> fun) {
     return new StdConverter<T, String>() {
       @Override

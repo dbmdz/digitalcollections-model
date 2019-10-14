@@ -4,14 +4,15 @@ import de.digitalcollections.model.api.identifiable.parts.structuredcontent.Loca
 import java.net.URL;
 
 /**
- * Corporation is used to describe a (business) corporation (like a project partner or organization).
+ * Corporation is used to describe a (business) corporation (like a project partner or
+ * organization). See also https://schema.org/Corporation (Thing - Organization - Corporation)
  */
 public interface Corporation extends Entity {
 
   /** @return localized formatted text describing corporation */
   LocalizedStructuredContent getText();
 
-  /** @param text set localized formatted text describing corporation*/
+  /** @param text set localized formatted text describing corporation */
   void setText(LocalizedStructuredContent text);
 
   /** @return URL to homepage of corporation */

@@ -4,14 +4,15 @@ import de.digitalcollections.model.api.identifiable.parts.structuredcontent.Loca
 import java.time.LocalDate;
 
 /**
- * Project is used to describe a project (like a digitization project or an electronic publishing project).
+ * Project is used to describe a project (like a digitization project or an electronic publishing
+ * project). See also https://schema.org/Project (Thing - Organization - Project)
  */
 public interface Project extends Entity {
 
   /** @return localized formatted text describing project */
   LocalizedStructuredContent getText();
 
-  /** @param text set localized formatted text describing project*/
+  /** @param text set localized formatted text describing project */
   void setText(LocalizedStructuredContent text);
 
   /** @return date when project was started */
