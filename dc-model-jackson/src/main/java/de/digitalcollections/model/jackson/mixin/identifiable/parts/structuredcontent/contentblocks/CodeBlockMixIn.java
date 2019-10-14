@@ -7,6 +7,4 @@ import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredco
 
 @JsonDeserialize(as = CodeBlockImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface CodeBlockMixIn extends ContentBlockNodeMixin {
-
-}
+public interface CodeBlockMixIn extends ContentBlockNodeMixin {}

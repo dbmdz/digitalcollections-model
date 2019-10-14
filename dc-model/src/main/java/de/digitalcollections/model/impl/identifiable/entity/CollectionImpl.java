@@ -59,5 +59,4 @@ public class CollectionImpl extends EntityImpl implements Collection {
   public void setEntities(List<Entity> entities) {
     this.entities = entities;
   }
-
 }

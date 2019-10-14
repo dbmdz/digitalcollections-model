@@ -17,7 +17,8 @@ public class HighlightingRectangleImpl implements HighlightingRectangle {
 
   private final String text;
 
-  public HighlightingRectangleImpl(String text, int ref, double ulx, double uly, double lrx, double lry) {
+  public HighlightingRectangleImpl(
+      String text, int ref, double ulx, double uly, double lrx, double lry) {
     this.ulx = ulx;
     this.uly = uly;
     this.lrx = lrx;
@@ -59,22 +60,41 @@ public class HighlightingRectangleImpl implements HighlightingRectangle {
   @Override
   public String toString() {
     return "HighlightingRectangleImpl{"
-        + "text='" + text + '\''
-        + ", ulx=" + ulx
-        + ", uly=" + uly
-        + ", lrx=" + lrx
-        + ", lry=" + lry
-        + ", ref=" + ref
+        + "text='"
+        + text
+        + '\''
+        + ", ulx="
+        + ulx
+        + ", uly="
+        + uly
+        + ", lrx="
+        + lrx
+        + ", lry="
+        + lry
+        + ", ref="
+        + ref
         + '}';
   }
 
   @Override
   public int hashCode() {
     int hash = 5;
-    hash = 31 * hash + (int) (Double.doubleToLongBits(this.ulx) ^ (Double.doubleToLongBits(this.ulx) >>> 32));
-    hash = 31 * hash + (int) (Double.doubleToLongBits(this.uly) ^ (Double.doubleToLongBits(this.uly) >>> 32));
-    hash = 31 * hash + (int) (Double.doubleToLongBits(this.lrx) ^ (Double.doubleToLongBits(this.lrx) >>> 32));
-    hash = 31 * hash + (int) (Double.doubleToLongBits(this.lry) ^ (Double.doubleToLongBits(this.lry) >>> 32));
+    hash =
+        31 * hash
+            + (int)
+                (Double.doubleToLongBits(this.ulx) ^ (Double.doubleToLongBits(this.ulx) >>> 32));
+    hash =
+        31 * hash
+            + (int)
+                (Double.doubleToLongBits(this.uly) ^ (Double.doubleToLongBits(this.uly) >>> 32));
+    hash =
+        31 * hash
+            + (int)
+                (Double.doubleToLongBits(this.lrx) ^ (Double.doubleToLongBits(this.lrx) >>> 32));
+    hash =
+        31 * hash
+            + (int)
+                (Double.doubleToLongBits(this.lry) ^ (Double.doubleToLongBits(this.lry) >>> 32));
     hash = 31 * hash + this.ref;
     hash = 31 * hash + Objects.hashCode(this.text);
     return hash;
@@ -109,5 +129,4 @@ public class HighlightingRectangleImpl implements HighlightingRectangle {
     }
     return Objects.equals(this.text, other.getText());
   }
-
 }

@@ -8,6 +8,4 @@ import de.digitalcollections.model.impl.identifiable.entity.CollectionImpl;
 @JsonDeserialize(as = CollectionImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("COLLECTION")
-public interface CollectionMixIn {
-
-}
+public interface CollectionMixIn {}

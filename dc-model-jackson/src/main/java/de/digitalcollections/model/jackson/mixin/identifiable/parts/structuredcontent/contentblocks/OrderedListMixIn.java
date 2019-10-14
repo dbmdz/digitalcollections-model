@@ -7,6 +7,4 @@ import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredco
 
 @JsonDeserialize(as = OrderedListImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface OrderedListMixIn extends ContentBlockNodeMixin, AttributesMixIn {
-
-}
+public interface OrderedListMixIn extends ContentBlockNodeMixin, AttributesMixIn {}

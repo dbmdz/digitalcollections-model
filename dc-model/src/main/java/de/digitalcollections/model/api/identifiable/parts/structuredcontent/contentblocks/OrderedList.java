@@ -2,7 +2,4 @@ package de.digitalcollections.model.api.identifiable.parts.structuredcontent.con
 
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.ContentBlockNode;
 
-public interface OrderedList extends ContentBlockNode, Attributes {
-
-
-}
+public interface OrderedList extends ContentBlockNode, Attributes {}

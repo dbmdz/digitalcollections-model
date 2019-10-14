@@ -2,6 +2,4 @@ package de.digitalcollections.model.api.identifiable.parts.structuredcontent.con
 
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.ContentBlockNode;
 
-public interface Blockquote extends ContentBlockNode {
-
-}
+public interface Blockquote extends ContentBlockNode {}

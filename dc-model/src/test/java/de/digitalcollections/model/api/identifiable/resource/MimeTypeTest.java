@@ -1,9 +1,9 @@
 package de.digitalcollections.model.api.identifiable.resource;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.net.URI;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class MimeTypeTest {
 
@@ -39,7 +39,10 @@ public class MimeTypeTest {
 
   @Test
   public void testEquals() throws Exception {
-    MimeType mime = MimeType.fromURI(URI.create("file:/bsbstruc/content/bsb_content0009/bsb00092995/xml/standard/2.2/bsb00092995_page.xml"));
+    MimeType mime =
+        MimeType.fromURI(
+            URI.create(
+                "file:/bsbstruc/content/bsb_content0009/bsb00092995/xml/standard/2.2/bsb00092995_page.xml"));
     assertThat(mime.matches(MimeType.MIME_APPLICATION_XML)).isTrue();
   }
 

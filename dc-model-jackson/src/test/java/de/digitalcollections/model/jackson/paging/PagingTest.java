@@ -29,6 +29,5 @@ public class PagingTest extends BaseJsonSerializationTest {
     pageResponse.setPageRequest(pageRequest);
 
     checkSerializeDeserialize(pageResponse);
-
   }
 }

@@ -1,5 +1,7 @@
 package de.digitalcollections.model.jackson.identifiable.parts.structuredcontent.contentblocks;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Mark;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.MarkImpl;
@@ -8,8 +10,6 @@ import java.util.HashMap;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class MarkTest extends BaseJsonSerializationTest {
 
@@ -46,9 +46,7 @@ public class MarkTest extends BaseJsonSerializationTest {
 
   @Test
   public void testDeserialization() throws Exception {
-    String jsonString = "{\n"
-            + "          \"type\": \"em\"\n"
-            + "        }";
+    String jsonString = "{\n" + "          \"type\": \"em\"\n" + "        }";
 
     Mark mark = mapper.readValue(jsonString, Mark.class);
     assertThat(mark).isNotNull();
@@ -57,7 +55,8 @@ public class MarkTest extends BaseJsonSerializationTest {
 
   @Test
   public void testDeserializationWithAttributes() throws Exception {
-    String jsonString = "{\n"
+    String jsonString =
+        "{\n"
             + "          \"type\": \"link\",\n"
             + "          \"attrs\": {\n"
             + "             \"href\": \"https://www.example.org/\",\n"
@@ -73,5 +72,4 @@ public class MarkTest extends BaseJsonSerializationTest {
     expectedAttributes.put("title", null);
     assertThat(mark.getAttributes()).isEqualTo(expectedAttributes);
   }
-
 }

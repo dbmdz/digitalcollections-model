@@ -22,12 +22,11 @@ public class DigitalObjectTest extends BaseJsonSerializationTest {
     digitalObject.getFileResources().add(image);
 
     digitalObject.setPreviewImage(image);
-    
+
     ApplicationFileResourceImpl appFile = new ApplicationFileResourceImpl();
     appFile.setFilename("dings.pdf");
     digitalObject.getFileResources().add(appFile);
 
     checkSerializeDeserialize(digitalObject);
   }
-
 }

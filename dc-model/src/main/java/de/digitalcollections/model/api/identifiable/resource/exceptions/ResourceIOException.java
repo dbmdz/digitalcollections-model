@@ -4,8 +4,7 @@ import java.io.IOException;
 
 public class ResourceIOException extends IOException {
 
-  public ResourceIOException() {
-  }
+  public ResourceIOException() {}
 
   public ResourceIOException(String message) {
     super(message);

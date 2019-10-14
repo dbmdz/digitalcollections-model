@@ -15,5 +15,4 @@ public class LinkedDataFileResourceTest extends BaseJsonSerializationTest {
 
     checkSerializeDeserialize(resource);
   }
-
 }

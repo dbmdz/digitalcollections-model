@@ -5,8 +5,7 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.Con
 
 public class TableCellImpl extends ContentBlockNodeWithAttributesImpl implements TableCell {
 
-  public TableCellImpl() {
-  }
+  public TableCellImpl() {}
 
   public TableCellImpl(String colspan, String rowspan, String colwidth) {
     super();
@@ -14,5 +13,4 @@ public class TableCellImpl extends ContentBlockNodeWithAttributesImpl implements
     addAttribute("rowspan", rowspan);
     addAttribute("colwidth", colwidth);
   }
-
 }

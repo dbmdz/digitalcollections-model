@@ -1,5 +1,7 @@
 package de.digitalcollections.model.jackson;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.io.Resources;
@@ -10,8 +12,6 @@ import java.util.Set;
 import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public abstract class BaseJsonSerializationTest {
 
@@ -37,7 +37,15 @@ public abstract class BaseJsonSerializationTest {
     try {
       assertThat(objectOut).usingRecursiveComparison().isEqualTo(objectIn);
     } catch (Throwable e) {
-      LOGGER.error("ERR: IN=" + dump(objectIn) + "\nOUT=" + dump(objectOut) + "\n\nERROR=" + e.getClass() + "=" + e.getMessage());
+      LOGGER.error(
+          "ERR: IN="
+              + dump(objectIn)
+              + "\nOUT="
+              + dump(objectOut)
+              + "\n\nERROR="
+              + e.getClass()
+              + "="
+              + e.getMessage());
       throw e;
     }
   }

@@ -5,9 +5,7 @@ import de.digitalcollections.model.api.identifiable.entity.enums.EntityType;
 import de.digitalcollections.model.api.identifiable.entity.parts.ContentNode;
 import java.util.List;
 
-/**
- * see {@link ContentTree}
- */
+/** see {@link ContentTree} */
 public class ContentTreeImpl extends EntityImpl implements ContentTree {
 
   private List<ContentNode> rootNodes;
@@ -31,5 +29,4 @@ public class ContentTreeImpl extends EntityImpl implements ContentTree {
   public void setRootNodes(List<ContentNode> rootNodes) {
     this.rootNodes = rootNodes;
   }
-
 }

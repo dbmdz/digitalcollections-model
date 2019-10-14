@@ -6,6 +6,4 @@ import de.digitalcollections.model.impl.legal.LicenseImpl;
 
 @JsonDeserialize(as = LicenseImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface LicenseMixIn {
-
-}
+public interface LicenseMixIn {}

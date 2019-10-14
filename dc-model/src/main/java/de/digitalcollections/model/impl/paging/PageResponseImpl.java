@@ -20,22 +20,31 @@ public class PageResponseImpl<T> implements PageResponse<T> {
   }
 
   /**
-   * Constructor of {@code PageResponseImpl} with the given content and the given governing {@link PageRequest}.
+   * Constructor of {@code PageResponseImpl} with the given content and the given governing {@link
+   * PageRequest}.
    *
    * @param content the content of this page, must not be {@literal null}.
    * @param pageRequest the paging information, can be {@literal null}.
-   * @param total the total amount of items available. The total might be adapted considering the length of the content given, if it is going to be the content of the last page. This is in place to mitigate inconsistencies
+   * @param total the total amount of items available. The total might be adapted considering the
+   *     length of the content given, if it is going to be the content of the last page. This is in
+   *     place to mitigate inconsistencies
    */
   public PageResponseImpl(List<T> content, PageRequest pageRequest, long total) {
     assert content != null : "content must not be null!";
 
     this.content.addAll(content);
     this.pageRequest = pageRequest;
-    this.total = !content.isEmpty() && pageRequest != null && pageRequest.getOffset() + pageRequest.getPageSize() > total ? pageRequest.getOffset() + content.size() : total;
+    this.total =
+        !content.isEmpty()
+                && pageRequest != null
+                && pageRequest.getOffset() + pageRequest.getPageSize() > total
+            ? pageRequest.getOffset() + content.size()
+            : total;
   }
 
   /**
-   * Creates a new {@link PageResponseImpl} with the given content. This will result in the created {@link PageResponse} being identical to the entire {@link List}.
+   * Creates a new {@link PageResponseImpl} with the given content. This will result in the created
+   * {@link PageResponse} being identical to the entire {@link List}.
    *
    * @param content must not be {@literal null}.
    */
@@ -57,7 +66,10 @@ public class PageResponseImpl<T> implements PageResponse<T> {
     PageResponseImpl<?> that = (PageResponseImpl<?>) obj;
 
     boolean contentEqual = this.content.equals(that.content);
-    boolean pageRequestEqual = this.pageRequest == null ? that.pageRequest == null : this.pageRequest.equals(that.pageRequest);
+    boolean pageRequestEqual =
+        this.pageRequest == null
+            ? that.pageRequest == null
+            : this.pageRequest.equals(that.pageRequest);
 
     return (this.total == that.total) && contentEqual && pageRequestEqual;
   }
@@ -180,7 +192,7 @@ public class PageResponseImpl<T> implements PageResponse<T> {
       contentType = unmodifiableContent.get(0).getClass().getName();
     }
 
-    return String.format("Page %s of %d containing %s instances", getNumber() + 1, getTotalPages(), contentType);
+    return String.format(
+        "Page %s of %d containing %s instances", getNumber() + 1, getTotalPages(), contentType);
   }
-
 }

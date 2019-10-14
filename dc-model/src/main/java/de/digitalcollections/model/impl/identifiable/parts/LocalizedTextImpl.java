@@ -43,5 +43,4 @@ public class LocalizedTextImpl extends HashMap<Locale, String> implements Locali
   public void setText(Locale locale, String text) {
     this.put(locale, text);
   }
-
 }

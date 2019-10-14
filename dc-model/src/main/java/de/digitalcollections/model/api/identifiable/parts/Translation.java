@@ -13,5 +13,4 @@ public interface Translation {
   public void setText(String text);
 
   public boolean has(Locale locale);
-
 }

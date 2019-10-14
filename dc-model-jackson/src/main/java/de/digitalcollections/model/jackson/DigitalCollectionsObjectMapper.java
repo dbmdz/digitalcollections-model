@@ -26,5 +26,4 @@ public class DigitalCollectionsObjectMapper extends ObjectMapper {
   public ObjectMapper copy() {
     return new DigitalCollectionsObjectMapper(this);
   }
-
 }

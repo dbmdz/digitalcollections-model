@@ -17,5 +17,4 @@ public class VersionTest extends BaseJsonSerializationTest {
 
     checkSerializeDeserialize(version);
   }
-
 }

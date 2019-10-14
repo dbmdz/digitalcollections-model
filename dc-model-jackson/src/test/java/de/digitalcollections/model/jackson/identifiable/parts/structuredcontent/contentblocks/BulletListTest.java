@@ -1,5 +1,7 @@
 package de.digitalcollections.model.jackson.identifiable.parts.structuredcontent.contentblocks;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.BulletList;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.ListItem;
@@ -12,8 +14,6 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.con
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class BulletListTest extends BaseJsonSerializationTest {
 
@@ -54,7 +54,8 @@ public class BulletListTest extends BaseJsonSerializationTest {
 
   @Test
   public void testDeserializationWithContents() throws Exception {
-    String jsonString = "{\n"
+    String jsonString =
+        "{\n"
             + "  \"type\": \"bullet_list\",\n"
             + "  \"content\": [\n"
             + "    {\n"
@@ -121,5 +122,4 @@ public class BulletListTest extends BaseJsonSerializationTest {
 
     assertThat(bulletList.getContentBlocks()).containsExactly(item1, item2, item3);
   }
-
 }

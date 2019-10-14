@@ -3,20 +3,19 @@ package de.digitalcollections.model.api.paging;
 import java.util.List;
 
 /**
- * Abstract interface for pagination information.
- * See Spring Data Commons, but more flat design and independent of Spring libraries.
- * TODO: add Builder, @see PageRequest
+ * Abstract interface for pagination information. See Spring Data Commons, but more flat design and
+ * independent of Spring libraries. TODO: add Builder, @see PageRequest
+ *
  * @param <T> object type listed in page
  */
 public interface PageResponse<T> extends Iterable<T> {
 
-  /**
-   * @return the page content/objects as {@link List}.
-   */
+  /** @return the page content/objects as {@link List}. */
   List<T> getContent();
 
   /**
    * Allows to set the content (needed in case of content has to be converted/casted)
+   *
    * @param content list of content/objects of this page
    */
   void setContent(List<T> content);
@@ -35,9 +34,7 @@ public interface PageResponse<T> extends Iterable<T> {
    */
   int getNumberOfElements();
 
-  /**
-   *  @return the PageRequest used to get this PageResponse
-   */
+  /** @return the PageRequest used to get this PageResponse */
   PageRequest getPageRequest();
 
   /**
@@ -47,9 +44,7 @@ public interface PageResponse<T> extends Iterable<T> {
    */
   int getSize();
 
-  /**
-   * @return the sorting parameters for the {@link PageResponse}.
-   */
+  /** @return the sorting parameters for the {@link PageResponse}. */
   Sorting getSorting();
 
   /**
@@ -102,21 +97,22 @@ public interface PageResponse<T> extends Iterable<T> {
   boolean isLast();
 
   /**
-   * Returns the {@link PageRequest} to request the next {@link PageResponse}. Can be {@literal null} in case the current
-   * {@link PageResponse} is already the last one. Clients should check {@link #hasNext()} before calling this method to make
-   * sure they receive a non-{@literal null} value.
+   * Returns the {@link PageRequest} to request the next {@link PageResponse}. Can be {@literal
+   * null} in case the current {@link PageResponse} is already the last one. Clients should check
+   * {@link #hasNext()} before calling this method to make sure they receive a non-{@literal null}
+   * value.
    *
    * @return the {@link PageRequest} to request the next {@link PageResponse}
    */
   PageRequest nextPageRequest();
 
   /**
-   * Returns the {@link PageRequest} to request the previous {@link PageResponse}. Can be {@literal null} in case the current
-   * {@link PageResponse} is already the first one. Clients should check {@link #hasPrevious()} before calling this method make
-   * sure receive a non-{@literal null} value.
+   * Returns the {@link PageRequest} to request the previous {@link PageResponse}. Can be {@literal
+   * null} in case the current {@link PageResponse} is already the first one. Clients should check
+   * {@link #hasPrevious()} before calling this method make sure receive a non-{@literal null}
+   * value.
    *
    * @return the {@link PageRequest} to request the previous {@link PageResponse}
    */
   PageRequest previousPageRequest();
-
 }

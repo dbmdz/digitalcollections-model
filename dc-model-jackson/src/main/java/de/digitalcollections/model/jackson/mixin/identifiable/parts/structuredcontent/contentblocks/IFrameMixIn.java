@@ -6,6 +6,4 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.con
 
 @JsonDeserialize(as = IFrameImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface IFrameMixIn extends AttributesMixIn {
-
-}
+public interface IFrameMixIn extends AttributesMixIn {}

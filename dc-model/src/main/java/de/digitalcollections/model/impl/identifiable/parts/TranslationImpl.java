@@ -9,8 +9,7 @@ public class TranslationImpl implements Translation {
   private Locale locale;
   private String text;
 
-  private TranslationImpl() {
-  }
+  private TranslationImpl() {}
 
   public TranslationImpl(Locale locale, String text) {
     if (locale == null) {
@@ -31,8 +30,7 @@ public class TranslationImpl implements Translation {
     }
     if (obj instanceof TranslationImpl) {
       TranslationImpl other = (TranslationImpl) obj;
-      return Objects.equals(text, other.getText())
-              && Objects.equals(locale, other.getLocale());
+      return Objects.equals(text, other.getText()) && Objects.equals(locale, other.getLocale());
     }
     return false;
   }
@@ -74,5 +72,4 @@ public class TranslationImpl implements Translation {
   public String toString() {
     return "Translation {" + "locale: '" + locale + "', text: '" + text + '}';
   }
-
 }

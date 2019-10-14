@@ -8,6 +8,4 @@ import de.digitalcollections.model.impl.identifiable.IdentifierImpl;
 @JsonDeserialize(as = IdentifierImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("identifier")
-public interface IdentifierMixIn {
-
-}
+public interface IdentifierMixIn {}

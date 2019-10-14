@@ -13,5 +13,4 @@ public interface FacetList {
   void setItems(List<FacetListItem> items);
 
   void addItem(FacetListItem item);
-
 }

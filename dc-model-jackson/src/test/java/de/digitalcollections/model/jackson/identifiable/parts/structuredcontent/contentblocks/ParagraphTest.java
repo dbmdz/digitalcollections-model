@@ -1,5 +1,7 @@
 package de.digitalcollections.model.jackson.identifiable.parts.structuredcontent.contentblocks;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.HardBreak;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Paragraph;
@@ -11,8 +13,6 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.con
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class ParagraphTest extends BaseJsonSerializationTest {
 
@@ -52,7 +52,8 @@ public class ParagraphTest extends BaseJsonSerializationTest {
 
   @Test
   public void testDeserializationWithContents() throws Exception {
-    String jsonString = "{\n"
+    String jsonString =
+        "{\n"
             + "  \"type\": \"paragraph\",\n"
             + "  \"content\": [\n"
             + "    {\n"
@@ -81,7 +82,8 @@ public class ParagraphTest extends BaseJsonSerializationTest {
 
   @Test
   public void testDeserializationWithContentsWithMarks() throws Exception {
-    String jsonString = "{\n"
+    String jsonString =
+        "{\n"
             + "  \"type\": \"paragraph\",\n"
             + "  \"content\": [\n"
             + "    {\n"

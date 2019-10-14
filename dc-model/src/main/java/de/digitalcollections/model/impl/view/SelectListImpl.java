@@ -51,9 +51,13 @@ public class SelectListImpl implements SelectList {
   @Override
   public String toString() {
     return "SelectListImpl{"
-            + "title='" + title + '\''
-            + ", selectedOption=" + selectedOption
-            + ", options=" + options
-            + '}';
+        + "title='"
+        + title
+        + '\''
+        + ", selectedOption="
+        + selectedOption
+        + ", options="
+        + options
+        + '}';
   }
 }

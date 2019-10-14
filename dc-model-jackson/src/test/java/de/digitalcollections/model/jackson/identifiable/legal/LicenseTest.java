@@ -23,5 +23,4 @@ public class LicenseTest extends BaseJsonSerializationTest {
 
     checkSerializeDeserialize(license);
   }
-
 }

@@ -7,6 +7,4 @@ import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredco
 
 @JsonDeserialize(as = TableRowImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface TableRowMixIn extends ContentBlockNodeMixin {
-
-}
+public interface TableRowMixIn extends ContentBlockNodeMixin {}

@@ -7,8 +7,8 @@ import de.digitalcollections.model.api.paging.enums.Direction;
 import java.io.Serializable;
 
 /**
- * Basic Java Bean implementation of {@code PageRequest}.
- * See Spring Data Commons, but more flat design and independent of Spring libraries.
+ * Basic Java Bean implementation of {@code PageRequest}. See Spring Data Commons, but more flat
+ * design and independent of Spring libraries.
  */
 public class PageRequestImpl implements PageRequest, Serializable {
 
@@ -16,12 +16,11 @@ public class PageRequestImpl implements PageRequest, Serializable {
   private int size;
   private Sorting sort;
 
-  public PageRequestImpl() {
-  }
+  public PageRequestImpl() {}
 
   /**
-   * Creates a new {@link PageRequest}. Pages are zero indexed, thus providing 0 for {@code page} will return the first
-   * page.
+   * Creates a new {@link PageRequest}. Pages are zero indexed, thus providing 0 for {@code page}
+   * will return the first page.
    *
    * @param page zero-based page index.
    * @param size the size of the page to be returned.
@@ -35,7 +34,8 @@ public class PageRequestImpl implements PageRequest, Serializable {
    *
    * @param page zero-based page index.
    * @param size the size of the page to be returned.
-   * @param direction the direction of the {@link SortingImpl} to be specified, can be {@literal null}.
+   * @param direction the direction of the {@link SortingImpl} to be specified, can be {@literal
+   *     null}.
    * @param properties the properties to sort by, must not be {@literal null} or empty.
    */
   public PageRequestImpl(int page, int size, Direction direction, String... properties) {
@@ -133,7 +133,9 @@ public class PageRequestImpl implements PageRequest, Serializable {
    * @return the PageResponse requesting the previous page
    */
   public PageRequest previous() {
-    return getPageNumber() == 0 ? this : new PageRequestImpl(getPageNumber() - 1, getPageSize(), getSorting());
+    return getPageNumber() == 0
+        ? this
+        : new PageRequestImpl(getPageNumber() - 1, getPageSize(), getSorting());
   }
 
   @Override
@@ -157,6 +159,8 @@ public class PageRequestImpl implements PageRequest, Serializable {
 
   @Override
   public String toString() {
-    return String.format("Page request [number: %d, size %d, sort: %s]", getPageNumber(), getPageSize(), sort == null ? null : sort.toString());
+    return String.format(
+        "Page request [number: %d, size %d, sort: %s]",
+        getPageNumber(), getPageSize(), sort == null ? null : sort.toString());
   }
 }

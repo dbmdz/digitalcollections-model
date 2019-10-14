@@ -1,5 +1,7 @@
 package de.digitalcollections.model.xml.xstream.v1;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.google.common.io.Resources;
 import de.digitalcollections.model.api.identifiable.entity.parts.Webpage;
 import java.io.IOException;
@@ -11,16 +13,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.oxm.XmlMappingException;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class V1WebpageTest {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(V1WebpageTest.class);
 
   private static V1DigitalCollectionsXStreamMarshaller marshaller;
 
-  public V1WebpageTest() {
-  }
+  public V1WebpageTest() {}
 
   @BeforeAll
   public static void setUpClass() {

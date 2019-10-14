@@ -57,7 +57,9 @@ public class WebpageFactory {
     p2.addContentBlock(link);
     structuredContent.addContentBlock(p2);
 
-    IFrame iFrame = new IFrameImpl("https://external.content.org/index.php?language=de&action=test", "90%", "150px");
+    IFrame iFrame =
+        new IFrameImpl(
+            "https://external.content.org/index.php?language=de&action=test", "90%", "150px");
     structuredContent.addContentBlock(iFrame);
 
     LocalizedStructuredContent text = new LocalizedStructuredContentImpl();

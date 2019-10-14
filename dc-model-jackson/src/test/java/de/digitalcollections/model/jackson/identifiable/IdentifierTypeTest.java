@@ -17,5 +17,4 @@ public class IdentifierTypeTest extends BaseJsonSerializationTest {
 
     checkSerializeDeserialize(identifierType);
   }
-
 }

@@ -1,16 +1,16 @@
 package de.digitalcollections.model.impl.paging;
 
+import static de.digitalcollections.model.api.paging.Sorting.DEFAULT_DIRECTION;
+
 import de.digitalcollections.model.api.paging.Order;
 import de.digitalcollections.model.api.paging.Sorting;
 import de.digitalcollections.model.api.paging.enums.Direction;
 import de.digitalcollections.model.api.paging.enums.NullHandling;
 
-import static de.digitalcollections.model.api.paging.Sorting.DEFAULT_DIRECTION;
-
 /**
- * PropertyPath implements the pairing of an {@link Direction} and a property.
- * It is used to provide input for {@link Sorting}.
- * See Spring Data Commons, but more flat design and independent of Spring libraries.
+ * PropertyPath implements the pairing of an {@link Direction} and a property. It is used to provide
+ * input for {@link Sorting}. See Spring Data Commons, but more flat design and independent of
+ * Spring libraries.
  */
 public class OrderImpl implements Order {
 
@@ -21,10 +21,10 @@ public class OrderImpl implements Order {
   private NullHandling nullHandling;
   private String property;
 
-  public OrderImpl() {
-  }
+  public OrderImpl() {}
 
-  public OrderImpl(Direction direction, boolean ignoreCase, NullHandling nullHandling, String property) {
+  public OrderImpl(
+      Direction direction, boolean ignoreCase, NullHandling nullHandling, String property) {
     this.direction = direction;
     this.ignoreCase = ignoreCase;
     this.nullHandling = nullHandling;
@@ -48,8 +48,8 @@ public class OrderImpl implements Order {
   }
 
   /**
-   * Creates a new {@link Order} instance. if order is {@literal null} then order defaults to
-   * {@link SortingImpl#DEFAULT_DIRECTION}
+   * Creates a new {@link Order} instance. if order is {@literal null} then order defaults to {@link
+   * SortingImpl#DEFAULT_DIRECTION}
    *
    * @param direction can be {@literal null}, will default to {@link SortingImpl#DEFAULT_DIRECTION}
    * @param property must not be {@literal null} or empty.
@@ -59,8 +59,8 @@ public class OrderImpl implements Order {
   }
 
   /**
-   * Creates a new {@link Order} instance. if order is {@literal null} then order defaults to
-   * {@link SortingImpl#DEFAULT_DIRECTION}
+   * Creates a new {@link Order} instance. if order is {@literal null} then order defaults to {@link
+   * SortingImpl#DEFAULT_DIRECTION}
    *
    * @param direction can be {@literal null}, will default to {@link SortingImpl#DEFAULT_DIRECTION}
    * @param property must not be {@literal null} or empty.
@@ -71,8 +71,8 @@ public class OrderImpl implements Order {
   }
 
   /**
-   * Creates a new {@link Order} instance. Takes a single property. Direction defaults to
-   * {@link SortingImpl#DEFAULT_DIRECTION}.
+   * Creates a new {@link Order} instance. Takes a single property. Direction defaults to {@link
+   * SortingImpl#DEFAULT_DIRECTION}.
    *
    * @param property must not be {@literal null} or empty.
    */
@@ -81,15 +81,17 @@ public class OrderImpl implements Order {
   }
 
   /**
-   * Creates a new {@link Order} instance. if order is {@literal null} then order defaults to
-   * {@link SortingImpl#DEFAULT_DIRECTION}
+   * Creates a new {@link Order} instance. if order is {@literal null} then order defaults to {@link
+   * SortingImpl#DEFAULT_DIRECTION}
    *
    * @param direction can be {@literal null}, will default to {@link Sorting#DEFAULT_DIRECTION}
    * @param property must not be {@literal null} or empty.
-   * @param ignoreCase true if sorting should be case insensitive. false if sorting should be case sensitive.
+   * @param ignoreCase true if sorting should be case insensitive. false if sorting should be case
+   *     sensitive.
    * @param nullHandling can be {@literal null}, will default to {@link NullHandling#NATIVE}.
    */
-  private OrderImpl(Direction direction, String property, boolean ignoreCase, NullHandling nullHandling) {
+  private OrderImpl(
+      Direction direction, String property, boolean ignoreCase, NullHandling nullHandling) {
 
     if (property == null || property.isEmpty() || property.trim().isEmpty()) {
       throw new IllegalArgumentException("Property must not null or empty!");
@@ -114,8 +116,10 @@ public class OrderImpl implements Order {
 
     OrderImpl that = (OrderImpl) obj;
 
-    return this.direction.equals(that.getDirection()) && this.property.equals(that.getProperty())
-            && this.ignoreCase == that.isIgnoreCase() && this.nullHandling.equals(that.getNullHandling());
+    return this.direction.equals(that.getDirection())
+        && this.property.equals(that.getProperty())
+        && this.ignoreCase == that.isIgnoreCase()
+        && this.nullHandling.equals(that.getNullHandling());
   }
 
   /**
@@ -129,7 +133,8 @@ public class OrderImpl implements Order {
   }
 
   /**
-   * Returns the used {@link NullHandling} hint, which can but may not be respected by the used datastore.
+   * Returns the used {@link NullHandling} hint, which can but may not be respected by the used
+   * datastore.
    *
    * @return the used NullHandling hint, which can but may not be respected by the used datastore.
    */
@@ -290,5 +295,4 @@ public class OrderImpl implements Order {
   public Order withProperty(String property) {
     return new OrderImpl(this.direction, property, this.ignoreCase, this.nullHandling);
   }
-
 }

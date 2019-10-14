@@ -39,9 +39,6 @@ public class FacetListImpl implements FacetList {
 
   @Override
   public String toString() {
-    return "FacetListImpl{"
-            + "title='" + title + '\''
-            + ", items=" + items
-            + '}';
+    return "FacetListImpl{" + "title='" + title + '\'' + ", items=" + items + '}';
   }
 }

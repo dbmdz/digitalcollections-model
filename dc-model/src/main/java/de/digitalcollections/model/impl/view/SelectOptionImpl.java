@@ -68,11 +68,20 @@ public class SelectOptionImpl implements SelectOption {
   @Override
   public String toString() {
     return "SelectOptionImpl{"
-            + "id='" + id + '\''
-            + ", title='" + title + '\''
-            + ", subTitle='" + subTitle + '\''
-            + ", link='" + link + '\''
-            + ", selected=" + selected
-            + '}';
+        + "id='"
+        + id
+        + '\''
+        + ", title='"
+        + title
+        + '\''
+        + ", subTitle='"
+        + subTitle
+        + '\''
+        + ", link='"
+        + link
+        + '\''
+        + ", selected="
+        + selected
+        + '}';
   }
 }

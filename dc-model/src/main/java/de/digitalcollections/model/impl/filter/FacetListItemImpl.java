@@ -57,10 +57,16 @@ public class FacetListItemImpl implements FacetListItem {
   @Override
   public String toString() {
     return "FacetListItemImpl{"
-            + "name='" + name + '\''
-            + ", count=" + count
-            + ", link='" + link + '\''
-            + ", selected=" + selected
-            + '}';
+        + "name='"
+        + name
+        + '\''
+        + ", count="
+        + count
+        + ", link='"
+        + link
+        + '\''
+        + ", selected="
+        + selected
+        + '}';
   }
 }

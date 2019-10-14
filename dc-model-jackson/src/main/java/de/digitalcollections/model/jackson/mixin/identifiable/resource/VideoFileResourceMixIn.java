@@ -6,6 +6,4 @@ import de.digitalcollections.model.impl.identifiable.resource.VideoFileResourceI
 
 @JsonDeserialize(as = VideoFileResourceImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface VideoFileResourceMixIn {
-
-}
+public interface VideoFileResourceMixIn {}

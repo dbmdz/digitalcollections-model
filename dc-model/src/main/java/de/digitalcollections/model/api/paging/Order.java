@@ -14,7 +14,8 @@ public interface Order {
   Direction getDirection();
 
   /**
-   * Returns the used {@link NullHandling} hint, which can but may not be respected by the used datastore.
+   * Returns the used {@link NullHandling} hint, which can but may not be respected by the used
+   * datastore.
    *
    * @return the used NullHandling hint, which can but may not be respected by the used datastore.
    */
@@ -142,5 +143,4 @@ public interface Order {
       return new OrderImpl(direction, ignoreCase, nullHandling, property);
     }
   }
-
 }

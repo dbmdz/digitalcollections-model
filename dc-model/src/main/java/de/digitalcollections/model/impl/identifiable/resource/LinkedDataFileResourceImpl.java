@@ -27,5 +27,4 @@ public class LinkedDataFileResourceImpl extends FileResourceImpl implements Link
   public void setObjectType(String objectType) {
     this.objectType = objectType;
   }
-
 }

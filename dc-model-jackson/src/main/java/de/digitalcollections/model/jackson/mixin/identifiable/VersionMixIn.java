@@ -6,6 +6,4 @@ import de.digitalcollections.model.impl.identifiable.VersionImpl;
 
 @JsonDeserialize(as = VersionImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface VersionMixIn {
-
-}
+public interface VersionMixIn {}

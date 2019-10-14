@@ -5,8 +5,7 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.Con
 
 public class TableHeaderImpl extends ContentBlockNodeWithAttributesImpl implements TableHeader {
 
-  public TableHeaderImpl() {
-  }
+  public TableHeaderImpl() {}
 
   public TableHeaderImpl(String colspan, String rowspan, String colwidth) {
     super();
@@ -14,5 +13,4 @@ public class TableHeaderImpl extends ContentBlockNodeWithAttributesImpl implemen
     addAttribute("rowspan", rowspan);
     addAttribute("colwidth", colwidth);
   }
-
 }

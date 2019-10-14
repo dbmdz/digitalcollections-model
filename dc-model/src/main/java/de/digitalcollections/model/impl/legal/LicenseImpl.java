@@ -87,5 +87,4 @@ public class LicenseImpl implements License {
   public void setUuid(UUID uuid) {
     this.uuid = uuid;
   }
-
 }

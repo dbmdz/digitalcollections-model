@@ -11,8 +11,7 @@ public class MarkImpl implements Mark {
 
   Map<String, Object> attributes = null;
 
-  public MarkImpl() {
-  }
+  public MarkImpl() {}
 
   public MarkImpl(String type) {
     this.type = type;
@@ -76,8 +75,6 @@ public class MarkImpl implements Mark {
 
   @Override
   public String toString() {
-    return "MarkImpl{"
-            + "type='" + type + '\''
-            + '}';
+    return "MarkImpl{" + "type='" + type + '\'' + '}';
   }
 }

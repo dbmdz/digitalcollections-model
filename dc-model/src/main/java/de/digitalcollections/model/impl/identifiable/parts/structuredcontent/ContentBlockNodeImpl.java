@@ -48,9 +48,13 @@ public abstract class ContentBlockNodeImpl extends ContentBlockImpl implements C
 
   @Override
   public String toString() {
-    return getClass().getSimpleName() + "{"
-            + "contentBlocks=" + contentBlocks + ", "
-            + "hashCode=" + hashCode()
-            + '}';
+    return getClass().getSimpleName()
+        + "{"
+        + "contentBlocks="
+        + contentBlocks
+        + ", "
+        + "hashCode="
+        + hashCode()
+        + '}';
   }
 }

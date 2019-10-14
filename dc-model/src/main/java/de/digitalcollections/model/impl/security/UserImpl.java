@@ -11,19 +11,15 @@ import org.springframework.util.StringUtils;
 
 public class UserImpl implements User {
 
-  @NotBlank
-  @Email
-  private String email;
+  @NotBlank @Email private String email;
 
   private boolean enabled = true;
 
-  @NotBlank
-  private String firstname;
+  @NotBlank private String firstname;
 
   private Long id;
 
-  @NotBlank
-  private String lastname;
+  @NotBlank private String lastname;
 
   private String passwordHash;
 
@@ -31,8 +27,7 @@ public class UserImpl implements User {
 
   private UUID uuid;
 
-  public UserImpl() {
-  }
+  public UserImpl() {}
 
   @Override
   public String getEmail() {
@@ -70,7 +65,8 @@ public class UserImpl implements User {
   }
 
   /**
-   * Sets password hash if password hash is not empty, otherwise no operation. Deleting of password is not possible.
+   * Sets password hash if password hash is not empty, otherwise no operation. Deleting of password
+   * is not possible.
    *
    * @param passwordHash new hashed password
    */

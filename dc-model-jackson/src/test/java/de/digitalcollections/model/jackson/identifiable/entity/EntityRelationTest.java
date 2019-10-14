@@ -25,5 +25,4 @@ public class EntityRelationTest extends BaseJsonSerializationTest {
 
     checkSerializeDeserialize(entityRelation);
   }
-
 }

@@ -5,5 +5,4 @@ public interface PageItem {
   int getNumber();
 
   boolean isCurrent();
-
 }

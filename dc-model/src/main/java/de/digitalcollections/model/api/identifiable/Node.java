@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * Node is used to structure cultural content hierarchically.
+ *
  * @param <N> a node
  */
 public interface Node<N extends Node> extends Identifiable {

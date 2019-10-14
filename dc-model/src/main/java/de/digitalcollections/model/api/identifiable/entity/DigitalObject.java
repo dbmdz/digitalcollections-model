@@ -6,7 +6,8 @@ import de.digitalcollections.model.api.legal.License;
 import java.util.LinkedHashSet;
 
 /**
- * A (cultural) digital object, can be a retro digitization of a physical object or a digital native object.
+ * A (cultural) digital object, can be a retro digitization of a physical object or a digital native
+ * object.
  */
 public interface DigitalObject extends Entity {
 

@@ -8,8 +8,7 @@ public class StructuredContentImpl implements StructuredContent {
 
   List<ContentBlock> contentBlocks;
 
-  public StructuredContentImpl() {
-  }
+  public StructuredContentImpl() {}
 
   @Override
   public List<ContentBlock> getContentBlocks() {

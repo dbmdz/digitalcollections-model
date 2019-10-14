@@ -109,12 +109,17 @@ public class FileResourceImpl extends IdentifiableImpl implements FileResource {
 
   @Override
   public String toString() {
-    return this.getClass().getSimpleName() + ":"
-           + "\n{"
-           + "\n  uuid=" + String.valueOf(getUuid())
-           + ",\n  uri=" + String.valueOf(uri)
-           + ",\n  mimetype=" + getMimeType().getTypeName()
-           + ",\n  lastModified=" + lastModified
-           + "\n}";
+    return this.getClass().getSimpleName()
+        + ":"
+        + "\n{"
+        + "\n  uuid="
+        + String.valueOf(getUuid())
+        + ",\n  uri="
+        + String.valueOf(uri)
+        + ",\n  mimetype="
+        + getMimeType().getTypeName()
+        + ",\n  lastModified="
+        + lastModified
+        + "\n}";
   }
 }

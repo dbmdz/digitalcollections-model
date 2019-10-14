@@ -7,6 +7,4 @@ import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredco
 
 @JsonDeserialize(as = HeadingImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface HeadingMixIn extends ContentBlockNodeMixin, AttributesMixIn {
-
-}
+public interface HeadingMixIn extends ContentBlockNodeMixin, AttributesMixIn {}

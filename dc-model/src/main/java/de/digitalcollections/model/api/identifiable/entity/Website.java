@@ -5,9 +5,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 
-/**
- * A Website.
- */
+/** A Website. */
 public interface Website extends Entity {
 
   List<? extends Webpage> getRootPages();
