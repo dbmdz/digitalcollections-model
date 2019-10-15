@@ -13,9 +13,9 @@ import java.util.List;
 public abstract class PageResponseMixIn<T> extends PageResponseImpl<T> {
 
   @JsonTypeInfo(
-    use = JsonTypeInfo.Id.CLASS,
-    include = JsonTypeInfo.As.WRAPPER_OBJECT,
-    visible = true)
+      use = JsonTypeInfo.Id.CLASS,
+      include = JsonTypeInfo.As.WRAPPER_OBJECT,
+      visible = true)
   @Override
   public abstract List<T> getContent();
 
