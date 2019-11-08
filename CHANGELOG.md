@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.0.1](https://github.com/dbmdz/digitalcollections-model/releases/tag/4.0.1) - 2019-11-08
+
+### Changed
+
+- Changed return type of `getLocales` in `LocalizedText` from `LinkedHashSet` to `ArrayList`
+
 ## [4.0.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/4.0.0) - 2019-10-23
 
 ### Added
