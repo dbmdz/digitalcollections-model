@@ -1,6 +1,6 @@
 package de.digitalcollections.model.api.identifiable.parts;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Map;
 
@@ -8,7 +8,7 @@ import java.util.Map;
 public interface LocalizedText extends Map<Locale, String> {
 
   /** @return all locales for which translated texts are available. */
-  Collection<Locale> getLocales();
+  ArrayList<Locale> getLocales();
 
   /** @return first found text */
   String getText();
