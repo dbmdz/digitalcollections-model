@@ -3,6 +3,7 @@ package de.digitalcollections.model.impl.identifiable.parts;
 import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 public class LocalizedTextImpl extends HashMap<Locale, String> implements LocalizedText {
@@ -17,13 +18,13 @@ public class LocalizedTextImpl extends HashMap<Locale, String> implements Locali
   }
 
   @Override
-  public ArrayList<Locale> getLocales() {
+  public List<Locale> getLocales() {
     return new ArrayList<>(this.keySet());
   }
 
   @Override
   public String getText() {
-    ArrayList<Locale> locales = getLocales();
+    List<Locale> locales = getLocales();
     if (locales.isEmpty()) {
       return null;
     }
