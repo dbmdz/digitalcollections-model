@@ -2,6 +2,7 @@ package de.digitalcollections.model.impl.identifiable.resource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import de.digitalcollections.model.api.identifiable.resource.MimeType;
 import org.junit.jupiter.api.Test;
 
 public class FileResourceImplTest {
@@ -55,5 +56,14 @@ public class FileResourceImplTest {
     expResult = null;
     result = instance.getFilenameExtension();
     assertThat(result).isEqualTo(expResult);
+  }
+
+  @Test
+  public void testToString() {
+    FileResourceImpl instance = new ImageFileResourceImpl();
+    instance.setFilename("image001.xyz123");
+    instance.setMimeType(MimeType.fromExtension("xyz123"));
+    String result = instance.toString();
+    assertThat(result).isNotEqualTo(null);
   }
 }
