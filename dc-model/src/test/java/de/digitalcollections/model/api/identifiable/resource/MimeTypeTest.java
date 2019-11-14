@@ -1,9 +1,9 @@
 package de.digitalcollections.model.api.identifiable.resource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import java.net.URI;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class MimeTypeTest {
 
@@ -39,8 +39,7 @@ public class MimeTypeTest {
 
   @Test
   public void returnsNullForUnknownMimetype2() throws Exception {
-    // GIMP image format
-    assertThat(MimeType.fromExtension("xcf")).isNull();
+    assertThat(MimeType.fromExtension("xcfxy")).isNull();
   }
 
   @Test
