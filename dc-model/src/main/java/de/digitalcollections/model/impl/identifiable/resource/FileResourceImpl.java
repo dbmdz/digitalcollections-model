@@ -109,6 +109,8 @@ public class FileResourceImpl extends IdentifiableImpl implements FileResource {
 
   @Override
   public String toString() {
+    String mimetypeStr = getMimeType() == null ? null : getMimeType().getTypeName();
+
     return this.getClass().getSimpleName()
         + ":"
         + "\n{"
@@ -117,7 +119,7 @@ public class FileResourceImpl extends IdentifiableImpl implements FileResource {
         + ",\n  uri="
         + String.valueOf(uri)
         + ",\n  mimetype="
-        + getMimeType().getTypeName()
+        + mimetypeStr
         + ",\n  lastModified="
         + lastModified
         + "\n}";
