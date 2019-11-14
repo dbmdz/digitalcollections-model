@@ -33,8 +33,14 @@ public class MimeTypeTest {
   }
 
   @Test
-  public void returnsNullForUnknownMimetype() throws Exception {
+  public void returnsNullForUnknownMimetype1() throws Exception {
     assertThat(MimeType.fromTypename("foo/bar")).isNull();
+  }
+
+  @Test
+  public void returnsNullForUnknownMimetype2() throws Exception {
+    // GIMP image format
+    assertThat(MimeType.fromExtension("xcf")).isNull();
   }
 
   @Test
