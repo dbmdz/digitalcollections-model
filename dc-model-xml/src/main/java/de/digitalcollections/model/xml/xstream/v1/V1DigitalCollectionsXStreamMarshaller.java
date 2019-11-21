@@ -15,6 +15,9 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.con
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.MarkImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.OrderedListImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.ParagraphImpl;
+import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TableCellImpl;
+import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TableImpl;
+import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TableRowImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TextImpl;
 import de.digitalcollections.model.impl.identifiable.resource.FileResourceImpl;
 import de.digitalcollections.model.xml.xstream.CdataXppDriver;
@@ -68,6 +71,9 @@ public class V1DigitalCollectionsXStreamMarshaller extends XStreamMarshaller {
     aliases.put("orderedList", OrderedListImpl.class);
     aliases.put("paragraph", ParagraphImpl.class);
     aliases.put("document", StructuredContentImpl.class);
+    aliases.put("table", TableImpl.class);
+    aliases.put("tableCell", TableCellImpl.class);
+    aliases.put("tableRow", TableRowImpl.class);
     aliases.put("text", TextImpl.class);
     aliases.put("translation", TranslationImpl.class);
     aliases.put("webpage", WebpageImpl.class);
