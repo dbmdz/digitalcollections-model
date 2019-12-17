@@ -6,7 +6,7 @@
   <parent>
     <groupId>de.digitalcollections.model</groupId>
     <artifactId>dc-model-parent</artifactId>
-    <version>4.0.2</version>
+    <version>4.0.3-SNAPSHOT</version>
   </parent>
 
   <name>DigitalCollections: Model (Model)</name>
@@ -16,7 +16,7 @@
   <properties>
     <version.commons-io>2.6</version.commons-io>
     <version.guava>28.1-jre</version.guava>
-    <version.spring-security-core>5.1.5.RELEASE</version.spring-security-core>
+    <version.spring-security-core>5.2.1.RELEASE</version.spring-security-core>
     <version.validation-api>2.0.1.Final</version.validation-api>
   </properties>
 
