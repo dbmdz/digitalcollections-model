@@ -4,8 +4,9 @@ import de.digitalcollections.model.api.identifiable.Identifiable;
 import de.digitalcollections.model.api.identifiable.entity.enums.EntityType;
 
 /**
- * Entities are uniquely identifiable objects, often also uniquely identifiable outside of this technical system - by additionally having unique identifiers of other systems (like GND-Id, VIAF-ID, etc.), too.
- * An entity is of a specific entity type, like e.g. cultural object, item, manifestation, work, digital obejct, person, corporation.
+ * Entities are uniquely identifiable objects, often also uniquely identifiable outside of this technical system
+ * - by additionally having unique identifiers of other systems (like GND-Id, VIAF-ID, etc.).
+ * An entity is of a specific entity type, like e.g. cultural object, item, manifestation, work, digital object, person, corporation.
  *
  * Bibliographic entity types for example are defined in the “Functional Requirements for Bibliographic Records”
  * (FRBR; deutsch ‚Funktionale Anforderungen an bibliographische Datensätze‘):
