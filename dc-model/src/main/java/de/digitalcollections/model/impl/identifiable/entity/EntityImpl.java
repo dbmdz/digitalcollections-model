@@ -8,6 +8,7 @@ import de.digitalcollections.model.impl.identifiable.IdentifiableImpl;
 public class EntityImpl extends IdentifiableImpl implements Entity {
 
   protected EntityType entityType;
+  protected long refId;
 
   public EntityImpl() {
     super();
@@ -22,5 +23,15 @@ public class EntityImpl extends IdentifiableImpl implements Entity {
   @Override
   public void setEntityType(EntityType entityType) {
     this.entityType = entityType;
+  }
+
+  @Override
+  public long getRefId() {
+    return refId;
+  }
+
+  @Override
+  public void setRefId(long refId) {
+    this.refId = refId;
   }
 }
