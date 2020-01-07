@@ -15,7 +15,7 @@
 
   <properties>
     <version.commons-io>2.6</version.commons-io>
-    <version.guava>28.1-jre</version.guava>
+    <version.guava>28.2-jre</version.guava>
     <version.spring-security-core>5.2.1.RELEASE</version.spring-security-core>
     <version.validation-api>2.0.1.Final</version.validation-api>
   </properties>
