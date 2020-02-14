@@ -12,6 +12,7 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.con
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.HeadingImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.HorizontalRuleImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.IFrameImpl;
+import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.ImageImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.ListItemImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.MarkImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.OrderedListImpl;
@@ -68,6 +69,7 @@ public class V1DigitalCollectionsXStreamMarshaller extends XStreamMarshaller {
     aliases.put("heading", HeadingImpl.class);
     aliases.put("horizontalRule", HorizontalRuleImpl.class);
     aliases.put("iframe", IFrameImpl.class);
+    aliases.put("image", ImageImpl.class);
     aliases.put("listItem", ListItemImpl.class);
     aliases.put("mark", MarkImpl.class);
     aliases.put("orderedList", OrderedListImpl.class);
