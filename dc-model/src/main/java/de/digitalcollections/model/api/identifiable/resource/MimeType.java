@@ -1,6 +1,5 @@
 package de.digitalcollections.model.api.identifiable.resource;
 
-import com.google.common.base.Splitter;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -13,8 +12,10 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -30,44 +31,42 @@ public class MimeType {
       Pattern.compile(
           "^(?<primaryType>[-a-z]+?)/(?<subType>[-\\\\.a-z0-9*]+?)(?:\\+(?<suffix>\\w+))?$");
 
+  private static String getMimeTypeColumn(String line) {
+    return Arrays.stream(line.split("\t"))
+        .map(String::strip)
+        .filter(Predicate.not(String::isEmpty))
+        .findFirst()
+        .orElseThrow(NoSuchElementException::new);
+  }
+
   static {
     // Load list of known MIME types and their extensions from the IANA list in the
     // package resources (obtained from
     // https://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types)
     InputStream mimeStream = MimeType.class.getClassLoader().getResourceAsStream("dc.mime.types");
     BufferedReader mimeReader = new BufferedReader(new InputStreamReader(mimeStream));
-    List<String> typeStrings =
+
+    Function<String[], String[]> substituteMissingExtensions =
+        columns -> {
+          if (columns.length > 1) {
+            return columns;
+          }
+          return new String[] {columns[0], columns[0]};
+        };
+
+    knownTypes =
         mimeReader
             .lines()
             .map(l -> l.replaceAll("^# ", ""))
             .filter(l -> !l.isEmpty())
-            .filter(
-                l ->
-                    MIME_PATTERN
-                        .matcher(
-                            Splitter.on('\t')
-                                .trimResults()
-                                .omitEmptyStrings()
-                                .split(l)
-                                .iterator()
-                                .next())
-                        .matches())
-            .collect(Collectors.toList());
-
-    knownTypes =
-        typeStrings.stream()
-            // Strip comments
-            .filter(l -> l.contains("\t"))
-            // Normalize multiple tab-delimiters to a single one for easier parsing
-            // and split into (type, extensions) pairs
-            .map(l -> l.replaceAll("\\t+", "\t").split("\\t"))
-            // From those pairs, make a list of the extensions and create MimeType instances
-            .map(p -> new MimeType(p[0], Arrays.asList(p[1].split(" "))))
-            .collect(Collectors.toMap(MimeType::getTypeName, Function.identity()));
-    typeStrings.stream()
-        .filter(l -> !l.contains("\t"))
-        .map(t -> new MimeType(t, Collections.emptyList()))
-        .forEach(m -> knownTypes.put(m.getTypeName(), m));
+            .map(line -> line.split("\t+"))
+            .filter(columns -> columns.length > 0)
+            .filter(columns -> MIME_PATTERN.matcher(columns[0]).matches())
+            .map(substituteMissingExtensions)
+            .collect(
+                Collectors.toMap(
+                    columns -> columns[0],
+                    columns -> new MimeType(columns[0], List.of(columns[1].split(" ")))));
 
     // Some custom overrides to influence the order of file extensions
     // Since these are added to the end of the list, they take precedence over the

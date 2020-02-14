@@ -62,9 +62,10 @@
     <maven.compiler.target>11</maven.compiler.target> <!-- default configuration property name used by maven compiler plugin -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> <!-- default configuration property name used by maven compiler plugin -->
 
-    <version.assertj>3.15.0</version.assertj>
-    <version.junit>5.6.0</version.junit>
 
+    <version.assertj>3.15.0</version.assertj>
+    <version.guava>28.2-jre</version.guava>
+    <version.junit>5.6.0</version.junit>
     <!-- Plugin versions -->
     <version.jacoco-maven-plugin>0.8.5</version.jacoco-maven-plugin>
     <version.maven-compiler-plugin>3.8.1</version.maven-compiler-plugin>

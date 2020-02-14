@@ -24,6 +24,12 @@
 
   <dependencies>
     <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>${version.guava}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>com.thoughtworks.xstream</groupId>
       <artifactId>xstream</artifactId>
       <version>${version.xstream}</version>
