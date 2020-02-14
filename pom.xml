@@ -5,7 +5,7 @@
 
   <groupId>de.digitalcollections.model</groupId>
   <artifactId>dc-model-parent</artifactId>
-  <version>4.0.3-SNAPSHOT</version>
+  <version>5.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <modules>
@@ -57,15 +57,15 @@
   </scm>
 
   <properties>
-    <java.version>1.8</java.version>
-    <maven.compiler.source>1.8</maven.compiler.source> <!-- default configuration property name used by maven compiler plugin -->
-    <maven.compiler.target>1.8</maven.compiler.target> <!-- default configuration property name used by maven compiler plugin -->
+    <java.version>11</java.version>
+    <maven.compiler.source>11</maven.compiler.source> <!-- default configuration property name used by maven compiler plugin -->
+    <maven.compiler.target>11</maven.compiler.target> <!-- default configuration property name used by maven compiler plugin -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> <!-- default configuration property name used by maven compiler plugin -->
 
-    <version.assertj>3.14.0</version.assertj>
-    <version.guava>28.2-jre</version.guava>
-    <version.junit>5.5.2</version.junit>
 
+    <version.assertj>3.15.0</version.assertj>
+    <version.guava>28.2-jre</version.guava>
+    <version.junit>5.6.0</version.junit>
     <!-- Plugin versions -->
     <version.jacoco-maven-plugin>0.8.5</version.jacoco-maven-plugin>
     <version.maven-compiler-plugin>3.8.1</version.maven-compiler-plugin>
