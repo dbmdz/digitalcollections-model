@@ -20,9 +20,8 @@ public class IFrameTest extends BaseJsonSerializationTest {
 
   @Test
   public void testDefaultConstructor() throws Exception {
-    IFrame embeddedCodeBlock = new IFrameImpl();
-
-    checkSerializeDeserialize(embeddedCodeBlock);
+    IFrame iframe = new IFrameImpl();
+    checkSerializeDeserialize(iframe);
   }
 
   @Test

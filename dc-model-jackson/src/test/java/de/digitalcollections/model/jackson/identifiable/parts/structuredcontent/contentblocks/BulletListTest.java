@@ -27,7 +27,6 @@ public class BulletListTest extends BaseJsonSerializationTest {
   @Test
   public void testDefaultConstructor() throws Exception {
     BulletList bulletList = new BulletListImpl();
-
     checkSerializeDeserialize(bulletList);
   }
 

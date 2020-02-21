@@ -29,7 +29,6 @@ public class OrderedListTest extends BaseJsonSerializationTest {
   @Test
   public void testDefaultConstructor() throws Exception {
     OrderedList orderedList = new OrderedListImpl();
-
     checkSerializeDeserialize(orderedList);
   }
 

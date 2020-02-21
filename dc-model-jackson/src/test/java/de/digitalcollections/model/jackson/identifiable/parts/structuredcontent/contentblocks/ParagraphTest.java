@@ -26,7 +26,6 @@ public class ParagraphTest extends BaseJsonSerializationTest {
   @Test
   public void testDefaultConstructor() throws Exception {
     Paragraph paragraph = new ParagraphImpl();
-
     checkSerializeDeserialize(paragraph);
   }
 

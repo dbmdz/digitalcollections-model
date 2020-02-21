@@ -25,7 +25,6 @@ public class ListItemTest extends BaseJsonSerializationTest {
   @Test
   public void testDefaultConstructor() throws Exception {
     ListItem listItem = new ListItemImpl();
-
     checkSerializeDeserialize(listItem);
   }
 

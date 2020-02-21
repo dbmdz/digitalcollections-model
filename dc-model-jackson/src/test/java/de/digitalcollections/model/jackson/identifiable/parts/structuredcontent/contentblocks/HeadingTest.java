@@ -23,7 +23,6 @@ public class HeadingTest extends BaseJsonSerializationTest {
   @Test
   public void testDefaultConstructor() throws Exception {
     Heading heading = new HeadingImpl();
-
     checkSerializeDeserialize(heading);
   }
 
