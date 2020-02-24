@@ -53,7 +53,16 @@
 							"href": "https://www.bsb-muenchen.de/"
 						}
 					}]
-				}]
+				}, {
+          "type": "image",
+          "attrs": {
+            "resourceId": "135ec10b-ac65-4217-83fc-db5e9ff62cac",
+            "linkNewTab": true,
+            "width": "33%",
+            "alignment": "left",
+            "url": "https://www.bsb-munchen.de/logo.png"
+          }
+        }]
 			}, {
 				"type": "iframe",
 				"attrs": {

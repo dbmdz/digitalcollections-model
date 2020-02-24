@@ -66,6 +66,15 @@
                   </mark>
                 </marks>
               </text>
+              <image>
+                <attributes>
+                  <resourceId>135ec10b-ac65-4217-83fc-db5e9ff62cac</resourceId>
+                  <linkNewTab>true</linkNewTab>
+                  <width>33%</width>
+                  <alignment>left</alignment>
+                  <url>https://www.bsb-munchen.de/logo.png</url>
+                </attributes>
+              </image>
             </content>
           </paragraph>
           <iframe>
