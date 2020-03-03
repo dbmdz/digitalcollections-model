@@ -57,6 +57,8 @@ public class WebpageFactory {
     linkMark.addAttribute("href", "https://www.bsb-muenchen.de/");
     link.addMark(linkMark);
     p2.addContentBlock(link);
+    structuredContent.addContentBlock(p2);
+
     Image image =
         new ImageImpl(
             "left",
@@ -68,8 +70,7 @@ public class WebpageFactory {
             null,
             "https://www.bsb-munchen.de/logo.png",
             "33%");
-    p2.addContentBlock(image);
-    structuredContent.addContentBlock(p2);
+    structuredContent.addContentBlock(image);
 
     IFrame iFrame =
         new IFrameImpl(
