@@ -1,6 +1,7 @@
 package de.digitalcollections.model.impl.identifiable.resource;
 
 import de.digitalcollections.model.api.identifiable.resource.ImageFileResource;
+import de.digitalcollections.model.api.identifiable.resource.enums.FileResourceType;
 import java.net.URL;
 
 public class ImageFileResourceImpl extends FileResourceImpl implements ImageFileResource {
@@ -8,6 +9,11 @@ public class ImageFileResourceImpl extends FileResourceImpl implements ImageFile
   private int height;
   private URL iiifBaseUrl;
   private int width;
+
+  public ImageFileResourceImpl() {
+    super();
+    this.fileResourceType = FileResourceType.IMAGE;
+  }
 
   @Override
   public int getWidth() {

@@ -1,6 +1,7 @@
 package de.digitalcollections.model.api.identifiable.resource;
 
 import de.digitalcollections.model.api.identifiable.Identifiable;
+import de.digitalcollections.model.api.identifiable.resource.enums.FileResourceType;
 import de.digitalcollections.model.api.legal.License;
 import java.net.URI;
 
@@ -10,6 +11,10 @@ import java.net.URI;
  * video file, an XML document, or a JSON file.
  */
 public interface FileResource extends Identifiable {
+
+  FileResourceType getFileResourceType();
+
+  void setFileResourceType(FileResourceType fileResourceType);
 
   long getSizeInBytes();
 
