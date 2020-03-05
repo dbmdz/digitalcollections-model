@@ -37,7 +37,7 @@ public class ImageTest extends BaseJsonSerializationTest {
             + "    \"linkUrl\": \"https://external.content.org\",\n"
             + "    \"resourceId\": \"135ec10b-ac65-4217-83fc-db5e9ff62cac\",\n"
             + "    \"title\": \"This is the title.\",\n"
-            + "    \"url\": \"https://www.bsb-munchen.de/logo.png\",\n"
+            + "    \"url\": \"https://www.bsb-muenchen.de/logo.png\",\n"
             + "    \"width\": \"33%\"\n"
             + "  }\n"
             + "}";
@@ -54,7 +54,7 @@ public class ImageTest extends BaseJsonSerializationTest {
         .isEqualTo("135ec10b-ac65-4217-83fc-db5e9ff62cac");
     assertThat(((String) image.getAttribute("title"))).isEqualTo("This is the title.");
     assertThat(((String) image.getAttribute("url")))
-        .isEqualTo("https://www.bsb-munchen.de/logo.png");
+        .isEqualTo("https://www.bsb-muenchen.de/logo.png");
     assertThat(((String) image.getAttribute("width"))).isEqualTo("33%");
   }
 }

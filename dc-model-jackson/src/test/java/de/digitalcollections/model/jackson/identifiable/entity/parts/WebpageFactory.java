@@ -68,7 +68,7 @@ public class WebpageFactory {
             null,
             "135ec10b-ac65-4217-83fc-db5e9ff62cac",
             null,
-            "https://www.bsb-munchen.de/logo.png",
+            "https://www.bsb-muenchen.de/logo.png",
             "33%");
     structuredContent.addContentBlock(image);
 
