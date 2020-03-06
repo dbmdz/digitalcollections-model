@@ -5,6 +5,7 @@ import de.digitalcollections.model.api.identifiable.parts.structuredcontent.Loca
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.StructuredContent;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Heading;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.IFrame;
+import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Image;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Mark;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Paragraph;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Text;
@@ -14,6 +15,7 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.Loc
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.StructuredContentImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.HeadingImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.IFrameImpl;
+import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.ImageImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.MarkImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.ParagraphImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TextImpl;
@@ -56,6 +58,19 @@ public class WebpageFactory {
     link.addMark(linkMark);
     p2.addContentBlock(link);
     structuredContent.addContentBlock(p2);
+
+    Image image =
+        new ImageImpl(
+            "left",
+            null,
+            null,
+            true,
+            null,
+            "135ec10b-ac65-4217-83fc-db5e9ff62cac",
+            null,
+            "https://www.bsb-muenchen.de/logo.png",
+            "33%");
+    structuredContent.addContentBlock(image);
 
     IFrame iFrame =
         new IFrameImpl(

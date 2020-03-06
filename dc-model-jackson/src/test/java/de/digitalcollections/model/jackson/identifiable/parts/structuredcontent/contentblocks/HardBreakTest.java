@@ -21,7 +21,6 @@ public class HardBreakTest extends BaseJsonSerializationTest {
   @Test
   public void testDefaultConstructor() throws Exception {
     HardBreak hardBreak = new HardBreakImpl();
-
     checkSerializeDeserialize(hardBreak);
   }
 

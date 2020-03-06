@@ -3,6 +3,7 @@ package de.digitalcollections.model.impl.identifiable.resource;
 import de.digitalcollections.model.api.identifiable.IdentifiableType;
 import de.digitalcollections.model.api.identifiable.resource.FileResource;
 import de.digitalcollections.model.api.identifiable.resource.MimeType;
+import de.digitalcollections.model.api.identifiable.resource.enums.FileResourceType;
 import de.digitalcollections.model.api.legal.License;
 import de.digitalcollections.model.impl.identifiable.IdentifiableImpl;
 import java.net.MalformedURLException;
@@ -11,6 +12,8 @@ import java.net.URI;
 public class FileResourceImpl extends IdentifiableImpl implements FileResource {
 
   private String filename;
+  protected FileResourceType fileResourceType;
+
   private License license;
   private MimeType mimeType;
   private boolean readonly = false;
@@ -20,6 +23,16 @@ public class FileResourceImpl extends IdentifiableImpl implements FileResource {
   public FileResourceImpl() {
     super();
     this.type = IdentifiableType.RESOURCE;
+  }
+
+  @Override
+  public FileResourceType getFileResourceType() {
+    return fileResourceType;
+  }
+
+  @Override
+  public void setFileResourceType(FileResourceType fileResourceType) {
+    this.fileResourceType = fileResourceType;
   }
 
   @Override

@@ -13,17 +13,17 @@ import de.digitalcollections.model.impl.identifiable.resource.VideoFileResourceI
 
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
-    include = JsonTypeInfo.As.PROPERTY,
-    property = "fileresourceType",
+    include = JsonTypeInfo.As.EXISTING_PROPERTY,
+    property = "fileResourceType",
     visible = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSubTypes({
-  @JsonSubTypes.Type(value = ApplicationFileResourceImpl.class, name = "application_fileresource"),
-  @JsonSubTypes.Type(value = AudioFileResourceImpl.class, name = "audio_fileresource"),
-  @JsonSubTypes.Type(value = FileResourceImpl.class, name = "fileresource"),
-  @JsonSubTypes.Type(value = ImageFileResourceImpl.class, name = "image_fileresource"),
-  @JsonSubTypes.Type(value = LinkedDataFileResourceImpl.class, name = "linked_data_fileresource"),
-  @JsonSubTypes.Type(value = TextFileResourceImpl.class, name = "text_fileresource"),
-  @JsonSubTypes.Type(value = VideoFileResourceImpl.class, name = "video_fileresource")
+  @JsonSubTypes.Type(value = ApplicationFileResourceImpl.class, name = "APPLICATION"),
+  @JsonSubTypes.Type(value = AudioFileResourceImpl.class, name = "AUDIO"),
+  @JsonSubTypes.Type(value = FileResourceImpl.class, name = "APPLICATION"),
+  @JsonSubTypes.Type(value = ImageFileResourceImpl.class, name = "IMAGE"),
+  @JsonSubTypes.Type(value = LinkedDataFileResourceImpl.class, name = "LINKED_DATA"),
+  @JsonSubTypes.Type(value = TextFileResourceImpl.class, name = "TEXT"),
+  @JsonSubTypes.Type(value = VideoFileResourceImpl.class, name = "VIDEO")
 })
 public interface FileResourceMixIn {}

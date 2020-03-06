@@ -13,6 +13,7 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.con
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.HeadingImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.HorizontalRuleImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.IFrameImpl;
+import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.ImageImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.ListItemImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.OrderedListImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.ParagraphImpl;
@@ -37,6 +38,7 @@ import java.util.List;
   @JsonSubTypes.Type(value = HeadingImpl.class, name = "heading"),
   @JsonSubTypes.Type(value = HorizontalRuleImpl.class, name = "horizontal_rule"),
   @JsonSubTypes.Type(value = IFrameImpl.class, name = "iframe"),
+  @JsonSubTypes.Type(value = ImageImpl.class, name = "image"),
   @JsonSubTypes.Type(value = ListItemImpl.class, name = "list_item"),
   @JsonSubTypes.Type(value = OrderedListImpl.class, name = "ordered_list"),
   @JsonSubTypes.Type(value = ParagraphImpl.class, name = "paragraph"),

@@ -23,7 +23,6 @@ public class MarkTest extends BaseJsonSerializationTest {
   @Test
   public void testConstructor() throws Exception {
     Mark mark = new MarkImpl("strong");
-
     checkSerializeDeserialize(mark);
   }
 

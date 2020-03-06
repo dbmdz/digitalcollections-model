@@ -30,6 +30,7 @@ import de.digitalcollections.model.api.identifiable.parts.structuredcontent.cont
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.CodeBlock;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Heading;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.IFrame;
+import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Image;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.ListItem;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Mark;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.OrderedList;
@@ -77,6 +78,7 @@ import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredco
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.CodeBlockMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.HeadingMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.IFrameMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.ImageMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.ListItemMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.MarkMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.OrderedListMixIn;
@@ -156,6 +158,7 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(Identifier.class, IdentifierMixIn.class);
     context.setMixInAnnotations(IdentifierType.class, IdentifierTypeMixIn.class);
     context.setMixInAnnotations(IFrame.class, IFrameMixIn.class);
+    context.setMixInAnnotations(Image.class, ImageMixIn.class);
     context.setMixInAnnotations(ImageFileResource.class, ImageFileResourceMixIn.class);
     context.setMixInAnnotations(License.class, LicenseMixIn.class);
     context.setMixInAnnotations(LinkedDataFileResource.class, LinkedDataFileResourceMixIn.class);

@@ -68,6 +68,15 @@
               </text>
             </content>
           </paragraph>
+          <image>
+            <attributes>
+              <resourceId>135ec10b-ac65-4217-83fc-db5e9ff62cac</resourceId>
+              <linkNewTab>true</linkNewTab>
+              <width>33%</width>
+              <alignment>left</alignment>
+              <url>https://www.bsb-muenchen.de/logo.png</url>
+            </attributes>
+          </image>
           <iframe>
             <attributes>
               <src>https://external.content.org/index.php?language=de&amp;action=test</src>
