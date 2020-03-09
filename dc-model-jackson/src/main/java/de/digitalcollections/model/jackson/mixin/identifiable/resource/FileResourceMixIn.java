@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.digitalcollections.model.impl.identifiable.resource.ApplicationFileResourceImpl;
 import de.digitalcollections.model.impl.identifiable.resource.AudioFileResourceImpl;
-import de.digitalcollections.model.impl.identifiable.resource.FileResourceImpl;
 import de.digitalcollections.model.impl.identifiable.resource.ImageFileResourceImpl;
 import de.digitalcollections.model.impl.identifiable.resource.LinkedDataFileResourceImpl;
 import de.digitalcollections.model.impl.identifiable.resource.TextFileResourceImpl;
@@ -20,7 +19,6 @@ import de.digitalcollections.model.impl.identifiable.resource.VideoFileResourceI
 @JsonSubTypes({
   @JsonSubTypes.Type(value = ApplicationFileResourceImpl.class, name = "APPLICATION"),
   @JsonSubTypes.Type(value = AudioFileResourceImpl.class, name = "AUDIO"),
-  @JsonSubTypes.Type(value = FileResourceImpl.class, name = "APPLICATION"),
   @JsonSubTypes.Type(value = ImageFileResourceImpl.class, name = "IMAGE"),
   @JsonSubTypes.Type(value = LinkedDataFileResourceImpl.class, name = "LINKED_DATA"),
   @JsonSubTypes.Type(value = TextFileResourceImpl.class, name = "TEXT"),
