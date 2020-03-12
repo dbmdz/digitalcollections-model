@@ -3,7 +3,7 @@ package de.digitalcollections.model.api.identifiable.entity;
 import de.digitalcollections.model.api.identifiable.Version;
 import de.digitalcollections.model.api.identifiable.resource.FileResource;
 import de.digitalcollections.model.api.legal.License;
-import java.util.LinkedHashSet;
+import java.util.List;
 
 /**
  * A (cultural) digital object, can be a retro digitization of a physical object or a digital native
@@ -11,11 +11,11 @@ import java.util.LinkedHashSet;
  */
 public interface DigitalObject extends Entity {
 
-  LinkedHashSet<FileResource> getFileResources();
+  List<FileResource> getFileResources();
 
-  void setFileResources(LinkedHashSet<FileResource> fileResources);
+  void setFileResources(List<FileResource> fileResources);
 
-  LinkedHashSet<FileResource> addFileResource(FileResource fileResource);
+  void addFileResource(FileResource fileResource);
 
   License getLicense();
 

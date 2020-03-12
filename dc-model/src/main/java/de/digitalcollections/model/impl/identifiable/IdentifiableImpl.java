@@ -7,16 +7,16 @@ import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
 import de.digitalcollections.model.api.identifiable.resource.ImageFileResource;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 
 public class IdentifiableImpl implements Identifiable {
 
   protected LocalDateTime created;
   protected LocalizedStructuredContent description;
-  private List<Identifier> identifiers = new LinkedList<>();
+  private Set<Identifier> identifiers = new HashSet<>();
   protected LocalizedText label;
   protected LocalDateTime lastModified;
   protected ImageFileResource previewImage;
@@ -45,10 +45,7 @@ public class IdentifiableImpl implements Identifiable {
 
   @Override
   public void addIdentifier(Identifier identifier) {
-    if (identifiers == null) {
-      identifiers = new ArrayList<>();
-    }
-    identifiers.add(identifier);
+    identifiers.add(Objects.requireNonNull(identifier));
   }
 
   @Override
@@ -65,12 +62,12 @@ public class IdentifiableImpl implements Identifiable {
   }
 
   @Override
-  public List<Identifier> getIdentifiers() {
+  public Set<Identifier> getIdentifiers() {
     return identifiers;
   }
 
   @Override
-  public void setIdentifiers(List<Identifier> identifiers) {
+  public void setIdentifiers(Set<Identifier> identifiers) {
     this.identifiers = identifiers;
   }
 
