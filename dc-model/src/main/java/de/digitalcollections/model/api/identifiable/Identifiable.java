@@ -4,7 +4,7 @@ import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
 import de.digitalcollections.model.api.identifiable.resource.ImageFileResource;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 public interface Identifiable {
@@ -19,9 +19,9 @@ public interface Identifiable {
 
   void addIdentifier(Identifier identifier);
 
-  List<Identifier> getIdentifiers();
+  Set<Identifier> getIdentifiers();
 
-  void setIdentifiers(List<Identifier> identifiers);
+  void setIdentifiers(Set<Identifier> identifiers);
 
   Identifier getIdentifierByNamespace(String namespace);
 

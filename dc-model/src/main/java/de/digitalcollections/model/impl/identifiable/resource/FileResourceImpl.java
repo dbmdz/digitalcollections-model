@@ -8,6 +8,7 @@ import de.digitalcollections.model.api.legal.License;
 import de.digitalcollections.model.impl.identifiable.IdentifiableImpl;
 import java.net.MalformedURLException;
 import java.net.URI;
+import java.util.Objects;
 
 public class FileResourceImpl extends IdentifiableImpl implements FileResource {
 
@@ -136,5 +137,26 @@ public class FileResourceImpl extends IdentifiableImpl implements FileResource {
         + ",\n  lastModified="
         + lastModified
         + "\n}";
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(filename, fileResourceType, mimeType, sizeInBytes, uri);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj instanceof FileResourceImpl) {
+      final FileResourceImpl other = (FileResourceImpl) obj;
+      return Objects.equals(this.filename, other.filename)
+          && Objects.equals(this.fileResourceType, other.fileResourceType)
+          && Objects.equals(this.mimeType, other.mimeType)
+          && Objects.equals(this.sizeInBytes, other.sizeInBytes)
+          && Objects.equals(this.uri, other.uri);
+    }
+    return false;
   }
 }

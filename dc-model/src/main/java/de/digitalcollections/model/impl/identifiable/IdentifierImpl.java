@@ -2,6 +2,7 @@ package de.digitalcollections.model.impl.identifiable;
 
 import de.digitalcollections.model.api.identifiable.Identifier;
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.UUID;
 
 public class IdentifierImpl implements Identifier, Serializable {
@@ -49,10 +50,12 @@ public class IdentifierImpl implements Identifier, Serializable {
     this.namespace = namespace;
   }
 
+  @Override
   public UUID getUuid() {
     return uuid;
   }
 
+  @Override
   public void setUuid(UUID uuid) {
     this.uuid = uuid;
   }
@@ -60,5 +63,22 @@ public class IdentifierImpl implements Identifier, Serializable {
   @Override
   public String toString() {
     return namespace + ":" + id + ":" + identifiable;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, namespace);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj instanceof IdentifierImpl) {
+      final IdentifierImpl other = (IdentifierImpl) obj;
+      return Objects.equals(this.id, other.id) && Objects.equals(this.namespace, other.namespace);
+    }
+    return false;
   }
 }

@@ -3,29 +3,30 @@ package de.digitalcollections.model.api.identifiable.entity.parts;
 import de.digitalcollections.model.api.identifiable.Node;
 import de.digitalcollections.model.api.identifiable.entity.Entity;
 import de.digitalcollections.model.api.identifiable.resource.FileResource;
-import java.util.LinkedHashSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public interface ContentNode<N extends Node> extends Node<N>, EntityPart {
 
-  LinkedHashSet<Entity> getEntities();
+  List<Entity> getEntities();
 
-  void setEntities(LinkedHashSet<Entity> entities);
+  void setEntities(List<Entity> entities);
 
-  default LinkedHashSet<Entity> addEntity(Entity entity) {
+  default List<Entity> addEntity(Entity entity) {
     if (getEntities() == null) {
-      setEntities(new LinkedHashSet<>());
+      setEntities(new ArrayList<>());
     }
     getEntities().add(entity);
     return getEntities();
   }
 
-  LinkedHashSet<FileResource> getFileResources();
+  List<FileResource> getFileResources();
 
-  void setFileResources(LinkedHashSet<FileResource> fileResources);
+  void setFileResources(List<FileResource> fileResources);
 
-  default LinkedHashSet<FileResource> addFileResource(FileResource fileResource) {
+  default List<FileResource> addFileResource(FileResource fileResource) {
     if (getFileResources() == null) {
-      setFileResources(new LinkedHashSet<>());
+      setFileResources(new ArrayList<>());
     }
     getFileResources().add(fileResource);
     return getFileResources();

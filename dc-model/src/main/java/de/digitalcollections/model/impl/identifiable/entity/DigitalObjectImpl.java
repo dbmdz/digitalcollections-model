@@ -5,11 +5,12 @@ import de.digitalcollections.model.api.identifiable.entity.DigitalObject;
 import de.digitalcollections.model.api.identifiable.entity.enums.EntityType;
 import de.digitalcollections.model.api.identifiable.resource.FileResource;
 import de.digitalcollections.model.api.legal.License;
-import java.util.LinkedHashSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DigitalObjectImpl extends EntityImpl implements DigitalObject {
 
-  private LinkedHashSet<FileResource> fileResources = new LinkedHashSet<>();
+  private List<FileResource> fileResources = new ArrayList<>();
   private License license;
   private Version version;
 
@@ -19,9 +20,8 @@ public class DigitalObjectImpl extends EntityImpl implements DigitalObject {
   }
 
   @Override
-  public LinkedHashSet<FileResource> addFileResource(FileResource fileResource) {
+  public void addFileResource(FileResource fileResource) {
     fileResources.add(fileResource);
-    return fileResources;
   }
 
   @Override
@@ -45,12 +45,12 @@ public class DigitalObjectImpl extends EntityImpl implements DigitalObject {
   }
 
   @Override
-  public LinkedHashSet<FileResource> getFileResources() {
+  public List<FileResource> getFileResources() {
     return fileResources;
   }
 
   @Override
-  public void setFileResources(LinkedHashSet<FileResource> fileResources) {
+  public void setFileResources(List<FileResource> fileResources) {
     this.fileResources = fileResources;
   }
 }
