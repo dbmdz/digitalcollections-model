@@ -24,6 +24,7 @@ public class FileResourceImpl extends IdentifiableImpl implements FileResource {
   public FileResourceImpl() {
     super();
     this.type = IdentifiableType.RESOURCE;
+    this.fileResourceType = FileResourceType.UNDEFINED;
   }
 
   @Override
