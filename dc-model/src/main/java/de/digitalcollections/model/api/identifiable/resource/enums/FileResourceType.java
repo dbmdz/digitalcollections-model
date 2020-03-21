@@ -6,6 +6,7 @@ public enum FileResourceType {
   IMAGE,
   LINKED_DATA,
   TEXT,
+  UNDEFINED,
   VIDEO;
 
   @Override
