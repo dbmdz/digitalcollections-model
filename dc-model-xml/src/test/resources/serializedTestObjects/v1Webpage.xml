@@ -81,6 +81,7 @@
             <attributes>
               <src>https://external.content.org/index.php?language=de&amp;action=test</src>
               <width>90%</width>
+              <title>Iframe title</title>
               <height>150px</height>
             </attributes>
           </iframe>

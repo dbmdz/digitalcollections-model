@@ -74,7 +74,10 @@ public class WebpageFactory {
 
     IFrame iFrame =
         new IFrameImpl(
-            "https://external.content.org/index.php?language=de&action=test", "90%", "150px");
+            "https://external.content.org/index.php?language=de&action=test",
+            "90%",
+            "150px",
+            "Iframe title");
     structuredContent.addContentBlock(iFrame);
 
     LocalizedStructuredContent text = new LocalizedStructuredContentImpl();

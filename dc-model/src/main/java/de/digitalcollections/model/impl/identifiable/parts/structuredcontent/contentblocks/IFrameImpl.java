@@ -7,10 +7,11 @@ public class IFrameImpl extends ContentBlockWithAttributesImpl implements IFrame
 
   public IFrameImpl() {}
 
-  public IFrameImpl(String src, String width, String height) {
+  public IFrameImpl(String src, String width, String height, String title) {
     super();
-    addAttribute("src", src);
-    addAttribute("width", width);
     addAttribute("height", height);
+    addAttribute("src", src);
+    addAttribute("title", title);
+    addAttribute("width", width);
   }
 }
