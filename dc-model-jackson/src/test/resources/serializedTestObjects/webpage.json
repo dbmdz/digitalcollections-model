@@ -87,6 +87,7 @@
           "attrs": {
             "src": "https://external.content.org/index.php?language=de&action=test",
             "width": "90%",
+            "title": "Iframe title",
             "height": "150px"
           }
         }
