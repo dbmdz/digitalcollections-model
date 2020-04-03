@@ -1,10 +1,9 @@
-package de.digitalcollections.model.xml.xstream.v1;
+package de.digitalcollections.model.xml.xstream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.google.common.io.Resources;
 import de.digitalcollections.model.api.identifiable.entity.parts.Webpage;
-import de.digitalcollections.model.xml.xstream.WebpageFactory;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
@@ -14,17 +13,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.oxm.XmlMappingException;
 
-public class V1WebpageTest {
+public class WebpageTest {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(V1WebpageTest.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(WebpageTest.class);
 
-  private static V1DigitalCollectionsXStreamMarshaller marshaller;
+  private static DigitalCollectionsXStreamMarshaller marshaller;
 
-  public V1WebpageTest() {}
+  public WebpageTest() {}
 
   @BeforeAll
   public static void setUpClass() {
-    marshaller = new V1DigitalCollectionsXStreamMarshaller();
+    marshaller = new DigitalCollectionsXStreamMarshaller();
   }
 
   @Test
@@ -37,11 +36,8 @@ public class V1WebpageTest {
 
     LOGGER.info(result);
 
-    assertThat(result).doesNotContain("structuredContent");
-    assertThat(result).doesNotContain("contentBlocks");
-
-    String v1WebpageXml = readFromResources("serializedTestObjects/v1Webpage.xml");
-    assertThat(result).isEqualTo(v1WebpageXml);
+    String webpageXml = readFromResources("serializedTestObjects/webpage.xml");
+    assertThat(result).isEqualTo(webpageXml);
   }
 
   private String readFromResources(String filename) throws IOException {
