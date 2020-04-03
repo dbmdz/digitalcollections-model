@@ -1,4 +1,4 @@
-package de.digitalcollections.model.xml.xstream.v1;
+package de.digitalcollections.model.xml.xstream;
 
 import de.digitalcollections.model.api.identifiable.entity.parts.Webpage;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
