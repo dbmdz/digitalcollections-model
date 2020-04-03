@@ -1,41 +1,41 @@
 package de.digitalcollections.model.impl.identifiable.entity.parts;
 
 import de.digitalcollections.model.api.identifiable.entity.Entity;
-import de.digitalcollections.model.api.identifiable.entity.parts.ContentNode;
+import de.digitalcollections.model.api.identifiable.entity.parts.Subtopic;
 import de.digitalcollections.model.api.identifiable.entity.parts.enums.EntityPartType;
 import de.digitalcollections.model.api.identifiable.resource.FileResource;
 import de.digitalcollections.model.impl.identifiable.NodeImpl;
 import java.util.List;
 
-public class ContentNodeImpl extends EntityPartImpl implements ContentNode<ContentNode> {
+public class SubtopicImpl extends EntityPartImpl implements Subtopic {
 
-  private final NodeImpl<ContentNode> node;
+  private final NodeImpl<Subtopic> node;
   private List<Entity> entites;
   private List<FileResource> fileResources;
 
-  public ContentNodeImpl() {
+  public SubtopicImpl() {
     super();
     this.node = new NodeImpl<>();
-    this.entityPartType = EntityPartType.CONTENT_NODE;
+    this.entityPartType = EntityPartType.SUBTOPIC;
   }
 
   @Override
-  public List<ContentNode> getChildren() {
+  public List<Subtopic> getChildren() {
     return node.getChildren();
   }
 
   @Override
-  public void setChildren(List<ContentNode> children) {
+  public void setChildren(List<Subtopic> children) {
     node.setChildren(children);
   }
 
   @Override
-  public ContentNode getParent() {
+  public Subtopic getParent() {
     return node.getParent();
   }
 
   @Override
-  public void setParent(ContentNode parent) {
+  public void setParent(Subtopic parent) {
     node.setParent(parent);
   }
 

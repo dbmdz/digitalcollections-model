@@ -9,7 +9,6 @@ public enum EntityType {
   BOOK,
   CORPORATION,
   COLLECTION,
-  CONTENT_TREE,
   DIGITAL_OBJECT,
   EVENT,
   IMAGE,
@@ -17,6 +16,7 @@ public enum EntityType {
   PERSON,
   PLACE,
   PROJECT,
+  TOPIC,
   VIDEO,
   WEBSITE;
 

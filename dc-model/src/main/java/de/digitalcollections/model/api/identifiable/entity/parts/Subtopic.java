@@ -6,7 +6,13 @@ import de.digitalcollections.model.api.identifiable.resource.FileResource;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface ContentNode<N extends Node> extends Node<N>, EntityPart {
+/**
+ * https://www.merriam-webster.com/dictionary/subtopic: "a (subtopic is a) topic that is part of a
+ * broader or more general topic ..." "a (subtopic is a) topic that is one of the parts or divisions
+ * of the main topic ..." "a (subtopic is a) topic (as in a composition) that is a division of a
+ * main topic" https://www.linguee.com/english-german/translation/subtopic.html german: "Unterthema"
+ */
+public interface Subtopic extends Node<Subtopic>, EntityPart {
 
   List<Entity> getEntities();
 
