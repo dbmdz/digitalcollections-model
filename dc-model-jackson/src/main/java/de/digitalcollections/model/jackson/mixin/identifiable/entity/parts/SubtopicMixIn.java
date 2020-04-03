@@ -3,9 +3,9 @@ package de.digitalcollections.model.jackson.mixin.identifiable.entity.parts;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import de.digitalcollections.model.impl.identifiable.entity.parts.ContentNodeImpl;
+import de.digitalcollections.model.impl.identifiable.entity.parts.SubtopicImpl;
 
-@JsonDeserialize(as = ContentNodeImpl.class)
+@JsonDeserialize(as = SubtopicImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeName("contentNode")
-public interface ContentNodeMixIn {}
+@JsonTypeName("subtopic")
+public interface SubtopicMixIn {}

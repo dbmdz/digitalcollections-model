@@ -4,7 +4,7 @@ import de.digitalcollections.model.api.identifiable.entity.parts.EntityPart;
 
 /** All {@link EntityPart} types cudami can handle */
 public enum EntityPartType {
-  CONTENT_NODE,
+  SUBTOPIC,
   WEBPAGE;
 
   @Override

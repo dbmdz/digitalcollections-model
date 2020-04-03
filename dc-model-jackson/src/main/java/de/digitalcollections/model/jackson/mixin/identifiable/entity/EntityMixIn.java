@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.digitalcollections.model.impl.identifiable.entity.ArticleImpl;
 import de.digitalcollections.model.impl.identifiable.entity.CollectionImpl;
-import de.digitalcollections.model.impl.identifiable.entity.ContentTreeImpl;
 import de.digitalcollections.model.impl.identifiable.entity.DigitalObjectImpl;
+import de.digitalcollections.model.impl.identifiable.entity.TopicImpl;
 import de.digitalcollections.model.impl.identifiable.entity.WebsiteImpl;
 
 @JsonTypeInfo(
@@ -20,8 +20,8 @@ import de.digitalcollections.model.impl.identifiable.entity.WebsiteImpl;
   // EntityType) for deserializing:
   @JsonSubTypes.Type(value = ArticleImpl.class, name = "ARTICLE"),
   @JsonSubTypes.Type(value = CollectionImpl.class, name = "COLLECTION"),
-  @JsonSubTypes.Type(value = ContentTreeImpl.class, name = "CONTENT_TREE"),
   @JsonSubTypes.Type(value = DigitalObjectImpl.class, name = "DIGITAL_OBJECT"),
+  @JsonSubTypes.Type(value = TopicImpl.class, name = "TOPIC"),
   @JsonSubTypes.Type(value = WebsiteImpl.class, name = "WEBSITE")
 })
 public interface EntityMixIn {}
