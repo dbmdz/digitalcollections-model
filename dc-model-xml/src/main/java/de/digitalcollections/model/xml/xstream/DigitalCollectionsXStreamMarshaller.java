@@ -77,7 +77,7 @@ public class DigitalCollectionsXStreamMarshaller extends XStreamMarshaller {
     aliases.put("bulletList", BulletListImpl.class);
     aliases.put("codeBlock", CodeBlockImpl.class);
     aliases.put("collection", CollectionImpl.class);
-    aliases.put("contentBlocks", ContentBlock.class);
+    aliases.put("contentBlocks", ContentBlock[].class);
     aliases.put("contentNode", ContentNodeImpl.class);
     aliases.put("contentTree", ContentTreeImpl.class);
     aliases.put("corporation", CorporationImpl.class);
