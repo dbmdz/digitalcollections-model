@@ -16,9 +16,9 @@ public class TopicImpl extends EntityImpl implements Topic {
     this.entityType = EntityType.TOPIC;
   }
 
-  public TopicImpl(List<Subtopic> rootNodes) {
+  public TopicImpl(List<Subtopic> subtopics) {
     this();
-    this.subtopics = rootNodes;
+    this.subtopics = subtopics;
   }
 
   @Override
