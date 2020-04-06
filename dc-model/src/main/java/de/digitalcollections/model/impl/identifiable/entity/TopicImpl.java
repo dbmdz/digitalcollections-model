@@ -27,8 +27,8 @@ public class TopicImpl extends EntityImpl implements Topic {
   }
 
   @Override
-  public void setSubtopics(List<Subtopic> rootNodes) {
-    this.subtopics = rootNodes;
+  public void setSubtopics(List<Subtopic> subtopics) {
+    this.subtopics = subtopics;
   }
 
   @Override
