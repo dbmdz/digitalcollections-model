@@ -33,6 +33,17 @@ public class MimeTypeTest {
   }
 
   @Test
+  public void getMimeTypeForMimeTypeWithoutExtensions() throws Exception {
+    assertThat(MimeType.fromTypename("application/vnd.debian.binary-package").getPrimaryType())
+        .isEqualTo("application");
+    assertThat(MimeType.fromTypename("application/vnd.debian.binary-package").getSubType())
+        .isEqualTo("vnd.debian.binary-package");
+    assertThat(MimeType.fromTypename("application/vnd.debian.binary-package").getSuffix()).isNull();
+    assertThat(MimeType.fromTypename("application/vnd.debian.binary-package").getExtensions())
+        .isEmpty();
+  }
+
+  @Test
   public void returnsNullForUnknownMimetype1() throws Exception {
     assertThat(MimeType.fromTypename("foo/bar")).isNull();
   }
@@ -77,6 +88,10 @@ public class MimeTypeTest {
   public void testFromFilename() throws Exception {
     assertThat(MimeType.fromFilename("hahaha.tar.gz")).isNull();
     assertThat(MimeType.fromFilename("hahaha.zip").getTypeName()).isEqualTo("application/zip");
+    assertThat(
+            MimeType.fromFilename("libjavascriptcoregtk-1.0-0_2.4.11-3ubuntu3_amd64.deb")
+                .getTypeName())
+        .isEqualTo("application/x-debian-package");
   }
 
   @Test

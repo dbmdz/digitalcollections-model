@@ -51,7 +51,7 @@ public class MimeType {
           if (columns.length > 1) {
             return columns;
           }
-          return new String[] {columns[0], columns[0]};
+          return new String[] {columns[0], ""};
         };
 
     knownTypes =
@@ -66,7 +66,12 @@ public class MimeType {
             .collect(
                 Collectors.toMap(
                     columns -> columns[0],
-                    columns -> new MimeType(columns[0], List.of(columns[1].split(" ")))));
+                    columns ->
+                        new MimeType(
+                            columns[0],
+                            "".equals(columns[1])
+                                ? Collections.<String>emptyList()
+                                : List.of(columns[1].split(" ")))));
 
     // Some custom overrides to influence the order of file extensions
     // Since these are added to the end of the list, they take precedence over the
