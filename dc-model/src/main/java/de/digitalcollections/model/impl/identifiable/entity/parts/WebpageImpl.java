@@ -4,12 +4,15 @@ import de.digitalcollections.model.api.identifiable.entity.parts.Webpage;
 import de.digitalcollections.model.api.identifiable.entity.parts.enums.EntityPartType;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
 import de.digitalcollections.model.impl.identifiable.NodeImpl;
+import java.time.LocalDate;
 import java.util.List;
 
-public class WebpageImpl extends EntityPartImpl implements Webpage<Webpage> {
+public class WebpageImpl extends EntityPartImpl implements Webpage {
 
   private final NodeImpl<Webpage> node = new NodeImpl<>();
   private LocalizedStructuredContent text;
+  private LocalDate publishEnd;
+  private LocalDate publishStart;
 
   public WebpageImpl() {
     super();
@@ -49,5 +52,25 @@ public class WebpageImpl extends EntityPartImpl implements Webpage<Webpage> {
   @Override
   public void setParent(Webpage parent) {
     node.setParent(parent);
+  }
+
+  @Override
+  public LocalDate getPublishEnd() {
+    return publishEnd;
+  }
+
+  @Override
+  public void setPublishEnd(LocalDate publishEnd) {
+    this.publishEnd = publishEnd;
+  }
+
+  @Override
+  public LocalDate getPublishStart() {
+    return publishStart;
+  }
+
+  @Override
+  public void setPublishStart(LocalDate publishStart) {
+    this.publishStart = publishStart;
   }
 }
