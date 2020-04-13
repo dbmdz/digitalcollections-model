@@ -65,7 +65,7 @@
 
     <version.assertj>3.15.0</version.assertj>
     <version.guava>28.2-jre</version.guava>
-    <version.junit>5.6.1</version.junit>
+    <version.junit>5.6.2</version.junit>
     <!-- Plugin versions -->
     <version.jacoco-maven-plugin>0.8.5</version.jacoco-maven-plugin>
     <version.maven-compiler-plugin>3.8.1</version.maven-compiler-plugin>
