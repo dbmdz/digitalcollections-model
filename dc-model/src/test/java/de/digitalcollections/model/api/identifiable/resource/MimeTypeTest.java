@@ -98,5 +98,6 @@ public class MimeTypeTest {
   public void knowsOfTypesWithoutExtensions() throws Exception {
     assertThat(MimeType.fromTypename("text/xml")).isNotNull();
     assertThat(MimeType.fromTypename("text/markdown")).isNotNull();
+    assertThat(MimeType.fromTypename("image/*")).isEqualTo(MimeType.MIME_IMAGE);
   }
 }
