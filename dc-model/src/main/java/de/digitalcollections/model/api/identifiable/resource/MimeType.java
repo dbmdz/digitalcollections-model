@@ -83,6 +83,8 @@ public class MimeType {
     xmlExtensions.add("ent");
     knownTypes.get("application/xml").setExtensions(xmlExtensions);
 
+    knownTypes.put("image/*", new MimeType("image/*", Collections.emptyList()));
+
     extensionMapping = new HashMap<>();
     for (Map.Entry<String, MimeType> entry : knownTypes.entrySet()) {
       String typeName = entry.getKey();
@@ -95,7 +97,7 @@ public class MimeType {
   /** Convenience definitions for commonly used MIME types */
   public static final MimeType MIME_WILDCARD = new MimeType("*", Collections.emptyList());
 
-  public static final MimeType MIME_IMAGE = new MimeType("image/*", Collections.emptyList());
+  public static final MimeType MIME_IMAGE = knownTypes.get("image/*");;
   public static final MimeType MIME_APPLICATION_JSON = knownTypes.get("application/json");
   public static final MimeType MIME_APPLICATION_OCTET_STREAM =
       knownTypes.get("application/octet-stream");
