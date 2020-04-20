@@ -13,3 +13,27 @@ Primarily started from the needs for [GLAM](https://en.wikipedia.org/wiki/GLAM_%
 Comes with separate modules for serializing the objects
 - to JSON (dc-model-jackson module) using [Jackson](https://github.com/FasterXML/jackson)
 - to XML (dc-model-xml module) using [XStream](https://x-stream.github.io/)
+
+## Filtering-Model
+
+Model for passing filter params from frontend to backend.
+
+Example usage (request param `publicationDate`contains e.g. `gt:2020-04-01`):
+
+```java
+  public PageResponse<Webpage> findAll(
+      @RequestParam(name = "pageNumber", required = false, defaultValue = "0") int pageNumber,
+      @RequestParam(name = "pageSize", required = false, defaultValue = "5") int pageSize,
+      @RequestParam(name = "sortField", required = false, defaultValue = "uuid") String sortField,
+      @RequestParam(name = "sortDirection", required = false, defaultValue = "ASC") Direction sortDirection,
+      @RequestParam(name = "nullHandling", required = false, defaultValue = "NATIVE") NullHandling nullHandling,
+      @RequestParam(name = "publicationDate", required = false) String publicationDate
+  ) {
+    OrderImpl order = new OrderImpl(sortDirection, sortField, nullHandling);
+    Sorting sorting = new SortingImpl(order);
+    Filtering filtering = Filtering.defaultBuilder()
+            .add(new FilterCriteria("publicationDate", publicationDate, LocalDate.class))
+            .build();
+    PageRequest pageRequest = new PageRequestImpl(pageNumber, pageSize, sorting, filtering);
+  ...
+```
