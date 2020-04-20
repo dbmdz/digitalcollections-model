@@ -94,6 +94,6 @@
       ]
     }
   },
-  "publishEnd":"+999999999-12-31",
-  "publishStart":"-999999999-01-01"
+  "publicationEnd":"+999999999-12-31",
+  "publicationStart":"-999999999-01-01"
 }

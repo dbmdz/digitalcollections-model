@@ -7,13 +7,13 @@ import java.time.LocalDate;
 /** A Webpage of a Website. */
 public interface Webpage extends Node<Webpage>, EntityPart {
 
-  LocalDate getPublishEnd();
+  LocalDate getPublicationEnd();
 
-  void setPublishEnd(LocalDate publishEnd);
+  void setPublicationEnd(LocalDate publicationEnd);
 
-  LocalDate getPublishStart();
+  LocalDate getPublicationStart();
 
-  void setPublishStart(LocalDate publishStart);
+  void setPublicationStart(LocalDate publicationStart);
 
   LocalizedStructuredContent getText();
 

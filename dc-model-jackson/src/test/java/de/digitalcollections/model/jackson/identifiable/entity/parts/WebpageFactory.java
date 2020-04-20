@@ -85,8 +85,8 @@ public class WebpageFactory {
     text.put(Locale.GERMANY, structuredContent);
     webpage.setText(text);
 
-    webpage.setPublishStart(LocalDate.MIN);
-    webpage.setPublishEnd(LocalDate.MAX);
+    webpage.setPublicationStart(LocalDate.MIN);
+    webpage.setPublicationEnd(LocalDate.MAX);
     return webpage;
   }
 }

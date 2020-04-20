@@ -11,8 +11,8 @@ public class WebpageImpl extends EntityPartImpl implements Webpage {
 
   private final NodeImpl<Webpage> node = new NodeImpl<>();
   private LocalizedStructuredContent text;
-  private LocalDate publishEnd;
-  private LocalDate publishStart;
+  private LocalDate publicationEnd;
+  private LocalDate publicationStart;
 
   public WebpageImpl() {
     super();
@@ -55,22 +55,22 @@ public class WebpageImpl extends EntityPartImpl implements Webpage {
   }
 
   @Override
-  public LocalDate getPublishEnd() {
-    return publishEnd;
+  public LocalDate getPublicationEnd() {
+    return publicationEnd;
   }
 
   @Override
-  public void setPublishEnd(LocalDate publishEnd) {
-    this.publishEnd = publishEnd;
+  public void setPublicationEnd(LocalDate publicationEnd) {
+    this.publicationEnd = publicationEnd;
   }
 
   @Override
-  public LocalDate getPublishStart() {
-    return publishStart;
+  public LocalDate getPublicationStart() {
+    return publicationStart;
   }
 
   @Override
-  public void setPublishStart(LocalDate publishStart) {
-    this.publishStart = publishStart;
+  public void setPublicationStart(LocalDate publicationStart) {
+    this.publicationStart = publicationStart;
   }
 }
