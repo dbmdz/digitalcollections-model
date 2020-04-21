@@ -1,31 +1,14 @@
 package de.digitalcollections.model.api.filter;
 
+import com.google.common.reflect.TypeToken;
 import de.digitalcollections.model.api.filter.enums.FilterOperation;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.lang.reflect.Type;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import org.springframework.util.Assert;
-import org.springframework.util.StringUtils;
 
 /**
  * Filter Criteria Holder
  */
-public class FilterCriteria<T extends Comparable<T>> {
-
-  private static final Map<Class<?>, Function<String, ? extends Comparable<?>>> fromStringConverters = new HashMap<>();
-
-  static {
-    // initialise with "well known" conversion functions from string
-    fromStringConverters.put(Integer.class, Integer::valueOf);
-    fromStringConverters.put(Long.class, Long::valueOf);
-    fromStringConverters.put(LocalDate.class, LocalDate::parse);
-    fromStringConverters.put(String.class, s -> s);
-  }
+public class FilterCriteria<T extends Comparable> {
 
   /**
    * Holds the operation {@link FilterOperation}
@@ -36,11 +19,6 @@ public class FilterCriteria<T extends Comparable<T>> {
    * Table column name
    */
   private String fieldName;
-
-  /**
-   * Holds the Function to convertString to <T>
-   */
-  private Function<String, T> converterFunction;
 
   /**
    * Converted value
@@ -58,21 +36,24 @@ public class FilterCriteria<T extends Comparable<T>> {
   private T maxValue;
 
   /**
-   * Holds the filter criteria
-   */
-  private Collection<String> originalValues;
-
-  /**
    * Holds the filter criteria as type <T>
    */
   private Collection<T> convertedValues;
 
-  public FilterCriteria(String fieldName, String operationAndValue, Class<T> valueType) {
-    this(fieldName, operationAndValue, (Function<String, T>) fromStringConverters.get(valueType));
+  // FOR NOT WORKING 2 (get target class)
+  private final TypeToken<T> typeToken = new TypeToken<T>(getClass()) {
+  };
+  private final Type type = typeToken.getType(); // or getRawType() to return Class<? super T>
+
+  public Type getType() {
+    return type;
+  }
+
+  public FilterCriteria() {
   }
 
   /**
-   * Constructor for Filter Criteria with DB table column name, filter string and converter function
+   * Constructor for Filter Criteria with field name, filter string and converter function
    * <br>
    *
    * <table border="1">
@@ -124,77 +105,26 @@ public class FilterCriteria<T extends Comparable<T>> {
    * </tr>
    * </table>
    *
-   * @param fieldName
-   * @param filter
-   * @param converterFunction
+   * @param fieldName target field the criteria should be used for
+   * @param operation operation of criteria
+   * @param convertedSingleValue operand of criteria
+   * @param minValue minimum value of between operation
+   * @param maxValue maximum value of between operation
+   * @param convertedValues operand(s) of criteria
    */
-  public FilterCriteria(String fieldName, String filter, Function<String, T> converterFunction) {
-    // Validations
-    Assert.isTrue(!StringUtils.isEmpty(fieldName), "Field name can't be empty");
-    Assert.isTrue(!StringUtils.isEmpty(filter), "Filter criteria can't be empty");
-
-    this.converterFunction = converterFunction;
+  public FilterCriteria(
+          String fieldName,
+          FilterOperation operation,
+          T convertedSingleValue,
+          T minValue,
+          T maxValue,
+          Collection<T> convertedValues) {
+    this.operation = operation;
     this.fieldName = fieldName;
-
-    String[] filterSplit = StringUtils.split(filter, ":");
-    if (filterSplit.length != 2) {
-      throw new IllegalArgumentException("More than one or no separator ':' found");
-    }
-
-    String operation = filterSplit[0];
-    String operationValue = filterSplit[1];
-
-    // Convert the operation name to enum
-    this.operation = FilterOperation.fromValue(operation);
-
-    String[] operationValues;
-    if (!operationValue.contains(",")) {
-      operationValues = new String[]{operationValue};
-    } else {
-      // Split the filter value as comma separated.
-      operationValues = StringUtils.split(operationValue, ",");
-    }
-    if (operationValues.length < 1) {
-      throw new IllegalArgumentException("Operation value can't be empty");
-    }
-
-    this.originalValues = Arrays.asList(operationValues);
-    this.convertedValues = new ArrayList<>();
-
-    // Validate other conditions
-    validateAndAssign(operationValues);
-  }
-
-  private void validateAndAssign(String[] operationValues) {
-
-    // For operation 'btn'
-    if (FilterOperation.BETWEEN == operation) {
-      if (operationValues.length != 2) {
-        throw new IllegalArgumentException("For 'btn' operation two values are expected");
-      } else {
-
-        // Convert
-        T value1 = this.converterFunction.apply(operationValues[0]);
-        T value2 = this.converterFunction.apply(operationValues[1]);
-
-        // Set min and max values
-        if (value1.compareTo(value2) > 0) {
-          this.minValue = value2;
-          this.maxValue = value1;
-        } else {
-          this.minValue = value1;
-          this.maxValue = value2;
-        }
-      }
-
-      // For 'in' or 'nin' operation
-    } else if (FilterOperation.IN == operation || FilterOperation.NOT_IN == operation) {
-      convertedValues.addAll(
-              originalValues.stream().map(converterFunction).collect(Collectors.toList()));
-    } else {
-      // All other operation
-      this.convertedSingleValue = converterFunction.apply(operationValues[0]);
-    }
+    this.convertedSingleValue = convertedSingleValue;
+    this.minValue = minValue;
+    this.maxValue = maxValue;
+    this.convertedValues = convertedValues;
   }
 
   public T getConvertedSingleValue() {
@@ -217,15 +147,12 @@ public class FilterCriteria<T extends Comparable<T>> {
     return fieldName;
   }
 
-  public Function<String, T> getConverterFunction() {
-    return converterFunction;
-  }
-
-  public Collection<String> getOriginalValues() {
-    return originalValues;
-  }
-
   public Collection<T> getConvertedValues() {
     return convertedValues;
+  }
+
+  public FilterCriteria<T> withFieldName(String fieldName) {
+    this.fieldName = fieldName;
+    return this;
   }
 }

@@ -45,5 +45,11 @@
       <artifactId>spring-security-core</artifactId>
       <version>${version.spring-security-core}</version>
     </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>28.2-jre</version>
+      <type>jar</type>
+    </dependency>
   </dependencies>
 </project>
