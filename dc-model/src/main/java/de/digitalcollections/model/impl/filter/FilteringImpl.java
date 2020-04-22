@@ -9,6 +9,8 @@ public class FilteringImpl implements Filtering {
 
   private List<FilterCriteria> filterCriterias;
 
+  public FilteringImpl() {}
+
   public FilteringImpl(List<FilterCriteria> filterCriterias) {
     this.filterCriterias = filterCriterias;
   }

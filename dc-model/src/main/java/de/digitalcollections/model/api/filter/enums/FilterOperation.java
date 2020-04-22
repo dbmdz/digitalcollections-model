@@ -19,8 +19,8 @@ package de.digitalcollections.model.api.filter.enums;
  * </table>
  */
 public enum FilterOperation {
-  EQUAL("eq"),
-  NOT_EQUAL("neq"),
+  EQUALS("eq"),
+  NOT_EQUALS("neq"),
   GREATER_THAN("gt"),
   GREATER_THAN_OR_EQUAL_TO("gte"),
   LESS_THAN("lt"),
