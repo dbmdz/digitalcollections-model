@@ -2,12 +2,13 @@ package de.digitalcollections.model.impl.filter;
 
 import de.digitalcollections.model.api.filter.FilterCriteria;
 import de.digitalcollections.model.api.filter.Filtering;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class FilteringImpl implements Filtering {
 
-  private List<FilterCriteria> filterCriterias;
+  private List<FilterCriteria> filterCriterias = new ArrayList<>();
 
   public FilteringImpl() {}
 

@@ -6,10 +6,10 @@ import de.digitalcollections.model.api.paging.Sorting;
 import de.digitalcollections.model.feign.expander.filter.FilteringToUrlParamsExpander;
 import feign.Param;
 
-public class PageRequestToUrlParamsExpander<T extends Comparable> implements Param.Expander {
+public class PageRequestToUrlParamsExpander implements Param.Expander {
 
-  private FilteringToUrlParamsExpander<T> filteringToUrlParamsExpander =
-      new FilteringToUrlParamsExpander<>();
+  private FilteringToUrlParamsExpander filteringToUrlParamsExpander =
+      new FilteringToUrlParamsExpander();
   private SortingToUrlParamsExpander sortingToUrlParamsExpander = new SortingToUrlParamsExpander();
 
   @Override
@@ -48,6 +48,8 @@ public class PageRequestToUrlParamsExpander<T extends Comparable> implements Par
       // cut off leading "&"
       urlParams = urlParams.substring(1);
     }
+
+    //    urlParams = URLEncoder.encode(urlParams, StandardCharsets.UTF_8);
     return urlParams;
   }
 }

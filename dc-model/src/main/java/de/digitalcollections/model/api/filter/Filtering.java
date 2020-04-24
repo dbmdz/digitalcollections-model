@@ -24,7 +24,7 @@ public interface Filtering extends Iterable<FilterCriteria>, Serializable {
 
   class Builder {
 
-    private List<FilterCriteria> filterCriterias;
+    private List<FilterCriteria> filterCriterias = new ArrayList<>();
 
     /**
      * adds a filter criteria to list of filter criterias. if given filterCriteria is null, no
@@ -50,9 +50,6 @@ public interface Filtering extends Iterable<FilterCriteria>, Serializable {
      * @return builder instance for fluent usage
      */
     public Builder add(FilterCriteria filterCriteria) {
-      if (filterCriterias == null) {
-        filterCriterias = new ArrayList<>();
-      }
       if (filterCriteria != null) {
         if (filterCriteria.getFieldName() == null) {
           throw new IllegalArgumentException("field name of a filter criteria must not be null!");
