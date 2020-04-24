@@ -6,4 +6,4 @@ import de.digitalcollections.model.impl.filter.FilteringImpl;
 
 @JsonDeserialize(as = FilteringImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public abstract class FilteringMixIn {}
+public interface FilteringMixIn {}

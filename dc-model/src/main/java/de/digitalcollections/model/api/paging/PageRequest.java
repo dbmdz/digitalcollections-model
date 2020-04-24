@@ -1,5 +1,6 @@
 package de.digitalcollections.model.api.paging;
 
+import de.digitalcollections.model.api.filter.Filtering;
 import de.digitalcollections.model.impl.paging.PageRequestImpl;
 
 /**
@@ -37,6 +38,13 @@ public interface PageRequest {
   Sorting getSorting();
 
   /**
+   * Returns the filtering parameters.
+   *
+   * @return the filtering parameters
+   */
+  Filtering getFiltering();
+
+  /**
    * Returns the {@link PageRequest} requesting the next page.
    *
    * @return the PageRequest requesting the next page
@@ -69,6 +77,13 @@ public interface PageRequest {
   boolean hasPrevious();
 
   /**
+   * Sets the filtering parameters.
+   *
+   * @param filtering the filtering criterias
+   */
+  void setFiltering(Filtering filtering);
+
+  /**
    * Sets the number of items.
    *
    * @param pageSize the number of items of that page
@@ -91,6 +106,7 @@ public interface PageRequest {
     private int pageNumber;
     private int pageSize;
     private Sorting sorting;
+    private Filtering filtering;
 
     public Builder pageNumber(int pageNumber) {
       this.pageNumber = pageNumber;
@@ -107,8 +123,13 @@ public interface PageRequest {
       return this;
     }
 
+    public Builder filtering(Filtering filtering) {
+      this.filtering = filtering;
+      return this;
+    }
+
     public PageRequest build() {
-      return new PageRequestImpl(pageNumber, pageSize, sorting);
+      return new PageRequestImpl(pageNumber, pageSize, sorting, filtering);
     }
   }
 }

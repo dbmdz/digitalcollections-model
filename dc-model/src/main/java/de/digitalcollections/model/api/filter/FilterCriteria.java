@@ -36,4 +36,12 @@ public interface FilterCriteria<T extends Comparable> {
 
   /** @param fieldName field name being target of filter operation */
   void setFieldName(String fieldName);
+
+  void setMaxValue(T maxValue);
+
+  void setMinValue(T minValue);
+
+  void setValue(T value);
+
+  void setValues(Collection<T> values);
 }

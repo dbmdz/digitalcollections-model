@@ -1,5 +1,6 @@
 package de.digitalcollections.model.impl.paging;
 
+import de.digitalcollections.model.api.filter.Filtering;
 import de.digitalcollections.model.api.paging.PageRequest;
 import de.digitalcollections.model.api.paging.PageResponse;
 import de.digitalcollections.model.api.paging.Sorting;
@@ -14,6 +15,7 @@ public class PageRequestImpl implements PageRequest, Serializable {
 
   private int page;
   private int size;
+  private Filtering filtering;
   private Sorting sort;
 
   public PageRequestImpl() {}
@@ -26,7 +28,7 @@ public class PageRequestImpl implements PageRequest, Serializable {
    * @param size the size of the page to be returned.
    */
   public PageRequestImpl(int page, int size) {
-    this(page, size, null);
+    this(page, size, null, (Filtering) null);
   }
 
   /**
@@ -39,7 +41,11 @@ public class PageRequestImpl implements PageRequest, Serializable {
    * @param properties the properties to sort by, must not be {@literal null} or empty.
    */
   public PageRequestImpl(int page, int size, Direction direction, String... properties) {
-    this(page, size, new SortingImpl(direction, properties));
+    this(page, size, new SortingImpl(direction, properties), null);
+  }
+
+  public PageRequestImpl(int page, int size, Sorting sort) {
+    this(page, size, sort, null);
   }
 
   /**
@@ -47,9 +53,10 @@ public class PageRequestImpl implements PageRequest, Serializable {
    *
    * @param page zero-based page index, must not be less than zero.
    * @param size the size of the page to be returned, must not be less than one.
-   * @param sort can be {@literal null}.
+   * @param sort can be {@literal null}
+   * @param filtering contains list of filter criterias
    */
-  public PageRequestImpl(int page, int size, Sorting sort) {
+  public PageRequestImpl(int page, int size, Sorting sort, Filtering filtering) {
     if (page < 0) {
       throw new IllegalArgumentException("Page index must not be less than zero!");
     }
@@ -58,6 +65,7 @@ public class PageRequestImpl implements PageRequest, Serializable {
       throw new IllegalArgumentException("Page size must not be less than one!");
     }
 
+    this.filtering = filtering;
     this.page = page;
     this.size = size;
     this.sort = sort;
@@ -76,15 +84,22 @@ public class PageRequestImpl implements PageRequest, Serializable {
 
     PageRequestImpl that = (PageRequestImpl) obj;
 
+    boolean filterEqual =
+        (this.filtering == null ? that.filtering == null : this.filtering.equals(that.filtering));
     boolean sortEqual = (this.sort == null ? that.sort == null : this.sort.equals(that.sort));
     boolean othersEqual = (this.page == that.page && this.size == that.size);
 
-    return othersEqual && sortEqual;
+    return filterEqual && othersEqual && sortEqual;
   }
 
   @Override
   public PageRequest first() {
-    return new PageRequestImpl(0, getPageSize(), getSorting());
+    return new PageRequestImpl(0, getPageSize(), getSorting(), getFiltering());
+  }
+
+  @Override
+  public Filtering getFiltering() {
+    return filtering;
   }
 
   @Override
@@ -158,9 +173,17 @@ public class PageRequestImpl implements PageRequest, Serializable {
   }
 
   @Override
+  public void setFiltering(Filtering filtering) {
+    this.filtering = filtering;
+  }
+
+  @Override
   public String toString() {
     return String.format(
-        "Page request [number: %d, size %d, sort: %s]",
-        getPageNumber(), getPageSize(), sort == null ? null : sort.toString());
+        "Page request [number: %d, size %d, sort: %s, filtering: %s]",
+        getPageNumber(),
+        getPageSize(),
+        sort == null ? null : sort.toString(),
+        filtering == null ? null : filtering.toString());
   }
 }

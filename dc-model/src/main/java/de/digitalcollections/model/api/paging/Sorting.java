@@ -27,6 +27,8 @@ public interface Sorting extends Iterable<Order>, Serializable {
    */
   Order getOrderFor(String property);
 
+  List<Order> getOrders();
+
   static Builder defaultBuilder() {
     return new Builder();
   }

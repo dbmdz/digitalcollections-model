@@ -56,6 +56,7 @@ import de.digitalcollections.model.api.paging.PageRequest;
 import de.digitalcollections.model.api.paging.PageResponse;
 import de.digitalcollections.model.api.paging.Sorting;
 import de.digitalcollections.model.api.security.User;
+import de.digitalcollections.model.impl.filter.FilterCriteriaImpl;
 import de.digitalcollections.model.jackson.mixin.filter.FilterCriteriaMixIn;
 import de.digitalcollections.model.jackson.mixin.filter.FilteringMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.IdentifierMixIn;
@@ -157,6 +158,7 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(EntityRelation.class, EntityRelationMixIn.class);
     context.setMixInAnnotations(FileResource.class, FileResourceMixIn.class);
     context.setMixInAnnotations(FilterCriteria.class, FilterCriteriaMixIn.class);
+    context.setMixInAnnotations(FilterCriteriaImpl.class, FilterCriteriaMixIn.class);
     context.setMixInAnnotations(Filtering.class, FilteringMixIn.class);
     context.setMixInAnnotations(Heading.class, HeadingMixIn.class);
     context.setMixInAnnotations(Identifier.class, IdentifierMixIn.class);
