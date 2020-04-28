@@ -40,7 +40,7 @@ public class EndpointErrorDecoder implements ErrorDecoder {
         return new ForbiddenException(methodKey, status, request);
       case 404:
         return new ResourceNotFoundException(methodKey, status, request);
-      case 413:
+      case 418:
         return new ImATeapotException(methodKey, status, request);
       case 451:
         return new UnavailableForLegalReasonsException(methodKey, status, request);
