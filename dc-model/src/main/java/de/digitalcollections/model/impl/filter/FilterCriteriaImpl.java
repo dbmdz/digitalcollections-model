@@ -36,6 +36,9 @@ public class FilterCriteriaImpl<T extends Comparable> implements FilterCriteria<
       T minValue,
       T maxValue,
       Collection<T> values) {
+    if (fieldName == null) {
+      throw new IllegalArgumentException("a fieldName is required");
+    }
     this.operation = operation;
     this.fieldName = fieldName;
     this.value = value;
@@ -52,9 +55,12 @@ public class FilterCriteriaImpl<T extends Comparable> implements FilterCriteria<
    * @param value operand of criteria
    */
   public FilterCriteriaImpl(String fieldName, FilterOperation operation, T value) {
-    this.operation = operation;
-    this.fieldName = fieldName;
-    this.value = value;
+    this(fieldName, operation, value, null, null, null);
+    if (operation == FilterOperation.BETWEEN
+        || operation == FilterOperation.IN
+        || operation == FilterOperation.NOT_IN) {
+      throw new IllegalArgumentException("this constructor only supports single value operations");
+    }
   }
 
   @Override
