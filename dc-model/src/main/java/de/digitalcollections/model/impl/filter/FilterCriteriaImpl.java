@@ -19,8 +19,6 @@ public class FilterCriteriaImpl<T extends Comparable> implements FilterCriteria<
 
   private Collection<T> values;
 
-  //  public FilterCriteriaImpl() {}
-
   /**
    * Constructor for Filter Criteria.
    *
@@ -44,6 +42,19 @@ public class FilterCriteriaImpl<T extends Comparable> implements FilterCriteria<
     this.minValue = minValue;
     this.maxValue = maxValue;
     this.values = values;
+  }
+
+  /**
+   * Constructor for single value Filter Criteria.
+   *
+   * @param fieldName target field the criteria should be used for
+   * @param operation operation of criteria
+   * @param value operand of criteria
+   */
+  public FilterCriteriaImpl(String fieldName, FilterOperation operation, T value) {
+    this.operation = operation;
+    this.fieldName = fieldName;
+    this.value = value;
   }
 
   @Override
