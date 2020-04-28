@@ -70,11 +70,17 @@ public class FilterCriteriaImpl<T extends Comparable> implements FilterCriteria<
 
   @Override
   public T getMinValue() {
+    if (minValue != null && maxValue != null && minValue.compareTo(maxValue) > 0) {
+      return maxValue;
+    }
     return minValue;
   }
 
   @Override
   public T getMaxValue() {
+    if (minValue != null && maxValue != null && minValue.compareTo(maxValue) > 0) {
+      return minValue;
+    }
     return maxValue;
   }
 
