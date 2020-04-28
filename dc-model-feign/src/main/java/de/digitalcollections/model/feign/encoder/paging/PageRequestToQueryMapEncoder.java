@@ -6,6 +6,13 @@ import feign.QueryMapEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * {@link QueryMapEncoder} encoding a {@link PageRequest} into a map of query parameter names and
+ * values.
+ *
+ * @see <a href="https://github.com/OpenFeign/feign#dynamic-query-parameters">Dynamic Query
+ *     Parameters</a>
+ */
 public class PageRequestToQueryMapEncoder implements QueryMapEncoder {
 
   private FilteringToQueryMapEncoder filteringToQueryMapEncoder = new FilteringToQueryMapEncoder();

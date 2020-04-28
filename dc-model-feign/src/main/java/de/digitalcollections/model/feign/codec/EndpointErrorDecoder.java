@@ -16,6 +16,7 @@ import de.digitalcollections.model.api.http.exceptions.server.ServiceUnavailable
 import feign.Response;
 import feign.codec.ErrorDecoder;
 
+/** Allows you to decode HTTP error codes into application-specific ones. */
 public class EndpointErrorDecoder implements ErrorDecoder {
 
   @Override

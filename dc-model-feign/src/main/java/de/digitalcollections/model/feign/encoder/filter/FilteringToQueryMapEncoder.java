@@ -10,6 +10,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * {@link QueryMapEncoder} encoding a {@link Filtering} into a map of query parameter names and
+ * values.
+ *
+ * @see <a href="https://github.com/OpenFeign/feign#dynamic-query-parameters">Dynamic Query
+ *     Parameters</a>
+ */
 public class FilteringToQueryMapEncoder<T extends Comparable> implements QueryMapEncoder {
 
   @Override
