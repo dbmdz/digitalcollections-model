@@ -18,7 +18,7 @@ Comes with separate modules for serializing the objects
 
 Model for passing filter params from frontend to backend.
 
-Example usage (request param `publicationDate`contains e.g. `gt:2020-04-01`):
+Example usage (return only webpages with active publication time range):
 
 ```java
   public PageResponse<Webpage> findAll(
@@ -26,14 +26,17 @@ Example usage (request param `publicationDate`contains e.g. `gt:2020-04-01`):
       @RequestParam(name = "pageSize", required = false, defaultValue = "5") int pageSize,
       @RequestParam(name = "sortField", required = false, defaultValue = "uuid") String sortField,
       @RequestParam(name = "sortDirection", required = false, defaultValue = "ASC") Direction sortDirection,
-      @RequestParam(name = "nullHandling", required = false, defaultValue = "NATIVE") NullHandling nullHandling,
-      @RequestParam(name = "publicationDate", required = false) String publicationDate
+      @RequestParam(name = "nullHandling", required = false, defaultValue = "NATIVE") NullHandling nullHandling
   ) {
     OrderImpl order = new OrderImpl(sortDirection, sortField, nullHandling);
     Sorting sorting = new SortingImpl(order);
+
+    LocalDate now = LocalDate.now();
     Filtering filtering = Filtering.defaultBuilder()
-            .add(new FilterCriteria("publicationDate", publicationDate, LocalDate.class))
+            .add(new FilterCriteriaImpl<>("publicationStart", FilterOperation.LESSTHAN_OR_EQUAL_TO, now))
+            .add(new FilterCriteriaImpl<>("publicationEnd", FilterOperation.GREATER_THAN_OR_EQUAL_TO, now))
             .build();
+
     PageRequest pageRequest = new PageRequestImpl(pageNumber, pageSize, sorting, filtering);
   ...
 ```
