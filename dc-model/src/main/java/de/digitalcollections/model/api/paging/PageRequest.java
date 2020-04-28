@@ -6,6 +6,15 @@ import de.digitalcollections.model.impl.paging.PageRequestImpl;
 /**
  * Abstract interface for pagination information. See Spring Data Commons, but more flat design and
  * independent of Spring libraries.
+ *
+ * <p>Container for paging, sorting and filtering params:
+ *
+ * <ul>
+ *   <li>pageNumber: which page to be returned
+ *   <li>pageSize: how many items on one page
+ *   <li>sorting: container for sorting order of result list
+ *   <li>filtering: container for filter criterias of result list
+ * </ul>
  */
 public interface PageRequest {
 
