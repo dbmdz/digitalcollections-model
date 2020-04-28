@@ -16,6 +16,8 @@ package de.digitalcollections.model.api.filter.enums;
  * <tr><td>nin      </td><td> Not IN                     </td><td>country=nin:fr, de, nz  </td></tr>
  * <tr><td>btn      </td><td> Between                    </td><td>joiningDate=btn:2018-01-01, 2016-01-01</td></tr>
  * <tr><td>like     </td><td> Like                       </td><td>firstName=like:John     </td></tr>
+ * <tr><td>set      </td><td> value exists (not null)    </td><td>firstName=set:          </td></tr>
+ * <tr><td>notset   </td><td> value is not set (null)    </td><td>firstName=notset:       </td></tr>
  * </table>
  */
 public enum FilterOperation {
@@ -28,7 +30,9 @@ public enum FilterOperation {
   IN("in"),
   NOT_IN("nin"),
   BETWEEN("btn"),
-  CONTAINS("like");
+  CONTAINS("like"),
+  NOT_SET("set"),
+  SET("notset");
 
   private final String value;
 
