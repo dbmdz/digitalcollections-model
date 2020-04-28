@@ -28,8 +28,7 @@ public class SortingToQueryMapEncoder implements QueryMapEncoder {
     }
 
     Map<String, Object> queryMap = new HashMap<>();
-    for (Iterator<Order> iterator = sorting.iterator(); iterator.hasNext(); ) {
-      Order order = iterator.next();
+    for (Order order : sorting) {
       String sortField = order.getProperty() == null ? "" : order.getProperty();
       queryMap.put("sortField", sortField);
 
