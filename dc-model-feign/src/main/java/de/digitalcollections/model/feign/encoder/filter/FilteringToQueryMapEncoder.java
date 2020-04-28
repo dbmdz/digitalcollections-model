@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 public class FilteringToQueryMapEncoder<T extends Comparable> implements QueryMapEncoder {
@@ -21,8 +20,7 @@ public class FilteringToQueryMapEncoder<T extends Comparable> implements QueryMa
     Map<String, Object> queryMap = new HashMap<>();
 
     Filtering filtering = (Filtering) object;
-    for (Iterator iterator = filtering.iterator(); iterator.hasNext(); ) {
-      FilterCriteria<T> fc = (FilterCriteria<T>) iterator.next();
+    for (FilterCriteria<T> fc : filtering) {
       FilterOperation filterOperation = fc.getOperation();
       String fieldName = fc.getFieldName();
       if (null == filterOperation) {
