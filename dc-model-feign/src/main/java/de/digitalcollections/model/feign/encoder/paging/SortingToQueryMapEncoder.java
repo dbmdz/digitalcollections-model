@@ -4,7 +4,6 @@ import de.digitalcollections.model.api.paging.Order;
 import de.digitalcollections.model.api.paging.Sorting;
 import feign.QueryMapEncoder;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 /**
