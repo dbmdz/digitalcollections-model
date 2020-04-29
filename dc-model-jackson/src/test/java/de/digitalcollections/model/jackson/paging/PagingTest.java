@@ -1,10 +1,9 @@
 package de.digitalcollections.model.jackson.paging;
 
-import de.digitalcollections.model.api.filter.FilterCriteria;
+import de.digitalcollections.model.api.filter.FilterCriterion;
 import de.digitalcollections.model.api.filter.Filtering;
 import de.digitalcollections.model.api.filter.enums.FilterOperation;
 import de.digitalcollections.model.api.paging.PageRequest;
-import de.digitalcollections.model.impl.filter.FilterCriteriaImpl;
 import de.digitalcollections.model.impl.paging.PageRequestImpl;
 import de.digitalcollections.model.impl.paging.PageResponseImpl;
 import de.digitalcollections.model.impl.security.UserImpl;
@@ -33,10 +32,10 @@ public class PagingTest extends BaseJsonSerializationTest {
     PageRequest pageRequest = new PageRequestImpl(3, 15);
 
     // filtering
-    FilterCriteria<Long> filterCriteria1 =
-        new FilterCriteriaImpl<>("longField", FilterOperation.EQUALS, 5L, null, null, null);
-    FilterCriteria<LocalDate> filterCriteria2 =
-        new FilterCriteriaImpl<>(
+    FilterCriterion filterCriteria1 =
+        new FilterCriterion("longField", FilterOperation.EQUALS, 5L, null, null, null);
+    FilterCriterion filterCriteria2 =
+        new FilterCriterion(
             "dateField",
             FilterOperation.BETWEEN,
             null,

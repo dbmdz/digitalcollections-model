@@ -27,23 +27,29 @@ package de.digitalcollections.model.api.filter.enums;
  *     pagination and sorting.</a>
  */
 public enum FilterOperation {
-  EQUALS("eq"),
-  NOT_EQUALS("neq"),
-  GREATER_THAN("gt"),
-  GREATER_THAN_OR_EQUAL_TO("gte"),
-  LESS_THAN("lt"),
-  LESSTHAN_OR_EQUAL_TO("lte"),
-  IN("in"),
-  NOT_IN("nin"),
-  BETWEEN("btn"),
-  CONTAINS("like"),
-  NOT_SET("set"),
-  SET("notset");
+  EQUALS("eq", OperandCount.SINGLEVALUE),
+  NOT_EQUALS("neq", OperandCount.SINGLEVALUE),
+  GREATER_THAN("gt", OperandCount.SINGLEVALUE),
+  GREATER_THAN_OR_EQUAL_TO("gte", OperandCount.SINGLEVALUE),
+  LESS_THAN("lt", OperandCount.SINGLEVALUE),
+  LESSTHAN_OR_EQUAL_TO("lte", OperandCount.SINGLEVALUE),
+  IN("in", OperandCount.MULTIVALUE),
+  NOT_IN("nin", OperandCount.MULTIVALUE),
+  BETWEEN("btn", OperandCount.MIN_MAX_VALUES),
+  CONTAINS("like", OperandCount.SINGLEVALUE),
+  NOT_SET("set", OperandCount.NO_VALUE),
+  SET("notset", OperandCount.NO_VALUE);
 
   private final String value;
+  private final OperandCount opCount;
 
-  FilterOperation(String value) {
+  public OperandCount getOperandCount() {
+    return opCount;
+  }
+
+  FilterOperation(String value, OperandCount opCount) {
     this.value = value;
+    this.opCount = opCount;
   }
 
   @Override
@@ -60,5 +66,12 @@ public enum FilterOperation {
       }
     }
     return null;
+  }
+
+  public enum OperandCount {
+    SINGLEVALUE,
+    MIN_MAX_VALUES,
+    MULTIVALUE,
+    NO_VALUE;
   }
 }

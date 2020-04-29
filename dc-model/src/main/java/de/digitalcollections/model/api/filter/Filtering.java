@@ -1,14 +1,14 @@
 package de.digitalcollections.model.api.filter;
 
 import de.digitalcollections.model.api.filter.enums.FilterOperation;
-import de.digitalcollections.model.impl.filter.FilterCriteriaImpl;
 import de.digitalcollections.model.impl.filter.FilteringImpl;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public interface Filtering<T extends Comparable> extends Iterable<FilterCriteria<T>>, Serializable {
+/** Container for a list of {@link FilterCriterion}s */
+public interface Filtering extends Iterable<FilterCriterion>, Serializable {
 
   /**
    * Returns the filter criteria registered for the given property.
@@ -16,10 +16,10 @@ public interface Filtering<T extends Comparable> extends Iterable<FilterCriteria
    * @param property given property
    * @return the filter criteria registered for the given property
    */
-  FilterCriteria<T> getFilterCriteriaFor(String property);
+  FilterCriterion getFilterCriterionFor(String property);
 
   /** @return returns all filter criterias */
-  List<FilterCriteria<T>> getFilterCriterias();
+  List<FilterCriterion> getFilterCriterias();
 
   static FilteringBuilder defaultBuilder() {
     return new FilteringBuilder();
@@ -29,9 +29,9 @@ public interface Filtering<T extends Comparable> extends Iterable<FilterCriteria
    * Filtering filtering = Filtering.defaultBuilder() .filter("publicationStart").lessOrEqual(now)
    * .filter("publicationEnd").greaterOrEqual(now) .build();
    */
-  class FilteringBuilder<T extends Comparable> {
+  class FilteringBuilder {
 
-    private final List<FilterCriteria<T>> filterCriterias = new ArrayList<>();
+    private final List<FilterCriterion> filterCriterias = new ArrayList<>();
 
     /**
      * Initializes construction of a filter criterion for a field
@@ -40,57 +40,60 @@ public interface Filtering<T extends Comparable> extends Iterable<FilterCriteria
      * @return builder instance for fluent usage
      */
     @SuppressWarnings("unchecked")
-    public FilterCriteriaBuilder<T> filter(String fieldName) {
-      return new FilterCriteriaBuilder(fieldName, this);
+    public FilterCriterionBuilder filter(String fieldName) {
+      return new FilterCriterionBuilder(fieldName, this);
     }
 
     /**
-     * adds a filter criteria to list of filter criterias. if given filterCriteria is null, no
-     * filter criteria is added (null-safe)
+     * Method needed for mapping URL filter param to a filter criterion. only param value available
+     * during controller, so param name (= fieldname) only can be set after mapping.
+     *
+     * <p>adds a filter criterion to list of filter criterias. if given filterCriterion is null, no
+     * filter criterion is added (null-safe)
      *
      * @param fieldName name of field (if field name could not be set during instantiation of
-     *     FieldCriteria, e.g. during spring mvxc type conversion)
-     * @param filterCriteria filter criteria to add
+     *     FieldCriterion, e.g. during spring mvc type conversion)
+     * @param filterCriterion filter criterion to add
      * @return builder instance for fluent usage
      */
-    public FilteringBuilder<T> add(String fieldName, FilterCriteria<T> filterCriteria) {
-      if (filterCriteria != null) {
-        filterCriteria.setFieldName(fieldName);
+    public FilteringBuilder add(String fieldName, FilterCriterion filterCriterion) {
+      if (filterCriterion != null) {
+        filterCriterion.setFieldName(fieldName);
       }
-      return add(filterCriteria);
+      return add(filterCriterion);
     }
 
     /**
      * adds a filter criteria to list of filter criterias. if given filterCriteria is null, no
      * filter criteria is added (null-safe)
      *
-     * @param filterCriteria filter criteria to add
+     * @param filterCriterion filter criteria to add
      * @return builder instance for fluent usage
      */
-    public FilteringBuilder<T> add(FilterCriteria<T> filterCriteria) {
-      if (filterCriteria != null) {
-        if (filterCriteria.getFieldName() == null) {
-          throw new IllegalArgumentException("field name of a filter criteria must not be null!");
+    public FilteringBuilder add(FilterCriterion filterCriterion) {
+      if (filterCriterion != null) {
+        if (filterCriterion.getFieldName() == null) {
+          throw new IllegalArgumentException("field name of a filter criterion must not be null!");
         }
-        filterCriterias.add(filterCriteria);
+        filterCriterias.add(filterCriterion);
       }
       return this;
     }
 
     @SuppressWarnings("unchecked")
-    public Filtering<T> build() {
-      return new FilteringImpl(filterCriterias);
+    public Filtering build() {
+      return (Filtering) new FilteringImpl(filterCriterias);
     }
   }
 
-  class FilterCriteriaBuilder<T extends Comparable> {
+  class FilterCriterionBuilder {
 
-    private final FilteringBuilder<T> filteringBuilder;
-    private final FilterCriteria<T> filterCriteria;
+    private final FilteringBuilder filteringBuilder;
+    private final String fieldName;
 
-    private FilterCriteriaBuilder(String fieldName, FilteringBuilder<T> filteringBuilder) {
+    private FilterCriterionBuilder(String fieldName, FilteringBuilder filteringBuilder) {
       this.filteringBuilder = filteringBuilder;
-      this.filterCriteria = new FilterCriteriaImpl<>(fieldName, null, null);
+      this.fieldName = fieldName;
     }
 
     /**
@@ -101,9 +104,11 @@ public interface Filtering<T extends Comparable> extends Iterable<FilterCriteria
      * @param maxValue upper bound of between (included)
      * @return builder instance for fluent usage
      */
-    public FilteringBuilder<T> between(T minValue, T maxValue) {
-      return enrichAndAddFilterCriteriaInBuild(
-          FilterOperation.BETWEEN, null, minValue, maxValue, null);
+    public FilteringBuilder between(Comparable<?> minValue, Comparable<?> maxValue) {
+      FilterCriterion filterCriterion =
+          new FilterCriterion(fieldName, FilterOperation.BETWEEN, null, minValue, maxValue, null);
+      filteringBuilder.add(filterCriterion);
+      return filteringBuilder;
     }
 
     /**
@@ -113,19 +118,27 @@ public interface Filtering<T extends Comparable> extends Iterable<FilterCriteria
      * @param value operand
      * @return builder instance for fluent usage
      */
-    public FilteringBuilder<T> contains(T value) {
-      return enrichAndAddFilterCriteriaInBuild(FilterOperation.BETWEEN, value, null, null, null);
+    public FilteringBuilder contains(Object value) {
+      FilterCriterion filterCriterion =
+          new FilterCriterion(fieldName, FilterOperation.CONTAINS, value);
+      filteringBuilder.add(filterCriterion);
+      return filteringBuilder;
     }
 
     /**
      * Completes construction of a filter criterion for a field with operation {@link
      * FilterOperation#EQUALS}
      *
+     * <p>Note: had to rename it to "isEquals" because of name clash with Object.equals
+     *
      * @param value operand
      * @return builder instance for fluent usage
      */
-    public FilteringBuilder<T> equals(T value) {
-      return enrichAndAddFilterCriteriaInBuild(FilterOperation.EQUALS, value, null, null, null);
+    public FilteringBuilder isEquals(Object value) {
+      FilterCriterion filterCriterion =
+          new FilterCriterion(fieldName, FilterOperation.EQUALS, value);
+      filteringBuilder.add(filterCriterion);
+      return filteringBuilder;
     }
 
     /**
@@ -135,9 +148,11 @@ public interface Filtering<T extends Comparable> extends Iterable<FilterCriteria
      * @param value operand
      * @return builder instance for fluent usage
      */
-    public FilteringBuilder<T> greater(T value) {
-      return enrichAndAddFilterCriteriaInBuild(
-          FilterOperation.GREATER_THAN, value, null, null, null);
+    public FilteringBuilder greater(Object value) {
+      FilterCriterion filterCriterion =
+          new FilterCriterion(fieldName, FilterOperation.GREATER_THAN, value);
+      filteringBuilder.add(filterCriterion);
+      return filteringBuilder;
     }
 
     /**
@@ -147,9 +162,11 @@ public interface Filtering<T extends Comparable> extends Iterable<FilterCriteria
      * @param value operand
      * @return builder instance for fluent usage
      */
-    public FilteringBuilder<T> greaterOrEqual(T value) {
-      return enrichAndAddFilterCriteriaInBuild(
-          FilterOperation.GREATER_THAN_OR_EQUAL_TO, value, null, null, null);
+    public FilteringBuilder greaterOrEqual(Object value) {
+      FilterCriterion filterCriterion =
+          new FilterCriterion(fieldName, FilterOperation.GREATER_THAN_OR_EQUAL_TO, value);
+      filteringBuilder.add(filterCriterion);
+      return filteringBuilder;
     }
 
     /**
@@ -159,8 +176,11 @@ public interface Filtering<T extends Comparable> extends Iterable<FilterCriteria
      * @param values list of values field value should be in
      * @return builder instance for fluent usage
      */
-    public FilteringBuilder<T> in(Collection<T> values) {
-      return enrichAndAddFilterCriteriaInBuild(FilterOperation.IN, null, null, null, values);
+    public FilteringBuilder in(Collection<?> values) {
+      FilterCriterion filterCriterion =
+          new FilterCriterion(fieldName, FilterOperation.IN, null, null, null, values);
+      filteringBuilder.add(filterCriterion);
+      return filteringBuilder;
     }
 
     /**
@@ -170,8 +190,11 @@ public interface Filtering<T extends Comparable> extends Iterable<FilterCriteria
      * @param value operand
      * @return builder instance for fluent usage
      */
-    public FilteringBuilder<T> less(T value) {
-      return enrichAndAddFilterCriteriaInBuild(FilterOperation.LESS_THAN, value, null, null, null);
+    public FilteringBuilder less(Object value) {
+      FilterCriterion filterCriterion =
+          new FilterCriterion(fieldName, FilterOperation.LESS_THAN, value);
+      filteringBuilder.add(filterCriterion);
+      return filteringBuilder;
     }
 
     /**
@@ -181,9 +204,11 @@ public interface Filtering<T extends Comparable> extends Iterable<FilterCriteria
      * @param value operand
      * @return builder instance for fluent usage
      */
-    public FilteringBuilder<T> lessOrEqual(T value) {
-      return enrichAndAddFilterCriteriaInBuild(
-          FilterOperation.LESSTHAN_OR_EQUAL_TO, value, null, null, null);
+    public FilteringBuilder lessOrEqual(Object value) {
+      FilterCriterion filterCriterion =
+          new FilterCriterion(fieldName, FilterOperation.LESSTHAN_OR_EQUAL_TO, value);
+      filteringBuilder.add(filterCriterion);
+      return filteringBuilder;
     }
 
     /**
@@ -193,8 +218,11 @@ public interface Filtering<T extends Comparable> extends Iterable<FilterCriteria
      * @param value operand
      * @return builder instance for fluent usage
      */
-    public FilteringBuilder<T> notEquals(T value) {
-      return enrichAndAddFilterCriteriaInBuild(FilterOperation.NOT_EQUALS, value, null, null, null);
+    public FilteringBuilder notEquals(Object value) {
+      FilterCriterion filterCriterion =
+          new FilterCriterion(fieldName, FilterOperation.NOT_EQUALS, value);
+      filteringBuilder.add(filterCriterion);
+      return filteringBuilder;
     }
 
     /**
@@ -204,8 +232,11 @@ public interface Filtering<T extends Comparable> extends Iterable<FilterCriteria
      * @param values list of values field value should not be in
      * @return builder instance for fluent usage
      */
-    public FilteringBuilder<T> notIn(Collection<T> values) {
-      return enrichAndAddFilterCriteriaInBuild(FilterOperation.NOT_IN, null, null, null, values);
+    public FilteringBuilder notIn(Collection<?> values) {
+      FilterCriterion filterCriterion =
+          new FilterCriterion(fieldName, FilterOperation.NOT_IN, null, null, null, values);
+      filteringBuilder.add(filterCriterion);
+      return filteringBuilder;
     }
 
     /**
@@ -214,8 +245,11 @@ public interface Filtering<T extends Comparable> extends Iterable<FilterCriteria
      *
      * @return builder instance for fluent usage
      */
-    public FilteringBuilder<T> notSet() {
-      return enrichAndAddFilterCriteriaInBuild(FilterOperation.NOT_SET, null, null, null, null);
+    public FilteringBuilder notSet() {
+      FilterCriterion filterCriterion =
+          new FilterCriterion(fieldName, FilterOperation.NOT_SET, null);
+      filteringBuilder.add(filterCriterion);
+      return filteringBuilder;
     }
 
     /**
@@ -224,19 +258,9 @@ public interface Filtering<T extends Comparable> extends Iterable<FilterCriteria
      *
      * @return builder instance for fluent usage
      */
-    public FilteringBuilder<T> set() {
-      return enrichAndAddFilterCriteriaInBuild(FilterOperation.SET, null, null, null, null);
-    }
-
-    private FilteringBuilder<T> enrichAndAddFilterCriteriaInBuild(
-        FilterOperation operation, T value, T minValue, T maxValue, Collection<T> values)
-        throws IllegalStateException {
-      filterCriteria.setOperation(operation);
-      filterCriteria.setValue(value);
-      filterCriteria.setMinValue(minValue);
-      filterCriteria.setMaxValue(maxValue);
-      filterCriteria.setValues(values);
-      filteringBuilder.add(filterCriteria);
+    public FilteringBuilder set() {
+      FilterCriterion filterCriterion = new FilterCriterion(fieldName, FilterOperation.SET, null);
+      filteringBuilder.add(filterCriterion);
       return filteringBuilder;
     }
   }

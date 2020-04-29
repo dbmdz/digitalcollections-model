@@ -1,6 +1,6 @@
 package de.digitalcollections.model.feign.encoder.filter;
 
-import de.digitalcollections.model.api.filter.FilterCriteria;
+import de.digitalcollections.model.api.filter.FilterCriterion;
 import de.digitalcollections.model.api.filter.Filtering;
 import de.digitalcollections.model.api.filter.enums.FilterOperation;
 import feign.QueryMapEncoder;
@@ -28,8 +28,8 @@ public class FilteringToQueryMapEncoder<T extends Comparable<?>> implements Quer
     Map<String, Object> queryMap = new HashMap<>();
 
     @SuppressWarnings("unchecked")
-    Filtering<?> filtering = (Filtering<?>) object;
-    for (FilterCriteria<?> fc : filtering) {
+    Filtering filtering = (Filtering) object;
+    for (FilterCriterion fc : filtering) {
       FilterOperation filterOperation = fc.getOperation();
       String fieldName = fc.getFieldName();
       if (null == filterOperation) {

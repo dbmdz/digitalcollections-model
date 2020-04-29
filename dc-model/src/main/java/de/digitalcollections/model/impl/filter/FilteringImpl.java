@@ -1,23 +1,23 @@
 package de.digitalcollections.model.impl.filter;
 
-import de.digitalcollections.model.api.filter.FilterCriteria;
+import de.digitalcollections.model.api.filter.FilterCriterion;
 import de.digitalcollections.model.api.filter.Filtering;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class FilteringImpl<T extends Comparable> implements Filtering {
+public class FilteringImpl implements Filtering {
 
-  private List<FilterCriteria<T>> filterCriterias = new ArrayList<>();
+  private List<FilterCriterion> filterCriterias = new ArrayList<>();
 
   public FilteringImpl() {}
 
-  public FilteringImpl(List<FilterCriteria<T>> filterCriterias) {
+  public FilteringImpl(List<FilterCriterion> filterCriterias) {
     this.filterCriterias = filterCriterias;
   }
 
   @Override
-  public FilterCriteria<T> getFilterCriteriaFor(String property) {
+  public FilterCriterion getFilterCriterionFor(String property) {
     return filterCriterias.stream()
         .filter(
             f -> {
@@ -28,12 +28,12 @@ public class FilteringImpl<T extends Comparable> implements Filtering {
   }
 
   @Override
-  public List<FilterCriteria<T>> getFilterCriterias() {
+  public List<FilterCriterion> getFilterCriterias() {
     return filterCriterias;
   }
 
   @Override
-  public Iterator<FilterCriteria<T>> iterator() {
+  public Iterator<FilterCriterion> iterator() {
     return filterCriterias.iterator();
   }
 }
