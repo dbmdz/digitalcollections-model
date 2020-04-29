@@ -1,7 +1,7 @@
 package de.digitalcollections.model.api.filter.enums;
 
 /**
- *
+ * Available filter operations
  *
  * <table border="1">
  * <caption>Mapping operation abbreviation to filter operation</caption>
@@ -19,6 +19,12 @@ package de.digitalcollections.model.api.filter.enums;
  * <tr><td>set      </td><td> value exists (not null)    </td><td>firstName=set:          </td></tr>
  * <tr><td>notset   </td><td> value is not set (null)    </td><td>firstName=notset:       </td></tr>
  * </table>
+ *
+ * <p>References:
+ *
+ * @see <a href="https://github.com/vijjayy81/spring-boot-jpa-rest-demo-filter-paging-sorting">An
+ *     example application using Spring boot MVC, Spring Data JPA with the ability to do filter,
+ *     pagination and sorting.</a>
  */
 public enum FilterOperation {
   EQUALS("eq"),

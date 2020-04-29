@@ -64,3 +64,8 @@ Supported filter operations:
   <tr><td>set      </td><td> value exists (not null)    </td><td>firstName=set:          </td></tr>
   <tr><td>notset   </td><td> value is not set (null)    </td><td>firstName=notset:       </td></tr>
 </table>
+
+REST-API design for filtering was inspired by:
+
+- [REST API Design: Filtering, Sorting, and Pagination](https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/)
+- [An example application using Spring boot MVC, Spring Data JPA with the ability to do filter, pagination and sorting.](https://github.com/vijjayy81/spring-boot-jpa-rest-demo-filter-paging-sorting)

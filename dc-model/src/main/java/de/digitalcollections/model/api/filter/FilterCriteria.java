@@ -12,6 +12,11 @@ import java.util.Collection;
  *   <li>one ore more filter values to be used for filtering operation
  * </ul>
  *
+ * References:
+ *
+ * @see <a href="https://github.com/vijjayy81/spring-boot-jpa-rest-demo-filter-paging-sorting">An
+ *     example application using Spring boot MVC, Spring Data JPA with the ability to do filter,
+ *     pagination and sorting.</a>
  * @param <T> type of field-data to be filtered (operand), e.g. Date, LocalDate, Long, etc.
  */
 public interface FilterCriteria<T extends Comparable> {
