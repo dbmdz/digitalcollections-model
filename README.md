@@ -38,8 +38,8 @@ Example usage (use case: return only webpages with active publication time range
 
     LocalDate now = LocalDate.now();
     Filtering filtering = Filtering.defaultBuilder()
-            .add(new FilterCriteriaImpl<>("publicationStart", FilterOperation.LESSTHAN_OR_EQUAL_TO, now))
-            .add(new FilterCriteriaImpl<>("publicationEnd", FilterOperation.GREATER_THAN_OR_EQUAL_TO, now))
+            .filter("publicationStart").lessOrEqual(now)
+            .filter("publicationEnd").greaterOrEqual(now)
             .build();
 
     PageRequest pageRequest = new PageRequestImpl(pageNumber, pageSize, sorting, filtering);
@@ -59,7 +59,7 @@ Supported filter operations:
   <tr><td>lte      </td><td> Less Than or equals to     </td><td>amount=lte:10000        </td></tr>
   <tr><td>in       </td><td> IN                         </td><td>country=in:uk, usa, au  </td></tr>
   <tr><td>nin      </td><td> Not IN                     </td><td>country=nin:fr, de, nz  </td></tr>
-  <tr><td>btn      </td><td> Between                    </td><td>joiningDate=btn:2018-01-01, 2016-01-01</td></tr>
+  <tr><td>btn      </td><td> Between (inclusive)        </td><td>joiningDate=btn:2018-01-01, 2016-01-01</td></tr>
   <tr><td>like     </td><td> Like                       </td><td>firstName=like:John     </td></tr>
   <tr><td>set      </td><td> value exists (not null)    </td><td>firstName=set:          </td></tr>
   <tr><td>notset   </td><td> value is not set (null)    </td><td>firstName=notset:       </td></tr>

@@ -36,9 +36,6 @@ public class FilterCriteriaImpl<T extends Comparable> implements FilterCriteria<
       T minValue,
       T maxValue,
       Collection<T> values) {
-    if (fieldName == null) {
-      throw new IllegalArgumentException("a fieldName is required");
-    }
     this.operation = operation;
     this.fieldName = fieldName;
     this.value = value;

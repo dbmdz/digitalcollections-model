@@ -6,18 +6,18 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class FilteringImpl implements Filtering {
+public class FilteringImpl<T extends Comparable> implements Filtering {
 
-  private List<FilterCriteria> filterCriterias = new ArrayList<>();
+  private List<FilterCriteria<T>> filterCriterias = new ArrayList<>();
 
   public FilteringImpl() {}
 
-  public FilteringImpl(List<FilterCriteria> filterCriterias) {
+  public FilteringImpl(List<FilterCriteria<T>> filterCriterias) {
     this.filterCriterias = filterCriterias;
   }
 
   @Override
-  public FilterCriteria getFilterCriteriaFor(String property) {
+  public FilterCriteria<T> getFilterCriteriaFor(String property) {
     return filterCriterias.stream()
         .filter(
             f -> {
@@ -28,12 +28,12 @@ public class FilteringImpl implements Filtering {
   }
 
   @Override
-  public List<FilterCriteria> getFilterCriterias() {
+  public List<FilterCriteria<T>> getFilterCriterias() {
     return filterCriterias;
   }
 
   @Override
-  public Iterator<FilterCriteria> iterator() {
+  public Iterator<FilterCriteria<T>> iterator() {
     return filterCriterias.iterator();
   }
 }

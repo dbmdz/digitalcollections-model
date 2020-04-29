@@ -26,7 +26,7 @@ public class FilteringToQueryMapEncoder<T extends Comparable> implements QueryMa
     }
     Map<String, Object> queryMap = new HashMap<>();
 
-    Filtering filtering = (Filtering) object;
+    Filtering<T> filtering = (Filtering<T>) object;
     for (FilterCriteria<T> fc : filtering) {
       FilterOperation filterOperation = fc.getOperation();
       String fieldName = fc.getFieldName();

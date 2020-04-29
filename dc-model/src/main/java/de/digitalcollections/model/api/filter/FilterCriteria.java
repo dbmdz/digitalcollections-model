@@ -34,14 +34,21 @@ public interface FilterCriteria<T extends Comparable> {
   /** @return the filter operation. available operations see {@link FilterOperation} */
   FilterOperation getOperation();
 
+  /** @param operation the filter operation. available operations see {@link FilterOperation} */
+  void setOperation(FilterOperation operation);
+
   /** @param fieldName field name being target of filter operation */
   void setFieldName(String fieldName);
 
+  /** @param maxValue maximum value - applicable only for {@link FilterOperation#BETWEEN} */
   void setMaxValue(T maxValue);
 
+  /** @param minValue minimum value - applicable only for {@link FilterOperation#BETWEEN} */
   void setMinValue(T minValue);
 
+  /** @param value value of a single value operation */
   void setValue(T value);
 
+  /** @param values values of a multi value operation of field type T */
   void setValues(Collection<T> values);
 }
