@@ -14,10 +14,11 @@ import java.util.Map;
  * {@link QueryMapEncoder} encoding a {@link Filtering} into a map of query parameter names and
  * values.
  *
+ * @param <T> operand value type of filtering operation
  * @see <a href="https://github.com/OpenFeign/feign#dynamic-query-parameters">Dynamic Query
  *     Parameters</a>
  */
-public class FilteringToQueryMapEncoder<T extends Comparable> implements QueryMapEncoder {
+public class FilteringToQueryMapEncoder<T extends Comparable<?>> implements QueryMapEncoder {
 
   @Override
   public Map<String, Object> encode(Object object) {
@@ -26,8 +27,9 @@ public class FilteringToQueryMapEncoder<T extends Comparable> implements QueryMa
     }
     Map<String, Object> queryMap = new HashMap<>();
 
-    Filtering<T> filtering = (Filtering<T>) object;
-    for (FilterCriteria<T> fc : filtering) {
+    @SuppressWarnings("unchecked")
+    Filtering<?> filtering = (Filtering<?>) object;
+    for (FilterCriteria<?> fc : filtering) {
       FilterOperation filterOperation = fc.getOperation();
       String fieldName = fc.getFieldName();
       if (null == filterOperation) {
@@ -43,15 +45,15 @@ public class FilteringToQueryMapEncoder<T extends Comparable> implements QueryMa
               throw new IllegalArgumentException("For 'btn' operation two values are expected");
             } else {
               // Convert
-              T minValue = fc.getMinValue();
-              T maxValue = fc.getMaxValue();
+              T minValue = (T) fc.getMinValue();
+              T maxValue = (T) fc.getMaxValue();
               sb.append(convertToString(minValue)).append(",").append(convertToString(maxValue));
             }
             break;
           case IN:
           case NOT_IN:
             // For 'in' or 'nin' operation
-            for (T value : fc.getValues()) {
+            for (Object value : fc.getValues()) {
               sb.append(convertToString(value)).append(",");
             }
             break;
@@ -62,7 +64,7 @@ public class FilteringToQueryMapEncoder<T extends Comparable> implements QueryMa
         }
         String paramValue = sb.toString();
         if (paramValue.endsWith(",")) {
-          paramValue = paramValue.substring(0, paramValue.lastIndexOf(","));
+          paramValue = paramValue.substring(0, paramValue.lastIndexOf(','));
         }
         queryMap.put(fieldName, paramValue);
       }
@@ -70,7 +72,7 @@ public class FilteringToQueryMapEncoder<T extends Comparable> implements QueryMa
     return queryMap;
   }
 
-  private String convertToString(T value) {
+  private String convertToString(Object value) {
     if (value == null) {
       return "";
     }

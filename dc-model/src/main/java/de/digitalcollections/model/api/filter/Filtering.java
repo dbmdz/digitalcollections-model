@@ -31,7 +31,7 @@ public interface Filtering<T extends Comparable> extends Iterable<FilterCriteria
    */
   class FilteringBuilder<T extends Comparable> {
 
-    public List<FilterCriteria<T>> filterCriterias = new ArrayList<>();
+    private final List<FilterCriteria<T>> filterCriterias = new ArrayList<>();
 
     /**
      * Initializes construction of a filter criterion for a field
@@ -39,7 +39,8 @@ public interface Filtering<T extends Comparable> extends Iterable<FilterCriteria
      * @param fieldName name of field
      * @return builder instance for fluent usage
      */
-    public FilterCriteriaBuilder filter(String fieldName) {
+    @SuppressWarnings("unchecked")
+    public FilterCriteriaBuilder<T> filter(String fieldName) {
       return new FilterCriteriaBuilder(fieldName, this);
     }
 
@@ -76,6 +77,7 @@ public interface Filtering<T extends Comparable> extends Iterable<FilterCriteria
       return this;
     }
 
+    @SuppressWarnings("unchecked")
     public Filtering<T> build() {
       return new FilteringImpl(filterCriterias);
     }
@@ -83,8 +85,8 @@ public interface Filtering<T extends Comparable> extends Iterable<FilterCriteria
 
   class FilterCriteriaBuilder<T extends Comparable> {
 
-    FilteringBuilder<T> filteringBuilder;
-    FilterCriteria<T> filterCriteria;
+    private final FilteringBuilder<T> filteringBuilder;
+    private final FilterCriteria<T> filterCriteria;
 
     private FilterCriteriaBuilder(String fieldName, FilteringBuilder<T> filteringBuilder) {
       this.filteringBuilder = filteringBuilder;
