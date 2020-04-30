@@ -19,7 +19,6 @@ public class PageRequestImpl implements PageRequest, Serializable {
   private Sorting sort;
 
   public PageRequestImpl() {
-    System.out.println("de.digitalcollections.model.impl.paging.PageRequestImpl.<init>()");
   }
 
   /**
