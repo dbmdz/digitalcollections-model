@@ -20,14 +20,6 @@ public class SortingImpl implements Sorting {
 
   public SortingImpl() {}
 
-  public List<Order> getOrders() {
-    return orders;
-  }
-
-  public void setOrders(List<Order> orders) {
-    this.orders = orders;
-  }
-
   /**
    * Creates a new {@link Sorting} instance using the given {@link Order}s.
    *
@@ -89,6 +81,15 @@ public class SortingImpl implements Sorting {
     for (String property : properties) {
       this.orders.add(new OrderImpl(direction, property));
     }
+  }
+
+  @Override
+  public List<Order> getOrders() {
+    return orders;
+  }
+
+  public void setOrders(List<Order> orders) {
+    this.orders = orders;
   }
 
   /**

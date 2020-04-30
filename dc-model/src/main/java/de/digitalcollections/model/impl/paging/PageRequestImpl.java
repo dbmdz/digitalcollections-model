@@ -1,5 +1,6 @@
 package de.digitalcollections.model.impl.paging;
 
+import de.digitalcollections.model.api.filter.Filtering;
 import de.digitalcollections.model.api.paging.PageRequest;
 import de.digitalcollections.model.api.paging.PageResponse;
 import de.digitalcollections.model.api.paging.Sorting;
@@ -12,54 +13,62 @@ import java.io.Serializable;
  */
 public class PageRequestImpl implements PageRequest, Serializable {
 
-  private int page;
-  private int size;
+  private int pageNumber;
+  private int pageSize;
+  private Filtering filtering;
   private Sorting sort;
 
-  public PageRequestImpl() {}
+  public PageRequestImpl() {
+  }
 
   /**
    * Creates a new {@link PageRequest}. Pages are zero indexed, thus providing 0 for {@code page}
    * will return the first page.
    *
-   * @param page zero-based page index.
-   * @param size the size of the page to be returned.
+   * @param pageNumber zero-based page index.
+   * @param pageSize the size of the page to be returned.
    */
-  public PageRequestImpl(int page, int size) {
-    this(page, size, null);
+  public PageRequestImpl(int pageNumber, int pageSize) {
+    this(pageNumber, pageSize, null, (Filtering) null);
   }
 
   /**
    * Creates a new {@link PageRequest} with sort parameters applied.
    *
-   * @param page zero-based page index.
-   * @param size the size of the page to be returned.
+   * @param pageNumber zero-based page index.
+   * @param pageSize the size of the page to be returned.
    * @param direction the direction of the {@link SortingImpl} to be specified, can be {@literal
    *     null}.
    * @param properties the properties to sort by, must not be {@literal null} or empty.
    */
-  public PageRequestImpl(int page, int size, Direction direction, String... properties) {
-    this(page, size, new SortingImpl(direction, properties));
+  public PageRequestImpl(int pageNumber, int pageSize, Direction direction, String... properties) {
+    this(pageNumber, pageSize, new SortingImpl(direction, properties), null);
+  }
+
+  public PageRequestImpl(int pageNumber, int pageSize, Sorting sort) {
+    this(pageNumber, pageSize, sort, null);
   }
 
   /**
    * Creates a new {@link PageRequest} with sort parameters applied.
    *
-   * @param page zero-based page index, must not be less than zero.
-   * @param size the size of the page to be returned, must not be less than one.
-   * @param sort can be {@literal null}.
+   * @param pageNumber zero-based page index, must not be less than zero.
+   * @param pageSize the size of the page to be returned, must not be less than one.
+   * @param sort can be {@literal null}
+   * @param filtering contains list of filter criterias
    */
-  public PageRequestImpl(int page, int size, Sorting sort) {
-    if (page < 0) {
+  public PageRequestImpl(int pageNumber, int pageSize, Sorting sort, Filtering filtering) {
+    if (pageNumber < 0) {
       throw new IllegalArgumentException("Page index must not be less than zero!");
     }
 
-    if (size < 1) {
+    if (pageSize < 1) {
       throw new IllegalArgumentException("Page size must not be less than one!");
     }
 
-    this.page = page;
-    this.size = size;
+    this.filtering = filtering;
+    this.pageNumber = pageNumber;
+    this.pageSize = pageSize;
     this.sort = sort;
   }
 
@@ -76,30 +85,37 @@ public class PageRequestImpl implements PageRequest, Serializable {
 
     PageRequestImpl that = (PageRequestImpl) obj;
 
+    boolean filterEqual =
+        (this.filtering == null ? that.filtering == null : this.filtering.equals(that.filtering));
     boolean sortEqual = (this.sort == null ? that.sort == null : this.sort.equals(that.sort));
-    boolean othersEqual = (this.page == that.page && this.size == that.size);
+    boolean othersEqual = (this.pageNumber == that.pageNumber && this.pageSize == that.pageSize);
 
-    return othersEqual && sortEqual;
+    return filterEqual && othersEqual && sortEqual;
   }
 
   @Override
   public PageRequest first() {
-    return new PageRequestImpl(0, getPageSize(), getSorting());
+    return new PageRequestImpl(0, getPageSize(), getSorting(), getFiltering());
+  }
+
+  @Override
+  public Filtering getFiltering() {
+    return filtering;
   }
 
   @Override
   public int getOffset() {
-    return page * size;
+    return pageNumber * pageSize;
   }
 
   @Override
   public int getPageNumber() {
-    return page;
+    return pageNumber;
   }
 
   @Override
   public int getPageSize() {
-    return size;
+    return pageSize;
   }
 
   @Override
@@ -109,15 +125,15 @@ public class PageRequestImpl implements PageRequest, Serializable {
 
   @Override
   public boolean hasPrevious() {
-    return page > 0;
+    return pageNumber > 0;
   }
 
   @Override
   public int hashCode() {
     final int prime = 31;
     int result = 1;
-    result = prime * result + page;
-    result = prime * result + size;
+    result = prime * result + pageNumber;
+    result = prime * result + pageSize;
 
     return 31 * result + (null == sort ? 0 : sort.hashCode());
   }
@@ -143,13 +159,14 @@ public class PageRequestImpl implements PageRequest, Serializable {
     return hasPrevious() ? previous() : first();
   }
 
-  public void setPageNumber(int page) {
-    this.page = page;
+  @Override
+  public void setPageNumber(int pageNumber) {
+    this.pageNumber = pageNumber;
   }
 
   @Override
-  public void setPageSize(int size) {
-    this.size = size;
+  public void setPageSize(int pageSize) {
+    this.pageSize = pageSize;
   }
 
   @Override
@@ -158,9 +175,17 @@ public class PageRequestImpl implements PageRequest, Serializable {
   }
 
   @Override
+  public void setFiltering(Filtering filtering) {
+    this.filtering = filtering;
+  }
+
+  @Override
   public String toString() {
     return String.format(
-        "Page request [number: %d, size %d, sort: %s]",
-        getPageNumber(), getPageSize(), sort == null ? null : sort.toString());
+        "Page request [number: %d, size %d, sort: %s, filtering: %s]",
+        getPageNumber(),
+        getPageSize(),
+        sort == null ? null : sort.toString(),
+        filtering == null ? null : filtering.toString());
   }
 }

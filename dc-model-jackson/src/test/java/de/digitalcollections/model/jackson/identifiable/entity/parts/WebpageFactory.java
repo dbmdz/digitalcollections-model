@@ -19,6 +19,7 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.con
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.MarkImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.ParagraphImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TextImpl;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Locale;
 
@@ -84,6 +85,8 @@ public class WebpageFactory {
     text.put(Locale.GERMANY, structuredContent);
     webpage.setText(text);
 
+    webpage.setPublicationStart(LocalDate.MIN);
+    webpage.setPublicationEnd(LocalDate.MAX);
     return webpage;
   }
 }

@@ -1,63 +1,56 @@
 package de.digitalcollections.model.api.paging;
 
+import de.digitalcollections.model.api.filter.Filtering;
 import de.digitalcollections.model.impl.paging.PageRequestImpl;
 
 /**
  * Abstract interface for pagination information. See Spring Data Commons, but more flat design and
  * independent of Spring libraries.
+ *
+ * <p>Container for paging, sorting and filtering params:
+ *
+ * <ul>
+ *   <li>pageNumber: which page to be returned
+ *   <li>pageSize: how many items on one page
+ *   <li>sorting: container for sorting order of result list
+ *   <li>filtering: container for filter criterias of result list
+ * </ul>
  */
 public interface PageRequest {
 
-  /**
-   * Returns the page to be returned.
-   *
-   * @return the page to be returned.
-   */
-  int getPageNumber();
+  static Builder defaultBuilder() {
+    return new Builder();
+  }
 
-  /**
-   * Returns the number of items to be returned.
-   *
-   * @return the number of items of that page
-   */
-  int getPageSize();
+  /** @return the {@link PageRequest} requesting the first page */
+  PageRequest first();
 
-  /**
-   * Returns the offset to be taken according to the underlying page and page size.
-   *
-   * @return the offset to be taken
-   */
+  /** @param filtering the filtering criterias */
+  void setFiltering(Filtering filtering);
+
+  /** @return the filtering parameters */
+  Filtering getFiltering();
+
+  /** @return the offset to be taken according to the underlying page and page size. */
   int getOffset();
 
-  /**
-   * Returns the sorting parameters.
-   *
-   * @return the sorting parameters
-   */
+  /** @param pageNumber the page to be returned */
+  void setPageNumber(int pageNumber);
+
+  /** @return the page to be returned. */
+  int getPageNumber();
+
+  /** @param pageSize the number of items of that page */
+  void setPageSize(int pageSize);
+
+  /** @return the number of items of that page */
+  int getPageSize();
+
+  /** @param sorting the sorting parameters */
+  void setSorting(Sorting sorting);
+
+  /** @return the sorting parameters */
   Sorting getSorting();
-
-  /**
-   * Returns the {@link PageRequest} requesting the next page.
-   *
-   * @return the PageRequest requesting the next page
-   */
-  PageRequest next();
-
-  /**
-   * Returns the previous {@link PageRequest} or the first {@link PageRequest} if the current one
-   * already is the first one.
-   *
-   * @return the previous PageRequest or the first PageRequest if the current one already is the
-   *     first one
-   */
-  PageRequest previousOrFirst();
-
-  /**
-   * Returns the {@link PageRequest} requesting the first page.
-   *
-   * @return the PageRequest requesting the first page
-   */
-  PageRequest first();
 
   /**
    * Returns whether there's a previous {@link PageRequest} we can access from the current one. Will
@@ -68,29 +61,21 @@ public interface PageRequest {
    */
   boolean hasPrevious();
 
-  /**
-   * Sets the number of items.
-   *
-   * @param pageSize the number of items of that page
-   */
-  void setPageSize(int pageSize);
+  /** @return the {@link PageRequest} requesting the next page */
+  PageRequest next();
 
   /**
-   * Sets the sorting parameters.
-   *
-   * @param sorting the sorting parameters
+   * @return the previous {@link PageRequest} or the first {@link PageRequest} if the current one
+   *     already is the first one
    */
-  void setSorting(Sorting sorting);
-
-  static Builder defaultBuilder() {
-    return new Builder();
-  }
+  PageRequest previousOrFirst();
 
   class Builder {
 
     private int pageNumber;
     private int pageSize;
     private Sorting sorting;
+    private Filtering filtering;
 
     public Builder pageNumber(int pageNumber) {
       this.pageNumber = pageNumber;
@@ -107,8 +92,13 @@ public interface PageRequest {
       return this;
     }
 
+    public Builder filtering(Filtering filtering) {
+      this.filtering = filtering;
+      return this;
+    }
+
     public PageRequest build() {
-      return new PageRequestImpl(pageNumber, pageSize, sorting);
+      return new PageRequestImpl(pageNumber, pageSize, sorting, filtering);
     }
   }
 }
