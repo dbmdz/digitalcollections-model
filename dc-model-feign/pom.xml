@@ -13,7 +13,7 @@
   <packaging>jar</packaging>
 
   <properties>
-    <version.feign-core>10.9</version.feign-core>
+    <version.feign-core>11.0</version.feign-core>
   </properties>
 
   <dependencies>
