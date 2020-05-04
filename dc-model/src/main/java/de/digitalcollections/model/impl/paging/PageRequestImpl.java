@@ -18,8 +18,7 @@ public class PageRequestImpl implements PageRequest, Serializable {
   private Filtering filtering;
   private Sorting sort;
 
-  public PageRequestImpl() {
-  }
+  public PageRequestImpl() {}
 
   /**
    * Creates a new {@link PageRequest}. Pages are zero indexed, thus providing 0 for {@code page}
