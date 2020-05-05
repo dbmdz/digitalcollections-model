@@ -23,6 +23,7 @@ import de.digitalcollections.model.api.identifiable.entity.Website;
 import de.digitalcollections.model.api.identifiable.entity.parts.Subtopic;
 import de.digitalcollections.model.api.identifiable.entity.parts.Webpage;
 import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
+import de.digitalcollections.model.api.identifiable.parts.RenderingHintsPreviewImage;
 import de.digitalcollections.model.api.identifiable.parts.Translation;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.ContentBlock;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
@@ -97,6 +98,7 @@ import de.digitalcollections.model.jackson.mixin.identifiable.resource.AudioFile
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.FileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.ImageFileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.LinkedDataFileResourceMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.resource.RenderingHintsPreviewImageMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.TextFileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.VideoFileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.legal.LicenseMixIn;
@@ -177,6 +179,8 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(PageResponse.class, PageResponseMixIn.class);
     context.setMixInAnnotations(Paragraph.class, ParagraphMixIn.class);
     context.setMixInAnnotations(Project.class, ProjectMixIn.class);
+    context.setMixInAnnotations(
+        RenderingHintsPreviewImage.class, RenderingHintsPreviewImageMixIn.class);
     context.setMixInAnnotations(Sorting.class, SortingMixIn.class);
     context.setMixInAnnotations(StructuredContent.class, StructuredContentMixIn.class);
     context.setMixInAnnotations(Subtopic.class, SubtopicMixIn.class);
