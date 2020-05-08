@@ -55,6 +55,8 @@ import de.digitalcollections.model.api.legal.License;
 import de.digitalcollections.model.api.paging.Order;
 import de.digitalcollections.model.api.paging.PageRequest;
 import de.digitalcollections.model.api.paging.PageResponse;
+import de.digitalcollections.model.api.paging.SearchPageRequest;
+import de.digitalcollections.model.api.paging.SearchPageResponse;
 import de.digitalcollections.model.api.paging.Sorting;
 import de.digitalcollections.model.api.security.User;
 import de.digitalcollections.model.jackson.mixin.filter.FilterCriterionMixIn;
@@ -105,6 +107,8 @@ import de.digitalcollections.model.jackson.mixin.legal.LicenseMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.OrderMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.PageRequestMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.PageResponseMixIn;
+import de.digitalcollections.model.jackson.mixin.paging.SearchPageRequestMixIn;
+import de.digitalcollections.model.jackson.mixin.paging.SearchPageResponseMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.SortingMixIn;
 import de.digitalcollections.model.jackson.mixin.security.UserMixIn;
 import java.util.ResourceBundle;
@@ -181,6 +185,8 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(Project.class, ProjectMixIn.class);
     context.setMixInAnnotations(
         RenderingHintsPreviewImage.class, RenderingHintsPreviewImageMixIn.class);
+    context.setMixInAnnotations(SearchPageRequest.class, SearchPageRequestMixIn.class);
+    context.setMixInAnnotations(SearchPageResponse.class, SearchPageResponseMixIn.class);
     context.setMixInAnnotations(Sorting.class, SortingMixIn.class);
     context.setMixInAnnotations(StructuredContent.class, StructuredContentMixIn.class);
     context.setMixInAnnotations(Subtopic.class, SubtopicMixIn.class);
