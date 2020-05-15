@@ -15,7 +15,7 @@ public abstract class PageResponseMixIn<T> extends PageResponseImpl<T> {
   @JsonTypeInfo(
       use = JsonTypeInfo.Id.CLASS,
       include = JsonTypeInfo.As.PROPERTY,
-      property = "type",
+      property = "className",
       visible = true)
   @Override
   public abstract List<T> getContent();
