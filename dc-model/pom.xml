@@ -14,7 +14,7 @@
   <packaging>jar</packaging>
 
   <properties>
-    <version.commons-io>2.6</version.commons-io>
+    <version.commons-io>2.7</version.commons-io>
     <version.spring-security-core>5.3.3.RELEASE</version.spring-security-core>
     <version.validation-api>2.0.1.Final</version.validation-api>
   </properties>
