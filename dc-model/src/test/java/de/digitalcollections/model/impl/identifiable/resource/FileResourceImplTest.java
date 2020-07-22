@@ -3,6 +3,7 @@ package de.digitalcollections.model.impl.identifiable.resource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import de.digitalcollections.model.api.identifiable.resource.MimeType;
+import java.net.URI;
 import org.junit.jupiter.api.Test;
 
 public class FileResourceImplTest {
@@ -65,5 +66,14 @@ public class FileResourceImplTest {
     instance.setMimeType(MimeType.fromExtension("xyz123"));
     String result = instance.toString();
     assertThat(result).isNotEqualTo(null);
+  }
+
+  @Test
+  public void testGetFilenameFromUri() {
+    FileResourceImpl instance = new FileResourceImpl();
+    instance.setUri(URI.create("http://localhost/iiif/some/other/default.jpg"));
+    String result = instance.getFilename();
+    String expResult = "default.jpg";
+    assertThat(result).isEqualTo(expResult);
   }
 }

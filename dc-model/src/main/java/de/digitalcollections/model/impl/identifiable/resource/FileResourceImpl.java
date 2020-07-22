@@ -42,6 +42,9 @@ public class FileResourceImpl extends IdentifiableImpl implements FileResource {
     if (filename == null && uri != null) {
       try {
         filename = uri.toURL().getFile();
+        if (filename.contains("/")) {
+          filename = filename.substring(filename.lastIndexOf('/') + 1);
+        }
       } catch (MalformedURLException ex) {
         filename = null;
       }
