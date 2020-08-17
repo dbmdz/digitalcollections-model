@@ -17,9 +17,6 @@
     <version.slf4j>1.7.30</version.slf4j>
     <version.spring-oxm>5.2.7.RELEASE</version.spring-oxm>
     <version.xstream>1.4.12</version.xstream>
-
-    <!-- Plugin versions -->
-    <version.maven-resources-plugin>3.1.0</version.maven-resources-plugin>
   </properties>
 
   <dependencies>
@@ -66,33 +63,4 @@
       <version>${version.spring-oxm}</version>
     </dependency>
   </dependencies>
-
-  <build>
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-        <filtering>false</filtering>
-      </resource>
-      <resource>
-        <directory>src/main/resources</directory>
-        <filtering>true</filtering>
-        <includes>
-          <include>dc-model-jackson-version.properties</include>
-        </includes>
-      </resource>
-    </resources>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>${version.maven-resources-plugin}</version>
-        <configuration>
-          <delimiters>
-            <delimiter>@</delimiter>
-          </delimiters>
-          <useDefaultDelimiters>false</useDefaultDelimiters>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 </project>
