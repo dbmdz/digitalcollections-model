@@ -21,8 +21,16 @@ import de.digitalcollections.model.api.identifiable.entity.EntityRelation;
 import de.digitalcollections.model.api.identifiable.entity.Project;
 import de.digitalcollections.model.api.identifiable.entity.Topic;
 import de.digitalcollections.model.api.identifiable.entity.Website;
+import de.digitalcollections.model.api.identifiable.entity.agent.Agent;
+import de.digitalcollections.model.api.identifiable.entity.agent.CorporateBody;
+import de.digitalcollections.model.api.identifiable.entity.agent.Family;
+import de.digitalcollections.model.api.identifiable.entity.agent.Person;
 import de.digitalcollections.model.api.identifiable.entity.parts.Subtopic;
 import de.digitalcollections.model.api.identifiable.entity.parts.Webpage;
+import de.digitalcollections.model.api.identifiable.entity.work.Expression;
+import de.digitalcollections.model.api.identifiable.entity.work.Item;
+import de.digitalcollections.model.api.identifiable.entity.work.Manifestation;
+import de.digitalcollections.model.api.identifiable.entity.work.Work;
 import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
 import de.digitalcollections.model.api.identifiable.parts.RenderingHintsPreviewImage;
 import de.digitalcollections.model.api.identifiable.parts.Translation;
@@ -61,6 +69,7 @@ import de.digitalcollections.model.api.paging.SearchPageResponse;
 import de.digitalcollections.model.api.paging.Sorting;
 import de.digitalcollections.model.api.security.User;
 import de.digitalcollections.model.api.view.BreadcrumbNavigation;
+import de.digitalcollections.model.jackson.mixin.TimeValueMixIn;
 import de.digitalcollections.model.jackson.mixin.filter.FilterCriterionMixIn;
 import de.digitalcollections.model.jackson.mixin.filter.FilteringMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.IdentifierMixIn;
@@ -76,8 +85,16 @@ import de.digitalcollections.model.jackson.mixin.identifiable.entity.EntityRelat
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.ProjectMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.TopicMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.WebsiteMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.agent.AgentMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.agent.CorporateBodyMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.agent.FamilyMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.agent.PersonMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.parts.SubtopicMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.parts.WebpageMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.ExpressionMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.ItemMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.ManifestationMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.WorkMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.LocalizedTextMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.TranslationMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.ContentBlockMixIn;
@@ -119,6 +136,7 @@ import java.util.ResourceBundle;
 import java.util.function.Function;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.wikidata.wdtk.datamodel.interfaces.TimeValue;
 
 public class DigitalCollectionsModelModule extends SimpleModule {
 
@@ -153,6 +171,19 @@ public class DigitalCollectionsModelModule extends SimpleModule {
 
     LOGGER.info("Using DigitalCollectionsModelModule " + version().toFullString());
 
+    // agent
+    context.setMixInAnnotations(Agent.class, AgentMixIn.class);
+    context.setMixInAnnotations(CorporateBody.class, CorporateBodyMixIn.class);
+    context.setMixInAnnotations(Family.class, FamilyMixIn.class);
+    context.setMixInAnnotations(Person.class, PersonMixIn.class);
+
+    // work
+    context.setMixInAnnotations(Expression.class, ExpressionMixIn.class);
+    context.setMixInAnnotations(Item.class, ItemMixIn.class);
+    context.setMixInAnnotations(Manifestation.class, ManifestationMixIn.class);
+    context.setMixInAnnotations(Work.class, WorkMixIn.class);
+
+    // other
     context.setMixInAnnotations(ApplicationFileResource.class, ApplicationFileResourceMixIn.class);
     context.setMixInAnnotations(Article.class, ArticleMixIn.class);
     context.setMixInAnnotations(AudioFileResource.class, AudioFileResourceMixIn.class);
@@ -202,6 +233,7 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(TableRow.class, TableRowMixIn.class);
     context.setMixInAnnotations(Text.class, TextMixIn.class);
     context.setMixInAnnotations(TextFileResource.class, TextFileResourceMixIn.class);
+    context.setMixInAnnotations(TimeValue.class, TimeValueMixIn.class);
     context.setMixInAnnotations(Topic.class, TopicMixIn.class);
     context.setMixInAnnotations(Translation.class, TranslationMixIn.class);
     context.setMixInAnnotations(User.class, UserMixIn.class);

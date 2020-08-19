@@ -7,18 +7,24 @@ public enum EntityType {
   ARTICLE,
   AUDIO,
   BOOK,
+  CORPORATE_BODY,
   CORPORATION,
   COLLECTION,
   DIGITAL_OBJECT,
   EVENT,
+  EXPRESSION,
+  FAMILY,
   IMAGE,
+  ITEM,
+  MANIFESTATION,
   OBJECT_3D,
   PERSON,
   PLACE,
   PROJECT,
   TOPIC,
   VIDEO,
-  WEBSITE;
+  WEBSITE,
+  WORK;
 
   @Override
   public String toString() {
