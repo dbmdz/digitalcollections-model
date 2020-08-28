@@ -67,4 +67,42 @@ public class ItemImpl extends EntityImpl implements Item {
   public void setVersion(String version) {
     this.version = version;
   }
+
+  @Override
+  public String toString() {
+    return "ItemImpl{"
+        + "language="
+        + language
+        + ", publicationDate='"
+        + publicationDate
+        + '\''
+        + ", publicationPlace='"
+        + publicationPlace
+        + '\''
+        + ", publisher='"
+        + publisher
+        + '\''
+        + ", version='"
+        + version
+        + '\''
+        + ", entityType="
+        + entityType
+        + ", refId="
+        + refId
+        + ", created="
+        + created
+        + ", description="
+        + description
+        + ", label="
+        + label
+        + ", lastModified="
+        + lastModified
+        + ", previewImage="
+        + previewImage
+        + ", previewImageRenderingHints="
+        + previewImageRenderingHints
+        + ", type="
+        + type
+        + '}';
+  }
 }
