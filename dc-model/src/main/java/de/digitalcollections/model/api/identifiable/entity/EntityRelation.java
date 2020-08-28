@@ -1,16 +1,16 @@
 package de.digitalcollections.model.api.identifiable.entity;
 
-public interface EntityRelation<E extends Entity> {
+public interface EntityRelation {
 
-  E getSubject();
+  Entity getSubject();
 
   String getPredicate();
 
-  E getObject();
+  Entity getObject();
 
-  void setSubject(E subjectEntity);
+  void setSubject(Entity subjectEntity);
 
   void setPredicate(String predicate);
 
-  void setObject(E objectEntity);
+  void setObject(Entity objectEntity);
 }

@@ -3,7 +3,7 @@ package de.digitalcollections.model.impl.identifiable.entity;
 import de.digitalcollections.model.api.identifiable.entity.Entity;
 import de.digitalcollections.model.api.identifiable.entity.EntityRelation;
 
-public class EntityRelationImpl implements EntityRelation<Entity> {
+public class EntityRelationImpl implements EntityRelation {
 
   private Entity object;
   private String predicate;
