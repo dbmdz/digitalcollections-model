@@ -16,7 +16,7 @@
   <properties>
     <version.slf4j>1.7.30</version.slf4j>
     <version.spring-oxm>5.2.8.RELEASE</version.spring-oxm>
-    <version.xstream>1.4.12</version.xstream>
+    <version.xstream>1.4.13</version.xstream>
   </properties>
 
   <dependencies>
