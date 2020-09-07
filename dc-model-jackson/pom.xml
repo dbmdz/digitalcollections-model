@@ -76,12 +76,6 @@
       <version>${version.slf4j}</version>
       <scope>test</scope>
     </dependency>
-<!--    <dependency>
-      <groupId>org.wikidata.wdtk</groupId>
-      <artifactId>wdtk-datamodel</artifactId>
-      <version>0.11.1</version>
-      <type>jar</type>
-    </dependency>-->
   </dependencies>
 
   <build>

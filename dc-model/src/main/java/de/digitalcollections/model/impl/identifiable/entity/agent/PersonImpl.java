@@ -13,9 +13,7 @@ public class PersonImpl extends AgentImpl implements Person {
 
   private LocalDate dateOfBirth;
   private LocalDate dateOfDeath;
-  //  private List<FamilyName> familyNames = new ArrayList<>(1);
   private Gender gender;
-  //  private List<GivenName> givenNames = new ArrayList<>(1);
   //  private GeoLocation placeOfBirth;
   //  private GeoLocation placeOfDeath;
   private TimeValue timeValueOfBirth;
@@ -52,16 +50,6 @@ public class PersonImpl extends AgentImpl implements Person {
     this.dateOfDeath = dateOfDeath;
   }
 
-  //  @Override
-  //  public List<FamilyName> getFamilyNames() {
-  //    return familyNames;
-  //  }
-  //
-  //  @Override
-  //  public void setFamilyNames(List<FamilyName> familyNames) {
-  //    this.familyNames = familyNames;
-  //  }
-
   @Override
   public Gender getGender() {
     return gender;
@@ -71,16 +59,6 @@ public class PersonImpl extends AgentImpl implements Person {
   public void setGender(Gender gender) {
     this.gender = gender;
   }
-
-  //  @Override
-  //  public List<GivenName> getGivenNames() {
-  //    return givenNames;
-  //  }
-  //
-  //  @Override
-  //  public void setGivenNames(List<GivenName> givenNames) {
-  //    this.givenNames = givenNames;
-  //  }
 
   //  @Override
   //  public GeoLocation getPlaceOfBirth() {
