@@ -45,6 +45,9 @@ public class FileResourceImpl extends IdentifiableImpl implements FileResource {
         if (filename.contains("/")) {
           filename = filename.substring(filename.lastIndexOf('/') + 1);
         }
+        if (filename.contains("?")) {
+          filename = filename.substring(0, filename.indexOf('?'));
+        }
       } catch (MalformedURLException ex) {
         filename = null;
       }
@@ -59,6 +62,7 @@ public class FileResourceImpl extends IdentifiableImpl implements FileResource {
 
   @Override
   public String getFilenameExtension() {
+    String filename = getFilename();
     if (filename == null) {
       return null;
     } else {
