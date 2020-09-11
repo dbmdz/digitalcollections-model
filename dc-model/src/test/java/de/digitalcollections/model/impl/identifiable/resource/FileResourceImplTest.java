@@ -76,4 +76,16 @@ public class FileResourceImplTest {
     String expResult = "default.jpg";
     assertThat(result).isEqualTo(expResult);
   }
+  
+  @Test
+  public void testGetFilenameAndExtensionFromUri() {
+    FileResourceImpl instance = new FileResourceImpl();
+    instance.setUri(URI.create("https://commons.wikimedia.org/wiki/Special:FilePath/DFG-logo-blau.svg?width=270"));
+    String result = instance.getFilename();
+    String expResult = "DFG-logo-blau.svg";
+    assertThat(result).isEqualTo(expResult);
+    
+    String extension = instance.getFilenameExtension();
+    assertThat(extension).isEqualTo("svg");
+  }
 }
