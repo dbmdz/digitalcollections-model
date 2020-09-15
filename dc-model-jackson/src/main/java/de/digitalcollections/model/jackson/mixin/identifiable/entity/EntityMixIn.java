@@ -7,6 +7,7 @@ import de.digitalcollections.model.impl.identifiable.entity.ArticleImpl;
 import de.digitalcollections.model.impl.identifiable.entity.CollectionImpl;
 import de.digitalcollections.model.impl.identifiable.entity.CorporationImpl;
 import de.digitalcollections.model.impl.identifiable.entity.DigitalObjectImpl;
+import de.digitalcollections.model.impl.identifiable.entity.ProjectImpl;
 import de.digitalcollections.model.impl.identifiable.entity.TopicImpl;
 import de.digitalcollections.model.impl.identifiable.entity.WebsiteImpl;
 import de.digitalcollections.model.impl.identifiable.entity.agent.PersonImpl;
@@ -29,6 +30,7 @@ import de.digitalcollections.model.impl.identifiable.entity.work.WorkImpl;
   //  @JsonSubTypes.Type(value = GeoLocationImpl.class, name = "GEOLOCATION"),
   @JsonSubTypes.Type(value = ItemImpl.class, name = "ITEM"),
   @JsonSubTypes.Type(value = PersonImpl.class, name = "PERSON"),
+  @JsonSubTypes.Type(value = ProjectImpl.class, name = "PROJECT"),
   @JsonSubTypes.Type(value = TopicImpl.class, name = "TOPIC"),
   @JsonSubTypes.Type(value = WebsiteImpl.class, name = "WEBSITE"),
   @JsonSubTypes.Type(value = WorkImpl.class, name = "WORK")
