@@ -4,6 +4,7 @@ import de.digitalcollections.model.api.identifiable.Identifiable;
 import de.digitalcollections.model.api.identifiable.resource.enums.FileResourceType;
 import de.digitalcollections.model.api.legal.License;
 import java.net.URI;
+import java.net.URL;
 
 /**
  * A FileResource (source) describes any file, regardless of its physical location, used storage
@@ -29,6 +30,10 @@ public interface FileResource extends Identifiable {
   void setFilename(String filename);
 
   String getFilenameExtension();
+
+  URL getHttpBaseUrl();
+
+  void setHttpBaseUrl(URL httpBaseUrl);
 
   License getLicense();
 

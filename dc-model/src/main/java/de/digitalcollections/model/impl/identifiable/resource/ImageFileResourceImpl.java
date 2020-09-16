@@ -7,7 +7,6 @@ import java.net.URL;
 public class ImageFileResourceImpl extends FileResourceImpl implements ImageFileResource {
 
   private int height;
-  private URL iiifBaseUrl;
   private int width;
 
   public ImageFileResourceImpl() {
@@ -21,11 +20,6 @@ public class ImageFileResourceImpl extends FileResourceImpl implements ImageFile
   }
 
   @Override
-  public URL getIiifBaseUrl() {
-    return iiifBaseUrl;
-  }
-
-  @Override
   public int getHeight() {
     return height;
   }
@@ -33,11 +27,6 @@ public class ImageFileResourceImpl extends FileResourceImpl implements ImageFile
   @Override
   public void setWidth(int width) {
     this.width = width;
-  }
-
-  @Override
-  public void setIiifBaseUrl(URL iiifBaseUrl) {
-    this.iiifBaseUrl = iiifBaseUrl;
   }
 
   @Override

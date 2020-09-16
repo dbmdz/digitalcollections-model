@@ -8,6 +8,7 @@ import de.digitalcollections.model.api.legal.License;
 import de.digitalcollections.model.impl.identifiable.IdentifiableImpl;
 import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
 import java.util.Objects;
 
 public class FileResourceImpl extends IdentifiableImpl implements FileResource {
@@ -15,6 +16,7 @@ public class FileResourceImpl extends IdentifiableImpl implements FileResource {
   private String filename;
   protected FileResourceType fileResourceType;
 
+  private URL httpBaseUrl;
   private License license;
   private MimeType mimeType;
   private boolean readonly = false;
@@ -77,6 +79,16 @@ public class FileResourceImpl extends IdentifiableImpl implements FileResource {
         return null;
       }
     }
+  }
+
+  @Override
+  public URL getHttpBaseUrl() {
+    return httpBaseUrl;
+  }
+
+  @Override
+  public void setHttpBaseUrl(URL httpBaseUrl) {
+    this.httpBaseUrl = httpBaseUrl;
   }
 
   @Override
