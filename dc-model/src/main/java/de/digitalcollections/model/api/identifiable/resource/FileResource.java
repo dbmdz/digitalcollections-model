@@ -31,7 +31,10 @@ public interface FileResource extends Identifiable {
 
   String getFilenameExtension();
 
-  /** @return a base HTTP url for getting the file resource. Supposed to be extended by additional URL params. */
+  /**
+   * @return a base HTTP url for getting the file resource. Supposed to be extended by additional
+   *     URL params.
+   */
   URL getHttpBaseUrl();
 
   void setHttpBaseUrl(URL httpBaseUrl);
