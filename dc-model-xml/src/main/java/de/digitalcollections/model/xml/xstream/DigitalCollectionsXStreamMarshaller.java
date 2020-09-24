@@ -28,6 +28,7 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.con
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TableImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TableRowImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TextImpl;
+import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.VideoImpl;
 import de.digitalcollections.model.impl.identifiable.resource.ApplicationFileResourceImpl;
 import de.digitalcollections.model.impl.identifiable.resource.AudioFileResourceImpl;
 import de.digitalcollections.model.impl.identifiable.resource.FileResourceImpl;
@@ -101,6 +102,7 @@ public class DigitalCollectionsXStreamMarshaller extends XStreamMarshaller {
     aliases.put("textFileresource", TextFileResourceImpl.class);
     aliases.put("topic", TopicImpl.class);
     aliases.put("translation", TranslationImpl.class);
+    aliases.put("video", VideoImpl.class);
     aliases.put("videoFileresource", VideoFileResourceImpl.class);
     aliases.put("webpage", WebpageImpl.class);
     aliases.put("website", WebsiteImpl.class);
