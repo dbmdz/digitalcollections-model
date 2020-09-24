@@ -52,6 +52,7 @@ import de.digitalcollections.model.api.identifiable.parts.structuredcontent.cont
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.TableHeader;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.TableRow;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Text;
+import de.digitalcollections.model.api.identifiable.parts.structuredcontent.contentblocks.Video;
 import de.digitalcollections.model.api.identifiable.resource.ApplicationFileResource;
 import de.digitalcollections.model.api.identifiable.resource.AudioFileResource;
 import de.digitalcollections.model.api.identifiable.resource.FileResource;
@@ -116,6 +117,7 @@ import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredco
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.TableMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.TableRowMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.TextMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.parts.structuredcontent.contentblocks.VideoMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.ApplicationFileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.AudioFileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.FileResourceMixIn;
@@ -242,6 +244,7 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(User.class, UserMixIn.class);
     context.setMixInAnnotations(
         de.digitalcollections.model.api.identifiable.Version.class, VersionMixIn.class);
+    context.setMixInAnnotations(Video.class, VideoMixIn.class);
     context.setMixInAnnotations(VideoFileResource.class, VideoFileResourceMixIn.class);
     context.setMixInAnnotations(Webpage.class, WebpageMixIn.class);
     context.setMixInAnnotations(Website.class, WebsiteMixIn.class);

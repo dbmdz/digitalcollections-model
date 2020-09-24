@@ -22,6 +22,7 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.con
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TableImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TableRowImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.TextImpl;
+import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.VideoImpl;
 import java.util.List;
 
 @JsonTypeInfo(
@@ -47,7 +48,8 @@ import java.util.List;
   @JsonSubTypes.Type(value = TableHeaderImpl.class, name = "table_header"),
   @JsonSubTypes.Type(value = TableImpl.class, name = "table"),
   @JsonSubTypes.Type(value = TableRowImpl.class, name = "table_row"),
-  @JsonSubTypes.Type(value = TextImpl.class, name = "text")
+  @JsonSubTypes.Type(value = TextImpl.class, name = "text"),
+  @JsonSubTypes.Type(value = VideoImpl.class, name = "video")
 })
 public interface ContentBlockMixIn {
 
