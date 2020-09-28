@@ -9,6 +9,7 @@ import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.Loc
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.StructuredContentImpl;
 import de.digitalcollections.model.impl.identifiable.parts.structuredcontent.contentblocks.ParagraphImpl;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
+import java.time.LocalDate;
 import java.util.Locale;
 import org.junit.jupiter.api.Test;
 
@@ -23,6 +24,8 @@ public class CollectionTest extends BaseJsonSerializationTest {
     structuredContent.addContentBlock(contentBlock);
     localizedStructuredContent.put(Locale.ENGLISH, structuredContent);
     collection.setDescription(localizedStructuredContent);
+    collection.setPublicationStart(LocalDate.MIN);
+    collection.setPublicationEnd(LocalDate.MAX);
     checkSerializeDeserialize(collection);
   }
 }
