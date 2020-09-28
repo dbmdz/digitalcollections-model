@@ -21,16 +21,6 @@ public class CollectionImpl extends EntityImpl implements Collection {
   }
 
   @Override
-  public Collection getParent() {
-    return node.getParent();
-  }
-
-  @Override
-  public void setParent(Collection parent) {
-    node.setParent(parent);
-  }
-
-  @Override
   public List<Collection> getChildren() {
     return node.getChildren();
   }
@@ -41,16 +31,6 @@ public class CollectionImpl extends EntityImpl implements Collection {
   }
 
   @Override
-  public LocalizedStructuredContent getText() {
-    return text;
-  }
-
-  @Override
-  public void setText(LocalizedStructuredContent text) {
-    this.text = text;
-  }
-
-  @Override
   public List<Entity> getEntities() {
     return entities;
   }
@@ -58,5 +38,25 @@ public class CollectionImpl extends EntityImpl implements Collection {
   @Override
   public void setEntities(List<Entity> entities) {
     this.entities = entities;
+  }
+
+  @Override
+  public Collection getParent() {
+    return node.getParent();
+  }
+
+  @Override
+  public void setParent(Collection parent) {
+    node.setParent(parent);
+  }
+
+  @Override
+  public LocalizedStructuredContent getText() {
+    return text;
+  }
+
+  @Override
+  public void setText(LocalizedStructuredContent text) {
+    this.text = text;
   }
 }
