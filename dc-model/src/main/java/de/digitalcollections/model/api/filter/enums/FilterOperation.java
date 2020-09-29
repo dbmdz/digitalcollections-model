@@ -37,8 +37,8 @@ public enum FilterOperation {
   NOT_IN("nin", OperandCount.MULTIVALUE),
   BETWEEN("btn", OperandCount.MIN_MAX_VALUES),
   CONTAINS("like", OperandCount.SINGLEVALUE),
-  NOT_SET("set", OperandCount.NO_VALUE),
-  SET("notset", OperandCount.NO_VALUE);
+  NOT_SET("notset", OperandCount.NO_VALUE),
+  SET("set", OperandCount.NO_VALUE);
 
   private final String value;
   private final OperandCount opCount;
