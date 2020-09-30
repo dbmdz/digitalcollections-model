@@ -2,6 +2,7 @@ package de.digitalcollections.model.api.filter;
 
 import de.digitalcollections.model.api.filter.enums.FilterOperation;
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 /**
  * Filter Criterion Container.A filter criterion is a composition of
@@ -157,5 +158,25 @@ public class FilterCriterion<T extends Object> {
         }
         break;
     }
+  }
+
+  @Override
+  public String toString() {
+    if (operation == null) {
+      return "";
+    }
+    String criterion = fieldName + "=" + operation + ":";
+    switch (operation.getOperandCount()) {
+      case SINGLEVALUE:
+        criterion += value;
+        break;
+      case MIN_MAX_VALUES:
+        criterion += minValue + "," + maxValue;
+        break;
+      case MULTIVALUE:
+        criterion += values.stream().map(Object::toString).collect(Collectors.joining(","));
+        break;
+    }
+    return criterion;
   }
 }
