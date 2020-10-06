@@ -140,6 +140,19 @@ public interface Filtering extends Iterable<FilterCriterion>, Serializable {
       filteringBuilder.add(filterCriterion);
       return filteringBuilder;
     }
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#EQUALS_OR_NOT_SET}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public FilteringBuilder isEqualsOrNotSet(Object value) {
+      FilterCriterion filterCriterion =
+          new FilterCriterion(fieldName, FilterOperation.EQUALS_OR_NOT_SET, value);
+      filteringBuilder.add(filterCriterion);
+      return filteringBuilder;
+    }
 
     /**
      * Completes construction of a filter criterion for a field with operation {@link
@@ -157,6 +170,20 @@ public interface Filtering extends Iterable<FilterCriterion>, Serializable {
 
     /**
      * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#GREATER_THAN_OR_NOT_SET}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public FilteringBuilder greaterOrNotSet(Object value) {
+      FilterCriterion filterCriterion =
+          new FilterCriterion(fieldName, FilterOperation.GREATER_THAN_OR_NOT_SET, value);
+      filteringBuilder.add(filterCriterion);
+      return filteringBuilder;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
      * FilterOperation#GREATER_THAN_OR_EQUAL_TO}
      *
      * @param value operand
@@ -165,6 +192,21 @@ public interface Filtering extends Iterable<FilterCriterion>, Serializable {
     public FilteringBuilder greaterOrEqual(Object value) {
       FilterCriterion filterCriterion =
           new FilterCriterion(fieldName, FilterOperation.GREATER_THAN_OR_EQUAL_TO, value);
+      filteringBuilder.add(filterCriterion);
+      return filteringBuilder;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#GREATER_THAN_OR_EQUAL_TO_OR_NOT_SET}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public FilteringBuilder greaterOrEqualOrNotSet(Object value) {
+      FilterCriterion filterCriterion =
+          new FilterCriterion(
+              fieldName, FilterOperation.GREATER_THAN_OR_EQUAL_TO_OR_NOT_SET, value);
       filteringBuilder.add(filterCriterion);
       return filteringBuilder;
     }
@@ -199,14 +241,42 @@ public interface Filtering extends Iterable<FilterCriterion>, Serializable {
 
     /**
      * Completes construction of a filter criterion for a field with operation {@link
-     * FilterOperation#LESSTHAN_OR_EQUAL_TO}
+     * FilterOperation#LESS_THAN_OR_NOT_SET}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public FilteringBuilder lessOrNotSet(Object value) {
+      FilterCriterion filterCriterion =
+          new FilterCriterion(fieldName, FilterOperation.LESS_THAN_OR_NOT_SET, value);
+      filteringBuilder.add(filterCriterion);
+      return filteringBuilder;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#LESS_THAN_OR_EQUAL_TO}
      *
      * @param value operand
      * @return builder instance for fluent usage
      */
     public FilteringBuilder lessOrEqual(Object value) {
       FilterCriterion filterCriterion =
-          new FilterCriterion(fieldName, FilterOperation.LESSTHAN_OR_EQUAL_TO, value);
+          new FilterCriterion(fieldName, FilterOperation.LESS_THAN_OR_EQUAL_TO, value);
+      filteringBuilder.add(filterCriterion);
+      return filteringBuilder;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#LESS_THAN_OR_EQUAL_TO_OR_NOT_SET}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public FilteringBuilder lessOrEqualOrNotSet(Object value) {
+      FilterCriterion filterCriterion =
+          new FilterCriterion(fieldName, FilterOperation.LESS_THAN_OR_EQUAL_TO_OR_NOT_SET, value);
       filteringBuilder.add(filterCriterion);
       return filteringBuilder;
     }
