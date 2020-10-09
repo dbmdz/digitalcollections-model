@@ -25,12 +25,10 @@ public interface Filtering extends Iterable<FilterCriterion>, Serializable {
       setFilterCriteria(filtering.getFilterCriteria());
       return getFilterCriteria();
     }
-    addFilterCriteria(filtering.getFilterCriteria());
+    List<FilterCriterion> mergedList = new ArrayList<>(getFilterCriteria());
+    mergedList.addAll(filtering.getFilterCriteria());
+    setFilterCriteria(mergedList);
     return getFilterCriteria();
-  }
-
-  default void addFilterCriteria(List<FilterCriterion> filterCriteria) {
-    getFilterCriteria().addAll(filterCriteria);
   }
 
   /**
@@ -166,6 +164,7 @@ public interface Filtering extends Iterable<FilterCriterion>, Serializable {
       filteringBuilder.add(filterCriterion);
       return filteringBuilder;
     }
+
     /**
      * Completes construction of a filter criterion for a field with operation {@link
      * FilterOperation#EQUALS_OR_NOT_SET}
