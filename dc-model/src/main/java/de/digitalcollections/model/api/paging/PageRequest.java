@@ -1,7 +1,9 @@
 package de.digitalcollections.model.api.paging;
 
+import de.digitalcollections.model.api.filter.FilterCriterion;
 import de.digitalcollections.model.api.filter.Filtering;
 import de.digitalcollections.model.impl.paging.PageRequestImpl;
+import java.util.List;
 
 /**
  * Abstract interface for pagination information. See Spring Data Commons, but more flat design and
@@ -20,6 +22,21 @@ public interface PageRequest {
 
   static Builder defaultBuilder() {
     return new Builder();
+  }
+
+  /**
+   * Add all filter criteria of given filtering to existing filtering. Initialise if no existing
+   * filtering.
+   *
+   * @param filtering new filtering criteria to add
+   * @return complete filtering
+   */
+  default List<FilterCriterion> add(Filtering filtering) {
+    Filtering existingFiltering = getFiltering();
+    if (existingFiltering == null || existingFiltering.getFilterCriteria().isEmpty()) {
+      setFiltering(filtering);
+    }
+    return getFiltering().getFilterCriteria();
   }
 
   /** @return the {@link PageRequest} requesting the first page */

@@ -11,6 +11,25 @@ import java.util.List;
 public interface Filtering extends Iterable<FilterCriterion>, Serializable {
 
   /**
+   * Add all filter criteria of given filtering to existing filtering. Initialise if no existing
+   * filtering.
+   *
+   * @param filtering new filtering to add
+   * @return complete filtering
+   */
+  default List<FilterCriterion> add(Filtering filtering) {
+    if (filtering == null || filtering.getFilterCriteria() == null) {
+      return getFilterCriteria();
+    }
+    if (getFilterCriteria() == null) {
+      setFilterCriterias(filtering.getFilterCriteria());
+      return getFilterCriteria();
+    }
+    getFilterCriteria().addAll(filtering.getFilterCriteria());
+    return getFilterCriteria();
+  }
+
+  /**
    * Returns the filter criteria registered for the given property.
    *
    * @param property given property
@@ -19,7 +38,10 @@ public interface Filtering extends Iterable<FilterCriterion>, Serializable {
   FilterCriterion getFilterCriterionFor(String property);
 
   /** @return returns all filter criterias */
-  List<FilterCriterion> getFilterCriterias();
+  List<FilterCriterion> getFilterCriteria();
+
+  /** @param filterCriteria set list of filter criteria */
+  void setFilterCriterias(List<FilterCriterion> filterCriteria);
 
   static FilteringBuilder defaultBuilder() {
     return new FilteringBuilder();

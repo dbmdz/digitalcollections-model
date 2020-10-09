@@ -8,17 +8,22 @@ import java.util.List;
 
 public class FilteringImpl implements Filtering {
 
-  private List<FilterCriterion> filterCriterias = new ArrayList<>();
+  private List<FilterCriterion> filterCriteria = new ArrayList<>();
 
   public FilteringImpl() {}
 
-  public FilteringImpl(List<FilterCriterion> filterCriterias) {
-    this.filterCriterias = filterCriterias;
+  public FilteringImpl(List<FilterCriterion> filterCriteria) {
+    this.filterCriteria = filterCriteria;
+  }
+
+  @Override
+  public List<FilterCriterion> getFilterCriteria() {
+    return filterCriteria;
   }
 
   @Override
   public FilterCriterion getFilterCriterionFor(String property) {
-    return filterCriterias.stream()
+    return filterCriteria.stream()
         .filter(
             f -> {
               return f.getFieldName().equals(property);
@@ -28,12 +33,12 @@ public class FilteringImpl implements Filtering {
   }
 
   @Override
-  public List<FilterCriterion> getFilterCriterias() {
-    return filterCriterias;
+  public Iterator<FilterCriterion> iterator() {
+    return filterCriteria.iterator();
   }
 
   @Override
-  public Iterator<FilterCriterion> iterator() {
-    return filterCriterias.iterator();
+  public void setFilterCriterias(List<FilterCriterion> filterCriteria) {
+    this.filterCriteria = filterCriteria;
   }
 }
