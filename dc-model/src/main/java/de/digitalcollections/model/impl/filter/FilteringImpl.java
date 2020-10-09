@@ -38,7 +38,7 @@ public class FilteringImpl implements Filtering {
   }
 
   @Override
-  public void setFilterCriterias(List<FilterCriterion> filterCriteria) {
+  public void setFilterCriteria(List<FilterCriterion> filterCriteria) {
     this.filterCriteria = filterCriteria;
   }
 }

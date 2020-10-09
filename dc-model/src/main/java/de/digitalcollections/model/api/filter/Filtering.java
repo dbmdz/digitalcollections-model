@@ -22,7 +22,7 @@ public interface Filtering extends Iterable<FilterCriterion>, Serializable {
       return getFilterCriteria();
     }
     if (getFilterCriteria() == null) {
-      setFilterCriterias(filtering.getFilterCriteria());
+      setFilterCriteria(filtering.getFilterCriteria());
       return getFilterCriteria();
     }
     getFilterCriteria().addAll(filtering.getFilterCriteria());
@@ -41,7 +41,7 @@ public interface Filtering extends Iterable<FilterCriterion>, Serializable {
   List<FilterCriterion> getFilterCriteria();
 
   /** @param filterCriteria set list of filter criteria */
-  void setFilterCriterias(List<FilterCriterion> filterCriteria);
+  void setFilterCriteria(List<FilterCriterion> filterCriteria);
 
   static FilteringBuilder defaultBuilder() {
     return new FilteringBuilder();
