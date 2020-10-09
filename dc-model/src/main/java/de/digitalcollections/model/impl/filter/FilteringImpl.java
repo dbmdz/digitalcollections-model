@@ -24,10 +24,7 @@ public class FilteringImpl implements Filtering {
   @Override
   public FilterCriterion getFilterCriterionFor(String property) {
     return filterCriteria.stream()
-        .filter(
-            f -> {
-              return f.getFieldName().equals(property);
-            })
+        .filter(f -> f.getFieldName().equals(property))
         .findFirst()
         .orElse(null);
   }

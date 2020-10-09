@@ -25,8 +25,12 @@ public interface Filtering extends Iterable<FilterCriterion>, Serializable {
       setFilterCriteria(filtering.getFilterCriteria());
       return getFilterCriteria();
     }
-    getFilterCriteria().addAll(filtering.getFilterCriteria());
+    addFilterCriteria(filtering.getFilterCriteria());
     return getFilterCriteria();
+  }
+
+  default void addFilterCriteria(List<FilterCriterion> filterCriteria) {
+    getFilterCriteria().addAll(filterCriteria);
   }
 
   /**
