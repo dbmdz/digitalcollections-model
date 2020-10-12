@@ -27,6 +27,8 @@ public class DigitalObjectTest extends BaseJsonSerializationTest {
     appFile.setFilename("dings.pdf");
     digitalObject.getFileResources().add(appFile);
 
+    digitalObject.setCustomAttribute("isHighlight", "true");
+
     checkSerializeDeserialize(digitalObject);
   }
 }
