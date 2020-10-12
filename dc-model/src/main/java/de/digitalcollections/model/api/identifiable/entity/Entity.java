@@ -2,6 +2,7 @@ package de.digitalcollections.model.api.identifiable.entity;
 
 import de.digitalcollections.model.api.identifiable.Identifiable;
 import de.digitalcollections.model.api.identifiable.entity.enums.EntityType;
+import de.digitalcollections.model.api.identifiable.entity.parts.CustomAttributes;
 
 /**
  * Entities are uniquely identifiable objects, often also uniquely identifiable outside of this
@@ -37,4 +38,42 @@ public interface Entity extends Identifiable {
 
   /** @param refId system wide unique entity reference id. */
   void setRefId(long refId);
+
+  /** @return custom attributes */
+  CustomAttributes getCustomAttributes();
+
+  /**
+   * @param attributeName attribute name of custom attribute
+   * @return value of custom attribute or null
+   */
+  default Object getCustomAttribute(String attributeName) {
+    if (hasCustomAttribute(attributeName)) {
+      return getCustomAttributes().get(attributeName);
+    }
+    return null;
+  }
+
+  /**
+   * @param attributeName attribute name for lookup
+   * @return true if map contains custom attribute of given name
+   */
+  default boolean hasCustomAttribute(String attributeName) {
+    CustomAttributes customAttributes = getCustomAttributes();
+    return customAttributes != null && customAttributes.containsKey(attributeName);
+  }
+
+  /**
+   * Sets custom Attribute of given name to given value (overwriting existing value).
+   *
+   * @param attributeName name of custom attribute
+   * @param attributeValue value of custom attibute
+   */
+  void setCustomAttribute(String attributeName, Object attributeValue);
+
+  /**
+   * Set custom attributes (name, value).
+   *
+   * @param customAttributes custom attributes to be set
+   */
+  void setCustomAttributes(CustomAttributes customAttributes);
 }

@@ -3,10 +3,12 @@ package de.digitalcollections.model.impl.identifiable.entity;
 import de.digitalcollections.model.api.identifiable.IdentifiableType;
 import de.digitalcollections.model.api.identifiable.entity.Entity;
 import de.digitalcollections.model.api.identifiable.entity.enums.EntityType;
+import de.digitalcollections.model.api.identifiable.entity.parts.CustomAttributes;
 import de.digitalcollections.model.impl.identifiable.IdentifiableImpl;
 
 public class EntityImpl extends IdentifiableImpl implements Entity {
 
+  protected CustomAttributes customAttributes;
   protected EntityType entityType;
   protected long refId;
 
@@ -16,18 +18,36 @@ public class EntityImpl extends IdentifiableImpl implements Entity {
   }
 
   @Override
+  public CustomAttributes getCustomAttributes() {
+    return customAttributes;
+  }
+
+  @Override
   public EntityType getEntityType() {
     return entityType;
   }
 
   @Override
-  public void setEntityType(EntityType entityType) {
-    this.entityType = entityType;
+  public long getRefId() {
+    return refId;
   }
 
   @Override
-  public long getRefId() {
-    return refId;
+  public void setCustomAttribute(String attributeName, Object attributeValue) {
+    if (customAttributes == null) {
+      customAttributes = new CustomAttributes();
+    }
+    customAttributes.put(attributeName, attributeValue);
+  }
+
+  @Override
+  public void setCustomAttributes(CustomAttributes customAttributes) {
+    this.customAttributes = customAttributes;
+  }
+
+  @Override
+  public void setEntityType(EntityType entityType) {
+    this.entityType = entityType;
   }
 
   @Override
