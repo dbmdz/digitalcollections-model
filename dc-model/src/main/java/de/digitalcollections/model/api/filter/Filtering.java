@@ -266,6 +266,20 @@ public interface Filtering extends Iterable<FilterCriterion>, Serializable {
 
     /**
      * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#LESS_THAN_AND_SET}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public FilteringBuilder lessAndSet(Object value) {
+      FilterCriterion filterCriterion =
+          new FilterCriterion(fieldName, FilterOperation.LESS_THAN_AND_SET, value);
+      filteringBuilder.add(filterCriterion);
+      return filteringBuilder;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
      * FilterOperation#LESS_THAN_OR_NOT_SET}
      *
      * @param value operand
@@ -288,6 +302,20 @@ public interface Filtering extends Iterable<FilterCriterion>, Serializable {
     public FilteringBuilder lessOrEqual(Object value) {
       FilterCriterion filterCriterion =
           new FilterCriterion(fieldName, FilterOperation.LESS_THAN_OR_EQUAL_TO, value);
+      filteringBuilder.add(filterCriterion);
+      return filteringBuilder;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#LESS_THAN_OR_EQUAL_TO_AND_SET}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public FilteringBuilder lessOrEqualAndSet(Object value) {
+      FilterCriterion filterCriterion =
+          new FilterCriterion(fieldName, FilterOperation.LESS_THAN_OR_EQUAL_TO_AND_SET, value);
       filteringBuilder.add(filterCriterion);
       return filteringBuilder;
     }
