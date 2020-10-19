@@ -13,7 +13,7 @@ Primarily started from the needs for [GLAM](https://en.wikipedia.org/wiki/GLAM_%
 ## Business Domain Model
 
 The domain model follows the FRBR ([Functional Requirements for Bibliographic Records](https://en.wikipedia.org/wiki/Functional_Requirements_for_Bibliographic_Records)).
-The model is not restricted to books but can handle all sort of creative works and their digital counterparts ("copies").
+The model is not restricted to books but can handle all sort of creative works and their digital counterparts ("digital objects").
 
 One core statement (taken from [Music Cataloging at Yale](https://web.library.yale.edu/cataloging/music/frbr-wemi-music)) is:
 
