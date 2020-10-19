@@ -1,0 +1,24 @@
+
+classDiagram
+  Work "1" --> "0..*" Expression : is realized through
+  Expression --> Manifestation : is embodied in
+  Manifestation "1" --> "0..*" Item : is exemplified by
+  Item "1" <-- "0..*" DigitalObject : digital copy of
+  DigitalObject "1" --> "1..*" FileResource : has
+
+  Work "*" --> "1..*" Agent : created by
+  Agent <|-- Person
+  Agent <|-- Family
+  Agent <|-- CorporateBody
+  Project "1..*" --> "0..*" CorporateBody : sponsored by
+  DigitalObject "*" --> "1" Project : digitized in
+  
+
+  link Work "https://web.library.yale.edu/cataloging/music/frbr-wemi-music#work" "See https://web.library.yale.edu/cataloging/music/frbr-wemi-music#work"
+  link Expression "https://web.library.yale.edu/cataloging/music/frbr-wemi-music#expression" "See https://web.library.yale.edu/cataloging/music/frbr-wemi-music#expression"
+  link Manifestation "https://web.library.yale.edu/cataloging/music/frbr-wemi-music#manifestation" "See https://web.library.yale.edu/cataloging/music/frbr-wemi-music#manifestation"
+  link Item "https://web.library.yale.edu/cataloging/music/frbr-wemi-music#item" "See https://web.library.yale.edu/cataloging/music/frbr-wemi-music#item"
+
+  %%Item : +Set<Identifier> identifiers
+  %%DigitalObject : +Set<Identifier> identifiers
+  %%Project : +Set<Identifier> identifiers

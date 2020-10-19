@@ -8,7 +8,6 @@ public enum EntityType {
   AUDIO,
   BOOK,
   CORPORATE_BODY,
-  CORPORATION,
   COLLECTION,
   DIGITAL_OBJECT,
   EVENT,
