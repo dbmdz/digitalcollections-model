@@ -1,6 +1,6 @@
 package de.digitalcollections.model.api.identifiable;
 
-/** All {@link Identifiable} types cudami can handle */
+/** All {@link Identifiable} top types of this library. */
 public enum IdentifiableType {
   ENTITY,
   ENTITY_PART,
