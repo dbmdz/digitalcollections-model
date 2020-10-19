@@ -10,7 +10,7 @@
 Java library containing Domain Object classes of the Digital Collection's and Digital Humanities ecosystem.
 Primarily started from the needs for [GLAM](https://en.wikipedia.org/wiki/GLAM_%28industry_sector%29)s (Galleries, Libraries, Archives, Museums) but not restricted to it.
 
-## Business Domain Model / Class Diagram
+## Business Domain Model
 
 The domain model follows the FRBR ([Functional Requirements for Bibliographic Records](https://en.wikipedia.org/wiki/Functional_Requirements_for_Bibliographic_Records)).
 The model is not restricted to books but can handle alle creative works and their digital counterparts ("copies").
@@ -26,13 +26,14 @@ and curated `Collections` as group of digital objects.
 
 ![Class Diagram](./domain-model.png)
 
-## Model-Serializing
+* For presenting digital collections online the library offers `Website` and `Webpage` classes.
+* For arranging and describing digital objects by topics the library offers `Topic` and `Subtopic` classes.
+* For editorial contribution in the context of digital collections the library offers `Article` with rich text formatting and embedding of different media.
 
-Comes with separate modules for supporting serializing model objects
+The following classes can be assigned to objects (where appropriate):
 
-- to JSON (dc-model-jackson module) using [Jackson](https://github.com/FasterXML/jackson)
-- to XML (dc-model-xml module) using [XStream](https://x-stream.github.io/)
-- to URL-params (dc-model-feign module) using [OpenFeign](https://github.com/OpenFeign/feign)
+* a freely definable `License`
+* a list of freely definable `Identifier`s, each of them identifying the object uniquely in an external source system, e.g. GND-ID ("gnd:104330171") or VIAF-ID ("viaf:96994450").
 
 ## Technical Model Classes
 
@@ -89,3 +90,15 @@ REST-API design for filtering was inspired by:
 
 - [REST API Design: Filtering, Sorting, and Pagination](https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/)
 - [An example application using Spring boot MVC, Spring Data JPA with the ability to do filter, pagination and sorting.](https://github.com/vijjayy81/spring-boot-jpa-rest-demo-filter-paging-sorting)
+
+## Model-Serializing
+
+Comes with separate modules for supporting serializing model objects
+
+- to JSON (dc-model-jackson module) using [Jackson](https://github.com/FasterXML/jackson)
+- to XML (dc-model-xml module) using [XStream](https://x-stream.github.io/)
+- to URL-params (dc-model-feign module) using [OpenFeign](https://github.com/OpenFeign/feign)
+
+## Systems implementing this library
+
+* [cudami (cultural digital asset management)](https://github.com/dbmdz/cudami)
