@@ -11,7 +11,8 @@ classDiagram
   Agent <|-- Family
   Agent <|-- CorporateBody
   Project "1..*" --> "0..*" CorporateBody : sponsored by
-  DigitalObject "*" --> "1" Project : digitized in
+  DigitalObject "*" --> "1" Project : digitized within
+  Collection "*" --> "*" DigitalObject : contains
   
 
   link Work "https://web.library.yale.edu/cataloging/music/frbr-wemi-music#work" "See https://web.library.yale.edu/cataloging/music/frbr-wemi-music#work"
@@ -22,3 +23,12 @@ classDiagram
   %%Item : +Set<Identifier> identifiers
   %%DigitalObject : +Set<Identifier> identifiers
   %%Project : +Set<Identifier> identifiers
+
+  Website "1" --> "*" Webpage : has
+  Webpage "*" --> "0..1" Webpage : is child of
+
+  Topic "1" --> "*" Subtopic : has
+  Subtopic "*" --> "0..1" Subtopic : is child of
+
+  class Article
+  class License

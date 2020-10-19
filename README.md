@@ -10,6 +10,22 @@
 Java library containing Domain Object classes of the Digital Collection's and Digital Humanities ecosystem.
 Primarily started from the needs for [GLAM](https://en.wikipedia.org/wiki/GLAM_%28industry_sector%29)s (Galleries, Libraries, Archives, Museums) but not restricted to it.
 
+## Business Domain Model / Class Diagram
+
+The domain model follows the FRBR ([Functional Requirements for Bibliographic Records](https://en.wikipedia.org/wiki/Functional_Requirements_for_Bibliographic_Records)).
+The model is not restricted to books but can handle alle creative works and their digital counterparts ("copies").
+
+One core statement (taken from [Music Cataloging at Yale](https://web.library.yale.edu/cataloging/music/frbr-wemi-music)) is:
+
+```
+"A work is realized by an expression, which is embodied in a manifestation, which is exemplified by an item."
+```
+
+And the central object of interest of digital collections is the `DigitalObject` as the digital representation of an item
+and curated `Collections` as group of digital objects.
+
+![Class Diagram](./domain-model.png)
+
 ## Model-Serializing
 
 Comes with separate modules for supporting serializing model objects
@@ -18,7 +34,11 @@ Comes with separate modules for supporting serializing model objects
 - to XML (dc-model-xml module) using [XStream](https://x-stream.github.io/)
 - to URL-params (dc-model-feign module) using [OpenFeign](https://github.com/OpenFeign/feign)
 
-## Filtering-Model
+## Technical Model Classes
+
+This library supports practical handling of above domain model by adding paging, filtering and sorting classes.
+
+### Filtering-Model
 
 Model for passing technology independent filter criterias from frontend to backend via URL-params.
 Backend has to take care about implementing technology dependent filtering for given criterias.
