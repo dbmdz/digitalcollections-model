@@ -17,6 +17,7 @@
     <version.commons-beanutils>1.9.4</version.commons-beanutils>
     <version.jackson>2.11.3</version.jackson>
     <version.slf4j>1.7.30</version.slf4j>
+    <version.wdtk-datamodel>0.11.1</version.wdtk-datamodel>
 
     <!-- Plugin versions -->
     <version.maven-resources-plugin>3.2.0</version.maven-resources-plugin>
@@ -75,6 +76,11 @@
       <artifactId>slf4j-simple</artifactId>
       <version>${version.slf4j}</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.wikidata.wdtk</groupId>
+      <artifactId>wdtk-datamodel</artifactId>
+      <version>${version.wdtk-datamodel}</version>
     </dependency>
   </dependencies>
 
