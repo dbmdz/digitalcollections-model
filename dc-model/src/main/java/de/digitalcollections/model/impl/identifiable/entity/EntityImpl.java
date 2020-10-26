@@ -5,6 +5,7 @@ import de.digitalcollections.model.api.identifiable.entity.Entity;
 import de.digitalcollections.model.api.identifiable.entity.enums.EntityType;
 import de.digitalcollections.model.api.identifiable.entity.parts.CustomAttributes;
 import de.digitalcollections.model.impl.identifiable.IdentifiableImpl;
+import java.util.Objects;
 
 public class EntityImpl extends IdentifiableImpl implements Entity {
 
@@ -53,5 +54,27 @@ public class EntityImpl extends IdentifiableImpl implements Entity {
   @Override
   public void setRefId(long refId) {
     this.refId = refId;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof EntityImpl)) {
+      return false;
+    }
+    if (!super.equals(o)) {
+      return false;
+    }
+    EntityImpl entity = (EntityImpl) o;
+    return refId == entity.refId &&
+        Objects.equals(customAttributes, entity.customAttributes) &&
+        entityType == entity.entityType;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(super.hashCode(), customAttributes, entityType, refId);
   }
 }

@@ -132,4 +132,29 @@ public class IdentifiableImpl implements Identifiable {
   public void setPreviewImageRenderingHints(RenderingHintsPreviewImage previewImageRenderingHints) {
     this.previewImageRenderingHints = previewImageRenderingHints;
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof IdentifiableImpl)) {
+      return false;
+    }
+    IdentifiableImpl that = (IdentifiableImpl) o;
+    return Objects.equals(created, that.created) &&
+        Objects.equals(description, that.description) &&
+        Objects.equals(identifiers, that.identifiers) &&
+        Objects.equals(label, that.label) &&
+        Objects.equals(lastModified, that.lastModified) &&
+        Objects.equals(previewImage, that.previewImage) &&
+        Objects.equals(previewImageRenderingHints, that.previewImageRenderingHints) &&
+        type == that.type &&
+        Objects.equals(uuid, that.uuid);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(created, description, identifiers, label, lastModified, previewImage, previewImageRenderingHints, type, uuid);
+  }
 }
