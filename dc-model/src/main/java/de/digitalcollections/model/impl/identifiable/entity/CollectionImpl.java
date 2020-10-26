@@ -8,6 +8,7 @@ import de.digitalcollections.model.api.identifiable.parts.structuredcontent.Loca
 import de.digitalcollections.model.impl.identifiable.NodeImpl;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 public class CollectionImpl extends EntityImpl implements Collection {
 
@@ -81,5 +82,51 @@ public class CollectionImpl extends EntityImpl implements Collection {
   @Override
   public void setText(LocalizedStructuredContent text) {
     this.text = text;
+  }
+
+  @Override
+  public String toString() {
+    return "CollectionImpl{"
+        + "entities=" + entities
+        + ", node=" + node
+        + ", publicationEnd=" + publicationEnd
+        + ", publicationStart=" + publicationStart
+        + ", text=" + text
+        + ", customAttributes=" + customAttributes
+        + ", entityType=" + entityType
+        + ", refId=" + refId
+        + ", created=" + created
+        + ", description=" + description
+        + ", label=" + label
+        + ", lastModified=" + lastModified
+        + ", previewImage=" + previewImage
+        + ", previewImageRenderingHints=" + previewImageRenderingHints
+        + ", type=" + type
+        + ", uuid=" + getUuid()
+        + '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof CollectionImpl)) {
+      return false;
+    }
+    if (!super.equals(o)) {
+      return false;
+    }
+    CollectionImpl that = (CollectionImpl) o;
+    return Objects.equals(entities, that.entities) &&
+        Objects.equals(node, that.node) &&
+        Objects.equals(publicationEnd, that.publicationEnd) &&
+        Objects.equals(publicationStart, that.publicationStart) &&
+        Objects.equals(text, that.text);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(super.hashCode(), entities, node, publicationEnd, publicationStart, text);
   }
 }
