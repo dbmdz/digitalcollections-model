@@ -87,22 +87,38 @@ public class CollectionImpl extends EntityImpl implements Collection {
   @Override
   public String toString() {
     return "CollectionImpl{"
-        + "entities=" + entities
-        + ", node=" + node
-        + ", publicationEnd=" + publicationEnd
-        + ", publicationStart=" + publicationStart
-        + ", text=" + text
-        + ", customAttributes=" + customAttributes
-        + ", entityType=" + entityType
-        + ", refId=" + refId
-        + ", created=" + created
-        + ", description=" + description
-        + ", label=" + label
-        + ", lastModified=" + lastModified
-        + ", previewImage=" + previewImage
-        + ", previewImageRenderingHints=" + previewImageRenderingHints
-        + ", type=" + type
-        + ", uuid=" + getUuid()
+        + "entities="
+        + entities
+        + ", node="
+        + node
+        + ", publicationEnd="
+        + publicationEnd
+        + ", publicationStart="
+        + publicationStart
+        + ", text="
+        + text
+        + ", customAttributes="
+        + customAttributes
+        + ", entityType="
+        + entityType
+        + ", refId="
+        + refId
+        + ", created="
+        + created
+        + ", description="
+        + description
+        + ", label="
+        + label
+        + ", lastModified="
+        + lastModified
+        + ", previewImage="
+        + previewImage
+        + ", previewImageRenderingHints="
+        + previewImageRenderingHints
+        + ", type="
+        + type
+        + ", uuid="
+        + getUuid()
         + '}';
   }
 
@@ -118,11 +134,11 @@ public class CollectionImpl extends EntityImpl implements Collection {
       return false;
     }
     CollectionImpl that = (CollectionImpl) o;
-    return Objects.equals(entities, that.entities) &&
-        Objects.equals(node, that.node) &&
-        Objects.equals(publicationEnd, that.publicationEnd) &&
-        Objects.equals(publicationStart, that.publicationStart) &&
-        Objects.equals(text, that.text);
+    return Objects.equals(entities, that.entities)
+        && Objects.equals(node, that.node)
+        && Objects.equals(publicationEnd, that.publicationEnd)
+        && Objects.equals(publicationStart, that.publicationStart)
+        && Objects.equals(text, that.text);
   }
 
   @Override

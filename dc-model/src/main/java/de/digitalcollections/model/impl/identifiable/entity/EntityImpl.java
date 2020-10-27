@@ -68,9 +68,9 @@ public class EntityImpl extends IdentifiableImpl implements Entity {
       return false;
     }
     EntityImpl entity = (EntityImpl) o;
-    return refId == entity.refId &&
-        Objects.equals(customAttributes, entity.customAttributes) &&
-        entityType == entity.entityType;
+    return refId == entity.refId
+        && Objects.equals(customAttributes, entity.customAttributes)
+        && entityType == entity.entityType;
   }
 
   @Override
