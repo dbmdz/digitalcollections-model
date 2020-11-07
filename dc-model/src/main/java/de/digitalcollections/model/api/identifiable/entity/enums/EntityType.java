@@ -13,6 +13,7 @@ public enum EntityType {
   EVENT,
   EXPRESSION,
   FAMILY,
+  GEOLOCATION,
   IMAGE,
   ITEM,
   MANIFESTATION,
