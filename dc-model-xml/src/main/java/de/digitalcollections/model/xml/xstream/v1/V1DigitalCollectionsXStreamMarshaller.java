@@ -68,6 +68,10 @@ public class V1DigitalCollectionsXStreamMarshaller extends XStreamMarshaller {
     xStream.aliasField("content", ParagraphImpl.class, "contentBlocks");
     xStream.aliasField("content", StructuredContentImpl.class, "contentBlocks");
     xStream.setMode(XStream.NO_REFERENCES);
+
+    // security advice https://x-stream.github.io/CVE-2020-26217.html
+    xStream.denyTypes(new String[] {"javax.imageio.ImageIO$ContainsFilter"});
+    xStream.denyTypes(new Class[] {java.lang.ProcessBuilder.class});
   }
 
   private Map<String, Class> getAliases() {
