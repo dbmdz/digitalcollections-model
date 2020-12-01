@@ -6,6 +6,7 @@ import de.digitalcollections.model.api.paging.Order;
 import de.digitalcollections.model.api.paging.Sorting;
 import de.digitalcollections.model.api.paging.enums.Direction;
 import de.digitalcollections.model.api.paging.enums.NullHandling;
+import java.util.Optional;
 
 /**
  * PropertyPath implements the pairing of an {@link Direction} and a property. It is used to provide
@@ -20,6 +21,7 @@ public class OrderImpl implements Order {
   private boolean ignoreCase;
   private NullHandling nullHandling;
   private String property;
+  private String subProperty = null;
 
   public OrderImpl() {}
 
@@ -45,6 +47,10 @@ public class OrderImpl implements Order {
 
   public void setProperty(String property) {
     this.property = property;
+  }
+
+  public void setSubProperty(String property) {
+    this.subProperty = property;
   }
 
   /**
@@ -132,6 +138,7 @@ public class OrderImpl implements Order {
     return direction;
   }
 
+
   /**
    * Returns the used {@link NullHandling} hint, which can but may not be respected by the used
    * datastore.
@@ -151,6 +158,11 @@ public class OrderImpl implements Order {
   @Override
   public String getProperty() {
     return property;
+  }
+
+  @Override
+  public Optional<String> getSubProperty() {
+    return Optional.of(subProperty);
   }
 
   @Override
