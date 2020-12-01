@@ -32,7 +32,7 @@ public interface Order {
   /**
    * Returns the optional sub property to order for.
    *
-   * A sub property is always related to the main property.
+   * <p>A sub property is always related to the main property.
    *
    * @return the optional sub property to order for
    */

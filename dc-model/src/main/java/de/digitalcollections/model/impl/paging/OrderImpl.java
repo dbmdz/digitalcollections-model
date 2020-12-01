@@ -138,7 +138,6 @@ public class OrderImpl implements Order {
     return direction;
   }
 
-
   /**
    * Returns the used {@link NullHandling} hint, which can but may not be respected by the used
    * datastore.
@@ -162,7 +161,7 @@ public class OrderImpl implements Order {
 
   @Override
   public Optional<String> getSubProperty() {
-    return Optional.of(subProperty);
+    return Optional.ofNullable(subProperty);
   }
 
   @Override
