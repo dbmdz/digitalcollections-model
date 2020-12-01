@@ -3,6 +3,7 @@ package de.digitalcollections.model.api.paging;
 import de.digitalcollections.model.api.paging.enums.Direction;
 import de.digitalcollections.model.api.paging.enums.NullHandling;
 import de.digitalcollections.model.impl.paging.OrderImpl;
+import java.util.Optional;
 
 public interface Order {
 
@@ -27,6 +28,15 @@ public interface Order {
    * @return the property to order for
    */
   String getProperty();
+
+  /**
+   * Returns the optional sub property to order for.
+   *
+   * A sub property is always related to the main property.
+   *
+   * @return the optional sub property to order for
+   */
+  Optional<String> getSubProperty();
 
   /**
    * Returns a new {@link Order} with case insensitive sorting enabled.
