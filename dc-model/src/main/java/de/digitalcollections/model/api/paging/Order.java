@@ -128,6 +128,7 @@ public interface Order {
     private boolean ignoreCase;
     private NullHandling nullHandling;
     private String property;
+    private Optional<String> subProperty;
 
     public Builder direction(Direction direction) {
       this.direction = direction;
@@ -149,8 +150,17 @@ public interface Order {
       return this;
     }
 
+    public Builder subProperty(String property) {
+      this.subProperty = Optional.ofNullable(property);
+      return this;
+    }
+
     public Order build() {
-      return new OrderImpl(direction, ignoreCase, nullHandling, property);
+      OrderImpl order = new OrderImpl(direction, ignoreCase, nullHandling, property);
+      if (subProperty.isPresent()) {
+        order.setSubProperty(subProperty.get());
+      }
+      return order;
     }
   }
 }
