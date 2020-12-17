@@ -4,6 +4,7 @@ import de.digitalcollections.model.api.identifiable.entity.parts.Webpage;
 import de.digitalcollections.model.api.identifiable.entity.parts.enums.EntityPartType;
 import de.digitalcollections.model.api.identifiable.parts.structuredcontent.LocalizedStructuredContent;
 import de.digitalcollections.model.impl.identifiable.NodeImpl;
+import de.digitalcollections.model.impl.view.RenderingHints;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class WebpageImpl extends EntityPartImpl implements Webpage {
   private LocalizedStructuredContent text;
   private LocalDate publicationEnd;
   private LocalDate publicationStart;
+  private RenderingHints renderingHints;
 
   public WebpageImpl() {
     super();
@@ -72,5 +74,15 @@ public class WebpageImpl extends EntityPartImpl implements Webpage {
   @Override
   public void setPublicationStart(LocalDate publicationStart) {
     this.publicationStart = publicationStart;
+  }
+
+  @Override
+  public RenderingHints getRenderingHints() {
+    return renderingHints;
+  }
+
+  @Override
+  public void setRenderingHints(RenderingHints renderingHints) {
+    this.renderingHints = renderingHints;
   }
 }
