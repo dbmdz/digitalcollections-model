@@ -70,6 +70,7 @@ import de.digitalcollections.model.api.paging.Sorting;
 import de.digitalcollections.model.api.relations.Predicate;
 import de.digitalcollections.model.api.security.User;
 import de.digitalcollections.model.api.view.BreadcrumbNavigation;
+import de.digitalcollections.model.impl.view.RenderingHints;
 import de.digitalcollections.model.impl.view.RenderingTemplate;
 import de.digitalcollections.model.jackson.mixin.TimeValueMixIn;
 import de.digitalcollections.model.jackson.mixin.filter.FilterCriterionMixIn;
@@ -135,6 +136,7 @@ import de.digitalcollections.model.jackson.mixin.paging.SortingMixIn;
 import de.digitalcollections.model.jackson.mixin.relations.PredicateMixIn;
 import de.digitalcollections.model.jackson.mixin.security.UserMixIn;
 import de.digitalcollections.model.jackson.mixin.view.BreadcrumbNavigationMixIn;
+import de.digitalcollections.model.jackson.mixin.view.RenderingHintsMixIn;
 import de.digitalcollections.model.jackson.mixin.view.RenderingTemplateMixIn;
 import java.util.ResourceBundle;
 import java.util.function.Function;
@@ -224,6 +226,7 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(Paragraph.class, ParagraphMixIn.class);
     context.setMixInAnnotations(Predicate.class, PredicateMixIn.class);
     context.setMixInAnnotations(Project.class, ProjectMixIn.class);
+    context.setMixInAnnotations(RenderingHints.class, RenderingHintsMixIn.class);
     context.setMixInAnnotations(
         RenderingHintsPreviewImage.class, RenderingHintsPreviewImageMixIn.class);
     context.setMixInAnnotations(RenderingTemplate.class, RenderingTemplateMixIn.class);
