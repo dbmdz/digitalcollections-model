@@ -2,6 +2,7 @@ package de.digitalcollections.model.api.identifiable.entity.agent;
 
 import de.digitalcollections.model.api.identifiable.entity.Entity;
 import de.digitalcollections.model.api.identifiable.entity.agent.enums.Gender;
+import de.digitalcollections.model.api.identifiable.entity.geo.GeoLocation;
 import java.time.LocalDate;
 import org.wikidata.wdtk.datamodel.interfaces.TimeValue;
 
@@ -12,17 +13,17 @@ public interface Person extends Entity, Agent {
 
   void setDateOfBirth(LocalDate dateOfBirth);
 
-  //  GeoLocation getPlaceOfBirth();
-  //
-  //  void setPlaceOfBirth(GeoLocation placeOfBirth);
+  GeoLocation getPlaceOfBirth();
+
+  void setPlaceOfBirth(GeoLocation placeOfBirth);
 
   LocalDate getDateOfDeath();
 
   void setDateOfDeath(LocalDate dateOfDeath);
 
-  //  GeoLocation getPlaceOfDeath();
-  //
-  //  void setPlaceOfDeath(GeoLocation placeOfDeath);
+  GeoLocation getPlaceOfDeath();
+
+  void setPlaceOfDeath(GeoLocation placeOfDeath);
 
   // family names (more than one when change during life, e.g. at marriage; first one is name at
   // birth)
