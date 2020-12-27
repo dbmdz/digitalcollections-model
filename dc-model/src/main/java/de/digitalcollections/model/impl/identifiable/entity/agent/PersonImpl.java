@@ -4,6 +4,7 @@ import de.digitalcollections.model.api.identifiable.Identifier;
 import de.digitalcollections.model.api.identifiable.entity.agent.Person;
 import de.digitalcollections.model.api.identifiable.entity.agent.enums.Gender;
 import de.digitalcollections.model.api.identifiable.entity.enums.EntityType;
+import de.digitalcollections.model.api.identifiable.entity.geo.GeoLocation;
 import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
 import java.time.LocalDate;
 import java.util.Set;
@@ -13,9 +14,11 @@ public class PersonImpl extends AgentImpl implements Person {
 
   private LocalDate dateOfBirth;
   private LocalDate dateOfDeath;
+  //  private List<FamilyName> familyNames = new ArrayList<>(1);
   private Gender gender;
-  //  private GeoLocation placeOfBirth;
-  //  private GeoLocation placeOfDeath;
+  //  private List<GivenName> givenNames = new ArrayList<>(1);
+  private GeoLocation placeOfBirth;
+  private GeoLocation placeOfDeath;
   private TimeValue timeValueOfBirth;
   private TimeValue timeValueOfDeath;
 
@@ -27,7 +30,7 @@ public class PersonImpl extends AgentImpl implements Person {
   public PersonImpl(LocalizedText label, Set<Identifier> identifiers) {
     this();
     this.label = label;
-    getIdentifiers().addAll(identifiers);
+    this.identifiers.addAll(identifiers);
   }
 
   @Override
@@ -36,18 +39,8 @@ public class PersonImpl extends AgentImpl implements Person {
   }
 
   @Override
-  public void setDateOfBirth(LocalDate dateOfBirth) {
-    this.dateOfBirth = dateOfBirth;
-  }
-
-  @Override
   public LocalDate getDateOfDeath() {
     return dateOfDeath;
-  }
-
-  @Override
-  public void setDateOfDeath(LocalDate dateOfDeath) {
-    this.dateOfDeath = dateOfDeath;
   }
 
   @Override
@@ -56,29 +49,14 @@ public class PersonImpl extends AgentImpl implements Person {
   }
 
   @Override
-  public void setGender(Gender gender) {
-    this.gender = gender;
+  public GeoLocation getPlaceOfBirth() {
+    return placeOfBirth;
   }
 
-  //  @Override
-  //  public GeoLocation getPlaceOfBirth() {
-  //    return placeOfBirth;
-  //  }
-  //
-  //  @Override
-  //  public void setPlaceOfBirth(GeoLocation placeOfBirth) {
-  //    this.placeOfBirth = placeOfBirth;
-  //  }
-  //
-  //  @Override
-  //  public GeoLocation getPlaceOfDeath() {
-  //    return placeOfDeath;
-  //  }
-  //
-  //  @Override
-  //  public void setPlaceOfDeath(GeoLocation placeOfDeath) {
-  //    this.placeOfDeath = placeOfDeath;
-  //  }
+  @Override
+  public GeoLocation getPlaceOfDeath() {
+    return placeOfDeath;
+  }
 
   @Override
   public TimeValue getTimeValueOfBirth() {
@@ -86,13 +64,38 @@ public class PersonImpl extends AgentImpl implements Person {
   }
 
   @Override
-  public void setTimeValueOfBirth(TimeValue timeValueOfBirth) {
-    this.timeValueOfBirth = timeValueOfBirth;
+  public TimeValue getTimeValueOfDeath() {
+    return timeValueOfDeath;
   }
 
   @Override
-  public TimeValue getTimeValueOfDeath() {
-    return timeValueOfDeath;
+  public void setDateOfBirth(LocalDate dateOfBirth) {
+    this.dateOfBirth = dateOfBirth;
+  }
+
+  @Override
+  public void setDateOfDeath(LocalDate dateOfDeath) {
+    this.dateOfDeath = dateOfDeath;
+  }
+
+  @Override
+  public void setGender(Gender gender) {
+    this.gender = gender;
+  }
+
+  @Override
+  public void setPlaceOfBirth(GeoLocation placeOfBirth) {
+    this.placeOfBirth = placeOfBirth;
+  }
+
+  @Override
+  public void setPlaceOfDeath(GeoLocation placeOfDeath) {
+    this.placeOfDeath = placeOfDeath;
+  }
+
+  @Override
+  public void setTimeValueOfBirth(TimeValue timeValueOfBirth) {
+    this.timeValueOfBirth = timeValueOfBirth;
   }
 
   @Override

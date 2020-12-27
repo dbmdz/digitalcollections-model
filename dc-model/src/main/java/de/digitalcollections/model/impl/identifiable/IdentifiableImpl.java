@@ -17,7 +17,7 @@ public class IdentifiableImpl implements Identifiable {
 
   protected LocalDateTime created;
   protected LocalizedStructuredContent description;
-  private Set<Identifier> identifiers = new HashSet<>();
+  protected Set<Identifier> identifiers = new HashSet<>();
   protected LocalizedText label;
   protected LocalDateTime lastModified;
   protected ImageFileResource previewImage;

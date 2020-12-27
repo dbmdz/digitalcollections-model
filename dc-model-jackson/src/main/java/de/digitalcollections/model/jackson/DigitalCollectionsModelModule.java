@@ -24,6 +24,9 @@ import de.digitalcollections.model.api.identifiable.entity.agent.Agent;
 import de.digitalcollections.model.api.identifiable.entity.agent.CorporateBody;
 import de.digitalcollections.model.api.identifiable.entity.agent.Family;
 import de.digitalcollections.model.api.identifiable.entity.agent.Person;
+import de.digitalcollections.model.api.identifiable.entity.geo.CoordinateLocation;
+import de.digitalcollections.model.api.identifiable.entity.geo.GeoLocation;
+import de.digitalcollections.model.api.identifiable.entity.geo.HumanSettlement;
 import de.digitalcollections.model.api.identifiable.entity.parts.Subtopic;
 import de.digitalcollections.model.api.identifiable.entity.parts.Webpage;
 import de.digitalcollections.model.api.identifiable.entity.work.Expression;
@@ -91,6 +94,9 @@ import de.digitalcollections.model.jackson.mixin.identifiable.entity.agent.Agent
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.agent.CorporateBodyMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.agent.FamilyMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.agent.PersonMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.geo.CoordinateLocationMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.geo.GeoLocationMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.geo.HumanSettlementMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.parts.SubtopicMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.parts.WebpageMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.ExpressionMixIn;
@@ -182,6 +188,11 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(CorporateBody.class, CorporateBodyMixIn.class);
     context.setMixInAnnotations(Family.class, FamilyMixIn.class);
     context.setMixInAnnotations(Person.class, PersonMixIn.class);
+
+    // geo
+    context.setMixInAnnotations(CoordinateLocation.class, CoordinateLocationMixIn.class);
+    context.setMixInAnnotations(GeoLocation.class, GeoLocationMixIn.class);
+    context.setMixInAnnotations(HumanSettlement.class, HumanSettlementMixIn.class);
 
     // work
     context.setMixInAnnotations(Expression.class, ExpressionMixIn.class);

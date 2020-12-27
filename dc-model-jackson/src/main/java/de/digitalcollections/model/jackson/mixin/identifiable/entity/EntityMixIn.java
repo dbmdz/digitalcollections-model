@@ -11,6 +11,7 @@ import de.digitalcollections.model.impl.identifiable.entity.TopicImpl;
 import de.digitalcollections.model.impl.identifiable.entity.WebsiteImpl;
 import de.digitalcollections.model.impl.identifiable.entity.agent.CorporateBodyImpl;
 import de.digitalcollections.model.impl.identifiable.entity.agent.PersonImpl;
+import de.digitalcollections.model.impl.identifiable.entity.geo.GeoLocationImpl;
 import de.digitalcollections.model.impl.identifiable.entity.work.ExpressionImpl;
 import de.digitalcollections.model.impl.identifiable.entity.work.ItemImpl;
 import de.digitalcollections.model.impl.identifiable.entity.work.ManifestationImpl;
@@ -30,7 +31,7 @@ import de.digitalcollections.model.impl.identifiable.entity.work.WorkImpl;
   @JsonSubTypes.Type(value = CorporateBodyImpl.class, name = "CORPORATE_BODY"),
   @JsonSubTypes.Type(value = DigitalObjectImpl.class, name = "DIGITAL_OBJECT"),
   @JsonSubTypes.Type(value = ExpressionImpl.class, name = "EXPRESSION"),
-  //  @JsonSubTypes.Type(value = GeoLocationImpl.class, name = "GEOLOCATION"),
+  @JsonSubTypes.Type(value = GeoLocationImpl.class, name = "GEOLOCATION"),
   @JsonSubTypes.Type(value = ItemImpl.class, name = "ITEM"),
   @JsonSubTypes.Type(value = ManifestationImpl.class, name = "MANIFESTATION"),
   @JsonSubTypes.Type(value = PersonImpl.class, name = "PERSON"),
