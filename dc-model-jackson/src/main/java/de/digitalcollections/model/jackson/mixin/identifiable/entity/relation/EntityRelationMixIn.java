@@ -1,9 +1,9 @@
-package de.digitalcollections.model.jackson.mixin.identifiable.entity;
+package de.digitalcollections.model.jackson.mixin.identifiable.entity.relation;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import de.digitalcollections.model.impl.identifiable.entity.EntityRelationImpl;
+import de.digitalcollections.model.impl.identifiable.entity.relation.EntityRelationImpl;
 
 @JsonDeserialize(as = EntityRelationImpl.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

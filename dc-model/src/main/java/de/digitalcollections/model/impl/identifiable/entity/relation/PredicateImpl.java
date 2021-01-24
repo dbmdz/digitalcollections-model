@@ -1,7 +1,7 @@
-package de.digitalcollections.model.impl.relations;
+package de.digitalcollections.model.impl.identifiable.entity.relation;
 
+import de.digitalcollections.model.api.identifiable.entity.relation.Predicate;
 import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
-import de.digitalcollections.model.api.relations.Predicate;
 import java.time.LocalDateTime;
 
 public class PredicateImpl implements Predicate {

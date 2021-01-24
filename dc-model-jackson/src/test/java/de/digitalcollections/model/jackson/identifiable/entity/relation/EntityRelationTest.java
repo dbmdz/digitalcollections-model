@@ -1,8 +1,8 @@
-package de.digitalcollections.model.jackson.identifiable.entity;
+package de.digitalcollections.model.jackson.identifiable.entity.relation;
 
 import de.digitalcollections.model.impl.identifiable.entity.ArticleImpl;
 import de.digitalcollections.model.impl.identifiable.entity.DigitalObjectImpl;
-import de.digitalcollections.model.impl.identifiable.entity.EntityRelationImpl;
+import de.digitalcollections.model.impl.identifiable.entity.relation.EntityRelationImpl;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;

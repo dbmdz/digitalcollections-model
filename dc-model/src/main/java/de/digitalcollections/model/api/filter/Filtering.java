@@ -386,5 +386,19 @@ public interface Filtering extends Iterable<FilterCriterion>, Serializable {
       filteringBuilder.add(filterCriterion);
       return filteringBuilder;
     }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#STARTS_WITH}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public FilteringBuilder startsWith(Object value) {
+      FilterCriterion filterCriterion =
+          new FilterCriterion(fieldName, FilterOperation.STARTS_WITH, value);
+      filteringBuilder.add(filterCriterion);
+      return filteringBuilder;
+    }
   }
 }

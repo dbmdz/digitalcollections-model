@@ -6,12 +6,8 @@ import java.time.LocalDate;
 import java.util.List;
 import org.wikidata.wdtk.datamodel.interfaces.TimeValue;
 
-/**
- * Article is used to manage cultural articles and their hierarchy.
- *
- * @param <A> an article instance
- */
-public interface Article<A extends Article> extends Entity {
+/** Article is used to manage cultural articles and their hierarchy. */
+public interface Article extends Entity {
 
   List<Agent> getCreators();
 

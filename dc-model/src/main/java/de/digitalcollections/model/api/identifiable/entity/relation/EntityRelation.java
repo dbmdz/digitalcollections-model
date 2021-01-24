@@ -1,4 +1,6 @@
-package de.digitalcollections.model.api.identifiable.entity;
+package de.digitalcollections.model.api.identifiable.entity.relation;
+
+import de.digitalcollections.model.api.identifiable.entity.Entity;
 
 public interface EntityRelation {
 

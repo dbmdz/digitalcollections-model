@@ -1,7 +1,7 @@
-package de.digitalcollections.model.impl.identifiable.entity;
+package de.digitalcollections.model.impl.identifiable.entity.relation;
 
 import de.digitalcollections.model.api.identifiable.entity.Entity;
-import de.digitalcollections.model.api.identifiable.entity.EntityRelation;
+import de.digitalcollections.model.api.identifiable.entity.relation.EntityRelation;
 
 public class EntityRelationImpl implements EntityRelation {
 
