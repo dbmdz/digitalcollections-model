@@ -23,6 +23,7 @@ package de.digitalcollections.model.api.filter.enums;
  * <tr><td>nin       </td><td>not in                           </td><td>country=nin:fr,de,nz                   </td></tr>
  * <tr><td>btn       </td><td>between (inclusive)              </td><td>joiningDate=btn:2018-01-01,2016-01-01  </td></tr>
  * <tr><td>like      </td><td>like                             </td><td>firstName=like:John                    </td></tr>
+ * <tr><td>stw       </td><td>starts with                      </td><td>firstName=stw:A                        </td></tr>
  * <tr><td>set       </td><td>value exists (not null)          </td><td>firstName=set:                         </td></tr>
  * <tr><td>notset    </td><td>value is not set (null)          </td><td>firstName=notset:                      </td></tr>
  * </table>
@@ -52,7 +53,8 @@ public enum FilterOperation {
   BETWEEN("btn", OperandCount.MIN_MAX_VALUES),
   CONTAINS("like", OperandCount.SINGLEVALUE),
   NOT_SET("notset", OperandCount.NO_VALUE),
-  SET("set", OperandCount.NO_VALUE);
+  SET("set", OperandCount.NO_VALUE),
+  STARTS_WITH("stw", OperandCount.SINGLEVALUE);
 
   private final String value;
   private final OperandCount opCount;

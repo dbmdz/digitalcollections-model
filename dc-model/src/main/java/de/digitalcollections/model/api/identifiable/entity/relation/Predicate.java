@@ -1,4 +1,4 @@
-package de.digitalcollections.model.api.relations;
+package de.digitalcollections.model.api.identifiable.entity.relation;
 
 import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
 import java.time.LocalDateTime;

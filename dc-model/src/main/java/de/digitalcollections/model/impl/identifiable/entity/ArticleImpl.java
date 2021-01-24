@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.wikidata.wdtk.datamodel.interfaces.TimeValue;
 
-public class ArticleImpl extends EntityImpl implements Article<Article> {
+public class ArticleImpl extends EntityImpl implements Article {
 
   private List<Agent> creators = new ArrayList<>();
   private LocalDate datePublished;
