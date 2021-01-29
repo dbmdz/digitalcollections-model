@@ -11,6 +11,10 @@ public class SearchPageRequestImpl extends PageRequestImpl implements SearchPage
     super();
   }
 
+  public SearchPageRequestImpl(String searchTerm, int pageNumber, int pageSize) {
+    this(searchTerm, pageNumber, pageSize, null);
+  }
+
   public SearchPageRequestImpl(String searchTerm, int pageNumber, int pageSize, Sorting sorting) {
     super(pageNumber, pageSize, sorting);
     this.query = searchTerm;
