@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * SortingImpl option for queries. You have to provide at least a list of properties to sort for
@@ -35,12 +37,14 @@ public class SortingImpl implements Sorting {
    * @param orders must not be {@literal null} or contain {@literal null}.
    */
   public SortingImpl(List<Order> orders) {
-
-    if (null == orders || orders.isEmpty()) {
+    if (orders == null) {
+      orders = new ArrayList<>();
+    }
+    orders = orders.stream().filter(Objects::nonNull).collect(Collectors.toList());
+    if (orders.isEmpty()) {
       throw new IllegalArgumentException(
           "You have to provide at least one sort property to sort by!");
     }
-
     this.orders = orders;
   }
 
@@ -174,6 +178,14 @@ public class SortingImpl implements Sorting {
   }
 
   public void setOrders(List<Order> orders) {
+    if (orders == null) {
+      orders = new ArrayList<>();
+    }
+    orders = orders.stream().filter(Objects::nonNull).collect(Collectors.toList());
+    if (orders.isEmpty()) {
+      throw new IllegalArgumentException(
+          "You have to provide at least one sort property to sort by!");
+    }
     this.orders = orders;
   }
 
