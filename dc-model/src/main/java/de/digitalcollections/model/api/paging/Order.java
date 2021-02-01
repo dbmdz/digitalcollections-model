@@ -6,6 +6,9 @@ import de.digitalcollections.model.impl.paging.OrderImpl;
 import java.util.Optional;
 
 public interface Order {
+  static Builder defaultBuilder() {
+    return new Builder();
+  }
 
   /**
    * Returns the order the property shall be sorted for.
@@ -118,10 +121,6 @@ public interface Order {
    * @return a new Order
    */
   Order withProperty(String property);
-
-  static Builder defaultBuilder() {
-    return new Builder();
-  }
 
   class Builder {
     private Direction direction;

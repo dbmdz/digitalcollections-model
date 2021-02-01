@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface Sorting extends Iterable<Order>, Serializable {
+  static Builder defaultBuilder() {
+    return new Builder();
+  }
 
   Direction DEFAULT_DIRECTION = Direction.ASC;
 
@@ -28,10 +31,6 @@ public interface Sorting extends Iterable<Order>, Serializable {
   Order getOrderFor(String property);
 
   List<Order> getOrders();
-
-  static Builder defaultBuilder() {
-    return new Builder();
-  }
 
   class Builder {
 

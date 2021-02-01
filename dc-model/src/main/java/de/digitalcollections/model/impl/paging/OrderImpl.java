@@ -33,26 +33,6 @@ public class OrderImpl implements Order {
     this.property = property;
   }
 
-  public void setDirection(Direction direction) {
-    this.direction = direction;
-  }
-
-  public void setIgnoreCase(boolean ignoreCase) {
-    this.ignoreCase = ignoreCase;
-  }
-
-  public void setNullHandling(NullHandling nullHandling) {
-    this.nullHandling = nullHandling;
-  }
-
-  public void setProperty(String property) {
-    this.property = property;
-  }
-
-  public void setSubProperty(String property) {
-    this.subProperty = property;
-  }
-
   /**
    * Creates a new {@link Order} instance. if order is {@literal null} then order defaults to {@link
    * SortingImpl#DEFAULT_DIRECTION}
@@ -245,6 +225,26 @@ public class OrderImpl implements Order {
   @Override
   public Order nullsNative() {
     return with(NullHandling.NATIVE);
+  }
+
+  public void setDirection(Direction direction) {
+    this.direction = direction;
+  }
+
+  public void setIgnoreCase(boolean ignoreCase) {
+    this.ignoreCase = ignoreCase;
+  }
+
+  public void setNullHandling(NullHandling nullHandling) {
+    this.nullHandling = nullHandling;
+  }
+
+  public void setProperty(String property) {
+    this.property = property;
+  }
+
+  public void setSubProperty(String property) {
+    this.subProperty = property;
   }
 
   @Override
