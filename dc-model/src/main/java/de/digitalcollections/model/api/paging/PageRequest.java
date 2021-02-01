@@ -66,6 +66,9 @@ public interface PageRequest {
    */
   boolean hasPrevious();
 
+  /** @return whether the page request has defined any sorting. */
+  boolean hasSorting();
+
   /** @return the {@link PageRequest} requesting the next page */
   PageRequest next();
 
