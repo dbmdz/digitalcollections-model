@@ -35,6 +35,8 @@ public interface PageRequest {
     Filtering existingFiltering = getFiltering();
     if (existingFiltering == null || existingFiltering.getFilterCriteria().isEmpty()) {
       setFiltering(filtering);
+    } else {
+      existingFiltering.add(filtering);
     }
     return getFiltering().getFilterCriteria();
   }
