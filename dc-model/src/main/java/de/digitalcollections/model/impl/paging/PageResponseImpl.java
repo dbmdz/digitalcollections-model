@@ -80,11 +80,6 @@ public class PageResponseImpl<T> implements PageResponse<T> {
   }
 
   @Override
-  public void setContent(List<T> content) {
-    this.content = content;
-  }
-
-  @Override
   public int getNumber() {
     return pageRequest == null ? 0 : pageRequest.getPageNumber();
   }
@@ -97,10 +92,6 @@ public class PageResponseImpl<T> implements PageResponse<T> {
   @Override
   public PageRequest getPageRequest() {
     return pageRequest;
-  }
-
-  public void setPageRequest(PageRequest pageRequest) {
-    this.pageRequest = pageRequest;
   }
 
   @Override
@@ -116,10 +107,6 @@ public class PageResponseImpl<T> implements PageResponse<T> {
   @Override
   public long getTotalElements() {
     return total;
-  }
-
-  public void setTotalElements(long totalElements) {
-    this.total = totalElements;
   }
 
   @Override
@@ -180,6 +167,19 @@ public class PageResponseImpl<T> implements PageResponse<T> {
       return pageRequest.previousOrFirst();
     }
     return null;
+  }
+
+  @Override
+  public void setContent(List<T> content) {
+    this.content = content;
+  }
+
+  public void setPageRequest(PageRequest pageRequest) {
+    this.pageRequest = pageRequest;
+  }
+
+  public void setTotalElements(long totalElements) {
+    this.total = totalElements;
   }
 
   @Override

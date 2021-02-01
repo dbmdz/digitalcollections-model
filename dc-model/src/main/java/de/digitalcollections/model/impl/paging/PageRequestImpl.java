@@ -12,10 +12,9 @@ import java.io.Serializable;
  * design and independent of Spring libraries.
  */
 public class PageRequestImpl implements PageRequest, Serializable {
-
+  private Filtering filtering;
   private int pageNumber;
   private int pageSize;
-  private Filtering filtering;
   private Sorting sort;
 
   public PageRequestImpl() {}
@@ -159,6 +158,11 @@ public class PageRequestImpl implements PageRequest, Serializable {
   }
 
   @Override
+  public void setFiltering(Filtering filtering) {
+    this.filtering = filtering;
+  }
+
+  @Override
   public void setPageNumber(int pageNumber) {
     this.pageNumber = pageNumber;
   }
@@ -171,11 +175,6 @@ public class PageRequestImpl implements PageRequest, Serializable {
   @Override
   public void setSorting(Sorting sort) {
     this.sort = sort;
-  }
-
-  @Override
-  public void setFiltering(Filtering filtering) {
-    this.filtering = filtering;
   }
 
   @Override

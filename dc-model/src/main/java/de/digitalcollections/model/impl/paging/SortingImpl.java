@@ -83,15 +83,6 @@ public class SortingImpl implements Sorting {
     }
   }
 
-  @Override
-  public List<Order> getOrders() {
-    return orders;
-  }
-
-  public void setOrders(List<Order> orders) {
-    this.orders = orders;
-  }
-
   /**
    * Returns a new {@link SortingImpl} consisting of the {@link Order}s of the current {@link
    * SortingImpl} combined with the given ones.
@@ -165,6 +156,11 @@ public class SortingImpl implements Sorting {
   }
 
   @Override
+  public List<Order> getOrders() {
+    return orders;
+  }
+
+  @Override
   public int hashCode() {
 
     int result = 17;
@@ -175,6 +171,10 @@ public class SortingImpl implements Sorting {
   @Override
   public Iterator<Order> iterator() {
     return this.orders.iterator();
+  }
+
+  public void setOrders(List<Order> orders) {
+    this.orders = orders;
   }
 
   @Override

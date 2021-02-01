@@ -42,29 +42,17 @@ public interface PageRequest {
   /** @return the {@link PageRequest} requesting the first page */
   PageRequest first();
 
-  /** @param filtering the filtering criterias */
-  void setFiltering(Filtering filtering);
-
   /** @return the filtering parameters */
   Filtering getFiltering();
 
   /** @return the offset to be taken according to the underlying page and page size. */
   int getOffset();
 
-  /** @param pageNumber the page to be returned */
-  void setPageNumber(int pageNumber);
-
   /** @return the page to be returned. */
   int getPageNumber();
 
-  /** @param pageSize the number of items of that page */
-  void setPageSize(int pageSize);
-
   /** @return the number of items of that page */
   int getPageSize();
-
-  /** @param sorting the sorting parameters */
-  void setSorting(Sorting sorting);
 
   /** @return the sorting parameters */
   Sorting getSorting();
@@ -86,6 +74,18 @@ public interface PageRequest {
    *     already is the first one
    */
   PageRequest previousOrFirst();
+
+  /** @param filtering the filtering criterias */
+  void setFiltering(Filtering filtering);
+
+  /** @param pageNumber the page to be returned */
+  void setPageNumber(int pageNumber);
+
+  /** @param pageSize the number of items of that page */
+  void setPageSize(int pageSize);
+
+  /** @param sorting the sorting parameters */
+  void setSorting(Sorting sorting);
 
   class Builder {
 
