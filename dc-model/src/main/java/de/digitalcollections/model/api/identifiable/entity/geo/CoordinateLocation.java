@@ -7,6 +7,9 @@ package de.digitalcollections.model.api.identifiable.entity.geo;
  */
 public interface CoordinateLocation {
 
+  /** @return altitude in meters */
+  double getAltitude();
+
   /** @return latitude in degrees: -90° (Southpole) - 0° (Aequator) - 90° (Northpole) */
   double getLatitude();
 
@@ -16,9 +19,6 @@ public interface CoordinateLocation {
    */
   double getLongitude();
 
-  /** @return altitude in meters */
-  double getAltitude();
-
   /**
    * see https://www.wikidata.org/wiki/Special:EntityData/Q513.json,
    * https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Geographical_coordinates#Precision_guidelines
@@ -26,4 +26,8 @@ public interface CoordinateLocation {
    * @return precision of coordinates
    */
   double getPrecision();
+
+  public void setLatitude(double d);
+
+  public void setLongitude(double d);
 }
