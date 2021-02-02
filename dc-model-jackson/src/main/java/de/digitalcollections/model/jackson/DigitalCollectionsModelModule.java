@@ -12,6 +12,8 @@ import de.digitalcollections.model.api.filter.Filtering;
 import de.digitalcollections.model.api.identifiable.Identifier;
 import de.digitalcollections.model.api.identifiable.IdentifierType;
 import de.digitalcollections.model.api.identifiable.Node;
+import de.digitalcollections.model.api.identifiable.agent.FamilyName;
+import de.digitalcollections.model.api.identifiable.agent.GivenName;
 import de.digitalcollections.model.api.identifiable.entity.Article;
 import de.digitalcollections.model.api.identifiable.entity.Collection;
 import de.digitalcollections.model.api.identifiable.entity.DigitalObject;
@@ -82,6 +84,8 @@ import de.digitalcollections.model.jackson.mixin.identifiable.IdentifierMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.IdentifierTypeMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.NodeMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.VersionMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.agent.FamilyNameMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.agent.GivenNameMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.ArticleMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.CollectionMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.DigitalObjectMixIn;
@@ -187,6 +191,8 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(Agent.class, AgentMixIn.class);
     context.setMixInAnnotations(CorporateBody.class, CorporateBodyMixIn.class);
     context.setMixInAnnotations(Family.class, FamilyMixIn.class);
+    context.setMixInAnnotations(FamilyName.class, FamilyNameMixIn.class);
+    context.setMixInAnnotations(GivenName.class, GivenNameMixIn.class);
     context.setMixInAnnotations(Person.class, PersonMixIn.class);
 
     // geo

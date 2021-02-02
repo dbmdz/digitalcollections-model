@@ -8,9 +8,23 @@ public interface GeoLocation extends Entity {
 
   CoordinateLocation getCoordinateLocation();
 
-  void setCoordinateLocation(CoordinateLocation coordinateLocation);
-
   GeoLocationType getGeoLocationType();
+
+  default Double getLatitude() {
+    if (getCoordinateLocation() == null) {
+      return null;
+    }
+    return getCoordinateLocation().getLatitude();
+  }
+
+  default Double getLongitude() {
+    if (getCoordinateLocation() == null) {
+      return null;
+    }
+    return getCoordinateLocation().getLongitude();
+  }
+
+  void setCoordinateLocation(CoordinateLocation coordinateLocation);
 
   void setGeoLocationType(GeoLocationType geoLocationType);
 }
