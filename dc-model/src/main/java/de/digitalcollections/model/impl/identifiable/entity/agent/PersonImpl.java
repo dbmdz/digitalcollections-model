@@ -18,9 +18,9 @@ public class PersonImpl extends AgentImpl implements Person {
 
   private LocalDate dateOfBirth;
   private LocalDate dateOfDeath;
-  private List<FamilyName> familyNames = new ArrayList<>(1);
+  private List<FamilyName> familyNames = new ArrayList<>();
   private Gender gender;
-  private List<GivenName> givenNames = new ArrayList<>(1);
+  private List<GivenName> givenNames = new ArrayList<>();
   private GeoLocation placeOfBirth;
   private GeoLocation placeOfDeath;
   private TimeValue timeValueOfBirth;
