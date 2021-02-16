@@ -1,8 +1,8 @@
 package de.digitalcollections.model.jackson.identifiable.entity.relation;
 
-import de.digitalcollections.model.impl.identifiable.entity.ArticleImpl;
-import de.digitalcollections.model.impl.identifiable.entity.DigitalObjectImpl;
-import de.digitalcollections.model.impl.identifiable.entity.relation.EntityRelationImpl;
+import de.digitalcollections.model.identifiable.entity.Article;
+import de.digitalcollections.model.identifiable.entity.DigitalObject;
+import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;
@@ -11,15 +11,15 @@ public class EntityRelationTest extends BaseJsonSerializationTest {
 
   @Test
   public void testSerialisationInBothWays() throws Exception {
-    EntityRelationImpl entityRelation = new EntityRelationImpl();
+    EntityRelation entityRelation = new EntityRelation();
 
-    ArticleImpl subjectEntity = new ArticleImpl();
+    Article subjectEntity = new Article();
     subjectEntity.setUuid(UUID.randomUUID());
     entityRelation.setSubject(subjectEntity);
 
     entityRelation.setPredicate("is_describing_provenience");
 
-    DigitalObjectImpl objectEntity = new DigitalObjectImpl();
+    DigitalObject objectEntity = new DigitalObject();
     objectEntity.setUuid(UUID.randomUUID());
     entityRelation.setObject(objectEntity);
 

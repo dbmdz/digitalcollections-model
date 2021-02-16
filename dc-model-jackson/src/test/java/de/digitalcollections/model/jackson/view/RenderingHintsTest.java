@@ -1,7 +1,7 @@
 package de.digitalcollections.model.jackson.view;
 
-import de.digitalcollections.model.impl.view.RenderingHints;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
+import de.digitalcollections.model.view.RenderingHints;
 import org.junit.jupiter.api.Test;
 
 public class RenderingHintsTest extends BaseJsonSerializationTest {

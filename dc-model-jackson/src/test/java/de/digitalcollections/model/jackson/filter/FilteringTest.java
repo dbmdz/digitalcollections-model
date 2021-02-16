@@ -1,8 +1,8 @@
 package de.digitalcollections.model.jackson.filter;
 
-import de.digitalcollections.model.api.filter.FilterCriterion;
-import de.digitalcollections.model.api.filter.Filtering;
-import de.digitalcollections.model.api.filter.enums.FilterOperation;
+import de.digitalcollections.model.filter.FilterCriterion;
+import de.digitalcollections.model.filter.FilterOperation;
+import de.digitalcollections.model.filter.Filtering;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;

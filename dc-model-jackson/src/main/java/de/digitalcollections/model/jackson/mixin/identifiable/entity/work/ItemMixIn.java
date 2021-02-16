@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
-import de.digitalcollections.model.impl.identifiable.entity.work.ItemImpl;
+import de.digitalcollections.model.identifiable.entity.work.Item;
+import de.digitalcollections.model.text.LocalizedText;
 
-@JsonDeserialize(as = ItemImpl.class)
+@JsonDeserialize(as = Item.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("ITEM")
 public interface ItemMixIn {

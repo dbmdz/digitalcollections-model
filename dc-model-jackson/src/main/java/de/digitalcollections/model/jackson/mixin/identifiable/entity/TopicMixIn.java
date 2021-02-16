@@ -3,9 +3,9 @@ package de.digitalcollections.model.jackson.mixin.identifiable.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import de.digitalcollections.model.impl.identifiable.entity.TopicImpl;
+import de.digitalcollections.model.identifiable.entity.Topic;
 
-@JsonDeserialize(as = TopicImpl.class)
+@JsonDeserialize(as = Topic.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("TOPIC")
 public interface TopicMixIn {}

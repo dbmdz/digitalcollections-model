@@ -1,10 +1,9 @@
 package de.digitalcollections.model.jackson.identifiable.entity;
 
-import de.digitalcollections.model.api.identifiable.resource.ImageFileResource;
-import de.digitalcollections.model.impl.identifiable.IdentifierImpl;
-import de.digitalcollections.model.impl.identifiable.entity.DigitalObjectImpl;
-import de.digitalcollections.model.impl.identifiable.resource.ApplicationFileResourceImpl;
-import de.digitalcollections.model.impl.identifiable.resource.ImageFileResourceImpl;
+import de.digitalcollections.model.identifiable.Identifier;
+import de.digitalcollections.model.identifiable.entity.DigitalObject;
+import de.digitalcollections.model.identifiable.resource.ApplicationFileResource;
+import de.digitalcollections.model.identifiable.resource.ImageFileResource;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import org.junit.jupiter.api.Test;
 
@@ -12,18 +11,18 @@ public class DigitalObjectTest extends BaseJsonSerializationTest {
 
   @Test
   public void testSerialisationInBothWays() throws Exception {
-    DigitalObjectImpl digitalObject = new DigitalObjectImpl();
+    DigitalObject digitalObject = new DigitalObject();
 
-    digitalObject.addIdentifier(new IdentifierImpl(null, "zend", "bsb10001234"));
+    digitalObject.addIdentifier(new Identifier(null, "zend", "bsb10001234"));
 
-    ImageFileResource image = new ImageFileResourceImpl();
+    ImageFileResource image = new ImageFileResource();
     image.setHeight(100);
     image.setWidth(400);
     digitalObject.getFileResources().add(image);
 
     digitalObject.setPreviewImage(image);
 
-    ApplicationFileResourceImpl appFile = new ApplicationFileResourceImpl();
+    ApplicationFileResource appFile = new ApplicationFileResource();
     appFile.setFilename("dings.pdf");
     digitalObject.getFileResources().add(appFile);
 

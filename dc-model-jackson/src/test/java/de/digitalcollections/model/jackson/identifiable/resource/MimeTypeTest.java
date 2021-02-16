@@ -1,6 +1,6 @@
 package de.digitalcollections.model.jackson.identifiable.resource;
 
-import de.digitalcollections.model.api.identifiable.resource.MimeType;
+import de.digitalcollections.model.file.MimeType;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import org.junit.jupiter.api.Test;
 

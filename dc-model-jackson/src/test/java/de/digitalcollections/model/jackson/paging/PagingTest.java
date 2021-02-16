@@ -1,13 +1,12 @@
 package de.digitalcollections.model.jackson.paging;
 
-import de.digitalcollections.model.api.filter.FilterCriterion;
-import de.digitalcollections.model.api.filter.Filtering;
-import de.digitalcollections.model.api.filter.enums.FilterOperation;
-import de.digitalcollections.model.api.paging.PageRequest;
-import de.digitalcollections.model.impl.paging.PageRequestImpl;
-import de.digitalcollections.model.impl.paging.PageResponseImpl;
-import de.digitalcollections.model.impl.security.UserImpl;
+import de.digitalcollections.model.filter.FilterCriterion;
+import de.digitalcollections.model.filter.FilterOperation;
+import de.digitalcollections.model.filter.Filtering;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
+import de.digitalcollections.model.paging.PageRequest;
+import de.digitalcollections.model.paging.PageResponse;
+import de.digitalcollections.model.security.User;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +14,9 @@ import org.junit.jupiter.api.Test;
 
 public class PagingTest extends BaseJsonSerializationTest {
 
-  private List<UserImpl> createContent() {
-    List<UserImpl> list = new ArrayList<>();
-    UserImpl user = new UserImpl();
+  private List<User> createContent() {
+    List<User> list = new ArrayList<>();
+    User user = new User();
     user.setEmail("test@user.de");
     list.add(user);
     return list;
@@ -26,10 +25,10 @@ public class PagingTest extends BaseJsonSerializationTest {
   @Test
   public void testSerializeDeserializePageResponse() throws Exception {
     // List<T> content, PageRequest pageRequest, long total
-    List<UserImpl> content = createContent();
-    PageResponseImpl pageResponse = new PageResponseImpl(content);
+    List<User> content = createContent();
+    PageResponse pageResponse = new PageResponse(content);
 
-    PageRequest pageRequest = new PageRequestImpl(3, 15);
+    PageRequest pageRequest = new PageRequest(3, 15);
 
     // filtering
     FilterCriterion filterCriteria1 =

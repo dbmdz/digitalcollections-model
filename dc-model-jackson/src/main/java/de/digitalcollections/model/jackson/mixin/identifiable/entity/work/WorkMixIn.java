@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import de.digitalcollections.model.api.identifiable.parts.LocalizedText;
-import de.digitalcollections.model.impl.identifiable.entity.work.WorkImpl;
+import de.digitalcollections.model.identifiable.entity.work.Work;
+import de.digitalcollections.model.text.LocalizedText;
 
-@JsonDeserialize(as = WorkImpl.class)
+@JsonDeserialize(as = Work.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("WORK")
 public interface WorkMixIn {

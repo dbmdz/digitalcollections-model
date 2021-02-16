@@ -11,8 +11,6 @@
   <modules>
     <module>dc-model</module>
     <module>dc-model-jackson</module>
-    <module>dc-model-xml</module>
-    <module>dc-model-feign</module>
   </modules>
 
   <name>DigitalCollections: Model</name>
