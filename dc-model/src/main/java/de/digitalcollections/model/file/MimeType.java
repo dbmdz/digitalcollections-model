@@ -83,7 +83,10 @@ public class MimeType {
     xmlExtensions.add("ent");
     knownTypes.get("application/xml").setExtensions(xmlExtensions);
 
+    knownTypes.put("audio/*", new MimeType("audio/*", Collections.emptyList()));
     knownTypes.put("image/*", new MimeType("image/*", Collections.emptyList()));
+    knownTypes.put("text/*", new MimeType("text/*", Collections.emptyList()));
+    knownTypes.put("video/*", new MimeType("video/*", Collections.emptyList()));
 
     extensionMapping = new HashMap<>();
     for (Map.Entry<String, MimeType> entry : knownTypes.entrySet()) {

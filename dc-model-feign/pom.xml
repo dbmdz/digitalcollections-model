@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>de.digitalcollections.model</groupId>
+    <artifactId>dc-model-parent</artifactId>
+    <version>9.0.0-SNAPSHOT</version>
+  </parent>
+
+  <name>DigitalCollections: Model (Feign)</name>
+  <artifactId>dc-model-feign</artifactId>
+  <packaging>jar</packaging>
+
+  <properties>
+    <version.feign-core>11.0</version.feign-core>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>de.digitalcollections.model</groupId>
+      <artifactId>dc-model</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.github.openfeign</groupId>
+      <artifactId>feign-core</artifactId>
+      <version>${version.feign-core}</version>
+    </dependency>
+  </dependencies>
+</project>
