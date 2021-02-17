@@ -9,15 +9,19 @@ import java.util.Locale;
 import org.junit.jupiter.api.Test;
 
 public class LocalizedStructuredContentTest extends BaseJsonSerializationTest {
-
-  @Test
-  public void testSerialization() throws Exception {
+  private LocalizedStructuredContent createObject() {
     LocalizedStructuredContent localizedStructuredContent = new LocalizedStructuredContent();
     StructuredContent structuredContent = new StructuredContent();
     ContentBlock contentBlock = new Paragraph("Buon Giorno!");
     structuredContent.addContentBlock(contentBlock);
     localizedStructuredContent.put(Locale.ITALY, structuredContent);
+    return localizedStructuredContent;
+  }
 
-    checkSerializeDeserialize(localizedStructuredContent);
+  @Test
+  public void testSerializeDeserialize() throws Exception {
+    LocalizedStructuredContent localizedStructuredContent = createObject();
+    checkSerializeDeserialize(
+        localizedStructuredContent, "serializedTestObjects/text/LocalizedStructuredContent.json");
   }
 }

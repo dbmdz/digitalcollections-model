@@ -8,4 +8,4 @@ import de.digitalcollections.model.identifiable.entity.Topic;
 @JsonDeserialize(as = Topic.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("TOPIC")
-public interface TopicMixIn {}
+public interface TopicMixIn extends EntityMixIn {}

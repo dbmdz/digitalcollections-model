@@ -6,14 +6,14 @@ import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.StructuredContent;
 import de.digitalcollections.model.text.contentblock.ContentBlock;
 import de.digitalcollections.model.text.contentblock.Paragraph;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
 import org.junit.jupiter.api.Test;
 
 public class WebsiteTest extends BaseJsonSerializationTest {
 
-  @Test
-  public void testSerialisationInBothWays() throws Exception {
+  private Website createObject() throws MalformedURLException {
     Website website = new Website(new URL("http://www.example.org/"));
     LocalizedStructuredContent localizedStructuredContent = new LocalizedStructuredContent();
     StructuredContent structuredContent = new StructuredContent();
@@ -21,6 +21,12 @@ public class WebsiteTest extends BaseJsonSerializationTest {
     structuredContent.addContentBlock(contentBlock);
     localizedStructuredContent.put(Locale.ITALY, structuredContent);
     website.setDescription(localizedStructuredContent);
-    checkSerializeDeserialize(website);
+    return website;
+  }
+
+  @Test
+  public void testSerializeDeserialize() throws Exception {
+    Website website = createObject();
+    checkSerializeDeserialize(website, "serializedTestObjects/identifiable/entity/Website.json");
   }
 }

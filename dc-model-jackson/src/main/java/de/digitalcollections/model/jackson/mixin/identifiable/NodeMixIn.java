@@ -6,4 +6,4 @@ import de.digitalcollections.model.identifiable.Node;
 
 @JsonDeserialize(as = Node.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface NodeMixIn {}
+public interface NodeMixIn extends IdentifiableMixIn {}

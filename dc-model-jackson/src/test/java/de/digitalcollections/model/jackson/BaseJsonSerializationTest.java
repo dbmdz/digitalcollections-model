@@ -10,6 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.Charset;
 import java.util.Set;
 import org.apache.commons.beanutils.BeanUtils;
+import org.junit.jupiter.api.Assertions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,8 +18,14 @@ public abstract class BaseJsonSerializationTest {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(BaseJsonSerializationTest.class);
 
+  private static final ObjectMapper OBJECT_MAPPER = new DigitalCollectionsObjectMapper();
+
   protected <T> void checkSerializeDeserialize(T objectIn) throws Exception {
-    T objectOut = (T) serializeDeserialize(objectIn);
+    checkSerializeDeserialize(objectIn, null);
+  }
+
+  protected <T> void checkSerializeDeserialize(T objectIn, String pathToJson) throws Exception {
+    T objectOut = serializeDeserialize(objectIn, pathToJson);
 
     try {
       Set<String> keys = BeanUtils.describe(objectIn).keySet();
@@ -50,24 +57,28 @@ public abstract class BaseJsonSerializationTest {
     }
   }
 
-  private Object serializeDeserialize(Object o) throws JsonProcessingException, IOException {
-    final ObjectMapper mapper = getMapper();
-    String serializedObject = mapper.writeValueAsString(o);
-    LOGGER.info("serialized object: '" + serializedObject + "'");
-    Class valueType = o.getClass();
-    Object deserializedObject = getMapper().readValue(serializedObject, valueType);
-    return deserializedObject;
-  }
-
   private String dump(Object o) throws JsonProcessingException {
-    return getMapper().writeValueAsString(o);
+    return getMapper().writerWithDefaultPrettyPrinter().writeValueAsString(o);
   }
 
   protected ObjectMapper getMapper() {
-    return new DigitalCollectionsObjectMapper();
+    return OBJECT_MAPPER;
   }
 
   protected String readFromResources(String filename) throws IOException {
     return Resources.toString(Resources.getResource(filename), Charset.defaultCharset());
+  }
+
+  private <T> T serializeDeserialize(T o, String pathToJson)
+      throws JsonProcessingException, IOException {
+    String serializedObject = dump(o);
+    if (pathToJson != null) {
+      Assertions.assertEquals(serializedObject, readFromResources(pathToJson));
+    }
+    LOGGER.info("serialized object: '" + serializedObject + "'");
+
+    Class valueType = o.getClass();
+    T deserializedObject = (T) getMapper().readValue(serializedObject, valueType);
+    return deserializedObject;
   }
 }

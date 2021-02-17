@@ -7,5 +7,7 @@ import de.digitalcollections.model.security.User;
 
 @JsonDeserialize(as = User.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeName("user")
+@JsonTypeName("USER")
+// @JsonTypeInfo(use = Id.NAME, include = As.PROPERTY)
+// @JsonSubTypes({@JsonSubTypes.Type(value = User.class)})
 public interface UserMixIn {}

@@ -6,4 +6,4 @@ import de.digitalcollections.model.identifiable.resource.TextFileResource;
 
 @JsonDeserialize(as = TextFileResource.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface TextFileResourceMixIn {}
+public interface TextFileResourceMixIn extends FileResourceMixIn {}

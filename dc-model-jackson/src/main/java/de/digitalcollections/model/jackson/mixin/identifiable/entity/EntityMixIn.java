@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.digitalcollections.model.identifiable.entity.Article;
 import de.digitalcollections.model.identifiable.entity.Collection;
 import de.digitalcollections.model.identifiable.entity.DigitalObject;
+import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.Project;
 import de.digitalcollections.model.identifiable.entity.Topic;
 import de.digitalcollections.model.identifiable.entity.Website;
@@ -16,6 +17,7 @@ import de.digitalcollections.model.identifiable.entity.work.Expression;
 import de.digitalcollections.model.identifiable.entity.work.Item;
 import de.digitalcollections.model.identifiable.entity.work.Manifestation;
 import de.digitalcollections.model.identifiable.entity.work.Work;
+import de.digitalcollections.model.jackson.mixin.identifiable.IdentifiableMixIn;
 
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
@@ -30,6 +32,7 @@ import de.digitalcollections.model.identifiable.entity.work.Work;
   @JsonSubTypes.Type(value = Collection.class, name = "COLLECTION"),
   @JsonSubTypes.Type(value = CorporateBody.class, name = "CORPORATE_BODY"),
   @JsonSubTypes.Type(value = DigitalObject.class, name = "DIGITAL_OBJECT"),
+  @JsonSubTypes.Type(value = Entity.class, name = "ENTITY"),
   @JsonSubTypes.Type(value = Expression.class, name = "EXPRESSION"),
   @JsonSubTypes.Type(value = GeoLocation.class, name = "GEOLOCATION"),
   @JsonSubTypes.Type(value = Item.class, name = "ITEM"),
@@ -40,4 +43,4 @@ import de.digitalcollections.model.identifiable.entity.work.Work;
   @JsonSubTypes.Type(value = Website.class, name = "WEBSITE"),
   @JsonSubTypes.Type(value = Work.class, name = "WORK")
 })
-public interface EntityMixIn {}
+public interface EntityMixIn extends IdentifiableMixIn {}

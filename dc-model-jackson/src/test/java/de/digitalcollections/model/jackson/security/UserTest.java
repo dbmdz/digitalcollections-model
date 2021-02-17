@@ -6,15 +6,16 @@ import org.junit.jupiter.api.Test;
 
 public class UserTest extends BaseJsonSerializationTest {
 
-  public User createUser1() {
-    User user1 = new User();
-    user1.setEmail("test1@user.de");
-    user1.setPasswordHash("$2a$10$bSUNjxCeQiipFl/QhzeckLGCAOyQLgFs5teAVruvSkL3.tdGdO");
-    return user1;
+  public User createObject() {
+    User user = new User();
+    user.setEmail("test1@user.de");
+    user.setPasswordHash("$2a$10$bSUNjxCeQiipFl/QhzeckLGCAOyQLgFs5teAVruvSkL3.tdGdO");
+    return user;
   }
 
   @Test
-  public void testSerialisationInBothWays() throws Exception {
-    checkSerializeDeserialize(createUser1());
+  public void testSerializeDeserialize() throws Exception {
+    User user = createObject();
+    checkSerializeDeserialize(user);
   }
 }

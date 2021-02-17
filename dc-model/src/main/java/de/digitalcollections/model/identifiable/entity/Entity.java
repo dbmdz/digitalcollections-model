@@ -25,6 +25,7 @@ public class Entity extends Identifiable {
 
   public Entity() {
     super();
+    this.entityType = EntityType.ENTITY;
     this.type = IdentifiableType.ENTITY;
   }
 

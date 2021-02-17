@@ -8,4 +8,4 @@ import de.digitalcollections.model.identifiable.entity.Project;
 @JsonDeserialize(as = Project.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("PROJECT")
-public interface ProjectMixIn {}
+public interface ProjectMixIn extends EntityMixIn {}

@@ -8,4 +8,4 @@ import de.digitalcollections.model.identifiable.entity.Website;
 @JsonDeserialize(as = Website.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("WEBSITE")
-public interface WebsiteMixIn {}
+public interface WebsiteMixIn extends EntityMixIn {}

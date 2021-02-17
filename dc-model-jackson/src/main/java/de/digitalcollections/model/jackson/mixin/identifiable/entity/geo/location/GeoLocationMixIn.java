@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.digitalcollections.model.identifiable.entity.geo.location.GeoLocation;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.EntityMixIn;
 
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
@@ -18,4 +19,4 @@ import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlem
   @JsonSubTypes.Type(value = GeoLocation.class, name = "GEOLOCATION"),
   @JsonSubTypes.Type(value = HumanSettlement.class, name = "HUMAN_SETTLEMENT"),
 })
-public interface GeoLocationMixIn {}
+public interface GeoLocationMixIn extends EntityMixIn {}

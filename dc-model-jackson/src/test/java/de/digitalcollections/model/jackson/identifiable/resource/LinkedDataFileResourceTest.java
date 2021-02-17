@@ -7,12 +7,17 @@ import org.junit.jupiter.api.Test;
 
 public class LinkedDataFileResourceTest extends BaseJsonSerializationTest {
 
-  @Test
-  public void testSerialisationInBothWays() throws Exception {
+  private LinkedDataFileResource createObject() {
     LinkedDataFileResource resource = new LinkedDataFileResource();
     resource.setContext(URI.create("http://iiif.io/api/presentation/2/context.json"));
     resource.setObjectType("sc:Manifest");
+    return resource;
+  }
 
-    checkSerializeDeserialize(resource);
+  @Test
+  public void testSerializeDeserialize() throws Exception {
+    LinkedDataFileResource resource = createObject();
+    checkSerializeDeserialize(
+        resource, "serializedTestObjects/identifiable/resource/LinkedDataFileResource.json");
   }
 }

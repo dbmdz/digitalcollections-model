@@ -7,14 +7,19 @@ import org.junit.jupiter.api.Test;
 
 public class IdentifierTypeTest extends BaseJsonSerializationTest {
 
-  @Test
-  public void testSerialisationInBothWays() throws Exception {
+  private IdentifierType createObject() {
     IdentifierType identifierType = new IdentifierType();
-    identifierType.setUuid(UUID.randomUUID());
+    identifierType.setUuid(UUID.fromString("61033a4d-318f-4aa4-96b1-6663137bb807"));
     identifierType.setPattern("^(\\w{3})(\\d{4})(\\d{4})$");
     identifierType.setLabel("Digital object id");
     identifierType.setNamespace("digId");
+    return identifierType;
+  }
 
-    checkSerializeDeserialize(identifierType);
+  @Test
+  public void testSerializeDeserialize() throws Exception {
+    IdentifierType identifierType = createObject();
+    checkSerializeDeserialize(
+        identifierType, "serializedTestObjects/identifiable/IdentifierType.json");
   }
 }

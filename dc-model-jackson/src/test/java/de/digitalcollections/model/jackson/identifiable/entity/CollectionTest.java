@@ -12,8 +12,7 @@ import org.junit.jupiter.api.Test;
 
 public class CollectionTest extends BaseJsonSerializationTest {
 
-  @Test
-  public void testSerialisationInBothWays() throws Exception {
+  private Collection createObject() {
     Collection collection = new Collection();
     LocalizedStructuredContent localizedStructuredContent = new LocalizedStructuredContent();
     StructuredContent structuredContent = new StructuredContent();
@@ -23,6 +22,13 @@ public class CollectionTest extends BaseJsonSerializationTest {
     collection.setDescription(localizedStructuredContent);
     collection.setPublicationStart(LocalDate.MIN);
     collection.setPublicationEnd(LocalDate.MAX);
-    checkSerializeDeserialize(collection);
+    return collection;
+  }
+
+  @Test
+  public void testSerializeDeserialize() throws Exception {
+    Collection collection = createObject();
+    checkSerializeDeserialize(
+        collection, "serializedTestObjects/identifiable/entity/Collection.json");
   }
 }

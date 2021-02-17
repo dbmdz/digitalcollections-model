@@ -1,8 +1,8 @@
 package de.digitalcollections.model.identifiable.entity.geo.location;
 
+import de.digitalcollections.model.geo.CoordinateLocation;
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.EntityType;
-import de.digitalcollections.model.identifiable.entity.geo.CoordinateLocation;
 
 /** A location located on earth. */
 public class GeoLocation extends Entity {

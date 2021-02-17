@@ -1,0 +1,6 @@
+{
+  "label" : "Digital object id",
+  "namespace" : "digId",
+  "pattern" : "^(\\w{3})(\\d{4})(\\d{4})$",
+  "uuid" : "61033a4d-318f-4aa4-96b1-6663137bb807"
+}

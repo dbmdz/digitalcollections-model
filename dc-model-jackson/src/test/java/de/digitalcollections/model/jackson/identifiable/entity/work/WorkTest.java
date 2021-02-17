@@ -12,15 +12,12 @@ import org.junit.jupiter.api.Test;
 
 public class WorkTest extends BaseJsonSerializationTest {
 
-  @Test
-  public void testSerialisationInBothWays() throws Exception {
+  private Work createObject() {
     Work work = new Work();
     work.setLabel(new LocalizedText(Locale.GERMAN, "Zimmer-Gymnastik ohne Geräte"));
-
     Person person = new Person();
     person.setLabel(new LocalizedText(Locale.GERMAN, "Arnold Hiller"));
     work.setCreators(Arrays.asList(person));
-
     work.setDatePublished(LocalDate.parse("2020-04-28"));
     TimeValue timeValuePublished =
         new TimeValue(
@@ -36,6 +33,12 @@ public class WorkTest extends BaseJsonSerializationTest {
             0,
             TimeValue.CM_GREGORIAN_PRO);
     work.setTimeValuePublished(timeValuePublished);
-    checkSerializeDeserialize(work);
+    return work;
+  }
+
+  @Test
+  public void testSerializeDeserialize() throws Exception {
+    Work work = createObject();
+    checkSerializeDeserialize(work, "serializedTestObjects/identifiable/entity/work/Work.json");
   }
 }

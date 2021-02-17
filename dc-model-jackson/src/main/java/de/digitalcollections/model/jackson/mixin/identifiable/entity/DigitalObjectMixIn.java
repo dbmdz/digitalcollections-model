@@ -11,7 +11,7 @@ import java.util.LinkedHashSet;
 @JsonDeserialize(as = DigitalObject.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("DIGITAL_OBJECT")
-public interface DigitalObjectMixIn {
+public interface DigitalObjectMixIn extends EntityMixIn {
 
   @JsonIgnore
   LinkedHashSet<FileResource> addFileResource(FileResource fileResource);

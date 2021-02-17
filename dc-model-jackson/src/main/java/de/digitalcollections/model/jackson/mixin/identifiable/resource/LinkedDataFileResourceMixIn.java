@@ -6,4 +6,4 @@ import de.digitalcollections.model.identifiable.resource.LinkedDataFileResource;
 
 @JsonDeserialize(as = LinkedDataFileResource.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface LinkedDataFileResourceMixIn {}
+public interface LinkedDataFileResourceMixIn extends FileResourceMixIn {}

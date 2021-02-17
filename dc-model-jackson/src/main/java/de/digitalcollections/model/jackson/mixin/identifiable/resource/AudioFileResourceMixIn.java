@@ -6,4 +6,4 @@ import de.digitalcollections.model.identifiable.resource.AudioFileResource;
 
 @JsonDeserialize(as = AudioFileResource.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface AudioFileResourceMixIn {}
+public interface AudioFileResourceMixIn extends FileResourceMixIn {}

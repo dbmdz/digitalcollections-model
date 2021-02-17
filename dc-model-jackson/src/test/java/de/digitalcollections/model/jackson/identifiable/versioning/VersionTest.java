@@ -8,13 +8,18 @@ import org.junit.jupiter.api.Test;
 
 public class VersionTest extends BaseJsonSerializationTest {
 
-  @Test
-  public void testSerialisationInBothWays() throws Exception {
+  private Version createObject() {
     Version version = new Version();
     version.setUuid(UUID.fromString("1e2d8b1e-c29d-475b-8f61-67b22ca6de89"));
     version.setVersionValue(0);
     version.setStatus(Status.INITIAL);
+    return version;
+  }
 
-    checkSerializeDeserialize(version);
+  @Test
+  public void testSerialisationInBothWays() throws Exception {
+    Version version = createObject();
+    checkSerializeDeserialize(
+        version, "serializedTestObjects/identifiable/versioning/Version.json");
   }
 }

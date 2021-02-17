@@ -6,4 +6,4 @@ import de.digitalcollections.model.identifiable.resource.ApplicationFileResource
 
 @JsonDeserialize(as = ApplicationFileResource.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface ApplicationFileResourceMixIn {}
+public interface ApplicationFileResourceMixIn extends FileResourceMixIn {}

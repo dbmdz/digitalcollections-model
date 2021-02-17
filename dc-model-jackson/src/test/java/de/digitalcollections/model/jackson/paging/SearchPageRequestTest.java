@@ -7,9 +7,14 @@ import org.junit.jupiter.api.Test;
 
 public class SearchPageRequestTest extends BaseJsonSerializationTest {
 
-  @Test
-  public void testSerializeDeserializePageResponse() throws Exception {
+  private PageRequest createObject() {
     PageRequest pageRequest = new SearchPageRequest("hallo", 3, 15, null);
-    checkSerializeDeserialize(pageRequest);
+    return pageRequest;
+  }
+
+  @Test
+  public void testSerializeDeserialize() throws Exception {
+    PageRequest pageRequest = createObject();
+    checkSerializeDeserialize(pageRequest, "serializedTestObjects/paging/SearchPageRequest.json");
   }
 }

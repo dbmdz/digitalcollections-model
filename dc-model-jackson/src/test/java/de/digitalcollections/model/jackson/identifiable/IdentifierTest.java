@@ -6,12 +6,16 @@ import org.junit.jupiter.api.Test;
 
 public class IdentifierTest extends BaseJsonSerializationTest {
 
-  @Test
-  public void testSerialisationInBothWays() throws Exception {
+  private Identifier createObject() {
     Identifier identifier = new Identifier();
     identifier.setId("bsb10001234");
     identifier.setNamespace("digId");
+    return identifier;
+  }
 
-    checkSerializeDeserialize(identifier);
+  @Test
+  public void testSerializeDeserialize() throws Exception {
+    Identifier identifier = createObject();
+    checkSerializeDeserialize(identifier, "serializedTestObjects/identifiable/Identifier.json");
   }
 }

@@ -10,8 +10,7 @@ import org.junit.jupiter.api.Test;
 
 public class ItemTest extends BaseJsonSerializationTest {
 
-  @Test
-  public void testSerialisationInBothWays() throws Exception {
+  private Item createObject() {
     Item item = new Item();
     item.setLabel(
         new LocalizedText(
@@ -25,6 +24,12 @@ public class ItemTest extends BaseJsonSerializationTest {
     item.setPublicationPlace("Leipzig");
     item.setPublisher("Thieme");
     item.setVersion("Zweite Auflage");
-    checkSerializeDeserialize(item);
+    return item;
+  }
+
+  @Test
+  public void testSerializeDeserialize() throws Exception {
+    Item item = createObject();
+    checkSerializeDeserialize(item, "serializedTestObjects/identifiable/entity/work/Item.json");
   }
 }

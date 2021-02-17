@@ -10,6 +10,7 @@ import de.digitalcollections.model.identifiable.resource.ImageFileResource;
 import de.digitalcollections.model.identifiable.resource.LinkedDataFileResource;
 import de.digitalcollections.model.identifiable.resource.TextFileResource;
 import de.digitalcollections.model.identifiable.resource.VideoFileResource;
+import de.digitalcollections.model.jackson.mixin.identifiable.IdentifiableMixIn;
 
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
@@ -26,4 +27,4 @@ import de.digitalcollections.model.identifiable.resource.VideoFileResource;
   @JsonSubTypes.Type(value = TextFileResource.class, name = "TEXT"),
   @JsonSubTypes.Type(value = VideoFileResource.class, name = "VIDEO")
 })
-public interface FileResourceMixIn {}
+public interface FileResourceMixIn extends IdentifiableMixIn {}

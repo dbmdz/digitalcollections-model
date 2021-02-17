@@ -19,4 +19,7 @@ public interface LocalizedTextMixIn {
 
   @JsonIgnore
   String getText();
+
+  @JsonIgnore
+  String has();
 }

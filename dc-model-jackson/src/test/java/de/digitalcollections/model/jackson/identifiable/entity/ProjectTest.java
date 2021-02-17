@@ -9,12 +9,17 @@ import org.junit.jupiter.api.Test;
 
 public class ProjectTest extends BaseJsonSerializationTest {
 
-  @Test
-  public void testSerialisationInBothWays() throws Exception {
+  private Project createObject() {
     Project project = new Project();
     project.setLabel(new LocalizedText(Locale.GERMAN, "Projekt XY"));
     project.setStartDate(LocalDate.of(2017, 06, 16));
     project.setStartDate(LocalDate.of(2019, 07, 31));
-    checkSerializeDeserialize(project);
+    return project;
+  }
+
+  @Test
+  public void testSerializeDeserialize() throws Exception {
+    Project project = createObject();
+    checkSerializeDeserialize(project, "serializedTestObjects/identifiable/entity/Project.json");
   }
 }
