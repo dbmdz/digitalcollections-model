@@ -2,7 +2,7 @@ package de.digitalcollections.model.filter;
 
 import java.util.Collection;
 
-class FilterCriterionBuilder {
+public class FilterCriterionBuilder {
 
   private final String fieldName;
   private final FilteringBuilder filteringBuilder;
