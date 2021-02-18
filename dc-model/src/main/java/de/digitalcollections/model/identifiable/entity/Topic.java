@@ -1,5 +1,6 @@
 package de.digitalcollections.model.identifiable.entity;
 
+import de.digitalcollections.model.identifiable.INode;
 import de.digitalcollections.model.identifiable.Node;
 import de.digitalcollections.model.identifiable.resource.FileResource;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.List;
  * division of a main topic" https://www.linguee.com/english-german/translation/subtopic.html
  * german: "Unterthema"
  */
-public class Topic extends Entity {
+public class Topic extends Entity implements INode<Topic> {
 
   private List<Entity> entities;
   private List<FileResource> fileResources;

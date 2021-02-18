@@ -1,6 +1,6 @@
 package de.digitalcollections.model.identifiable.web;
 
-import de.digitalcollections.model.identifiable.Node;
+import de.digitalcollections.model.identifiable.INode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,11 +13,11 @@ import java.util.List;
  */
 public class BreadcrumbNavigation {
 
-  private List<Node> navigationItems = new ArrayList<>();
+  private List<INode> navigationItems = new ArrayList<>();
 
   public BreadcrumbNavigation() {}
 
-  public BreadcrumbNavigation(List<Node> navigationItems) {
+  public BreadcrumbNavigation(List<INode> navigationItems) {
     this.navigationItems = navigationItems;
   }
 
@@ -26,7 +26,7 @@ public class BreadcrumbNavigation {
    *
    * @return ordered list, the first item is the root location
    */
-  public List<Node> getNavigationItems() {
+  public List<INode> getNavigationItems() {
     return navigationItems;
   }
 }

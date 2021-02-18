@@ -1,5 +1,6 @@
 package de.digitalcollections.model.identifiable.web;
 
+import de.digitalcollections.model.identifiable.INode;
 import de.digitalcollections.model.identifiable.Identifiable;
 import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.Node;
@@ -9,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 /** A Webpage of a Website. */
-public class Webpage extends Identifiable {
+public class Webpage extends Identifiable implements INode<Webpage> {
 
   private final Node<Webpage> node = new Node<>();
   private LocalDate publicationEnd;

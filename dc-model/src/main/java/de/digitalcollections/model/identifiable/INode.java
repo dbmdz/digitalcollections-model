@@ -1,0 +1,25 @@
+package de.digitalcollections.model.identifiable;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+public interface INode<N extends Identifiable> {
+
+  default void addChild(N child) {
+    if (getChildren() == null) {
+      setChildren(new ArrayList<>());
+    }
+    getChildren().add(child);
+  }
+
+  List<N> getChildren();
+
+  N getParent();
+
+  UUID getUuid();
+
+  void setChildren(List<N> children);
+
+  void setParent(N parent);
+}

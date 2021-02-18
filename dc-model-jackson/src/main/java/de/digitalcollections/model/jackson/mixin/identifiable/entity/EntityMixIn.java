@@ -11,6 +11,7 @@ import de.digitalcollections.model.identifiable.entity.Project;
 import de.digitalcollections.model.identifiable.entity.Topic;
 import de.digitalcollections.model.identifiable.entity.Website;
 import de.digitalcollections.model.identifiable.entity.agent.CorporateBody;
+import de.digitalcollections.model.identifiable.entity.agent.Family;
 import de.digitalcollections.model.identifiable.entity.agent.Person;
 import de.digitalcollections.model.identifiable.entity.geo.location.GeoLocation;
 import de.digitalcollections.model.identifiable.entity.work.Expression;
@@ -34,6 +35,7 @@ import de.digitalcollections.model.jackson.mixin.identifiable.IdentifiableMixIn;
   @JsonSubTypes.Type(value = DigitalObject.class, name = "DIGITAL_OBJECT"),
   @JsonSubTypes.Type(value = Entity.class, name = "ENTITY"),
   @JsonSubTypes.Type(value = Expression.class, name = "EXPRESSION"),
+  @JsonSubTypes.Type(value = Family.class, name = "FAMILY"),
   @JsonSubTypes.Type(value = GeoLocation.class, name = "GEOLOCATION"),
   @JsonSubTypes.Type(value = Item.class, name = "ITEM"),
   @JsonSubTypes.Type(value = Manifestation.class, name = "MANIFESTATION"),

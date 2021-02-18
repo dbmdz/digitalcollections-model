@@ -1,5 +1,6 @@
 package de.digitalcollections.model.identifiable.entity;
 
+import de.digitalcollections.model.identifiable.INode;
 import de.digitalcollections.model.identifiable.Node;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import java.time.LocalDate;
@@ -8,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 /** A collection of {@link Entity}s. */
-public class Collection extends Entity {
+public class Collection extends Entity implements INode<Collection> {
 
   private List<Entity> entities;
   private final Node<Collection> node = new Node<>();
@@ -53,6 +54,10 @@ public class Collection extends Entity {
 
   public List<Entity> getEntities() {
     return entities;
+  }
+
+  public Node<Collection> getNode() {
+    return node;
   }
 
   public Collection getParent() {
