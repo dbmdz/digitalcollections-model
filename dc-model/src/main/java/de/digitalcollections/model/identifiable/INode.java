@@ -1,5 +1,6 @@
 package de.digitalcollections.model.identifiable;
 
+import de.digitalcollections.model.text.LocalizedText;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -14,6 +15,8 @@ public interface INode<N extends Identifiable> {
   }
 
   List<N> getChildren();
+
+  LocalizedText getLabel();
 
   N getParent();
 
