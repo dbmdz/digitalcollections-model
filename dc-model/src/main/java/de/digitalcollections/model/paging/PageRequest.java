@@ -216,7 +216,7 @@ public class PageRequest implements Serializable {
 
   /** @param sorting the sorting parameters */
   public void setSorting(Sorting sorting) {
-    this.sort = sort;
+    this.sort = sorting;
   }
 
   @Override
