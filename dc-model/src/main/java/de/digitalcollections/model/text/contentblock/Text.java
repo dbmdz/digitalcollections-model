@@ -70,15 +70,13 @@ public class Text extends ContentBlock {
 
   @Override
   public String toString() {
-    return "TextImpl{"
-        + "text='"
+    return getClass().getSimpleName()
+        + "{text='"
         + text
-        + "\', "
-        + "marks="
+        + "', marks="
         + marks
-        + ", "
-        + "hashCode="
+        + ", hashCode="
         + hashCode()
-        + '}';
+        + "}";
   }
 }

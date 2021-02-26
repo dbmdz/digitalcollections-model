@@ -15,6 +15,6 @@ public class HardBreak extends ContentBlock {
 
   @Override
   public String toString() {
-    return "HardBreak{hashCode=" + hashCode() + "}";
+    return getClass().getSimpleName() + "{hashCode=" + hashCode() + "}";
   }
 }

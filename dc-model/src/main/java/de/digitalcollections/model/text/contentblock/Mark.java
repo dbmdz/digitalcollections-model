@@ -68,6 +68,6 @@ public class Mark {
 
   @Override
   public String toString() {
-    return "Mark{" + "type='" + type + '\'' + '}';
+    return getClass().getSimpleName() + "{type='" + type + "'}";
   }
 }
