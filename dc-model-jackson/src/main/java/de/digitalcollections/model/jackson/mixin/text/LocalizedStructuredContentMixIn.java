@@ -5,7 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.StructuredContent;
-import de.digitalcollections.model.view.ToC;
+import de.digitalcollections.model.view.ToCEntry;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -17,5 +18,5 @@ public interface LocalizedStructuredContentMixIn {
   void add(Locale locale, StructuredContent structuredContent);
 
   @JsonIgnore
-  public Map<Locale, ToC> getTableOfContents();
+  public Map<Locale, List<ToCEntry>> getTableOfContents();
 }

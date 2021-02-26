@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import de.digitalcollections.model.text.StructuredContent;
 import de.digitalcollections.model.text.contentblock.ContentBlock;
-import de.digitalcollections.model.view.ToC;
+import de.digitalcollections.model.view.ToCEntry;
 import java.util.List;
 
 @JsonDeserialize(as = StructuredContent.class)
@@ -25,5 +25,5 @@ public interface StructuredContentMixIn {
   public List<ContentBlock> getContentBlocks();
 
   @JsonIgnore
-  public ToC getTableOfContents();
+  public List<ToCEntry> getTableOfContents();
 }
