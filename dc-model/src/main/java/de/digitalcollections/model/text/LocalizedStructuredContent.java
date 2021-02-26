@@ -31,7 +31,9 @@ public class LocalizedStructuredContent extends HashMap<Locale, StructuredConten
     for (Entry<Locale, StructuredContent> entry : entrySet()) {
       Locale key = entry.getKey();
       ToC value = entry.getValue().getTableOfContents();
-      tocs.put(key, value);
+      if (value != null) {
+        tocs.put(key, value);
+      }
     }
     return tocs;
   }
