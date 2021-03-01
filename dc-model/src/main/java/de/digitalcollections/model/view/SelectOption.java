@@ -56,7 +56,8 @@ public class SelectOption {
 
   @Override
   public String toString() {
-    return "SelectOptionImpl{"
+    return this.getClass().getSimpleName()
+        + "{"
         + "id='"
         + id
         + '\''

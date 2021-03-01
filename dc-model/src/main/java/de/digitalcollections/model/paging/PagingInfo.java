@@ -102,8 +102,8 @@ public class PagingInfo {
 
   @Override
   public String toString() {
-    return "PagingInfoImpl{"
-        + "maxPageItemsToDisplay="
+    return this.getClass().getSimpleName()
+        + "{maxPageItemsToDisplay="
         + maxPageItemsToDisplay
         + ", items="
         + items
@@ -117,7 +117,6 @@ public class PagingInfo {
         + pageSize
         + ", url='"
         + url
-        + '\''
-        + '}';
+        + "'}";
   }
 }

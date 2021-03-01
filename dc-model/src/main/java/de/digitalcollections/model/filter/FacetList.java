@@ -30,7 +30,8 @@ public class FacetList {
     this.title = title;
   }
 
+  @Override
   public String toString() {
-    return "FacetList{" + "title='" + title + '\'' + ", items=" + items + '}';
+    return this.getClass().getSimpleName() + "{title='" + title + "', items=" + items + "}";
   }
 }

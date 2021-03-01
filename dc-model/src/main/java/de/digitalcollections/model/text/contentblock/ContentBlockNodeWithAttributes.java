@@ -55,6 +55,6 @@ public abstract class ContentBlockNodeWithAttributes extends ContentBlockNode {
 
   @Override
   public String toString() {
-    return getClass().getSimpleName() + "{" + "attributes=" + attributes + '}';
+    return getClass().getSimpleName() + "{" + "attributes=" + attributes + "}";
   }
 }

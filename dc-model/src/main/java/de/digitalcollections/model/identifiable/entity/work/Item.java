@@ -143,23 +143,20 @@ public class Item extends Entity {
     this.version = version;
   }
 
+  @Override
   public String toString() {
-    return "Item{"
-        + "language="
+    return this.getClass().getSimpleName()
+        + "{language="
         + language
         + ", publicationDate='"
         + publicationDate
-        + '\''
-        + ", publicationPlace='"
+        + "', publicationPlace='"
         + publicationPlace
-        + '\''
-        + ", publisher='"
+        + "', publisher='"
         + publisher
-        + '\''
-        + ", version='"
+        + "', version='"
         + version
-        + '\''
-        + ", entityType="
+        + "', entityType="
         + entityType
         + ", refId="
         + refId
@@ -177,6 +174,6 @@ public class Item extends Entity {
         + previewImageRenderingHints
         + ", type="
         + type
-        + '}';
+        + "}";
   }
 }

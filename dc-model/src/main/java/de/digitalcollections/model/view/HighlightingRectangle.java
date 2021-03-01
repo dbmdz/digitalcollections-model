@@ -136,7 +136,8 @@ public class HighlightingRectangle implements Serializable {
 
   @Override
   public String toString() {
-    return "HighlightingRectangle{"
+    return this.getClass().getSimpleName()
+        + "{"
         + "text='"
         + text
         + '\''

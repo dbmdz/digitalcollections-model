@@ -106,11 +106,10 @@ public class Predicate {
 
   @Override
   public String toString() {
-    return "Predicate{"
-        + "value='"
+    return this.getClass().getSimpleName()
+        + "{value='"
         + value
-        + '\''
-        + ", label="
+        + "', label="
         + label
         + ", description="
         + description
@@ -118,6 +117,6 @@ public class Predicate {
         + created
         + ", lastModified="
         + lastModified
-        + '}';
+        + "}";
   }
 }

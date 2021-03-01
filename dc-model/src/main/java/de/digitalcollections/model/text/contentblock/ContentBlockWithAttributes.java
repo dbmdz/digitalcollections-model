@@ -53,6 +53,6 @@ public abstract class ContentBlockWithAttributes extends ContentBlock {
 
   @Override
   public String toString() {
-    return getClass().getSimpleName() + "{" + "attributes=" + attributes + '}';
+    return getClass().getSimpleName() + "{" + "attributes=" + attributes + "}";
   }
 }

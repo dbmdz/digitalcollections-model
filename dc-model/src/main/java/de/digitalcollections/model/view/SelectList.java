@@ -42,14 +42,14 @@ public class SelectList {
 
   @Override
   public String toString() {
-    return "SelectListImpl{"
+    return this.getClass().getSimpleName()
+        + "{"
         + "title='"
         + title
-        + '\''
-        + ", selectedOption="
+        + "', selectedOption="
         + selectedOption
         + ", options="
         + options
-        + '}';
+        + "}";
   }
 }

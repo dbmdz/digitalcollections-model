@@ -20,6 +20,6 @@ public class PageItem {
 
   @Override
   public String toString() {
-    return "PageItem{" + "number=" + number + ", current=" + current + '}';
+    return this.getClass().getSimpleName() + "{number=" + number + ", current=" + current + "}";
   }
 }

@@ -94,23 +94,19 @@ public class Version {
 
   @Override
   public String toString() {
-    return "Version{"
-        + "uuid="
+    return this.getClass().getSimpleName()
+        + "{uuid="
         + uuid
         + ", value="
         + versionValue
         + ", status='"
         + status
-        + '\''
-        + ", typeKey='"
+        + "', typeKey='"
         + typeKey
-        + '\''
-        + ", instanceKey='"
+        + "', instanceKey='"
         + instanceKey
-        + '\''
-        + ", instanceVersionKey='"
+        + "', instanceVersionKey='"
         + instanceVersionKey
-        + '\''
-        + '}';
+        + "'}";
   }
 }

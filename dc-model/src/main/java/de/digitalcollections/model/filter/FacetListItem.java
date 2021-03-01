@@ -45,18 +45,17 @@ public class FacetListItem {
     this.selected = selected;
   }
 
+  @Override
   public String toString() {
-    return "FacetListItem{"
-        + "name='"
+    return this.getClass().getSimpleName()
+        + "{name='"
         + name
-        + '\''
-        + ", count="
+        + "', count="
         + count
         + ", link='"
         + link
-        + '\''
-        + ", selected="
+        + "', selected="
         + selected
-        + '}';
+        + "}";
   }
 }

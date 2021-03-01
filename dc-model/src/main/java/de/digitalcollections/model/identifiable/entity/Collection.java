@@ -107,8 +107,8 @@ public class Collection extends Entity implements INode<Collection> {
 
   @Override
   public String toString() {
-    return "Collection{"
-        + "entities="
+    return this.getClass().getSimpleName()
+        + "{entities="
         + entities
         + ", node="
         + node
@@ -140,6 +140,6 @@ public class Collection extends Entity implements INode<Collection> {
         + type
         + ", uuid="
         + getUuid()
-        + '}';
+        + "}";
   }
 }
