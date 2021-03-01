@@ -1,28 +1,30 @@
 package de.digitalcollections.model.jackson.identifiable.entity.relation;
 
-import de.digitalcollections.model.impl.identifiable.entity.ArticleImpl;
-import de.digitalcollections.model.impl.identifiable.entity.DigitalObjectImpl;
-import de.digitalcollections.model.impl.identifiable.entity.relation.EntityRelationImpl;
+import de.digitalcollections.model.identifiable.entity.Article;
+import de.digitalcollections.model.identifiable.entity.DigitalObject;
+import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;
 
 public class EntityRelationTest extends BaseJsonSerializationTest {
 
-  @Test
-  public void testSerialisationInBothWays() throws Exception {
-    EntityRelationImpl entityRelation = new EntityRelationImpl();
-
-    ArticleImpl subjectEntity = new ArticleImpl();
-    subjectEntity.setUuid(UUID.randomUUID());
+  private EntityRelation createObject() {
+    EntityRelation entityRelation = new EntityRelation();
+    Article subjectEntity = new Article();
+    subjectEntity.setUuid(UUID.fromString("8a9c3c34-c36c-4671-8f2f-9d96a5fc32e4"));
     entityRelation.setSubject(subjectEntity);
-
     entityRelation.setPredicate("is_describing_provenience");
-
-    DigitalObjectImpl objectEntity = new DigitalObjectImpl();
-    objectEntity.setUuid(UUID.randomUUID());
+    DigitalObject objectEntity = new DigitalObject();
+    objectEntity.setUuid(UUID.fromString("baf5a649-dd8a-43f2-8fac-f535b311af03"));
     entityRelation.setObject(objectEntity);
+    return entityRelation;
+  }
 
-    checkSerializeDeserialize(entityRelation);
+  @Test
+  public void testSerializeDeserialize() throws Exception {
+    EntityRelation entityRelation = createObject();
+    checkSerializeDeserialize(
+        entityRelation, "serializedTestObjects/identifiable/entity/relation/EntityRelation.json");
   }
 }

@@ -1,15 +1,21 @@
 package de.digitalcollections.model.jackson.view;
 
-import de.digitalcollections.model.impl.view.RenderingHints;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
+import de.digitalcollections.model.view.RenderingHints;
 import org.junit.jupiter.api.Test;
 
 public class RenderingHintsTest extends BaseJsonSerializationTest {
-  @Test
-  public void testSerialisationInBothWays() throws Exception {
+
+  private RenderingHints createObject() {
     RenderingHints hints = new RenderingHints();
     hints.setShowInPageNavigation(true);
     hints.setTemplateName("my-template");
-    checkSerializeDeserialize(hints);
+    return hints;
+  }
+
+  @Test
+  public void testSerializeDeserialize() throws Exception {
+    RenderingHints hints = createObject();
+    checkSerializeDeserialize(hints, "serializedTestObjects/view/RenderingHints.json");
   }
 }

@@ -1,0 +1,19 @@
+{
+  "object" : {
+    "identifiers" : [ ],
+    "type" : "ENTITY",
+    "uuid" : "baf5a649-dd8a-43f2-8fac-f535b311af03",
+    "entityType" : "DIGITAL_OBJECT",
+    "refId" : 0,
+    "fileResources" : [ ]
+  },
+  "predicate" : "is_describing_provenience",
+  "subject" : {
+    "identifiers" : [ ],
+    "type" : "ENTITY",
+    "uuid" : "8a9c3c34-c36c-4671-8f2f-9d96a5fc32e4",
+    "entityType" : "ARTICLE",
+    "refId" : 0,
+    "creators" : [ ]
+  }
+}

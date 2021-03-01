@@ -1,0 +1,18 @@
+{
+  "identifiers" : [ ],
+  "label" : {
+    "de" : "Bayerische Staatsbibliothek"
+  },
+  "previewImage" : {
+    "identifiers" : [ ],
+    "type" : "RESOURCE",
+    "fileResourceType" : "IMAGE",
+    "readonly" : false,
+    "sizeInBytes" : 0,
+    "height" : 0,
+    "width" : 0
+  },
+  "type" : "ENTITY",
+  "entityType" : "ENTITY",
+  "refId" : 0
+}

@@ -4,13 +4,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import de.digitalcollections.model.api.paging.Sorting;
-import de.digitalcollections.model.impl.paging.PageResponseImpl;
+import de.digitalcollections.model.paging.PageResponse;
+import de.digitalcollections.model.paging.Sorting;
 import java.util.List;
 
-@JsonDeserialize(as = PageResponseImpl.class)
+@JsonDeserialize(as = PageResponse.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public abstract class PageResponseMixIn<T> extends PageResponseImpl<T> {
+public abstract class PageResponseMixIn<T> extends PageResponse<T> {
 
   @JsonTypeInfo(
       use = JsonTypeInfo.Id.CLASS,

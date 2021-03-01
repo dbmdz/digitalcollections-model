@@ -1,0 +1,25 @@
+{
+  "content" : [ {
+    "className" : "de.digitalcollections.model.security.User",
+    "email" : "test@user.de",
+    "enabled" : true,
+    "roles" : [ ]
+  } ],
+  "pageRequest" : {
+    "filtering" : {
+      "filterCriteria" : [ {
+        "fieldName" : "longField",
+        "operation" : "EQUALS",
+        "value" : [ "java.lang.Long", 5 ]
+      }, {
+        "fieldName" : "dateField",
+        "operation" : "BETWEEN",
+        "minValue" : [ "java.time.LocalDate", "2020-01-01" ],
+        "maxValue" : [ "java.time.LocalDate", "2020-01-31" ]
+      } ]
+    },
+    "pageNumber" : 3,
+    "pageSize" : 15
+  },
+  "totalElements" : 1
+}

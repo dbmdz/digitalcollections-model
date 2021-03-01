@@ -1,0 +1,34 @@
+{
+  "identifiers" : [ ],
+  "label" : {
+    "de" : "Zimmer-Gymnastik ohne Geräte"
+  },
+  "type" : "ENTITY",
+  "entityType" : "WORK",
+  "refId" : 0,
+  "creators" : [ {
+    "identifiers" : [ ],
+    "label" : {
+      "de" : "Arnold Hiller"
+    },
+    "type" : "ENTITY",
+    "entityType" : "PERSON",
+    "refId" : 0,
+    "familyNames" : [ ],
+    "givenNames" : [ ]
+  } ],
+  "datePublished" : "2020-04-28",
+  "timeValuePublished" : {
+    "afterTolerance" : 0,
+    "beforeTolerance" : 0,
+    "day" : 0,
+    "hour" : 0,
+    "minute" : 0,
+    "month" : 0,
+    "precision" : 9,
+    "preferredCalendarModel" : "http://www.wikidata.org/entity/Q1985727",
+    "second" : 0,
+    "timezoneOffset" : 0,
+    "year" : 2020
+  }
+}

@@ -3,13 +3,14 @@ package de.digitalcollections.model.jackson.mixin.identifiable.resource;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import de.digitalcollections.model.impl.identifiable.resource.ApplicationFileResourceImpl;
-import de.digitalcollections.model.impl.identifiable.resource.AudioFileResourceImpl;
-import de.digitalcollections.model.impl.identifiable.resource.FileResourceImpl;
-import de.digitalcollections.model.impl.identifiable.resource.ImageFileResourceImpl;
-import de.digitalcollections.model.impl.identifiable.resource.LinkedDataFileResourceImpl;
-import de.digitalcollections.model.impl.identifiable.resource.TextFileResourceImpl;
-import de.digitalcollections.model.impl.identifiable.resource.VideoFileResourceImpl;
+import de.digitalcollections.model.identifiable.resource.ApplicationFileResource;
+import de.digitalcollections.model.identifiable.resource.AudioFileResource;
+import de.digitalcollections.model.identifiable.resource.FileResource;
+import de.digitalcollections.model.identifiable.resource.ImageFileResource;
+import de.digitalcollections.model.identifiable.resource.LinkedDataFileResource;
+import de.digitalcollections.model.identifiable.resource.TextFileResource;
+import de.digitalcollections.model.identifiable.resource.VideoFileResource;
+import de.digitalcollections.model.jackson.mixin.identifiable.IdentifiableMixIn;
 
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
@@ -18,12 +19,12 @@ import de.digitalcollections.model.impl.identifiable.resource.VideoFileResourceI
     visible = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSubTypes({
-  @JsonSubTypes.Type(value = ApplicationFileResourceImpl.class, name = "APPLICATION"),
-  @JsonSubTypes.Type(value = AudioFileResourceImpl.class, name = "AUDIO"),
-  @JsonSubTypes.Type(value = FileResourceImpl.class, name = "UNDEFINED"),
-  @JsonSubTypes.Type(value = ImageFileResourceImpl.class, name = "IMAGE"),
-  @JsonSubTypes.Type(value = LinkedDataFileResourceImpl.class, name = "LINKED_DATA"),
-  @JsonSubTypes.Type(value = TextFileResourceImpl.class, name = "TEXT"),
-  @JsonSubTypes.Type(value = VideoFileResourceImpl.class, name = "VIDEO")
+  @JsonSubTypes.Type(value = ApplicationFileResource.class, name = "APPLICATION"),
+  @JsonSubTypes.Type(value = AudioFileResource.class, name = "AUDIO"),
+  @JsonSubTypes.Type(value = FileResource.class, name = "UNDEFINED"),
+  @JsonSubTypes.Type(value = ImageFileResource.class, name = "IMAGE"),
+  @JsonSubTypes.Type(value = LinkedDataFileResource.class, name = "LINKED_DATA"),
+  @JsonSubTypes.Type(value = TextFileResource.class, name = "TEXT"),
+  @JsonSubTypes.Type(value = VideoFileResource.class, name = "VIDEO")
 })
-public interface FileResourceMixIn {}
+public interface FileResourceMixIn extends IdentifiableMixIn {}

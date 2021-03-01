@@ -93,11 +93,8 @@ REST-API design for filtering was inspired by:
 
 ## Model-Serializing
 
-Comes with separate modules for supporting serializing model objects
+Comes with a separate module for supporting serializing model objects to JSON (`dc-model-jackson module`) using [Jackson](https://github.com/FasterXML/jackson)
 
-- to JSON (dc-model-jackson module) using [Jackson](https://github.com/FasterXML/jackson)
-- to XML (dc-model-xml module) using [XStream](https://x-stream.github.io/)
-- to URL-params (dc-model-feign module) using [OpenFeign](https://github.com/OpenFeign/feign)
 
 ## Systems implementing this library
 
