@@ -6,4 +6,4 @@ import de.digitalcollections.model.text.contentblock.TableHeader;
 
 @JsonDeserialize(as = TableHeader.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface TableHeaderMixIn extends ContentBlockNodeMixin, AttributesMixIn {}
+public interface TableHeaderMixIn extends ContentBlockNodeMixin, ContentBlockWithAttributesMixIn {}

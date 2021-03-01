@@ -6,4 +6,4 @@ import de.digitalcollections.model.text.contentblock.Image;
 
 @JsonDeserialize(as = Image.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface ImageMixIn extends AttributesMixIn {}
+public interface ImageMixIn extends ContentBlockWithAttributesMixIn {}

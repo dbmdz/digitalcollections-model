@@ -6,4 +6,4 @@ import de.digitalcollections.model.text.contentblock.OrderedList;
 
 @JsonDeserialize(as = OrderedList.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface OrderedListMixIn extends ContentBlockNodeMixin, AttributesMixIn {}
+public interface OrderedListMixIn extends ContentBlockNodeMixin, ContentBlockWithAttributesMixIn {}

@@ -6,4 +6,4 @@ import de.digitalcollections.model.text.contentblock.Heading;
 
 @JsonDeserialize(as = Heading.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface HeadingMixIn extends ContentBlockNodeMixin, AttributesMixIn {}
+public interface HeadingMixIn extends ContentBlockNodeMixin, ContentBlockWithAttributesMixIn {}

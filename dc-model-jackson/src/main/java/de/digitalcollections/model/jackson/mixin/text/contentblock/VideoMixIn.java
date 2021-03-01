@@ -6,4 +6,4 @@ import de.digitalcollections.model.text.contentblock.Video;
 
 @JsonDeserialize(as = Video.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface VideoMixIn extends AttributesMixIn {}
+public interface VideoMixIn extends ContentBlockWithAttributesMixIn {}

@@ -6,4 +6,4 @@ import de.digitalcollections.model.text.contentblock.IFrame;
 
 @JsonDeserialize(as = IFrame.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface IFrameMixIn extends AttributesMixIn {}
+public interface IFrameMixIn extends ContentBlockWithAttributesMixIn {}

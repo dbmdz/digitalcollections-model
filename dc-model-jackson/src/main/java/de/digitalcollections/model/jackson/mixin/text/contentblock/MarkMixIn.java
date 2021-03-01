@@ -4,4 +4,4 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import de.digitalcollections.model.text.contentblock.Mark;
 
 @JsonDeserialize(as = Mark.class)
-public interface MarkMixIn extends AttributesMixIn {}
+public interface MarkMixIn extends ContentBlockWithAttributesMixIn {}

@@ -6,4 +6,4 @@ import de.digitalcollections.model.text.contentblock.TableCell;
 
 @JsonDeserialize(as = TableCell.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public interface TableCellMixIn extends ContentBlockNodeMixin, AttributesMixIn {}
+public interface TableCellMixIn extends ContentBlockNodeMixin, ContentBlockWithAttributesMixIn {}
