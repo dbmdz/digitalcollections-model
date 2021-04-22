@@ -7,5 +7,5 @@ import de.digitalcollections.model.geo.CoordinateLocation;
 
 @JsonDeserialize(as = CoordinateLocation.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeName("COORDINATE_LOCATION")
+@JsonTypeName("coordinateLocation")
 public interface CoordinateLocationMixIn {}

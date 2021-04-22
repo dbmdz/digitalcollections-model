@@ -7,5 +7,5 @@ import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlem
 
 @JsonDeserialize(as = HumanSettlement.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeName("HUMAN_SETTLEMENT")
+@JsonTypeName("humanSettlement")
 public interface HumanSettlementMixIn extends GeoLocationMixIn {}

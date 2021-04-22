@@ -7,5 +7,5 @@ import de.digitalcollections.model.time.TimeValue;
 
 @JsonDeserialize(as = TimeValue.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeName("TIMEVALUE")
+@JsonTypeName("timeValue")
 public interface TimeValueMixIn {}

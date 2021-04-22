@@ -9,7 +9,7 @@ import de.digitalcollections.model.identifiable.entity.Topic;
 
 @JsonDeserialize(as = Topic.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeName("TOPIC")
+@JsonTypeName("topic")
 public interface TopicMixIn extends EntityMixIn {
 
   @JsonIgnore

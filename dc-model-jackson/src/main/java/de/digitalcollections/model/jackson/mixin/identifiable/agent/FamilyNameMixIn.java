@@ -8,5 +8,5 @@ import de.digitalcollections.model.jackson.mixin.identifiable.IdentifiableMixIn;
 
 @JsonDeserialize(as = FamilyName.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeName("FAMILY_NAME")
+@JsonTypeName("familyName")
 public interface FamilyNameMixIn extends IdentifiableMixIn {}

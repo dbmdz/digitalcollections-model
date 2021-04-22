@@ -7,5 +7,5 @@ import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 
 @JsonDeserialize(as = EntityRelation.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeName("ENTITY_RELATION")
+@JsonTypeName("entityRelation")
 public interface EntityRelationMixIn {}

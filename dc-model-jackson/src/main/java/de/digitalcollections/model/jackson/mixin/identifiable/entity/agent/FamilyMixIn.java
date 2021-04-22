@@ -8,5 +8,5 @@ import de.digitalcollections.model.jackson.mixin.identifiable.entity.EntityMixIn
 
 @JsonDeserialize(as = Family.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeName("FAMILY")
+@JsonTypeName("family")
 public interface FamilyMixIn extends EntityMixIn {}

@@ -7,5 +7,5 @@ import de.digitalcollections.model.identifiable.entity.Article;
 
 @JsonDeserialize(as = Article.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeName("ARTICLE")
+@JsonTypeName("article")
 public interface ArticleMixIn extends EntityMixIn {}

@@ -8,5 +8,5 @@ import de.digitalcollections.model.jackson.mixin.identifiable.entity.EntityMixIn
 
 @JsonDeserialize(as = CorporateBody.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeName("CORPORATE_BODY")
+@JsonTypeName("corporateBody")
 public interface CorporateBodyMixIn extends EntityMixIn {}

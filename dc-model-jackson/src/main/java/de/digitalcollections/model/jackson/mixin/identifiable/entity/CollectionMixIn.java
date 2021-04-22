@@ -9,7 +9,7 @@ import de.digitalcollections.model.identifiable.entity.Collection;
 
 @JsonDeserialize(as = Collection.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeName("COLLECTION")
+@JsonTypeName("collection")
 public interface CollectionMixIn extends EntityMixIn {
 
   @JsonIgnore

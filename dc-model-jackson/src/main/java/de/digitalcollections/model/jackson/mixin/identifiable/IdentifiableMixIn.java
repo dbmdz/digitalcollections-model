@@ -9,7 +9,7 @@ import de.digitalcollections.model.text.LocalizedText;
 
 @JsonDeserialize(as = Identifiable.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonTypeName("IDENTIFIABLE")
+@JsonTypeName("identifiable")
 public interface IdentifiableMixIn {
 
   @JsonSetter

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 import de.digitalcollections.model.text.contentblock.Blockquote;
 import de.digitalcollections.model.text.contentblock.BulletList;
 import de.digitalcollections.model.text.contentblock.CodeBlock;
@@ -27,8 +28,7 @@ import java.util.List;
 
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
-    include = JsonTypeInfo.As.PROPERTY,
-    property = "type",
+    include = As.WRAPPER_OBJECT,
     visible = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSubTypes({
