@@ -1,10 +1,6 @@
 version: 2
 updates:
 - directory: "/"
-  #ignore: []
-  #- dependency-name: org.springframework:spring-oxm
-  #  versions:
-  #  - 5.3.4
   open-pull-requests-limit: 10
   package-ecosystem: maven
   schedule:
