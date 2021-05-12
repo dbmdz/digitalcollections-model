@@ -37,7 +37,7 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class PageResponseMixIn<T> extends PageResponse<T> {
 
-  @JsonTypeInfo(use = Id.NAME, property = "contenttype", visible = true)
+  @JsonTypeInfo(use = Id.NAME, property = "objecttype", visible = true)
   @JsonSubTypes({
     @Type(value = Article.class, name = "ARTICLE"),
     @Type(value = Collection.class, name = "COLLECTION"),

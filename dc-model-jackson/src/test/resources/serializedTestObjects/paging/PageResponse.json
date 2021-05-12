@@ -1,6 +1,6 @@
 {
   "content" : [ {
-    "contenttype" : "USER",
+    "objecttype" : "USER",
     "email" : "test@user.de",
     "enabled" : true,
     "roles" : [ ]

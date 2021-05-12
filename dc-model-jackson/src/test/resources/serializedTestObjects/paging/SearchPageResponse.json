@@ -1,6 +1,6 @@
 {
   "content" : [ {
-    "contenttype" : "DIGITAL_OBJECT",
+    "objecttype" : "DIGITAL_OBJECT",
     "identifiers" : [ ],
     "label" : {
       "" : "DigitalObject-Label"
@@ -10,7 +10,7 @@
     "refId" : 0,
     "fileResources" : [ ]
   }, {
-    "contenttype" : "WEBPAGE",
+    "objecttype" : "WEBPAGE",
     "identifiers" : [ ],
     "label" : {
       "" : "Webpage-Label"
