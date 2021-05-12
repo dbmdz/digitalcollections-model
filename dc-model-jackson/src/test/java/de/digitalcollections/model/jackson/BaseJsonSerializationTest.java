@@ -75,7 +75,6 @@ public abstract class BaseJsonSerializationTest {
     if (pathToJson != null) {
       Assertions.assertEquals(serializedObject, readFromResources(pathToJson));
     }
-    LOGGER.info("serialized object: '" + serializedObject + "'");
 
     Class valueType = o.getClass();
     T deserializedObject = (T) getMapper().readValue(serializedObject, valueType);

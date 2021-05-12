@@ -1,6 +1,6 @@
 {
   "content" : [ {
-    "className" : "de.digitalcollections.model.security.User",
+    "contenttype" : "USER",
     "email" : "test@user.de",
     "enabled" : true,
     "roles" : [ ]
