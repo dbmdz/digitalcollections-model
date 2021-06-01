@@ -30,5 +30,4 @@ public class SearchPageResponseTest extends BaseJsonSerializationTest {
 
     checkSerializeDeserialize(resp, "serializedTestObjects/paging/SearchPageResponse.json");
   }
-
 }
