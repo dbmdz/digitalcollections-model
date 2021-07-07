@@ -24,7 +24,7 @@ One core statement (taken from [Music Cataloging at Yale](https://web.library.ya
 And the central object of interest of digital collections is the `DigitalObject` as the digital representation of an item
 and curated `Collections` as group of digital objects.
 
-![Class Diagram](./domain-model.png)
+![Domain Model](./domain-model.png)
 
 * For presenting digital collections online the library offers `Website` and `Webpage` classes.
 * For arranging and describing digital objects by topics the library offers `Topic` and `Subtopic` classes.
@@ -34,6 +34,12 @@ The following classes can be assigned to objects (where appropriate):
 
 * a freely definable `License`
 * a list of freely definable `Identifier`s, each of them identifying the object uniquely in an external source system, e.g. GND-ID ("gnd:104330171") or VIAF-ID ("viaf:96994450").
+
+## Class Diagram
+
+The classes are modelled after the business domain model. Common properties and characteristics are expressed through some inheritance (Entity, Identifiable).
+
+![Class Diagram](./ClassDiagram.jpg)
 
 ## Technical Model Classes
 
