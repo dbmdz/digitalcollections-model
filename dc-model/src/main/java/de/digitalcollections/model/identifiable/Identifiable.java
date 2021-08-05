@@ -1,5 +1,6 @@
 package de.digitalcollections.model.identifiable;
 
+import de.digitalcollections.model.alias.LocalizedUrlAliases;
 import de.digitalcollections.model.identifiable.resource.ImageFileResource;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.LocalizedText;
@@ -30,6 +31,7 @@ public class Identifiable {
   protected Set<Identifier> identifiers = new HashSet<>();
   protected LocalizedText label;
   protected LocalDateTime lastModified;
+  protected LocalizedUrlAliases localizedUrlAliases;
   protected ImageFileResource previewImage;
   protected RenderingHintsPreviewImage previewImageRenderingHints;
   protected IdentifiableType type;
@@ -53,6 +55,7 @@ public class Identifiable {
         && Objects.equals(identifiers, that.identifiers)
         && Objects.equals(label, that.label)
         && Objects.equals(lastModified, that.lastModified)
+        && Objects.equals(localizedUrlAliases, that.localizedUrlAliases)
         && Objects.equals(previewImage, that.previewImage)
         && Objects.equals(previewImageRenderingHints, that.previewImageRenderingHints)
         && type == that.type
@@ -91,6 +94,10 @@ public class Identifiable {
     return lastModified;
   }
 
+  public LocalizedUrlAliases getLocalizedUrlAliases() {
+    return localizedUrlAliases;
+  }
+
   public ImageFileResource getPreviewImage() {
     return previewImage;
   }
@@ -115,6 +122,7 @@ public class Identifiable {
         identifiers,
         label,
         lastModified,
+        localizedUrlAliases,
         previewImage,
         previewImageRenderingHints,
         type,
@@ -143,6 +151,10 @@ public class Identifiable {
 
   public void setLastModified(LocalDateTime lastModified) {
     this.lastModified = lastModified;
+  }
+
+  public void setLocalizedUrlAliases(LocalizedUrlAliases localizedUrlAliases) {
+    this.localizedUrlAliases = localizedUrlAliases;
   }
 
   public void setPreviewImage(ImageFileResource previewImage) {
