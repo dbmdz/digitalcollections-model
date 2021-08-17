@@ -16,7 +16,7 @@ public class UrlAlias {
   private EntityType targetType;
   private UUID targetUuid;
   private UUID uuid;
-  private UUID website;
+  private UUID websiteUuid;
 
   public UrlAlias() {}
 
@@ -37,7 +37,7 @@ public class UrlAlias {
         && Objects.equals(this.targetType, other.targetType)
         && Objects.equals(this.targetUuid, other.targetUuid)
         && Objects.equals(this.uuid, other.uuid)
-        && Objects.equals(this.website, other.website);
+        && Objects.equals(this.websiteUuid, other.websiteUuid);
   }
 
   public LocalDateTime getCreated() {
@@ -68,8 +68,8 @@ public class UrlAlias {
     return this.uuid;
   }
 
-  public UUID getWebsite() {
-    return this.website;
+  public UUID getWebsiteUuid() {
+    return this.websiteUuid;
   }
 
   @Override
@@ -83,7 +83,7 @@ public class UrlAlias {
         this.targetType,
         this.targetUuid,
         this.uuid,
-        this.website);
+        this.websiteUuid);
   }
 
   public boolean isMainAlias() {
@@ -122,7 +122,7 @@ public class UrlAlias {
     this.uuid = uuid;
   }
 
-  public void setWebsite(UUID website) {
-    this.website = website;
+  public void setWebsiteUuid(UUID websiteUuid) {
+    this.websiteUuid = websiteUuid;
   }
 }
