@@ -1,5 +1,6 @@
 package de.digitalcollections.model.alias;
 
+import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.entity.EntityType;
 import java.time.LocalDateTime;
 import java.util.Locale;
@@ -13,7 +14,8 @@ public class UrlAlias {
   private boolean mainAlias;
   private String slug;
   private Locale targetLanguage;
-  private EntityType targetType;
+  private IdentifiableType targetIdentifiableType;
+  private EntityType targetEntityType;
   private UUID targetUuid;
   private UUID uuid;
   private UUID websiteUuid;
@@ -34,7 +36,8 @@ public class UrlAlias {
         && this.mainAlias == other.mainAlias
         && Objects.equals(this.slug, other.slug)
         && Objects.equals(this.targetLanguage, other.targetLanguage)
-        && Objects.equals(this.targetType, other.targetType)
+        && Objects.equals(this.targetIdentifiableType, other.targetIdentifiableType)
+        && Objects.equals(this.targetEntityType, other.targetEntityType)
         && Objects.equals(this.targetUuid, other.targetUuid)
         && Objects.equals(this.uuid, other.uuid)
         && Objects.equals(this.websiteUuid, other.websiteUuid);
@@ -52,12 +55,16 @@ public class UrlAlias {
     return this.slug;
   }
 
-  public Locale getTargetLanguage() {
-    return this.targetLanguage;
+  public EntityType getTargetEntityType() {
+    return this.targetEntityType;
   }
 
-  public EntityType getTargetType() {
-    return this.targetType;
+  public IdentifiableType getTargetIdentifiableType() {
+    return this.targetIdentifiableType;
+  }
+
+  public Locale getTargetLanguage() {
+    return this.targetLanguage;
   }
 
   public UUID getTargetUuid() {
@@ -80,7 +87,8 @@ public class UrlAlias {
         this.mainAlias,
         this.slug,
         this.targetLanguage,
-        this.targetType,
+        this.targetIdentifiableType,
+        this.targetEntityType,
         this.targetUuid,
         this.uuid,
         this.websiteUuid);
@@ -106,12 +114,16 @@ public class UrlAlias {
     this.slug = slug;
   }
 
-  public void setTargetLanguage(Locale targetLanguage) {
-    this.targetLanguage = targetLanguage;
+  public void setTargetEntityType(EntityType targetEntityType) {
+    this.targetEntityType = targetEntityType;
   }
 
-  public void setTargetType(EntityType targetType) {
-    this.targetType = targetType;
+  public void setTargetIdentifiableType(IdentifiableType identifiableType) {
+    this.targetIdentifiableType = identifiableType;
+  }
+
+  public void setTargetLanguage(Locale targetLanguage) {
+    this.targetLanguage = targetLanguage;
   }
 
   public void setTargetUuid(UUID targetUuid) {
