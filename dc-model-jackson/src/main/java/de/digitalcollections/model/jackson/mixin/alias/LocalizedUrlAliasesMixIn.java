@@ -16,6 +16,12 @@ public interface LocalizedUrlAliasesMixIn {
   void add(UrlAlias... urlAlias);
 
   @JsonIgnore
+  boolean containsUrlAlias(UrlAlias urlAlias);
+
+  @JsonIgnore
+  List<UrlAlias> flatten();
+
+  @JsonIgnore
   List<Locale> getTargetLanguages();
 
   @JsonIgnore
