@@ -92,6 +92,7 @@ import de.digitalcollections.model.jackson.mixin.paging.SearchPageResponseMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.SortingMixIn;
 import de.digitalcollections.model.jackson.mixin.relation.PredicateMixIn;
 import de.digitalcollections.model.jackson.mixin.security.UserMixIn;
+import de.digitalcollections.model.jackson.mixin.semantic.HeadwordEntryMixIn;
 import de.digitalcollections.model.jackson.mixin.semantic.HeadwordMixIn;
 import de.digitalcollections.model.jackson.mixin.text.LocalizedStructuredContentMixIn;
 import de.digitalcollections.model.jackson.mixin.text.LocalizedTextMixIn;
@@ -130,6 +131,7 @@ import de.digitalcollections.model.paging.Sorting;
 import de.digitalcollections.model.relation.Predicate;
 import de.digitalcollections.model.security.User;
 import de.digitalcollections.model.semantic.Headword;
+import de.digitalcollections.model.semantic.HeadwordEntry;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.LocalizedText;
 import de.digitalcollections.model.text.StructuredContent;
@@ -212,6 +214,10 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(Manifestation.class, ManifestationMixIn.class);
     context.setMixInAnnotations(Work.class, WorkMixIn.class);
 
+    // semantic
+    context.setMixInAnnotations(Headword.class, HeadwordMixIn.class);
+    context.setMixInAnnotations(HeadwordEntry.class, HeadwordEntryMixIn.class);
+
     // other
     context.setMixInAnnotations(ApplicationFileResource.class, ApplicationFileResourceMixIn.class);
     context.setMixInAnnotations(Article.class, ArticleMixIn.class);
@@ -229,7 +235,6 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(FilterCriterion.class, FilterCriterionMixIn.class);
     context.setMixInAnnotations(Filtering.class, FilteringMixIn.class);
     context.setMixInAnnotations(Heading.class, HeadingMixIn.class);
-    context.setMixInAnnotations(Headword.class, HeadwordMixIn.class);
     context.setMixInAnnotations(Identifier.class, IdentifierMixIn.class);
     context.setMixInAnnotations(IdentifierType.class, IdentifierTypeMixIn.class);
     context.setMixInAnnotations(IFrame.class, IFrameMixIn.class);

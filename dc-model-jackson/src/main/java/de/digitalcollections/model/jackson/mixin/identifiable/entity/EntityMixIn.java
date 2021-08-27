@@ -19,6 +19,7 @@ import de.digitalcollections.model.identifiable.entity.work.Item;
 import de.digitalcollections.model.identifiable.entity.work.Manifestation;
 import de.digitalcollections.model.identifiable.entity.work.Work;
 import de.digitalcollections.model.jackson.mixin.identifiable.IdentifiableMixIn;
+import de.digitalcollections.model.semantic.HeadwordEntry;
 
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
@@ -37,6 +38,7 @@ import de.digitalcollections.model.jackson.mixin.identifiable.IdentifiableMixIn;
   @JsonSubTypes.Type(value = Expression.class, name = "EXPRESSION"),
   @JsonSubTypes.Type(value = Family.class, name = "FAMILY"),
   @JsonSubTypes.Type(value = GeoLocation.class, name = "GEOLOCATION"),
+  @JsonSubTypes.Type(value = HeadwordEntry.class, name = "HEADWORD_ENTRY"),
   @JsonSubTypes.Type(value = Item.class, name = "ITEM"),
   @JsonSubTypes.Type(value = Manifestation.class, name = "MANIFESTATION"),
   @JsonSubTypes.Type(value = Person.class, name = "PERSON"),

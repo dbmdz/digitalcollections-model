@@ -9,9 +9,15 @@ import java.util.UUID;
  *
  * <p>"A headword, head word, (lemma), or sometimes catchword, is the word under which a set of
  * related dictionary or encyclopaedia entries appears. The headword is used to locate the entry,
- * and dictates its alphabetical position."</p>
- * 
- * <p>(for difference to "lemma" see http://www.differencebetween.net/language/difference-between-headword-and-lemma/)</p>
+ * and dictates its alphabetical position."
+ *
+ * <p>(for difference to "lemma" see
+ * http://www.differencebetween.net/language/difference-between-headword-and-lemma/)
+ *
+ * <p>As it is often interchangeable, we decided for practial reasons to use this class "Headword"
+ * also for a lemma.
+ *
+ * @see HeadwordEntry for the textual body to a headword/lemma.
  */
 public class Headword {
 
