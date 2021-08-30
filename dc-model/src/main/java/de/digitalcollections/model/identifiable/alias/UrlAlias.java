@@ -1,4 +1,4 @@
-package de.digitalcollections.model.alias;
+package de.digitalcollections.model.identifiable.alias;
 
 import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.entity.EntityType;

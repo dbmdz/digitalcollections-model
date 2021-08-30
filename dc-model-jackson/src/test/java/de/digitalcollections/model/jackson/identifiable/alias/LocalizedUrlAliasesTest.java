@@ -1,6 +1,6 @@
-package de.digitalcollections.model.jackson.alias;
+package de.digitalcollections.model.jackson.identifiable.alias;
 
-import de.digitalcollections.model.alias.LocalizedUrlAliases;
+import de.digitalcollections.model.identifiable.alias.LocalizedUrlAliases;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import org.junit.jupiter.api.Test;
 

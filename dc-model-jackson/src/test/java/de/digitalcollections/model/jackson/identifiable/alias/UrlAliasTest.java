@@ -1,7 +1,7 @@
-package de.digitalcollections.model.jackson.alias;
+package de.digitalcollections.model.jackson.identifiable.alias;
 
-import de.digitalcollections.model.alias.UrlAlias;
 import de.digitalcollections.model.identifiable.IdentifiableType;
+import de.digitalcollections.model.identifiable.alias.UrlAlias;
 import de.digitalcollections.model.identifiable.entity.EntityType;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import java.time.LocalDateTime;

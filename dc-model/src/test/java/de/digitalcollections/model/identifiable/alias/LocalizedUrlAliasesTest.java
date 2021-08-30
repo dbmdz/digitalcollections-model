@@ -1,4 +1,4 @@
-package de.digitalcollections.model.alias;
+package de.digitalcollections.model.identifiable.alias;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.entry;

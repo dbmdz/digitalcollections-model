@@ -1,4 +1,4 @@
-package de.digitalcollections.model.alias;
+package de.digitalcollections.model.identifiable.alias;
 
 import java.util.ArrayList;
 import java.util.HashMap;
