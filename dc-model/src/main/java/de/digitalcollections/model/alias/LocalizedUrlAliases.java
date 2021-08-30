@@ -8,6 +8,11 @@ import java.util.stream.Collectors;
 
 public class LocalizedUrlAliases extends HashMap<Locale, List<UrlAlias>> {
 
+  /** Default constructor, is needed by Jackson */
+  public LocalizedUrlAliases() {
+    super();
+  }
+
   /**
    * Constructor, can be called without parameters as well, i.e. {@code new LocalizedUrlAliases()}
    *
