@@ -1,7 +1,6 @@
-package de.digitalcollections.model.semantic;
+package de.digitalcollections.model.identifiable.entity;
 
-import de.digitalcollections.model.identifiable.entity.Article;
-import de.digitalcollections.model.identifiable.entity.EntityType;
+import de.digitalcollections.model.semantic.Headword;
 
 /**
  * The textual body to a specified headword (encyclopedia) or lemma (dictionary).

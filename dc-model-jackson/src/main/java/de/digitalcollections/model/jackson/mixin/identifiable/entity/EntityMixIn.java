@@ -7,6 +7,7 @@ import de.digitalcollections.model.identifiable.entity.Article;
 import de.digitalcollections.model.identifiable.entity.Collection;
 import de.digitalcollections.model.identifiable.entity.DigitalObject;
 import de.digitalcollections.model.identifiable.entity.Entity;
+import de.digitalcollections.model.identifiable.entity.HeadwordEntry;
 import de.digitalcollections.model.identifiable.entity.Project;
 import de.digitalcollections.model.identifiable.entity.Topic;
 import de.digitalcollections.model.identifiable.entity.Website;
@@ -19,7 +20,6 @@ import de.digitalcollections.model.identifiable.entity.work.Item;
 import de.digitalcollections.model.identifiable.entity.work.Manifestation;
 import de.digitalcollections.model.identifiable.entity.work.Work;
 import de.digitalcollections.model.jackson.mixin.identifiable.IdentifiableMixIn;
-import de.digitalcollections.model.semantic.HeadwordEntry;
 
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,

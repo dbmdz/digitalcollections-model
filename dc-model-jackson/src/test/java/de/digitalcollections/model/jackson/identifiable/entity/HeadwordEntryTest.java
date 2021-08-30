@@ -1,8 +1,8 @@
-package de.digitalcollections.model.jackson.semantic;
+package de.digitalcollections.model.jackson.identifiable.entity;
 
+import de.digitalcollections.model.identifiable.entity.HeadwordEntry;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.semantic.Headword;
-import de.digitalcollections.model.semantic.HeadwordEntry;
 import java.net.MalformedURLException;
 import java.util.Locale;
 import org.junit.jupiter.api.Test;
@@ -17,6 +17,7 @@ public class HeadwordEntryTest extends BaseJsonSerializationTest {
   @Test
   public void testSerializeDeserialize() throws Exception {
     HeadwordEntry headwordEntry = createObject();
-    checkSerializeDeserialize(headwordEntry, "serializedTestObjects/semantic/HeadwordEntry.json");
+    checkSerializeDeserialize(
+        headwordEntry, "serializedTestObjects/identifiable/entity/HeadwordEntry.json");
   }
 }
