@@ -1,6 +1,6 @@
 package de.digitalcollections.model.identifiable;
 
-import de.digitalcollections.model.alias.LocalizedUrlAliases;
+import de.digitalcollections.model.identifiable.alias.LocalizedUrlAliases;
 import de.digitalcollections.model.identifiable.resource.ImageFileResource;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.LocalizedText;
