@@ -30,6 +30,6 @@ public class UrlAliasTest extends BaseJsonSerializationTest {
   @Test
   public void testSerializeDeserialize() throws Exception {
     UrlAlias urlAlias = createObject();
-    checkSerializeDeserialize(urlAlias, "serializedTestObjects/alias/UrlAlias.json");
+    checkSerializeDeserialize(urlAlias, "serializedTestObjects/identifiable/alias/UrlAlias.json");
   }
 }

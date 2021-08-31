@@ -15,6 +15,6 @@ public class LocalizedUrlAliasesTest extends BaseJsonSerializationTest {
   public void testSerializeDeserialize() throws Exception {
     LocalizedUrlAliases localizedUrlAliases = createObject();
     checkSerializeDeserialize(
-        localizedUrlAliases, "serializedTestObjects/alias/LocalizedUrlAliases.json");
+        localizedUrlAliases, "serializedTestObjects/identifiable/alias/LocalizedUrlAliases.json");
   }
 }
