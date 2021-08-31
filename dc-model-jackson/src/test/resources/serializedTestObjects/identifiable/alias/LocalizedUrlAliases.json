@@ -2,7 +2,7 @@
   "de" : [ {
     "created" : "2021-01-01T00:00:00",
     "lastPublished" : "2021-12-24T12:00:00",
-    "mainAlias" : true,
+    "primary" : true,
     "slug" : "foobar",
     "targetLanguage" : "de",
     "targetIdentifiableType" : "ENTITY",

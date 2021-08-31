@@ -11,7 +11,7 @@ public class UrlAlias {
 
   private LocalDateTime created;
   private LocalDateTime lastPublished;
-  private boolean mainAlias;
+  private boolean primary;
   private String slug;
   private Locale targetLanguage;
   private IdentifiableType targetIdentifiableType;
@@ -33,7 +33,7 @@ public class UrlAlias {
     UrlAlias other = (UrlAlias) obj;
     return Objects.equals(this.created, other.created)
         && Objects.equals(this.lastPublished, other.lastPublished)
-        && this.mainAlias == other.mainAlias
+        && this.primary == other.primary
         && Objects.equals(this.slug, other.slug)
         && Objects.equals(this.targetLanguage, other.targetLanguage)
         && Objects.equals(this.targetIdentifiableType, other.targetIdentifiableType)
@@ -84,7 +84,7 @@ public class UrlAlias {
     return Objects.hash(
         this.created,
         this.lastPublished,
-        this.mainAlias,
+        this.primary,
         this.slug,
         this.targetLanguage,
         this.targetIdentifiableType,
@@ -94,8 +94,8 @@ public class UrlAlias {
         this.websiteUuid);
   }
 
-  public boolean isMainAlias() {
-    return this.mainAlias;
+  public boolean isPrimary() {
+    return this.primary;
   }
 
   public void setCreated(LocalDateTime created) {
@@ -106,8 +106,8 @@ public class UrlAlias {
     this.lastPublished = lastPublished;
   }
 
-  public void setMainAlias(boolean mainAlias) {
-    this.mainAlias = mainAlias;
+  public void setPrimary(boolean primary) {
+    this.primary = primary;
   }
 
   public void setSlug(String slug) {
