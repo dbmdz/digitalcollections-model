@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.entry;
 
 import de.digitalcollections.model.identifiable.IdentifiableType;
+import de.digitalcollections.model.identifiable.entity.Website;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Locale;
@@ -55,7 +56,9 @@ public class LocalizedUrlAliasesTest {
     urlAlias.setTargetLanguage(locale == null ? Locale.GERMAN : locale);
     urlAlias.setTargetUuid(UUID.randomUUID());
     urlAlias.setUuid(UUID.randomUUID());
-    urlAlias.setWebsiteUuid(UUID.randomUUID());
+    Website website = new Website();
+    website.setUuid(UUID.randomUUID());
+    urlAlias.setWebsite(website);
     return urlAlias;
   }
 }

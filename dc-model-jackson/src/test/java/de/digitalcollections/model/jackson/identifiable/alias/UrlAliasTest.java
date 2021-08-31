@@ -3,6 +3,7 @@ package de.digitalcollections.model.jackson.identifiable.alias;
 import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.alias.UrlAlias;
 import de.digitalcollections.model.identifiable.entity.EntityType;
+import de.digitalcollections.model.identifiable.entity.Website;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -23,7 +24,9 @@ public class UrlAliasTest extends BaseJsonSerializationTest {
     urlAlias.setTargetLanguage(Locale.GERMAN);
     urlAlias.setTargetUuid(UUID.fromString("c31593a4-9620-484b-a4f5-4112731d953b"));
     urlAlias.setUuid(UUID.fromString("d1dfbfbf-364e-4983-9d15-c33549145928"));
-    urlAlias.setWebsiteUuid(UUID.fromString("9b676195-f505-400c-acb2-b7aabb7c62f7"));
+    Website website = new Website();
+    website.setUuid(UUID.fromString("9b676195-f505-400c-acb2-b7aabb7c62f7"));
+    urlAlias.setWebsite(website);
     return urlAlias;
   }
 

@@ -2,6 +2,7 @@ package de.digitalcollections.model.identifiable.alias;
 
 import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.entity.EntityType;
+import de.digitalcollections.model.identifiable.entity.Website;
 import java.time.LocalDateTime;
 import java.util.Locale;
 import java.util.Objects;
@@ -18,7 +19,7 @@ public class UrlAlias {
   private EntityType targetEntityType;
   private UUID targetUuid;
   private UUID uuid;
-  private UUID websiteUuid;
+  private Website website;
 
   public UrlAlias() {}
 
@@ -40,7 +41,9 @@ public class UrlAlias {
         && Objects.equals(this.targetEntityType, other.targetEntityType)
         && Objects.equals(this.targetUuid, other.targetUuid)
         && Objects.equals(this.uuid, other.uuid)
-        && Objects.equals(this.websiteUuid, other.websiteUuid);
+        && Objects.equals(
+            this.website != null ? this.website.getUuid() : null,
+            other.website != null ? other.website.getUuid() : null);
   }
 
   public LocalDateTime getCreated() {
@@ -75,8 +78,8 @@ public class UrlAlias {
     return this.uuid;
   }
 
-  public UUID getWebsiteUuid() {
-    return this.websiteUuid;
+  public Website getWebsite() {
+    return this.website;
   }
 
   @Override
@@ -91,7 +94,7 @@ public class UrlAlias {
         this.targetEntityType,
         this.targetUuid,
         this.uuid,
-        this.websiteUuid);
+        this.website);
   }
 
   public boolean isPrimary() {
@@ -134,7 +137,7 @@ public class UrlAlias {
     this.uuid = uuid;
   }
 
-  public void setWebsiteUuid(UUID websiteUuid) {
-    this.websiteUuid = websiteUuid;
+  public void setWebsite(Website website) {
+    this.website = website;
   }
 }
