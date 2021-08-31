@@ -16,7 +16,7 @@ public class UrlAliasTest extends BaseJsonSerializationTest {
     UrlAlias urlAlias = new UrlAlias();
     urlAlias.setCreated(LocalDateTime.of(2021, Month.JANUARY, 1, 0, 0, 0));
     urlAlias.setLastPublished(LocalDateTime.of(2021, Month.DECEMBER, 24, 12, 0, 0));
-    urlAlias.setMainAlias(true);
+    urlAlias.setPrimary(true);
     urlAlias.setSlug("foobar");
     urlAlias.setTargetEntityType(EntityType.COLLECTION);
     urlAlias.setTargetIdentifiableType(IdentifiableType.ENTITY);

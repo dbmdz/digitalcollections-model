@@ -16,6 +16,8 @@ import de.digitalcollections.model.identifiable.IdentifierType;
 import de.digitalcollections.model.identifiable.Node;
 import de.digitalcollections.model.identifiable.agent.FamilyName;
 import de.digitalcollections.model.identifiable.agent.GivenName;
+import de.digitalcollections.model.identifiable.alias.LocalizedUrlAliases;
+import de.digitalcollections.model.identifiable.alias.UrlAlias;
 import de.digitalcollections.model.identifiable.entity.Article;
 import de.digitalcollections.model.identifiable.entity.Collection;
 import de.digitalcollections.model.identifiable.entity.DigitalObject;
@@ -50,6 +52,8 @@ import de.digitalcollections.model.jackson.mixin.identifiable.IdentifierTypeMixI
 import de.digitalcollections.model.jackson.mixin.identifiable.NodeMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.agent.FamilyNameMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.agent.GivenNameMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.alias.LocalizedUrlAliasesMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.alias.UrlAliasMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.ArticleMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.CollectionMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.DigitalObjectMixIn;
@@ -230,6 +234,7 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(
         LocalizedStructuredContent.class, LocalizedStructuredContentMixIn.class);
     context.setMixInAnnotations(LocalizedText.class, LocalizedTextMixIn.class);
+    context.setMixInAnnotations(LocalizedUrlAliases.class, LocalizedUrlAliasesMixIn.class);
     context.setMixInAnnotations(Mark.class, MarkMixIn.class);
     context.setMixInAnnotations(Node.class, NodeMixIn.class);
     context.setMixInAnnotations(Order.class, OrderMixIn.class);
@@ -255,6 +260,7 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(TextFileResource.class, TextFileResourceMixIn.class);
     context.setMixInAnnotations(TimeValue.class, TimeValueMixIn.class);
     context.setMixInAnnotations(Topic.class, TopicMixIn.class);
+    context.setMixInAnnotations(UrlAlias.class, UrlAliasMixIn.class);
     context.setMixInAnnotations(User.class, UserMixIn.class);
     context.setMixInAnnotations(Version.class, VersionMixIn.class);
     context.setMixInAnnotations(Video.class, VideoMixIn.class);
