@@ -17,5 +17,10 @@
     },
     "type" : "RESOURCE"
   } ],
+  "pageRequest" : {
+    "pageNumber" : 3,
+    "pageSize" : 15,
+    "query" : "Label"
+  },
   "totalElements" : 2
 }
