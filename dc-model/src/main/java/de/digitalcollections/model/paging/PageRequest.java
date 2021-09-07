@@ -1,15 +1,10 @@
 package de.digitalcollections.model.paging;
 
-import de.digitalcollections.model.filter.FilterCriterion;
 import de.digitalcollections.model.filter.Filtering;
-import java.io.Serializable;
-import java.util.List;
+import de.digitalcollections.model.list.ListRequest;
 
 /**
- * Basic Java Bean implementation of {@code PageRequest}. See Spring Data Commons, but more flat
- * design and independent of Spring libraries.
- *
- * <p>Container for paging, sorting and filtering params:
+ * Container for paging, sorting and filtering params:
  *
  * <ul>
  *   <li>pageNumber: which page to be returned
@@ -18,16 +13,14 @@ import java.util.List;
  *   <li>filtering: container for filter criterias of result list
  * </ul>
  */
-public class PageRequest implements Serializable {
+public class PageRequest extends ListRequest {
 
   public static PageRequestBuilder defaultBuilder() {
     return new PageRequestBuilder();
   }
 
-  private Filtering filtering;
   private int pageNumber;
   private int pageSize;
-  private Sorting sort;
 
   public PageRequest() {}
 
@@ -43,30 +36,31 @@ public class PageRequest implements Serializable {
   }
 
   /**
-   * Creates a new {@link PageRequest} with sort parameters applied.
+   * Creates a new {@link PageRequest} with sorting parameters applied.
    *
    * @param pageNumber zero-based page index.
    * @param pageSize the size of the page to be returned.
    * @param direction the direction of the {@link Sorting} to be specified, can be {@literal null}.
-   * @param properties the properties to sort by, must not be {@literal null} or empty.
+   * @param properties the properties to sorting by, must not be {@literal null} or empty.
    */
   public PageRequest(int pageNumber, int pageSize, Direction direction, String... properties) {
     this(pageNumber, pageSize, new Sorting(direction, properties), null);
   }
 
-  public PageRequest(int pageNumber, int pageSize, Sorting sort) {
-    this(pageNumber, pageSize, sort, null);
+  public PageRequest(int pageNumber, int pageSize, Sorting sorting) {
+    this(pageNumber, pageSize, sorting, null);
   }
 
   /**
-   * Creates a new {@link PageRequest} with sort parameters applied.
+   * Creates a new {@link PageRequest} with sorting parameters applied.
    *
    * @param pageNumber zero-based page index, must not be less than zero.
    * @param pageSize the size of the page to be returned, must not be less than one.
-   * @param sort can be {@literal null}
+   * @param sorting can be {@literal null}
    * @param filtering contains list of filter criterias
    */
-  public PageRequest(int pageNumber, int pageSize, Sorting sort, Filtering filtering) {
+  public PageRequest(int pageNumber, int pageSize, Sorting sorting, Filtering filtering) {
+    super(sorting, filtering);
     if (pageNumber < 0) {
       throw new IllegalArgumentException("Page index must not be less than zero!");
     }
@@ -74,33 +68,12 @@ public class PageRequest implements Serializable {
     if (pageSize < 1) {
       throw new IllegalArgumentException("Page size must not be less than one!");
     }
-
-    this.filtering = filtering;
     this.pageNumber = pageNumber;
     this.pageSize = pageSize;
-    this.sort = sort;
-  }
-
-  /**
-   * Add all filter criteria of given filtering to existing filtering. Initialise if no existing
-   * filtering.
-   *
-   * @param filtering new filtering criteria to add
-   * @return complete filtering
-   */
-  public List<FilterCriterion> add(Filtering filtering) {
-    Filtering existingFiltering = getFiltering();
-    if (existingFiltering == null || existingFiltering.getFilterCriteria().isEmpty()) {
-      setFiltering(filtering);
-    } else {
-      existingFiltering.add(filtering);
-    }
-    return getFiltering().getFilterCriteria();
   }
 
   @Override
   public boolean equals(final Object obj) {
-
     if (this == obj) {
       return true;
     }
@@ -113,7 +86,8 @@ public class PageRequest implements Serializable {
 
     boolean filterEqual =
         (this.filtering == null ? that.filtering == null : this.filtering.equals(that.filtering));
-    boolean sortEqual = (this.sort == null ? that.sort == null : this.sort.equals(that.sort));
+    boolean sortEqual =
+        (this.sorting == null ? that.sorting == null : this.sorting.equals(that.sorting));
     boolean othersEqual = (this.pageNumber == that.pageNumber && this.pageSize == that.pageSize);
 
     return filterEqual && othersEqual && sortEqual;
@@ -122,11 +96,6 @@ public class PageRequest implements Serializable {
   /** @return the {@link PageRequest} requesting the first page */
   public PageRequest first() {
     return new PageRequest(0, getPageSize(), getSorting(), getFiltering());
-  }
-
-  /** @return the filtering parameters */
-  public Filtering getFiltering() {
-    return filtering;
   }
 
   /** @return the offset to be taken according to the underlying page and page size. */
@@ -144,11 +113,6 @@ public class PageRequest implements Serializable {
     return pageSize;
   }
 
-  /** @return the sorting parameters */
-  public Sorting getSorting() {
-    return sort;
-  }
-
   /**
    * Returns whether there's a previous {@link PageRequest} we can access from the current one. Will
    * return {@literal false} in case the current {@link PageRequest} already refers to the first
@@ -160,11 +124,6 @@ public class PageRequest implements Serializable {
     return pageNumber > 0;
   }
 
-  /** @return whether the page request has defined any sorting. */
-  public boolean hasSorting() {
-    return !(sort == null || sort.getOrders() == null || sort.getOrders().isEmpty());
-  }
-
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -172,7 +131,9 @@ public class PageRequest implements Serializable {
     result = prime * result + pageNumber;
     result = prime * result + pageSize;
 
-    return 31 * result + (null == sort ? 0 : sort.hashCode());
+    return 31 * result
+        + (null == sorting ? 0 : sorting.hashCode())
+        + (null == filtering ? 0 : filtering.hashCode());
   }
 
   /** @return the {@link PageRequest} requesting the next page */
@@ -199,11 +160,6 @@ public class PageRequest implements Serializable {
     return hasPrevious() ? previous() : first();
   }
 
-  /** @param filtering the filtering criterias */
-  public void setFiltering(Filtering filtering) {
-    this.filtering = filtering;
-  }
-
   /** @param pageNumber the page to be returned */
   public void setPageNumber(int pageNumber) {
     this.pageNumber = pageNumber;
@@ -214,18 +170,13 @@ public class PageRequest implements Serializable {
     this.pageSize = pageSize;
   }
 
-  /** @param sorting the sorting parameters */
-  public void setSorting(Sorting sorting) {
-    this.sort = sorting;
-  }
-
   @Override
   public String toString() {
     return String.format(
-        "Page request [number: %d, size %d, sort: %s, filtering: %s]",
+        "Page request [number: %d, size %d, sorting: %s, filtering: %s]",
         getPageNumber(),
         getPageSize(),
-        sort == null ? null : sort.toString(),
+        sorting == null ? null : sorting.toString(),
         filtering == null ? null : filtering.toString());
   }
 }

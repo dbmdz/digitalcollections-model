@@ -1,8 +1,6 @@
 package de.digitalcollections.model.paging;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
+import de.digitalcollections.model.list.ListResponse;
 import java.util.List;
 
 /**
@@ -11,19 +9,17 @@ import java.util.List;
  *
  * @param <T> object type listed in page
  */
-public class PageResponse<T> implements Iterable<T> {
+public class PageResponse<T> extends ListResponse<T> {
 
-  private List<T> content = new ArrayList<>();
-  private PageRequest pageRequest;
-  private long total;
+  protected PageRequest pageRequest;
 
   public PageResponse() {
+    super();
     this.pageRequest = null;
-    this.total = 0;
   }
 
   /**
-   * Constructor of {@code PageResponseImpl} with the given content and the given governing {@link
+   * Constructor of {@code PageResponse} with the given content and the given governing {@link
    * PageRequest}.
    *
    * @param content the content of this page, must not be {@literal null}.
@@ -33,9 +29,8 @@ public class PageResponse<T> implements Iterable<T> {
    *     place to mitigate inconsistencies
    */
   public PageResponse(List<T> content, PageRequest pageRequest, long total) {
-    assert content != null : "content must not be null!";
+    super(content, null);
 
-    this.content.addAll(content);
     this.pageRequest = pageRequest;
     this.total =
         !content.isEmpty()
@@ -57,11 +52,9 @@ public class PageResponse<T> implements Iterable<T> {
 
   @Override
   public boolean equals(Object obj) {
-
     if (this == obj) {
       return true;
     }
-
     if (!(obj instanceof PageResponse<?>)) {
       return false;
     }
@@ -75,11 +68,6 @@ public class PageResponse<T> implements Iterable<T> {
             : this.pageRequest.equals(that.pageRequest);
 
     return (this.total == that.total) && contentEqual && pageRequestEqual;
-  }
-
-  /** @return the page content/objects as {@link List}. */
-  public List<T> getContent() {
-    return Collections.unmodifiableList(content);
   }
 
   /**
@@ -114,20 +102,6 @@ public class PageResponse<T> implements Iterable<T> {
     return pageRequest == null ? 0 : pageRequest.getPageSize();
   }
 
-  /** @return the sorting parameters for the {@link PageResponse}. */
-  public Sorting getSorting() {
-    return pageRequest == null ? null : pageRequest.getSorting();
-  }
-
-  /**
-   * Returns the total amount of elements.
-   *
-   * @return the total amount of elements
-   */
-  public long getTotalElements() {
-    return total;
-  }
-
   /**
    * Returns the number of total pages.
    *
@@ -135,15 +109,6 @@ public class PageResponse<T> implements Iterable<T> {
    */
   public int getTotalPages() {
     return getSize() == 0 ? 1 : (int) Math.ceil((double) total / (double) getSize());
-  }
-
-  /**
-   * Returns whether the {@link PageResponse} has content at all.
-   *
-   * @return whether the {@link PageResponse} has content at all.
-   */
-  public boolean hasContent() {
-    return !content.isEmpty();
   }
 
   /**
@@ -194,11 +159,6 @@ public class PageResponse<T> implements Iterable<T> {
     return !hasNext();
   }
 
-  @Override
-  public Iterator<T> iterator() {
-    return content.iterator();
-  }
-
   /**
    * Returns the {@link PageRequest} to request the next {@link PageResponse}. Can be {@literal
    * null} in case the current {@link PageResponse} is already the last one. Clients should check
@@ -226,21 +186,8 @@ public class PageResponse<T> implements Iterable<T> {
     return null;
   }
 
-  /**
-   * Allows to set the content (needed in case of content has to be converted/casted)
-   *
-   * @param content list of content/objects of this page
-   */
-  public void setContent(List<T> content) {
-    this.content = content;
-  }
-
   public void setPageRequest(PageRequest pageRequest) {
     this.pageRequest = pageRequest;
-  }
-
-  public void setTotalElements(long totalElements) {
-    this.total = totalElements;
   }
 
   @Override

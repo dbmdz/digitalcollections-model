@@ -1,0 +1,19 @@
+{
+  "filtering" : {
+    "filterCriteria" : [ {
+      "fieldName" : "label",
+      "operation" : "STARTS_WITH",
+      "value" : "A"
+    } ]
+  },
+  "sorting" : {
+    "orders" : [ {
+      "direction" : "ASC",
+      "ignoreCase" : false,
+      "nullHandling" : "NATIVE",
+      "property" : "label",
+      "ascending" : true,
+      "descending" : false
+    } ]
+  }
+}
