@@ -15,6 +15,7 @@ import de.digitalcollections.model.identifiable.entity.Article;
 import de.digitalcollections.model.identifiable.entity.Collection;
 import de.digitalcollections.model.identifiable.entity.DigitalObject;
 import de.digitalcollections.model.identifiable.entity.Entity;
+import de.digitalcollections.model.identifiable.entity.HeadwordEntry;
 import de.digitalcollections.model.identifiable.entity.Project;
 import de.digitalcollections.model.identifiable.entity.Topic;
 import de.digitalcollections.model.identifiable.entity.Website;
@@ -30,6 +31,7 @@ import de.digitalcollections.model.identifiable.web.Webpage;
 import de.digitalcollections.model.paging.PageResponse;
 import de.digitalcollections.model.paging.Sorting;
 import de.digitalcollections.model.security.User;
+import de.digitalcollections.model.semantic.Headword;
 import de.digitalcollections.model.view.RenderingTemplate;
 import java.util.List;
 
@@ -49,6 +51,8 @@ public abstract class PageResponseMixIn<T> extends PageResponse<T> {
     @Type(value = FileResource.class, name = "FILE_RESOURCE"),
     @Type(value = GeoLocation.class, name = "GEO_LOCATION"),
     @Type(value = GivenName.class, name = "GIVEN_NAME"),
+    @Type(value = Headword.class, name = "HEADWORD"),
+    @Type(value = HeadwordEntry.class, name = "HEADWORD_ENTRY"),
     @Type(value = HumanSettlement.class, name = "HUMAN_SETTLEMENT"),
     @Type(value = Identifiable.class, name = "IDENTIFIABLE"),
     @Type(value = IdentifierType.class, name = "IDENTIFIER_TYPE"),
