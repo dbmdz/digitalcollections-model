@@ -79,6 +79,16 @@ public class FilterCriterion<T extends Object> {
     }
   }
 
+  /**
+   * Constructor for no value Filter Criteria.
+   *
+   * @param fieldName target field the criteria should be used for
+   * @param operation operation of criteria
+   */
+  public FilterCriterion(String fieldName, FilterOperation operation) {
+    this(fieldName, operation, null, null, null, null);
+  }
+
   /** @return field name being target of filter operation */
   public String getFieldName() {
     return fieldName;

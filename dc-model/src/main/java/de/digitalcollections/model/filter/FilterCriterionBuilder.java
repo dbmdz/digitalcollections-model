@@ -119,7 +119,12 @@ public class FilterCriterionBuilder {
    * @return builder instance for fluent usage
    */
   public FilteringBuilder isEquals(Object value) {
-    FilterCriterion filterCriterion = new FilterCriterion(fieldName, FilterOperation.EQUALS, value);
+    FilterCriterion filterCriterion;
+    if (value != null) {
+      filterCriterion = new FilterCriterion(fieldName, FilterOperation.EQUALS, value);
+    } else {
+      filterCriterion = new FilterCriterion(fieldName, FilterOperation.NOT_SET);
+    }
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
   }
@@ -228,8 +233,12 @@ public class FilterCriterionBuilder {
    * @return builder instance for fluent usage
    */
   public FilteringBuilder notEquals(Object value) {
-    FilterCriterion filterCriterion =
-        new FilterCriterion(fieldName, FilterOperation.NOT_EQUALS, value);
+    FilterCriterion filterCriterion;
+    if (value != null) {
+      filterCriterion = new FilterCriterion(fieldName, FilterOperation.NOT_EQUALS, value);
+    } else {
+      filterCriterion = new FilterCriterion(fieldName, FilterOperation.SET);
+    }
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
   }
