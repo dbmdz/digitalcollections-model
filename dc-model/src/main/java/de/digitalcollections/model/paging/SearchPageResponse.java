@@ -14,12 +14,16 @@ public class SearchPageResponse<T> extends PageResponse<T> {
     super(content, searchPageRequest, total);
   }
 
-  @Deprecated(since = "9.1.0", forRemoval = true)
   /** @deprecated use ((SearchPageRequest) getPageRequest()).getQuery() instead. */
+  @Deprecated(since = "9.1.0", forRemoval = true)
   public String getQuery() {
     return query;
   }
 
+  /**
+   * @param query query term
+   * @deprecated use ((SearchPageRequest) getPageRequest()).setQuery() instead.
+   */
   @Deprecated(since = "9.1.0", forRemoval = true)
   public void setQuery(String query) {
     this.query = query;
