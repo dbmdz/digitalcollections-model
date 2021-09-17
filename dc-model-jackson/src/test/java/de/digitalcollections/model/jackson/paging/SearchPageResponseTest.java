@@ -4,6 +4,7 @@ import de.digitalcollections.model.identifiable.Identifiable;
 import de.digitalcollections.model.identifiable.entity.DigitalObject;
 import de.digitalcollections.model.identifiable.web.Webpage;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
+import de.digitalcollections.model.paging.SearchPageRequest;
 import de.digitalcollections.model.paging.SearchPageResponse;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,9 @@ public class SearchPageResponseTest extends BaseJsonSerializationTest {
     webpage.setLabel("Webpage-Label");
     content.add(webpage);
 
+    SearchPageRequest pageRequest = new SearchPageRequest("Label", 3, 15, null);
     SearchPageResponse<Identifiable> resp = new SearchPageResponse<>();
+    resp.setPageRequest(pageRequest);
     resp.setContent(content);
     resp.setTotalElements(2);
 

@@ -82,6 +82,8 @@ import de.digitalcollections.model.jackson.mixin.identifiable.resource.VideoFile
 import de.digitalcollections.model.jackson.mixin.identifiable.versioning.VersionMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.web.WebpageMixIn;
 import de.digitalcollections.model.jackson.mixin.legal.LicenseMixIn;
+import de.digitalcollections.model.jackson.mixin.list.ListRequestMixIn;
+import de.digitalcollections.model.jackson.mixin.list.ListResponseMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.OrderMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.PageRequestMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.PageResponseMixIn;
@@ -116,6 +118,8 @@ import de.digitalcollections.model.jackson.mixin.view.RenderingHintsMixIn;
 import de.digitalcollections.model.jackson.mixin.view.RenderingHintsPreviewImageMixIn;
 import de.digitalcollections.model.jackson.mixin.view.RenderingTemplateMixIn;
 import de.digitalcollections.model.legal.License;
+import de.digitalcollections.model.list.ListRequest;
+import de.digitalcollections.model.list.ListResponse;
 import de.digitalcollections.model.paging.Order;
 import de.digitalcollections.model.paging.PageRequest;
 import de.digitalcollections.model.paging.PageResponse;
@@ -231,6 +235,8 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(License.class, LicenseMixIn.class);
     context.setMixInAnnotations(LinkedDataFileResource.class, LinkedDataFileResourceMixIn.class);
     context.setMixInAnnotations(ListItem.class, ListItemMixIn.class);
+    context.setMixInAnnotations(ListRequest.class, ListRequestMixIn.class);
+    context.setMixInAnnotations(ListResponse.class, ListResponseMixIn.class);
     context.setMixInAnnotations(
         LocalizedStructuredContent.class, LocalizedStructuredContentMixIn.class);
     context.setMixInAnnotations(LocalizedText.class, LocalizedTextMixIn.class);

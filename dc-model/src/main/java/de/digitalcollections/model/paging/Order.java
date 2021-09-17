@@ -19,7 +19,7 @@ public class Order {
 
   private Direction direction;
   private boolean ignoreCase;
-  private NullHandling nullHandling;
+  private NullHandling nullHandling = NullHandling.NATIVE;
   private String property;
   private String subProperty = null;
 
@@ -29,7 +29,7 @@ public class Order {
       Direction direction, boolean ignoreCase, NullHandling nullHandling, String property) {
     this.direction = direction;
     this.ignoreCase = ignoreCase;
-    this.nullHandling = nullHandling;
+    this.nullHandling = nullHandling == null ? NullHandling.NATIVE : nullHandling;
     this.property = property;
   }
 
