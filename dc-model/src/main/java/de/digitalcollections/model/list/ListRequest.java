@@ -3,7 +3,6 @@ package de.digitalcollections.model.list;
 import de.digitalcollections.model.filter.FilterCriterion;
 import de.digitalcollections.model.filter.Filtering;
 import de.digitalcollections.model.paging.Direction;
-import de.digitalcollections.model.paging.PageRequest;
 import de.digitalcollections.model.paging.Sorting;
 import java.io.Serializable;
 import java.util.List;
@@ -24,7 +23,7 @@ public class ListRequest implements Serializable {
   public ListRequest() {}
 
   /**
-   * Creates a new {@link PageRequest} with sorting parameters applied.
+   * Creates a new {@link ListRequest} with sorting parameters applied.
    *
    * @param direction the direction of the {@link Sorting} to be specified, can be {@literal null}.
    * @param properties the properties to sorting by, must not be {@literal null} or empty.
@@ -38,7 +37,7 @@ public class ListRequest implements Serializable {
   }
 
   /**
-   * Creates a new {@link PageRequest} with sorting parameters applied.
+   * Creates a new {@link ListRequest} with sorting parameters applied.
    *
    * @param sorting can be {@literal null}
    * @param filtering contains list of filter criterias
@@ -113,9 +112,16 @@ public class ListRequest implements Serializable {
     return sorting;
   }
 
-  /** @return whether the page request has defined any sorting. */
+  /** @return whether the request has defined any filtering. */
+  public boolean hasFiltering() {
+    return filtering != null
+        && filtering.getFilterCriteria() != null
+        && !filtering.getFilterCriteria().isEmpty();
+  }
+
+  /** @return whether the request has defined any sorting. */
   public boolean hasSorting() {
-    return !(sorting == null || sorting.getOrders() == null || sorting.getOrders().isEmpty());
+    return sorting != null && sorting.getOrders() != null && !sorting.getOrders().isEmpty();
   }
 
   @Override
