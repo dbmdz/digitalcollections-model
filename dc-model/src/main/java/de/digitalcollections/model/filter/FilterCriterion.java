@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
  *   <li>an expression (e.g. field name) being target of filter operation
  *   <li>a filter operation (operator)
  *   <li>one ore more filter values to be used for filtering operation (operand(s))
- *   <li>a flag to indicate if expression has to be nativeExpression or be used unchanged in
+ *   <li>a flag to indicate if expression has to be mapped or be used unchanged in
  *       underlying backend system (e.g. mapping Java member names to database column names; no
  *       mapping needed because expression is already backend/database specific)
  * </ul>
