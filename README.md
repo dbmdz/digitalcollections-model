@@ -47,37 +47,49 @@ This library supports practical handling of above domain model by adding paging,
 
 ### Filtering-Model
 
-Model for passing technology independent filter criterias from frontend to backend via URL-params.
+Model for passing technology independent filter criterias
+* from frontend to backend via URL-params,
+* from Java code to backend
+
 Backend has to take care about implementing technology dependent filtering for given criterias.
 
-Example usage (use case: return only webpages with active publication time range):
+#### Filtering by using (user given) URL params
+
+Example usage in a Spring MVC controller: return only webpages with active publication time range
+
+Example URL: http://localhost/v5/webpages?publicationStart=gte:2021-01-01&publicationEnd=lt:2021-10-01
 
 ```java
-  public PageResponse<Webpage> findAll(
-      @RequestParam(name = "pageNumber", required = false, defaultValue = "0") int pageNumber,
-      @RequestParam(name = "pageSize", required = false, defaultValue = "5") int pageSize,
-      @RequestParam(name = "sortField", required = false, defaultValue = "uuid") String sortField,
-      @RequestParam(name = "sortDirection", required = false, defaultValue = "ASC") Direction sortDirection,
-      @RequestParam(name = "nullHandling", required = false, defaultValue = "NATIVE") NullHandling nullHandling
-  ) {
-    OrderImpl order = new OrderImpl(sortDirection, sortField, nullHandling);
-    Sorting sorting = new SortingImpl(order);
-
-    LocalDate now = LocalDate.now();
-    Filtering filtering = Filtering.defaultBuilder()
-            .filter("publicationStart").lessOrEqual(now)
-            .filter("publicationEnd").greaterOrEqual(now)
-            .build();
-
-    PageRequest pageRequest = new PageRequestImpl(pageNumber, pageSize, sorting, filtering);
+@Operation(summary = "Get all webpages")
+@GetMapping(value = {"/v5/webpages", "/v2/webpages"}, produces = MediaType.APPLICATION_JSON_VALUE)
+public PageResponse<Webpage> findAll(
+    @RequestParam(name = "pageNumber", required = false, defaultValue = "0") int pageNumber,
+    @RequestParam(name = "pageSize", required = false, defaultValue = "25") int pageSize,
+    @RequestParam(name = "sortBy", required = false) List<Order> sortBy,
+    @RequestParam(name = "publicationStart", required = false) FilterCriterion<LocalDate> publicationStart,
+    @RequestParam(name = "publicationEnd", required = false) FilterCriterion<LocalDate> publicationEnd) {
+  PageRequest pageRequest = new PageRequest(pageNumber, pageSize);
   ...
+  Filtering filtering =
+      Filtering.defaultBuilder()
+          .add("publicationStart", publicationStart)
+          .add("publicationEnd", publicationEnd)
+          .build();
+  pageRequest.setFiltering(filtering);
+  return webpageService.find(pageRequest);
+}
 ```
 
-Supported filter operations:
+REST-API design for filtering was inspired by:
+
+- [REST API Design: Filtering, Sorting, and Pagination](https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/)
+- [An example application using Spring boot MVC, Spring Data JPA with the ability to do filter, pagination and sorting.](https://github.com/vijjayy81/spring-boot-jpa-rest-demo-filter-paging-sorting)
+
+##### Supported URL-params based filter operations
 
 <table border="1">
   <caption>Mapping operation abbreviation to filter operation</caption>
-  <tr><th>Symbol</th><th>Operation</th><th>Example filter query param</th></tr>
+  <tr><th>Symbol</th><th>Operation</th><th>Example filter URL query param</th></tr>
   <tr><td>eq       </td><td> Equals                     </td><td>city=eq:Munich	         </td></tr>
   <tr><td>neq      </td><td> Not Equals                 </td><td>country=neq:de          </td></tr>
   <tr><td>gt       </td><td> Greater Than               </td><td>amount=gt:10000         </td></tr>
@@ -91,11 +103,6 @@ Supported filter operations:
   <tr><td>set      </td><td> value exists (not null)    </td><td>firstName=set:          </td></tr>
   <tr><td>notset   </td><td> value is not set (null)    </td><td>firstName=notset:       </td></tr>
 </table>
-
-REST-API design for filtering was inspired by:
-
-- [REST API Design: Filtering, Sorting, and Pagination](https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/)
-- [An example application using Spring boot MVC, Spring Data JPA with the ability to do filter, pagination and sorting.](https://github.com/vijjayy81/spring-boot-jpa-rest-demo-filter-paging-sorting)
 
 ## Model-Serializing
 

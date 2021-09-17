@@ -12,31 +12,20 @@ public class FilteringBuilder {
   private final List<FilterCriterion> filterCriterias = new ArrayList<>();
 
   /**
-   * Initializes construction of a filter criterion for a field
-   *
-   * @param fieldName name of field
-   * @return builder instance for fluent usage
-   */
-  @SuppressWarnings(value = "unchecked")
-  public FilterCriterionBuilder filter(String fieldName) {
-    return new FilterCriterionBuilder(fieldName, this);
-  }
-
-  /**
    * Method needed for mapping URL filter param to a filter criterion. only param value available
-   * during controller, so param name (= fieldname) only can be set after mapping.
+   * during controller, so param name (= expression) only can be set after mapping.
    *
    * <p>adds a filter criterion to list of filter criterias. if given filterCriterion is null, no
    * filter criterion is added (null-safe)
    *
-   * @param fieldName name of field (if field name could not be set during instantiation of
-   *     FieldCriterion, e.g. during spring mvc type conversion)
+   * @param expression name of expression (if expression name could not be set during instantiation
+   *     of FieldCriterion, e.g. during spring mvc type conversion)
    * @param filterCriterion filter criterion to add
    * @return builder instance for fluent usage
    */
-  public FilteringBuilder add(String fieldName, FilterCriterion filterCriterion) {
+  public FilteringBuilder add(String expression, FilterCriterion filterCriterion) {
     if (filterCriterion != null) {
-      filterCriterion.setFieldName(fieldName);
+      filterCriterion.setExpression(expression);
     }
     return add(filterCriterion);
   }
@@ -50,16 +39,35 @@ public class FilteringBuilder {
    */
   public FilteringBuilder add(FilterCriterion filterCriterion) {
     if (filterCriterion != null) {
-      if (filterCriterion.getFieldName() == null) {
-        throw new IllegalArgumentException("field name of a filter criterion must not be null!");
+      if (filterCriterion.getExpression() == null) {
+        throw new IllegalArgumentException("expression of a filter criterion must not be null!");
       }
       filterCriterias.add(filterCriterion);
     }
     return this;
   }
 
-  @SuppressWarnings(value = "unchecked")
   public Filtering build() {
-    return (Filtering) new Filtering(filterCriterias);
+    return new Filtering(filterCriterias);
+  }
+
+  /**
+   * Initializes construction of a filter criterion for a non-native expression
+   *
+   * @param expression expression filtering is executed on
+   * @return builder instance for fluent usage
+   */
+  public FilterCriterionBuilder filter(String expression) {
+    return new FilterCriterionBuilder(expression, false, this);
+  }
+
+  /**
+   * Initializes construction of a filter criterion for a native expression
+   *
+   * @param expression native expression filtering is executed on
+   * @return builder instance for fluent usage
+   */
+  public FilterCriterionBuilder filterNative(String expression) {
+    return new FilterCriterionBuilder(expression, true, this);
   }
 }

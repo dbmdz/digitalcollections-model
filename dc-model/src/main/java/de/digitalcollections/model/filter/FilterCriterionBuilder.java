@@ -4,12 +4,19 @@ import java.util.Collection;
 
 public class FilterCriterionBuilder {
 
-  private final String fieldName;
+  private final String expression;
   private final FilteringBuilder filteringBuilder;
+  private final boolean nativeExpression;
 
-  FilterCriterionBuilder(String fieldName, FilteringBuilder filteringBuilder) {
+  FilterCriterionBuilder(String expression, FilteringBuilder filteringBuilder) {
+    this(expression, false, filteringBuilder);
+  }
+
+  FilterCriterionBuilder(
+      String expression, boolean nativeExpression, FilteringBuilder filteringBuilder) {
     this.filteringBuilder = filteringBuilder;
-    this.fieldName = fieldName;
+    this.expression = expression;
+    this.nativeExpression = nativeExpression;
   }
 
   /**
@@ -22,7 +29,8 @@ public class FilterCriterionBuilder {
    */
   public FilteringBuilder between(Comparable<?> minValue, Comparable<?> maxValue) {
     FilterCriterion filterCriterion =
-        new FilterCriterion(fieldName, FilterOperation.BETWEEN, null, minValue, maxValue, null);
+        new FilterCriterion(
+            expression, nativeExpression, FilterOperation.BETWEEN, null, minValue, maxValue, null);
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
   }
@@ -36,7 +44,7 @@ public class FilterCriterionBuilder {
    */
   public FilteringBuilder contains(Object value) {
     FilterCriterion filterCriterion =
-        new FilterCriterion(fieldName, FilterOperation.CONTAINS, value);
+        new FilterCriterion(expression, nativeExpression, FilterOperation.CONTAINS, value);
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
   }
@@ -50,7 +58,7 @@ public class FilterCriterionBuilder {
    */
   public FilteringBuilder greater(Object value) {
     FilterCriterion filterCriterion =
-        new FilterCriterion(fieldName, FilterOperation.GREATER_THAN, value);
+        new FilterCriterion(expression, nativeExpression, FilterOperation.GREATER_THAN, value);
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
   }
@@ -64,7 +72,8 @@ public class FilterCriterionBuilder {
    */
   public FilteringBuilder greaterOrEqual(Object value) {
     FilterCriterion filterCriterion =
-        new FilterCriterion(fieldName, FilterOperation.GREATER_THAN_OR_EQUAL_TO, value);
+        new FilterCriterion(
+            expression, nativeExpression, FilterOperation.GREATER_THAN_OR_EQUAL_TO, value);
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
   }
@@ -78,10 +87,15 @@ public class FilterCriterionBuilder {
    */
   public FilteringBuilder greaterOrEqualOrNotSet(Object value) {
     FilterCriterion filterCriterion =
-        new FilterCriterion(fieldName, FilterOperation.GREATER_THAN_OR_EQUAL_TO_OR_NOT_SET, value);
+        new FilterCriterion(
+            expression,
+            nativeExpression,
+            FilterOperation.GREATER_THAN_OR_EQUAL_TO_OR_NOT_SET,
+            value);
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
   }
+
   /**
    * Completes construction of a filter criterion for a field with operation {@link
    * FilterOperation#GREATER_THAN_OR_NOT_SET}
@@ -91,7 +105,8 @@ public class FilterCriterionBuilder {
    */
   public FilteringBuilder greaterOrNotSet(Object value) {
     FilterCriterion filterCriterion =
-        new FilterCriterion(fieldName, FilterOperation.GREATER_THAN_OR_NOT_SET, value);
+        new FilterCriterion(
+            expression, nativeExpression, FilterOperation.GREATER_THAN_OR_NOT_SET, value);
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
   }
@@ -105,10 +120,12 @@ public class FilterCriterionBuilder {
    */
   public FilteringBuilder in(Collection<?> values) {
     FilterCriterion filterCriterion =
-        new FilterCriterion(fieldName, FilterOperation.IN, null, null, null, values);
+        new FilterCriterion(
+            expression, nativeExpression, FilterOperation.IN, null, null, null, values);
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
   }
+
   /**
    * Completes construction of a filter criterion for a field with operation {@link
    * FilterOperation#EQUALS}
@@ -121,13 +138,15 @@ public class FilterCriterionBuilder {
   public FilteringBuilder isEquals(Object value) {
     FilterCriterion filterCriterion;
     if (value != null) {
-      filterCriterion = new FilterCriterion(fieldName, FilterOperation.EQUALS, value);
+      filterCriterion =
+          new FilterCriterion(expression, nativeExpression, FilterOperation.EQUALS, value);
     } else {
-      filterCriterion = new FilterCriterion(fieldName, FilterOperation.NOT_SET);
+      filterCriterion = new FilterCriterion(expression, nativeExpression, FilterOperation.NOT_SET);
     }
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
   }
+
   /**
    * Completes construction of a filter criterion for a field with operation {@link
    * FilterOperation#EQUALS_OR_NOT_SET}
@@ -137,7 +156,7 @@ public class FilterCriterionBuilder {
    */
   public FilteringBuilder isEqualsOrNotSet(Object value) {
     FilterCriterion filterCriterion =
-        new FilterCriterion(fieldName, FilterOperation.EQUALS_OR_NOT_SET, value);
+        new FilterCriterion(expression, nativeExpression, FilterOperation.EQUALS_OR_NOT_SET, value);
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
   }
@@ -151,7 +170,7 @@ public class FilterCriterionBuilder {
    */
   public FilteringBuilder less(Object value) {
     FilterCriterion filterCriterion =
-        new FilterCriterion(fieldName, FilterOperation.LESS_THAN, value);
+        new FilterCriterion(expression, nativeExpression, FilterOperation.LESS_THAN, value);
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
   }
@@ -165,7 +184,7 @@ public class FilterCriterionBuilder {
    */
   public FilteringBuilder lessAndSet(Object value) {
     FilterCriterion filterCriterion =
-        new FilterCriterion(fieldName, FilterOperation.LESS_THAN_AND_SET, value);
+        new FilterCriterion(expression, nativeExpression, FilterOperation.LESS_THAN_AND_SET, value);
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
   }
@@ -179,7 +198,8 @@ public class FilterCriterionBuilder {
    */
   public FilteringBuilder lessOrEqual(Object value) {
     FilterCriterion filterCriterion =
-        new FilterCriterion(fieldName, FilterOperation.LESS_THAN_OR_EQUAL_TO, value);
+        new FilterCriterion(
+            expression, nativeExpression, FilterOperation.LESS_THAN_OR_EQUAL_TO, value);
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
   }
@@ -193,7 +213,8 @@ public class FilterCriterionBuilder {
    */
   public FilteringBuilder lessOrEqualAndSet(Object value) {
     FilterCriterion filterCriterion =
-        new FilterCriterion(fieldName, FilterOperation.LESS_THAN_OR_EQUAL_TO_AND_SET, value);
+        new FilterCriterion(
+            expression, nativeExpression, FilterOperation.LESS_THAN_OR_EQUAL_TO_AND_SET, value);
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
   }
@@ -207,10 +228,12 @@ public class FilterCriterionBuilder {
    */
   public FilteringBuilder lessOrEqualOrNotSet(Object value) {
     FilterCriterion filterCriterion =
-        new FilterCriterion(fieldName, FilterOperation.LESS_THAN_OR_EQUAL_TO_OR_NOT_SET, value);
+        new FilterCriterion(
+            expression, nativeExpression, FilterOperation.LESS_THAN_OR_EQUAL_TO_OR_NOT_SET, value);
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
   }
+
   /**
    * Completes construction of a filter criterion for a field with operation {@link
    * FilterOperation#LESS_THAN_OR_NOT_SET}
@@ -220,7 +243,8 @@ public class FilterCriterionBuilder {
    */
   public FilteringBuilder lessOrNotSet(Object value) {
     FilterCriterion filterCriterion =
-        new FilterCriterion(fieldName, FilterOperation.LESS_THAN_OR_NOT_SET, value);
+        new FilterCriterion(
+            expression, nativeExpression, FilterOperation.LESS_THAN_OR_NOT_SET, value);
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
   }
@@ -235,9 +259,10 @@ public class FilterCriterionBuilder {
   public FilteringBuilder notEquals(Object value) {
     FilterCriterion filterCriterion;
     if (value != null) {
-      filterCriterion = new FilterCriterion(fieldName, FilterOperation.NOT_EQUALS, value);
+      filterCriterion =
+          new FilterCriterion(expression, nativeExpression, FilterOperation.NOT_EQUALS, value);
     } else {
-      filterCriterion = new FilterCriterion(fieldName, FilterOperation.SET);
+      filterCriterion = new FilterCriterion(expression, nativeExpression, FilterOperation.SET);
     }
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
@@ -252,7 +277,8 @@ public class FilterCriterionBuilder {
    */
   public FilteringBuilder notIn(Collection<?> values) {
     FilterCriterion filterCriterion =
-        new FilterCriterion(fieldName, FilterOperation.NOT_IN, null, null, null, values);
+        new FilterCriterion(
+            expression, nativeExpression, FilterOperation.NOT_IN, null, null, null, values);
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
   }
@@ -264,7 +290,8 @@ public class FilterCriterionBuilder {
    * @return builder instance for fluent usage
    */
   public FilteringBuilder notSet() {
-    FilterCriterion filterCriterion = new FilterCriterion(fieldName, FilterOperation.NOT_SET, null);
+    FilterCriterion filterCriterion =
+        new FilterCriterion(expression, nativeExpression, FilterOperation.NOT_SET, null);
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
   }
@@ -276,7 +303,8 @@ public class FilterCriterionBuilder {
    * @return builder instance for fluent usage
    */
   public FilteringBuilder set() {
-    FilterCriterion filterCriterion = new FilterCriterion(fieldName, FilterOperation.SET, null);
+    FilterCriterion filterCriterion =
+        new FilterCriterion(expression, nativeExpression, FilterOperation.SET, null);
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
   }
@@ -290,7 +318,7 @@ public class FilterCriterionBuilder {
    */
   public FilteringBuilder startsWith(Object value) {
     FilterCriterion filterCriterion =
-        new FilterCriterion(fieldName, FilterOperation.STARTS_WITH, value);
+        new FilterCriterion(expression, nativeExpression, FilterOperation.STARTS_WITH, value);
     filteringBuilder.add(filterCriterion);
     return filteringBuilder;
   }

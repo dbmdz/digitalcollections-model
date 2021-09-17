@@ -1,10 +1,12 @@
 {
   "filterCriteria" : [ {
-    "fieldName" : "longField",
+    "expression" : "longField",
+    "nativeExpression" : false,
     "operation" : "EQUALS",
     "value" : [ "java.lang.Long", 5 ]
   }, {
-    "fieldName" : "dateField",
+    "expression" : "dateField",
+    "nativeExpression" : false,
     "operation" : "BETWEEN",
     "minValue" : [ "java.time.LocalDate", "2020-01-01" ],
     "maxValue" : [ "java.time.LocalDate", "2020-01-31" ]
