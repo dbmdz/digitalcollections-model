@@ -36,7 +36,7 @@ public class FilterCriterion<T extends Object> {
    * Constructor for a filter criterion.
    *
    * @param expression expression the criterion should be used for
-   * @param nativeExpression a flag to indicate if expression has to be nativeExpression or should
+   * @param nativeExpression a flag to indicate if expression has to be mapped or should
    *     be used unchanged/as is in underlying backend system (e.g. mapping Java member names to
    *     database column names; if "true" no mapping needed (should not be exposed to public
    *     modifications, just use internally for security reasons) because expression is already e.g.
