@@ -73,7 +73,7 @@ public abstract class BaseJsonSerializationTest {
       throws JsonProcessingException, IOException {
     String serializedObject = dump(o);
     if (pathToJson != null) {
-      Assertions.assertEquals(serializedObject, readFromResources(pathToJson));
+      Assertions.assertEquals(readFromResources(pathToJson), serializedObject);
     }
 
     Class valueType = o.getClass();

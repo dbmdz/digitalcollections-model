@@ -1,6 +1,7 @@
 package de.digitalcollections.model.jackson.mixin.filter;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -12,12 +13,6 @@ import java.util.Collection;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("FILTERCRITERION")
 public abstract class FilterCriterionMixIn extends FilterCriterion {
-
-  @JsonTypeInfo(
-      use = JsonTypeInfo.Id.CLASS,
-      include = JsonTypeInfo.As.PROPERTY,
-      property = "className")
-  private Object value;
 
   @JsonTypeInfo(
       use = JsonTypeInfo.Id.CLASS,
@@ -35,16 +30,27 @@ public abstract class FilterCriterionMixIn extends FilterCriterion {
       use = JsonTypeInfo.Id.CLASS,
       include = JsonTypeInfo.As.PROPERTY,
       property = "className")
+  private Object value;
+
+  @JsonTypeInfo(
+      use = JsonTypeInfo.Id.CLASS,
+      include = JsonTypeInfo.As.PROPERTY,
+      property = "className")
   private Collection<?> values;
 
   @JsonCreator
   public FilterCriterionMixIn(
-      @JsonProperty("fieldName") String fieldName,
+      @JsonProperty("expression") String expression,
+      @JsonProperty("nativeExpression") boolean nativeExpression,
       @JsonProperty("operation") FilterOperation operation,
       @JsonProperty("value") Object value,
       @JsonProperty("minValue") Comparable<?> minValue,
       @JsonProperty("maxValue") Comparable<?> maxValue,
       @JsonProperty("values") Collection<?> values) {
-    super(fieldName, operation, value, minValue, maxValue, values);
+    super(expression, nativeExpression, operation, value, minValue, maxValue, values);
   }
+
+  @JsonIgnore
+  @Override
+  public abstract String getFieldName();
 }

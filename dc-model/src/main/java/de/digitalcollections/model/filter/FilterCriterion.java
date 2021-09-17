@@ -7,9 +7,12 @@ import java.util.stream.Collectors;
  * Filter Criterion Container.A filter criterion is a composition of
  *
  * <ul>
- *   <li>a field name being target of filter operation
+ *   <li>an expression (e.g. field name) being target of filter operation
  *   <li>a filter operation (operator)
  *   <li>one ore more filter values to be used for filtering operation (operand(s))
+ *   <li>a flag to indicate if the expression is native and has to be used unchanged in the
+ *       underlying backend system (e.g. mapping Java member names to database column names vs. no
+ *       mapping needed because expression is already backend/database specific)
  * </ul>
  *
  * References:
@@ -21,35 +24,41 @@ import java.util.stream.Collectors;
  */
 public class FilterCriterion<T extends Object> {
 
-  private String fieldName;
+  private String expression;
   private Comparable<?> maxValue;
-
   private Comparable<?> minValue;
+  private boolean nativeExpression;
   private FilterOperation operation;
   private Object value;
-
   private Collection<?> values;
 
   /**
-   * Constructor for Filter Criteria.
+   * Constructor for a filter criterion.
    *
-   * @param fieldName target field the criteria should be used for
-   * @param operation operation of criteria
-   * @param value operand of criteria
+   * @param expression expression the criterion should be used for
+   * @param nativeExpression a flag to indicate if the expression is native and has to be used
+   *     unchanged/as is in underlying backend system (e.g. mapping Java member names to database
+   *     column names; if "true" no mapping needed (should not be exposed to public modifications,
+   *     just use internally for security reasons) because expression is already e.g.
+   *     backend/database specific)
+   * @param operation operation of criterion
+   * @param value operand of criterion
    * @param minValue minimum value of between operation
    * @param maxValue maximum value of between operation
-   * @param values operand(s) of criteria
+   * @param values operand(s) of criterion
    */
   @SuppressWarnings("unchecked")
   public FilterCriterion(
-      String fieldName,
+      String expression,
+      boolean nativeExpression,
       FilterOperation operation,
       Object value,
       Comparable<?> minValue,
       Comparable<?> maxValue,
       Collection<?> values) {
+    this.expression = expression;
+    this.nativeExpression = nativeExpression;
     this.operation = operation;
-    this.fieldName = fieldName;
     this.value = value;
     this.minValue = minValue;
     this.maxValue = maxValue;
@@ -64,14 +73,48 @@ public class FilterCriterion<T extends Object> {
   }
 
   /**
-   * Constructor for single value Filter Criteria.
+   * Constructor for a non-native expression filter criterion.
    *
-   * @param fieldName target field the criteria should be used for
-   * @param operation operation of criteria
-   * @param value operand of criteria
+   * @param expression expression the criterion should be used for
+   * @param operation operation of criterion
+   * @param value operand of criterion
+   * @param minValue minimum value of between operation
+   * @param maxValue maximum value of between operation
+   * @param values operand(s) of criterion
    */
-  public FilterCriterion(String fieldName, FilterOperation operation, Object value) {
-    this(fieldName, operation, value, null, null, null);
+  @SuppressWarnings("unchecked")
+  public FilterCriterion(
+      String expression,
+      FilterOperation operation,
+      Object value,
+      Comparable<?> minValue,
+      Comparable<?> maxValue,
+      Collection<?> values) {
+    this(expression, false, operation, value, minValue, maxValue, values);
+  }
+
+  /**
+   * Constructor for single value Filter Criterion.
+   *
+   * @param expression expression the criterion should be used for
+   * @param operation operation of criterion
+   * @param value operand of criterion
+   */
+  public FilterCriterion(String expression, FilterOperation operation, Object value) {
+    this(expression, false, operation, value);
+  }
+
+  /**
+   * Constructor for single value Filter Criterion.
+   *
+   * @param expression expression the criterion should be used for
+   * @param nativeExpression true if expression is native (to be handled "as is")
+   * @param operation operation of criterion
+   * @param value operand of criterion
+   */
+  public FilterCriterion(
+      String expression, boolean nativeExpression, FilterOperation operation, Object value) {
+    this(expression, nativeExpression, operation, value, null, null, null);
     if (operation == FilterOperation.BETWEEN
         || operation == FilterOperation.IN
         || operation == FilterOperation.NOT_IN) {
@@ -79,9 +122,39 @@ public class FilterCriterion<T extends Object> {
     }
   }
 
-  /** @return field name being target of filter operation */
+  /**
+   * Constructor for no value Filter Criterion.
+   *
+   * @param expression expression the criterion should be used for
+   * @param operation operation of criterion
+   */
+  public FilterCriterion(String expression, FilterOperation operation) {
+    this(expression, false, operation);
+  }
+
+  /**
+   * Constructor for no value Filter Criterion.
+   *
+   * @param expression expression the criterion should be used for
+   * @param nativeExpression true if expression is native (to be handled "as is")
+   * @param operation operation of criterion
+   */
+  public FilterCriterion(String expression, boolean nativeExpression, FilterOperation operation) {
+    this(expression, nativeExpression, operation, null, null, null, null);
+  }
+
+  /** @return expression being target of filter operation */
+  public String getExpression() {
+    return expression;
+  }
+
+  /**
+   * @return field name being target of filter operation
+   * @deprecated use getExpression() instead
+   */
+  @Deprecated
   public String getFieldName() {
-    return fieldName;
+    return expression;
   }
 
   /** @return maximum value - applicable only for {@link FilterOperation#BETWEEN} */
@@ -109,9 +182,26 @@ public class FilterCriterion<T extends Object> {
     return values;
   }
 
-  public void setFieldName(String fieldName) {
-    this.fieldName = fieldName;
+  public boolean isNativeExpression() {
+    return nativeExpression;
+  }
+
+  public void setExpression(String expression) {
+    this.expression = expression;
     validate();
+  }
+
+  /**
+   * @param expression criterion expression
+   * @deprecated use setExpression(String expression) instead
+   */
+  @Deprecated
+  public void setFieldName(String expression) {
+    setExpression(expression);
+  }
+
+  public void setNativeExpression(boolean nativeExpression) {
+    this.nativeExpression = nativeExpression;
   }
 
   @Override
@@ -119,7 +209,7 @@ public class FilterCriterion<T extends Object> {
     if (operation == null) {
       return "";
     }
-    String criterion = fieldName + "=" + operation + ":";
+    String criterion = expression + "=" + operation + ":";
     switch (operation.getOperandCount()) {
       case SINGLEVALUE:
         criterion += value;
@@ -131,7 +221,11 @@ public class FilterCriterion<T extends Object> {
         criterion += values.stream().map(Object::toString).collect(Collectors.joining(","));
         break;
     }
-    return criterion;
+    if (nativeExpression) {
+      return "native expression / " + criterion;
+    } else {
+      return criterion;
+    }
   }
 
   private void validate() {

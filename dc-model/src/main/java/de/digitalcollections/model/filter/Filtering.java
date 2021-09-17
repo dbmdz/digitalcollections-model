@@ -53,7 +53,7 @@ public class Filtering {
    */
   public FilterCriterion getFilterCriterionFor(String property) {
     return filterCriteria.stream()
-        .filter(f -> f.getFieldName().equals(property))
+        .filter(f -> f.getExpression().equals(property))
         .findFirst()
         .orElse(null);
   }
