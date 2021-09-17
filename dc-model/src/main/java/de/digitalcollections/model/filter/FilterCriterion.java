@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
  *   <li>an expression (e.g. field name) being target of filter operation
  *   <li>a filter operation (operator)
  *   <li>one ore more filter values to be used for filtering operation (operand(s))
- *   <li>a flag to indicate if expression has to be nativeExpression or be used unchanged in
+ *   <li>a flag to indicate if the expression is native and has to be used unchanged in the
  *       underlying backend system (e.g. mapping Java member names to database column names; no
  *       mapping needed because expression is already backend/database specific)
  * </ul>
@@ -36,7 +36,7 @@ public class FilterCriterion<T extends Object> {
    * Constructor for a filter criterion.
    *
    * @param expression expression the criterion should be used for
-   * @param nativeExpression a flag to indicate if expression has to be nativeExpression or should
+   * @param nativeExpression a flag to indicate if the expression is native and has to
    *     be used unchanged/as is in underlying backend system (e.g. mapping Java member names to
    *     database column names; if "true" no mapping needed (should not be exposed to public
    *     modifications, just use internally for security reasons) because expression is already e.g.
