@@ -1,11 +1,9 @@
 package de.digitalcollections.model.list;
 
-import de.digitalcollections.model.filter.FilterCriterion;
 import de.digitalcollections.model.filter.Filtering;
 import de.digitalcollections.model.paging.Direction;
 import de.digitalcollections.model.paging.Sorting;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Container for querying a optionally filtered and sorted list:
@@ -52,25 +50,24 @@ public class ListRequest implements Serializable {
    * filtering.
    *
    * @param filtering new filtering criteria to add
-   * @return all filtering criteria
+   * @return the updated ListRequest instance
    */
-  public List<FilterCriterion> add(Filtering filtering) {
+  public ListRequest add(Filtering filtering) {
     Filtering existingFiltering = getFiltering();
     if (existingFiltering == null || existingFiltering.getFilterCriteria().isEmpty()) {
       setFiltering(filtering);
     } else {
       existingFiltering.add(filtering);
     }
-    // FIXME (breaking change): return this?
-    return getFiltering().getFilterCriteria();
+    return this;
   }
 
   /**
    * Add all sorting criteria of given sorting to existing sorting. Initialise if no existing
-   * filtering.
+   * sorting.
    *
    * @param sorting new sorting criteria to add
-   * @return all sorting criteria
+   * @return the updated ListRequest instance
    */
   public ListRequest add(Sorting sorting) {
     Sorting existingSorting = getSorting();
