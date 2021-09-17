@@ -1,7 +1,8 @@
 {
   "filtering" : {
     "filterCriteria" : [ {
-      "fieldName" : "label",
+      "expression" : "label",
+      "nativeExpression" : false,
       "operation" : "STARTS_WITH",
       "value" : "A"
     } ]
