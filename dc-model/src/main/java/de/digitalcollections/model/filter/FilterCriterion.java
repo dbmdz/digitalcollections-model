@@ -195,7 +195,8 @@ public class FilterCriterion<T extends Object> {
    * @param expression criterion expression
    * @deprecated use setExpression(String expression) instead
    */
-  public void setFieldName(String expression) {
+  @Deprecated
+    public void setFieldName(String expression) {
     setExpression(expression);
   }
 
