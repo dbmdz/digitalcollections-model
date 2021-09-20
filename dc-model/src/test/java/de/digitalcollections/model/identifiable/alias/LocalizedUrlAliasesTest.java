@@ -35,7 +35,7 @@ public class LocalizedUrlAliasesTest {
         lua2 = new LocalizedUrlAliases(u1);
     lua2.add(u3, u2);
 
-    assertThat(lua1.equals(lua2)).isTrue();
+    assertThat(lua1).isEqualTo(lua2);
   }
 
   @Test
