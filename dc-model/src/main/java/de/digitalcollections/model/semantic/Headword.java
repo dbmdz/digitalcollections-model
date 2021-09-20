@@ -1,6 +1,5 @@
 package de.digitalcollections.model.semantic;
 
-import de.digitalcollections.model.identifiable.entity.HeadwordEntry;
 import java.time.LocalDateTime;
 import java.util.Locale;
 import java.util.UUID;
@@ -18,8 +17,6 @@ import java.util.UUID;
  *
  * <p>As it is often interchangeable, we decided for practial reasons to use this class "Headword"
  * also for a lemma.
- *
- * @see HeadwordEntry for the textual body to a headword/lemma.
  */
 public class Headword {
 
