@@ -13,11 +13,6 @@ public class LocalizedUrlAliases extends HashMap<Locale, List<UrlAlias>> {
     super();
   }
 
-  /**
-   * Constructor, can be called without parameters as well, i.e. {@code new LocalizedUrlAliases()}
-   *
-   * @param urlAliases Not {@code null}
-   */
   public LocalizedUrlAliases(UrlAlias... urlAliases) {
     super();
     this.add(urlAliases);
@@ -58,7 +53,16 @@ public class LocalizedUrlAliases extends HashMap<Locale, List<UrlAlias>> {
       return false;
     }
     LocalizedUrlAliases other = (LocalizedUrlAliases) o;
-    return super.equals(other);
+    try {
+      if (this.flatten().size() != other.flatten().size()) {
+        return false;
+      }
+      return flatten().containsAll(other.flatten());
+    } catch (NullPointerException unused) {
+      return false;
+    } catch (ClassCastException unused) {
+      return false;
+    }
   }
 
   /**

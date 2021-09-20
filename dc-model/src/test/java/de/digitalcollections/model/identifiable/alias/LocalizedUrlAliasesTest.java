@@ -21,28 +21,28 @@ public class LocalizedUrlAliasesTest {
 
   @Test
   public void parameterizedConstructorTest() {
-    UrlAlias urlAlias = this.createUrlAlias(null, null);
+    UrlAlias urlAlias = createUrlAlias(null, null);
     LocalizedUrlAliases o = new LocalizedUrlAliases(urlAlias);
     assertThat(o).containsExactly(entry(Locale.GERMAN, List.of(urlAlias)));
   }
 
   @Test
   public void equalsTest() {
-    UrlAlias u1 = this.createUrlAlias(Locale.ENGLISH, "something"),
-        u2 = this.createUrlAlias(null, "irgendwas"),
-        u3 = this.createUrlAlias(null, "nochwas");
+    UrlAlias u1 = createUrlAlias(Locale.ENGLISH, "something"),
+        u2 = createUrlAlias(null, "something-else"),
+        u3 = createUrlAlias(null, "another-something");
     LocalizedUrlAliases lua1 = new LocalizedUrlAliases(u1, u2, u3),
         lua2 = new LocalizedUrlAliases(u1);
-    lua2.add(u2, u3);
+    lua2.add(u3, u2);
 
-    assertThat(lua1.equals(lua2)).isTrue();
+    assertThat(lua1).isEqualTo(lua2);
   }
 
   @Test
   public void flattenTest() {
-    UrlAlias u1 = this.createUrlAlias(Locale.ENGLISH, "something"),
-        u2 = this.createUrlAlias(null, "irgendwas"),
-        u3 = this.createUrlAlias(null, "nochwas");
+    UrlAlias u1 = createUrlAlias(Locale.ENGLISH, "something"),
+        u2 = createUrlAlias(null, "something-else"),
+        u3 = createUrlAlias(null, "another-something");
     LocalizedUrlAliases o = new LocalizedUrlAliases(u1, u2, u3);
 
     assertThat(o.flatten()).containsExactlyInAnyOrder(u1, u2, u3);
