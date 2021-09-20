@@ -22,6 +22,7 @@ import de.digitalcollections.model.identifiable.entity.Article;
 import de.digitalcollections.model.identifiable.entity.Collection;
 import de.digitalcollections.model.identifiable.entity.DigitalObject;
 import de.digitalcollections.model.identifiable.entity.Entity;
+import de.digitalcollections.model.identifiable.entity.HeadwordEntry;
 import de.digitalcollections.model.identifiable.entity.Project;
 import de.digitalcollections.model.identifiable.entity.Topic;
 import de.digitalcollections.model.identifiable.entity.Website;
@@ -58,6 +59,7 @@ import de.digitalcollections.model.jackson.mixin.identifiable.entity.ArticleMixI
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.CollectionMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.DigitalObjectMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.EntityMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.HeadwordEntryMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.ProjectMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.TopicMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.WebsiteMixIn;
@@ -92,6 +94,7 @@ import de.digitalcollections.model.jackson.mixin.paging.SearchPageResponseMixIn;
 import de.digitalcollections.model.jackson.mixin.paging.SortingMixIn;
 import de.digitalcollections.model.jackson.mixin.relation.PredicateMixIn;
 import de.digitalcollections.model.jackson.mixin.security.UserMixIn;
+import de.digitalcollections.model.jackson.mixin.semantic.HeadwordMixIn;
 import de.digitalcollections.model.jackson.mixin.text.LocalizedStructuredContentMixIn;
 import de.digitalcollections.model.jackson.mixin.text.LocalizedTextMixIn;
 import de.digitalcollections.model.jackson.mixin.text.StructuredContentMixIn;
@@ -128,6 +131,7 @@ import de.digitalcollections.model.paging.SearchPageResponse;
 import de.digitalcollections.model.paging.Sorting;
 import de.digitalcollections.model.relation.Predicate;
 import de.digitalcollections.model.security.User;
+import de.digitalcollections.model.semantic.Headword;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.LocalizedText;
 import de.digitalcollections.model.text.StructuredContent;
@@ -209,6 +213,10 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(Item.class, ItemMixIn.class);
     context.setMixInAnnotations(Manifestation.class, ManifestationMixIn.class);
     context.setMixInAnnotations(Work.class, WorkMixIn.class);
+
+    // semantic
+    context.setMixInAnnotations(Headword.class, HeadwordMixIn.class);
+    context.setMixInAnnotations(HeadwordEntry.class, HeadwordEntryMixIn.class);
 
     // other
     context.setMixInAnnotations(ApplicationFileResource.class, ApplicationFileResourceMixIn.class);

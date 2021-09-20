@@ -14,6 +14,7 @@ public enum EntityType {
   EXPRESSION,
   FAMILY,
   GEOLOCATION,
+  HEADWORD_ENTRY,
   IMAGE,
   ITEM,
   MANIFESTATION,
