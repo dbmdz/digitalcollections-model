@@ -13,7 +13,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-
 ## [9.1.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/9.1.0) - 2021-09-20
 
 ### Added 
@@ -31,7 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added table of content (see [`ToCEntry`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/view/ToCEntry.java))
-- Added new breadcrumb navigation model
+- Added new [breadcrumb navigation](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/view/BreadcrumbNavigation.java) model
 
 ### Changed
 
@@ -39,7 +38,97 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Renamed model implementation classes
 - Eliminated package names from serialization
 
----
+## [8.2.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/8.2.0) - 2021-02-15
+
+### Added
+
+- Added [`FamilyName`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/agent/FamilyName.java)
+- Added [`GivenName`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/agent/GivenName.java)
+
+### Changed
+
+- Improvements on filtering and sorting
+
+## [8.1.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/8.1.0) - 2021-01-21
+
+### Added
+
+- Added [`GeoLocation`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/entity/geo/location/GeoLocation.java)
+- Added [`RenderingTemplate`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/impl/view/RenderingTemplate.java)
+
+### Changed
+
+- Serialization fixes
+- Added rendering hints to webpage
+
+## [8.0.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/8.0.0) - 2020-10-20
+
+### Added
+
+- Added custom attributes to [`Entity`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/entity/Entity.java)
+- Added documentation diagrams
+
+### Changed
+
+- Serialization fixes
+
+## [7.0.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/7.0.0) - 2020-10-20
+
+### Added
+
+- Added model classes:
+  - [`Item`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/entity/work/Item.java)
+  - [`Work`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/entity/work/Work.java)
+  - [`Expression`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/entity/work/Expression.java)
+  - [`Manifestation`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/entity/work/Manifestation.java)
+  - [`Person`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/entity/agent/Person.java)
+  - [`CorporateBody`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/entity/agent/CorporateBody.java)
+  - [`Family`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/entity/agent/Family.java)
+  - [`Agent`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/entity/agent/Agent.java)
+  - [`Predicate`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/relation/Predicate.java)
+- Added stuff vor video content blocks
+
+### Changed
+
+- Serialization fixes
+
+## [6.2.1](https://github.com/dbmdz/digitalcollections-model/releases/tag/6.2.1) - 2020-09-07
+
+### Changed
+
+- Changed filename handling on FileResouces by cutting path if filename is created from uri
+
+## [6.2.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/6.2.0) - 2020-07-22
+
+### Added
+
+- Added breadcrumb navigation
+
+## [6.1.1](https://github.com/dbmdz/digitalcollections-model/releases/tag/6.1.1) - 2020-05-11
+
+### Changed
+
+- Added type information as property instead of as wrapper on serialization
+
+## [6.1.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/6.1.0) - 2020-05-11
+
+### Added
+
+- Added RefId to Identifiables
+- Added Filtering model
+- Added basic search page request/response model with paging
+
+### Changed
+
+- Updates and fixes for serialization
+- Renamed ContentTree to Topic
+- Renamed ContentNode to Subtopic
+
+## [4.0.3](https://github.com/dbmdz/digitalcollections-model/releases/tag/4.0.2) - 2019-11-25
+
+### Changed
+
+- Updated changelog
 
 ## [4.0.2](https://github.com/dbmdz/digitalcollections-model/releases/tag/4.0.2) - 2019-11-25
 
