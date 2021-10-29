@@ -17,7 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added 
 
-- Added [`UrlAlias`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/alias/UrlAlias.java) and [`LocalizedUrlAliases`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/alias/LocalizedUrlAliases.java)
+- Added UrlAliases with the classes
+  - [`UrlAlias`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/alias/UrlAlias.java)
+  - [`LocalizedUrlAliases`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/alias/LocalizedUrlAliases.java)
 
 ### Changed
 
