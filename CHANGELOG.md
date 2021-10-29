@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Improved domain model documentation
 - Refactored Filtering model
-- Refactored List query and result model
+- Refactored list query and result model
 
 ## [9.0.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/9.0.0) - 2021-06-05
 
