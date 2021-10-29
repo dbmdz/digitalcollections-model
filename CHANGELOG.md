@@ -5,6 +5,42 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- add a less verbose domain model diagram
+
+### Changed
+
+
+## [9.1.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/9.1.0) - 2021-09-20
+
+### Added 
+
+- Add UrlAlias and LocalizedUrlAliases
+
+### Changed
+
+- Improved domain model documentation
+- Refactored Filtering model
+- Refactored List query and result model
+
+## [9.0.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/9.0.0) - 2021-06-05
+
+### Added
+
+- Added table of content
+- New breadcrumb navigation model
+
+### Changed
+
+- Removed Api / Impl splitting
+- Renamed model implementation classes
+- Eliminated package names from serialization
+
+---
+
 ## [4.0.2](https://github.com/dbmdz/digitalcollections-model/releases/tag/4.0.2) - 2019-11-25
 
 ### Added
