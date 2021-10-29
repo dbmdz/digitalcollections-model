@@ -96,7 +96,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Changed filename handling on FileResouces by cutting path if filename is created from uri
+- Changed filename handling on `FileResouce` by cutting path if filename is created from uri
 
 ## [6.2.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/6.2.0) - 2020-07-22
 
