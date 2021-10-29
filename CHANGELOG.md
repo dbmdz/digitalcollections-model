@@ -47,7 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Improvements on filtering and sorting
+- Improved filtering and sorting
 
 ## [8.1.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/8.1.0) - 2021-01-21
 
