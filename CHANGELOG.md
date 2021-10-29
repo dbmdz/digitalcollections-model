@@ -120,7 +120,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Updates and fixes for serialization
+- Updated and fixed serialization
 - Renamed ContentTree to Topic
 - Renamed ContentNode to Subtopic
 
