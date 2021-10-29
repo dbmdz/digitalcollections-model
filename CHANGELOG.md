@@ -58,7 +58,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Serialization fixes
+- Fixed serialization
 - Added rendering hints to webpage
 
 ## [8.0.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/8.0.0) - 2020-10-20
