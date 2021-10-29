@@ -38,6 +38,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Renamed model implementation classes
 - Eliminated package names from serialization
 
+## [8.2.1](https://github.com/dbmdz/digitalcollections-model/releases/tag/8.2.1) - 2021-02-24
+
+### Added
+
+- Added wildcard mimetype for audios, videos and texts
+
 ## [8.2.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/8.2.0) - 2021-02-15
 
 ### Added
