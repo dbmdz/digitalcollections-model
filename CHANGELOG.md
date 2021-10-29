@@ -114,7 +114,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added RefId to Identifiables
+- Added `refId` to `Identifiable`
 - Added Filtering model
 - Added basic search page request/response model with paging
 
