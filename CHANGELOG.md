@@ -30,7 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added table of content
+- Added table of content (see [`ToCEntry`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/view/ToCEntry.java))
 - New breadcrumb navigation model
 
 ### Changed
