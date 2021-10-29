@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added 
 
-- Added UrlAliases with the classes
+- Added url aliases with the classes
   - [`UrlAlias`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/alias/UrlAlias.java)
   - [`LocalizedUrlAliases`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/alias/LocalizedUrlAliases.java)
 
@@ -31,8 +31,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added table of content (see [`ToCEntry`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/view/ToCEntry.java))
-- Added new [breadcrumb navigation](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/view/BreadcrumbNavigation.java) model
+- Added [`ToCEntry`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/view/ToCEntry.java)
+- Added new breadcrumb navigation with the classes
+  - [`BreadcrumbNavigation`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/view/BreadcrumbNavigation.java)
+  - [`BreadcrumbNode`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/view/BreadcrumbNode.java)
 
 ### Changed
 
@@ -73,7 +75,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added custom attributes to [`Entity`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/entity/Entity.java)
+- Added custom attributes to `Entity`
 - Added documentation diagrams
 
 ### Changed
@@ -123,8 +125,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added `refId` to `Identifiable`
-- Added Filtering model
-- Added basic search page request/response model with paging
+- Added filtering model, see [here](https://github.com/dbmdz/digitalcollections-model/tree/main/dc-model/src/main/java/de/digitalcollections/model/filter)
+- Added basic search page request/response model with paging, see [here](https://github.com/dbmdz/digitalcollections-model/tree/main/dc-model/src/main/java/de/digitalcollections/model/paging)
 
 ### Changed
 
