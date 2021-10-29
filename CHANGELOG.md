@@ -23,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Improved domain model documentation
-- Refactored Filtering model
+- Refactored filtering model, see [here](https://github.com/dbmdz/digitalcollections-model/tree/main/dc-model/src/main/java/de/digitalcollections/model/filter)
 - Refactored list query and result model
 
 ## [9.0.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/9.0.0) - 2021-06-05
