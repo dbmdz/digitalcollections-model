@@ -5,7 +5,10 @@
     "uuid" : "baf5a649-dd8a-43f2-8fac-f535b311af03",
     "entityType" : "DIGITAL_OBJECT",
     "refId" : 0,
-    "fileResources" : [ ]
+    "fileResources" : [ ],
+    "downloadURIs" : [ ],
+    "renderingURIs" : [ ],
+    "numberOfBinaryResources" : 0
   },
   "predicate" : "is_describing_provenience",
   "subject" : {
