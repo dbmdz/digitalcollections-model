@@ -1,12 +1,11 @@
 package de.digitalcollections.model.identifiable.entity;
 
-import de.digitalcollections.model.identifiable.entity.agent.Agent;
-import de.digitalcollections.model.identifiable.entity.geo.location.GeoLocation;
 import de.digitalcollections.model.identifiable.entity.work.Item;
 import de.digitalcollections.model.identifiable.resource.FileResource;
 import de.digitalcollections.model.identifiable.resource.LinkedDataFileResource;
 import de.digitalcollections.model.identifiable.versioning.Version;
 import de.digitalcollections.model.legal.License;
+import de.digitalcollections.model.production.CreationInfo;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -25,9 +24,7 @@ public class DigitalObject extends Entity {
   /** The parent digital object, if the current one is an embedded one. */
   private DigitalObject parent;
 
-  /**
-   * Sorted list of file resources like images, audio files etc.
-   */
+  /** Sorted list of file resources like images, audio files etc. */
   private ArrayList<FileResource> fileResources = new ArrayList<>();
 
   /**
@@ -96,9 +93,7 @@ public class DigitalObject extends Entity {
     this.parent = parent;
   }
 
-  /**
-   * @return the sorted list of file resources, like images or audio files
-   */
+  /** @return the sorted list of file resources, like images or audio files */
   public ArrayList<FileResource> getFileResources() {
     return fileResources;
   }
@@ -168,9 +163,7 @@ public class DigitalObject extends Entity {
     this.version = version;
   }
 
-  /**
-   * @return the number of binary resources for presentation
-   */
+  /** @return the number of binary resources for presentation */
   public int getNumberOfBinaryResources() {
     return numberOfBinaryResources;
   }
@@ -184,9 +177,7 @@ public class DigitalObject extends Entity {
     this.numberOfBinaryResources = numberOfBinaryResources;
   }
 
-  /**
-   * @return meta information about the creation of the digital object
-   */
+  /** @return meta information about the creation of the digital object */
   public CreationInfo getCreationInfo() {
     return creationInfo;
   }
@@ -200,9 +191,7 @@ public class DigitalObject extends Entity {
     this.creationInfo = creationInfo;
   }
 
-  /**
-   * @return a date for "navigation" purposes, e.g. a timeline
-   */
+  /** @return a date for "navigation" purposes, e.g. a timeline */
   public LocalDate getNavDate() {
     return navDate;
   }
@@ -219,76 +208,26 @@ public class DigitalObject extends Entity {
   @Override
   public String toString() {
     return "DigitalObject{"
-        + "item=" + item
-        + ", parent=" + parent
-        + ", fileResources=" + fileResources
-        + ", downloadURIs=" + downloadURIs
-        + ", renderingURIs=" + renderingURIs
-        + ", numberOfBinaryResources=" + numberOfBinaryResources
-        + ", license=" + license
-        + ", version=" + version
-        + ", creationInfo=" + creationInfo
-        + ", navDate=" + navDate
+        + "item="
+        + item
+        + ", parent="
+        + parent
+        + ", fileResources="
+        + fileResources
+        + ", downloadURIs="
+        + downloadURIs
+        + ", renderingURIs="
+        + renderingURIs
+        + ", numberOfBinaryResources="
+        + numberOfBinaryResources
+        + ", license="
+        + license
+        + ", version="
+        + version
+        + ", creationInfo="
+        + creationInfo
+        + ", navDate="
+        + navDate
         + '}';
-  }
-
-  /** Details (who, when and where) about the creation of the digital object. */
-  private class CreationInfo {
-
-    /** The place, where the creation of the digital object took place */
-    private GeoLocation place;
-
-    /** The date, when the digital object was created */
-    private LocalDate date;
-
-    /** The creator of the digital object */
-    private Agent creator;
-
-    /** @return the place, where the creation of the digital object took place */
-    public GeoLocation getPlace() {
-      return place;
-    }
-
-    /**
-     * Set the place, where the creation of the digital object took place
-     *
-     * @param place the place
-     */
-    public void setPlace(GeoLocation place) {
-      this.place = place;
-    }
-
-    /** @return the date, when the creation of the digital object happened */
-    public LocalDate getDate() {
-      return date;
-    }
-
-    /**
-     * Set the date, when then creation of the digital object happened
-     *
-     * @param date the date
-     */
-    public void setDate(LocalDate date) {
-      this.date = date;
-    }
-
-    /** @return the creator of the digital object */
-    public Agent getCreator() {
-      return creator;
-    }
-
-    /**
-     * Specify, who created the digital object
-     *
-     * @param creator the creator
-     */
-    public void setCreator(Agent creator) {
-      this.creator = creator;
-    }
-
-    @Override
-    public String toString() {
-      return "CreationInfo{" + "place=" + place + ", date=" + date + ", creator=" + creator + '}';
-    }
   }
 }

@@ -34,5 +34,32 @@
     "readonly" : false,
     "sizeInBytes" : 0,
     "filenameExtension" : "pdf"
-  } ]
+  } ],
+  "downloadURIs" : [ ],
+  "renderingURIs" : [ ],
+  "numberOfBinaryResources" : 0,
+  "creationInfo" : {
+    "place" : {
+      "identifiers" : [ ],
+      "label" : {
+        "" : "Place"
+      },
+      "type" : "ENTITY",
+      "entityType" : "GEOLOCATION",
+      "refId" : 0,
+      "geoLocationType" : "HUMAN_SETTLEMENT"
+    },
+    "date" : "2021-12-01",
+    "creator" : {
+      "identifiers" : [ ],
+      "label" : {
+        "" : "Creator"
+      },
+      "type" : "ENTITY",
+      "entityType" : "PERSON",
+      "refId" : 0,
+      "familyNames" : [ ],
+      "givenNames" : [ ]
+    }
+  }
 }
