@@ -34,7 +34,7 @@ public class DigitalObject extends Entity {
   private ArrayList<LinkedDataFileResource> downloadResources = new ArrayList<>();
 
   /**
-   * Sorted list of links (with description and MIME type) to human redable formats like a
+   * Sorted list of links (with description and MIME type) to human readable formats like a
    * permalink, OPAC/catalogue page, PDF download, ...
    */
   private ArrayList<LinkedDataFileResource> renderingResources = new ArrayList<>();
