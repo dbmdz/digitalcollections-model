@@ -35,8 +35,8 @@
     "sizeInBytes" : 0,
     "filenameExtension" : "pdf"
   } ],
-  "downloadURIs" : [ ],
-  "renderingURIs" : [ ],
+  "downloadResources" : [ ],
+  "renderingResources" : [ ],
   "numberOfBinaryResources" : 0,
   "creationInfo" : {
     "place" : {

@@ -9,8 +9,8 @@
     "entityType" : "DIGITAL_OBJECT",
     "refId" : 0,
     "fileResources" : [ ],
-    "downloadURIs" : [ ],
-    "renderingURIs" : [ ],
+    "downloadResources" : [ ],
+    "renderingResources" : [ ],
     "numberOfBinaryResources" : 0
   }, {
     "objectType" : "WEBPAGE",
