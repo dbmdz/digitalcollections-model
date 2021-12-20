@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Add new attributes and remove/rename attributes from and to the following classes:
+- Added new attributes and removed/renamed attributes from and to the following classes:
   - [`DigitalObject`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/entity/DigitalObject.java)
 
 ## [9.1.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/9.1.0) - 2021-09-20
