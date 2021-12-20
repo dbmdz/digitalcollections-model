@@ -31,13 +31,13 @@ public class DigitalObject extends Entity {
    * Sorted list of links (with description) to machine readable formats like Marc, RDF, METS or
    * IIIF-Manifest.
    */
-  private ArrayList<LinkedDataFileResource> downloadURIs = new ArrayList<>();
+  private ArrayList<LinkedDataFileResource> downloadResources = new ArrayList<>();
 
   /**
    * Sorted list of links (with description and MIME type) to human redable formats like a
-   * permalink, OPAC, PDF download, ...
+   * permalink, OPAC/catalogue page, PDF download, ...
    */
-  private ArrayList<LinkedDataFileResource> renderingURIs = new ArrayList<>();
+  private ArrayList<LinkedDataFileResource> renderingResources = new ArrayList<>();
 
   /**
    * number of related binary files for the presentation, like scans in a book, photos of an object,
@@ -108,31 +108,31 @@ public class DigitalObject extends Entity {
   }
 
   /** @return the sorted list of links (with description) to machine readable formats */
-  public ArrayList<LinkedDataFileResource> getDownloadURIs() {
-    return downloadURIs;
+  public ArrayList<LinkedDataFileResource> getDownloadResources() {
+    return downloadResources;
   }
 
   /**
    * Sets a sorted list of links (with description) to machine readable formats
    *
-   * @param downloadURIs the sorted list of links
+   * @param downloadResources the sorted list of links
    */
-  public void setDownloadURIs(ArrayList<LinkedDataFileResource> downloadURIs) {
-    this.downloadURIs = downloadURIs;
+  public void setDownloadResources(ArrayList<LinkedDataFileResource> downloadResources) {
+    this.downloadResources = downloadResources;
   }
 
-  /** @return the sorted list of links (with description and MIME type) to human redable formats */
-  public ArrayList<LinkedDataFileResource> getRenderingURIs() {
-    return renderingURIs;
+  /** @return the sorted list of links (with description and MIME type) to human readable formats */
+  public ArrayList<LinkedDataFileResource> getRenderingResources() {
+    return renderingResources;
   }
 
   /**
-   * Sets the sorted list of links (with description and MIME type) to human redable formats
+   * Sets the sorted list of links (with description and MIME type) to human readable formats
    *
-   * @param renderingURIs the sorted list of links
+   * @param renderingResources the sorted list of links
    */
-  public void setRenderingURIs(ArrayList<LinkedDataFileResource> renderingURIs) {
-    this.renderingURIs = renderingURIs;
+  public void setRenderingResources(ArrayList<LinkedDataFileResource> renderingResources) {
+    this.renderingResources = renderingResources;
   }
 
   /** @return the licence for the digital object (not for the metadata!) */
@@ -214,10 +214,10 @@ public class DigitalObject extends Entity {
         + parent
         + ", fileResources="
         + fileResources
-        + ", downloadURIs="
-        + downloadURIs
-        + ", renderingURIs="
-        + renderingURIs
+        + ", downloadResources="
+        + downloadResources
+        + ", renderingResources="
+        + renderingResources
         + ", numberOfBinaryResources="
         + numberOfBinaryResources
         + ", license="

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.UUID;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import org.springframework.util.StringUtils;
+import org.springframework.util.ObjectUtils;
 
 /** An user of the system. */
 public class User {
@@ -79,7 +79,7 @@ public class User {
    * @param passwordHash new hashed password
    */
   public void setPasswordHash(String passwordHash) {
-    if (!StringUtils.isEmpty(passwordHash)) {
+    if (!ObjectUtils.isEmpty(passwordHash)) {
       this.passwordHash = passwordHash;
     }
   }
