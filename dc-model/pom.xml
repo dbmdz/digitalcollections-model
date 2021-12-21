@@ -27,7 +27,7 @@
 
   <properties>
     <version.commons-io>2.11.0</version.commons-io>
-    <version.spring-security-core>5.5.3</version.spring-security-core>
+    <version.spring-security-core>5.6.1</version.spring-security-core>
     <version.validation-api>2.0.1.Final</version.validation-api>
   </properties>
 
