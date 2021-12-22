@@ -2,6 +2,7 @@ package de.digitalcollections.model.identifiable.entity;
 
 import de.digitalcollections.model.identifiable.Identifiable;
 import de.digitalcollections.model.identifiable.IdentifiableType;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -21,6 +22,9 @@ public class Entity extends Identifiable {
 
   protected CustomAttributes customAttributes;
   protected EntityType entityType;
+  /** A "navigable" date, required when you need to the display the digital object on a timeline. */
+  protected LocalDate navDate;
+
   protected long refId;
 
   public Entity() {
@@ -119,6 +123,20 @@ public class Entity extends Identifiable {
   /** @param entityType the type of the entity */
   public void setEntityType(EntityType entityType) {
     this.entityType = entityType;
+  }
+
+  /** @return a date for "navigation" purposes, e.g. a timeline */
+  public LocalDate getNavDate() {
+    return navDate;
+  }
+
+  /**
+   * Sets the "navigation" date
+   *
+   * @param navDate the "navigation" date
+   */
+  public void setNavDate(LocalDate navDate) {
+    this.navDate = navDate;
   }
 
   /** @param refId system wide unique entity reference id. */
