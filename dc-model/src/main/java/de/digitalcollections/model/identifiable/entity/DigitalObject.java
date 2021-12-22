@@ -6,7 +6,6 @@ import de.digitalcollections.model.identifiable.resource.LinkedDataFileResource;
 import de.digitalcollections.model.identifiable.versioning.Version;
 import de.digitalcollections.model.legal.License;
 import de.digitalcollections.model.production.CreationInfo;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -55,9 +54,6 @@ public class DigitalObject extends Entity {
 
   /** Details about the creation of the digital object: Who created it, when and where. */
   private CreationInfo creationInfo;
-
-  /** A "navigable" date, required when you need to the display the digital object on a timeline. */
-  private LocalDate navDate;
 
   /** Default constructor, which also sets the EntityType to {@link EntityType#DIGITAL_OBJECT} */
   public DigitalObject() {
@@ -189,20 +185,6 @@ public class DigitalObject extends Entity {
    */
   public void setCreationInfo(CreationInfo creationInfo) {
     this.creationInfo = creationInfo;
-  }
-
-  /** @return a date for "navigation" purposes, e.g. a timeline */
-  public LocalDate getNavDate() {
-    return navDate;
-  }
-
-  /**
-   * Sets the "navigation" date
-   *
-   * @param navDate the "navigation" date
-   */
-  public void setNavDate(LocalDate navDate) {
-    this.navDate = navDate;
   }
 
   @Override
