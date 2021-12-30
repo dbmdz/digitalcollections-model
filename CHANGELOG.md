@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added new v10 domain model diagram
+- Added missing geo location domain classes: Canyon, Cave, Continent, Country, Creek, Lake, Mountain, Ocean, River, Sea, StillWaters, Valley
+- Added (de)serialization tests for all geo location types
 - Added a less verbose domain model diagram
 
 ### Changed
