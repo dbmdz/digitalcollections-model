@@ -32,6 +32,7 @@ import de.digitalcollections.model.identifiable.entity.agent.Family;
 import de.digitalcollections.model.identifiable.entity.agent.Person;
 import de.digitalcollections.model.identifiable.entity.geo.location.GeoLocation;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
+import de.digitalcollections.model.identifiable.entity.geo.location.Mountain;
 import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 import de.digitalcollections.model.identifiable.entity.work.Expression;
 import de.digitalcollections.model.identifiable.entity.work.Item;
@@ -69,6 +70,7 @@ import de.digitalcollections.model.jackson.mixin.identifiable.entity.agent.Famil
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.agent.PersonMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.geo.location.GeoLocationMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.geo.location.HumanSettlementMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.geo.location.MountainMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.relation.EntityRelationMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.ExpressionMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.ItemMixIn;
@@ -207,6 +209,7 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(CoordinateLocation.class, CoordinateLocationMixIn.class);
     context.setMixInAnnotations(GeoLocation.class, GeoLocationMixIn.class);
     context.setMixInAnnotations(HumanSettlement.class, HumanSettlementMixIn.class);
+    context.setMixInAnnotations(Mountain.class, MountainMixIn.class);
 
     // work
     context.setMixInAnnotations(Expression.class, ExpressionMixIn.class);
