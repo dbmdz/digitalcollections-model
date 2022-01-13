@@ -17,7 +17,7 @@ public class DigitalObjectTest extends BaseJsonSerializationTest {
 
   private DigitalObject createObject() {
     DigitalObject digitalObject = new DigitalObject();
-    digitalObject.addIdentifier(new Identifier(null, "zend", "bsb10001234"));
+    digitalObject.addIdentifier(new Identifier(null, "myId", "bsb10001234"));
     ImageFileResource image = new ImageFileResource();
     image.setHeight(100);
     image.setWidth(400);
@@ -26,7 +26,7 @@ public class DigitalObjectTest extends BaseJsonSerializationTest {
     ApplicationFileResource appFile = new ApplicationFileResource();
     appFile.setFilename("dings.pdf");
     digitalObject.getFileResources().add(appFile);
-    digitalObject.setCustomAttribute("isHighlight", "true");
+    digitalObject.setCustomAttribute("companySpecificAttributeX", "foobar");
 
     CreationInfo creationInfo = new CreationInfo();
     Agent creator = new Person();
