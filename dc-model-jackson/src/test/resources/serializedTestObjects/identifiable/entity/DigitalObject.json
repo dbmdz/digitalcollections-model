@@ -1,7 +1,7 @@
 {
   "identifiers" : [ {
     "id" : "bsb10001234",
-    "namespace" : "zend"
+    "namespace" : "myId"
   } ],
   "previewImage" : {
     "identifiers" : [ ],
@@ -14,7 +14,7 @@
   },
   "type" : "ENTITY",
   "customAttributes" : {
-    "isHighlight" : "true"
+    "companySpecificAttributeX" : "foobar"
   },
   "entityType" : "DIGITAL_OBJECT",
   "refId" : 0,
