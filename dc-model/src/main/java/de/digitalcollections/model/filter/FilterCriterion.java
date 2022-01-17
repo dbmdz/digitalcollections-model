@@ -280,7 +280,13 @@ public class FilterCriterion<T extends Object> {
       return false;
     }
     FilterCriterion<?> that = (FilterCriterion<?>) o;
-    return nativeExpression == that.nativeExpression && Objects.equals(expression, that.expression) && Objects.equals(maxValue, that.maxValue) && Objects.equals(minValue, that.minValue) && operation == that.operation && Objects.equals(value, that.value) && Objects.equals(values, that.values);
+    return nativeExpression == that.nativeExpression
+        && Objects.equals(expression, that.expression)
+        && Objects.equals(maxValue, that.maxValue)
+        && Objects.equals(minValue, that.minValue)
+        && operation == that.operation
+        && Objects.equals(value, that.value)
+        && Objects.equals(values, that.values);
   }
 
   @Override

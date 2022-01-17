@@ -87,8 +87,6 @@ public class Filtering {
 
   @Override
   public String toString() {
-    return "Filtering{"
-        + "filterCriteria=" + filterCriteria
-        + '}';
+    return "Filtering{" + "filterCriteria=" + filterCriteria + '}';
   }
 }
