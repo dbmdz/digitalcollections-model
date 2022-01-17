@@ -1,6 +1,7 @@
 package de.digitalcollections.model.filter;
 
 import java.util.Collection;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -268,5 +269,22 @@ public class FilterCriterion<T extends Object> {
         }
         break;
     }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof FilterCriterion)) {
+      return false;
+    }
+    FilterCriterion<?> that = (FilterCriterion<?>) o;
+    return nativeExpression == that.nativeExpression && Objects.equals(expression, that.expression) && Objects.equals(maxValue, that.maxValue) && Objects.equals(minValue, that.minValue) && operation == that.operation && Objects.equals(value, that.value) && Objects.equals(values, that.values);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(expression, maxValue, minValue, nativeExpression, operation, value, values);
   }
 }

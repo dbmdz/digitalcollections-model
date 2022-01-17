@@ -1,5 +1,7 @@
 package de.digitalcollections.model.paging;
 
+import java.util.Objects;
+
 public class SearchPageRequest extends PageRequest {
 
   private String query;
@@ -23,5 +25,25 @@ public class SearchPageRequest extends PageRequest {
 
   public void setQuery(String query) {
     this.query = query;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof SearchPageRequest)) {
+      return false;
+    }
+    if (!super.equals(o)) {
+      return false;
+    }
+    SearchPageRequest that = (SearchPageRequest) o;
+    return Objects.equals(query, that.query);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(super.hashCode(), query);
   }
 }
