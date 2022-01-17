@@ -3,6 +3,7 @@ package de.digitalcollections.model.filter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 /** Container for a list of {@link FilterCriterion}s */
 public class Filtering {
@@ -65,5 +66,29 @@ public class Filtering {
   /** @param filterCriteria set list of filter criteria */
   public void setFilterCriteria(List<FilterCriterion> filterCriteria) {
     this.filterCriteria = filterCriteria;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Filtering)) {
+      return false;
+    }
+    Filtering filtering = (Filtering) o;
+    return Objects.equals(filterCriteria, filtering.filterCriteria);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(filterCriteria);
+  }
+
+  @Override
+  public String toString() {
+    return "Filtering{"
+        + "filterCriteria=" + filterCriteria
+        + '}';
   }
 }
