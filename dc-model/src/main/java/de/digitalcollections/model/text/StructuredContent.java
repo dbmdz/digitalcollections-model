@@ -6,6 +6,7 @@ import de.digitalcollections.model.text.contentblock.Text;
 import de.digitalcollections.model.view.ToCEntry;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /** A structured content / text implemented as list of content blocks. */
 public class StructuredContent {
@@ -98,5 +99,22 @@ public class StructuredContent {
 
   public void setContentBlocks(List<ContentBlock> contentBlocks) {
     this.contentBlocks = contentBlocks;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof StructuredContent)) {
+      return false;
+    }
+    StructuredContent that = (StructuredContent) o;
+    return Objects.equals(contentBlocks, that.contentBlocks);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(contentBlocks);
   }
 }
