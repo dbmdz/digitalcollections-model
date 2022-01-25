@@ -1,10 +1,8 @@
 package de.digitalcollections.model.legal;
 
-import de.digitalcollections.model.identifiable.resource.ImageFileResource;
 import de.digitalcollections.model.text.LocalizedText;
 import java.net.URL;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 /**
@@ -17,7 +15,6 @@ public class License {
   private LocalDateTime created;
   private LocalizedText label;
   private LocalDateTime lastModified;
-  private List<ImageFileResource> symbolImages;
   private URL url;
   private UUID uuid;
 
@@ -47,17 +44,6 @@ public class License {
   }
 
   /**
-   * @return (downloaded, locally managed ImageFileResource) list of symbol images representing the
-   *     license, e.g. like downloaded image https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png. A
-   *     list because different sized may be available, e.g. compact one
-   *     https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png. Client can choose of list for example
-   *     by minimal height...
-   */
-  public List<ImageFileResource> getSymbolImages() {
-    return symbolImages;
-  }
-
-  /**
    * @return the url to the official public accessible documentation/specification of the license,
    *     e.g. "http://rightsstatements.org/vocab/InC-NC/1.0/"
    */
@@ -84,10 +70,6 @@ public class License {
 
   public void setLastModified(LocalDateTime lastModified) {
     this.lastModified = lastModified;
-  }
-
-  public void setSymbolImages(List<ImageFileResource> symbolImages) {
-    this.symbolImages = symbolImages;
   }
 
   public void setUrl(URL url) {
