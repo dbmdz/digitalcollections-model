@@ -190,7 +190,23 @@ public class DigitalObject extends Entity {
   @Override
   public String toString() {
     return "DigitalObject{"
-        + "item="
+        + "created="
+        + created
+        + ", description="
+        + description
+        + ", identifiers="
+        + identifiers
+        + ", label="
+        + label
+        + ", lastModified="
+        + lastModified
+        + ", localizedUrlAliases="
+        + localizedUrlAliases
+        + ", previewImage="
+        + previewImage
+        + ", previewImageRenderingHints="
+        + previewImageRenderingHints
+        + ", item="
         + item
         + ", parent="
         + parent
@@ -208,8 +224,12 @@ public class DigitalObject extends Entity {
         + version
         + ", creationInfo="
         + creationInfo
+        + ", customAttributes="
+        + customAttributes
         + ", navDate="
         + navDate
+        + ", refId="
+        + refId
         + '}';
   }
 }

@@ -2,6 +2,7 @@ package de.digitalcollections.model.view;
 
 import de.digitalcollections.model.text.LocalizedText;
 import java.net.URL;
+import java.util.Objects;
 
 /**
  * Contains hints for rendering a preview image, e.g. in a webpage as HTML.<br>
@@ -99,5 +100,26 @@ public class RenderingHintsPreviewImage {
    */
   public void setTitle(LocalizedText title) {
     this.title = title;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof RenderingHintsPreviewImage)) {
+      return false;
+    }
+    RenderingHintsPreviewImage that = (RenderingHintsPreviewImage) o;
+    return openLinkInNewWindow == that.openLinkInNewWindow
+        && Objects.equals(altText, that.altText)
+        && Objects.equals(caption, that.caption)
+        && Objects.equals(targetLink, that.targetLink)
+        && Objects.equals(title, that.title);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(altText, caption, openLinkInNewWindow, targetLink, title);
   }
 }
