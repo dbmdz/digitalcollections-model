@@ -145,6 +145,12 @@ public class WebpageBuilder {
     return this;
   }
 
+  /**
+   * Create a prefilled webpage with dummy content
+   *
+   * @param path
+   * @return
+   */
   public static Webpage createPrefilledWebpage(String path) {
     LocalizedStructuredContent content = new LocalizedStructuredContent();
     StructuredContent structuredContentDe = new StructuredContent();

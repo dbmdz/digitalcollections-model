@@ -9,39 +9,39 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
 
-public class FileResourceBuilder
-    extends AbstractIdentifiableBuilder<FileResource, FileResourceBuilder> {
+public class FileResourceBuilder<F extends FileResource, B extends FileResourceBuilder>
+    extends AbstractIdentifiableBuilder<F, B> {
 
   @Override
   protected IdentifiableType getIdentifiableType() {
     return IdentifiableType.RESOURCE;
   }
 
-  public FileResourceBuilder withFilename(String filename) {
+  public B withFilename(String filename) {
     identifiable.setFilename(filename);
-    return this;
+    return (B) this;
   }
 
-  public FileResourceBuilder withType(FileResourceType fileResourceType) {
+  public B withType(FileResourceType fileResourceType) {
     identifiable.setFileResourceType(fileResourceType);
-    return this;
+    return (B) this;
   }
 
-  public FileResourceBuilder withMimeType(MimeType mimeType) {
+  public B withMimeType(MimeType mimeType) {
     identifiable.setMimeType(mimeType);
-    return this;
+    return (B) this;
   }
 
-  public FileResourceBuilder withHttpBaseUrl(String httpBaseUrl) {
+  public B withHttpBaseUrl(String httpBaseUrl) {
     try {
       identifiable.setHttpBaseUrl(new URL(httpBaseUrl));
     } catch (MalformedURLException e) {
       throw new RuntimeException("Cannot set httpBaseURL=" + httpBaseUrl + ": " + e, e);
     }
-    return this;
+    return (B) this;
   }
 
-  public FileResourceBuilder withLicenseOfName(String licenseName) {
+  public B withLicenseOfName(String licenseName) {
     License license =
         new LicenseBuilder()
             .withLabel(Locale.GERMAN, licenseName)
@@ -50,21 +50,21 @@ public class FileResourceBuilder
             .build();
 
     identifiable.setLicense(license);
-    return this;
+    return (B) this;
   }
 
-  public FileResourceBuilder readwrite() {
+  public B readwrite() {
     identifiable.setReadonly(false);
-    return this;
+    return (B) this;
   }
 
-  public FileResourceBuilder readonly() {
+  public B readonly() {
     identifiable.setReadonly(true);
-    return this;
+    return (B) this;
   }
 
-  public FileResourceBuilder withSizeInBytes(long size) {
+  public B withSizeInBytes(long size) {
     identifiable.setSizeInBytes(size);
-    return this;
+    return (B) this;
   }
 }

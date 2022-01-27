@@ -115,6 +115,11 @@ public abstract class AbstractIdentifiableBuilder<
     return (B) this;
   }
 
+  public B withPreviewImage(ImageFileResource previewImage) {
+    identifiable.setPreviewImage(previewImage);
+    return (B) this;
+  }
+
   public B withPreviewImage(String url, int width, int height) {
     String[] fileNameParts = url.split("/\\//");
     ImageFileResource previewImage =

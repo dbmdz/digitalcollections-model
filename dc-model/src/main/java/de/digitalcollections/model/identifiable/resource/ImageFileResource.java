@@ -1,5 +1,7 @@
 package de.digitalcollections.model.identifiable.resource;
 
+import java.util.Objects;
+
 /** An image file resource. Mimetype starts with "image/". */
 public class ImageFileResource extends FileResource {
 
@@ -29,5 +31,25 @@ public class ImageFileResource extends FileResource {
   /** @param width width in pixel */
   public void setWidth(int width) {
     this.width = width;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof ImageFileResource)) {
+      return false;
+    }
+    if (!super.equals(o)) {
+      return false;
+    }
+    ImageFileResource that = (ImageFileResource) o;
+    return height == that.height && width == that.width;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(super.hashCode(), height, width);
   }
 }

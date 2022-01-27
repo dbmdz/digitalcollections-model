@@ -33,19 +33,39 @@ public class FileResource extends Identifiable {
   }
 
   @Override
-  public boolean equals(Object obj) {
-    if (this == obj) {
+  public boolean equals(Object o) {
+    if (this == o) {
       return true;
     }
-    if (obj instanceof FileResource) {
-      final FileResource other = (FileResource) obj;
-      return Objects.equals(this.filename, other.filename)
-          && Objects.equals(this.fileResourceType, other.fileResourceType)
-          && Objects.equals(this.mimeType, other.mimeType)
-          && Objects.equals(this.sizeInBytes, other.sizeInBytes)
-          && Objects.equals(this.uri, other.uri);
+    if (!(o instanceof FileResource)) {
+      return false;
     }
-    return false;
+    if (!super.equals(o)) {
+      return false;
+    }
+    FileResource that = (FileResource) o;
+    return readonly == that.readonly
+        && sizeInBytes == that.sizeInBytes
+        && fileResourceType == that.fileResourceType
+        && Objects.equals(filename, that.filename)
+        && Objects.equals(httpBaseUrl, that.httpBaseUrl)
+        && Objects.equals(license, that.license)
+        && Objects.equals(mimeType, that.mimeType)
+        && Objects.equals(uri, that.uri);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(
+        super.hashCode(),
+        fileResourceType,
+        filename,
+        httpBaseUrl,
+        license,
+        mimeType,
+        readonly,
+        sizeInBytes,
+        uri);
   }
 
   public FileResourceType getFileResourceType() {
@@ -109,11 +129,6 @@ public class FileResource extends Identifiable {
 
   public URI getUri() {
     return this.uri;
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(filename, fileResourceType, mimeType, sizeInBytes, uri);
   }
 
   public boolean isReadonly() {
