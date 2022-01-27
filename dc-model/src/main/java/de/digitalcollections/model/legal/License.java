@@ -18,6 +18,14 @@ public class License {
   private URL url;
   private UUID uuid;
 
+  public License() {}
+
+  public License(String acronym, LocalizedText label, URL url) {
+    this.acronym = acronym;
+    this.label = label;
+    this.url = url;
+  }
+
   /**
    * @return the (language independent/english) acronym for this license, e.g. "CC0 1.0" for "Public
    *     Domain" or "CC BY-NC-SA 3.0"
