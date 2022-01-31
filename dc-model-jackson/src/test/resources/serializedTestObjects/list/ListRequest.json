@@ -12,9 +12,7 @@
       "direction" : "ASC",
       "ignoreCase" : false,
       "nullHandling" : "NATIVE",
-      "property" : "label",
-      "ascending" : true,
-      "descending" : false
+      "property" : "label"
     } ]
   }
 }
