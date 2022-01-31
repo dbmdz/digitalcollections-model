@@ -33,6 +33,8 @@ public class FilterCriterion<T extends Object> {
   private Object value;
   private Collection<?> values;
 
+  public FilterCriterion() {}
+
   /**
    * Constructor for a filter criterion.
    *
@@ -189,7 +191,6 @@ public class FilterCriterion<T extends Object> {
 
   public void setExpression(String expression) {
     this.expression = expression;
-    validate();
   }
 
   /**
