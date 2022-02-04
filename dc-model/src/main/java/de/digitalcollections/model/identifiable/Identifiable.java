@@ -1,16 +1,15 @@
 package de.digitalcollections.model.identifiable;
 
+import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.identifiable.alias.LocalizedUrlAliases;
 import de.digitalcollections.model.identifiable.resource.ImageFileResource;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.LocalizedText;
 import de.digitalcollections.model.view.RenderingHintsPreviewImage;
-import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
-import java.util.UUID;
 
 /**
  * An Identifiable is an uniquely identifiable {@link
@@ -24,18 +23,15 @@ import java.util.UUID;
  *       (e.g. GND-ID, VIAF-ID)
  * </ul>
  */
-public class Identifiable {
+public class Identifiable extends UniqueObject {
 
-  protected LocalDateTime created;
   protected LocalizedStructuredContent description;
   protected Set<Identifier> identifiers = new HashSet<>();
   protected LocalizedText label;
-  protected LocalDateTime lastModified;
   protected LocalizedUrlAliases localizedUrlAliases;
   protected ImageFileResource previewImage;
   protected RenderingHintsPreviewImage previewImageRenderingHints;
   protected IdentifiableType type;
-  private UUID uuid;
 
   public void addIdentifier(Identifier identifier) {
     identifiers.add(Objects.requireNonNull(identifier));
@@ -62,10 +58,6 @@ public class Identifiable {
         && Objects.equals(uuid, that.uuid);
   }
 
-  public LocalDateTime getCreated() {
-    return created;
-  }
-
   public LocalizedStructuredContent getDescription() {
     return description;
   }
@@ -90,10 +82,6 @@ public class Identifiable {
     return label;
   }
 
-  public LocalDateTime getLastModified() {
-    return lastModified;
-  }
-
   public LocalizedUrlAliases getLocalizedUrlAliases() {
     return localizedUrlAliases;
   }
@@ -110,10 +98,6 @@ public class Identifiable {
     return this.type;
   }
 
-  public UUID getUuid() {
-    return uuid;
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(
@@ -127,10 +111,6 @@ public class Identifiable {
         previewImageRenderingHints,
         type,
         uuid);
-  }
-
-  public void setCreated(LocalDateTime created) {
-    this.created = created;
   }
 
   public void setDescription(LocalizedStructuredContent description) {
@@ -149,10 +129,6 @@ public class Identifiable {
     this.label = label;
   }
 
-  public void setLastModified(LocalDateTime lastModified) {
-    this.lastModified = lastModified;
-  }
-
   public void setLocalizedUrlAliases(LocalizedUrlAliases localizedUrlAliases) {
     this.localizedUrlAliases = localizedUrlAliases;
   }
@@ -167,9 +143,5 @@ public class Identifiable {
 
   public void setType(IdentifiableType identifiableType) {
     this.type = identifiableType;
-  }
-
-  public void setUuid(UUID uuid) {
-    this.uuid = uuid;
   }
 }

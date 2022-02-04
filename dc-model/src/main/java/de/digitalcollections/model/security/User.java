@@ -1,14 +1,14 @@
 package de.digitalcollections.model.security;
 
+import de.digitalcollections.model.UniqueObject;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import org.springframework.util.ObjectUtils;
 
 /** An user of the system. */
-public class User {
+public class User extends UniqueObject {
 
   @NotBlank @Email private String email;
 
@@ -23,8 +23,6 @@ public class User {
   private String passwordHash;
 
   private List<Role> roles = new ArrayList<>();
-
-  private UUID uuid;
 
   public User() {}
 
@@ -46,10 +44,6 @@ public class User {
 
   public List<Role> getRoles() {
     return this.roles;
-  }
-
-  public UUID getUuid() {
-    return uuid;
   }
 
   public boolean isEnabled() {
@@ -86,9 +80,5 @@ public class User {
 
   public void setRoles(List<Role> userRoles) {
     this.roles = userRoles;
-  }
-
-  public void setUuid(UUID uuid) {
-    this.uuid = uuid;
   }
 }

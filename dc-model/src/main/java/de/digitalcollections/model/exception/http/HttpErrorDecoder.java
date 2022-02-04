@@ -22,6 +22,26 @@ public class HttpErrorDecoder {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(HttpErrorDecoder.class);
 
+  private static HttpException clientException(
+      String methodKey, int statusCode, String requestUrl) {
+    switch (statusCode) {
+      case 401:
+        return new UnauthorizedException(methodKey, statusCode, requestUrl);
+      case 403:
+        return new ForbiddenException(methodKey, statusCode, requestUrl);
+      case 404:
+        return new ResourceNotFoundException(methodKey, statusCode, requestUrl);
+      case 418:
+        return new ImATeapotException(methodKey, statusCode, requestUrl);
+      case 422:
+        return new UnprocessableEntityException(methodKey, statusCode, requestUrl);
+      case 451:
+        return new UnavailableForLegalReasonsException(methodKey, statusCode, requestUrl);
+      default:
+        return new HttpClientException(methodKey, statusCode, requestUrl);
+    }
+  }
+
   public static HttpException decode(String methodKey, int statusCode, HttpResponse response) {
     String requestUrl = null;
     try {
@@ -38,26 +58,6 @@ public class HttpErrorDecoder {
       return serverException(methodKey, statusCode, requestUrl);
     } else {
       return genericHttpException(methodKey, statusCode, requestUrl);
-    }
-  }
-
-  private static HttpException clientException(
-      String methodKey, int statusCode, String requestUrl) {
-    switch (statusCode) {
-      case 401:
-        return new UnauthorizedException(methodKey, statusCode, requestUrl);
-      case 403:
-        return new ForbiddenException(methodKey, statusCode, requestUrl);
-      case 404:
-        return new ResourceNotFoundException(methodKey, statusCode, requestUrl);
-      case 413:
-        return new ImATeapotException(methodKey, statusCode, requestUrl);
-      case 422:
-        return new UnprocessableEntityException(methodKey, statusCode, requestUrl);
-      case 451:
-        return new UnavailableForLegalReasonsException(methodKey, statusCode, requestUrl);
-      default:
-        return new HttpClientException(methodKey, statusCode, requestUrl);
     }
   }
 

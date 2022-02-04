@@ -1,5 +1,6 @@
 {
   "created" : "2000-01-01T10:15:00",
+  "lastModified" : "2000-01-03T23:15:00",
   "description" : {
     "de_DE" : {
       "type" : "doc",
@@ -16,7 +17,6 @@
   "label" : {
     "de_DE" : "Meine Homepage"
   },
-  "lastModified" : "2000-01-03T23:15:00",
   "type" : "RESOURCE",
   "publicationEnd" : "+999999999-12-31",
   "publicationStart" : "-999999999-01-01",
