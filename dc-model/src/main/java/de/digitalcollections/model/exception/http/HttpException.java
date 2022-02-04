@@ -3,15 +3,28 @@ package de.digitalcollections.model.exception.http;
 public class HttpException extends RuntimeException {
 
   private final String methodKey;
-
   private final String request;
-  private final int status;
+  private final int statuscode;
 
-  public HttpException(String methodKey, int status, String request) {
-    super(String.format("Got %d for backend call %s.%n⤷ %s", status, methodKey, request));
+  public HttpException(String methodKey, Exception ex) {
+    super(String.format("Got exception for backend call %s.", methodKey), ex);
+    this.methodKey = methodKey;
+    this.request = null;
+    this.statuscode = -1;
+  }
+
+  public HttpException(String methodKey, int statuscode) {
+    super(String.format("Got status code %d for backend call %s.", statuscode, methodKey));
+    this.methodKey = methodKey;
+    this.request = null;
+    this.statuscode = statuscode;
+  }
+
+  public HttpException(String methodKey, int statuscode, String request) {
+    super(String.format("Got %d for backend call %s.%n⤷ %s", statuscode, methodKey, request));
     this.methodKey = methodKey;
     this.request = request;
-    this.status = status;
+    this.statuscode = statuscode;
   }
 
   public String getMethodKey() {
@@ -23,6 +36,6 @@ public class HttpException extends RuntimeException {
   }
 
   public int getStatus() {
-    return status;
+    return statuscode;
   }
 }

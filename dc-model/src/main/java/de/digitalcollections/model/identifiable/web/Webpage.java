@@ -28,10 +28,12 @@ public class Webpage extends Identifiable implements INode<Webpage> {
     this.node.setChildren(children);
   }
 
+  @Override
   public List<Webpage> getChildren() {
     return node.getChildren();
   }
 
+  @Override
   public Webpage getParent() {
     return node.getParent();
   }
@@ -52,10 +54,12 @@ public class Webpage extends Identifiable implements INode<Webpage> {
     return text;
   }
 
+  @Override
   public void setChildren(List<Webpage> children) {
     node.setChildren(children);
   }
 
+  @Override
   public void setParent(Webpage parent) {
     node.setParent(parent);
   }

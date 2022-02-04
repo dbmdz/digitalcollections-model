@@ -1,22 +1,18 @@
 package de.digitalcollections.model.legal;
 
+import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.text.LocalizedText;
 import java.net.URL;
-import java.time.LocalDateTime;
-import java.util.UUID;
 
 /**
  * License model/description containing all relevant metadata of a license that can be used to
  * specify the license under which an object is available or distributed.
  */
-public class License {
+public class License extends UniqueObject {
 
   private String acronym;
-  private LocalDateTime created;
   private LocalizedText label;
-  private LocalDateTime lastModified;
   private URL url;
-  private UUID uuid;
 
   public License() {}
 
@@ -34,21 +30,12 @@ public class License {
     return acronym;
   }
 
-  /** @return date of creation of this license description */
-  public LocalDateTime getCreated() {
-    return created;
-  }
-
   /**
    * @return multilingual license title, e.g. "URHEBERRECHTSSCHUTZ - NICHT KOMMERZIELLE NUTZUNG
    *     GESTATTET", "IN COPYRIGHT - NON-COMMERCIAL USE PERMITTED"
    */
   public LocalizedText getLabel() {
     return label;
-  }
-
-  public LocalDateTime getLastModified() {
-    return lastModified;
   }
 
   /**
@@ -59,32 +46,15 @@ public class License {
     return url;
   }
 
-  /** @return unique identifier / license key within the system */
-  public UUID getUuid() {
-    return uuid;
-  }
-
   public void setAcronym(String acronym) {
     this.acronym = acronym;
-  }
-
-  public void setCreated(LocalDateTime created) {
-    this.created = created;
   }
 
   public void setLabel(LocalizedText label) {
     this.label = label;
   }
 
-  public void setLastModified(LocalDateTime lastModified) {
-    this.lastModified = lastModified;
-  }
-
   public void setUrl(URL url) {
     this.url = url;
-  }
-
-  public void setUuid(UUID uuid) {
-    this.uuid = uuid;
   }
 }
