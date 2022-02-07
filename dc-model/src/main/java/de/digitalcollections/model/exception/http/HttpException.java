@@ -35,7 +35,7 @@ public class HttpException extends RuntimeException {
     return request;
   }
 
-  public Integer getStatus() {
+  public Integer getStatusCode() {
     return statuscode;
   }
 }
