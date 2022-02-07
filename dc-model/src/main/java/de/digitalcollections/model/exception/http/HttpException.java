@@ -4,13 +4,13 @@ public class HttpException extends RuntimeException {
 
   private final String methodKey;
   private final String request;
-  private final int statuscode;
+  private final Integer statuscode;
 
   public HttpException(String methodKey, Exception ex) {
     super(String.format("Got exception for backend call %s.", methodKey), ex);
     this.methodKey = methodKey;
     this.request = null;
-    this.statuscode = -1;
+    this.statuscode = null;
   }
 
   public HttpException(String methodKey, int statuscode) {
@@ -35,7 +35,7 @@ public class HttpException extends RuntimeException {
     return request;
   }
 
-  public int getStatus() {
+  public Integer getStatus() {
     return statuscode;
   }
 }
