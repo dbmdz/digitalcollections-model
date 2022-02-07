@@ -16,8 +16,6 @@ public class User extends UniqueObject {
 
   @NotBlank private String firstname;
 
-  private Long id;
-
   @NotBlank private String lastname;
 
   private String passwordHash;
