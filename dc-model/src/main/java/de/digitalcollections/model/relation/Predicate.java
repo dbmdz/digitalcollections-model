@@ -1,25 +1,14 @@
 package de.digitalcollections.model.relation;
 
+import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.text.LocalizedText;
-import java.time.LocalDateTime;
 
 /** Specifies the type of a relation */
-public class Predicate {
+public class Predicate extends UniqueObject {
 
-  private LocalDateTime created;
   private LocalizedText description;
   private LocalizedText label;
-  private LocalDateTime lastModified;
   private String value;
-
-  /**
-   * Creation date of the predicate
-   *
-   * @return the creation date of the predicate
-   */
-  public LocalDateTime getCreated() {
-    return created;
-  }
 
   /**
    * The multilingual, verbose description of the predicate
@@ -40,30 +29,12 @@ public class Predicate {
   }
 
   /**
-   * Last modification date of the predicate
-   *
-   * @return the last modification date of the predicate
-   */
-  public LocalDateTime getLastModified() {
-    return lastModified;
-  }
-
-  /**
    * Value of the predicate, shall be filled in snake_case and lowercase
    *
    * @return value, e.g. <code>is_author_of</code>
    */
   public String getValue() {
     return value;
-  }
-
-  /**
-   * Sets the creation time (should normally only be done by the persistence layer)
-   *
-   * @param created the creation date of the predicate
-   */
-  public void setCreated(LocalDateTime created) {
-    this.created = created;
   }
 
   /**
@@ -82,17 +53,6 @@ public class Predicate {
    */
   public void setLabel(LocalizedText label) {
     this.label = label;
-  }
-
-  /**
-   * Sets the last modification date of the predicate (should normally only be done by the
-   * persistence layer)
-   *
-   * @param lastModified the last modification date of the predicate, e.g. "now" when any attribute
-   *     changes
-   */
-  public void setLastModified(LocalDateTime lastModified) {
-    this.lastModified = lastModified;
   }
 
   /**

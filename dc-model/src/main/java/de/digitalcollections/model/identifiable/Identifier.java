@@ -1,6 +1,6 @@
 package de.digitalcollections.model.identifiable;
 
-import java.io.Serializable;
+import de.digitalcollections.model.UniqueObject;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -10,14 +10,13 @@ import java.util.UUID;
  *
  * <p>Examples: GND-ID ("gnd:104330171") or VIAF-ID ("viaf:96994450")
  */
-public class Identifier implements Serializable {
+public class Identifier extends UniqueObject {
 
   private static final long serialVersionUID = 1L;
 
   private String id;
   private UUID identifiable;
   private String namespace;
-  private UUID uuid;
 
   public Identifier() {}
 
@@ -52,10 +51,6 @@ public class Identifier implements Serializable {
     return namespace;
   }
 
-  public UUID getUuid() {
-    return uuid;
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(id, namespace);
@@ -71,10 +66,6 @@ public class Identifier implements Serializable {
 
   public void setNamespace(String namespace) {
     this.namespace = namespace;
-  }
-
-  public void setUuid(UUID uuid) {
-    this.uuid = uuid;
   }
 
   @Override

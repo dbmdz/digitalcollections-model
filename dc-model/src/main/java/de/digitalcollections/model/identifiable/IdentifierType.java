@@ -1,6 +1,6 @@
 package de.digitalcollections.model.identifiable;
 
-import java.util.UUID;
+import de.digitalcollections.model.UniqueObject;
 
 /**
  * Defines an identifier type to be used in the system implementing this library. It is up to the
@@ -8,12 +8,11 @@ import java.util.UUID;
  * described by a label, a namespace (describing the system) and a regex pattern for validating
  * identifiers.
  */
-public class IdentifierType {
+public class IdentifierType extends UniqueObject {
 
   private String label;
   private String namespace;
   private String pattern;
-  private UUID uuid;
 
   public String getLabel() {
     return label;
@@ -27,10 +26,6 @@ public class IdentifierType {
     return pattern;
   }
 
-  public UUID getUuid() {
-    return uuid;
-  }
-
   public void setLabel(String label) {
     this.label = label;
   }
@@ -41,9 +36,5 @@ public class IdentifierType {
 
   public void setPattern(String pattern) {
     this.pattern = pattern;
-  }
-
-  public void setUuid(UUID uuid) {
-    this.uuid = uuid;
   }
 }
