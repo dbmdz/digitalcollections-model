@@ -1,13 +1,11 @@
 package de.digitalcollections.model.exception;
 
-import java.io.IOException;
-
 /**
  * An exception indicating that there has been an error in the communication between client and
  * server that neither was a problem on client side not on server side but between (connection,
  * "wire", etc.)
  */
-public class TechnicalException extends IOException {
+public class TechnicalException extends Exception {
 
   public TechnicalException() {}
 
