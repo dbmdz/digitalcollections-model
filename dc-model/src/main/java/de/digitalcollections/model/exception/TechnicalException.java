@@ -1,8 +1,6 @@
 package de.digitalcollections.model.exception;
 
-/**
- * An exception indicating that there has been a technical error.
- */
+/** An exception indicating that there has been a technical error. */
 public class TechnicalException extends Exception {
 
   public TechnicalException() {}
