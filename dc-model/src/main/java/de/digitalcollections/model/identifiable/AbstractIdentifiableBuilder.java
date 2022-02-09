@@ -257,9 +257,7 @@ public abstract class AbstractIdentifiableBuilder<
 
   public B withPrimaryLocalizedUrlAlias(String slug) {
     LocalizedUrlAliases localizedUrlAliases =
-        new LocalizedUrlAliasesBuilder()
-            .addUrlAlias(new UrlAliasBuilder().withSlug(slug).isPrimary().build())
-            .build();
+        new LocalizedUrlAliases(new UrlAliasBuilder().withSlug(slug).isPrimary().build());
 
     identifiable.setLocalizedUrlAliases(localizedUrlAliases);
     return (B) this;
