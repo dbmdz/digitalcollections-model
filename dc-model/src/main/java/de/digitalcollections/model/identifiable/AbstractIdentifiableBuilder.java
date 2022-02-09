@@ -2,7 +2,6 @@ package de.digitalcollections.model.identifiable;
 
 import de.digitalcollections.model.file.MimeType;
 import de.digitalcollections.model.identifiable.alias.LocalizedUrlAliases;
-import de.digitalcollections.model.identifiable.alias.LocalizedUrlAliasesBuilder;
 import de.digitalcollections.model.identifiable.alias.UrlAliasBuilder;
 import de.digitalcollections.model.identifiable.resource.ImageFileResource;
 import de.digitalcollections.model.identifiable.resource.PreviewImageBuilder;
