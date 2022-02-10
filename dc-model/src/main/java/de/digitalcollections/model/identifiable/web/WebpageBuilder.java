@@ -1,7 +1,6 @@
 package de.digitalcollections.model.identifiable.web;
 
 import de.digitalcollections.model.file.MimeType;
-import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.identifiable.resource.ImageFileResource;
 import de.digitalcollections.model.identifiable.resource.PreviewImageBuilder;
@@ -10,7 +9,6 @@ import de.digitalcollections.model.text.LocalizedText;
 import de.digitalcollections.model.text.StructuredContent;
 import de.digitalcollections.model.text.contentblock.ContentBlock;
 import de.digitalcollections.model.text.contentblock.Paragraph;
-import de.digitalcollections.model.text.contentblock.ParagraphBuilder;
 import de.digitalcollections.model.view.RenderingHints;
 import de.digitalcollections.model.view.RenderingHintsPreviewImage;
 import java.time.LocalDate;
@@ -19,8 +17,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import org.apache.commons.lang3.LocaleUtils;
 
 public class WebpageBuilder {
@@ -143,92 +139,5 @@ public class WebpageBuilder {
   public WebpageBuilder withChildren(List<Webpage> children) {
     webpage.setChildren(children);
     return this;
-  }
-
-  /**
-   * Create a prefilled webpage with dummy content
-   *
-   * @param path
-   * @return
-   */
-  public static Webpage createPrefilledWebpage(String path) {
-    LocalizedStructuredContent content = new LocalizedStructuredContent();
-    StructuredContent structuredContentDe = new StructuredContent();
-    structuredContentDe.addContentBlock(
-        new ParagraphBuilder()
-            .addText("Acme", "strong")
-            .addText(
-                "                                                                                              ")
-            .addText(
-                "                                                                           ",
-                "strong")
-            .addText(
-                "                                                                                                                       Ludwigstraße 16")
-            .addHardBreak()
-            .addText("12345 Ort")
-            .build());
-    structuredContentDe.addContentBlock(
-        new ParagraphBuilder().addText("Gesetzlicher Vertreter:", "strong").build());
-    structuredContentDe.addContentBlock(new ParagraphBuilder().addText("xxx").build());
-    structuredContentDe.addContentBlock(
-        new ParagraphBuilder()
-            .addText("Telefon: ", "strong")
-            .addText("12345")
-            .addHardBreak()
-            .addText("Fax: ", "strong")
-            .addText("67890")
-            .build());
-    structuredContentDe.addContentBlock(
-        new ParagraphBuilder()
-            .addText("E-Mail: ", "strong")
-            .addText("xxx@xxx.xxx")
-            .addHardBreak()
-            .addText(
-                "                                                                                                                                                                                                                                                              ")
-            .addText(
-                "                       Internet:                                                   ",
-                "strong")
-            .addText(
-                "                                                                                                                                                                                                                                                       ")
-            .addLink(
-                "                                             www.xxx.xxx", "https://www.xxx.xxx/")
-            .addText(
-                "                                                                                        ")
-            .addHardBreak()
-            .addText(
-                "                                                                                                                                                                                                                                                              ")
-            .addText("                       Umsatzsteueridentifikationsnummer: ", "strong")
-            .addText("DE-1234567                              ")
-            .build());
-    structuredContentDe.addContentBlock(
-        new ParagraphBuilder()
-            .addText("Acme ist eine ")
-            .addLinkWithTitle("Testinstitution", "https://localhost/", "")
-            .addText("  mit Sitz irgendwo.                               ")
-            .build());
-    content.put(Locale.GERMAN, structuredContentDe);
-    content.put(Locale.ENGLISH, new StructuredContent());
-
-    Webpage webpage = new Webpage();
-    webpage.setText(content);
-    webpage.setLabel(new LocalizedText(Locale.forLanguageTag("de"), "Impressum"));
-    webpage.setUuid(extractFirstUuidFromPath(path));
-    webpage.setPublicationStart(LocalDate.parse("2019-01-18"));
-    webpage.setType(IdentifiableType.ENTITY);
-    webpage.setChildren(List.of());
-    webpage.setCreated(LocalDateTime.parse("2019-01-16T10:06:31.747"));
-    webpage.setLastModified(LocalDateTime.parse("2019-01-18T10:26:17.527"));
-
-    return webpage;
-  }
-
-  private static UUID extractFirstUuidFromPath(String path) {
-    Pattern uuidPattern =
-        Pattern.compile("(\\b[0-9a-f]{8}\\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\\b[0-9a-f]{12})");
-    Matcher matcher = uuidPattern.matcher(path);
-    if (matcher.find()) {
-      return UUID.fromString(matcher.group(0));
-    }
-    return null;
   }
 }
