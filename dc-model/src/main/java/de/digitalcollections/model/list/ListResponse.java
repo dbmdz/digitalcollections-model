@@ -1,6 +1,5 @@
 package de.digitalcollections.model.list;
 
-import de.digitalcollections.model.paging.Sorting;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;

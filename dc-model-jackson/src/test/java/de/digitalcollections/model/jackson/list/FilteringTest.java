@@ -4,19 +4,12 @@ import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.list.FilterCriterion;
 import de.digitalcollections.model.list.FilterOperation;
 import de.digitalcollections.model.list.Filtering;
-import de.digitalcollections.model.list.ListRequest;
-import de.digitalcollections.model.list.ListResponse;
-import de.digitalcollections.model.security.User;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.jupiter.api.Test;
 
-public class ListResponseTest extends BaseJsonSerializationTest {
+public class FilteringTest extends BaseJsonSerializationTest {
 
-  private ListResponse<User> createObject() {
-    ListRequest listRequest = new ListRequest();
-    // filtering
+  private Filtering createObject() {
     FilterCriterion filterCriteria1 =
         new FilterCriterion("longField", FilterOperation.EQUALS, 5L, null, null, null);
     FilterCriterion filterCriteria2 =
@@ -27,22 +20,15 @@ public class ListResponseTest extends BaseJsonSerializationTest {
             LocalDate.parse("2020-01-01"),
             LocalDate.parse("2020-01-31"),
             null);
+
     Filtering filtering =
         Filtering.defaultBuilder().add(filterCriteria1).add(filterCriteria2).build();
-    listRequest.setFiltering(filtering);
-
-    List<User> content = new ArrayList<>();
-    User user = new User();
-    user.setEmail("test@user.de");
-    content.add(user);
-
-    ListResponse listResponse = new ListResponse(content, listRequest);
-    return listResponse;
+    return filtering;
   }
 
   @Test
   public void testSerializeDeserialize() throws Exception {
-    ListResponse<User> listResponse = createObject();
-    checkSerializeDeserialize(listResponse, "serializedTestObjects/list/ListResponse.json");
+    Filtering filtering = createObject();
+    checkSerializeDeserialize(filtering, "serializedTestObjects/list/Filtering.json");
   }
 }

@@ -1,11 +1,11 @@
 package de.digitalcollections.model.jackson.list;
 
-import de.digitalcollections.model.filter.Filtering;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
+import de.digitalcollections.model.list.Direction;
+import de.digitalcollections.model.list.Filtering;
 import de.digitalcollections.model.list.ListRequest;
-import de.digitalcollections.model.paging.Direction;
-import de.digitalcollections.model.paging.Order;
-import de.digitalcollections.model.paging.Sorting;
+import de.digitalcollections.model.list.Order;
+import de.digitalcollections.model.list.Sorting;
 import org.junit.jupiter.api.Test;
 
 public class ListRequestTest extends BaseJsonSerializationTest {
