@@ -82,7 +82,7 @@ public class Filtering {
 
   @Override
   public int hashCode() {
-    return Objects.hash(filterCriteria);
+    return Objects.hash(filterCriteria) + Objects.hash("Filtering");
   }
 
   @Override
