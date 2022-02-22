@@ -115,6 +115,6 @@ public class StructuredContent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(contentBlocks);
+    return Objects.hash(contentBlocks) + Objects.hash("StructuredContent");
   }
 }
