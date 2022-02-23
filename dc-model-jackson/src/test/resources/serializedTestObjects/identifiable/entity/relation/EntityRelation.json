@@ -6,9 +6,9 @@
     "entityType" : "DIGITAL_OBJECT",
     "refId" : 0,
     "fileResources" : [ ],
-    "downloadResources" : [ ],
-    "renderingResources" : [ ],
-    "numberOfBinaryResources" : 0
+    "linkedDataResources" : [ ],
+    "numberOfBinaryResources" : 0,
+    "renderingResources" : [ ]
   },
   "predicate" : "is_describing_provenience",
   "subject" : {

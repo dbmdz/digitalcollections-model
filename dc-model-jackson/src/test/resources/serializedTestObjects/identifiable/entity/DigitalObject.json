@@ -18,26 +18,6 @@
   },
   "entityType" : "DIGITAL_OBJECT",
   "refId" : 0,
-  "fileResources" : [ {
-    "identifiers" : [ ],
-    "type" : "RESOURCE",
-    "fileResourceType" : "IMAGE",
-    "readonly" : false,
-    "sizeInBytes" : 0,
-    "height" : 100,
-    "width" : 400
-  }, {
-    "identifiers" : [ ],
-    "type" : "RESOURCE",
-    "fileResourceType" : "APPLICATION",
-    "filename" : "dings.pdf",
-    "readonly" : false,
-    "sizeInBytes" : 0,
-    "filenameExtension" : "pdf"
-  } ],
-  "downloadResources" : [ ],
-  "renderingResources" : [ ],
-  "numberOfBinaryResources" : 0,
   "creationInfo" : {
     "place" : {
       "identifiers" : [ ],
@@ -61,5 +41,25 @@
       "familyNames" : [ ],
       "givenNames" : [ ]
     }
-  }
+  },
+  "fileResources" : [ {
+    "identifiers" : [ ],
+    "type" : "RESOURCE",
+    "fileResourceType" : "IMAGE",
+    "readonly" : false,
+    "sizeInBytes" : 0,
+    "height" : 100,
+    "width" : 400
+  }, {
+    "identifiers" : [ ],
+    "type" : "RESOURCE",
+    "fileResourceType" : "APPLICATION",
+    "filename" : "dings.pdf",
+    "readonly" : false,
+    "sizeInBytes" : 0,
+    "filenameExtension" : "pdf"
+  } ],
+  "linkedDataResources" : [ ],
+  "numberOfBinaryResources" : 0,
+  "renderingResources" : [ ]
 }
