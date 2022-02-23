@@ -7,8 +7,8 @@ import java.time.LocalDate;
 /** Details (who, when and where) about the creation of the digital object. */
 public class CreationInfo {
 
-  /** The place, where the creation of the digital object took place */
-  private GeoLocation place;
+  /** The geolocation, where the creation of the digital object took geolocation */
+  private GeoLocation geoLocation;
 
   /** The date, when the digital object was created */
   private LocalDate date;
@@ -16,18 +16,18 @@ public class CreationInfo {
   /** The creator of the digital object */
   private Agent creator;
 
-  /** @return the place, where the creation of the digital object took place */
-  public GeoLocation getPlace() {
-    return place;
+  /** @return the geolocation, where the creation of the digital object took geolocation */
+  public GeoLocation getGeoLocation() {
+    return geoLocation;
   }
 
   /**
-   * Set the place, where the creation of the digital object took place
+   * Set the geolocation, where the creation of the digital object took geolocation
    *
-   * @param place the place
+   * @param geoLocation the geolocation
    */
-  public void setPlace(GeoLocation place) {
-    this.place = place;
+  public void setGeoLocation(GeoLocation geoLocation) {
+    this.geoLocation = geoLocation;
   }
 
   /** @return the date, when the creation of the digital object happened */
@@ -60,6 +60,13 @@ public class CreationInfo {
 
   @Override
   public String toString() {
-    return "CreationInfo{" + "place=" + place + ", date=" + date + ", creator=" + creator + '}';
+    return "CreationInfo{"
+        + "geoLocation="
+        + geoLocation
+        + ", date="
+        + date
+        + ", creator="
+        + creator
+        + '}';
   }
 }
