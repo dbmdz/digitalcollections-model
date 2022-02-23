@@ -7,8 +7,8 @@ import java.time.LocalDate;
 public class CreationInfoBuilder {
   CreationInfo creationInfo = new CreationInfo();
 
-  public CreationInfoBuilder withPlace(GeoLocation place) {
-    creationInfo.setPlace(place);
+  public CreationInfoBuilder withGeoLocation(GeoLocation geoLocation) {
+    creationInfo.setGeoLocation(geoLocation);
     return this;
   }
 

@@ -32,9 +32,9 @@ public class DigitalObjectTest extends BaseJsonSerializationTest {
     Agent creator = new Person();
     creator.setLabel("Creator");
     creationInfo.setCreator(creator);
-    GeoLocation place = new HumanSettlement();
-    place.setLabel("Place");
-    creationInfo.setPlace(place);
+    GeoLocation geoLocation = new HumanSettlement();
+    geoLocation.setLabel("Geolocation");
+    creationInfo.setGeoLocation(geoLocation);
     creationInfo.setDate(LocalDate.of(2021, 12, 1));
     digitalObject.setCreationInfo(creationInfo);
     return digitalObject;

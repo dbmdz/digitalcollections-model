@@ -19,10 +19,10 @@
   "entityType" : "DIGITAL_OBJECT",
   "refId" : 0,
   "creationInfo" : {
-    "place" : {
+    "geoLocation" : {
       "identifiers" : [ ],
       "label" : {
-        "" : "Place"
+        "" : "Geolocation"
       },
       "type" : "ENTITY",
       "entityType" : "GEOLOCATION",
