@@ -16,27 +16,23 @@ import java.util.ArrayList;
  * digital object.
  */
 public class DigitalObject extends Entity {
+  // FIXME We need to specify this! private Availablity availablity;
 
-  /** The related item (can be null, if not applicable). */
-  private Item item;
-
-  /** The parent digital object, if the current one is an embedded one. */
-  private DigitalObject parent;
+  /** Details about the creation of the digital object: Who created it, when and where. */
+  private CreationInfo creationInfo;
 
   /** Sorted list of file resources like images, audio files etc. */
   private ArrayList<FileResource> fileResources = new ArrayList<>();
+  /** The related item (can be null, if not applicable). */
+  private Item item;
+  /** licence of the digital object. */
+  private License license;
 
   /**
    * Sorted list of links (with description) to machine readable formats like Marc, RDF, METS or
    * IIIF-Manifest.
    */
-  private ArrayList<LinkedDataFileResource> downloadResources = new ArrayList<>();
-
-  /**
-   * Sorted list of links (with description and MIME type) to human readable formats like a
-   * permalink, OPAC/catalogue page, PDF download, ...
-   */
-  private ArrayList<LinkedDataFileResource> renderingResources = new ArrayList<>();
+  private ArrayList<LinkedDataFileResource> linkedDataResources = new ArrayList<>();
 
   /**
    * number of related binary files for the presentation, like scans in a book, photos of an object,
@@ -44,16 +40,17 @@ public class DigitalObject extends Entity {
    */
   private int numberOfBinaryResources = 0;
 
-  /** licence of the digital object. */
-  private License license;
+  /** The parent digital object, if the current one is an embedded one. */
+  private DigitalObject parent;
+
+  /**
+   * Sorted list of links (with description and MIME type) to human readable formats like a
+   * permalink, OPAC/catalogue page, PDF download, ...
+   */
+  private ArrayList<FileResource> renderingResources = new ArrayList<>();
 
   /** version of the digital object. */
   private Version version;
-
-  // FIXME We need to specify this! private Availablity availablity;
-
-  /** Details about the creation of the digital object: Who created it, when and where. */
-  private CreationInfo creationInfo;
 
   /** Default constructor, which also sets the EntityType to {@link EntityType#DIGITAL_OBJECT} */
   public DigitalObject() {
@@ -61,18 +58,34 @@ public class DigitalObject extends Entity {
     this.entityType = EntityType.DIGITAL_OBJECT;
   }
 
+  /** @return meta information about the creation of the digital object */
+  public CreationInfo getCreationInfo() {
+    return creationInfo;
+  }
+
+  /** @return the sorted list of file resources, like images or audio files */
+  public ArrayList<FileResource> getFileResources() {
+    return fileResources;
+  }
+
   /** @return the item, the digital object belongs to. Otherwise, return null. */
   public Item getItem() {
     return item;
   }
 
-  /**
-   * Set the item, the digital object belongs to
-   *
-   * @param item the item, the digital object belongs to
-   */
-  public void setItem(Item item) {
-    this.item = item;
+  /** @return the licence for the digital object (not for the metadata!) */
+  public License getLicense() {
+    return license;
+  }
+
+  /** @return the sorted list of links (with description) to machine readable formats */
+  public ArrayList<LinkedDataFileResource> getLinkedDataResources() {
+    return linkedDataResources;
+  }
+
+  /** @return the number of binary resources for presentation */
+  public int getNumberOfBinaryResources() {
+    return numberOfBinaryResources;
   }
 
   /** @return the parent of the digital object, it available. Otherwise, return null. */
@@ -80,18 +93,23 @@ public class DigitalObject extends Entity {
     return parent;
   }
 
-  /**
-   * Sets the parent of the digital object
-   *
-   * @param parent of the digital object
-   */
-  public void setParent(DigitalObject parent) {
-    this.parent = parent;
+  /** @return the sorted list of links (with description and MIME type) to human readable formats */
+  public ArrayList<FileResource> getRenderingResources() {
+    return renderingResources;
   }
 
-  /** @return the sorted list of file resources, like images or audio files */
-  public ArrayList<FileResource> getFileResources() {
-    return fileResources;
+  /** @return the version of the digital object */
+  public Version getVersion() {
+    return version;
+  }
+
+  /**
+   * Sets the information about the creation of the digital object
+   *
+   * @param creationInfo the meta information about the creation
+   */
+  public void setCreationInfo(CreationInfo creationInfo) {
+    this.creationInfo = creationInfo;
   }
 
   /**
@@ -103,37 +121,13 @@ public class DigitalObject extends Entity {
     this.fileResources = fileResources;
   }
 
-  /** @return the sorted list of links (with description) to machine readable formats */
-  public ArrayList<LinkedDataFileResource> getDownloadResources() {
-    return downloadResources;
-  }
-
   /**
-   * Sets a sorted list of links (with description) to machine readable formats
+   * Set the item, the digital object belongs to
    *
-   * @param downloadResources the sorted list of links
+   * @param item the item, the digital object belongs to
    */
-  public void setDownloadResources(ArrayList<LinkedDataFileResource> downloadResources) {
-    this.downloadResources = downloadResources;
-  }
-
-  /** @return the sorted list of links (with description and MIME type) to human readable formats */
-  public ArrayList<LinkedDataFileResource> getRenderingResources() {
-    return renderingResources;
-  }
-
-  /**
-   * Sets the sorted list of links (with description and MIME type) to human readable formats
-   *
-   * @param renderingResources the sorted list of links
-   */
-  public void setRenderingResources(ArrayList<LinkedDataFileResource> renderingResources) {
-    this.renderingResources = renderingResources;
-  }
-
-  /** @return the licence for the digital object (not for the metadata!) */
-  public License getLicense() {
-    return license;
+  public void setItem(Item item) {
+    this.item = item;
   }
 
   /**
@@ -145,23 +139,13 @@ public class DigitalObject extends Entity {
     this.license = license;
   }
 
-  /** @return the version of the digital object */
-  public Version getVersion() {
-    return version;
-  }
-
   /**
-   * Sets the version of the digital object
+   * Sets a sorted list of links (with description) to machine readable formats
    *
-   * @param version of the digital object
+   * @param linkedDataResources the sorted list of links
    */
-  public void setVersion(Version version) {
-    this.version = version;
-  }
-
-  /** @return the number of binary resources for presentation */
-  public int getNumberOfBinaryResources() {
-    return numberOfBinaryResources;
+  public void setLinkedDataResources(ArrayList<LinkedDataFileResource> linkedDataResources) {
+    this.linkedDataResources = linkedDataResources;
   }
 
   /**
@@ -173,18 +157,31 @@ public class DigitalObject extends Entity {
     this.numberOfBinaryResources = numberOfBinaryResources;
   }
 
-  /** @return meta information about the creation of the digital object */
-  public CreationInfo getCreationInfo() {
-    return creationInfo;
+  /**
+   * Sets the parent of the digital object
+   *
+   * @param parent of the digital object
+   */
+  public void setParent(DigitalObject parent) {
+    this.parent = parent;
   }
 
   /**
-   * Sets the information about the creation of the digital object
+   * Sets the sorted list of links (with description and MIME type) to human readable formats
    *
-   * @param creationInfo the meta information about the creation
+   * @param renderingResources the sorted list of links
    */
-  public void setCreationInfo(CreationInfo creationInfo) {
-    this.creationInfo = creationInfo;
+  public void setRenderingResources(ArrayList<FileResource> renderingResources) {
+    this.renderingResources = renderingResources;
+  }
+
+  /**
+   * Sets the version of the digital object
+   *
+   * @param version of the digital object
+   */
+  public void setVersion(Version version) {
+    this.version = version;
   }
 
   @Override
@@ -212,8 +209,8 @@ public class DigitalObject extends Entity {
         + parent
         + ", fileResources="
         + fileResources
-        + ", downloadResources="
-        + downloadResources
+        + ", linkeddataResources="
+        + linkedDataResources
         + ", renderingResources="
         + renderingResources
         + ", numberOfBinaryResources="
