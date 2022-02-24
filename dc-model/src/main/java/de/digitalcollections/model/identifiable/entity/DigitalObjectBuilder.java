@@ -1,6 +1,7 @@
 package de.digitalcollections.model.identifiable.entity;
 
 import de.digitalcollections.model.identifiable.Identifier;
+import de.digitalcollections.model.legal.License;
 import de.digitalcollections.model.production.CreationInfo;
 
 /** Builder to programmatically create a DigitalObject */
@@ -23,6 +24,11 @@ public class DigitalObjectBuilder extends EntityBuilder<DigitalObject, DigitalOb
 
   public DigitalObjectBuilder withIdentifier(Identifier identifier) {
     identifiable.addIdentifier(identifier);
+    return this;
+  }
+
+  public DigitalObjectBuilder withLicense(License license) {
+    identifiable.setLicense(license);
     return this;
   }
 }

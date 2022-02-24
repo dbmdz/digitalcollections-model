@@ -4,6 +4,7 @@ import de.digitalcollections.model.text.LocalizedText;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
+import java.util.UUID;
 
 public class LicenseBuilder {
 
@@ -33,6 +34,11 @@ public class LicenseBuilder {
     } catch (MalformedURLException e) {
       throw new RuntimeException("Cannot set url=" + url + ": " + e, e);
     }
+    return this;
+  }
+
+  public LicenseBuilder withUuid(UUID uuid) {
+    license.setUuid(uuid);
     return this;
   }
 }
