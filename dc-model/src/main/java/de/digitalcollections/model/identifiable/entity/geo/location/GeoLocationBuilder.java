@@ -3,8 +3,7 @@ package de.digitalcollections.model.identifiable.entity.geo.location;
 import de.digitalcollections.model.identifiable.entity.EntityBuilder;
 import de.digitalcollections.model.identifiable.entity.EntityType;
 
-public class GeoLocationBuilder<GL extends GeoLocation, GLB extends GeoLocationBuilder>
-    extends EntityBuilder<GeoLocation, GeoLocationBuilder<GeoLocation, GeoLocationBuilder>> {
+public class GeoLocationBuilder extends EntityBuilder<GeoLocation, GeoLocationBuilder> {
 
   @Override
   protected EntityType getEntityType() {
@@ -16,9 +15,9 @@ public class GeoLocationBuilder<GL extends GeoLocation, GLB extends GeoLocationB
   }
 
   @Override
-  public GL build() {
+  public GeoLocation build() {
     GeoLocation geoLocation = super.build();
     geoLocation.setGeoLocationType(getGeoLocationType());
-    return (GL) geoLocation;
+    return geoLocation;
   }
 }
