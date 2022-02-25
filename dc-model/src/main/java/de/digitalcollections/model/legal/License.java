@@ -57,4 +57,16 @@ public class License extends UniqueObject {
   public void setUrl(URL url) {
     this.url = url;
   }
+
+  @Override
+  public String toString() {
+    return "License{"
+        + "created=" + created
+        + ", lastModified=" + lastModified
+        + ", uuid=" + uuid
+        + ", acronym='" + acronym + '\''
+        + ", label=" + label
+        + ", url=" + url
+        + '}';
+  }
 }
