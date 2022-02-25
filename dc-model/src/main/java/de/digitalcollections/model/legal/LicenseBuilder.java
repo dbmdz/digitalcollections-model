@@ -29,6 +29,10 @@ public class LicenseBuilder {
   }
 
   public LicenseBuilder withUrl(String url) {
+    if (url==null) {
+      return this;
+    }
+
     try {
       license.setUrl(new URL(url));
     } catch (MalformedURLException e) {
@@ -39,6 +43,11 @@ public class LicenseBuilder {
 
   public LicenseBuilder withUuid(UUID uuid) {
     license.setUuid(uuid);
+    return this;
+  }
+
+  public LicenseBuilder withLabel(LocalizedText label) {
+    license.setLabel(label);
     return this;
   }
 }
