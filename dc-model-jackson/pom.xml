@@ -15,7 +15,7 @@
 
   <properties>
     <version.commons-beanutils>1.9.4</version.commons-beanutils>
-    <version.jackson>2.13.1</version.jackson>
+    <version.jackson>2.13.2</version.jackson>
     <version.slf4j>1.7.36</version.slf4j>
     <version.wdtk-datamodel>0.12.1</version.wdtk-datamodel>
 
