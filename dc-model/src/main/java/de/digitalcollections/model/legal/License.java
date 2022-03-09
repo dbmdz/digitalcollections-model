@@ -61,12 +61,19 @@ public class License extends UniqueObject {
   @Override
   public String toString() {
     return "License{"
-        + "created=" + created
-        + ", lastModified=" + lastModified
-        + ", uuid=" + uuid
-        + ", acronym='" + acronym + '\''
-        + ", label=" + label
-        + ", url=" + url
+        + "created="
+        + created
+        + ", lastModified="
+        + lastModified
+        + ", uuid="
+        + uuid
+        + ", acronym='"
+        + acronym
+        + '\''
+        + ", label="
+        + label
+        + ", url="
+        + url
         + '}';
   }
 }
