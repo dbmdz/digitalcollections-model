@@ -1,8 +1,11 @@
 package de.digitalcollections.model.identifiable.entity;
 
 import de.digitalcollections.model.identifiable.Identifier;
+import de.digitalcollections.model.identifiable.resource.FileResource;
+import de.digitalcollections.model.identifiable.resource.LinkedDataFileResource;
 import de.digitalcollections.model.legal.License;
 import de.digitalcollections.model.production.CreationInfo;
+import java.util.ArrayList;
 
 /** Builder to programmatically create a DigitalObject */
 public class DigitalObjectBuilder extends EntityBuilder<DigitalObject, DigitalObjectBuilder> {
@@ -29,6 +32,26 @@ public class DigitalObjectBuilder extends EntityBuilder<DigitalObject, DigitalOb
 
   public DigitalObjectBuilder withLicense(License license) {
     identifiable.setLicense(license);
+    return this;
+  }
+
+  public DigitalObjectBuilder withLinkedDataFileResource(LinkedDataFileResource linkedDataFileResource) {
+    ArrayList<LinkedDataFileResource> linkedDataFileResources = identifiable.getLinkedDataResources();
+    if (linkedDataFileResources==null) {
+      linkedDataFileResources = new ArrayList<>();
+    }
+    linkedDataFileResources.add(linkedDataFileResource);
+    identifiable.setLinkedDataResources(linkedDataFileResources);
+    return this;
+  }
+
+  public DigitalObjectBuilder withFileResource(FileResource fileResource) {
+    ArrayList<FileResource> fileResources = identifiable.getFileResources();
+    if (fileResources==null) {
+      fileResources = new ArrayList<>();
+    }
+    fileResources.add(fileResource);
+    identifiable.setFileResources(fileResources);
     return this;
   }
 }

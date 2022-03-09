@@ -29,7 +29,7 @@ public class LicenseBuilder {
   }
 
   public LicenseBuilder withUrl(String url) {
-    if (url==null) {
+    if (url == null) {
       return this;
     }
 

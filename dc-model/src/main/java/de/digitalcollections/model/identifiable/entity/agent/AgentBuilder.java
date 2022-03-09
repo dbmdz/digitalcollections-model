@@ -9,5 +9,4 @@ public class AgentBuilder extends EntityBuilder<Agent, AgentBuilder> {
   protected EntityType getEntityType() {
     return EntityType.AGENT;
   }
-
 }
