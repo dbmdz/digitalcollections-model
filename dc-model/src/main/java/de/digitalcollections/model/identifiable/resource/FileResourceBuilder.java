@@ -6,6 +6,8 @@ import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.legal.License;
 import de.digitalcollections.model.legal.LicenseBuilder;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Locale;
 
@@ -67,4 +69,14 @@ public class FileResourceBuilder<F extends FileResource, B extends FileResourceB
     identifiable.setSizeInBytes(size);
     return (B) this;
   }
+
+  public B withUri(String uri) {
+    try {
+      identifiable.setUri(new URI(uri));
+    } catch (URISyntaxException e) {
+      throw new RuntimeException("Invalid URI=" + uri + ": " + e);
+    }
+    return (B) this;
+  }
+
 }

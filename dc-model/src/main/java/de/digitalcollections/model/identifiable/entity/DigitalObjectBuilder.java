@@ -54,4 +54,14 @@ public class DigitalObjectBuilder extends EntityBuilder<DigitalObject, DigitalOb
     identifiable.setFileResources(fileResources);
     return this;
   }
+
+  public DigitalObjectBuilder withRenderingResource(FileResource renderingResource) {
+    ArrayList<FileResource> renderingResources = identifiable.getRenderingResources();
+    if (renderingResources==null) {
+      renderingResources = new ArrayList<>();
+    }
+    renderingResources.add(renderingResource);
+    identifiable.setRenderingResources(renderingResources);
+    return this;
+  }
 }

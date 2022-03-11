@@ -3,6 +3,7 @@ package de.digitalcollections.model.identifiable.entity.agent;
 import de.digitalcollections.model.identifiable.entity.EntityType;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import java.net.URL;
+import java.util.Objects;
 
 /**
  * CorporateBody is used to describe a (business) corporation (e.g. a project partner or
@@ -39,5 +40,47 @@ public class CorporateBody extends Agent {
   /** @param text set localized formatted text describing corporate body */
   public void setText(LocalizedStructuredContent text) {
     this.text = text;
+  }
+
+  @Override
+  public String toString() {
+    return "CorporateBody{"
+        + "created=" + created
+        + ", lastModified=" + lastModified
+        + ", uuid=" + uuid
+        + ", description=" + description
+        + ", identifiers=" + identifiers
+        + ", label=" + label
+        + ", localizedUrlAliases=" + localizedUrlAliases
+        + ", previewImage=" + previewImage
+        + ", previewImageRenderingHints=" + previewImageRenderingHints
+        + ", type=" + type
+        + ", customAttributes=" + customAttributes
+        + ", entityType=" + entityType
+        + ", navDate=" + navDate
+        + ", refId=" + refId
+        + ", homepageUrl=" + homepageUrl
+        + ", text=" + text
+        + "}@" + hashCode();
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof CorporateBody)) {
+      return false;
+    }
+    if (!super.equals(o)) {
+      return false;
+    }
+    CorporateBody that = (CorporateBody) o;
+    return Objects.equals(homepageUrl, that.homepageUrl) && Objects.equals(text, that.text);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(super.hashCode(), homepageUrl, text);
   }
 }
