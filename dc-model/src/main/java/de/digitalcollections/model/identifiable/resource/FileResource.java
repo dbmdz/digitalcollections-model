@@ -171,17 +171,25 @@ public class FileResource extends Identifiable {
   public String toString() {
     String mimetypeStr = getMimeType() == null ? null : getMimeType().getTypeName();
 
-    return this.getClass().getSimpleName()
-        + ":"
-        + "\n{"
-        + "\n  uuid="
-        + String.valueOf(getUuid())
-        + ",\n  uri="
-        + String.valueOf(uri)
-        + ",\n  mimetype="
-        + mimetypeStr
-        + ",\n  lastModified="
-        + lastModified
-        + "\n}";
+    return this.getClass().getSimpleName()+"{"
+        + "created=" + created
+        + ", lastModified=" + lastModified
+        + ", uuid=" + String.valueOf(getUuid())
+        + ", description=" + description
+        + ", identifiers=" + identifiers
+        + ", label=" + label
+        + ", localizedUrlAliases=" + localizedUrlAliases
+        + ", previewImage=" + previewImage
+        + ", previewImageRenderingHints=" + previewImageRenderingHints
+        + ", type=" + type
+        + ", fileResourceType=" + fileResourceType
+        + ", filename='" + filename + '\''
+        + ", httpBaseUrl=" + httpBaseUrl
+        + ", license=" + license
+        + ", mimeType=" + mimetypeStr
+        + ", readonly=" + readonly
+        + ", sizeInBytes=" + sizeInBytes
+        + ", uri=" + String.valueOf(uri)
+        + '}';
   }
 }

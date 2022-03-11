@@ -3,6 +3,7 @@ package de.digitalcollections.model.legal;
 import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.text.LocalizedText;
 import java.net.URL;
+import java.util.Objects;
 
 /**
  * License model/description containing all relevant metadata of a license that can be used to
@@ -61,19 +62,29 @@ public class License extends UniqueObject {
   @Override
   public String toString() {
     return "License{"
-        + "created="
-        + created
-        + ", lastModified="
-        + lastModified
-        + ", uuid="
-        + uuid
-        + ", acronym='"
-        + acronym
-        + '\''
-        + ", label="
-        + label
-        + ", url="
-        + url
+        + "created=" + created
+        + ", lastModified=" + lastModified
+        + ", uuid=" + uuid
+        + ", acronym='" + acronym + '\''
+        + ", label=" + label
+        + ", url=" + url
         + '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof License)) {
+      return false;
+    }
+    License license = (License) o;
+    return Objects.equals(acronym, license.acronym) && Objects.equals(label, license.label) && Objects.equals(url, license.url) && Objects.equals(uuid, license.uuid);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(acronym, label, url, uuid);
   }
 }
