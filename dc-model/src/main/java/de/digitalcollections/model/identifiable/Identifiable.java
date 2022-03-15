@@ -111,6 +111,10 @@ public class Identifiable {
   }
 
   /**
+   * Returns the primary (= currently active) url alias of this Identifiable for a specified
+   * language and website. If no related url alias is found the website independent url alias of the
+   * given locale is returned (that has been generated during saving from the Identifiable's label).
+   *
    * @param locale target locale for retrieving primary url alias
    * @param website target website for retrieving primary url alias
    * @return primary url alias for website and locale or default
