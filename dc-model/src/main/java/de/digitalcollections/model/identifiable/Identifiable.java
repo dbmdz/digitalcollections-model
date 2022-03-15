@@ -128,18 +128,17 @@ public class Identifiable {
     }
     Stream<UrlAlias> primaries = urlAliases.stream().filter(UrlAlias::isPrimary);
     // no given website, use default alias
-    if (website == null) {
-      return primaries.filter(u -> u.getWebsite() == null).findFirst().orElse(null);
-    }
-    UrlAlias urlAlias =
-        primaries
-            .filter(
-                u -> u.getWebsite() != null && u.getWebsite().getUuid().equals(website.getUuid()))
-            .findFirst()
-            .orElse(null);
-    // given website found, return it
-    if (urlAlias != null) {
-      return urlAlias;
+    if (website != null) {
+      UrlAlias urlAlias =
+          primaries
+              .filter(
+                  u -> u.getWebsite() != null && u.getWebsite().getUuid().equals(website.getUuid()))
+              .findFirst()
+              .orElse(null);
+      // given website found, return it
+      if (urlAlias != null) {
+        return urlAlias;
+      }
     }
     // given website not found, use default alias
     return primaries.filter(u -> u.getWebsite() == null).findFirst().orElse(null);
