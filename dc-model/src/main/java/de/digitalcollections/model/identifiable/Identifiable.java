@@ -130,7 +130,7 @@ public class Identifiable {
     if (urlAliases == null || urlAliases.isEmpty()) {
       return null;
     }
-    Stream<UrlAlias> primaries = urlAliases.stream().filter(UrlAlias::isPrimary);
+    Stream<UrlAlias> primaries = urlAliases.stream().filter(u -> u.isPrimary());
     // no given website, use default alias
     if (website != null) {
       UrlAlias urlAlias =
