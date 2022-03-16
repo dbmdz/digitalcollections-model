@@ -1,6 +1,7 @@
 package de.digitalcollections.model.identifiable.resource;
 
 import java.net.URI;
+import java.util.Objects;
 
 /**
  * This class represents a linked data file resource, referenced through an uri. It may be specified
@@ -66,5 +67,25 @@ public class LinkedDataFileResource extends FileResource {
   /** @param objectType set the object type described in this document */
   public void setObjectType(String objectType) {
     this.objectType = objectType;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof LinkedDataFileResource)) {
+      return false;
+    }
+    if (!super.equals(o)) {
+      return false;
+    }
+    LinkedDataFileResource that = (LinkedDataFileResource) o;
+    return Objects.equals(context, that.context) && Objects.equals(objectType, that.objectType);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(super.hashCode(), context, objectType);
   }
 }

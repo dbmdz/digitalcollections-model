@@ -4,8 +4,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import de.digitalcollections.model.file.MimeType;
 import java.net.URI;
+import java.util.UUID;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("The FileResource")
 public class FileResourceTest {
 
   /** Test of getFilenameExtension method, of class FileResource. */
@@ -89,5 +92,21 @@ public class FileResourceTest {
 
     String extension = instance.getFilenameExtension();
     assertThat(extension).isEqualTo("svg");
+  }
+
+  @Test
+  @DisplayName("does not take uuid, created and lastModified into equality calculation")
+  public void testEquality() {
+    FileResource fileResource1 = new PlainFileResourceBuilder()
+        .withUuid(UUID.randomUUID())
+        .withFilename("file:///dev/null")
+        .build();
+
+    FileResource fileResource2 = new PlainFileResourceBuilder()
+        .withUuid(UUID.randomUUID())
+        .withFilename("file:///dev/null")
+        .build();
+
+    assertThat(fileResource1).isEqualTo(fileResource2);
   }
 }
