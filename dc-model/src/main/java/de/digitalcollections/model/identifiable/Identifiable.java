@@ -2,14 +2,19 @@ package de.digitalcollections.model.identifiable;
 
 import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.identifiable.alias.LocalizedUrlAliases;
+import de.digitalcollections.model.identifiable.alias.UrlAlias;
+import de.digitalcollections.model.identifiable.entity.Website;
 import de.digitalcollections.model.identifiable.resource.ImageFileResource;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.LocalizedText;
 import de.digitalcollections.model.view.RenderingHintsPreviewImage;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 /**
  * An Identifiable is an uniquely identifiable {@link
@@ -92,6 +97,44 @@ public class Identifiable extends UniqueObject {
 
   public RenderingHintsPreviewImage getPreviewImageRenderingHints() {
     return previewImageRenderingHints;
+  }
+
+  /**
+   * Returns the primary (= currently active) url alias of this Identifiable for a specified
+   * language and website. If no related url alias is found the website independent url alias of the
+   * given locale is returned (that has been generated during saving from the Identifiable's label).
+   *
+   * @param locale target locale for retrieving primary url alias
+   * @param website target website for retrieving primary url alias
+   * @return primary url alias for website and locale or default
+   */
+  public UrlAlias getPrimaryUrlAlias(Locale locale, Website website) {
+    // check if there are any url aliases at all
+    if (localizedUrlAliases == null || localizedUrlAliases.isEmpty()) {
+      return null;
+    }
+    List<UrlAlias> urlAliases =
+        localizedUrlAliases.get(Locale.forLanguageTag(locale.getLanguage()));
+    // check if there are url aliases for the given language
+    if (urlAliases == null || urlAliases.isEmpty()) {
+      return null;
+    }
+    Supplier<Stream<UrlAlias>> primaries = () -> urlAliases.stream().filter(u -> u.isPrimary());
+    if (website != null) {
+      UrlAlias urlAlias =
+          primaries
+              .get()
+              .filter(
+                  u -> u.getWebsite() != null && u.getWebsite().getUuid().equals(website.getUuid()))
+              .findFirst()
+              .orElse(null);
+      // given website found, return it
+      if (urlAlias != null) {
+        return urlAlias;
+      }
+    }
+    // no given website or given website not found, use default alias
+    return primaries.get().filter(u -> u.getWebsite() == null).findFirst().orElse(null);
   }
 
   public IdentifiableType getType() {
