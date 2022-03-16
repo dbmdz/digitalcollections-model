@@ -8,6 +8,11 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * A website and language specific "alias" (= human readable unique key) used as relative url part
+ * for a website specific domain. The absolute URL references an Identifiable, e.g. a specific
+ * webpage or collection.
+ */
 public class UrlAlias {
 
   private LocalDateTime created;
