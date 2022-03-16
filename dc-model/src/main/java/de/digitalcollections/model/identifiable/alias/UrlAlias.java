@@ -14,9 +14,9 @@ public class UrlAlias {
   private LocalDateTime lastPublished;
   private boolean primary;
   private String slug;
-  private Locale targetLanguage;
-  private IdentifiableType targetIdentifiableType;
   private EntityType targetEntityType;
+  private IdentifiableType targetIdentifiableType;
+  private Locale targetLanguage;
   private UUID targetUuid;
   private UUID uuid;
   private Website website;
