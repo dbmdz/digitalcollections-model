@@ -1,5 +1,7 @@
 package de.digitalcollections.model.geo;
 
+import java.util.Objects;
+
 /**
  * Geocoordinates of a subject. For Earth, please note that only WGS84 coordinating system is
  * supported at the moment. see https://de.wikipedia.org/wiki/Geographische_Koordinaten,
@@ -71,5 +73,32 @@ public class CoordinateLocation {
 
   public void setPrecision(double precision) {
     this.precision = precision;
+  }
+
+  @Override
+  public String toString() {
+    return "CoordinateLocation{"
+        + "altitude=" + altitude
+        + ", latitude=" + latitude
+        + ", longitude=" + longitude
+        + ", precision=" + precision
+        + '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof CoordinateLocation)) {
+      return false;
+    }
+    CoordinateLocation that = (CoordinateLocation) o;
+    return Double.compare(that.altitude, altitude) == 0 && Double.compare(that.latitude, latitude) == 0 && Double.compare(that.longitude, longitude) == 0 && Double.compare(that.precision, precision) == 0;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(altitude, latitude, longitude, precision);
   }
 }
