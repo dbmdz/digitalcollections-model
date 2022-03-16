@@ -14,6 +14,7 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 /**
@@ -130,11 +131,11 @@ public class Identifiable {
     if (urlAliases == null || urlAliases.isEmpty()) {
       return null;
     }
-    Stream<UrlAlias> primaries = urlAliases.stream().filter(u -> u.isPrimary());
-    // no given website, use default alias
+    Supplier<Stream<UrlAlias>> primaries = () -> urlAliases.stream().filter(u -> u.isPrimary());
     if (website != null) {
       UrlAlias urlAlias =
           primaries
+              .get()
               .filter(
                   u -> u.getWebsite() != null && u.getWebsite().getUuid().equals(website.getUuid()))
               .findFirst()
@@ -145,7 +146,7 @@ public class Identifiable {
       }
     }
     // given website not found, use default alias
-    return primaries.filter(u -> u.getWebsite() == null).findFirst().orElse(null);
+    return primaries.get().filter(u -> u.getWebsite() == null).findFirst().orElse(null);
   }
 
   public IdentifiableType getType() {
