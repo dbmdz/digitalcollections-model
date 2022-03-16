@@ -35,6 +35,11 @@ public class UrlAliasBuilder {
     return this;
   }
 
+  public UrlAliasBuilder withTargetLanguage(Locale targetLanguage) {
+    urlAlias.setTargetLanguage(targetLanguage);
+    return this;
+  }
+
   public UrlAliasBuilder withTargetLanguage(String targetLanguage) {
     urlAlias.setTargetLanguage(Locale.forLanguageTag(targetLanguage));
     return this;
