@@ -62,12 +62,19 @@ public class License extends UniqueObject {
   @Override
   public String toString() {
     return "License{"
-        + "created=" + created
-        + ", lastModified=" + lastModified
-        + ", uuid=" + uuid
-        + ", acronym='" + acronym + '\''
-        + ", label=" + label
-        + ", url=" + url
+        + "created="
+        + created
+        + ", lastModified="
+        + lastModified
+        + ", uuid="
+        + uuid
+        + ", acronym='"
+        + acronym
+        + '\''
+        + ", label="
+        + label
+        + ", url="
+        + url
         + '}';
   }
 
@@ -80,7 +87,10 @@ public class License extends UniqueObject {
       return false;
     }
     License license = (License) o;
-    return Objects.equals(acronym, license.acronym) && Objects.equals(label, license.label) && Objects.equals(url, license.url) && Objects.equals(uuid, license.uuid);
+    return Objects.equals(acronym, license.acronym)
+        && Objects.equals(label, license.label)
+        && Objects.equals(url, license.url)
+        && Objects.equals(uuid, license.uuid);
   }
 
   @Override

@@ -35,9 +35,11 @@ public class DigitalObjectBuilder extends EntityBuilder<DigitalObject, DigitalOb
     return this;
   }
 
-  public DigitalObjectBuilder withLinkedDataFileResource(LinkedDataFileResource linkedDataFileResource) {
-    ArrayList<LinkedDataFileResource> linkedDataFileResources = identifiable.getLinkedDataResources();
-    if (linkedDataFileResources==null) {
+  public DigitalObjectBuilder withLinkedDataFileResource(
+      LinkedDataFileResource linkedDataFileResource) {
+    ArrayList<LinkedDataFileResource> linkedDataFileResources =
+        identifiable.getLinkedDataResources();
+    if (linkedDataFileResources == null) {
       linkedDataFileResources = new ArrayList<>();
     }
     linkedDataFileResources.add(linkedDataFileResource);
@@ -47,7 +49,7 @@ public class DigitalObjectBuilder extends EntityBuilder<DigitalObject, DigitalOb
 
   public DigitalObjectBuilder withFileResource(FileResource fileResource) {
     ArrayList<FileResource> fileResources = identifiable.getFileResources();
-    if (fileResources==null) {
+    if (fileResources == null) {
       fileResources = new ArrayList<>();
     }
     fileResources.add(fileResource);
@@ -57,7 +59,7 @@ public class DigitalObjectBuilder extends EntityBuilder<DigitalObject, DigitalOb
 
   public DigitalObjectBuilder withRenderingResource(FileResource renderingResource) {
     ArrayList<FileResource> renderingResources = identifiable.getRenderingResources();
-    if (renderingResources==null) {
+    if (renderingResources == null) {
       renderingResources = new ArrayList<>();
     }
     renderingResources.add(renderingResource);

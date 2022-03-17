@@ -2,7 +2,8 @@ package de.digitalcollections.model.identifiable.resource;
 
 import java.net.URI;
 
-public class LinkedDataFileResourceBuilder extends FileResourceBuilder<LinkedDataFileResource, LinkedDataFileResourceBuilder> {
+public class LinkedDataFileResourceBuilder
+    extends FileResourceBuilder<LinkedDataFileResource, LinkedDataFileResourceBuilder> {
 
   public LinkedDataFileResourceBuilder withContext(String context) {
     identifiable.setContext(URI.create(context));
@@ -13,5 +14,4 @@ public class LinkedDataFileResourceBuilder extends FileResourceBuilder<LinkedDat
     identifiable.setObjectType(objectType);
     return this;
   }
-
 }

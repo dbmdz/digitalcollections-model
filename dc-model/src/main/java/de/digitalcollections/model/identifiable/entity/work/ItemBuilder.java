@@ -9,5 +9,4 @@ public class ItemBuilder extends EntityBuilder<Item, ItemBuilder> {
   protected EntityType getEntityType() {
     return EntityType.ITEM;
   }
-
 }

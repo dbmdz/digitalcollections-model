@@ -15,20 +15,34 @@ public class Agent extends Entity {
   @Override
   public String toString() {
     return "Agent{"
-        + "created=" + created
-        + ", lastModified=" + lastModified
-        + ", uuid=" + uuid
-        + ", description=" + description
-        + ", identifiers=" + identifiers
-        + ", label=" + label
-        + ", localizedUrlAliases=" + localizedUrlAliases
-        + ", previewImage=" + previewImage
-        + ", previewImageRenderingHints=" + previewImageRenderingHints
-        + ", type=" + type
-        + ", customAttributes=" + customAttributes
-        + ", entityType=" + entityType
-        + ", navDate=" + navDate
-        + ", refId=" + refId
+        + "created="
+        + created
+        + ", lastModified="
+        + lastModified
+        + ", uuid="
+        + uuid
+        + ", description="
+        + description
+        + ", identifiers="
+        + identifiers
+        + ", label="
+        + label
+        + ", localizedUrlAliases="
+        + localizedUrlAliases
+        + ", previewImage="
+        + previewImage
+        + ", previewImageRenderingHints="
+        + previewImageRenderingHints
+        + ", type="
+        + type
+        + ", customAttributes="
+        + customAttributes
+        + ", entityType="
+        + entityType
+        + ", navDate="
+        + navDate
+        + ", refId="
+        + refId
         + '}';
   }
 }
