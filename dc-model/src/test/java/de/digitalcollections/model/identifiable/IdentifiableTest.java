@@ -55,7 +55,8 @@ public class IdentifiableTest {
     assertThat(found).isNotNull();
     assertThat(found.getSlug()).isEqualTo("this-is-a-test-without-website");
 
-    // there are url aliases for the given language, but not with the given website - the one without website should be returned
+    // there are url aliases for the given language, but not with the given website - the one
+    // without website should be returned
     found = identifiable.getPrimaryUrlAlias(Locale.GERMAN, otherWebsite);
     assertThat(found).isNotNull();
     assertThat(found.getSlug()).isEqualTo("this-is-a-test-without-website");
