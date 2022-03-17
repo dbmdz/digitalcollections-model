@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added missing geo location domain classes: Canyon, Cave, Continent, Country, Creek, Lake, Mountain, Ocean, River, Sea, StillWaters, Valley
 - Added (de)serialization tests for all geo location types
 - Added a less verbose domain model diagram
+- Added convenience methode for url aliases: `getPrimaryUrlAlias`
 
 ### Changed
 
@@ -22,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [9.1.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/9.1.0) - 2021-09-20
 
-### Added 
+### Added
 
 - Added url aliases with the classes
   - [`UrlAlias`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/alias/UrlAlias.java)
