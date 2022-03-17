@@ -45,23 +45,40 @@ public class CorporateBody extends Agent {
   @Override
   public String toString() {
     return "CorporateBody{"
-        + "created=" + created
-        + ", lastModified=" + lastModified
-        + ", uuid=" + uuid
-        + ", description=" + description
-        + ", identifiers=" + identifiers
-        + ", label=" + label
-        + ", localizedUrlAliases=" + localizedUrlAliases
-        + ", previewImage=" + previewImage
-        + ", previewImageRenderingHints=" + previewImageRenderingHints
-        + ", type=" + type
-        + ", customAttributes=" + customAttributes
-        + ", entityType=" + entityType
-        + ", navDate=" + navDate
-        + ", refId=" + refId
-        + ", homepageUrl=" + homepageUrl
-        + ", text=" + text
-        + "}@" + hashCode();
+        + "created="
+        + created
+        + ", lastModified="
+        + lastModified
+        + ", uuid="
+        + uuid
+        + ", description="
+        + description
+        + ", identifiers="
+        + identifiers
+        + ", label="
+        + label
+        + ", localizedUrlAliases="
+        + localizedUrlAliases
+        + ", previewImage="
+        + previewImage
+        + ", previewImageRenderingHints="
+        + previewImageRenderingHints
+        + ", type="
+        + type
+        + ", customAttributes="
+        + customAttributes
+        + ", entityType="
+        + entityType
+        + ", navDate="
+        + navDate
+        + ", refId="
+        + refId
+        + ", homepageUrl="
+        + homepageUrl
+        + ", text="
+        + text
+        + "}@"
+        + hashCode();
   }
 
   @Override

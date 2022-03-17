@@ -78,10 +78,14 @@ public class CoordinateLocation {
   @Override
   public String toString() {
     return "CoordinateLocation{"
-        + "altitude=" + altitude
-        + ", latitude=" + latitude
-        + ", longitude=" + longitude
-        + ", precision=" + precision
+        + "altitude="
+        + altitude
+        + ", latitude="
+        + latitude
+        + ", longitude="
+        + longitude
+        + ", precision="
+        + precision
         + '}';
   }
 
@@ -94,7 +98,10 @@ public class CoordinateLocation {
       return false;
     }
     CoordinateLocation that = (CoordinateLocation) o;
-    return Double.compare(that.altitude, altitude) == 0 && Double.compare(that.latitude, latitude) == 0 && Double.compare(that.longitude, longitude) == 0 && Double.compare(that.precision, precision) == 0;
+    return Double.compare(that.altitude, altitude) == 0
+        && Double.compare(that.latitude, latitude) == 0
+        && Double.compare(that.longitude, longitude) == 0
+        && Double.compare(that.precision, precision) == 0;
   }
 
   @Override

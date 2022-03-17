@@ -78,5 +78,4 @@ public class FileResourceBuilder<F extends FileResource, B extends FileResourceB
     }
     return (B) this;
   }
-
 }
