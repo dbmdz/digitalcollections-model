@@ -15,7 +15,9 @@
 
   <properties>
     <version.commons-beanutils>1.9.4</version.commons-beanutils>
-    <version.jackson>2.13.2.1</version.jackson>
+    <version.jackson>2.13.2</version.jackson>
+    <!-- FIXME: remove this extra property when there is a new common version of all jackson dependencies -->
+    <version.jackson-databind>2.13.2.2</version.jackson-databind>
     <version.slf4j>1.7.36</version.slf4j>
     <version.wdtk-datamodel>0.13.1</version.wdtk-datamodel>
 
@@ -43,7 +45,7 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>${version.jackson}</version>
+      <version>${version.jackson-databind}</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.datatype</groupId>
