@@ -6,6 +6,7 @@ import de.digitalcollections.model.identifiable.resource.LinkedDataFileResource;
 import de.digitalcollections.model.legal.License;
 import de.digitalcollections.model.production.CreationInfo;
 import java.util.ArrayList;
+import java.util.List;
 
 /** Builder to programmatically create a DigitalObject */
 public class DigitalObjectBuilder extends EntityBuilder<DigitalObject, DigitalObjectBuilder> {
@@ -37,10 +38,9 @@ public class DigitalObjectBuilder extends EntityBuilder<DigitalObject, DigitalOb
 
   public DigitalObjectBuilder withLinkedDataFileResource(
       LinkedDataFileResource linkedDataFileResource) {
-    ArrayList<LinkedDataFileResource> linkedDataFileResources =
-        identifiable.getLinkedDataResources();
+    List<LinkedDataFileResource> linkedDataFileResources = identifiable.getLinkedDataResources();
     if (linkedDataFileResources == null) {
-      linkedDataFileResources = new ArrayList<>();
+      linkedDataFileResources = new ArrayList<>(0);
     }
     linkedDataFileResources.add(linkedDataFileResource);
     identifiable.setLinkedDataResources(linkedDataFileResources);
@@ -48,9 +48,9 @@ public class DigitalObjectBuilder extends EntityBuilder<DigitalObject, DigitalOb
   }
 
   public DigitalObjectBuilder withFileResource(FileResource fileResource) {
-    ArrayList<FileResource> fileResources = identifiable.getFileResources();
+    List<FileResource> fileResources = identifiable.getFileResources();
     if (fileResources == null) {
-      fileResources = new ArrayList<>();
+      fileResources = new ArrayList<>(0);
     }
     fileResources.add(fileResource);
     identifiable.setFileResources(fileResources);
@@ -58,9 +58,9 @@ public class DigitalObjectBuilder extends EntityBuilder<DigitalObject, DigitalOb
   }
 
   public DigitalObjectBuilder withRenderingResource(FileResource renderingResource) {
-    ArrayList<FileResource> renderingResources = identifiable.getRenderingResources();
+    List<FileResource> renderingResources = identifiable.getRenderingResources();
     if (renderingResources == null) {
-      renderingResources = new ArrayList<>();
+      renderingResources = new ArrayList<>(0);
     }
     renderingResources.add(renderingResource);
     identifiable.setRenderingResources(renderingResources);
