@@ -7,6 +7,7 @@ import de.digitalcollections.model.identifiable.versioning.Version;
 import de.digitalcollections.model.legal.License;
 import de.digitalcollections.model.production.CreationInfo;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A (cultural) digital object, can be a retro digitization of a physical object or a digital native
@@ -22,7 +23,7 @@ public class DigitalObject extends Entity {
   private CreationInfo creationInfo;
 
   /** Sorted list of file resources like images, audio files etc. */
-  private ArrayList<FileResource> fileResources = new ArrayList<>();
+  private List<FileResource> fileResources = new ArrayList<>(0);
   /** The related item (can be null, if not applicable). */
   private Item item;
   /** licence of the digital object. */
@@ -32,7 +33,7 @@ public class DigitalObject extends Entity {
    * Sorted list of links (with description) to machine readable formats like Marc, RDF, METS or
    * IIIF-Manifest.
    */
-  private ArrayList<LinkedDataFileResource> linkedDataResources = new ArrayList<>();
+  private List<LinkedDataFileResource> linkedDataResources = new ArrayList<>(0);
 
   /**
    * number of related binary files for the presentation, like scans in a book, photos of an object,
@@ -47,7 +48,7 @@ public class DigitalObject extends Entity {
    * Sorted list of links (with description and MIME type) to human readable formats like a
    * permalink, OPAC/catalogue page, PDF download, ...
    */
-  private ArrayList<FileResource> renderingResources = new ArrayList<>();
+  private List<FileResource> renderingResources = new ArrayList<>(0);
 
   /** version of the digital object. */
   private Version version;
@@ -64,7 +65,7 @@ public class DigitalObject extends Entity {
   }
 
   /** @return the sorted list of file resources, like images or audio files */
-  public ArrayList<FileResource> getFileResources() {
+  public List<FileResource> getFileResources() {
     return fileResources;
   }
 
@@ -79,7 +80,7 @@ public class DigitalObject extends Entity {
   }
 
   /** @return the sorted list of links (with description) to machine readable formats */
-  public ArrayList<LinkedDataFileResource> getLinkedDataResources() {
+  public List<LinkedDataFileResource> getLinkedDataResources() {
     return linkedDataResources;
   }
 
@@ -94,7 +95,7 @@ public class DigitalObject extends Entity {
   }
 
   /** @return the sorted list of links (with description and MIME type) to human readable formats */
-  public ArrayList<FileResource> getRenderingResources() {
+  public List<FileResource> getRenderingResources() {
     return renderingResources;
   }
 
@@ -117,7 +118,7 @@ public class DigitalObject extends Entity {
    *
    * @param fileResources the sorted list of file resources
    */
-  public void setFileResources(ArrayList<FileResource> fileResources) {
+  public void setFileResources(List<FileResource> fileResources) {
     this.fileResources = fileResources;
   }
 
@@ -144,7 +145,7 @@ public class DigitalObject extends Entity {
    *
    * @param linkedDataResources the sorted list of links
    */
-  public void setLinkedDataResources(ArrayList<LinkedDataFileResource> linkedDataResources) {
+  public void setLinkedDataResources(List<LinkedDataFileResource> linkedDataResources) {
     this.linkedDataResources = linkedDataResources;
   }
 
@@ -171,7 +172,7 @@ public class DigitalObject extends Entity {
    *
    * @param renderingResources the sorted list of links
    */
-  public void setRenderingResources(ArrayList<FileResource> renderingResources) {
+  public void setRenderingResources(List<FileResource> renderingResources) {
     this.renderingResources = renderingResources;
   }
 
