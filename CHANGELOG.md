@@ -9,7 +9,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [9.2.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/9.2.0) - 2022-04-06
 
-
 ### Added
 
 - Added some more builders
@@ -17,12 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added missing geo location domain classes: Canyon, Cave, Continent, Country, Creek, Lake, Mountain, Ocean, River, Sea, StillWaters, Valley
 - Added (de)serialization tests for all geo location types
 - Added a less verbose domain model diagram
-
-### Changed
-
 - Added new attributes to
   - [`DigitalObject`](https://github.com/dbmdz/digitalcollections-model/blob/main/dc-model/src/main/java/de/digitalcollections/model/identifiable/entity/DigitalObject.java)
-- Introduced navDate to Entity to make positioning entities on a timeline possible.
+- Introduced `navDate` to `Entity` to make positioning entities on a timeline possible.
 
 ## [9.1.1](https://github.com/dbmdz/digitalcollections-model/releases/tag/9.1.1) - 2022-03-17
 
