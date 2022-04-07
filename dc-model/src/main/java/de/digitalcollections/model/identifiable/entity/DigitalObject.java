@@ -59,6 +59,10 @@ public class DigitalObject extends Entity {
     this.entityType = EntityType.DIGITAL_OBJECT;
   }
 
+  public void addFileResource(FileResource fileResource) {
+    fileResources.add(fileResource);
+  }
+
   /** @return meta information about the creation of the digital object */
   public CreationInfo getCreationInfo() {
     return creationInfo;
