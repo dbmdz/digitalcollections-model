@@ -61,7 +61,6 @@
     <dependency>
       <groupId>org.wikidata.wdtk</groupId>
       <artifactId>wdtk-datamodel</artifactId>
-      <version>0.13.2</version>
     </dependency>
   </dependencies>
 </project>

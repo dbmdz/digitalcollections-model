@@ -64,6 +64,8 @@
     <version.assertj>3.22.0</version.assertj>
     <version.guava>31.1-jre</version.guava>
     <version.junit>5.8.2</version.junit>
+    <version.wdtk-datamodel>0.13.2</version.wdtk-datamodel>
+
     <!-- Plugin versions -->
     <version.jacoco-maven-plugin>0.8.8</version.jacoco-maven-plugin>
     <version.maven-compiler-plugin>3.10.1</version.maven-compiler-plugin>
@@ -92,6 +94,11 @@
         <artifactId>lombok</artifactId>
         <version>1.18.24</version>
         <scope>compile</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.wikidata.wdtk</groupId>
+        <artifactId>wdtk-datamodel</artifactId>
+        <version>${version.wdtk-datamodel}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
