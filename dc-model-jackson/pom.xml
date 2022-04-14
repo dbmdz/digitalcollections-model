@@ -92,7 +92,6 @@
     <dependency>
       <groupId>org.wikidata.wdtk</groupId>
       <artifactId>wdtk-datamodel</artifactId>
-      <version>${version.wdtk-datamodel}</version>
     </dependency>
   </dependencies>
 
