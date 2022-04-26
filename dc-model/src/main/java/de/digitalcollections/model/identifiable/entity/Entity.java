@@ -143,4 +143,38 @@ public class Entity extends Identifiable {
   public void setRefId(long refId) {
     this.refId = refId;
   }
+
+  public static class Builder<E extends Entity, B extends Entity.Builder> extends Identifiable.Builder<Entity, B> {
+
+    @Override
+    protected IdentifiableType getIdentifiableType() {
+      return IdentifiableType.ENTITY;
+    }
+
+    protected EntityType getEntityType() {
+      return EntityType.ENTITY;
+    }
+
+    @Override
+    public E build() {
+      de.digitalcollections.model.identifiable.entity.Entity e = super.build();
+      e.setEntityType(getEntityType());
+      return (E) e;
+    }
+
+    public B withCustomAttribute(String key, Object value) {
+      identifiable.setCustomAttribute(key, value);
+      return (B) this;
+    }
+
+    public B withNavDate(String navDate) {
+      identifiable.setNavDate(LocalDate.parse(navDate));
+      return (B) this;
+    }
+
+    public B withRefId(long refId) {
+      identifiable.setRefId(refId);
+      return (B) this;
+    }
+  }
 }
