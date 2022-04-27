@@ -45,4 +45,27 @@ public class GeoLocation extends Entity {
   public void setGeoLocationType(GeoLocationType geoLocationType) {
     this.geoLocationType = geoLocationType;
   }
+
+  public static Builder builder() {
+    return new Builder<>();
+  }
+
+  public static class Builder<E extends Entity, B extends Entity.Builder> extends Entity.Builder<GeoLocation, B> {
+
+    @Override
+    protected EntityType getEntityType() {
+      return EntityType.GEOLOCATION;
+    }
+
+    protected GeoLocationType getGeoLocationType() {
+      return GeoLocationType.GEOLOCATION;
+    }
+
+    @Override
+    public GeoLocation build() {
+      GeoLocation geoLocation = super.build();
+      geoLocation.setGeoLocationType(getGeoLocationType());
+      return geoLocation;
+    }
+  }
 }

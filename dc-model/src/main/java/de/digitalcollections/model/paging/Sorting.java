@@ -17,8 +17,8 @@ public class Sorting implements Iterable<Order> {
 
   public static final Direction DEFAULT_DIRECTION = Direction.ASC;
 
-  public static SortingBuilder defaultBuilder() {
-    return new SortingBuilder();
+  public static Builder builder() {
+    return new Builder();
   }
 
   private List<Order> orders;
@@ -192,5 +192,22 @@ public class Sorting implements Iterable<Order> {
   @Override
   public String toString() {
     return collectionToCommaDelimitedString(orders);
+  }
+
+  public static class Builder {
+
+    private List<Order> orders;
+
+    public Sorting build() {
+      return new Sorting(orders);
+    }
+
+    public Builder order(Order order) {
+      if (orders == null) {
+        orders = new ArrayList<>();
+      }
+      orders.add(order);
+      return this;
+    }
   }
 }

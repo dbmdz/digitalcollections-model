@@ -43,4 +43,32 @@ public class EntityRelation {
   public void setSubject(Entity subjectEntity) {
     this.subject = subjectEntity;
   }
+
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  public static class Builder {
+
+    EntityRelation entityRelation = new EntityRelation();
+
+    public EntityRelation build() {
+      return entityRelation;
+    }
+
+    public Builder withPredicate(String predicate) {
+      entityRelation.setPredicate(predicate);
+      return this;
+    }
+
+    public Builder withSubject(Entity subjectEntity) {
+      entityRelation.setSubject(subjectEntity);
+      return this;
+    }
+
+    public Builder withObject(Entity objectEntity) {
+      entityRelation.setObject(objectEntity);
+      return this;
+    }
+  }
 }

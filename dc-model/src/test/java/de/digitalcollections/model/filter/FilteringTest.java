@@ -1,10 +1,10 @@
 package de.digitalcollections.model.filter;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import org.assertj.core.util.Arrays;
+import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 public class FilteringTest<T extends Object> {
@@ -18,7 +18,14 @@ public class FilteringTest<T extends Object> {
   public void testGetFilterCriteriaFor() {
     String property = "publicationStart";
     Filtering filtering =
-        Filtering.defaultBuilder().filter(property).between(minDate, maxDate).build();
+        Filtering.builder().add(
+            FilterCriterion.builder()
+                .withExpression(property)
+                .between(minDate, maxDate)
+                .build()
+        ).build();
+
+        //Filtering.defaultBuilder().filter(property).between(minDate, maxDate).build();
     FilterCriterion fc = filtering.getFilterCriterionFor(property);
     assertEquals(fc.getMinValue(), minDate);
     assertEquals(fc.getMaxValue(), maxDate);
@@ -27,7 +34,12 @@ public class FilteringTest<T extends Object> {
   @Test
   public void testOperationEquals() {
     String property = "publicationStart";
-    Filtering filtering = Filtering.defaultBuilder().filter(property).isEquals(minDate).build();
+    Filtering filtering = Filtering.builder().add(
+        FilterCriterion.builder()
+            .withExpression(property)
+            .isEquals(minDate)
+            .build()
+    ).build();
     FilterCriterion fc = filtering.getFilterCriterionFor(property);
     assertEquals(fc.getValue(), minDate);
   }
@@ -39,7 +51,12 @@ public class FilteringTest<T extends Object> {
     // String[]
     String[] values1 = new String[] {"eins", "zwei", "drei"};
     Filtering filtering =
-        Filtering.defaultBuilder().filter(property).in(Arrays.asList(values1)).build();
+        Filtering.builder().add(
+            FilterCriterion.builder()
+                .withExpression(property)
+                .in(Arrays.asList(values1))
+                .build()
+        ).build();
     FilterCriterion fc = filtering.getFilterCriterionFor(property);
     assertEquals(fc.getValues().size(), values1.length);
 
@@ -48,7 +65,13 @@ public class FilteringTest<T extends Object> {
     values2.add("eins");
     values2.add("zwei");
     values2.add("drei");
-    filtering = Filtering.defaultBuilder().filter(property).in(values2).build();
+    filtering =
+        Filtering.builder().add(
+            FilterCriterion.builder()
+                .withExpression(property)
+                .in(values2)
+                .build()
+        ).build();
     fc = filtering.getFilterCriterionFor(property);
     assertEquals(fc.getValues().size(), values2.size());
   }

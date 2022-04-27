@@ -1,6 +1,9 @@
 package de.digitalcollections.model.identifiable.entity;
 
+import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.web.Webpage;
+import de.digitalcollections.model.text.LocalizedStructuredContent;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
@@ -28,6 +31,10 @@ public class Website extends Entity {
     this.url = url;
   }
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   public LocalDate getRegistrationDate() {
     return registrationDate;
   }
@@ -50,5 +57,34 @@ public class Website extends Entity {
 
   public void setUrl(URL url) {
     this.url = url;
+  }
+
+  public static class Builder extends Entity.Builder<Website, Builder> {
+
+    @Override
+    protected IdentifiableType getIdentifiableType() {
+      return IdentifiableType.ENTITY;
+    }
+
+    @Override
+    protected EntityType getEntityType() {
+      return EntityType.WEBSITE;
+    }
+
+    public Builder withUrl(String url) throws MalformedURLException {
+      ((Website)identifiable).setUrl(new URL(url));
+      return this;
+    }
+
+    @Deprecated
+    public Builder withDescription(LocalizedStructuredContent description) {
+      identifiable.setDescription(description);
+      return this;
+    }
+
+    public Builder withRootPages(List<Webpage> rootPages) {
+      ((Website)identifiable).setRootPages(rootPages);
+      return this;
+    }
   }
 }

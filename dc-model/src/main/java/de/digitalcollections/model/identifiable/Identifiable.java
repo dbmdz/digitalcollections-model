@@ -4,10 +4,8 @@ import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.file.MimeType;
 import de.digitalcollections.model.identifiable.alias.LocalizedUrlAliases;
 import de.digitalcollections.model.identifiable.alias.UrlAlias;
-import de.digitalcollections.model.identifiable.alias.UrlAliasBuilder;
 import de.digitalcollections.model.identifiable.entity.Website;
 import de.digitalcollections.model.identifiable.resource.ImageFileResource;
-import de.digitalcollections.model.identifiable.resource.PreviewImageBuilder;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.LocalizedText;
 import de.digitalcollections.model.text.StructuredContent;
@@ -200,6 +198,10 @@ public class Identifiable extends UniqueObject {
     this.type = identifiableType;
   }
 
+  public static Builder builder() {
+    return new Builder<>();
+  }
+
   public static class Builder<I extends Identifiable, B extends Builder> {
 
     protected I identifiable;
@@ -301,7 +303,7 @@ public class Identifiable extends UniqueObject {
     public B withPreviewImage(String url, int width, int height) {
       String[] fileNameParts = url.split("/\\//");
       ImageFileResource previewImage =
-          new PreviewImageBuilder()
+          ImageFileResource.previewImageBuilder()
               .withFileName(fileNameParts[fileNameParts.length - 1])
               .withUri(url)
               .withSize(width, height)
@@ -313,14 +315,15 @@ public class Identifiable extends UniqueObject {
 
     public B withPreviewImage(String fileName, String uuid, String uri) {
       ImageFileResource previewImage =
-          new PreviewImageBuilder(uuid).withFileName(fileName).withUri(uri).build();
+          ImageFileResource.previewImageBuilder().withUuid(uuid).withFileName(fileName).withUri(uri).build();
       identifiable.setPreviewImage(previewImage);
       return (B) this;
     }
 
     public B withPreviewImage(String fileName, String uuid, String uri, MimeType mimeType) {
       ImageFileResource previewImage =
-          new PreviewImageBuilder(uuid)
+          ImageFileResource.previewImageBuilder()
+              .withUuid(uuid)
               .withFileName(fileName)
               .withUri(uri)
               .withMimeType(mimeType)
@@ -332,7 +335,8 @@ public class Identifiable extends UniqueObject {
     public B withPreviewImage(
         String fileName, String uuid, String uri, MimeType mimeType, String httpBaseUrl) {
       ImageFileResource previewImage =
-          new PreviewImageBuilder(uuid)
+          ImageFileResource.previewImageBuilder()
+              .withUuid(uuid)
               .withFileName(fileName)
               .withUri(uri)
               .withMimeType(mimeType)
@@ -436,7 +440,7 @@ public class Identifiable extends UniqueObject {
 
     public B withPrimaryLocalizedUrlAlias(String slug) {
       LocalizedUrlAliases localizedUrlAliases =
-          new LocalizedUrlAliases(new UrlAliasBuilder().withSlug(slug).isPrimary().build());
+          new LocalizedUrlAliases(UrlAlias.builder().withSlug(slug).isPrimary().build());
 
       identifiable.setLocalizedUrlAliases(localizedUrlAliases);
       return (B) this;

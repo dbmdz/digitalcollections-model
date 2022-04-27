@@ -176,4 +176,12 @@ public class Item extends Entity {
         + type
         + "}";
   }
+
+  public static class Builder extends Entity.Builder<Item, Builder> {
+
+    @Override
+    protected EntityType getEntityType() {
+      return EntityType.ITEM;
+    }
+  }
 }

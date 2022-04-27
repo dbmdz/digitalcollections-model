@@ -111,4 +111,16 @@ public class Person extends Agent {
   public void setTimeValueOfDeath(TimeValue timeValueOfDeath) {
     this.timeValueOfDeath = timeValueOfDeath;
   }
+
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  public static class Builder extends Agent.Builder<Person, Builder> {
+
+    @Override
+    protected EntityType getEntityType() {
+      return EntityType.PERSON;
+    }
+  }
 }

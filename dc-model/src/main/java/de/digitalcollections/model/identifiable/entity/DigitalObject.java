@@ -236,7 +236,10 @@ public class DigitalObject extends Entity {
         + '}';
   }
 
-  public static class Builder extends Entity.Builder<DigitalObject, DigitalObject.Builder> {
+  public static Builder builder() {
+    return new Builder();
+  }
+  public static class Builder extends Entity.Builder<DigitalObject, Builder> {
 
     @Override
     protected EntityType getEntityType() {

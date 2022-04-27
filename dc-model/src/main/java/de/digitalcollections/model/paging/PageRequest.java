@@ -15,10 +15,6 @@ import de.digitalcollections.model.list.ListRequest;
  */
 public class PageRequest extends ListRequest {
 
-  public static PageRequestBuilder defaultBuilder() {
-    return new PageRequestBuilder();
-  }
-
   private int pageNumber;
   private int pageSize;
 
@@ -170,6 +166,10 @@ public class PageRequest extends ListRequest {
     this.pageSize = pageSize;
   }
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   @Override
   public String toString() {
     return String.format(
@@ -178,5 +178,38 @@ public class PageRequest extends ListRequest {
         getPageSize(),
         sorting == null ? null : sorting.toString(),
         filtering == null ? null : filtering.toString());
+  }
+
+  public static class Builder {
+
+    private Filtering filtering;
+
+    private int pageNumber;
+    private int pageSize;
+    private Sorting sorting;
+
+    public PageRequest build() {
+      return new PageRequest(pageNumber, pageSize, sorting, filtering);
+    }
+
+    public Builder filtering(Filtering filtering) {
+      this.filtering = filtering;
+      return this;
+    }
+
+    public Builder pageNumber(int pageNumber) {
+      this.pageNumber = pageNumber;
+      return this;
+    }
+
+    public Builder pageSize(int pageSize) {
+      this.pageSize = pageSize;
+      return this;
+    }
+
+    public Builder sorting(Sorting sorting) {
+      this.sorting = sorting;
+      return this;
+    }
   }
 }

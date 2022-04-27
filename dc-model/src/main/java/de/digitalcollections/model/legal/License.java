@@ -2,8 +2,11 @@ package de.digitalcollections.model.legal;
 
 import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.text.LocalizedText;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * License model/description containing all relevant metadata of a license that can be used to
@@ -96,5 +99,55 @@ public class License extends UniqueObject {
   @Override
   public int hashCode() {
     return Objects.hash(acronym, label, url, uuid);
+  }
+
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  public static class Builder {
+
+    private License license;
+
+    public Builder() {
+      this.license = new License();
+    }
+
+    public License build() {
+      return license;
+    }
+
+    public Builder withLabel(Locale locale, String text) {
+      license.setLabel(new LocalizedText(locale, text));
+      return this;
+    }
+
+    public Builder withAcronym(String acronym) {
+      license.setAcronym(acronym);
+      return this;
+    }
+
+    public Builder withUrl(String url) {
+      if (url == null) {
+        return this;
+      }
+
+      try {
+        license.setUrl(new URL(url));
+      } catch (MalformedURLException e) {
+        throw new RuntimeException("Cannot set url=" + url + ": " + e, e);
+      }
+      return this;
+    }
+
+    public Builder withUuid(UUID uuid) {
+      license.setUuid(uuid);
+      return this;
+    }
+
+    public Builder withLabel(LocalizedText label) {
+      license.setLabel(label);
+      return this;
+    }
   }
 }

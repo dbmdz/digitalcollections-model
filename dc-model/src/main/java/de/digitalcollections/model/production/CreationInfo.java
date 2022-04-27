@@ -58,6 +58,10 @@ public class CreationInfo {
     this.creator = creator;
   }
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   @Override
   public String toString() {
     return "CreationInfo{"
@@ -68,5 +72,28 @@ public class CreationInfo {
         + ", creator="
         + creator
         + '}';
+  }
+
+  public static class Builder {
+    CreationInfo creationInfo = new CreationInfo();
+
+    public Builder withGeoLocation(GeoLocation geoLocation) {
+      creationInfo.setGeoLocation(geoLocation);
+      return this;
+    }
+
+    public Builder withCreator(Agent creator) {
+      creationInfo.setCreator(creator);
+      return this;
+    }
+
+    public Builder withDate(String date) {
+      creationInfo.setDate(LocalDate.parse(date));
+      return this;
+    }
+
+    public CreationInfo build() {
+      return creationInfo;
+    }
   }
 }
