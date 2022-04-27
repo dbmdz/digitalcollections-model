@@ -34,7 +34,7 @@ public class PageResponseTest extends BaseJsonSerializationTest {
             LocalDate.parse("2020-01-31"),
             null);
     Filtering filtering =
-        Filtering.defaultBuilder().add(filterCriteria1).add(filterCriteria2).build();
+        Filtering.builder().add(filterCriteria1).add(filterCriteria2).build();
     pageRequest.setFiltering(filtering);
     pageResponse.setPageRequest(pageRequest);
 

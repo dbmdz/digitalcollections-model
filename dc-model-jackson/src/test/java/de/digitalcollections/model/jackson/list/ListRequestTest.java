@@ -1,5 +1,6 @@
 package de.digitalcollections.model.jackson.list;
 
+import de.digitalcollections.model.filter.FilterCriterion;
 import de.digitalcollections.model.filter.Filtering;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.list.ListRequest;
@@ -12,10 +13,15 @@ public class ListRequestTest extends BaseJsonSerializationTest {
 
   private ListRequest createObject() {
     ListRequest listRequest = new ListRequest();
-    listRequest.add(Filtering.defaultBuilder().filter("label").startsWith("A").build());
+    listRequest.add(Filtering.builder().add(
+        FilterCriterion.builder()
+            .withExpression("label")
+            .startsWith("A")
+            .build()
+        ).build());
     listRequest.add(
-        Sorting.defaultBuilder()
-            .order(Order.defaultBuilder().direction(Direction.ASC).property("label").build())
+        Sorting.builder()
+            .order(Order.builder().direction(Direction.ASC).property("label").build())
             .build());
     return listRequest;
   }

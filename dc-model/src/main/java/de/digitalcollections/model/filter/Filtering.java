@@ -42,6 +42,14 @@ public class Filtering {
   }
 
 
+  public void add(FilterCriterion filterCriterion) {
+    if (filterCriteria==null) {
+      filterCriteria = new ArrayList<>();
+    }
+    filterCriteria.add(filterCriterion);
+  }
+
+
   public void add(String expression, FilterCriterion filterCriterion) {
     if (filterCriterion==null || expression==null) {
       return;
