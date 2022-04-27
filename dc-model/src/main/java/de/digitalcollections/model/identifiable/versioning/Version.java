@@ -92,6 +92,10 @@ public class Version {
     this.versionValue = versionValue;
   }
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   @Override
   public String toString() {
     return this.getClass().getSimpleName()
@@ -109,4 +113,24 @@ public class Version {
         + instanceVersionKey
         + "'}";
   }
+
+  public static class Builder {
+
+    public Version version = new Version();
+
+    public Version build() {
+      return version;
+    }
+
+    public Builder withUuid(UUID uuid) {
+      version.setUuid(uuid);
+      return this;
+    }
+
+    public Builder withValue(int value) {
+      version.setVersionValue(value);
+      return this;
+    }
+  }
+
 }

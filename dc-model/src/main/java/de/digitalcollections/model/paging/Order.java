@@ -13,8 +13,8 @@ public class Order {
 
   private static final boolean DEFAULT_IGNORE_CASE = false;
 
-  public static OrderBuilder defaultBuilder() {
-    return new OrderBuilder();
+  public static Builder builder() {
+    return new Builder();
   }
 
   private Direction direction;
@@ -297,5 +297,47 @@ public class Order {
    */
   public Order withProperty(String property) {
     return new Order(this.direction, property, this.ignoreCase, this.nullHandling);
+  }
+
+  public static class Builder {
+
+    private Direction direction;
+    private boolean ignoreCase;
+    private NullHandling nullHandling;
+    private String property;
+    private String subProperty;
+
+    public Order build() {
+      Order order = new Order(direction, ignoreCase, nullHandling, property);
+      if (subProperty != null) {
+        order.setSubProperty(subProperty);
+      }
+      return order;
+    }
+
+    public Builder direction(Direction direction) {
+      this.direction = direction;
+      return this;
+    }
+
+    public Builder ignoreCase(boolean ignoreCase) {
+      this.ignoreCase = ignoreCase;
+      return this;
+    }
+
+    public Builder nullHandling(NullHandling nullHandling) {
+      this.nullHandling = nullHandling;
+      return this;
+    }
+
+    public Builder property(String property) {
+      this.property = property;
+      return this;
+    }
+
+    public Builder subProperty(String property) {
+      this.subProperty = property;
+      return this;
+    }
   }
 }

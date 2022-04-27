@@ -144,6 +144,10 @@ public class Entity extends Identifiable {
     this.refId = refId;
   }
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   public static class Builder<E extends Entity, B extends Entity.Builder> extends Identifiable.Builder<Entity, B> {
 
     @Override
@@ -157,7 +161,7 @@ public class Entity extends Identifiable {
 
     @Override
     public E build() {
-      de.digitalcollections.model.identifiable.entity.Entity e = super.build();
+      Entity e = super.build();
       e.setEntityType(getEntityType());
       return (E) e;
     }

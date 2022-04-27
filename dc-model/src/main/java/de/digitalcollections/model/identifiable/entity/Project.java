@@ -47,4 +47,17 @@ public class Project extends Entity {
   public void setText(LocalizedStructuredContent text) {
     this.text = text;
   }
+
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  public static class Builder extends Entity.Builder<Project, Builder> {
+
+    @Override
+    protected EntityType getEntityType() {
+      return EntityType.PROJECT;
+    }
+  }
+
 }

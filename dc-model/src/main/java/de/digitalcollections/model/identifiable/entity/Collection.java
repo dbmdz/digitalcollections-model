@@ -142,4 +142,19 @@ public class Collection extends Entity implements INode<Collection> {
         + getUuid()
         + "}";
   }
+
+  public static Builder builder() {
+    return new Builder();
+  }
+  public static class Builder extends Entity.Builder<Collection, Builder> {
+    @Override
+    protected EntityType getEntityType() {
+      return EntityType.COLLECTION;
+    }
+
+    public Builder withPublicationStart(String publicationStart) {
+      ((Collection)identifiable).setPublicationStart(LocalDate.parse(publicationStart));
+      return this;
+    }
+  }
 }

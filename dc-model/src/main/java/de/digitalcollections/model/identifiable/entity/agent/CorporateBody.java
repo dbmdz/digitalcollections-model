@@ -2,7 +2,13 @@ package de.digitalcollections.model.identifiable.entity.agent;
 
 import de.digitalcollections.model.identifiable.entity.EntityType;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
+import de.digitalcollections.model.text.StructuredContent;
+import de.digitalcollections.model.text.contentblock.ContentBlock;
+import de.digitalcollections.model.text.contentblock.Text;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 /**
@@ -99,5 +105,40 @@ public class CorporateBody extends Agent {
   @Override
   public int hashCode() {
     return Objects.hash(super.hashCode(), homepageUrl, text);
+  }
+
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  public static class Builder extends Agent.Builder<CorporateBody, Builder> {
+
+    @Override
+    protected EntityType getEntityType() {
+      return EntityType.CORPORATE_BODY;
+    }
+
+    public Builder withHomepageUrl(String homepageUrl) {
+      try {
+        ((CorporateBody)identifiable).setHomepageUrl(new URL(homepageUrl));
+      } catch (MalformedURLException e) {
+        throw new RuntimeException("Invalid URL='" + homepageUrl + "': " + e, e);
+      }
+      return this;
+    }
+
+    public Builder withText(Locale locale, String localizedText) {
+      LocalizedStructuredContent localizedStructuredContent = ((CorporateBody)identifiable).getText();
+      if (localizedStructuredContent == null) {
+        localizedStructuredContent = new LocalizedStructuredContent();
+      }
+      StructuredContent textContent = new StructuredContent();
+      ContentBlock singleTextContentBlock = new Text(localizedText);
+      textContent.setContentBlocks(List.of(singleTextContentBlock));
+      localizedStructuredContent.put(locale, textContent);
+
+      ((CorporateBody)identifiable).setText(localizedStructuredContent);
+      return this;
+    }
   }
 }

@@ -1,6 +1,7 @@
 package de.digitalcollections.model.identifiable;
 
 import de.digitalcollections.model.UniqueObject;
+import java.util.UUID;
 
 /**
  * Defines an identifier type to be used in the system implementing this library. It is up to the
@@ -36,5 +37,38 @@ public class IdentifierType extends UniqueObject {
 
   public void setPattern(String pattern) {
     this.pattern = pattern;
+  }
+
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  public static class Builder {
+
+    public IdentifierType identifierType = new IdentifierType();
+
+    public IdentifierType build() {
+      return identifierType;
+    }
+
+    public Builder withLabel(String label) {
+      identifierType.setLabel(label);
+      return this;
+    }
+
+    public Builder withNamespace(String namespace) {
+      identifierType.setNamespace(namespace);
+      return this;
+    }
+
+    public Builder withPattern(String pattern) {
+      identifierType.setPattern(pattern);
+      return this;
+    }
+
+    public Builder withUuid(String uuid) {
+      identifierType.setUuid(UUID.fromString(uuid));
+      return this;
+    }
   }
 }

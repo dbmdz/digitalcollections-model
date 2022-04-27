@@ -1,6 +1,7 @@
 package de.digitalcollections.model.identifiable.entity.agent;
 
 import de.digitalcollections.model.identifiable.entity.Entity;
+import de.digitalcollections.model.identifiable.entity.EntityType;
 
 /**
  * https://books.google.de/books?id=foGBCgAAQBAJ&amp;pg=PA151:
@@ -44,5 +45,17 @@ public class Agent extends Entity {
         + ", refId="
         + refId
         + '}';
+  }
+
+  public static Builder builder() {
+    return new Builder<>();
+  }
+
+  public static class Builder<E extends Agent, B extends Agent.Builder> extends Entity.Builder<Agent, B> {
+
+    @Override
+    protected EntityType getEntityType() {
+      return EntityType.AGENT;
+    }
   }
 }

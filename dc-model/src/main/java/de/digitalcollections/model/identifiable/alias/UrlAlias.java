@@ -145,4 +145,68 @@ public class UrlAlias {
   public void setWebsite(Website website) {
     this.website = website;
   }
+
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  public static class Builder {
+
+    UrlAlias urlAlias = new UrlAlias();
+
+    public UrlAlias build() {
+      return urlAlias;
+    }
+
+    public Builder createdAt(String createdAt) {
+      urlAlias.setCreated(LocalDateTime.parse(createdAt));
+      return this;
+    }
+
+    public Builder lastPublishedAt(String lastPublishedAt) {
+      urlAlias.setLastPublished(LocalDateTime.parse(lastPublishedAt));
+      return this;
+    }
+
+    public Builder isPrimary() {
+      urlAlias.setPrimary(true);
+      return this;
+    }
+
+    public Builder withSlug(String slug) {
+      urlAlias.setSlug(slug);
+      return this;
+    }
+
+    public Builder withTargetLanguage(Locale targetLanguage) {
+      urlAlias.setTargetLanguage(targetLanguage);
+      return this;
+    }
+
+    public Builder withTargetLanguage(String targetLanguage) {
+      urlAlias.setTargetLanguage(Locale.forLanguageTag(targetLanguage));
+      return this;
+    }
+
+    public Builder withTargetType(IdentifiableType identifiableType, EntityType entityType) {
+      urlAlias.setTargetIdentifiableType(identifiableType);
+      urlAlias.setTargetEntityType(entityType);
+      return this;
+    }
+
+    public Builder withTargetUuid(String targetUuid) {
+      urlAlias.setTargetUuid(UUID.fromString(targetUuid));
+      return this;
+    }
+
+    public Builder withUuid(String uuid) {
+      urlAlias.setUuid(UUID.fromString(uuid));
+      return this;
+    }
+
+    public Builder withWebsite(Website website) {
+      urlAlias.setWebsite(website);
+      return this;
+    }
+  }
 }

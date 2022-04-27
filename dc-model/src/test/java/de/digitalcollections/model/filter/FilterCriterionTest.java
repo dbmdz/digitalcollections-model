@@ -21,7 +21,7 @@ public class FilterCriterionTest {
             LocalDate.parse("2020-01-01"),
             null);
 
-    Filtering filtering = Filtering.defaultBuilder().add(filterCriterion).build();
+    Filtering filtering = Filtering.builder().add(filterCriterion).build();
     FilterCriterion dateFieldCriteria = filtering.getFilterCriterionFor("dateField");
     assertTrue(
         ((ChronoLocalDate) dateFieldCriteria.getMinValue())

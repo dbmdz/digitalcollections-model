@@ -294,4 +294,320 @@ public class FilterCriterion<T extends Object> {
   public int hashCode() {
     return Objects.hash(expression, maxValue, minValue, nativeExpression, operation, value, values);
   }
+
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  public static Builder nativeBuilder() {
+    return new Builder().withNativeExpression(true);
+  }
+
+
+  public static class Builder {
+
+    private String expression;
+    private boolean nativeExpression;
+
+    private FilterCriterion filterCriterion;
+
+    Builder() {}
+    public Builder withExpression(String expression) {
+      this.expression = expression;
+      return this;
+    }
+
+    public Builder withNativeExpression(boolean nativeExpression) {
+      this.nativeExpression = nativeExpression;
+      return this;
+    }
+
+    public FilterCriterion build() {
+      return filterCriterion;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#BETWEEN}
+     *
+     * @param minValue lower bound of between (included)
+     * @param maxValue upper bound of between (included)
+     * @return builder instance for fluent usage
+     */
+    public Builder between(Comparable<?> minValue, Comparable<?> maxValue) {
+      filterCriterion =
+          new FilterCriterion(
+              expression, false, FilterOperation.BETWEEN, null, minValue, maxValue, null);
+      return this;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#CONTAINS}
+     *
+     * @param expression expression (not a native expression)
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public Builder contains(String expression, Object value) {
+      filterCriterion =
+          new FilterCriterion(expression, false, FilterOperation.CONTAINS, value);
+      return this;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#GREATER_THAN}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public Builder greater(Object value) {
+      filterCriterion =
+          new FilterCriterion(expression, nativeExpression, FilterOperation.GREATER_THAN, value);
+      return this;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#GREATER_THAN_OR_EQUAL_TO}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public Builder greaterOrEqual(Object value) {
+      filterCriterion =
+          new FilterCriterion(
+              expression, nativeExpression, FilterOperation.GREATER_THAN_OR_EQUAL_TO, value);
+      return this;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#GREATER_THAN_OR_EQUAL_TO_OR_NOT_SET}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public Builder greaterOrEqualOrNotSet(Object value) {
+      filterCriterion =
+          new FilterCriterion(
+              expression,
+              nativeExpression,
+              FilterOperation.GREATER_THAN_OR_EQUAL_TO_OR_NOT_SET,
+              value);
+      return this;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#GREATER_THAN_OR_NOT_SET}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public Builder greaterOrNotSet(Object value) {
+      filterCriterion =
+          new FilterCriterion(
+              expression, nativeExpression, FilterOperation.GREATER_THAN_OR_NOT_SET, value);
+      return this;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#IN}
+     *
+     * @param values list of values field value should be in
+     * @return builder instance for fluent usage
+     */
+    public Builder in(Collection<?> values) {
+      filterCriterion =
+          new FilterCriterion(
+              expression, nativeExpression, FilterOperation.IN, null, null, null, values);
+      return this;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#EQUALS}
+     *
+     * <p>Note: had to rename it to "isEquals" because of name clash with Object.equals
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public Builder isEquals(Object value) {
+      if (value != null) {
+        filterCriterion =
+            new FilterCriterion(expression, nativeExpression, FilterOperation.EQUALS, value);
+      } else {
+        filterCriterion = new FilterCriterion(expression, nativeExpression, FilterOperation.NOT_SET);
+      }
+      return this;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#EQUALS_OR_NOT_SET}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public Builder isEqualsOrNotSet(Object value) {
+      filterCriterion =
+          new FilterCriterion(expression, nativeExpression, FilterOperation.EQUALS_OR_NOT_SET, value);
+      return this;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#LESS_THAN}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public Builder less(Object value) {
+      filterCriterion =
+          new FilterCriterion(expression, nativeExpression, FilterOperation.LESS_THAN, value);
+      return this;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#LESS_THAN_AND_SET}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public Builder lessAndSet(Object value) {
+      filterCriterion =
+          new FilterCriterion(expression, nativeExpression, FilterOperation.LESS_THAN_AND_SET, value);
+      return this;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#LESS_THAN_OR_EQUAL_TO}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public Builder lessOrEqual(Object value) {
+      filterCriterion =
+          new FilterCriterion(
+              expression, nativeExpression, FilterOperation.LESS_THAN_OR_EQUAL_TO, value);
+      return this;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#LESS_THAN_OR_EQUAL_TO_AND_SET}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public Builder lessOrEqualAndSet(Object value) {
+      filterCriterion =
+          new FilterCriterion(
+              expression, nativeExpression, FilterOperation.LESS_THAN_OR_EQUAL_TO_AND_SET, value);
+      return this;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#LESS_THAN_OR_EQUAL_TO_OR_NOT_SET}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public Builder lessOrEqualOrNotSet(Object value) {
+      filterCriterion =
+          new FilterCriterion(
+              expression, nativeExpression, FilterOperation.LESS_THAN_OR_EQUAL_TO_OR_NOT_SET, value);
+      return this;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#LESS_THAN_OR_NOT_SET}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public Builder lessOrNotSet(Object value) {
+      filterCriterion =
+          new FilterCriterion(
+              expression, nativeExpression, FilterOperation.LESS_THAN_OR_NOT_SET, value);
+      return this;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#NOT_EQUALS}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public Builder notEquals(Object value) {
+      if (value != null) {
+        filterCriterion =
+            new FilterCriterion(expression, nativeExpression, FilterOperation.NOT_EQUALS, value);
+      } else {
+        filterCriterion = new FilterCriterion(expression, nativeExpression, FilterOperation.SET);
+      }
+      return this;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#IN}
+     *
+     * @param values list of values field value should not be in
+     * @return builder instance for fluent usage
+     */
+    public Builder notIn(Collection<?> values) {
+      filterCriterion =
+          new FilterCriterion(
+              expression, nativeExpression, FilterOperation.NOT_IN, null, null, null, values);
+      return this;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#NOT_SET}
+     *
+     * @return builder instance for fluent usage
+     */
+    public Builder notSet() {
+      filterCriterion =
+          new FilterCriterion(expression, nativeExpression, FilterOperation.NOT_SET, null);
+      return this;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#SET}
+     *
+     * @return builder instance for fluent usage
+     */
+    public Builder set() {
+      filterCriterion =
+          new FilterCriterion(expression, nativeExpression, FilterOperation.SET, null);
+      return this;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#STARTS_WITH}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public Builder startsWith(Object value) {
+      filterCriterion =
+          new FilterCriterion(expression, nativeExpression, FilterOperation.STARTS_WITH, value);
+      return this;
+    }
+  }
+
 }
