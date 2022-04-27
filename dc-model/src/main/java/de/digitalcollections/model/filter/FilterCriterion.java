@@ -146,6 +146,20 @@ public class FilterCriterion<T extends Object> {
     this(expression, nativeExpression, operation, null, null, null, null);
   }
 
+  /**
+   * Copy constructor
+   * @param other
+   */
+  public FilterCriterion(FilterCriterion other) {
+    this.expression = other.expression;
+    this.maxValue = other.maxValue;
+    this.minValue = other.minValue;
+    this.nativeExpression = other.nativeExpression;
+    this.operation = other.operation;
+    this.value = other.value;
+    this.values = other.values;
+  }
+
   /** @return expression being target of filter operation */
   public String getExpression() {
     return expression;

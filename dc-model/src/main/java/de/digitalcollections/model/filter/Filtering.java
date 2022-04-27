@@ -41,6 +41,18 @@ public class Filtering {
     return getFilterCriteria();
   }
 
+
+  public void add(String expression, FilterCriterion filterCriterion) {
+    if (filterCriterion==null || expression==null) {
+      return;
+    }
+
+    FilterCriterion filterCriterionWithExpression = new FilterCriterion(filterCriterion);
+    filterCriterionWithExpression.setExpression(expression);
+
+    filterCriteria.add(filterCriterionWithExpression);
+  }
+
   /** @return returns all filter criterias */
   public List<FilterCriterion> getFilterCriteria() {
     return filterCriteria;
