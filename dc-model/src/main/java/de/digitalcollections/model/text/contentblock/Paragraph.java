@@ -60,5 +60,4 @@ public class Paragraph extends ContentBlockNode {
       return paragraph;
     }
   }
-
 }

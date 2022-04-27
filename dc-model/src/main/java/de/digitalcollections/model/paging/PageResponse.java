@@ -282,7 +282,9 @@ public class PageResponse<T> extends ListResponse<T> {
     public C forStartDate(String expression, String startDate) {
       FilterCriterion filterCriterionStart =
           new FilterCriterion(
-              expression, FilterOperation.LESS_THAN_OR_EQUAL_TO_AND_SET, LocalDate.parse(startDate));
+              expression,
+              FilterOperation.LESS_THAN_OR_EQUAL_TO_AND_SET,
+              LocalDate.parse(startDate));
       if (filterCriteria == null) {
         filterCriteria = new ArrayList<>();
       }

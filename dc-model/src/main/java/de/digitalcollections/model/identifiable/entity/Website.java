@@ -72,7 +72,7 @@ public class Website extends Entity {
     }
 
     public Builder withUrl(String url) throws MalformedURLException {
-      ((Website)identifiable).setUrl(new URL(url));
+      ((Website) identifiable).setUrl(new URL(url));
       return this;
     }
 
@@ -83,7 +83,7 @@ public class Website extends Entity {
     }
 
     public Builder withRootPages(List<Webpage> rootPages) {
-      ((Website)identifiable).setRootPages(rootPages);
+      ((Website) identifiable).setRootPages(rootPages);
       return this;
     }
   }

@@ -215,11 +215,12 @@ public class FileResource extends Identifiable {
         + '}';
   }
 
-  public static Builder builder() {
-    return new Builder();
+  public static Builder<FileResource, Builder> builder() {
+    return new Builder<>();
   }
 
-  public static class Builder<F extends FileResource, B extends Builder> extends Identifiable.Builder<F, B> {
+  public static class Builder<F extends FileResource, B extends Builder>
+      extends Identifiable.Builder<F, B> {
 
     @Override
     protected IdentifiableType getIdentifiableType() {
@@ -251,7 +252,8 @@ public class FileResource extends Identifiable {
     }
 
     public B withLicenseOfName(String licenseName) {
-      License license = License.builder()
+      License license =
+          License.builder()
               .withLabel(Locale.GERMAN, licenseName)
               .withAcronym(licenseName)
               .withUrl("https://localhost/licence/" + licenseName)

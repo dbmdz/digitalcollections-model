@@ -120,7 +120,7 @@ public class CorporateBody extends Agent {
 
     public Builder withHomepageUrl(String homepageUrl) {
       try {
-        ((CorporateBody)identifiable).setHomepageUrl(new URL(homepageUrl));
+        ((CorporateBody) identifiable).setHomepageUrl(new URL(homepageUrl));
       } catch (MalformedURLException e) {
         throw new RuntimeException("Invalid URL='" + homepageUrl + "': " + e, e);
       }
@@ -128,7 +128,8 @@ public class CorporateBody extends Agent {
     }
 
     public Builder withText(Locale locale, String localizedText) {
-      LocalizedStructuredContent localizedStructuredContent = ((CorporateBody)identifiable).getText();
+      LocalizedStructuredContent localizedStructuredContent =
+          ((CorporateBody) identifiable).getText();
       if (localizedStructuredContent == null) {
         localizedStructuredContent = new LocalizedStructuredContent();
       }
@@ -137,7 +138,7 @@ public class CorporateBody extends Agent {
       textContent.setContentBlocks(List.of(singleTextContentBlock));
       localizedStructuredContent.put(locale, textContent);
 
-      ((CorporateBody)identifiable).setText(localizedStructuredContent);
+      ((CorporateBody) identifiable).setText(localizedStructuredContent);
       return this;
     }
 

@@ -239,6 +239,7 @@ public class DigitalObject extends Entity {
   public static Builder builder() {
     return new Builder();
   }
+
   public static class Builder extends Entity.Builder<DigitalObject, Builder> {
 
     @Override
@@ -247,55 +248,55 @@ public class DigitalObject extends Entity {
     }
 
     public Builder withCreationInfo(CreationInfo creationInfo) {
-      ((DigitalObject)identifiable).setCreationInfo(creationInfo);
+      ((DigitalObject) identifiable).setCreationInfo(creationInfo);
       return this;
     }
 
     public Builder withParent(DigitalObject parentDigitalObject) {
-      ((DigitalObject)identifiable).setParent(parentDigitalObject);
+      ((DigitalObject) identifiable).setParent(parentDigitalObject);
       return this;
     }
 
     public Builder withIdentifier(Identifier identifier) {
-      ((DigitalObject)identifiable).addIdentifier(identifier);
+      ((DigitalObject) identifiable).addIdentifier(identifier);
       return this;
     }
 
     public Builder withLicense(License license) {
-      ((DigitalObject)identifiable).setLicense(license);
+      ((DigitalObject) identifiable).setLicense(license);
       return this;
     }
 
-    public Builder withLinkedDataFileResource(
-        LinkedDataFileResource linkedDataFileResource) {
-      List<LinkedDataFileResource> linkedDataFileResources = ((DigitalObject)identifiable).getLinkedDataResources();
+    public Builder withLinkedDataFileResource(LinkedDataFileResource linkedDataFileResource) {
+      List<LinkedDataFileResource> linkedDataFileResources =
+          ((DigitalObject) identifiable).getLinkedDataResources();
       if (linkedDataFileResources == null) {
         linkedDataFileResources = new ArrayList<>(0);
       }
       linkedDataFileResources.add(linkedDataFileResource);
-      ((DigitalObject)identifiable).setLinkedDataResources(linkedDataFileResources);
+      ((DigitalObject) identifiable).setLinkedDataResources(linkedDataFileResources);
       return this;
     }
 
     public Builder withFileResource(FileResource fileResource) {
-      List<FileResource> fileResources = ((DigitalObject)identifiable).getFileResources();
+      List<FileResource> fileResources = ((DigitalObject) identifiable).getFileResources();
       if (fileResources == null) {
         fileResources = new ArrayList<>(0);
       }
       fileResources.add(fileResource);
-      ((DigitalObject)identifiable).setFileResources(fileResources);
+      ((DigitalObject) identifiable).setFileResources(fileResources);
       return this;
     }
 
     public Builder withRenderingResource(FileResource renderingResource) {
-      List<FileResource> renderingResources = ((DigitalObject)identifiable).getRenderingResources();
+      List<FileResource> renderingResources =
+          ((DigitalObject) identifiable).getRenderingResources();
       if (renderingResources == null) {
         renderingResources = new ArrayList<>(0);
       }
       renderingResources.add(renderingResource);
-      ((DigitalObject)identifiable).setRenderingResources(renderingResources);
+      ((DigitalObject) identifiable).setRenderingResources(renderingResources);
       return this;
     }
-
   }
 }
