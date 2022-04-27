@@ -213,6 +213,10 @@ public class PageResponse<T> extends ListResponse<T> {
     return new Builder();
   }
 
+  public static Builder builder(Class c) {
+    return new Builder(c);
+  }
+
   public static class Builder<T, B extends PageResponse<T>, C extends Builder> {
 
     B pageResponse;

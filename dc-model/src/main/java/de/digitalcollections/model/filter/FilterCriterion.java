@@ -363,7 +363,21 @@ public class FilterCriterion<T extends Object> {
      * @param value operand
      * @return builder instance for fluent usage
      */
+    @Deprecated
     public Builder contains(String expression, Object value) {
+      filterCriterion =
+          new FilterCriterion(expression, false, FilterOperation.CONTAINS, value);
+      return this;
+    }
+
+    /**
+     * Completes construction of a filter criterion for a field with operation {@link
+     * FilterOperation#CONTAINS}
+     *
+     * @param value operand
+     * @return builder instance for fluent usage
+     */
+    public Builder contains(Object value) {
       filterCriterion =
           new FilterCriterion(expression, false, FilterOperation.CONTAINS, value);
       return this;

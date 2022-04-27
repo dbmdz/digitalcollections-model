@@ -22,7 +22,7 @@ public class FilteringTest extends BaseJsonSerializationTest {
             null);
 
     Filtering filtering =
-        Filtering.defaultBuilder().add(filterCriteria1).add(filterCriteria2).build();
+        Filtering.builder().add(filterCriteria1).add(filterCriteria2).build();
     return filtering;
   }
 

@@ -140,5 +140,10 @@ public class CorporateBody extends Agent {
       ((CorporateBody)identifiable).setText(localizedStructuredContent);
       return this;
     }
+
+    @Override
+    public CorporateBody build() {
+      return (CorporateBody) super.build();
+    }
   }
 }

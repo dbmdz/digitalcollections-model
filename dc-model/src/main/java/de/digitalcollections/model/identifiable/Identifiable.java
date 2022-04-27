@@ -438,6 +438,10 @@ public class Identifiable extends UniqueObject {
       return (B) this;
     }
 
+    public B withDescription(String language, String text) {
+      return withDescription(Locale.forLanguageTag(language), text);
+    }
+
     public B withPrimaryLocalizedUrlAlias(String slug) {
       LocalizedUrlAliases localizedUrlAliases =
           new LocalizedUrlAliases(UrlAlias.builder().withSlug(slug).isPrimary().build());
