@@ -94,12 +94,10 @@ public class Webpage extends Identifiable implements INode<Webpage> {
       return IdentifiableType.RESOURCE;
     }
 
-
     public Builder setIdentifiers(Set<Identifier> identifiers) {
       identifiable.setIdentifiers(identifiers);
       return this;
     }
-
 
     public Builder withPublicationStartAt(String publicationStart) {
       identifiable.setPublicationStart(LocalDate.parse(publicationStart));
@@ -120,9 +118,9 @@ public class Webpage extends Identifiable implements INode<Webpage> {
       return this;
     }
 
-
     public Builder withOpenLinkInNewWindow() {
-      RenderingHintsPreviewImage previewImageRenderingHints = identifiable.getPreviewImageRenderingHints();
+      RenderingHintsPreviewImage previewImageRenderingHints =
+          identifiable.getPreviewImageRenderingHints();
       if (previewImageRenderingHints == null) {
         previewImageRenderingHints = new RenderingHintsPreviewImage();
       }

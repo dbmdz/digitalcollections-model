@@ -59,5 +59,4 @@ public class Project extends Entity {
       return EntityType.PROJECT;
     }
   }
-
 }

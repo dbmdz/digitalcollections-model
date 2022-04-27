@@ -148,7 +148,8 @@ public class Entity extends Identifiable {
     return new Builder();
   }
 
-  public static class Builder<E extends Entity, B extends Entity.Builder> extends Identifiable.Builder<Entity, B> {
+  public static class Builder<E extends Entity, B extends Entity.Builder>
+      extends Identifiable.Builder<Entity, B> {
 
     @Override
     protected IdentifiableType getIdentifiableType() {

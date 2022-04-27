@@ -27,8 +27,7 @@ public class ListResponseTest extends BaseJsonSerializationTest {
             LocalDate.parse("2020-01-01"),
             LocalDate.parse("2020-01-31"),
             null);
-    Filtering filtering =
-        Filtering.builder().add(filterCriteria1).add(filterCriteria2).build();
+    Filtering filtering = Filtering.builder().add(filterCriteria1).add(filterCriteria2).build();
     listRequest.setFiltering(filtering);
 
     List<User> content = new ArrayList<>();

@@ -18,14 +18,15 @@ public class FilteringTest<T extends Object> {
   public void testGetFilterCriteriaFor() {
     String property = "publicationStart";
     Filtering filtering =
-        Filtering.builder().add(
-            FilterCriterion.builder()
-                .withExpression(property)
-                .between(minDate, maxDate)
-                .build()
-        ).build();
+        Filtering.builder()
+            .add(
+                FilterCriterion.builder()
+                    .withExpression(property)
+                    .between(minDate, maxDate)
+                    .build())
+            .build();
 
-        //Filtering.defaultBuilder().filter(property).between(minDate, maxDate).build();
+    // Filtering.defaultBuilder().filter(property).between(minDate, maxDate).build();
     FilterCriterion fc = filtering.getFilterCriterionFor(property);
     assertEquals(fc.getMinValue(), minDate);
     assertEquals(fc.getMaxValue(), maxDate);
@@ -34,12 +35,10 @@ public class FilteringTest<T extends Object> {
   @Test
   public void testOperationEquals() {
     String property = "publicationStart";
-    Filtering filtering = Filtering.builder().add(
-        FilterCriterion.builder()
-            .withExpression(property)
-            .isEquals(minDate)
-            .build()
-    ).build();
+    Filtering filtering =
+        Filtering.builder()
+            .add(FilterCriterion.builder().withExpression(property).isEquals(minDate).build())
+            .build();
     FilterCriterion fc = filtering.getFilterCriterionFor(property);
     assertEquals(fc.getValue(), minDate);
   }
@@ -51,12 +50,13 @@ public class FilteringTest<T extends Object> {
     // String[]
     String[] values1 = new String[] {"eins", "zwei", "drei"};
     Filtering filtering =
-        Filtering.builder().add(
-            FilterCriterion.builder()
-                .withExpression(property)
-                .in(Arrays.asList(values1))
-                .build()
-        ).build();
+        Filtering.builder()
+            .add(
+                FilterCriterion.builder()
+                    .withExpression(property)
+                    .in(Arrays.asList(values1))
+                    .build())
+            .build();
     FilterCriterion fc = filtering.getFilterCriterionFor(property);
     assertEquals(fc.getValues().size(), values1.length);
 
@@ -66,12 +66,9 @@ public class FilteringTest<T extends Object> {
     values2.add("zwei");
     values2.add("drei");
     filtering =
-        Filtering.builder().add(
-            FilterCriterion.builder()
-                .withExpression(property)
-                .in(values2)
-                .build()
-        ).build();
+        Filtering.builder()
+            .add(FilterCriterion.builder().withExpression(property).in(values2).build())
+            .build();
     fc = filtering.getFilterCriterionFor(property);
     assertEquals(fc.getValues().size(), values2.size());
   }

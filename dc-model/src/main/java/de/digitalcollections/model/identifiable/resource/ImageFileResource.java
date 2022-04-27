@@ -62,7 +62,8 @@ public class ImageFileResource extends FileResource {
     return new Builder();
   }
 
-  public static class Builder extends FileResource.Builder<ImageFileResource, Builder> {
+  public static class Builder<I extends ImageFileResource, B extends Builder>
+      extends FileResource.Builder<ImageFileResource, Builder> {
 
     public Builder withHeight(int height) {
       identifiable.setHeight(height);

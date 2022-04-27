@@ -146,6 +146,7 @@ public class Collection extends Entity implements INode<Collection> {
   public static Builder builder() {
     return new Builder();
   }
+
   public static class Builder extends Entity.Builder<Collection, Builder> {
     @Override
     protected EntityType getEntityType() {
@@ -153,7 +154,7 @@ public class Collection extends Entity implements INode<Collection> {
     }
 
     public Builder withPublicationStart(String publicationStart) {
-      ((Collection)identifiable).setPublicationStart(LocalDate.parse(publicationStart));
+      ((Collection) identifiable).setPublicationStart(LocalDate.parse(publicationStart));
       return this;
     }
   }

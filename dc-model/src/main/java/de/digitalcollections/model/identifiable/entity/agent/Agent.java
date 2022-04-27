@@ -51,7 +51,8 @@ public class Agent extends Entity {
     return new Builder<>();
   }
 
-  public static class Builder<E extends Agent, B extends Agent.Builder> extends Entity.Builder<Agent, B> {
+  public static class Builder<E extends Agent, B extends Agent.Builder>
+      extends Entity.Builder<Agent, B> {
 
     @Override
     protected EntityType getEntityType() {

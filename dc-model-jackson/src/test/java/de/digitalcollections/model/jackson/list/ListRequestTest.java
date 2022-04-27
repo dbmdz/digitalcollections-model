@@ -13,12 +13,10 @@ public class ListRequestTest extends BaseJsonSerializationTest {
 
   private ListRequest createObject() {
     ListRequest listRequest = new ListRequest();
-    listRequest.add(Filtering.builder().add(
-        FilterCriterion.builder()
-            .withExpression("label")
-            .startsWith("A")
-            .build()
-        ).build());
+    listRequest.add(
+        Filtering.builder()
+            .add(FilterCriterion.builder().withExpression("label").startsWith("A").build())
+            .build());
     listRequest.add(
         Sorting.builder()
             .order(Order.builder().direction(Direction.ASC).property("label").build())

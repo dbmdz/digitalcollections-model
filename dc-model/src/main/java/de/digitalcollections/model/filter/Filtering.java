@@ -41,17 +41,15 @@ public class Filtering {
     return getFilterCriteria();
   }
 
-
   public void add(FilterCriterion filterCriterion) {
-    if (filterCriteria==null) {
+    if (filterCriteria == null) {
       filterCriteria = new ArrayList<>();
     }
     filterCriteria.add(filterCriterion);
   }
 
-
   public void add(String expression, FilterCriterion filterCriterion) {
-    if (filterCriterion==null || expression==null) {
+    if (filterCriterion == null || expression == null) {
       return;
     }
 
@@ -110,7 +108,6 @@ public class Filtering {
     return "Filtering{" + "filterCriteria=" + filterCriteria + '}';
   }
 
-
   /**
    * Filtering filtering = Filtering.defaultBuilder() .filter("publicationStart").lessOrEqual(now)
    * .filter("publicationEnd").greaterOrEqual(now) .build();
@@ -126,8 +123,8 @@ public class Filtering {
      * <p>adds a filter criterion to list of filter criterias. if given filterCriterion is null, no
      * filter criterion is added (null-safe)
      *
-     * @param expression name of expression (if expression name could not be set during instantiation
-     *     of FieldCriterion, e.g. during spring mvc type conversion)
+     * @param expression name of expression (if expression name could not be set during
+     *     instantiation of FieldCriterion, e.g. during spring mvc type conversion)
      * @param filterCriterion filter criterion to add
      * @return builder instance for fluent usage
      */
@@ -139,8 +136,8 @@ public class Filtering {
     }
 
     /**
-     * adds a filter criteria to list of filter criterias. if given filterCriteria is null, no filter
-     * criteria is added (null-safe)
+     * adds a filter criteria to list of filter criterias. if given filterCriteria is null, no
+     * filter criteria is added (null-safe)
      *
      * @param filterCriterion filter criteria to add
      * @return builder instance for fluent usage

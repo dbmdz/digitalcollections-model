@@ -93,7 +93,8 @@ public class LinkedDataFileResource extends FileResource {
     return new Builder();
   }
 
-  public static class Builder extends FileResource.Builder<LinkedDataFileResource, Builder> {
+  public static class Builder<L extends LinkedDataFileResource, B extends Builder>
+      extends FileResource.Builder<LinkedDataFileResource, Builder> {
 
     public Builder withContext(String context) {
       identifiable.setContext(URI.create(context));

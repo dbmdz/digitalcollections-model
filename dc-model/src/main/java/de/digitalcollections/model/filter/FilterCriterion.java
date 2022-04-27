@@ -148,6 +148,7 @@ public class FilterCriterion<T extends Object> {
 
   /**
    * Copy constructor
+   *
    * @param other
    */
   public FilterCriterion(FilterCriterion other) {
@@ -317,7 +318,6 @@ public class FilterCriterion<T extends Object> {
     return new Builder().withNativeExpression(true);
   }
 
-
   public static class Builder {
 
     private String expression;
@@ -326,6 +326,7 @@ public class FilterCriterion<T extends Object> {
     private FilterCriterion filterCriterion;
 
     Builder() {}
+
     public Builder withExpression(String expression) {
       this.expression = expression;
       return this;
@@ -365,8 +366,7 @@ public class FilterCriterion<T extends Object> {
      */
     @Deprecated
     public Builder contains(String expression, Object value) {
-      filterCriterion =
-          new FilterCriterion(expression, false, FilterOperation.CONTAINS, value);
+      filterCriterion = new FilterCriterion(expression, false, FilterOperation.CONTAINS, value);
       return this;
     }
 
@@ -378,8 +378,7 @@ public class FilterCriterion<T extends Object> {
      * @return builder instance for fluent usage
      */
     public Builder contains(Object value) {
-      filterCriterion =
-          new FilterCriterion(expression, false, FilterOperation.CONTAINS, value);
+      filterCriterion = new FilterCriterion(expression, false, FilterOperation.CONTAINS, value);
       return this;
     }
 
@@ -469,7 +468,8 @@ public class FilterCriterion<T extends Object> {
         filterCriterion =
             new FilterCriterion(expression, nativeExpression, FilterOperation.EQUALS, value);
       } else {
-        filterCriterion = new FilterCriterion(expression, nativeExpression, FilterOperation.NOT_SET);
+        filterCriterion =
+            new FilterCriterion(expression, nativeExpression, FilterOperation.NOT_SET);
       }
       return this;
     }
@@ -483,7 +483,8 @@ public class FilterCriterion<T extends Object> {
      */
     public Builder isEqualsOrNotSet(Object value) {
       filterCriterion =
-          new FilterCriterion(expression, nativeExpression, FilterOperation.EQUALS_OR_NOT_SET, value);
+          new FilterCriterion(
+              expression, nativeExpression, FilterOperation.EQUALS_OR_NOT_SET, value);
       return this;
     }
 
@@ -509,7 +510,8 @@ public class FilterCriterion<T extends Object> {
      */
     public Builder lessAndSet(Object value) {
       filterCriterion =
-          new FilterCriterion(expression, nativeExpression, FilterOperation.LESS_THAN_AND_SET, value);
+          new FilterCriterion(
+              expression, nativeExpression, FilterOperation.LESS_THAN_AND_SET, value);
       return this;
     }
 
@@ -551,7 +553,10 @@ public class FilterCriterion<T extends Object> {
     public Builder lessOrEqualOrNotSet(Object value) {
       filterCriterion =
           new FilterCriterion(
-              expression, nativeExpression, FilterOperation.LESS_THAN_OR_EQUAL_TO_OR_NOT_SET, value);
+              expression,
+              nativeExpression,
+              FilterOperation.LESS_THAN_OR_EQUAL_TO_OR_NOT_SET,
+              value);
       return this;
     }
 
@@ -637,5 +642,4 @@ public class FilterCriterion<T extends Object> {
       return this;
     }
   }
-
 }

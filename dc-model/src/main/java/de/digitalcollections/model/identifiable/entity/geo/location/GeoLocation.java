@@ -50,7 +50,8 @@ public class GeoLocation extends Entity {
     return new Builder<>();
   }
 
-  public static class Builder<E extends Entity, B extends Entity.Builder> extends Entity.Builder<GeoLocation, B> {
+  public static class Builder<E extends Entity, B extends Entity.Builder>
+      extends Entity.Builder<GeoLocation, B> {
 
     @Override
     protected EntityType getEntityType() {

@@ -11,14 +11,18 @@ public class FilterCriterionBuilderTest {
   @Test
   public void testIsEquals() {
     Filtering filtering =
-        Filtering.builder().add(FilterCriterion.builder().withExpression("test").isEquals(null).build()).build();
+        Filtering.builder()
+            .add(FilterCriterion.builder().withExpression("test").isEquals(null).build())
+            .build();
     assertEquals(FilterOperation.NOT_SET, filtering.getFilterCriteria().get(0).getOperation());
   }
 
   @Test
   public void testNotEquals() {
     Filtering filtering =
-        Filtering.builder().add(FilterCriterion.builder().withExpression("test").notEquals(null).build()).build();
+        Filtering.builder()
+            .add(FilterCriterion.builder().withExpression("test").notEquals(null).build())
+            .build();
     assertEquals(FilterOperation.SET, filtering.getFilterCriteria().get(0).getOperation());
   }
 }

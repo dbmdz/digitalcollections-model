@@ -208,14 +208,15 @@ public class Identifiable extends UniqueObject {
     private Set<Identifier> identifiers;
 
     public Builder() {
-      Class<I> identifiableType = (Class<I>)
-          ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+      Class<I> identifiableType =
+          (Class<I>)
+              ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
       try {
         identifiable = identifiableType.getDeclaredConstructor().newInstance();
       } catch (InstantiationException
-               | IllegalAccessException
-               | InvocationTargetException
-               | NoSuchMethodException e) {
+          | IllegalAccessException
+          | InvocationTargetException
+          | NoSuchMethodException e) {
         throw new RuntimeException(
             "Cannot create new instance of " + identifiableType.getName() + ": " + e, e);
       }
@@ -315,7 +316,11 @@ public class Identifiable extends UniqueObject {
 
     public B withPreviewImage(String fileName, String uuid, String uri) {
       ImageFileResource previewImage =
-          ImageFileResource.previewImageBuilder().withUuid(uuid).withFileName(fileName).withUri(uri).build();
+          ImageFileResource.previewImageBuilder()
+              .withUuid(uuid)
+              .withFileName(fileName)
+              .withUri(uri)
+              .build();
       identifiable.setPreviewImage(previewImage);
       return (B) this;
     }
