@@ -215,11 +215,11 @@ public class FileResource extends Identifiable {
         + '}';
   }
 
-  public static Builder<FileResource, Builder> builder() {
+  public static Builder builder() {
     return new Builder<>();
   }
 
-  public static class Builder<F extends FileResource, B extends Builder>
+  public static class Builder<F extends FileResource, B extends FileResource.Builder>
       extends Identifiable.Builder<F, B> {
 
     @Override
