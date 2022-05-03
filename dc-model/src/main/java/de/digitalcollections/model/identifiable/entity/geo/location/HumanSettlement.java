@@ -3,7 +3,7 @@ package de.digitalcollections.model.identifiable.entity.geo.location;
 import lombok.experimental.SuperBuilder;
 
 /** A community of any size, in which people live see https://www.wikidata.org/wiki/Q486972 */
-@SuperBuilder
+@SuperBuilder(buildMethodName = "prebuild")
 public class HumanSettlement extends GeoLocation {
 
   private HumanSettlementType humanSettlementType;
@@ -19,5 +19,17 @@ public class HumanSettlement extends GeoLocation {
 
   public void setHumanSettlementType(HumanSettlementType humanSettlementType) {
     this.humanSettlementType = humanSettlementType;
+  }
+
+  public abstract static class HumanSettlementBuilder<
+      C extends HumanSettlement, B extends HumanSettlementBuilder<C, B>>
+      extends GeoLocationBuilder<C, B> {
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.setGeoLocationType(GeoLocationType.HUMAN_SETTLEMENT);
+      return c;
+    }
   }
 }

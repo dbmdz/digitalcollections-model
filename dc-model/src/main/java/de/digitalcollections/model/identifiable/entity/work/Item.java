@@ -41,7 +41,7 @@ import lombok.experimental.SuperBuilder;
  *   <li>publicationPlace
  * </ul>
  */
-@SuperBuilder
+@SuperBuilder(buildMethodName = "prebuild")
 public class Item extends Entity {
 
   private Locale language;
@@ -177,5 +177,17 @@ public class Item extends Entity {
         + ", type="
         + type
         + "}";
+  }
+
+  public abstract static class ItemBuilder<
+      C extends Item, B extends ItemBuilder<C, B>>
+      extends EntityBuilder<C, B> {
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.setEntityType(EntityType.ITEM);
+      return c;
+    }
   }
 }

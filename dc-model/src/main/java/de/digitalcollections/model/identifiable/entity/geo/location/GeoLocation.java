@@ -6,7 +6,7 @@ import de.digitalcollections.model.identifiable.entity.EntityType;
 import lombok.experimental.SuperBuilder;
 
 /** A location located on earth. */
-@SuperBuilder
+@SuperBuilder(buildMethodName = "prebuild")
 public class GeoLocation extends Entity {
 
   private CoordinateLocation coordinateLocation;
@@ -46,5 +46,17 @@ public class GeoLocation extends Entity {
 
   public void setGeoLocationType(GeoLocationType geoLocationType) {
     this.geoLocationType = geoLocationType;
+  }
+
+  public abstract static class GeoLocationBuilder<
+      C extends GeoLocation, B extends GeoLocationBuilder<C, B>>
+      extends EntityBuilder<C, B> {
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.setEntityType(EntityType.GEOLOCATION);
+      return c;
+    }
   }
 }

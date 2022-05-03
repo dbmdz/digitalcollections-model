@@ -5,7 +5,7 @@ import java.util.UUID;
 import lombok.experimental.SuperBuilder;
 
 /** An unique model object being identifiable and referencable by its universal unique UUID. */
-@SuperBuilder
+@SuperBuilder(buildMethodName = "prebuild")
 public abstract class UniqueObject {
 
   protected LocalDateTime created;
@@ -63,6 +63,10 @@ public abstract class UniqueObject {
 
     public UUID getUuid() {
       return uuid;
+    }
+
+    public C build() {
+      return prebuild();
     }
   }
 }

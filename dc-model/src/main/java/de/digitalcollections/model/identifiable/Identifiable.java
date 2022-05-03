@@ -34,7 +34,7 @@ import org.springframework.util.StringUtils;
  *       (e.g. GND-ID, VIAF-ID)
  * </ul>
  */
-@SuperBuilder
+@SuperBuilder(buildMethodName = "prebuild")
 public class Identifiable extends UniqueObject {
 
   protected LocalizedStructuredContent description;
@@ -248,6 +248,10 @@ public class Identifiable extends UniqueObject {
 
     public B identifier(String namespace, String id) {
       return identifier(namespace, id, null);
+    }
+
+    public C build() {
+      return prebuild();
     }
   }
 }

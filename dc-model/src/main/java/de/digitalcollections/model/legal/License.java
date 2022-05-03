@@ -117,17 +117,17 @@ public class License extends UniqueObject {
       return license;
     }
 
-    public Builder withLabel(Locale locale, String text) {
+    public Builder label(Locale locale, String text) {
       license.setLabel(new LocalizedText(locale, text));
       return this;
     }
 
-    public Builder withAcronym(String acronym) {
+    public Builder acronym(String acronym) {
       license.setAcronym(acronym);
       return this;
     }
 
-    public Builder withUrl(String url) {
+    public Builder url(String url) {
       if (url == null) {
         return this;
       }
@@ -140,12 +140,12 @@ public class License extends UniqueObject {
       return this;
     }
 
-    public Builder withUuid(UUID uuid) {
+    public Builder uuid(UUID uuid) {
       license.setUuid(uuid);
       return this;
     }
 
-    public Builder withLabel(LocalizedText label) {
+    public Builder label(LocalizedText label) {
       license.setLabel(label);
       return this;
     }

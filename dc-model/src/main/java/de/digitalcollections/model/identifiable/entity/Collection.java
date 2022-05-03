@@ -10,7 +10,7 @@ import java.util.Objects;
 import lombok.experimental.SuperBuilder;
 
 /** A collection of {@link Entity}s. */
-@SuperBuilder
+@SuperBuilder(buildMethodName = "prebuild")
 public class Collection extends Entity implements INode<Collection> {
 
   private List<Entity> entities;
@@ -143,5 +143,17 @@ public class Collection extends Entity implements INode<Collection> {
         + ", uuid="
         + getUuid()
         + "}";
+  }
+
+  public abstract static class CollectionBuilder<
+      C extends Collection, B extends CollectionBuilder<C, B>>
+      extends EntityBuilder<C, B> {
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.setEntityType(EntityType.COLLECTION);
+      return c;
+    }
   }
 }

@@ -37,7 +37,7 @@ import lombok.experimental.SuperBuilder;
  *       Facts der Deutschen Nationalbibliothek (DNB)</a>
  * </ul>
  */
-@SuperBuilder
+@SuperBuilder(buildMethodName = "prebuild")
 public class LinkedDataFileResource extends FileResource {
 
   private URI context;
@@ -89,5 +89,22 @@ public class LinkedDataFileResource extends FileResource {
   @Override
   public int hashCode() {
     return Objects.hash(super.hashCode(), context, objectType);
+  }
+
+  public abstract static class LinkedDataFileResourceBuilder<
+      C extends LinkedDataFileResource, B extends LinkedDataFileResourceBuilder<C, B>>
+      extends FileResourceBuilder<C, B> {
+
+    public B context(String context) {
+      this.context = URI.create(context);
+      return self();
+    }
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.setFileResourceType(FileResourceType.LINKED_DATA);
+      return c;
+    }
   }
 }
