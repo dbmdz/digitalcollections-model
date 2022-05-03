@@ -14,6 +14,14 @@ public class Website extends Entity {
   private List<? extends Webpage> rootPages;
   private URL url;
 
+  public URL getUrl() {
+    return url;
+  }
+
+  public void setUrl(URL url) {
+    this.url = url;
+  }
+
   public Website() {
     super();
     this.entityType = EntityType.WEBSITE;
