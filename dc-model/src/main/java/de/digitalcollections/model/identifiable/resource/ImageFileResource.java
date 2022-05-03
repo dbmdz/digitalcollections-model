@@ -9,7 +9,7 @@ import java.util.UUID;
 import lombok.experimental.SuperBuilder;
 
 /** An image file resource. Mimetype starts with "image/". */
-@SuperBuilder
+@SuperBuilder(buildMethodName = "prebuild")
 public class ImageFileResource extends FileResource {
 
   private int height;
@@ -125,6 +125,18 @@ public class ImageFileResource extends FileResource {
     public PreviewImageBuilder withUuid(String uuid) {
       previewImage.setUuid(UUID.fromString(uuid));
       return this;
+    }
+  }
+
+  public abstract static class ImageFileResourceBuilder<
+      C extends ImageFileResource, B extends ImageFileResourceBuilder<C, B>>
+      extends FileResourceBuilder<C, B> {
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.setFileResourceType(FileResourceType.IMAGE);
+      return c;
     }
   }
 }

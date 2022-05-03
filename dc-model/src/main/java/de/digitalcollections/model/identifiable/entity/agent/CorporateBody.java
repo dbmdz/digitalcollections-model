@@ -17,7 +17,7 @@ import org.springframework.util.StringUtils;
  * https://de.wikipedia.org/wiki/Functional_Requirements_for_Bibliographic_Records and
  * http://www.ib.hu-berlin.de/~kumlau/handreichungen/h189/#auf
  */
-@SuperBuilder
+@SuperBuilder(buildMethodName = "prebuild")
 public class CorporateBody extends Agent {
 
   private URL homepageUrl;
@@ -124,6 +124,13 @@ public class CorporateBody extends Agent {
       localizedDescription.addContentBlock(paragraph);
       this.text.put(locale, localizedDescription);
       return self();
+    }
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.setEntityType(EntityType.CORPORATE_BODY);
+      return c;
     }
   }
 }

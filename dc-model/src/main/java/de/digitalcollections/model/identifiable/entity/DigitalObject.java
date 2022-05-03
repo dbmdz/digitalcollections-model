@@ -17,7 +17,7 @@ import lombok.experimental.SuperBuilder;
  * <p>A digital object can be related to an {@link Item item}, and it also be part of a parent
  * digital object.
  */
-@SuperBuilder
+@SuperBuilder(buildMethodName = "prebuild")
 public class DigitalObject extends Entity {
   // FIXME We need to specify this! private Availablity availablity;
 
@@ -235,5 +235,34 @@ public class DigitalObject extends Entity {
         + ", refId="
         + refId
         + '}';
+  }
+
+  public abstract static class DigitalObjectBuilder<
+      C extends DigitalObject, B extends DigitalObjectBuilder<C, B>>
+      extends EntityBuilder<C, B> {
+
+
+    public B linkedDataFileResource(LinkedDataFileResource linkedDataFileResource) {
+      if (linkedDataResources == null) {
+        linkedDataResources = new ArrayList<>();
+      }
+      linkedDataResources.add(linkedDataFileResource);
+      return self();
+    }
+
+    public B renderingResource(FileResource renderingResource) {
+      if (renderingResources == null) {
+        renderingResources = new ArrayList<>();
+      }
+      renderingResources.add(renderingResource);
+      return self();
+    }
+
+    public C build() {
+      C c = prebuild();
+      c.setEntityType(EntityType.DIGITAL_OBJECT);
+      return c;
+    }
+
   }
 }

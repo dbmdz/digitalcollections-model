@@ -15,7 +15,7 @@ import lombok.experimental.SuperBuilder;
  * technology or required display means (aka "Viewer"). A FileResource can e.g. include an image, a
  * video file, an XML document, or a JSON file.
  */
-@SuperBuilder
+@SuperBuilder(buildMethodName = "prebuild")
 public class FileResource extends Identifiable {
 
   protected FileResourceType fileResourceType;
@@ -213,5 +213,15 @@ public class FileResource extends Identifiable {
         + ", uri="
         + String.valueOf(uri)
         + '}';
+  }
+
+  public abstract static class FileResourceBuilder<
+      C extends FileResource, B extends FileResourceBuilder<C, B>>
+      extends IdentifiableBuilder<C, B> {
+
+    @Override
+    public C build() {
+      return prebuild();
+    }
   }
 }

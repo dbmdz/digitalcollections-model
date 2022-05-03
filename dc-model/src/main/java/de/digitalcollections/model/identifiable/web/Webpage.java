@@ -11,7 +11,7 @@ import java.util.List;
 import lombok.experimental.SuperBuilder;
 
 /** A Webpage of a Website. */
-@SuperBuilder
+@SuperBuilder(buildMethodName = "prebuild")
 public class Webpage extends Identifiable implements INode<Webpage> {
 
   private final Node<Webpage> node = new Node<>();
@@ -80,5 +80,15 @@ public class Webpage extends Identifiable implements INode<Webpage> {
 
   public void setText(LocalizedStructuredContent text) {
     this.text = text;
+  }
+
+  public abstract static class WebpageBuilder<
+      C extends Webpage, B extends WebpageBuilder<C, B>>
+      extends IdentifiableBuilder<C, B> {
+
+    @Override
+    public C build() {
+      return prebuild();
+    }
   }
 }

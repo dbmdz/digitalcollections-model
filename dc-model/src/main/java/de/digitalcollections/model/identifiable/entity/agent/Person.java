@@ -14,7 +14,7 @@ import lombok.experimental.SuperBuilder;
 import org.wikidata.wdtk.datamodel.interfaces.TimeValue;
 
 /** Human being that has certain capacities or attributes constituting personhood. */
-@SuperBuilder
+@SuperBuilder(buildMethodName = "prebuild")
 public class Person extends Agent {
 
   private LocalDate dateOfBirth;
@@ -112,5 +112,17 @@ public class Person extends Agent {
 
   public void setTimeValueOfDeath(TimeValue timeValueOfDeath) {
     this.timeValueOfDeath = timeValueOfDeath;
+  }
+
+  public abstract static class PersonBuilder<
+      C extends Person, B extends PersonBuilder<C, B>>
+      extends AgentBuilder<C, B> {
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.setEntityType(EntityType.PERSON);
+      return c;
+    }
   }
 }

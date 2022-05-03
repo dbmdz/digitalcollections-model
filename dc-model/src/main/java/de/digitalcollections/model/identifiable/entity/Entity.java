@@ -21,7 +21,7 @@ import lombok.experimental.SuperBuilder;
  * https://en.wikipedia.org/wiki/Functional_Requirements_for_Bibliographic_Records
  */
 @Getter
-@SuperBuilder
+@SuperBuilder(buildMethodName = "prebuild")
 public class Entity extends Identifiable {
 
   protected CustomAttributes customAttributes;
@@ -146,5 +146,16 @@ public class Entity extends Identifiable {
   /** @param refId system wide unique entity reference id. */
   public void setRefId(long refId) {
     this.refId = refId;
+  }
+
+  public abstract static class EntityBuilder<
+      C extends Entity, B extends EntityBuilder<C, B>>
+      extends IdentifiableBuilder<C, B> {
+
+    public C build() {
+      C c = prebuild();
+      c.setType(IdentifiableType.ENTITY);
+      return c;
+    }
   }
 }

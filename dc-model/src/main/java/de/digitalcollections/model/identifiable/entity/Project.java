@@ -8,7 +8,7 @@ import lombok.experimental.SuperBuilder;
  * Project is used to describe a project (like a digitization project or an electronic publishing
  * project). See also https://schema.org/Project (Thing - Organization - Project)
  */
-@SuperBuilder
+@SuperBuilder(buildMethodName = "prebuild")
 public class Project extends Entity {
 
   private LocalDate endDate;
@@ -48,5 +48,17 @@ public class Project extends Entity {
   /** @param text set localized formatted text describing project */
   public void setText(LocalizedStructuredContent text) {
     this.text = text;
+  }
+
+  public abstract static class ProjectBuilder<
+      C extends Project, B extends ProjectBuilder<C, B>>
+      extends EntityBuilder<C, B> {
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.setEntityType(EntityType.PROJECT);
+      return c;
+    }
   }
 }
