@@ -4,12 +4,12 @@ import de.digitalcollections.model.identifiable.entity.EntityType;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.StructuredContent;
 import de.digitalcollections.model.text.contentblock.ContentBlock;
-import de.digitalcollections.model.text.contentblock.Text;
-import java.net.MalformedURLException;
+import de.digitalcollections.model.text.contentblock.Paragraph;
 import java.net.URL;
-import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import lombok.experimental.SuperBuilder;
+import org.springframework.util.StringUtils;
 
 /**
  * CorporateBody is used to describe a (business) corporation (e.g. a project partner or
@@ -17,6 +17,7 @@ import java.util.Objects;
  * https://de.wikipedia.org/wiki/Functional_Requirements_for_Bibliographic_Records and
  * http://www.ib.hu-berlin.de/~kumlau/handreichungen/h189/#auf
  */
+@SuperBuilder
 public class CorporateBody extends Agent {
 
   private URL homepageUrl;
@@ -107,44 +108,22 @@ public class CorporateBody extends Agent {
     return Objects.hash(super.hashCode(), homepageUrl, text);
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
+  public abstract static class CorporateBodyBuilder<
+          C extends CorporateBody, B extends CorporateBodyBuilder<C, B>>
+      extends AgentBuilder<C, B> {
 
-  public static class Builder extends Agent.Builder<CorporateBody, Builder> {
-
-    @Override
-    protected EntityType getEntityType() {
-      return EntityType.CORPORATE_BODY;
-    }
-
-    public Builder withHomepageUrl(String homepageUrl) {
-      try {
-        ((CorporateBody) identifiable).setHomepageUrl(new URL(homepageUrl));
-      } catch (MalformedURLException e) {
-        throw new RuntimeException("Invalid URL='" + homepageUrl + "': " + e, e);
+    public B text(Locale locale, String text) {
+      if (this.text == null) {
+        this.text = new LocalizedStructuredContent();
       }
-      return this;
-    }
-
-    public Builder withText(Locale locale, String localizedText) {
-      LocalizedStructuredContent localizedStructuredContent =
-          ((CorporateBody) identifiable).getText();
-      if (localizedStructuredContent == null) {
-        localizedStructuredContent = new LocalizedStructuredContent();
+      StructuredContent localizedDescription = this.text.get(locale);
+      if (localizedDescription == null) {
+        localizedDescription = new StructuredContent();
       }
-      StructuredContent textContent = new StructuredContent();
-      ContentBlock singleTextContentBlock = new Text(localizedText);
-      textContent.setContentBlocks(List.of(singleTextContentBlock));
-      localizedStructuredContent.put(locale, textContent);
-
-      ((CorporateBody) identifiable).setText(localizedStructuredContent);
-      return this;
-    }
-
-    @Override
-    public CorporateBody build() {
-      return (CorporateBody) super.build();
+      ContentBlock paragraph = StringUtils.hasText(text) ? new Paragraph(text) : new Paragraph();
+      localizedDescription.addContentBlock(paragraph);
+      this.text.put(locale, localizedDescription);
+      return self();
     }
   }
 }

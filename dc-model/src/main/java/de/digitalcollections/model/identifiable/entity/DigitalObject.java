@@ -1,6 +1,5 @@
 package de.digitalcollections.model.identifiable.entity;
 
-import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.identifiable.entity.work.Item;
 import de.digitalcollections.model.identifiable.resource.FileResource;
 import de.digitalcollections.model.identifiable.resource.LinkedDataFileResource;
@@ -9,6 +8,7 @@ import de.digitalcollections.model.legal.License;
 import de.digitalcollections.model.production.CreationInfo;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.experimental.SuperBuilder;
 
 /**
  * A (cultural) digital object, can be a retro digitization of a physical object or a digital native
@@ -17,6 +17,7 @@ import java.util.List;
  * <p>A digital object can be related to an {@link Item item}, and it also be part of a parent
  * digital object.
  */
+@SuperBuilder
 public class DigitalObject extends Entity {
   // FIXME We need to specify this! private Availablity availablity;
 
@@ -234,69 +235,5 @@ public class DigitalObject extends Entity {
         + ", refId="
         + refId
         + '}';
-  }
-
-  public static Builder builder() {
-    return new Builder();
-  }
-
-  public static class Builder extends Entity.Builder<DigitalObject, Builder> {
-
-    @Override
-    protected EntityType getEntityType() {
-      return EntityType.DIGITAL_OBJECT;
-    }
-
-    public Builder withCreationInfo(CreationInfo creationInfo) {
-      ((DigitalObject) identifiable).setCreationInfo(creationInfo);
-      return this;
-    }
-
-    public Builder withParent(DigitalObject parentDigitalObject) {
-      ((DigitalObject) identifiable).setParent(parentDigitalObject);
-      return this;
-    }
-
-    public Builder withIdentifier(Identifier identifier) {
-      ((DigitalObject) identifiable).addIdentifier(identifier);
-      return this;
-    }
-
-    public Builder withLicense(License license) {
-      ((DigitalObject) identifiable).setLicense(license);
-      return this;
-    }
-
-    public Builder withLinkedDataFileResource(LinkedDataFileResource linkedDataFileResource) {
-      List<LinkedDataFileResource> linkedDataFileResources =
-          ((DigitalObject) identifiable).getLinkedDataResources();
-      if (linkedDataFileResources == null) {
-        linkedDataFileResources = new ArrayList<>(0);
-      }
-      linkedDataFileResources.add(linkedDataFileResource);
-      ((DigitalObject) identifiable).setLinkedDataResources(linkedDataFileResources);
-      return this;
-    }
-
-    public Builder withFileResource(FileResource fileResource) {
-      List<FileResource> fileResources = ((DigitalObject) identifiable).getFileResources();
-      if (fileResources == null) {
-        fileResources = new ArrayList<>(0);
-      }
-      fileResources.add(fileResource);
-      ((DigitalObject) identifiable).setFileResources(fileResources);
-      return this;
-    }
-
-    public Builder withRenderingResource(FileResource renderingResource) {
-      List<FileResource> renderingResources =
-          ((DigitalObject) identifiable).getRenderingResources();
-      if (renderingResources == null) {
-        renderingResources = new ArrayList<>(0);
-      }
-      renderingResources.add(renderingResource);
-      ((DigitalObject) identifiable).setRenderingResources(renderingResources);
-      return this;
-    }
   }
 }

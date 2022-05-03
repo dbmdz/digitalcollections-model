@@ -4,6 +4,8 @@ import de.digitalcollections.model.identifiable.Identifiable;
 import de.digitalcollections.model.identifiable.IdentifiableType;
 import java.time.LocalDate;
 import java.util.Objects;
+import lombok.Getter;
+import lombok.experimental.SuperBuilder;
 
 /**
  * Entities are uniquely identifiable objects, often also uniquely identifiable outside of this
@@ -18,6 +20,8 @@ import java.util.Objects;
  * <p>https://de.wikipedia.org/wiki/Functional_Requirements_for_Bibliographic_Records
  * https://en.wikipedia.org/wiki/Functional_Requirements_for_Bibliographic_Records
  */
+@Getter
+@SuperBuilder
 public class Entity extends Identifiable {
 
   protected CustomAttributes customAttributes;
@@ -142,44 +146,5 @@ public class Entity extends Identifiable {
   /** @param refId system wide unique entity reference id. */
   public void setRefId(long refId) {
     this.refId = refId;
-  }
-
-  public static Builder builder() {
-    return new Builder();
-  }
-
-  public static class Builder<E extends Entity, B extends Entity.Builder>
-      extends Identifiable.Builder<Entity, B> {
-
-    @Override
-    protected IdentifiableType getIdentifiableType() {
-      return IdentifiableType.ENTITY;
-    }
-
-    protected EntityType getEntityType() {
-      return EntityType.ENTITY;
-    }
-
-    @Override
-    public E build() {
-      Entity e = super.build();
-      e.setEntityType(getEntityType());
-      return (E) e;
-    }
-
-    public B withCustomAttribute(String key, Object value) {
-      identifiable.setCustomAttribute(key, value);
-      return (B) this;
-    }
-
-    public B withNavDate(String navDate) {
-      identifiable.setNavDate(LocalDate.parse(navDate));
-      return (B) this;
-    }
-
-    public B withRefId(long refId) {
-      identifiable.setRefId(refId);
-      return (B) this;
-    }
   }
 }

@@ -3,8 +3,10 @@ package de.digitalcollections.model.identifiable.entity.geo.location;
 import de.digitalcollections.model.geo.CoordinateLocation;
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.EntityType;
+import lombok.experimental.SuperBuilder;
 
 /** A location located on earth. */
+@SuperBuilder
 public class GeoLocation extends Entity {
 
   private CoordinateLocation coordinateLocation;
@@ -44,29 +46,5 @@ public class GeoLocation extends Entity {
 
   public void setGeoLocationType(GeoLocationType geoLocationType) {
     this.geoLocationType = geoLocationType;
-  }
-
-  public static Builder builder() {
-    return new Builder<>();
-  }
-
-  public static class Builder<E extends Entity, B extends Entity.Builder>
-      extends Entity.Builder<GeoLocation, B> {
-
-    @Override
-    protected EntityType getEntityType() {
-      return EntityType.GEOLOCATION;
-    }
-
-    protected GeoLocationType getGeoLocationType() {
-      return GeoLocationType.GEOLOCATION;
-    }
-
-    @Override
-    public GeoLocation build() {
-      GeoLocation geoLocation = super.build();
-      geoLocation.setGeoLocationType(getGeoLocationType());
-      return geoLocation;
-    }
   }
 }

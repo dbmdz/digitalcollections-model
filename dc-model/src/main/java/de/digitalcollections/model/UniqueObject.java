@@ -2,13 +2,17 @@ package de.digitalcollections.model;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
+import lombok.experimental.SuperBuilder;
 
 /** An unique model object being identifiable and referencable by its universal unique UUID. */
+@SuperBuilder
 public abstract class UniqueObject {
 
   protected LocalDateTime created;
   protected LocalDateTime lastModified;
   protected UUID uuid;
+
+  public UniqueObject() {}
 
   /** @return the creation date of the object */
   public LocalDateTime getCreated() {
@@ -38,5 +42,27 @@ public abstract class UniqueObject {
   /** @param uuid the universal unique id of the object */
   public void setUuid(UUID uuid) {
     this.uuid = uuid;
+  }
+
+  public abstract static class UniqueObjectBuilder<
+      C extends UniqueObject, B extends UniqueObjectBuilder<C, B>> {
+    public B created(String created) {
+      this.created = LocalDateTime.parse(created);
+      return self();
+    }
+
+    public B lastModified(String lastModified) {
+      this.lastModified = LocalDateTime.parse(lastModified);
+      return self();
+    }
+
+    public B randomUuid() {
+      this.uuid = UUID.randomUUID();
+      return self();
+    }
+
+    public UUID getUuid() {
+      return uuid;
+    }
   }
 }
