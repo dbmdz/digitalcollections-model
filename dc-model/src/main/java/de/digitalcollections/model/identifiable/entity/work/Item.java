@@ -4,6 +4,7 @@ import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.EntityType;
 import de.digitalcollections.model.text.LocalizedText;
 import java.util.Locale;
+import lombok.experimental.SuperBuilder;
 
 /**
  * From https://web.library.yale.edu/cataloging/music/frbr-wemi-music#item:
@@ -40,6 +41,7 @@ import java.util.Locale;
  *   <li>publicationPlace
  * </ul>
  */
+@SuperBuilder
 public class Item extends Entity {
 
   private Locale language;
@@ -175,13 +177,5 @@ public class Item extends Entity {
         + ", type="
         + type
         + "}";
-  }
-
-  public static class Builder extends Entity.Builder<Item, Builder> {
-
-    @Override
-    protected EntityType getEntityType() {
-      return EntityType.ITEM;
-    }
   }
 }

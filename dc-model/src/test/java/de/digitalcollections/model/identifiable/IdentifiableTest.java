@@ -6,7 +6,6 @@ import de.digitalcollections.model.identifiable.alias.LocalizedUrlAliases;
 import de.digitalcollections.model.identifiable.alias.UrlAlias;
 import de.digitalcollections.model.identifiable.entity.Website;
 import java.util.Locale;
-import java.util.UUID;
 import org.junit.jupiter.api.Test;
 
 public class IdentifiableTest {
@@ -19,7 +18,7 @@ public class IdentifiableTest {
     assertThat(found).isNull();
 
     // there are no url aliases for the given language
-    Website website = Website.builder().withUuid(UUID.randomUUID()).build();
+    Website website = Website.builder().randomUuid().build();
     UrlAlias urlAlias =
         UrlAlias.builder()
             .isPrimary()
@@ -37,7 +36,7 @@ public class IdentifiableTest {
     assertThat(found).isNull();
 
     // there are url aliases for the given language, but not the given website or without website
-    Website otherWebsite = new Website.Builder().withUuid(UUID.randomUUID()).build();
+    Website otherWebsite = Website.builder().randomUuid().build();
     found = identifiable.getPrimaryUrlAlias(Locale.GERMAN, otherWebsite);
     assertThat(found).isNull();
 

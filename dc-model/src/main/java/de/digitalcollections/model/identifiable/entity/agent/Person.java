@@ -10,9 +10,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import lombok.experimental.SuperBuilder;
 import org.wikidata.wdtk.datamodel.interfaces.TimeValue;
 
 /** Human being that has certain capacities or attributes constituting personhood. */
+@SuperBuilder
 public class Person extends Agent {
 
   private LocalDate dateOfBirth;
@@ -110,17 +112,5 @@ public class Person extends Agent {
 
   public void setTimeValueOfDeath(TimeValue timeValueOfDeath) {
     this.timeValueOfDeath = timeValueOfDeath;
-  }
-
-  public static Builder builder() {
-    return new Builder();
-  }
-
-  public static class Builder extends Agent.Builder<Person, Builder> {
-
-    @Override
-    protected EntityType getEntityType() {
-      return EntityType.PERSON;
-    }
   }
 }

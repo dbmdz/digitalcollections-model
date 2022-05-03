@@ -6,8 +6,10 @@ import java.net.URI;
 import java.net.URL;
 import java.util.Objects;
 import java.util.UUID;
+import lombok.experimental.SuperBuilder;
 
 /** An image file resource. Mimetype starts with "image/". */
+@SuperBuilder
 public class ImageFileResource extends FileResource {
 
   private int height;
@@ -56,24 +58,6 @@ public class ImageFileResource extends FileResource {
   @Override
   public int hashCode() {
     return Objects.hash(super.hashCode(), height, width);
-  }
-
-  public static Builder builder() {
-    return new Builder();
-  }
-
-  public static class Builder<I extends ImageFileResource, B extends Builder>
-      extends FileResource.Builder<ImageFileResource, Builder> {
-
-    public Builder withHeight(int height) {
-      identifiable.setHeight(height);
-      return this;
-    }
-
-    public Builder withWidth(int width) {
-      identifiable.setWidth(width);
-      return this;
-    }
   }
 
   public static PreviewImageBuilder previewImageBuilder() {

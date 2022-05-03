@@ -7,8 +7,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import lombok.experimental.SuperBuilder;
 
 /** A collection of {@link Entity}s. */
+@SuperBuilder
 public class Collection extends Entity implements INode<Collection> {
 
   private List<Entity> entities;
@@ -141,21 +143,5 @@ public class Collection extends Entity implements INode<Collection> {
         + ", uuid="
         + getUuid()
         + "}";
-  }
-
-  public static Builder builder() {
-    return new Builder();
-  }
-
-  public static class Builder extends Entity.Builder<Collection, Builder> {
-    @Override
-    protected EntityType getEntityType() {
-      return EntityType.COLLECTION;
-    }
-
-    public Builder withPublicationStart(String publicationStart) {
-      ((Collection) identifiable).setPublicationStart(LocalDate.parse(publicationStart));
-      return this;
-    }
   }
 }

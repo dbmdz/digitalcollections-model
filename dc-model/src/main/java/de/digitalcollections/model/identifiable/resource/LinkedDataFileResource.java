@@ -2,6 +2,7 @@ package de.digitalcollections.model.identifiable.resource;
 
 import java.net.URI;
 import java.util.Objects;
+import lombok.experimental.SuperBuilder;
 
 /**
  * This class represents a linked data file resource, referenced through an uri. It may be specified
@@ -36,6 +37,7 @@ import java.util.Objects;
  *       Facts der Deutschen Nationalbibliothek (DNB)</a>
  * </ul>
  */
+@SuperBuilder
 public class LinkedDataFileResource extends FileResource {
 
   private URI context;
@@ -87,22 +89,5 @@ public class LinkedDataFileResource extends FileResource {
   @Override
   public int hashCode() {
     return Objects.hash(super.hashCode(), context, objectType);
-  }
-
-  public static Builder builder() {
-    return new Builder();
-  }
-
-  public static class Builder extends FileResource.Builder<LinkedDataFileResource, Builder> {
-
-    public Builder withContext(String context) {
-      identifiable.setContext(URI.create(context));
-      return this;
-    }
-
-    public Builder withObjectType(String objectType) {
-      identifiable.setObjectType(objectType);
-      return this;
-    }
   }
 }

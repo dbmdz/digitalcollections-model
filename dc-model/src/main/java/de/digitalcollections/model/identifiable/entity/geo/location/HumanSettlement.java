@@ -1,8 +1,9 @@
 package de.digitalcollections.model.identifiable.entity.geo.location;
 
-import de.digitalcollections.model.identifiable.entity.EntityType;
+import lombok.experimental.SuperBuilder;
 
 /** A community of any size, in which people live see https://www.wikidata.org/wiki/Q486972 */
+@SuperBuilder
 public class HumanSettlement extends GeoLocation {
 
   private HumanSettlementType humanSettlementType;
@@ -18,27 +19,5 @@ public class HumanSettlement extends GeoLocation {
 
   public void setHumanSettlementType(HumanSettlementType humanSettlementType) {
     this.humanSettlementType = humanSettlementType;
-  }
-
-  public static Builder builder() {
-    return new Builder();
-  }
-
-  public static class Builder extends GeoLocation.Builder<HumanSettlement, Builder> {
-    @Override
-    protected EntityType getEntityType() {
-      return EntityType.GEOLOCATION;
-    }
-
-    protected GeoLocationType getGeoLocationType() {
-      return GeoLocationType.HUMAN_SETTLEMENT;
-    }
-
-    @Override
-    public HumanSettlement build() {
-      HumanSettlement humanSettlement = (HumanSettlement) super.build();
-      humanSettlement.setGeoLocationType(getGeoLocationType());
-      return humanSettlement;
-    }
   }
 }

@@ -2,11 +2,13 @@ package de.digitalcollections.model.identifiable.entity;
 
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import java.time.LocalDate;
+import lombok.experimental.SuperBuilder;
 
 /**
  * Project is used to describe a project (like a digitization project or an electronic publishing
  * project). See also https://schema.org/Project (Thing - Organization - Project)
  */
+@SuperBuilder
 public class Project extends Entity {
 
   private LocalDate endDate;
@@ -46,17 +48,5 @@ public class Project extends Entity {
   /** @param text set localized formatted text describing project */
   public void setText(LocalizedStructuredContent text) {
     this.text = text;
-  }
-
-  public static Builder builder() {
-    return new Builder();
-  }
-
-  public static class Builder extends Entity.Builder<Project, Builder> {
-
-    @Override
-    protected EntityType getEntityType() {
-      return EntityType.PROJECT;
-    }
   }
 }
