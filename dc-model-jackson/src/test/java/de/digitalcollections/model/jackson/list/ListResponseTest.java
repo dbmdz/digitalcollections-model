@@ -1,11 +1,11 @@
 package de.digitalcollections.model.jackson.list;
 
-import de.digitalcollections.model.filter.FilterCriterion;
-import de.digitalcollections.model.filter.FilterOperation;
-import de.digitalcollections.model.filter.Filtering;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.list.ListRequest;
 import de.digitalcollections.model.list.ListResponse;
+import de.digitalcollections.model.list.filtering.FilterCriterion;
+import de.digitalcollections.model.list.filtering.FilterOperation;
+import de.digitalcollections.model.list.filtering.Filtering;
 import de.digitalcollections.model.security.User;
 import java.time.LocalDate;
 import java.util.ArrayList;

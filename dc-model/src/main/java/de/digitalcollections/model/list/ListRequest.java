@@ -1,8 +1,8 @@
 package de.digitalcollections.model.list;
 
-import de.digitalcollections.model.filter.Filtering;
-import de.digitalcollections.model.paging.Direction;
-import de.digitalcollections.model.paging.Sorting;
+import de.digitalcollections.model.list.filtering.Filtering;
+import de.digitalcollections.model.list.sorting.Direction;
+import de.digitalcollections.model.list.sorting.Sorting;
 import java.io.Serializable;
 
 /**

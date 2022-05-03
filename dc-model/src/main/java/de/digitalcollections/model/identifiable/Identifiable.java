@@ -4,7 +4,9 @@ import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.file.MimeType;
 import de.digitalcollections.model.identifiable.alias.LocalizedUrlAliases;
 import de.digitalcollections.model.identifiable.alias.UrlAlias;
+import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.Website;
+import de.digitalcollections.model.identifiable.resource.FileResource;
 import de.digitalcollections.model.identifiable.resource.ImageFileResource;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.LocalizedText;
@@ -27,10 +29,8 @@ import java.util.stream.Stream;
 import org.springframework.util.StringUtils;
 
 /**
- * An Identifiable is an uniquely identifiable {@link
- * de.digitalcollections.model.api.identifiable.entity.Entity} or {@link
- * de.digitalcollections.model.api.identifiable.resource.FileResource}, having one or more unique
- * {@link Identifier}(s).<br>
+ * An Identifiable is an uniquely identifiable {@link Entity} or {@link FileResource}, having one or
+ * more unique {@link Identifier}(s).<br>
  *
  * <ul>
  *   <li>FileResources have one (or more) technical (system wide) Identifiers (e.g. an UUID)
