@@ -19,6 +19,7 @@ import java.util.List;
  * @param <T> object type listed in page
  */
 public class PageResponse<T> extends ListResponse<T> {
+
   public static Builder builder() {
     return new Builder();
   }
@@ -27,7 +28,7 @@ public class PageResponse<T> extends ListResponse<T> {
     return new Builder(c);
   }
 
-  private String changedSearchTerm;
+  private String executedSearchTerm;
 
   protected PageRequest pageRequest;
 
@@ -69,11 +70,11 @@ public class PageResponse<T> extends ListResponse<T> {
    * @param total the total amount of items available. The total might be adapted considering the
    *     length of the content given, if it is going to be the content of the last page. This is in
    *     place to mitigate inconsistencies
-   * @param changedSearchTerm search term being changed (in comparance to request search term) on
-   *     server side for some reason
+   * @param executedSearchTerm search term being effectively used (may bechanged/normalized in
+   *     comparance to original sent request search term) on server side for some reason
    */
   public PageResponse(
-      List<T> content, PageRequest pageRequest, long total, String changedSearchTerm) {
+      List<T> content, PageRequest pageRequest, long total, String executedSearchTerm) {
     super(content, null);
 
     this.pageRequest = pageRequest;
@@ -83,7 +84,7 @@ public class PageResponse<T> extends ListResponse<T> {
                 && pageRequest.getOffset() + pageRequest.getPageSize() > total
             ? pageRequest.getOffset() + content.size()
             : total;
-    this.changedSearchTerm = changedSearchTerm;
+    this.executedSearchTerm = executedSearchTerm;
   }
 
   @Override
@@ -102,16 +103,19 @@ public class PageResponse<T> extends ListResponse<T> {
         this.pageRequest == null
             ? that.pageRequest == null
             : this.pageRequest.equals(that.pageRequest);
-    boolean changedSearchTermEqual =
-        (this.changedSearchTerm == null
-            ? that.changedSearchTerm == null
-            : this.changedSearchTerm.equals(that.changedSearchTerm));
+    boolean executedSearchTermEqual =
+        (this.executedSearchTerm == null
+            ? that.executedSearchTerm == null
+            : this.executedSearchTerm.equals(that.executedSearchTerm));
 
-    return (this.total == that.total) && contentEqual && pageRequestEqual && changedSearchTermEqual;
+    return (this.total == that.total)
+        && contentEqual
+        && pageRequestEqual
+        && executedSearchTermEqual;
   }
 
-  public String getChangedSearchTerm() {
-    return changedSearchTerm;
+  public String getExecutedSearchTerm() {
+    return executedSearchTerm;
   }
 
   /**
@@ -122,6 +126,7 @@ public class PageResponse<T> extends ListResponse<T> {
   public int getNumberOfElements() {
     return content.size();
   }
+
   /**
    * Returns the number of the current {@link PageResponse}. Is always non-negative.
    *
@@ -229,8 +234,8 @@ public class PageResponse<T> extends ListResponse<T> {
     return null;
   }
 
-  public void setChangedSearchTerm(String changedSearchTerm) {
-    this.changedSearchTerm = changedSearchTerm;
+  public void setExecutedSearchTerm(String changedSearchTerm) {
+    this.executedSearchTerm = changedSearchTerm;
   }
 
   public void setPageRequest(PageRequest pageRequest) {
@@ -293,8 +298,8 @@ public class PageResponse<T> extends ListResponse<T> {
       return (C) this;
     }
 
-    public C withChangedSearchTerm(String changedSearchTerm) {
-      pageResponse.setChangedSearchTerm(changedSearchTerm);
+    public C withExecutedSearchTerm(String executedSearchTerm) {
+      pageResponse.setExecutedSearchTerm(executedSearchTerm);
       return (C) this;
     }
 
