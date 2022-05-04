@@ -78,6 +78,11 @@ public abstract class UniqueObject {
       return self();
     }
 
+    public B lastModified(LocalDateTime lastModified) {
+      this.lastModified = lastModified;
+      return self();
+    }
+
     public B randomUuid() {
       this.uuid = UUID.randomUUID();
       return self();
