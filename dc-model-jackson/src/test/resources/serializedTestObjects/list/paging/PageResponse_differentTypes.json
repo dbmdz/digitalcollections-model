@@ -20,6 +20,7 @@
     },
     "type" : "RESOURCE"
   } ],
+  "executedSearchTerm" : "Label",
   "pageRequest" : {
     "pageNumber" : 3,
     "pageSize" : 15,

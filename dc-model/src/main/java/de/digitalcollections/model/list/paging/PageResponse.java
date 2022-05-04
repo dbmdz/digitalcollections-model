@@ -115,6 +115,10 @@ public class PageResponse<T> extends ListResponse<T> {
   }
 
   public String getExecutedSearchTerm() {
+    if (executedSearchTerm == null) {
+      // no changes on original searchTerm
+      return getPageRequest().getSearchTerm();
+    }
     return executedSearchTerm;
   }
 
