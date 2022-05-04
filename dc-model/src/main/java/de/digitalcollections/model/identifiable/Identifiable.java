@@ -253,6 +253,14 @@ public class Identifiable extends UniqueObject {
       return self();
     }
 
+    public B identifier(Identifier identifier) {
+      if (this.identifiers == null) {
+        this.identifiers = new HashSet<>();
+      }
+      identifiers.add(identifier);
+      return self();
+    }
+
     public B identifier(String namespace, String id, String uuid) {
       if (this.identifiers == null) {
         this.identifiers = new HashSet<>();

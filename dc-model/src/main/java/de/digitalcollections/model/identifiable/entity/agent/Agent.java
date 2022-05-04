@@ -23,7 +23,7 @@ public class Agent extends Entity {
   @Override
   protected void init() {
     super.init();
-    setEntityType(EntityType.AGENT);
+    this.entityType = EntityType.AGENT;
   }
 
   @Override

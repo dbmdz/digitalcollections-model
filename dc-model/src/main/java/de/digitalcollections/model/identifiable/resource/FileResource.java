@@ -7,6 +7,7 @@ import de.digitalcollections.model.legal.License;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
+import java.util.Locale;
 import java.util.Objects;
 import lombok.experimental.SuperBuilder;
 
@@ -224,6 +225,48 @@ public class FileResource extends Identifiable {
   public abstract static class FileResourceBuilder<
           C extends FileResource, B extends FileResourceBuilder<C, B>>
       extends IdentifiableBuilder<C, B> {
+
+    public B type(FileResourceType fileResourceType) {
+      this.fileResourceType = fileResourceType;
+      return self();
+    }
+
+    public B uri(URI uri) {
+      this.uri = uri;
+      return self();
+    }
+
+    public B uri(String uri) {
+      return uri(URI.create(uri));
+    }
+
+    public B httpBaseUrl(URL httpBaseUrl) {
+      this.httpBaseUrl = httpBaseUrl;
+      return self();
+    }
+
+    public B httpBaseUrl(String httpBaseUrl) {
+      try {
+        return httpBaseUrl(new URL(httpBaseUrl));
+      } catch (MalformedURLException e) {
+        throw new RuntimeException(e);
+      }
+    }
+
+    public B licenseOfName(String licenseName) {
+      license =
+          License.builder()
+              .label(Locale.GERMAN, licenseName)
+              .acronym(licenseName)
+              .url("https://localhost/licence/" + licenseName)
+              .build();
+      return self();
+    }
+
+    public B readwrite() {
+      readonly = false;
+      return self();
+    }
 
     @Override
     public C build() {
