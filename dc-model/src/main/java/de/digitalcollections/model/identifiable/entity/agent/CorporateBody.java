@@ -130,7 +130,7 @@ public class CorporateBody extends Agent {
         localizedDescription = new StructuredContent();
       }
       ContentBlock paragraph =
-          text != null && text.isBlank() ? new Paragraph(text) : new Paragraph();
+          text != null && !text.isBlank() ? new Paragraph(text) : new Paragraph();
       localizedDescription.addContentBlock(paragraph);
       this.text.put(locale, localizedDescription);
       return self();
