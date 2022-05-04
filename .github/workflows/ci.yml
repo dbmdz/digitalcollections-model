@@ -29,7 +29,7 @@ jobs:
             ~/.m2/repository
             **/target
       - name: Check Java codestyle
-        run: mvn com.coveo:fmt-maven-plugin:check
+        run: mvn com.spotify.fmt:fmt-maven-plugin:check
       - name: Build with Maven
         run: mvn -B -U clean verify
     strategy:
