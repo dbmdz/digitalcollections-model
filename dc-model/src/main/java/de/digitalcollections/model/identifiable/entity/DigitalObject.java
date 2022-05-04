@@ -1,6 +1,5 @@
 package de.digitalcollections.model.identifiable.entity;
 
-import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.entity.work.Item;
 import de.digitalcollections.model.identifiable.resource.FileResource;
 import de.digitalcollections.model.identifiable.resource.LinkedDataFileResource;
@@ -26,7 +25,7 @@ public class DigitalObject extends Entity {
   private CreationInfo creationInfo;
 
   /** Sorted list of file resources like images, audio files etc. */
-  private List<FileResource> fileResources = new ArrayList<>(0);
+  private List<FileResource> fileResources;
   /** The related item (can be null, if not applicable). */
   private Item item;
   /** licence of the digital object. */
@@ -36,7 +35,7 @@ public class DigitalObject extends Entity {
    * Sorted list of links (with description) to machine readable formats like Marc, RDF, METS or
    * IIIF-Manifest.
    */
-  private List<LinkedDataFileResource> linkedDataResources = new ArrayList<>(0);
+  private List<LinkedDataFileResource> linkedDataResources;
 
   /**
    * number of related binary files for the presentation, like scans in a book, photos of an object,
@@ -51,7 +50,7 @@ public class DigitalObject extends Entity {
    * Sorted list of links (with description and MIME type) to human readable formats like a
    * permalink, OPAC/catalogue page, PDF download, ...
    */
-  private List<FileResource> renderingResources = new ArrayList<>(0);
+  private List<FileResource> renderingResources;
 
   /** version of the digital object. */
   private Version version;
@@ -59,7 +58,22 @@ public class DigitalObject extends Entity {
   /** Default constructor, which also sets the EntityType to {@link EntityType#DIGITAL_OBJECT} */
   public DigitalObject() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.entityType = EntityType.DIGITAL_OBJECT;
+    if (fileResources == null) {
+      fileResources = new ArrayList<>(0);
+    }
+    if (linkedDataResources == null) {
+      linkedDataResources = new ArrayList<>(0);
+    }
+    if (renderingResources == null) {
+      renderingResources = new ArrayList<>(0);
+    }
   }
 
   public void addFileResource(FileResource fileResource) {
@@ -278,20 +292,7 @@ public class DigitalObject extends Entity {
 
     public C build() {
       C c = prebuild();
-      c.setType(IdentifiableType.ENTITY);
-      c.setEntityType(EntityType.DIGITAL_OBJECT);
-
-      // Lombok ignores all inline pre-settings at variable definition,
-      // so, we have to set them manually!
-      if (c.getFileResources() == null) {
-        c.setFileResources(new ArrayList<>());
-      }
-      if (c.getLinkedDataResources() == null) {
-        c.setLinkedDataResources(new ArrayList<>());
-      }
-      if (c.getRenderingResources() == null) {
-        c.setRenderingResources(new ArrayList<>());
-      }
+      c.init();
       setInternalReferences(c);
       return c;
     }

@@ -1,6 +1,5 @@
 package de.digitalcollections.model.identifiable.entity;
 
-import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import java.time.LocalDate;
 import lombok.experimental.SuperBuilder;
@@ -18,6 +17,12 @@ public class Project extends Entity {
 
   public Project() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.entityType = EntityType.PROJECT;
   }
 
@@ -69,8 +74,7 @@ public class Project extends Entity {
     @Override
     public C build() {
       C c = prebuild();
-      c.setType(IdentifiableType.ENTITY);
-      c.setEntityType(EntityType.PROJECT);
+      c.init();
       setInternalReferences(c);
       return c;
     }

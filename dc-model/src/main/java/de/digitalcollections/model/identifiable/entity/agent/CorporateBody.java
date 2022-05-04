@@ -1,6 +1,5 @@
 package de.digitalcollections.model.identifiable.entity.agent;
 
-import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.entity.EntityType;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.StructuredContent;
@@ -27,6 +26,12 @@ public class CorporateBody extends Agent {
 
   public CorporateBody() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.entityType = EntityType.CORPORATE_BODY;
   }
 
@@ -153,8 +158,7 @@ public class CorporateBody extends Agent {
     @Override
     public C build() {
       C c = prebuild();
-      c.setType(IdentifiableType.ENTITY);
-      c.setEntityType(EntityType.CORPORATE_BODY);
+      c.init();
       setInternalReferences(c);
       return c;
     }

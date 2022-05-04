@@ -16,6 +16,12 @@ public class GivenName extends Identifiable {
 
   public GivenName() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.type = IdentifiableType.RESOURCE;
   }
 

@@ -5,6 +5,7 @@ import de.digitalcollections.model.identifiable.Identifiable;
 import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.Node;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
+import de.digitalcollections.model.text.LocalizedText;
 import de.digitalcollections.model.view.RenderingHints;
 import java.time.LocalDate;
 import java.util.List;
@@ -14,7 +15,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(buildMethodName = "prebuild")
 public class Webpage extends Identifiable implements INode<Webpage> {
 
-  private final Node<Webpage> node = new Node<>();
+  private Node<Webpage> node;
   private LocalDate publicationEnd;
   private LocalDate publicationStart;
   private RenderingHints renderingHints;
@@ -22,7 +23,16 @@ public class Webpage extends Identifiable implements INode<Webpage> {
 
   public Webpage() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.type = IdentifiableType.RESOURCE;
+    if (node == null) {
+      node = new Node<>();
+    }
   }
 
   public Webpage(List<Webpage> children) {
@@ -54,6 +64,11 @@ public class Webpage extends Identifiable implements INode<Webpage> {
 
   public LocalizedStructuredContent getText() {
     return text;
+  }
+
+  @Override
+  public LocalizedText getLabel() {
+    return label;
   }
 
   @Override
@@ -114,7 +129,10 @@ public class Webpage extends Identifiable implements INode<Webpage> {
     }
 
     public B children(List<Webpage> children) {
-      this.children = children;
+      if (node == null) {
+        node = new Node<>();
+      }
+      node.setChildren(children);
       return self();
     }
 
@@ -129,9 +147,7 @@ public class Webpage extends Identifiable implements INode<Webpage> {
     @Override
     public C build() {
       C c = prebuild();
-      c.setType(IdentifiableType.RESOURCE);
-      c.setChildren(children);
-      setInternalReferences(c);
+      c.init();
       return c;
     }
   }

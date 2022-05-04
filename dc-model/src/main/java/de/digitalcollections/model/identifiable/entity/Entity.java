@@ -31,6 +31,12 @@ public class Entity extends Identifiable {
 
   public Entity() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.entityType = EntityType.ENTITY;
     this.type = IdentifiableType.ENTITY;
   }
@@ -167,7 +173,7 @@ public class Entity extends Identifiable {
 
     public C build() {
       C c = prebuild();
-      c.setType(IdentifiableType.ENTITY);
+      c.init();
       return c;
     }
   }

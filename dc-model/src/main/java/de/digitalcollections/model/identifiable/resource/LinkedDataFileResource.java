@@ -1,6 +1,5 @@
 package de.digitalcollections.model.identifiable.resource;
 
-import de.digitalcollections.model.identifiable.IdentifiableType;
 import java.net.URI;
 import java.util.Objects;
 import lombok.experimental.SuperBuilder;
@@ -46,6 +45,12 @@ public class LinkedDataFileResource extends FileResource {
 
   public LinkedDataFileResource() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.fileResourceType = FileResourceType.LINKED_DATA;
   }
 
@@ -114,8 +119,7 @@ public class LinkedDataFileResource extends FileResource {
     @Override
     public C build() {
       C c = prebuild();
-      c.setType(IdentifiableType.RESOURCE);
-      c.setFileResourceType(FileResourceType.LINKED_DATA);
+      c.init();
       setInternalReferences(c);
       return c;
     }

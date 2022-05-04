@@ -12,7 +12,12 @@ public abstract class UniqueObject {
   protected LocalDateTime lastModified;
   protected UUID uuid;
 
-  public UniqueObject() {}
+  public UniqueObject() {
+    init();
+  }
+
+  /** Use to initialize member variables, used by default constructor and builder */
+  protected void init() {}
 
   /**
    * @return the creation date of the object
@@ -88,7 +93,9 @@ public abstract class UniqueObject {
     }
 
     public C build() {
-      return prebuild();
+      C c = prebuild();
+      c.init();
+      return c;
     }
   }
 }
