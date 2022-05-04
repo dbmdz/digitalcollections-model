@@ -216,7 +216,7 @@ public class FileResource extends Identifiable {
   }
 
   public abstract static class FileResourceBuilder<
-      C extends FileResource, B extends FileResourceBuilder<C, B>>
+          C extends FileResource, B extends FileResourceBuilder<C, B>>
       extends IdentifiableBuilder<C, B> {
 
     @Override

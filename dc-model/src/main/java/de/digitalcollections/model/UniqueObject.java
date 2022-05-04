@@ -14,32 +14,44 @@ public abstract class UniqueObject {
 
   public UniqueObject() {}
 
-  /** @return the creation date of the object */
+  /**
+   * @return the creation date of the object
+   */
   public LocalDateTime getCreated() {
     return created;
   }
 
-  /** @return the date of last modification of the object */
+  /**
+   * @return the date of last modification of the object
+   */
   public LocalDateTime getLastModified() {
     return lastModified;
   }
 
-  /** @return the universal unique id of the object */
+  /**
+   * @return the universal unique id of the object
+   */
   public UUID getUuid() {
     return uuid;
   }
 
-  /** @param created the creation date of the object */
+  /**
+   * @param created the creation date of the object
+   */
   public void setCreated(LocalDateTime created) {
     this.created = created;
   }
 
-  /** @param lastModified the date of last modification of the object */
+  /**
+   * @param lastModified the date of last modification of the object
+   */
   public void setLastModified(LocalDateTime lastModified) {
     this.lastModified = lastModified;
   }
 
-  /** @param uuid the universal unique id of the object */
+  /**
+   * @param uuid the universal unique id of the object
+   */
   public void setUuid(UUID uuid) {
     this.uuid = uuid;
   }

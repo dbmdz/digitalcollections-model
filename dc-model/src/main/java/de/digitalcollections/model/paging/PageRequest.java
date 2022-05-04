@@ -89,22 +89,30 @@ public class PageRequest extends ListRequest {
     return filterEqual && othersEqual && sortEqual;
   }
 
-  /** @return the {@link PageRequest} requesting the first page */
+  /**
+   * @return the {@link PageRequest} requesting the first page
+   */
   public PageRequest first() {
     return new PageRequest(0, getPageSize(), getSorting(), getFiltering());
   }
 
-  /** @return the offset to be taken according to the underlying page and page size. */
+  /**
+   * @return the offset to be taken according to the underlying page and page size.
+   */
   public int getOffset() {
     return pageNumber * pageSize;
   }
 
-  /** @return the page to be returned. */
+  /**
+   * @return the page to be returned.
+   */
   public int getPageNumber() {
     return pageNumber;
   }
 
-  /** @return the number of items of that page */
+  /**
+   * @return the number of items of that page
+   */
   public int getPageSize() {
     return pageSize;
   }
@@ -132,7 +140,9 @@ public class PageRequest extends ListRequest {
         + (null == filtering ? 0 : filtering.hashCode());
   }
 
-  /** @return the {@link PageRequest} requesting the next page */
+  /**
+   * @return the {@link PageRequest} requesting the next page
+   */
   public PageRequest next() {
     return new PageRequest(getPageNumber() + 1, getPageSize(), getSorting());
   }
@@ -156,12 +166,16 @@ public class PageRequest extends ListRequest {
     return hasPrevious() ? previous() : first();
   }
 
-  /** @param pageNumber the page to be returned */
+  /**
+   * @param pageNumber the page to be returned
+   */
   public void setPageNumber(int pageNumber) {
     this.pageNumber = pageNumber;
   }
 
-  /** @param pageSize the number of items of that page */
+  /**
+   * @param pageSize the number of items of that page
+   */
   public void setPageSize(int pageSize) {
     this.pageSize = pageSize;
   }

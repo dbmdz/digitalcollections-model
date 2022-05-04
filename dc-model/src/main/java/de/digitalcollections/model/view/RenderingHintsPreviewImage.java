@@ -42,7 +42,9 @@ public class RenderingHintsPreviewImage {
     return altText;
   }
 
-  /** @return localized text that may be shown e.g. as "subtitle" under an image */
+  /**
+   * @return localized text that may be shown e.g. as "subtitle" under an image
+   */
   public LocalizedText getCaption() {
     return caption;
   }
@@ -63,7 +65,9 @@ public class RenderingHintsPreviewImage {
     return title;
   }
 
-  /** @return if targetLink should be opened in new window */
+  /**
+   * @return if targetLink should be opened in new window
+   */
   public boolean isOpenLinkInNewWindow() {
     return openLinkInNewWindow;
   }
@@ -76,12 +80,16 @@ public class RenderingHintsPreviewImage {
     this.altText = altText;
   }
 
-  /** @param caption localized text that may be shown e.g. as "subtitle" under an image */
+  /**
+   * @param caption localized text that may be shown e.g. as "subtitle" under an image
+   */
   public void setCaption(LocalizedText caption) {
     this.caption = caption;
   }
 
-  /** @param openLinkInNewWindow "true" if targetLink should be opened in new window */
+  /**
+   * @param openLinkInNewWindow "true" if targetLink should be opened in new window
+   */
   public void setOpenLinkInNewWindow(boolean openLinkInNewWindow) {
     this.openLinkInNewWindow = openLinkInNewWindow;
   }

@@ -66,47 +66,65 @@ public class DigitalObject extends Entity {
     fileResources.add(fileResource);
   }
 
-  /** @return meta information about the creation of the digital object */
+  /**
+   * @return meta information about the creation of the digital object
+   */
   public CreationInfo getCreationInfo() {
     return creationInfo;
   }
 
-  /** @return the sorted list of file resources, like images or audio files */
+  /**
+   * @return the sorted list of file resources, like images or audio files
+   */
   public List<FileResource> getFileResources() {
     return fileResources;
   }
 
-  /** @return the item, the digital object belongs to. Otherwise, return null. */
+  /**
+   * @return the item, the digital object belongs to. Otherwise, return null.
+   */
   public Item getItem() {
     return item;
   }
 
-  /** @return the licence for the digital object (not for the metadata!) */
+  /**
+   * @return the licence for the digital object (not for the metadata!)
+   */
   public License getLicense() {
     return license;
   }
 
-  /** @return the sorted list of links (with description) to machine readable formats */
+  /**
+   * @return the sorted list of links (with description) to machine readable formats
+   */
   public List<LinkedDataFileResource> getLinkedDataResources() {
     return linkedDataResources;
   }
 
-  /** @return the number of binary resources for presentation */
+  /**
+   * @return the number of binary resources for presentation
+   */
   public int getNumberOfBinaryResources() {
     return numberOfBinaryResources;
   }
 
-  /** @return the parent of the digital object, it available. Otherwise, return null. */
+  /**
+   * @return the parent of the digital object, it available. Otherwise, return null.
+   */
   public DigitalObject getParent() {
     return parent;
   }
 
-  /** @return the sorted list of links (with description and MIME type) to human readable formats */
+  /**
+   * @return the sorted list of links (with description and MIME type) to human readable formats
+   */
   public List<FileResource> getRenderingResources() {
     return renderingResources;
   }
 
-  /** @return the version of the digital object */
+  /**
+   * @return the version of the digital object
+   */
   public Version getVersion() {
     return version;
   }
@@ -239,9 +257,8 @@ public class DigitalObject extends Entity {
   }
 
   public abstract static class DigitalObjectBuilder<
-      C extends DigitalObject, B extends DigitalObjectBuilder<C, B>>
+          C extends DigitalObject, B extends DigitalObjectBuilder<C, B>>
       extends EntityBuilder<C, B> {
-
 
     public B linkedDataFileResource(LinkedDataFileResource linkedDataFileResource) {
       if (linkedDataResources == null) {
@@ -266,18 +283,17 @@ public class DigitalObject extends Entity {
 
       // Lombok ignores all inline pre-settings at variable definition,
       // so, we have to set them manually!
-      if (c.getFileResources()==null) {
+      if (c.getFileResources() == null) {
         c.setFileResources(new ArrayList<>());
       }
-      if (c.getLinkedDataResources()==null) {
+      if (c.getLinkedDataResources() == null) {
         c.setLinkedDataResources(new ArrayList<>());
       }
-      if (c.getRenderingResources()==null) {
+      if (c.getRenderingResources() == null) {
         c.setRenderingResources(new ArrayList<>());
       }
       setInternalReferences(c);
       return c;
     }
-
   }
 }

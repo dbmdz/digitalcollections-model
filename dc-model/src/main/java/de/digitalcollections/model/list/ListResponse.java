@@ -56,17 +56,23 @@ public class ListResponse<T> implements Iterable<T> {
     return (this.total == that.total) && contentEqual && listRequestEqual;
   }
 
-  /** @return the content as {@link List}. */
+  /**
+   * @return the content as {@link List}.
+   */
   public List<T> getContent() {
     return Collections.unmodifiableList(content);
   }
 
-  /** @return the ListRequest used to get this ListResponse */
+  /**
+   * @return the ListRequest used to get this ListResponse
+   */
   public ListRequest getListRequest() {
     return listRequest;
   }
 
-  /** @return the sorting parameters for the {@link ListResponse}. */
+  /**
+   * @return the sorting parameters for the {@link ListResponse}.
+   */
   public Sorting getSorting() {
     return listRequest == null ? null : listRequest.getSorting();
   }
@@ -80,7 +86,9 @@ public class ListResponse<T> implements Iterable<T> {
     return total;
   }
 
-  /** @return whether the {@link ListResponse} has content at all. */
+  /**
+   * @return whether the {@link ListResponse} has content at all.
+   */
   public boolean hasContent() {
     return !content.isEmpty();
   }

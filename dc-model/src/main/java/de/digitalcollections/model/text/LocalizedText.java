@@ -17,12 +17,16 @@ public class LocalizedText extends HashMap<Locale, String> {
     this.put(locale, text);
   }
 
-  /** @return all locales for which translated texts are available. */
+  /**
+   * @return all locales for which translated texts are available.
+   */
   public List<Locale> getLocales() {
     return new ArrayList<>(this.keySet());
   }
 
-  /** @return first found text */
+  /**
+   * @return first found text
+   */
   public String getText() {
     List<Locale> locales = getLocales();
     if (locales.isEmpty()) {

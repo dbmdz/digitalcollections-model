@@ -161,7 +161,9 @@ public class FilterCriterion<T extends Object> {
     this.values = other.values;
   }
 
-  /** @return expression being target of filter operation */
+  /**
+   * @return expression being target of filter operation
+   */
   public String getExpression() {
     return expression;
   }
@@ -175,27 +177,37 @@ public class FilterCriterion<T extends Object> {
     return expression;
   }
 
-  /** @return maximum value - applicable only for {@link FilterOperation#BETWEEN} */
+  /**
+   * @return maximum value - applicable only for {@link FilterOperation#BETWEEN}
+   */
   public Comparable<?> getMaxValue() {
     return maxValue;
   }
 
-  /** @return minimum value - applicable only for {@link FilterOperation#BETWEEN} */
+  /**
+   * @return minimum value - applicable only for {@link FilterOperation#BETWEEN}
+   */
   public Comparable<?> getMinValue() {
     return minValue;
   }
 
-  /** @return the filter operation. available operations see {@link FilterOperation} */
+  /**
+   * @return the filter operation. available operations see {@link FilterOperation}
+   */
   public FilterOperation getOperation() {
     return operation;
   }
 
-  /** @return value of a single value operation */
+  /**
+   * @return value of a single value operation
+   */
   public Object getValue() {
     return value;
   }
 
-  /** @return values of a multi value operation of field type T */
+  /**
+   * @return values of a multi value operation of field type T
+   */
   public Collection<?> getValues() {
     return values;
   }

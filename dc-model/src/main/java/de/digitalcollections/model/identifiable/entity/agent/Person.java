@@ -115,8 +115,7 @@ public class Person extends Agent {
     this.timeValueOfDeath = timeValueOfDeath;
   }
 
-  public abstract static class PersonBuilder<
-      C extends Person, B extends PersonBuilder<C, B>>
+  public abstract static class PersonBuilder<C extends Person, B extends PersonBuilder<C, B>>
       extends AgentBuilder<C, B> {
 
     @Override

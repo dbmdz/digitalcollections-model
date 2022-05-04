@@ -17,17 +17,23 @@ public class Version {
 
   public Version() {}
 
-  /** @return date when this version instance was created */
+  /**
+   * @return date when this version instance was created
+   */
   public Date getCreated() {
     return created;
   }
 
-  /** @return description of the version, intended for manually created versions */
+  /**
+   * @return description of the version, intended for manually created versions
+   */
   public String getDescription() {
     return description;
   }
 
-  /** @return version independent identifier of the versioned object, e.g. Zend id */
+  /**
+   * @return version independent identifier of the versioned object, e.g. Zend id
+   */
   public String getInstanceKey() {
     return instanceKey;
   }
@@ -40,22 +46,30 @@ public class Version {
     return instanceVersionKey;
   }
 
-  /** @return status of the version, one of 'INITIAL', 'ACTIVIE', 'INACTIVE', 'DELETED' */
+  /**
+   * @return status of the version, one of 'INITIAL', 'ACTIVIE', 'INACTIVE', 'DELETED'
+   */
   public Status getStatus() {
     return status;
   }
 
-  /** @return type of the versioned object, e.g. 'DigitalObject' */
+  /**
+   * @return type of the versioned object, e.g. 'DigitalObject'
+   */
   public TypeKey getTypeKey() {
     return typeKey;
   }
 
-  /** @return id of the version */
+  /**
+   * @return id of the version
+   */
   public UUID getUuid() {
     return uuid;
   }
 
-  /** @return numeric value of the version, incremented with every new version instance */
+  /**
+   * @return numeric value of the version, incremented with every new version instance
+   */
   public int getVersionValue() {
     return versionValue;
   }

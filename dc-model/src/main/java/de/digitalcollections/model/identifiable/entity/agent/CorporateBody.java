@@ -11,7 +11,6 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.Objects;
 import lombok.experimental.SuperBuilder;
-import org.springframework.util.StringUtils;
 
 /**
  * CorporateBody is used to describe a (business) corporation (e.g. a project partner or
@@ -31,22 +30,30 @@ public class CorporateBody extends Agent {
     this.entityType = EntityType.CORPORATE_BODY;
   }
 
-  /** @return URL to homepage of corporate body */
+  /**
+   * @return URL to homepage of corporate body
+   */
   public URL getHomepageUrl() {
     return homepageUrl;
   }
 
-  /** @return localized formatted text describing corporate body */
+  /**
+   * @return localized formatted text describing corporate body
+   */
   public LocalizedStructuredContent getText() {
     return text;
   }
 
-  /** @param homepageUrl set URL to homepage of corporate body */
+  /**
+   * @param homepageUrl set URL to homepage of corporate body
+   */
   public void setHomepageUrl(URL homepageUrl) {
     this.homepageUrl = homepageUrl;
   }
 
-  /** @param text set localized formatted text describing corporate body */
+  /**
+   * @param text set localized formatted text describing corporate body
+   */
   public void setText(LocalizedStructuredContent text) {
     this.text = text;
   }
@@ -122,7 +129,8 @@ public class CorporateBody extends Agent {
       if (localizedDescription == null) {
         localizedDescription = new StructuredContent();
       }
-      ContentBlock paragraph = StringUtils.hasText(text) ? new Paragraph(text) : new Paragraph();
+      ContentBlock paragraph =
+          text != null && text.isBlank() ? new Paragraph(text) : new Paragraph();
       localizedDescription.addContentBlock(paragraph);
       this.text.put(locale, localizedDescription);
       return self();

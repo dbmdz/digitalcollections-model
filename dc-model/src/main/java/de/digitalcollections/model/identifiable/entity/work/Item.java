@@ -80,7 +80,9 @@ public class Item extends Entity {
     return version;
   }
 
-  /** @param language language of item (if text, audio, video, etc.) */
+  /**
+   * @param language language of item (if text, audio, video, etc.)
+   */
   public void setLanguage(Locale language) {
     this.language = language;
   }
@@ -180,8 +182,7 @@ public class Item extends Entity {
         + "}";
   }
 
-  public abstract static class ItemBuilder<
-      C extends Item, B extends ItemBuilder<C, B>>
+  public abstract static class ItemBuilder<C extends Item, B extends ItemBuilder<C, B>>
       extends EntityBuilder<C, B> {
 
     @Override

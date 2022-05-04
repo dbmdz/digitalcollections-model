@@ -4,7 +4,6 @@ import de.digitalcollections.model.identifiable.Identifiable;
 import de.digitalcollections.model.identifiable.IdentifiableType;
 import java.time.LocalDate;
 import java.util.Objects;
-import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 
 /**
@@ -20,7 +19,6 @@ import lombok.experimental.SuperBuilder;
  * <p>https://de.wikipedia.org/wiki/Functional_Requirements_for_Bibliographic_Records
  * https://en.wikipedia.org/wiki/Functional_Requirements_for_Bibliographic_Records
  */
-@Getter
 @SuperBuilder(buildMethodName = "prebuild")
 public class Entity extends Identifiable {
 
@@ -65,7 +63,9 @@ public class Entity extends Identifiable {
     return null;
   }
 
-  /** @return custom attributes */
+  /**
+   * @return custom attributes
+   */
   public CustomAttributes getCustomAttributes() {
     return customAttributes;
   }
@@ -124,12 +124,16 @@ public class Entity extends Identifiable {
     this.customAttributes = customAttributes;
   }
 
-  /** @param entityType the type of the entity */
+  /**
+   * @param entityType the type of the entity
+   */
   public void setEntityType(EntityType entityType) {
     this.entityType = entityType;
   }
 
-  /** @return a date for "navigation" purposes, e.g. a timeline */
+  /**
+   * @return a date for "navigation" purposes, e.g. a timeline
+   */
   public LocalDate getNavDate() {
     return navDate;
   }
@@ -143,17 +147,18 @@ public class Entity extends Identifiable {
     this.navDate = navDate;
   }
 
-  /** @param refId system wide unique entity reference id. */
+  /**
+   * @param refId system wide unique entity reference id.
+   */
   public void setRefId(long refId) {
     this.refId = refId;
   }
 
-  public abstract static class EntityBuilder<
-      C extends Entity, B extends EntityBuilder<C, B>>
+  public abstract static class EntityBuilder<C extends Entity, B extends EntityBuilder<C, B>>
       extends IdentifiableBuilder<C, B> {
 
     public B customAttribute(String key, Object value) {
-      if (this.customAttributes==null) {
+      if (this.customAttributes == null) {
         this.customAttributes = new CustomAttributes();
       }
       this.customAttributes.put(key, value);

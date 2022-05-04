@@ -29,5 +29,4 @@ class DigitalObjectTest {
     assertThat(digitalObject.getType()).isEqualTo(IdentifiableType.ENTITY);
     assertThat(digitalObject.getEntityType()).isEqualTo(EntityType.DIGITAL_OBJECT);
   }
-
 }

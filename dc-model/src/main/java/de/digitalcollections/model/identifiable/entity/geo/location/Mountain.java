@@ -11,12 +11,16 @@ public class Mountain extends GeoLocation {
     this.geoLocationType = GeoLocationType.MOUNTAIN;
   }
 
-  /** @return height of mountain above sea level in meters. */
+  /**
+   * @return height of mountain above sea level in meters.
+   */
   public int getHeight() {
     return (int) getCustomAttribute("height");
   }
 
-  /** @param height height of mountain above sea level in meters */
+  /**
+   * @param height height of mountain above sea level in meters
+   */
   public void setHeight(int height) {
     setCustomAttribute("height", height);
   }

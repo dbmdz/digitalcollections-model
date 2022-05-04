@@ -56,8 +56,7 @@ public class Website extends Entity {
     this.url = url;
   }
 
-  public abstract static class WebsiteBuilder<
-      C extends Website, B extends WebsiteBuilder<C, B>>
+  public abstract static class WebsiteBuilder<C extends Website, B extends WebsiteBuilder<C, B>>
       extends EntityBuilder<C, B> {
 
     public B url(String url) {

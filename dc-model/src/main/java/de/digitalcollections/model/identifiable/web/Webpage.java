@@ -82,8 +82,7 @@ public class Webpage extends Identifiable implements INode<Webpage> {
     this.text = text;
   }
 
-  public abstract static class WebpageBuilder<
-      C extends Webpage, B extends WebpageBuilder<C, B>>
+  public abstract static class WebpageBuilder<C extends Webpage, B extends WebpageBuilder<C, B>>
       extends IdentifiableBuilder<C, B> {
 
     private List<Webpage> children;

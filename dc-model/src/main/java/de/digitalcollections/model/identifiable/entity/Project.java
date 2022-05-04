@@ -21,38 +21,49 @@ public class Project extends Entity {
     this.entityType = EntityType.PROJECT;
   }
 
-  /** @return date when project ended (null if still running) */
+  /**
+   * @return date when project ended (null if still running)
+   */
   public LocalDate getEndDate() {
     return endDate;
   }
 
-  /** @return date when project was started */
+  /**
+   * @return date when project was started
+   */
   public LocalDate getStartDate() {
     return startDate;
   }
 
-  /** @return localized formatted text describing project */
+  /**
+   * @return localized formatted text describing project
+   */
   public LocalizedStructuredContent getText() {
     return text;
   }
 
-  /** @param endDate set date when project ended */
+  /**
+   * @param endDate set date when project ended
+   */
   public void setEndDate(LocalDate endDate) {
     this.endDate = endDate;
   }
 
-  /** @param startDate set date when project starts/started (may be in the future) */
+  /**
+   * @param startDate set date when project starts/started (may be in the future)
+   */
   public void setStartDate(LocalDate startDate) {
     this.startDate = startDate;
   }
 
-  /** @param text set localized formatted text describing project */
+  /**
+   * @param text set localized formatted text describing project
+   */
   public void setText(LocalizedStructuredContent text) {
     this.text = text;
   }
 
-  public abstract static class ProjectBuilder<
-      C extends Project, B extends ProjectBuilder<C, B>>
+  public abstract static class ProjectBuilder<C extends Project, B extends ProjectBuilder<C, B>>
       extends EntityBuilder<C, B> {
 
     @Override
