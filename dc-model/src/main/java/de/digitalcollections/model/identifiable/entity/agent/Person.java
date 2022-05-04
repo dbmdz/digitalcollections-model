@@ -1,6 +1,5 @@
 package de.digitalcollections.model.identifiable.entity.agent;
 
-import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.identifiable.agent.FamilyName;
 import de.digitalcollections.model.identifiable.agent.GivenName;
@@ -20,9 +19,9 @@ public class Person extends Agent {
 
   private LocalDate dateOfBirth;
   private LocalDate dateOfDeath;
-  private List<FamilyName> familyNames = new ArrayList<>();
+  private List<FamilyName> familyNames;
   private Gender gender;
-  private List<GivenName> givenNames = new ArrayList<>();
+  private List<GivenName> givenNames;
   private GeoLocation placeOfBirth;
   private GeoLocation placeOfDeath;
   private TimeValue timeValueOfBirth;
@@ -30,7 +29,19 @@ public class Person extends Agent {
 
   public Person() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.entityType = EntityType.PERSON;
+    if (familyNames == null) {
+      familyNames = new ArrayList<>();
+    }
+    if (givenNames == null) {
+      this.givenNames = new ArrayList<>();
+    }
   }
 
   public Person(LocalizedText label, Set<Identifier> identifiers) {
@@ -121,8 +132,7 @@ public class Person extends Agent {
     @Override
     public C build() {
       C c = prebuild();
-      c.setType(IdentifiableType.ENTITY);
-      c.setEntityType(EntityType.PERSON);
+      c.init();
       setInternalReferences(c);
       return c;
     }

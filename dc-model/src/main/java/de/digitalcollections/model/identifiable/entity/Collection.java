@@ -1,7 +1,6 @@
 package de.digitalcollections.model.identifiable.entity;
 
 import de.digitalcollections.model.identifiable.INode;
-import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.Node;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import java.time.LocalDate;
@@ -15,14 +14,23 @@ import lombok.experimental.SuperBuilder;
 public class Collection extends Entity implements INode<Collection> {
 
   private List<Entity> entities;
-  private final Node<Collection> node = new Node<>();
+  private Node<Collection> node;
   private LocalDate publicationEnd;
   private LocalDate publicationStart;
   private LocalizedStructuredContent text;
 
   public Collection() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.entityType = EntityType.COLLECTION;
+    if (node == null) {
+      node = new Node<>();
+    }
   }
 
   public void addEntity(Entity entity) {
@@ -163,8 +171,7 @@ public class Collection extends Entity implements INode<Collection> {
     @Override
     public C build() {
       C c = prebuild();
-      c.setType(IdentifiableType.ENTITY);
-      c.setEntityType(EntityType.COLLECTION);
+      c.init();
       setInternalReferences(c);
       return c;
     }

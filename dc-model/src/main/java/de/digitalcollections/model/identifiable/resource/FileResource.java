@@ -30,6 +30,12 @@ public class FileResource extends Identifiable {
 
   public FileResource() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.type = IdentifiableType.RESOURCE;
     this.fileResourceType = FileResourceType.UNDEFINED;
   }
@@ -222,7 +228,7 @@ public class FileResource extends Identifiable {
     @Override
     public C build() {
       C c = prebuild();
-      c.setType(IdentifiableType.RESOURCE);
+      c.init();
       setInternalReferences(c);
       return c;
     }

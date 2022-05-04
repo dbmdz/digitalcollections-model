@@ -40,7 +40,7 @@ import org.springframework.util.StringUtils;
 public class Identifiable extends UniqueObject {
 
   protected LocalizedStructuredContent description;
-  protected Set<Identifier> identifiers = new HashSet<>();
+  protected Set<Identifier> identifiers;
   protected LocalizedText label;
   protected LocalizedUrlAliases localizedUrlAliases;
   protected ImageFileResource previewImage;
@@ -49,6 +49,15 @@ public class Identifiable extends UniqueObject {
 
   public Identifiable() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
+    if (identifiers == null) {
+      identifiers = new HashSet<>();
+    }
   }
 
   public void addIdentifier(Identifier identifier) {
@@ -390,6 +399,7 @@ public class Identifiable extends UniqueObject {
 
     public C build() {
       C c = prebuild();
+      c.init();
       setInternalReferences(c);
       return c;
     }

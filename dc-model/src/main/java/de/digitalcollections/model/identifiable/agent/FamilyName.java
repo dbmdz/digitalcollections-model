@@ -14,6 +14,12 @@ public class FamilyName extends Identifiable {
 
   public FamilyName() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.type = IdentifiableType.RESOURCE;
   }
 

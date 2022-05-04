@@ -1,7 +1,6 @@
 package de.digitalcollections.model.identifiable.resource;
 
 import de.digitalcollections.model.file.MimeType;
-import de.digitalcollections.model.identifiable.IdentifiableType;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
@@ -18,6 +17,12 @@ public class ImageFileResource extends FileResource {
 
   public ImageFileResource() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.fileResourceType = FileResourceType.IMAGE;
   }
 
@@ -144,8 +149,7 @@ public class ImageFileResource extends FileResource {
     @Override
     public C build() {
       C c = prebuild();
-      c.setType(IdentifiableType.RESOURCE);
-      c.setFileResourceType(FileResourceType.IMAGE);
+      c.init();
       setInternalReferences(c);
       return c;
     }

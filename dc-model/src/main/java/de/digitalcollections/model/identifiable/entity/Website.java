@@ -1,6 +1,5 @@
 package de.digitalcollections.model.identifiable.entity;
 
-import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.web.Webpage;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -15,6 +14,17 @@ public class Website extends Entity {
   private LocalDate registrationDate;
   private List<? extends Webpage> rootPages;
   private URL url;
+
+  public Website() {
+    super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
+    this.entityType = EntityType.WEBSITE;
+  }
 
   public URL getUrl() {
     return url;
@@ -38,11 +48,6 @@ public class Website extends Entity {
 
   public void setRootPages(List<? extends Webpage> rootPages) {
     this.rootPages = rootPages;
-  }
-
-  public Website() {
-    super();
-    this.entityType = EntityType.WEBSITE;
   }
 
   public Website(URL url) {
@@ -76,8 +81,7 @@ public class Website extends Entity {
     @Override
     public C build() {
       C c = prebuild();
-      c.setType(IdentifiableType.ENTITY);
-      c.setEntityType(EntityType.WEBSITE);
+      c.init();
       setInternalReferences(c);
       return c;
     }
