@@ -86,9 +86,54 @@ public class Webpage extends Identifiable implements INode<Webpage> {
       C extends Webpage, B extends WebpageBuilder<C, B>>
       extends IdentifiableBuilder<C, B> {
 
+    private List<Webpage> children;
+
+    public B publicationStart(String publicationStart) {
+      this.publicationStart = LocalDate.parse(publicationStart);
+      return self();
+    }
+
+    public B publicationEnd(String publicationEnd) {
+      this.publicationEnd = LocalDate.parse(publicationEnd);
+      return self();
+    }
+
+    public B shownInNavigation() {
+      if (renderingHints == null) {
+        renderingHints = new RenderingHints();
+      }
+      renderingHints.setShowInPageNavigation(true);
+      return self();
+    }
+
+    public B notShownInNavigation() {
+      if (renderingHints == null) {
+        renderingHints = new RenderingHints();
+      }
+      renderingHints.setShowInPageNavigation(false);
+      return self();
+    }
+
+    public B children(List<Webpage> children) {
+      this.children = children;
+      return self();
+    }
+
+    public B templateName(String templateName) {
+      if (renderingHints == null) {
+        renderingHints = new RenderingHints();
+      }
+      renderingHints.setTemplateName(templateName);
+      return self();
+    }
+
     @Override
     public C build() {
-      return prebuild();
+      C c = prebuild();
+      c.setType(IdentifiableType.RESOURCE);
+      c.setChildren(children);
+      setInternalReferences(c);
+      return c;
     }
   }
 }

@@ -22,9 +22,9 @@ public class IdentifiableTest {
     UrlAlias urlAlias =
         UrlAlias.builder()
             .isPrimary()
-            .withSlug("this-is-a-test")
-            .withTargetLanguage(Locale.GERMAN)
-            .withWebsite(website)
+            .slug("this-is-a-test")
+            .targetLanguage(Locale.GERMAN)
+            .website(website)
             .build();
     LocalizedUrlAliases localizedUrlAliases = new LocalizedUrlAliases(urlAlias);
     identifiable.setLocalizedUrlAliases(localizedUrlAliases);
@@ -44,8 +44,8 @@ public class IdentifiableTest {
     UrlAlias urlAliasWithoutWebsite =
         UrlAlias.builder()
             .isPrimary()
-            .withSlug("this-is-a-test-without-website")
-            .withTargetLanguage(Locale.GERMAN)
+            .slug("this-is-a-test-without-website")
+            .targetLanguage(Locale.GERMAN)
             .build();
     localizedUrlAliases.add(urlAliasWithoutWebsite);
     found = identifiable.getPrimaryUrlAlias(Locale.GERMAN, null);

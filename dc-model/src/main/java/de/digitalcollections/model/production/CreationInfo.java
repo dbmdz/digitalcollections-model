@@ -77,17 +77,17 @@ public class CreationInfo {
   public static class Builder {
     CreationInfo creationInfo = new CreationInfo();
 
-    public Builder withGeoLocation(GeoLocation geoLocation) {
+    public Builder geoLocation(GeoLocation geoLocation) {
       creationInfo.setGeoLocation(geoLocation);
       return this;
     }
 
-    public Builder withCreator(Agent creator) {
+    public Builder creator(Agent creator) {
       creationInfo.setCreator(creator);
       return this;
     }
 
-    public Builder withDate(String date) {
+    public Builder date(String date) {
       creationInfo.setDate(LocalDate.parse(date));
       return this;
     }

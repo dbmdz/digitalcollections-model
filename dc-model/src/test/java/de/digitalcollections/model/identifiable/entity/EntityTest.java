@@ -22,7 +22,7 @@ class EntityTest {
             .description(Locale.ENGLISH, "Example Image")
             .label(Locale.GERMAN, "Beispielbild")
             .label(Locale.ENGLISH, "Example Image")
-            .withPrimaryLocalizedUrlAlias("blubb")
+            .primaryLocalizedUrlAlias("blubb")
             .build();
     assertThat(entity).isExactlyInstanceOf(Entity.class);
   }

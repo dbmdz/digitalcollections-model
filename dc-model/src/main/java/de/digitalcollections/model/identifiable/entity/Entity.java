@@ -152,6 +152,14 @@ public class Entity extends Identifiable {
       C extends Entity, B extends EntityBuilder<C, B>>
       extends IdentifiableBuilder<C, B> {
 
+    public B customAttribute(String key, Object value) {
+      if (this.customAttributes==null) {
+        this.customAttributes = new CustomAttributes();
+      }
+      this.customAttributes.put(key, value);
+      return self();
+    }
+
     public C build() {
       C c = prebuild();
       c.setType(IdentifiableType.ENTITY);

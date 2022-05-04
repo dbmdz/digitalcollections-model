@@ -61,6 +61,16 @@ public abstract class UniqueObject {
       return self();
     }
 
+    public B uuid(String uuid) {
+      this.uuid = UUID.fromString(uuid);
+      return self();
+    }
+
+    public B uuid(UUID uuid) {
+      this.uuid = uuid;
+      return self();
+    }
+
     public UUID getUuid() {
       return uuid;
     }

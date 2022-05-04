@@ -1,6 +1,7 @@
 package de.digitalcollections.model.identifiable.entity.geo.location;
 
 import de.digitalcollections.model.geo.CoordinateLocation;
+import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.EntityType;
 import lombok.experimental.SuperBuilder;
@@ -55,7 +56,9 @@ public class GeoLocation extends Entity {
     @Override
     public C build() {
       C c = prebuild();
+      c.setType(IdentifiableType.ENTITY);
       c.setEntityType(EntityType.GEOLOCATION);
+      setInternalReferences(c);
       return c;
     }
   }

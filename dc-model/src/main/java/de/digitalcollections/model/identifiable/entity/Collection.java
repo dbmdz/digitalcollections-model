@@ -1,6 +1,7 @@
 package de.digitalcollections.model.identifiable.entity;
 
 import de.digitalcollections.model.identifiable.INode;
+import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.Node;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import java.time.LocalDate;
@@ -149,10 +150,22 @@ public class Collection extends Entity implements INode<Collection> {
       C extends Collection, B extends CollectionBuilder<C, B>>
       extends EntityBuilder<C, B> {
 
+    public B publicationStart(String publicationStart) {
+      this.publicationStart = LocalDate.parse(publicationStart);
+      return self();
+    }
+
+    public B publicationEnd(String publicationEnd) {
+      this.publicationEnd = LocalDate.parse(publicationEnd);
+      return self();
+    }
+
     @Override
     public C build() {
       C c = prebuild();
+      c.setType(IdentifiableType.ENTITY);
       c.setEntityType(EntityType.COLLECTION);
+      setInternalReferences(c);
       return c;
     }
   }

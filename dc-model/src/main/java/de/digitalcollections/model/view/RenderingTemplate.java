@@ -52,17 +52,17 @@ public class RenderingTemplate extends UniqueObject {
       return renderingTemplate;
     }
 
-    public Builder withName(String name) {
+    public Builder name(String name) {
       renderingTemplate.setName(name);
       return this;
     }
 
-    public Builder withUuid(String uuid) {
+    public Builder uuid(String uuid) {
       renderingTemplate.setUuid(UUID.fromString(uuid));
       return this;
     }
 
-    public Builder withDescription(Locale locale, String text) {
+    public Builder description(Locale locale, String text) {
       LocalizedText description = renderingTemplate.getDescription();
       if (description == null) {
         description = new LocalizedText();
@@ -72,7 +72,7 @@ public class RenderingTemplate extends UniqueObject {
       return this;
     }
 
-    public Builder withLabel(Locale locale, String localizedLabel) {
+    public Builder label(Locale locale, String localizedLabel) {
       LocalizedText label = renderingTemplate.getLabel();
       if (label == null) {
         label = new LocalizedText();

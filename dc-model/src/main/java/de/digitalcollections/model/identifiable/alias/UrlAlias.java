@@ -158,13 +158,13 @@ public class UrlAlias {
       return urlAlias;
     }
 
-    public Builder createdAt(String createdAt) {
-      urlAlias.setCreated(LocalDateTime.parse(createdAt));
+    public Builder created(String created) {
+      urlAlias.setCreated(LocalDateTime.parse(created));
       return this;
     }
 
-    public Builder lastPublishedAt(String lastPublishedAt) {
-      urlAlias.setLastPublished(LocalDateTime.parse(lastPublishedAt));
+    public Builder lastPublished(String lastPublished) {
+      urlAlias.setLastPublished(LocalDateTime.parse(lastPublished));
       return this;
     }
 
@@ -173,38 +173,38 @@ public class UrlAlias {
       return this;
     }
 
-    public Builder withSlug(String slug) {
+    public Builder slug(String slug) {
       urlAlias.setSlug(slug);
       return this;
     }
 
-    public Builder withTargetLanguage(Locale targetLanguage) {
+    public Builder targetLanguage(Locale targetLanguage) {
       urlAlias.setTargetLanguage(targetLanguage);
       return this;
     }
 
-    public Builder withTargetLanguage(String targetLanguage) {
+    public Builder targetLanguage(String targetLanguage) {
       urlAlias.setTargetLanguage(Locale.forLanguageTag(targetLanguage));
       return this;
     }
 
-    public Builder withTargetType(IdentifiableType identifiableType, EntityType entityType) {
+    public Builder targetType(IdentifiableType identifiableType, EntityType entityType) {
       urlAlias.setTargetIdentifiableType(identifiableType);
       urlAlias.setTargetEntityType(entityType);
       return this;
     }
 
-    public Builder withTargetUuid(String targetUuid) {
+    public Builder targetUuid(String targetUuid) {
       urlAlias.setTargetUuid(UUID.fromString(targetUuid));
       return this;
     }
 
-    public Builder withUuid(String uuid) {
+    public Builder uuid(String uuid) {
       urlAlias.setUuid(UUID.fromString(uuid));
       return this;
     }
 
-    public Builder withWebsite(Website website) {
+    public Builder website(Website website) {
       urlAlias.setWebsite(website);
       return this;
     }

@@ -221,7 +221,10 @@ public class FileResource extends Identifiable {
 
     @Override
     public C build() {
-      return prebuild();
+      C c = prebuild();
+      c.setType(IdentifiableType.RESOURCE);
+      setInternalReferences(c);
+      return c;
     }
   }
 }

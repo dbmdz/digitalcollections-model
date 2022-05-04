@@ -1,5 +1,6 @@
 package de.digitalcollections.model.identifiable.entity.agent;
 
+import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.identifiable.agent.FamilyName;
 import de.digitalcollections.model.identifiable.agent.GivenName;
@@ -121,7 +122,9 @@ public class Person extends Agent {
     @Override
     public C build() {
       C c = prebuild();
+      c.setType(IdentifiableType.ENTITY);
       c.setEntityType(EntityType.PERSON);
+      setInternalReferences(c);
       return c;
     }
   }

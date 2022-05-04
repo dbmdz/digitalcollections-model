@@ -1,5 +1,6 @@
 package de.digitalcollections.model.identifiable.entity.work;
 
+import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.EntityType;
 import de.digitalcollections.model.text.LocalizedText;
@@ -186,7 +187,9 @@ public class Item extends Entity {
     @Override
     public C build() {
       C c = prebuild();
+      c.setType(IdentifiableType.ENTITY);
       c.setEntityType(EntityType.ITEM);
+      setInternalReferences(c);
       return c;
     }
   }
