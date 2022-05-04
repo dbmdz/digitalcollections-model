@@ -122,12 +122,12 @@ public class Version {
       return version;
     }
 
-    public Builder withUuid(UUID uuid) {
+    public Builder uuid(UUID uuid) {
       version.setUuid(uuid);
       return this;
     }
 
-    public Builder withValue(int value) {
+    public Builder value(int value) {
       version.setVersionValue(value);
       return this;
     }

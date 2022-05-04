@@ -56,17 +56,17 @@ public class EntityRelation {
       return entityRelation;
     }
 
-    public Builder withPredicate(String predicate) {
+    public Builder predicate(String predicate) {
       entityRelation.setPredicate(predicate);
       return this;
     }
 
-    public Builder withSubject(Entity subjectEntity) {
+    public Builder subject(Entity subjectEntity) {
       entityRelation.setSubject(subjectEntity);
       return this;
     }
 
-    public Builder withObject(Entity objectEntity) {
+    public Builder object(Entity objectEntity) {
       entityRelation.setObject(objectEntity);
       return this;
     }

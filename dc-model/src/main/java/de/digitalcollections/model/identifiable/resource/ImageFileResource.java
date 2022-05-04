@@ -1,6 +1,7 @@
 package de.digitalcollections.model.identifiable.resource;
 
 import de.digitalcollections.model.file.MimeType;
+import de.digitalcollections.model.identifiable.IdentifiableType;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
@@ -87,22 +88,22 @@ public class ImageFileResource extends FileResource {
       return previewImage;
     }
 
-    public PreviewImageBuilder withFileName(String fileName) {
+    public PreviewImageBuilder fileName(String fileName) {
       previewImage.setFilename(fileName);
       return this;
     }
 
-    public PreviewImageBuilder withUri(String uri) {
+    public PreviewImageBuilder uri(String uri) {
       previewImage.setUri(URI.create(uri));
       return this;
     }
 
-    public PreviewImageBuilder withMimeType(MimeType mimeType) {
+    public PreviewImageBuilder mimeType(MimeType mimeType) {
       previewImage.setMimeType(mimeType);
       return this;
     }
 
-    public PreviewImageBuilder withHttpBaseUrl(String httpBaseUrl) {
+    public PreviewImageBuilder httpBaseUrl(String httpBaseUrl) {
       try {
         previewImage.setHttpBaseUrl(new URL(httpBaseUrl));
       } catch (MalformedURLException e) {
@@ -111,18 +112,18 @@ public class ImageFileResource extends FileResource {
       return this;
     }
 
-    public PreviewImageBuilder withSize(int width, int height) {
+    public PreviewImageBuilder size(int width, int height) {
       previewImage.setWidth(width);
       previewImage.setHeight(height);
       return this;
     }
 
-    public PreviewImageBuilder withUuid(UUID uuid) {
+    public PreviewImageBuilder uuid(UUID uuid) {
       previewImage.setUuid(uuid);
       return this;
     }
 
-    public PreviewImageBuilder withUuid(String uuid) {
+    public PreviewImageBuilder uuid(String uuid) {
       previewImage.setUuid(UUID.fromString(uuid));
       return this;
     }
@@ -135,7 +136,9 @@ public class ImageFileResource extends FileResource {
     @Override
     public C build() {
       C c = prebuild();
+      c.setType(IdentifiableType.RESOURCE);
       c.setFileResourceType(FileResourceType.IMAGE);
+      setInternalReferences(c);
       return c;
     }
   }

@@ -51,22 +51,22 @@ public class IdentifierType extends UniqueObject {
       return identifierType;
     }
 
-    public Builder withLabel(String label) {
+    public Builder label(String label) {
       identifierType.setLabel(label);
       return this;
     }
 
-    public Builder withNamespace(String namespace) {
+    public Builder namespace(String namespace) {
       identifierType.setNamespace(namespace);
       return this;
     }
 
-    public Builder withPattern(String pattern) {
+    public Builder pattern(String pattern) {
       identifierType.setPattern(pattern);
       return this;
     }
 
-    public Builder withUuid(String uuid) {
+    public Builder uuid(String uuid) {
       identifierType.setUuid(UUID.fromString(uuid));
       return this;
     }

@@ -1,6 +1,7 @@
 package de.digitalcollections.model.identifiable;
 
 import de.digitalcollections.model.UniqueObject;
+import de.digitalcollections.model.file.MimeType;
 import de.digitalcollections.model.identifiable.alias.LocalizedUrlAliases;
 import de.digitalcollections.model.identifiable.alias.UrlAlias;
 import de.digitalcollections.model.identifiable.entity.Website;
@@ -18,6 +19,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import lombok.experimental.SuperBuilder;
 import org.springframework.util.StringUtils;
@@ -203,6 +205,8 @@ public class Identifiable extends UniqueObject {
           C extends Identifiable, B extends IdentifiableBuilder<C, B>>
       extends UniqueObjectBuilder<C, B> {
 
+    private Set<Identifier> identifiers;
+
     public B description(Locale locale, String text) {
       if (description == null) {
         description = new LocalizedStructuredContent();
@@ -217,6 +221,10 @@ public class Identifiable extends UniqueObject {
       return self();
     }
 
+    public B description(String lang, String text) {
+      return description(Locale.forLanguageTag(lang), text);
+    }
+
     public B label(Locale locale, String localizedLabel) {
       if (label == null) {
         label = new LocalizedText();
@@ -225,15 +233,20 @@ public class Identifiable extends UniqueObject {
       return self();
     }
 
-    public B withPrimaryLocalizedUrlAlias(String slug) {
+    public B label(String nonlocalizedLabel) {
+      this.label = new LocalizedText(Locale.ROOT, nonlocalizedLabel);
+      return self();
+    }
+
+    public B primaryLocalizedUrlAlias(String slug) {
       this.localizedUrlAliases =
-          new LocalizedUrlAliases(UrlAlias.builder().withSlug(slug).isPrimary().build());
+          new LocalizedUrlAliases(UrlAlias.builder().slug(slug).isPrimary().build());
       return self();
     }
 
     public B identifier(String namespace, String id, String uuid) {
-      if (identifiers == null) {
-        identifiers = new HashSet<>();
+      if (this.identifiers == null) {
+        this.identifiers = new HashSet<>();
       }
       Identifier identifier = new Identifier();
       identifier.setNamespace(namespace);
@@ -242,7 +255,7 @@ public class Identifiable extends UniqueObject {
         identifier.setUuid(UUID.fromString(uuid));
       }
       identifier.setIdentifiable(super.getUuid());
-      identifiers.add(identifier);
+      this.identifiers.add(identifier);
       return self();
     }
 
@@ -250,8 +263,140 @@ public class Identifiable extends UniqueObject {
       return identifier(namespace, id, null);
     }
 
+    public B previewImage(ImageFileResource previewImage) {
+      this.previewImage = previewImage;
+      return self();
+    }
+
+
+    public B previewImage(String url, int width, int height) {
+      String[] fileNameParts = url.split("/\\//");
+      return previewImage(
+          ImageFileResource.previewImageBuilder()
+              .fileName(fileNameParts[fileNameParts.length - 1])
+              .uri(url)
+              .size(width, height)
+              .build());
+    }
+
+    public B previewImage(String fileName, String uuid, String uri) {
+      return previewImage(
+          ImageFileResource.previewImageBuilder()
+              .uuid(uuid)
+              .fileName(fileName)
+              .uri(uri)
+              .build());
+    }
+
+    public B previewImage(String fileName, String uuid, String uri, MimeType mimeType) {
+      return previewImage(
+          ImageFileResource.previewImageBuilder()
+              .uuid(uuid)
+              .fileName(fileName)
+              .uri(uri)
+              .mimeType(mimeType)
+              .build());
+    }
+
+    public B previewImage(String fileName, String uuid, String uri, MimeType mimeType, String httpBaseUrl) {
+      return previewImage(
+          ImageFileResource.previewImageBuilder()
+              .uuid(uuid)
+              .fileName(fileName)
+              .uri(uri)
+              .mimeType(mimeType)
+              .httpBaseUrl(httpBaseUrl)
+              .build());
+    }
+
+    public B openPreviewImageInNewWindow() {
+      if (previewImageRenderingHints == null) {
+        previewImageRenderingHints = new RenderingHintsPreviewImage();
+      }
+      previewImageRenderingHints.setOpenLinkInNewWindow(true);
+      return self();
+    }
+
+    public B dontOpenPreviewImageInNewWindow() {
+      if (previewImageRenderingHints == null) {
+        previewImageRenderingHints = new RenderingHintsPreviewImage();
+      }
+      previewImageRenderingHints.setOpenLinkInNewWindow(false);
+      return self();
+    }
+
+    public B openLinkInNewWindow() {
+      return openPreviewImageInNewWindow();
+    }
+
+    public B altText(Locale locale, String text) {
+      if (previewImageRenderingHints == null) {
+        previewImageRenderingHints = new RenderingHintsPreviewImage();
+      }
+      LocalizedText altText = previewImageRenderingHints.getAltText();
+      if (altText == null) {
+        altText = new LocalizedText();
+      }
+      altText.setText(locale, text);
+      previewImageRenderingHints.setAltText(altText);
+      return self();
+    }
+
+    public B altTextFromLabel() {
+      if (previewImageRenderingHints == null) {
+        previewImageRenderingHints = new RenderingHintsPreviewImage();
+      }
+      previewImageRenderingHints.setAltText(this.label);
+      return self();
+    }
+
+    public B titleFromLabel() {
+      if (previewImageRenderingHints == null) {
+        previewImageRenderingHints = new RenderingHintsPreviewImage();
+      }
+      previewImageRenderingHints.setTitle(this.label);
+      return self();
+    }
+
+    public B title(Locale locale, String text) {
+      if (previewImageRenderingHints == null) {
+        previewImageRenderingHints = new RenderingHintsPreviewImage();
+      }
+      LocalizedText title = previewImageRenderingHints.getTitle();
+      if (title == null) {
+        title = new LocalizedText();
+      }
+      title.setText(locale, text);
+      previewImageRenderingHints.setTitle(title);
+      return self();
+    }
+
+    public void setInternalReferences(C c) {
+      // Each identifier must get the UUID of the identifiable
+      if (this.identifiers != null && !this.identifiers.isEmpty()) {
+        c.setIdentifiers(
+            this.identifiers.stream()
+                .peek(i -> i.setIdentifiable(c.getUuid()))
+                .collect(Collectors.toSet()));
+      } else {
+        c.setIdentifiers(new HashSet<>());
+      }
+
+      // For each UrlAlias, the target UUID must be set to the UUID of the identifiable
+      if (c.getLocalizedUrlAliases() != null
+          && !c.getLocalizedUrlAliases().isEmpty()) {
+        c.getLocalizedUrlAliases()
+            .forEach(
+                (locale, urlAliasList) -> {
+                  urlAliasList.forEach(u -> u.setTargetUuid(c.getUuid()));
+                });
+      }
+    }
+
     public C build() {
-      return prebuild();
+      C c = prebuild();
+      setInternalReferences(c);
+      return c;
     }
   }
 }

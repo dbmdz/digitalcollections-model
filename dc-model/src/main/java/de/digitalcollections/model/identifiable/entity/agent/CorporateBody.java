@@ -1,10 +1,12 @@
 package de.digitalcollections.model.identifiable.entity.agent;
 
+import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.entity.EntityType;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.StructuredContent;
 import de.digitalcollections.model.text.contentblock.ContentBlock;
 import de.digitalcollections.model.text.contentblock.Paragraph;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
 import java.util.Objects;
@@ -126,10 +128,26 @@ public class CorporateBody extends Agent {
       return self();
     }
 
+    public B homepageUrl(String homepageUrl) {
+      try {
+        this.homepageUrl = new URL(homepageUrl);
+      } catch (MalformedURLException e) {
+        throw new RuntimeException(e);
+      }
+      return self();
+    }
+
+    public B homepageUrl(URL homepageUrl) {
+      this.homepageUrl = homepageUrl;
+      return self();
+    }
+
     @Override
     public C build() {
       C c = prebuild();
+      c.setType(IdentifiableType.ENTITY);
       c.setEntityType(EntityType.CORPORATE_BODY);
+      setInternalReferences(c);
       return c;
     }
   }

@@ -22,7 +22,7 @@ class AgentTest {
             .label(Locale.ENGLISH, "Example Image")
             .created("2021-01-13T12:34:54")
             .lastModified("2021-01-14T02:45:24")
-            .withPrimaryLocalizedUrlAlias("blubb")
+            .primaryLocalizedUrlAlias("blubb")
             .build();
     assertThat(agent).isExactlyInstanceOf(Agent.class);
   }

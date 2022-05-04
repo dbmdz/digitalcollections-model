@@ -23,7 +23,7 @@ class DigitalObjectTest {
             .description(Locale.ENGLISH, "Example Image")
             .label(Locale.GERMAN, "Beispielbild")
             .label(Locale.ENGLISH, "Example Image")
-            .withPrimaryLocalizedUrlAlias("blubb")
+            .primaryLocalizedUrlAlias("blubb")
             .build();
     assertThat(digitalObject).isExactlyInstanceOf(DigitalObject.class);
     assertThat(digitalObject.getType()).isEqualTo(IdentifiableType.ENTITY);

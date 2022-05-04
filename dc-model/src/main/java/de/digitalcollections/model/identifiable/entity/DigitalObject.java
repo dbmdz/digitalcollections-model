@@ -1,5 +1,6 @@
 package de.digitalcollections.model.identifiable.entity;
 
+import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.entity.work.Item;
 import de.digitalcollections.model.identifiable.resource.FileResource;
 import de.digitalcollections.model.identifiable.resource.LinkedDataFileResource;
@@ -260,7 +261,21 @@ public class DigitalObject extends Entity {
 
     public C build() {
       C c = prebuild();
+      c.setType(IdentifiableType.ENTITY);
       c.setEntityType(EntityType.DIGITAL_OBJECT);
+
+      // Lombok ignores all inline pre-settings at variable definition,
+      // so, we have to set them manually!
+      if (c.getFileResources()==null) {
+        c.setFileResources(new ArrayList<>());
+      }
+      if (c.getLinkedDataResources()==null) {
+        c.setLinkedDataResources(new ArrayList<>());
+      }
+      if (c.getRenderingResources()==null) {
+        c.setRenderingResources(new ArrayList<>());
+      }
+      setInternalReferences(c);
       return c;
     }
 
