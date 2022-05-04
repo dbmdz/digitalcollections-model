@@ -68,6 +68,11 @@ public abstract class UniqueObject {
       return self();
     }
 
+    public B created(LocalDateTime created) {
+      this.created = created;
+      return self();
+    }
+
     public B lastModified(String lastModified) {
       this.lastModified = LocalDateTime.parse(lastModified);
       return self();

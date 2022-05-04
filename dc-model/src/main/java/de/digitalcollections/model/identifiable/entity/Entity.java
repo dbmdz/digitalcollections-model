@@ -171,6 +171,11 @@ public class Entity extends Identifiable {
       return self();
     }
 
+    public B navDate(String navDate) {
+      this.navDate = LocalDate.parse(navDate);
+      return self();
+    }
+
     public C build() {
       C c = prebuild();
       c.init();
