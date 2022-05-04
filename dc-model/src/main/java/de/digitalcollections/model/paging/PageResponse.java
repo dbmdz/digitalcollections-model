@@ -93,7 +93,9 @@ public class PageResponse<T> extends ListResponse<T> {
     return content.size();
   }
 
-  /** @return the PageRequest used to get this PageResponse */
+  /**
+   * @return the PageRequest used to get this PageResponse
+   */
   public PageRequest getPageRequest() {
     return pageRequest;
   }

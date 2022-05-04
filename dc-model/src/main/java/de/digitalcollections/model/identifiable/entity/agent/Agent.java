@@ -54,8 +54,7 @@ public class Agent extends Entity {
         + '}';
   }
 
-  public abstract static class AgentBuilder<
-      C extends Agent, B extends AgentBuilder<C, B>>
+  public abstract static class AgentBuilder<C extends Agent, B extends AgentBuilder<C, B>>
       extends EntityBuilder<C, B> {
 
     @Override

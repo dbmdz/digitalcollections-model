@@ -99,24 +99,32 @@ public class ListRequest implements Serializable {
     return filterEqual && sortEqual;
   }
 
-  /** @return the filtering parameters */
+  /**
+   * @return the filtering parameters
+   */
   public Filtering getFiltering() {
     return filtering;
   }
 
-  /** @return the sorting parameters */
+  /**
+   * @return the sorting parameters
+   */
   public Sorting getSorting() {
     return sorting;
   }
 
-  /** @return whether the request has defined any filtering. */
+  /**
+   * @return whether the request has defined any filtering.
+   */
   public boolean hasFiltering() {
     return filtering != null
         && filtering.getFilterCriteria() != null
         && !filtering.getFilterCriteria().isEmpty();
   }
 
-  /** @return whether the request has defined any sorting. */
+  /**
+   * @return whether the request has defined any sorting.
+   */
   public boolean hasSorting() {
     return sorting != null && sorting.getOrders() != null && !sorting.getOrders().isEmpty();
   }
@@ -131,12 +139,16 @@ public class ListRequest implements Serializable {
         + (null == filtering ? 0 : filtering.hashCode());
   }
 
-  /** @param filtering the filtering criterias */
+  /**
+   * @param filtering the filtering criterias
+   */
   public void setFiltering(Filtering filtering) {
     this.filtering = filtering;
   }
 
-  /** @param sorting the sorting parameters */
+  /**
+   * @param sorting the sorting parameters
+   */
   public void setSorting(Sorting sorting) {
     this.sorting = sorting;
   }

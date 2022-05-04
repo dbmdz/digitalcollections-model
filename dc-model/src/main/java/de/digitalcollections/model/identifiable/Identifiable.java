@@ -268,7 +268,6 @@ public class Identifiable extends UniqueObject {
       return self();
     }
 
-
     public B previewImage(String url, int width, int height) {
       String[] fileNameParts = url.split("/\\//");
       return previewImage(
@@ -281,11 +280,7 @@ public class Identifiable extends UniqueObject {
 
     public B previewImage(String fileName, String uuid, String uri) {
       return previewImage(
-          ImageFileResource.previewImageBuilder()
-              .uuid(uuid)
-              .fileName(fileName)
-              .uri(uri)
-              .build());
+          ImageFileResource.previewImageBuilder().uuid(uuid).fileName(fileName).uri(uri).build());
     }
 
     public B previewImage(String fileName, String uuid, String uri, MimeType mimeType) {
@@ -298,7 +293,8 @@ public class Identifiable extends UniqueObject {
               .build());
     }
 
-    public B previewImage(String fileName, String uuid, String uri, MimeType mimeType, String httpBaseUrl) {
+    public B previewImage(
+        String fileName, String uuid, String uri, MimeType mimeType, String httpBaseUrl) {
       return previewImage(
           ImageFileResource.previewImageBuilder()
               .uuid(uuid)
@@ -383,8 +379,7 @@ public class Identifiable extends UniqueObject {
       }
 
       // For each UrlAlias, the target UUID must be set to the UUID of the identifiable
-      if (c.getLocalizedUrlAliases() != null
-          && !c.getLocalizedUrlAliases().isEmpty()) {
+      if (c.getLocalizedUrlAliases() != null && !c.getLocalizedUrlAliases().isEmpty()) {
         c.getLocalizedUrlAliases()
             .forEach(
                 (locale, urlAliasList) -> {

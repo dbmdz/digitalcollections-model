@@ -15,7 +15,9 @@ public class SearchPageResponse<T> extends PageResponse<T> {
     super(content, searchPageRequest, total);
   }
 
-  /** @deprecated use ((SearchPageRequest) getPageRequest()).getQuery() instead. */
+  /**
+   * @deprecated use ((SearchPageRequest) getPageRequest()).getQuery() instead.
+   */
   @Deprecated(since = "9.1.0", forRemoval = true)
   public String getQuery() {
     return query;

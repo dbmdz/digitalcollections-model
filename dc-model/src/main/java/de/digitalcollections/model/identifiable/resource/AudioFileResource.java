@@ -10,12 +10,16 @@ public class AudioFileResource extends FileResource {
     this.fileResourceType = FileResourceType.AUDIO;
   }
 
-  /** @return duration in seconds */
+  /**
+   * @return duration in seconds
+   */
   public int getDuration() {
     return duration;
   }
 
-  /** @param duration duration in seconds */
+  /**
+   * @param duration duration in seconds
+   */
   public void setDuration(int duration) {
     this.duration = duration;
   }

@@ -57,17 +57,23 @@ public class LinkedDataFileResource extends FileResource {
     return context;
   }
 
-  /** @return the object type described in this document */
+  /**
+   * @return the object type described in this document
+   */
   public String getObjectType() {
     return objectType;
   }
 
-  /** @param context set the linked data context to given context */
+  /**
+   * @param context set the linked data context to given context
+   */
   public void setContext(URI context) {
     this.context = context;
   }
 
-  /** @param objectType set the object type described in this document */
+  /**
+   * @param objectType set the object type described in this document
+   */
   public void setObjectType(String objectType) {
     this.objectType = objectType;
   }
@@ -93,7 +99,7 @@ public class LinkedDataFileResource extends FileResource {
   }
 
   public abstract static class LinkedDataFileResourceBuilder<
-      C extends LinkedDataFileResource, B extends LinkedDataFileResourceBuilder<C, B>>
+          C extends LinkedDataFileResource, B extends LinkedDataFileResourceBuilder<C, B>>
       extends FileResourceBuilder<C, B> {
 
     public B context(String context) {

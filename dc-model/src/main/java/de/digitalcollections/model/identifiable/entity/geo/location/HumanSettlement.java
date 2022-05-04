@@ -23,7 +23,7 @@ public class HumanSettlement extends GeoLocation {
   }
 
   public abstract static class HumanSettlementBuilder<
-      C extends HumanSettlement, B extends HumanSettlementBuilder<C, B>>
+          C extends HumanSettlement, B extends HumanSettlementBuilder<C, B>>
       extends GeoLocationBuilder<C, B> {
 
     @Override

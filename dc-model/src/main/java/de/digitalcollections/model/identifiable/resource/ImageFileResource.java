@@ -21,22 +21,30 @@ public class ImageFileResource extends FileResource {
     this.fileResourceType = FileResourceType.IMAGE;
   }
 
-  /** @return height in pixel */
+  /**
+   * @return height in pixel
+   */
   public int getHeight() {
     return height;
   }
 
-  /** @return width in pixel */
+  /**
+   * @return width in pixel
+   */
   public int getWidth() {
     return width;
   }
 
-  /** @param height height in pixel */
+  /**
+   * @param height height in pixel
+   */
   public void setHeight(int height) {
     this.height = height;
   }
 
-  /** @param width width in pixel */
+  /**
+   * @param width width in pixel
+   */
   public void setWidth(int width) {
     this.width = width;
   }
@@ -130,7 +138,7 @@ public class ImageFileResource extends FileResource {
   }
 
   public abstract static class ImageFileResourceBuilder<
-      C extends ImageFileResource, B extends ImageFileResourceBuilder<C, B>>
+          C extends ImageFileResource, B extends ImageFileResourceBuilder<C, B>>
       extends FileResourceBuilder<C, B> {
 
     @Override

@@ -10,12 +10,16 @@ public class VideoFileResource extends FileResource {
     this.fileResourceType = FileResourceType.VIDEO;
   }
 
-  /** @return duration in seconds */
+  /**
+   * @return duration in seconds
+   */
   public int getDuration() {
     return duration;
   }
 
-  /** @param duration duration in seconds */
+  /**
+   * @param duration duration in seconds
+   */
   public void setDuration(int duration) {
     this.duration = duration;
   }

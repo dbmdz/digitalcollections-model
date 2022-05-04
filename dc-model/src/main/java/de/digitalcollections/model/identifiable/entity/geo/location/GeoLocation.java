@@ -50,7 +50,7 @@ public class GeoLocation extends Entity {
   }
 
   public abstract static class GeoLocationBuilder<
-      C extends GeoLocation, B extends GeoLocationBuilder<C, B>>
+          C extends GeoLocation, B extends GeoLocationBuilder<C, B>>
       extends EntityBuilder<C, B> {
 
     @Override

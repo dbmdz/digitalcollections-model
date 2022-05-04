@@ -147,7 +147,7 @@ public class Collection extends Entity implements INode<Collection> {
   }
 
   public abstract static class CollectionBuilder<
-      C extends Collection, B extends CollectionBuilder<C, B>>
+          C extends Collection, B extends CollectionBuilder<C, B>>
       extends EntityBuilder<C, B> {
 
     public B publicationStart(String publicationStart) {
