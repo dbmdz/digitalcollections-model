@@ -124,7 +124,7 @@ To implement a new builder, it is important to know, how they work internally.
 Since [Lombok](https://projectlombok.org/) is used, every model class must be annotated
 with `@SuperBuilder(buildMethodName = "prebuild")`, to enable multi-tier inheritance.
 
-As next step, you cave to customize the builder by inheriting it from the
+As next step, you have to customize the builder by inheriting it from the
 upper-tier builder, e.g.:
 
 ```java
