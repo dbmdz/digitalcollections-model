@@ -25,7 +25,7 @@ public class FileResource extends Identifiable {
   private URL httpBaseUrl;
   private License license;
   private MimeType mimeType;
-  private boolean readonly = false;
+  private boolean readonly;
   private long sizeInBytes;
   private URI uri;
 

@@ -41,7 +41,7 @@ public class DigitalObject extends Entity {
    * number of related binary files for the presentation, like scans in a book, photos of an object,
    * audio files for records etc.
    */
-  private int numberOfBinaryResources = 0;
+  private int numberOfBinaryResources;
 
   /** The parent digital object, if the current one is an embedded one. */
   private DigitalObject parent;
