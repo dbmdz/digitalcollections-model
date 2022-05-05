@@ -1,14 +1,14 @@
 package de.digitalcollections.model.identifiable.entity;
 
-import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.web.Webpage;
-import de.digitalcollections.model.text.LocalizedStructuredContent;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
+import lombok.experimental.SuperBuilder;
 
 /** A Website. */
+@SuperBuilder(buildMethodName = "prebuild")
 public class Website extends Entity {
 
   private LocalDate registrationDate;
@@ -17,7 +17,37 @@ public class Website extends Entity {
 
   public Website() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.entityType = EntityType.WEBSITE;
+  }
+
+  public URL getUrl() {
+    return url;
+  }
+
+  public void setUrl(URL url) {
+    this.url = url;
+  }
+
+  public LocalDate getRegistrationDate() {
+    return registrationDate;
+  }
+
+  public void setRegistrationDate(LocalDate registrationDate) {
+    this.registrationDate = registrationDate;
+  }
+
+  public List<? extends Webpage> getRootPages() {
+    return rootPages;
+  }
+
+  public void setRootPages(List<? extends Webpage> rootPages) {
+    this.rootPages = rootPages;
   }
 
   public Website(URL url) {
@@ -31,60 +61,29 @@ public class Website extends Entity {
     this.url = url;
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
+  public abstract static class WebsiteBuilder<C extends Website, B extends WebsiteBuilder<C, B>>
+      extends EntityBuilder<C, B> {
 
-  public LocalDate getRegistrationDate() {
-    return registrationDate;
-  }
+    public B url(String url) {
+      try {
+        this.url = new URL(url);
+      } catch (MalformedURLException e) {
+        throw new RuntimeException(e);
+      }
+      return self();
+    }
 
-  public List<? extends Webpage> getRootPages() {
-    return rootPages;
-  }
-
-  public URL getUrl() {
-    return url;
-  }
-
-  public void setRegistrationDate(LocalDate registrationDate) {
-    this.registrationDate = registrationDate;
-  }
-
-  public void setRootPages(List<? extends Webpage> rootPages) {
-    this.rootPages = rootPages;
-  }
-
-  public void setUrl(URL url) {
-    this.url = url;
-  }
-
-  public static class Builder extends Entity.Builder<Website, Builder> {
-
-    @Override
-    protected IdentifiableType getIdentifiableType() {
-      return IdentifiableType.ENTITY;
+    public B registrationDate(String registrationDate) {
+      this.registrationDate = LocalDate.parse(registrationDate);
+      return self();
     }
 
     @Override
-    protected EntityType getEntityType() {
-      return EntityType.WEBSITE;
-    }
-
-    public Builder withUrl(String url) throws MalformedURLException {
-      ((Website) identifiable).setUrl(new URL(url));
-      return this;
-    }
-
-    @Deprecated
-    public Builder withDescription(LocalizedStructuredContent description) {
-      identifiable.setDescription(description);
-      return this;
-    }
-
-    public Builder withRootPages(List<Webpage> rootPages) {
-      ((Website) identifiable).setRootPages(rootPages);
-      return this;
+    public C build() {
+      C c = prebuild();
+      c.init();
+      setInternalReferences(c);
+      return c;
     }
   }
 }

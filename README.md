@@ -108,6 +108,51 @@ REST-API design for filtering was inspired by:
 
 Comes with a separate module for supporting serializing model objects to JSON (`dc-model-jackson module`) using [Jackson](https://github.com/FasterXML/jackson)
 
+## Builder
+
+Many model objects already provide a builder method, which help to instantiate and fill
+model objects in a fluent way.
+
+The builder internally holds all attributes of the model class and provides several methods
+to set or modify them.
+
+By calling the `build()` method, the model object is instantiated, filled and returned.
+
+### Implementing builders
+
+To implement a new builder, it is important to know, how they work internally.
+Since [Lombok](https://projectlombok.org/) is used, every model class must be annotated
+with `@SuperBuilder(buildMethodName = "prebuild")`, to enable multi-tier inheritance.
+
+As next step, you have to customize the builder by inheriting it from the
+upper-tier builder, e.g.:
+
+```java
+public abstract static class Tier2Builder<C extends Tier2Object, B extends Tier2Builder<C, B>> 
+    extends Tier1Builder<C, B> {
+  
+}
+```
+
+The `prebuild` configuration allows manipulation of the auto-generated `build` method,
+which is renamed to `prebuild`, so that you can write your own `build` method, which must
+at least execute `prebuild`.
+
+Since Lombok ignores all member variable pre-settings of the classes (e.g. initializing a list member to an empty Array on instantiation), and internally holds a copy
+of all instance variables, an `init()` method to initialize the variables where neccessary 
+was applied, which is executed by the constructor and by the `build` method. Please note, 
+that you can execute `init` only after `prebuild`, since only `prebuild` gives you the 
+instance of your model object.
+
+As a reference, your `build` method, should minimally look like this:
+```java
+public C build() {
+  C c = prebuild();
+  c.init();
+  return c;
+}
+```
+
 
 ## Systems implementing this library
 

@@ -16,7 +16,9 @@ public class CreationInfo {
   /** The creator of the digital object */
   private Agent creator;
 
-  /** @return the geolocation, where the creation of the digital object took geolocation */
+  /**
+   * @return the geolocation, where the creation of the digital object took geolocation
+   */
   public GeoLocation getGeoLocation() {
     return geoLocation;
   }
@@ -30,7 +32,9 @@ public class CreationInfo {
     this.geoLocation = geoLocation;
   }
 
-  /** @return the date, when the creation of the digital object happened */
+  /**
+   * @return the date, when the creation of the digital object happened
+   */
   public LocalDate getDate() {
     return date;
   }
@@ -44,7 +48,9 @@ public class CreationInfo {
     this.date = date;
   }
 
-  /** @return the creator of the digital object */
+  /**
+   * @return the creator of the digital object
+   */
   public Agent getCreator() {
     return creator;
   }
@@ -77,17 +83,17 @@ public class CreationInfo {
   public static class Builder {
     CreationInfo creationInfo = new CreationInfo();
 
-    public Builder withGeoLocation(GeoLocation geoLocation) {
+    public Builder geoLocation(GeoLocation geoLocation) {
       creationInfo.setGeoLocation(geoLocation);
       return this;
     }
 
-    public Builder withCreator(Agent creator) {
+    public Builder creator(Agent creator) {
       creationInfo.setCreator(creator);
       return this;
     }
 
-    public Builder withDate(String date) {
+    public Builder date(String date) {
       creationInfo.setDate(LocalDate.parse(date));
       return this;
     }

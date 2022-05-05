@@ -7,19 +7,30 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import lombok.experimental.SuperBuilder;
 
 /** A collection of {@link Entity}s. */
+@SuperBuilder(buildMethodName = "prebuild")
 public class Collection extends Entity implements INode<Collection> {
 
   private List<Entity> entities;
-  private final Node<Collection> node = new Node<>();
+  private Node<Collection> node;
   private LocalDate publicationEnd;
   private LocalDate publicationStart;
   private LocalizedStructuredContent text;
 
   public Collection() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.entityType = EntityType.COLLECTION;
+    if (node == null) {
+      node = new Node<>();
+    }
   }
 
   public void addEntity(Entity entity) {
@@ -143,19 +154,26 @@ public class Collection extends Entity implements INode<Collection> {
         + "}";
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
+  public abstract static class CollectionBuilder<
+          C extends Collection, B extends CollectionBuilder<C, B>>
+      extends EntityBuilder<C, B> {
 
-  public static class Builder extends Entity.Builder<Collection, Builder> {
-    @Override
-    protected EntityType getEntityType() {
-      return EntityType.COLLECTION;
+    public B publicationStart(String publicationStart) {
+      this.publicationStart = LocalDate.parse(publicationStart);
+      return self();
     }
 
-    public Builder withPublicationStart(String publicationStart) {
-      ((Collection) identifiable).setPublicationStart(LocalDate.parse(publicationStart));
-      return this;
+    public B publicationEnd(String publicationEnd) {
+      this.publicationEnd = LocalDate.parse(publicationEnd);
+      return self();
+    }
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      setInternalReferences(c);
+      return c;
     }
   }
 }

@@ -6,16 +6,17 @@ import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.legal.License;
 import java.net.MalformedURLException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Locale;
 import java.util.Objects;
+import lombok.experimental.SuperBuilder;
 
 /**
  * A FileResource (source) describes any file, regardless of its physical location, used storage
  * technology or required display means (aka "Viewer"). A FileResource can e.g. include an image, a
  * video file, an XML document, or a JSON file.
  */
+@SuperBuilder(buildMethodName = "prebuild")
 public class FileResource extends Identifiable {
 
   protected FileResourceType fileResourceType;
@@ -24,12 +25,18 @@ public class FileResource extends Identifiable {
   private URL httpBaseUrl;
   private License license;
   private MimeType mimeType;
-  private boolean readonly = false;
+  private boolean readonly;
   private long sizeInBytes;
   private URI uri;
 
   public FileResource() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.type = IdentifiableType.RESOURCE;
     this.fileResourceType = FileResourceType.UNDEFINED;
   }
@@ -215,76 +222,58 @@ public class FileResource extends Identifiable {
         + '}';
   }
 
-  public static Builder builder() {
-    return new Builder<>();
-  }
+  public abstract static class FileResourceBuilder<
+          C extends FileResource, B extends FileResourceBuilder<C, B>>
+      extends IdentifiableBuilder<C, B> {
 
-  public static class Builder<F extends FileResource, B extends FileResource.Builder>
-      extends Identifiable.Builder<F, B> {
-
-    @Override
-    protected IdentifiableType getIdentifiableType() {
-      return IdentifiableType.RESOURCE;
+    public B type(FileResourceType fileResourceType) {
+      this.fileResourceType = fileResourceType;
+      return self();
     }
 
-    public B withFilename(String filename) {
-      identifiable.setFilename(filename);
-      return (B) this;
+    public B uri(URI uri) {
+      this.uri = uri;
+      return self();
     }
 
-    public B withType(FileResourceType fileResourceType) {
-      identifiable.setFileResourceType(fileResourceType);
-      return (B) this;
+    public B uri(String uri) {
+      return uri(URI.create(uri));
     }
 
-    public B withMimeType(MimeType mimeType) {
-      identifiable.setMimeType(mimeType);
-      return (B) this;
+    public B httpBaseUrl(URL httpBaseUrl) {
+      this.httpBaseUrl = httpBaseUrl;
+      return self();
     }
 
-    public B withHttpBaseUrl(String httpBaseUrl) {
+    public B httpBaseUrl(String httpBaseUrl) {
       try {
-        identifiable.setHttpBaseUrl(new URL(httpBaseUrl));
+        return httpBaseUrl(new URL(httpBaseUrl));
       } catch (MalformedURLException e) {
-        throw new RuntimeException("Cannot set httpBaseURL=" + httpBaseUrl + ": " + e, e);
+        throw new RuntimeException(e);
       }
-      return (B) this;
     }
 
-    public B withLicenseOfName(String licenseName) {
-      License license =
+    public B licenseOfName(String licenseName) {
+      license =
           License.builder()
-              .withLabel(Locale.GERMAN, licenseName)
-              .withAcronym(licenseName)
-              .withUrl("https://localhost/licence/" + licenseName)
+              .label(Locale.GERMAN, licenseName)
+              .acronym(licenseName)
+              .url("https://localhost/licence/" + licenseName)
               .build();
-
-      identifiable.setLicense(license);
-      return (B) this;
+      return self();
     }
 
     public B readwrite() {
-      identifiable.setReadonly(false);
-      return (B) this;
+      readonly = false;
+      return self();
     }
 
-    public B readonly() {
-      identifiable.setReadonly(true);
-      return (B) this;
-    }
-
-    public B withSizeInBytes(long size) {
-      identifiable.setSizeInBytes(size);
-      return (B) this;
-    }
-
-    public B withUri(String uri) {
-      try {
-        identifiable.setUri(new URI(uri));
-      } catch (URISyntaxException e) {
-        throw new RuntimeException("Invalid URI=" + uri + ": " + e);
-      }
-      return (B) this;
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      setInternalReferences(c);
+      return c;
     }
   }
 }

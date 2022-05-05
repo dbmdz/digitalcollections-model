@@ -10,16 +10,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import lombok.experimental.SuperBuilder;
 import org.wikidata.wdtk.datamodel.interfaces.TimeValue;
 
 /** Human being that has certain capacities or attributes constituting personhood. */
+@SuperBuilder(buildMethodName = "prebuild")
 public class Person extends Agent {
 
   private LocalDate dateOfBirth;
   private LocalDate dateOfDeath;
-  private List<FamilyName> familyNames = new ArrayList<>();
+  private List<FamilyName> familyNames;
   private Gender gender;
-  private List<GivenName> givenNames = new ArrayList<>();
+  private List<GivenName> givenNames;
   private GeoLocation placeOfBirth;
   private GeoLocation placeOfDeath;
   private TimeValue timeValueOfBirth;
@@ -27,7 +29,19 @@ public class Person extends Agent {
 
   public Person() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.entityType = EntityType.PERSON;
+    if (familyNames == null) {
+      familyNames = new ArrayList<>();
+    }
+    if (givenNames == null) {
+      this.givenNames = new ArrayList<>();
+    }
   }
 
   public Person(LocalizedText label, Set<Identifier> identifiers) {
@@ -112,15 +126,15 @@ public class Person extends Agent {
     this.timeValueOfDeath = timeValueOfDeath;
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
-
-  public static class Builder extends Agent.Builder<Person, Builder> {
+  public abstract static class PersonBuilder<C extends Person, B extends PersonBuilder<C, B>>
+      extends AgentBuilder<C, B> {
 
     @Override
-    protected EntityType getEntityType() {
-      return EntityType.PERSON;
+    public C build() {
+      C c = prebuild();
+      c.init();
+      setInternalReferences(c);
+      return c;
     }
   }
 }

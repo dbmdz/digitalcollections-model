@@ -3,19 +3,19 @@ package de.digitalcollections.model.identifiable.web;
 import de.digitalcollections.model.identifiable.INode;
 import de.digitalcollections.model.identifiable.Identifiable;
 import de.digitalcollections.model.identifiable.IdentifiableType;
-import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.identifiable.Node;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
+import de.digitalcollections.model.text.LocalizedText;
 import de.digitalcollections.model.view.RenderingHints;
-import de.digitalcollections.model.view.RenderingHintsPreviewImage;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
+import lombok.experimental.SuperBuilder;
 
 /** A Webpage of a Website. */
+@SuperBuilder(buildMethodName = "prebuild")
 public class Webpage extends Identifiable implements INode<Webpage> {
 
-  private final Node<Webpage> node = new Node<>();
+  private Node<Webpage> node;
   private LocalDate publicationEnd;
   private LocalDate publicationStart;
   private RenderingHints renderingHints;
@@ -23,7 +23,16 @@ public class Webpage extends Identifiable implements INode<Webpage> {
 
   public Webpage() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.type = IdentifiableType.RESOURCE;
+    if (node == null) {
+      node = new Node<>();
+    }
   }
 
   public Webpage(List<Webpage> children) {
@@ -58,6 +67,11 @@ public class Webpage extends Identifiable implements INode<Webpage> {
   }
 
   @Override
+  public LocalizedText getLabel() {
+    return label;
+  }
+
+  @Override
   public void setChildren(List<Webpage> children) {
     node.setChildren(children);
   }
@@ -83,65 +97,58 @@ public class Webpage extends Identifiable implements INode<Webpage> {
     this.text = text;
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
+  public abstract static class WebpageBuilder<C extends Webpage, B extends WebpageBuilder<C, B>>
+      extends IdentifiableBuilder<C, B> {
 
-  public static class Builder extends Identifiable.Builder<Webpage, Builder> {
+    private List<Webpage> children;
 
-    @Override
-    protected IdentifiableType getIdentifiableType() {
-      return IdentifiableType.RESOURCE;
+    public B publicationStart(String publicationStart) {
+      this.publicationStart = LocalDate.parse(publicationStart);
+      return self();
     }
 
-    public Builder setIdentifiers(Set<Identifier> identifiers) {
-      identifiable.setIdentifiers(identifiers);
-      return this;
+    public B publicationEnd(String publicationEnd) {
+      this.publicationEnd = LocalDate.parse(publicationEnd);
+      return self();
     }
 
-    public Builder withPublicationStartAt(String publicationStart) {
-      identifiable.setPublicationStart(LocalDate.parse(publicationStart));
-      return this;
-    }
-
-    public Builder shownInNavigation() {
-      RenderingHints renderingHints = new RenderingHints();
-      renderingHints.setShowInPageNavigation(true);
-      identifiable.setRenderingHints(renderingHints);
-      return this;
-    }
-
-    public Builder notShownInNavigation() {
-      RenderingHints renderingHints = new RenderingHints();
-      renderingHints.setShowInPageNavigation(false);
-      identifiable.setRenderingHints(renderingHints);
-      return this;
-    }
-
-    public Builder withOpenLinkInNewWindow() {
-      RenderingHintsPreviewImage previewImageRenderingHints =
-          identifiable.getPreviewImageRenderingHints();
-      if (previewImageRenderingHints == null) {
-        previewImageRenderingHints = new RenderingHintsPreviewImage();
+    public B shownInNavigation() {
+      if (renderingHints == null) {
+        renderingHints = new RenderingHints();
       }
-      previewImageRenderingHints.setOpenLinkInNewWindow(true);
-      identifiable.setPreviewImageRenderingHints(previewImageRenderingHints);
-      return this;
+      renderingHints.setShowInPageNavigation(true);
+      return self();
     }
 
-    public Builder withTemplateName(String templateName) {
-      RenderingHints renderingHints = identifiable.getRenderingHints();
+    public B notShownInNavigation() {
+      if (renderingHints == null) {
+        renderingHints = new RenderingHints();
+      }
+      renderingHints.setShowInPageNavigation(false);
+      return self();
+    }
+
+    public B children(List<Webpage> children) {
+      if (node == null) {
+        node = new Node<>();
+      }
+      node.setChildren(children);
+      return self();
+    }
+
+    public B templateName(String templateName) {
       if (renderingHints == null) {
         renderingHints = new RenderingHints();
       }
       renderingHints.setTemplateName(templateName);
-      identifiable.setRenderingHints(renderingHints);
-      return this;
+      return self();
     }
 
-    public Builder withChildren(List<Webpage> children) {
-      identifiable.setChildren(children);
-      return this;
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      return c;
     }
   }
 }

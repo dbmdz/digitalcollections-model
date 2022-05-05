@@ -59,7 +59,9 @@ public class Filtering {
     filterCriteria.add(filterCriterionWithExpression);
   }
 
-  /** @return returns all filter criterias */
+  /**
+   * @return returns all filter criterias
+   */
   public List<FilterCriterion> getFilterCriteria() {
     return filterCriteria;
   }
@@ -81,7 +83,9 @@ public class Filtering {
     return filterCriteria.iterator();
   }
 
-  /** @param filterCriteria set list of filter criteria */
+  /**
+   * @param filterCriteria set list of filter criteria
+   */
   public void setFilterCriteria(List<FilterCriterion> filterCriteria) {
     this.filterCriteria = filterCriteria;
   }

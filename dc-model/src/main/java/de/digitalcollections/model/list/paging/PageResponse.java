@@ -140,7 +140,9 @@ public class PageResponse<T> extends ListResponse<T> {
     return pageRequest == null ? 0 : pageRequest.getPageNumber();
   }
 
-  /** @return the PageRequest used to get this PageResponse */
+  /**
+   * @return the PageRequest used to get this PageResponse
+   */
   public PageRequest getPageRequest() {
     return pageRequest;
   }

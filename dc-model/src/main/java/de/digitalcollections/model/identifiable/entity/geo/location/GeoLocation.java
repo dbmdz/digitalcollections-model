@@ -3,8 +3,10 @@ package de.digitalcollections.model.identifiable.entity.geo.location;
 import de.digitalcollections.model.geo.CoordinateLocation;
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.EntityType;
+import lombok.experimental.SuperBuilder;
 
 /** A location located on earth. */
+@SuperBuilder(buildMethodName = "prebuild")
 public class GeoLocation extends Entity {
 
   private CoordinateLocation coordinateLocation;
@@ -12,6 +14,12 @@ public class GeoLocation extends Entity {
 
   public GeoLocation() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.entityType = EntityType.GEOLOCATION;
     this.geoLocationType = GeoLocationType.GEOLOCATION;
   }
@@ -46,27 +54,16 @@ public class GeoLocation extends Entity {
     this.geoLocationType = geoLocationType;
   }
 
-  public static Builder builder() {
-    return new Builder<>();
-  }
-
-  public static class Builder<E extends Entity, B extends Entity.Builder>
-      extends Entity.Builder<GeoLocation, B> {
+  public abstract static class GeoLocationBuilder<
+          C extends GeoLocation, B extends GeoLocationBuilder<C, B>>
+      extends EntityBuilder<C, B> {
 
     @Override
-    protected EntityType getEntityType() {
-      return EntityType.GEOLOCATION;
-    }
-
-    protected GeoLocationType getGeoLocationType() {
-      return GeoLocationType.GEOLOCATION;
-    }
-
-    @Override
-    public GeoLocation build() {
-      GeoLocation geoLocation = super.build();
-      geoLocation.setGeoLocationType(getGeoLocationType());
-      return geoLocation;
+    public C build() {
+      C c = prebuild();
+      c.init();
+      setInternalReferences(c);
+      return c;
     }
   }
 }

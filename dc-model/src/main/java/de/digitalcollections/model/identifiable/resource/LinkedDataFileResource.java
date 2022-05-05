@@ -2,6 +2,7 @@ package de.digitalcollections.model.identifiable.resource;
 
 import java.net.URI;
 import java.util.Objects;
+import lombok.experimental.SuperBuilder;
 
 /**
  * This class represents a linked data file resource, referenced through an uri. It may be specified
@@ -36,6 +37,7 @@ import java.util.Objects;
  *       Facts der Deutschen Nationalbibliothek (DNB)</a>
  * </ul>
  */
+@SuperBuilder(buildMethodName = "prebuild")
 public class LinkedDataFileResource extends FileResource {
 
   private URI context;
@@ -43,6 +45,12 @@ public class LinkedDataFileResource extends FileResource {
 
   public LinkedDataFileResource() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.fileResourceType = FileResourceType.LINKED_DATA;
   }
 
@@ -54,17 +62,23 @@ public class LinkedDataFileResource extends FileResource {
     return context;
   }
 
-  /** @return the object type described in this document */
+  /**
+   * @return the object type described in this document
+   */
   public String getObjectType() {
     return objectType;
   }
 
-  /** @param context set the linked data context to given context */
+  /**
+   * @param context set the linked data context to given context
+   */
   public void setContext(URI context) {
     this.context = context;
   }
 
-  /** @param objectType set the object type described in this document */
+  /**
+   * @param objectType set the object type described in this document
+   */
   public void setObjectType(String objectType) {
     this.objectType = objectType;
   }
@@ -89,20 +103,25 @@ public class LinkedDataFileResource extends FileResource {
     return Objects.hash(super.hashCode(), context, objectType);
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
+  public abstract static class LinkedDataFileResourceBuilder<
+          C extends LinkedDataFileResource, B extends LinkedDataFileResourceBuilder<C, B>>
+      extends FileResourceBuilder<C, B> {
 
-  public static class Builder extends FileResource.Builder<LinkedDataFileResource, Builder> {
-
-    public Builder withContext(String context) {
-      identifiable.setContext(URI.create(context));
-      return this;
+    public B context(String context) {
+      this.context = URI.create(context);
+      return self();
     }
 
-    public Builder withObjectType(String objectType) {
-      identifiable.setObjectType(objectType);
-      return this;
+    public B uri(String uri) {
+      return this.uri(URI.create(uri));
+    }
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      setInternalReferences(c);
+      return c;
     }
   }
 }

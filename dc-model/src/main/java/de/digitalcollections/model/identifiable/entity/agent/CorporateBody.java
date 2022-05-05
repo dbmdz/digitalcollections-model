@@ -4,12 +4,12 @@ import de.digitalcollections.model.identifiable.entity.EntityType;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.StructuredContent;
 import de.digitalcollections.model.text.contentblock.ContentBlock;
-import de.digitalcollections.model.text.contentblock.Text;
+import de.digitalcollections.model.text.contentblock.Paragraph;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import lombok.experimental.SuperBuilder;
 
 /**
  * CorporateBody is used to describe a (business) corporation (e.g. a project partner or
@@ -17,6 +17,7 @@ import java.util.Objects;
  * https://de.wikipedia.org/wiki/Functional_Requirements_for_Bibliographic_Records and
  * http://www.ib.hu-berlin.de/~kumlau/handreichungen/h189/#auf
  */
+@SuperBuilder(buildMethodName = "prebuild")
 public class CorporateBody extends Agent {
 
   private URL homepageUrl;
@@ -25,25 +26,39 @@ public class CorporateBody extends Agent {
 
   public CorporateBody() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.entityType = EntityType.CORPORATE_BODY;
   }
 
-  /** @return URL to homepage of corporate body */
+  /**
+   * @return URL to homepage of corporate body
+   */
   public URL getHomepageUrl() {
     return homepageUrl;
   }
 
-  /** @return localized formatted text describing corporate body */
+  /**
+   * @return localized formatted text describing corporate body
+   */
   public LocalizedStructuredContent getText() {
     return text;
   }
 
-  /** @param homepageUrl set URL to homepage of corporate body */
+  /**
+   * @param homepageUrl set URL to homepage of corporate body
+   */
   public void setHomepageUrl(URL homepageUrl) {
     this.homepageUrl = homepageUrl;
   }
 
-  /** @param text set localized formatted text describing corporate body */
+  /**
+   * @param text set localized formatted text describing corporate body
+   */
   public void setText(LocalizedStructuredContent text) {
     this.text = text;
   }
@@ -107,44 +122,45 @@ public class CorporateBody extends Agent {
     return Objects.hash(super.hashCode(), homepageUrl, text);
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
+  public abstract static class CorporateBodyBuilder<
+          C extends CorporateBody, B extends CorporateBodyBuilder<C, B>>
+      extends AgentBuilder<C, B> {
 
-  public static class Builder extends Agent.Builder<CorporateBody, Builder> {
-
-    @Override
-    protected EntityType getEntityType() {
-      return EntityType.CORPORATE_BODY;
+    public B text(Locale locale, String text) {
+      if (this.text == null) {
+        this.text = new LocalizedStructuredContent();
+      }
+      StructuredContent localizedDescription = this.text.get(locale);
+      if (localizedDescription == null) {
+        localizedDescription = new StructuredContent();
+      }
+      ContentBlock paragraph =
+          text != null && !text.isBlank() ? new Paragraph(text) : new Paragraph();
+      localizedDescription.addContentBlock(paragraph);
+      this.text.put(locale, localizedDescription);
+      return self();
     }
 
-    public Builder withHomepageUrl(String homepageUrl) {
+    public B homepageUrl(String homepageUrl) {
       try {
-        ((CorporateBody) identifiable).setHomepageUrl(new URL(homepageUrl));
+        this.homepageUrl = new URL(homepageUrl);
       } catch (MalformedURLException e) {
-        throw new RuntimeException("Invalid URL='" + homepageUrl + "': " + e, e);
+        throw new RuntimeException(e);
       }
-      return this;
+      return self();
     }
 
-    public Builder withText(Locale locale, String localizedText) {
-      LocalizedStructuredContent localizedStructuredContent =
-          ((CorporateBody) identifiable).getText();
-      if (localizedStructuredContent == null) {
-        localizedStructuredContent = new LocalizedStructuredContent();
-      }
-      StructuredContent textContent = new StructuredContent();
-      ContentBlock singleTextContentBlock = new Text(localizedText);
-      textContent.setContentBlocks(List.of(singleTextContentBlock));
-      localizedStructuredContent.put(locale, textContent);
-
-      ((CorporateBody) identifiable).setText(localizedStructuredContent);
-      return this;
+    public B homepageUrl(URL homepageUrl) {
+      this.homepageUrl = homepageUrl;
+      return self();
     }
 
     @Override
-    public CorporateBody build() {
-      return (CorporateBody) super.build();
+    public C build() {
+      C c = prebuild();
+      c.init();
+      setInternalReferences(c);
+      return c;
     }
   }
 }

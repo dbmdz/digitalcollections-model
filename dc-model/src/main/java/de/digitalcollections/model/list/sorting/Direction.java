@@ -10,12 +10,16 @@ public enum Direction {
   ASC,
   DESC;
 
-  /** @return true if direction is ascending */
+  /**
+   * @return true if direction is ascending
+   */
   public boolean isAscending() {
     return this.equals(ASC);
   }
 
-  /** @return true if direction is ascending */
+  /**
+   * @return true if direction is ascending
+   */
   public boolean isDescending() {
     return this.equals(DESC);
   }

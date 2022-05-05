@@ -1,6 +1,5 @@
 package de.digitalcollections.model.identifiable.entity;
 
-import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.identifiable.entity.work.Item;
 import de.digitalcollections.model.identifiable.resource.FileResource;
 import de.digitalcollections.model.identifiable.resource.LinkedDataFileResource;
@@ -9,6 +8,7 @@ import de.digitalcollections.model.legal.License;
 import de.digitalcollections.model.production.CreationInfo;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.experimental.SuperBuilder;
 
 /**
  * A (cultural) digital object, can be a retro digitization of a physical object or a digital native
@@ -17,6 +17,7 @@ import java.util.List;
  * <p>A digital object can be related to an {@link Item item}, and it also be part of a parent
  * digital object.
  */
+@SuperBuilder(buildMethodName = "prebuild")
 public class DigitalObject extends Entity {
   // FIXME We need to specify this! private Availablity availablity;
 
@@ -24,7 +25,7 @@ public class DigitalObject extends Entity {
   private CreationInfo creationInfo;
 
   /** Sorted list of file resources like images, audio files etc. */
-  private List<FileResource> fileResources = new ArrayList<>(0);
+  private List<FileResource> fileResources;
   /** The related item (can be null, if not applicable). */
   private Item item;
   /** licence of the digital object. */
@@ -34,13 +35,13 @@ public class DigitalObject extends Entity {
    * Sorted list of links (with description) to machine readable formats like Marc, RDF, METS or
    * IIIF-Manifest.
    */
-  private List<LinkedDataFileResource> linkedDataResources = new ArrayList<>(0);
+  private List<LinkedDataFileResource> linkedDataResources;
 
   /**
    * number of related binary files for the presentation, like scans in a book, photos of an object,
    * audio files for records etc.
    */
-  private int numberOfBinaryResources = 0;
+  private int numberOfBinaryResources;
 
   /** The parent digital object, if the current one is an embedded one. */
   private DigitalObject parent;
@@ -49,7 +50,7 @@ public class DigitalObject extends Entity {
    * Sorted list of links (with description and MIME type) to human readable formats like a
    * permalink, OPAC/catalogue page, PDF download, ...
    */
-  private List<FileResource> renderingResources = new ArrayList<>(0);
+  private List<FileResource> renderingResources;
 
   /** version of the digital object. */
   private Version version;
@@ -57,54 +58,87 @@ public class DigitalObject extends Entity {
   /** Default constructor, which also sets the EntityType to {@link EntityType#DIGITAL_OBJECT} */
   public DigitalObject() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.entityType = EntityType.DIGITAL_OBJECT;
+    if (fileResources == null) {
+      fileResources = new ArrayList<>(0);
+    }
+    if (linkedDataResources == null) {
+      linkedDataResources = new ArrayList<>(0);
+    }
+    if (renderingResources == null) {
+      renderingResources = new ArrayList<>(0);
+    }
   }
 
   public void addFileResource(FileResource fileResource) {
     fileResources.add(fileResource);
   }
 
-  /** @return meta information about the creation of the digital object */
+  /**
+   * @return meta information about the creation of the digital object
+   */
   public CreationInfo getCreationInfo() {
     return creationInfo;
   }
 
-  /** @return the sorted list of file resources, like images or audio files */
+  /**
+   * @return the sorted list of file resources, like images or audio files
+   */
   public List<FileResource> getFileResources() {
     return fileResources;
   }
 
-  /** @return the item, the digital object belongs to. Otherwise, return null. */
+  /**
+   * @return the item, the digital object belongs to. Otherwise, return null.
+   */
   public Item getItem() {
     return item;
   }
 
-  /** @return the licence for the digital object (not for the metadata!) */
+  /**
+   * @return the licence for the digital object (not for the metadata!)
+   */
   public License getLicense() {
     return license;
   }
 
-  /** @return the sorted list of links (with description) to machine readable formats */
+  /**
+   * @return the sorted list of links (with description) to machine readable formats
+   */
   public List<LinkedDataFileResource> getLinkedDataResources() {
     return linkedDataResources;
   }
 
-  /** @return the number of binary resources for presentation */
+  /**
+   * @return the number of binary resources for presentation
+   */
   public int getNumberOfBinaryResources() {
     return numberOfBinaryResources;
   }
 
-  /** @return the parent of the digital object, it available. Otherwise, return null. */
+  /**
+   * @return the parent of the digital object, it available. Otherwise, return null.
+   */
   public DigitalObject getParent() {
     return parent;
   }
 
-  /** @return the sorted list of links (with description and MIME type) to human readable formats */
+  /**
+   * @return the sorted list of links (with description and MIME type) to human readable formats
+   */
   public List<FileResource> getRenderingResources() {
     return renderingResources;
   }
 
-  /** @return the version of the digital object */
+  /**
+   * @return the version of the digital object
+   */
   public Version getVersion() {
     return version;
   }
@@ -236,67 +270,31 @@ public class DigitalObject extends Entity {
         + '}';
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
+  public abstract static class DigitalObjectBuilder<
+          C extends DigitalObject, B extends DigitalObjectBuilder<C, B>>
+      extends EntityBuilder<C, B> {
 
-  public static class Builder extends Entity.Builder<DigitalObject, Builder> {
-
-    @Override
-    protected EntityType getEntityType() {
-      return EntityType.DIGITAL_OBJECT;
-    }
-
-    public Builder withCreationInfo(CreationInfo creationInfo) {
-      ((DigitalObject) identifiable).setCreationInfo(creationInfo);
-      return this;
-    }
-
-    public Builder withParent(DigitalObject parentDigitalObject) {
-      ((DigitalObject) identifiable).setParent(parentDigitalObject);
-      return this;
-    }
-
-    public Builder withIdentifier(Identifier identifier) {
-      ((DigitalObject) identifiable).addIdentifier(identifier);
-      return this;
-    }
-
-    public Builder withLicense(License license) {
-      ((DigitalObject) identifiable).setLicense(license);
-      return this;
-    }
-
-    public Builder withLinkedDataFileResource(LinkedDataFileResource linkedDataFileResource) {
-      List<LinkedDataFileResource> linkedDataFileResources =
-          ((DigitalObject) identifiable).getLinkedDataResources();
-      if (linkedDataFileResources == null) {
-        linkedDataFileResources = new ArrayList<>(0);
+    public B linkedDataFileResource(LinkedDataFileResource linkedDataFileResource) {
+      if (linkedDataResources == null) {
+        linkedDataResources = new ArrayList<>();
       }
-      linkedDataFileResources.add(linkedDataFileResource);
-      ((DigitalObject) identifiable).setLinkedDataResources(linkedDataFileResources);
-      return this;
+      linkedDataResources.add(linkedDataFileResource);
+      return self();
     }
 
-    public Builder withFileResource(FileResource fileResource) {
-      List<FileResource> fileResources = ((DigitalObject) identifiable).getFileResources();
-      if (fileResources == null) {
-        fileResources = new ArrayList<>(0);
-      }
-      fileResources.add(fileResource);
-      ((DigitalObject) identifiable).setFileResources(fileResources);
-      return this;
-    }
-
-    public Builder withRenderingResource(FileResource renderingResource) {
-      List<FileResource> renderingResources =
-          ((DigitalObject) identifiable).getRenderingResources();
+    public B renderingResource(FileResource renderingResource) {
       if (renderingResources == null) {
-        renderingResources = new ArrayList<>(0);
+        renderingResources = new ArrayList<>();
       }
       renderingResources.add(renderingResource);
-      ((DigitalObject) identifiable).setRenderingResources(renderingResources);
-      return this;
+      return self();
+    }
+
+    public C build() {
+      C c = prebuild();
+      c.init();
+      setInternalReferences(c);
+      return c;
     }
   }
 }

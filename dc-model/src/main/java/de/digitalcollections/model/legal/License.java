@@ -6,19 +6,23 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.UUID;
+import lombok.experimental.SuperBuilder;
 
 /**
  * License model/description containing all relevant metadata of a license that can be used to
  * specify the license under which an object is available or distributed.
  */
+@SuperBuilder(buildMethodName = "prebuild")
 public class License extends UniqueObject {
 
   private String acronym;
   private LocalizedText label;
   private URL url;
 
-  public License() {}
+  public License() {
+    super();
+    init();
+  }
 
   public License(String acronym, LocalizedText label, URL url) {
     this.acronym = acronym;
@@ -101,53 +105,35 @@ public class License extends UniqueObject {
     return Objects.hash(acronym, label, url, uuid);
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
+  public abstract static class LicenseBuilder<C extends License, B extends LicenseBuilder<C, B>>
+      extends UniqueObjectBuilder<C, B> {
 
-  public static class Builder {
-
-    private License license;
-
-    public Builder() {
-      this.license = new License();
-    }
-
-    public License build() {
-      return license;
-    }
-
-    public Builder withLabel(Locale locale, String text) {
-      license.setLabel(new LocalizedText(locale, text));
-      return this;
-    }
-
-    public Builder withAcronym(String acronym) {
-      license.setAcronym(acronym);
-      return this;
-    }
-
-    public Builder withUrl(String url) {
+    public B url(String url) {
       if (url == null) {
-        return this;
+        return self();
       }
 
       try {
-        license.setUrl(new URL(url));
+        this.url = new URL(url);
       } catch (MalformedURLException e) {
         throw new RuntimeException("Cannot set url=" + url + ": " + e, e);
       }
-      return this;
+      return self();
     }
 
-    public Builder withUuid(UUID uuid) {
-      license.setUuid(uuid);
-      return this;
+    public B label(Locale locale, String localizedLabel) {
+      if (label == null) {
+        label = new LocalizedText();
+      }
+      label.setText(locale, localizedLabel);
+      return self();
     }
 
-    public Builder withLabel(LocalizedText label) {
-      license.setLabel(label);
-      return this;
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      return c;
     }
   }
 }

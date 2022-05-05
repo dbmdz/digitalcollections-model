@@ -6,7 +6,6 @@ import de.digitalcollections.model.identifiable.alias.LocalizedUrlAliases;
 import de.digitalcollections.model.identifiable.alias.UrlAlias;
 import de.digitalcollections.model.identifiable.entity.Website;
 import java.util.Locale;
-import java.util.UUID;
 import org.junit.jupiter.api.Test;
 
 public class IdentifiableTest {
@@ -19,13 +18,13 @@ public class IdentifiableTest {
     assertThat(found).isNull();
 
     // there are no url aliases for the given language
-    Website website = Website.builder().withUuid(UUID.randomUUID()).build();
+    Website website = Website.builder().randomUuid().build();
     UrlAlias urlAlias =
         UrlAlias.builder()
             .isPrimary()
-            .withSlug("this-is-a-test")
-            .withTargetLanguage(Locale.GERMAN)
-            .withWebsite(website)
+            .slug("this-is-a-test")
+            .targetLanguage(Locale.GERMAN)
+            .website(website)
             .build();
     LocalizedUrlAliases localizedUrlAliases = new LocalizedUrlAliases(urlAlias);
     identifiable.setLocalizedUrlAliases(localizedUrlAliases);
@@ -37,7 +36,7 @@ public class IdentifiableTest {
     assertThat(found).isNull();
 
     // there are url aliases for the given language, but not the given website or without website
-    Website otherWebsite = new Website.Builder().withUuid(UUID.randomUUID()).build();
+    Website otherWebsite = Website.builder().randomUuid().build();
     found = identifiable.getPrimaryUrlAlias(Locale.GERMAN, otherWebsite);
     assertThat(found).isNull();
 
@@ -45,8 +44,8 @@ public class IdentifiableTest {
     UrlAlias urlAliasWithoutWebsite =
         UrlAlias.builder()
             .isPrimary()
-            .withSlug("this-is-a-test-without-website")
-            .withTargetLanguage(Locale.GERMAN)
+            .slug("this-is-a-test-without-website")
+            .targetLanguage(Locale.GERMAN)
             .build();
     localizedUrlAliases.add(urlAliasWithoutWebsite);
     found = identifiable.getPrimaryUrlAlias(Locale.GERMAN, null);

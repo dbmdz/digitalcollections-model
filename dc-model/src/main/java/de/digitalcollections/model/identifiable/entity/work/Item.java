@@ -4,6 +4,7 @@ import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.EntityType;
 import de.digitalcollections.model.text.LocalizedText;
 import java.util.Locale;
+import lombok.experimental.SuperBuilder;
 
 /**
  * From https://web.library.yale.edu/cataloging/music/frbr-wemi-music#item:
@@ -40,6 +41,7 @@ import java.util.Locale;
  *   <li>publicationPlace
  * </ul>
  */
+@SuperBuilder(buildMethodName = "prebuild")
 public class Item extends Entity {
 
   private Locale language;
@@ -50,6 +52,12 @@ public class Item extends Entity {
 
   public Item() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.entityType = EntityType.ITEM;
   }
 
@@ -77,7 +85,9 @@ public class Item extends Entity {
     return version;
   }
 
-  /** @param language language of item (if text, audio, video, etc.) */
+  /**
+   * @param language language of item (if text, audio, video, etc.)
+   */
   public void setLanguage(Locale language) {
     this.language = language;
   }
@@ -177,11 +187,15 @@ public class Item extends Entity {
         + "}";
   }
 
-  public static class Builder extends Entity.Builder<Item, Builder> {
+  public abstract static class ItemBuilder<C extends Item, B extends ItemBuilder<C, B>>
+      extends EntityBuilder<C, B> {
 
     @Override
-    protected EntityType getEntityType() {
-      return EntityType.ITEM;
+    public C build() {
+      C c = prebuild();
+      c.init();
+      setInternalReferences(c);
+      return c;
     }
   }
 }

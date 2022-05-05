@@ -31,12 +31,16 @@ public class CoordinateLocation {
     }
   }
 
-  /** @return altitude in meters */
+  /**
+   * @return altitude in meters
+   */
   public double getAltitude() {
     return altitude;
   }
 
-  /** @return latitude in degrees: -90° (Southpole) - 0° (Aequator) - 90° (Northpole) */
+  /**
+   * @return latitude in degrees: -90° (Southpole) - 0° (Aequator) - 90° (Northpole)
+   */
   public double getLatitude() {
     return latitude;
   }

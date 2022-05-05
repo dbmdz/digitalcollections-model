@@ -6,8 +6,10 @@ import java.net.URI;
 import java.net.URL;
 import java.util.Objects;
 import java.util.UUID;
+import lombok.experimental.SuperBuilder;
 
 /** An image file resource. Mimetype starts with "image/". */
+@SuperBuilder(buildMethodName = "prebuild")
 public class ImageFileResource extends FileResource {
 
   private int height;
@@ -15,25 +17,39 @@ public class ImageFileResource extends FileResource {
 
   public ImageFileResource() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.fileResourceType = FileResourceType.IMAGE;
   }
 
-  /** @return height in pixel */
+  /**
+   * @return height in pixel
+   */
   public int getHeight() {
     return height;
   }
 
-  /** @return width in pixel */
+  /**
+   * @return width in pixel
+   */
   public int getWidth() {
     return width;
   }
 
-  /** @param height height in pixel */
+  /**
+   * @param height height in pixel
+   */
   public void setHeight(int height) {
     this.height = height;
   }
 
-  /** @param width width in pixel */
+  /**
+   * @param width width in pixel
+   */
   public void setWidth(int width) {
     this.width = width;
   }
@@ -56,24 +72,6 @@ public class ImageFileResource extends FileResource {
   @Override
   public int hashCode() {
     return Objects.hash(super.hashCode(), height, width);
-  }
-
-  public static Builder builder() {
-    return new Builder();
-  }
-
-  public static class Builder<I extends ImageFileResource, B extends Builder>
-      extends FileResource.Builder<ImageFileResource, Builder> {
-
-    public Builder withHeight(int height) {
-      identifiable.setHeight(height);
-      return this;
-    }
-
-    public Builder withWidth(int width) {
-      identifiable.setWidth(width);
-      return this;
-    }
   }
 
   public static PreviewImageBuilder previewImageBuilder() {
@@ -103,22 +101,22 @@ public class ImageFileResource extends FileResource {
       return previewImage;
     }
 
-    public PreviewImageBuilder withFileName(String fileName) {
+    public PreviewImageBuilder fileName(String fileName) {
       previewImage.setFilename(fileName);
       return this;
     }
 
-    public PreviewImageBuilder withUri(String uri) {
+    public PreviewImageBuilder uri(String uri) {
       previewImage.setUri(URI.create(uri));
       return this;
     }
 
-    public PreviewImageBuilder withMimeType(MimeType mimeType) {
+    public PreviewImageBuilder mimeType(MimeType mimeType) {
       previewImage.setMimeType(mimeType);
       return this;
     }
 
-    public PreviewImageBuilder withHttpBaseUrl(String httpBaseUrl) {
+    public PreviewImageBuilder httpBaseUrl(String httpBaseUrl) {
       try {
         previewImage.setHttpBaseUrl(new URL(httpBaseUrl));
       } catch (MalformedURLException e) {
@@ -127,20 +125,33 @@ public class ImageFileResource extends FileResource {
       return this;
     }
 
-    public PreviewImageBuilder withSize(int width, int height) {
+    public PreviewImageBuilder size(int width, int height) {
       previewImage.setWidth(width);
       previewImage.setHeight(height);
       return this;
     }
 
-    public PreviewImageBuilder withUuid(UUID uuid) {
+    public PreviewImageBuilder uuid(UUID uuid) {
       previewImage.setUuid(uuid);
       return this;
     }
 
-    public PreviewImageBuilder withUuid(String uuid) {
+    public PreviewImageBuilder uuid(String uuid) {
       previewImage.setUuid(UUID.fromString(uuid));
       return this;
+    }
+  }
+
+  public abstract static class ImageFileResourceBuilder<
+          C extends ImageFileResource, B extends ImageFileResourceBuilder<C, B>>
+      extends FileResourceBuilder<C, B> {
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      setInternalReferences(c);
+      return c;
     }
   }
 }

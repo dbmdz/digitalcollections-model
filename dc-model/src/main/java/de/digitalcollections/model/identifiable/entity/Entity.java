@@ -4,6 +4,7 @@ import de.digitalcollections.model.identifiable.Identifiable;
 import de.digitalcollections.model.identifiable.IdentifiableType;
 import java.time.LocalDate;
 import java.util.Objects;
+import lombok.experimental.SuperBuilder;
 
 /**
  * Entities are uniquely identifiable objects, often also uniquely identifiable outside of this
@@ -18,6 +19,7 @@ import java.util.Objects;
  * <p>https://de.wikipedia.org/wiki/Functional_Requirements_for_Bibliographic_Records
  * https://en.wikipedia.org/wiki/Functional_Requirements_for_Bibliographic_Records
  */
+@SuperBuilder(buildMethodName = "prebuild")
 public class Entity extends Identifiable {
 
   protected CustomAttributes customAttributes;
@@ -29,6 +31,12 @@ public class Entity extends Identifiable {
 
   public Entity() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.entityType = EntityType.ENTITY;
     this.type = IdentifiableType.ENTITY;
   }
@@ -61,7 +69,9 @@ public class Entity extends Identifiable {
     return null;
   }
 
-  /** @return custom attributes */
+  /**
+   * @return custom attributes
+   */
   public CustomAttributes getCustomAttributes() {
     return customAttributes;
   }
@@ -120,12 +130,16 @@ public class Entity extends Identifiable {
     this.customAttributes = customAttributes;
   }
 
-  /** @param entityType the type of the entity */
+  /**
+   * @param entityType the type of the entity
+   */
   public void setEntityType(EntityType entityType) {
     this.entityType = entityType;
   }
 
-  /** @return a date for "navigation" purposes, e.g. a timeline */
+  /**
+   * @return a date for "navigation" purposes, e.g. a timeline
+   */
   public LocalDate getNavDate() {
     return navDate;
   }
@@ -139,47 +153,33 @@ public class Entity extends Identifiable {
     this.navDate = navDate;
   }
 
-  /** @param refId system wide unique entity reference id. */
+  /**
+   * @param refId system wide unique entity reference id.
+   */
   public void setRefId(long refId) {
     this.refId = refId;
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
+  public abstract static class EntityBuilder<C extends Entity, B extends EntityBuilder<C, B>>
+      extends IdentifiableBuilder<C, B> {
 
-  public static class Builder<E extends Entity, B extends Entity.Builder>
-      extends Identifiable.Builder<Entity, B> {
-
-    @Override
-    protected IdentifiableType getIdentifiableType() {
-      return IdentifiableType.ENTITY;
+    public B customAttribute(String key, Object value) {
+      if (this.customAttributes == null) {
+        this.customAttributes = new CustomAttributes();
+      }
+      this.customAttributes.put(key, value);
+      return self();
     }
 
-    protected EntityType getEntityType() {
-      return EntityType.ENTITY;
+    public B navDate(String navDate) {
+      this.navDate = LocalDate.parse(navDate);
+      return self();
     }
 
-    @Override
-    public E build() {
-      Entity e = super.build();
-      e.setEntityType(getEntityType());
-      return (E) e;
-    }
-
-    public B withCustomAttribute(String key, Object value) {
-      identifiable.setCustomAttribute(key, value);
-      return (B) this;
-    }
-
-    public B withNavDate(String navDate) {
-      identifiable.setNavDate(LocalDate.parse(navDate));
-      return (B) this;
-    }
-
-    public B withRefId(long refId) {
-      identifiable.setRefId(refId);
-      return (B) this;
+    public C build() {
+      C c = prebuild();
+      c.init();
+      return c;
     }
   }
 }

@@ -1,14 +1,21 @@
 package de.digitalcollections.model.identifiable.entity.geo.location;
 
-import de.digitalcollections.model.identifiable.entity.EntityType;
+import lombok.experimental.SuperBuilder;
 
 /** A community of any size, in which people live see https://www.wikidata.org/wiki/Q486972 */
+@SuperBuilder(buildMethodName = "prebuild")
 public class HumanSettlement extends GeoLocation {
 
   private HumanSettlementType humanSettlementType;
 
   public HumanSettlement() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.geoLocationType = GeoLocationType.HUMAN_SETTLEMENT;
   }
 
@@ -20,25 +27,16 @@ public class HumanSettlement extends GeoLocation {
     this.humanSettlementType = humanSettlementType;
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
-
-  public static class Builder extends GeoLocation.Builder<HumanSettlement, Builder> {
-    @Override
-    protected EntityType getEntityType() {
-      return EntityType.GEOLOCATION;
-    }
-
-    protected GeoLocationType getGeoLocationType() {
-      return GeoLocationType.HUMAN_SETTLEMENT;
-    }
+  public abstract static class HumanSettlementBuilder<
+          C extends HumanSettlement, B extends HumanSettlementBuilder<C, B>>
+      extends GeoLocationBuilder<C, B> {
 
     @Override
-    public HumanSettlement build() {
-      HumanSettlement humanSettlement = (HumanSettlement) super.build();
-      humanSettlement.setGeoLocationType(getGeoLocationType());
-      return humanSettlement;
+    public C build() {
+      C c = prebuild();
+      c.init();
+      setInternalReferences(c);
+      return c;
     }
   }
 }

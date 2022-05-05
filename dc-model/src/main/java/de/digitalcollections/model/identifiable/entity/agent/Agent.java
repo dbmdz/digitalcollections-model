@@ -2,6 +2,7 @@ package de.digitalcollections.model.identifiable.entity.agent;
 
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.EntityType;
+import lombok.experimental.SuperBuilder;
 
 /**
  * https://books.google.de/books?id=foGBCgAAQBAJ&amp;pg=PA151:
@@ -11,7 +12,19 @@ import de.digitalcollections.model.identifiable.entity.EntityType;
  * instance, intellectual creations may be gathered into a class "Work" and its creators may be
  * gathered into classes like "Person", "Family" and "Corporate body".
  */
+@SuperBuilder(buildMethodName = "prebuild")
 public class Agent extends Entity {
+
+  public Agent() {
+    super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
+    this.entityType = EntityType.AGENT;
+  }
 
   @Override
   public String toString() {
@@ -47,16 +60,15 @@ public class Agent extends Entity {
         + '}';
   }
 
-  public static Builder builder() {
-    return new Builder<>();
-  }
-
-  public static class Builder<E extends Agent, B extends Agent.Builder>
-      extends Entity.Builder<Agent, B> {
+  public abstract static class AgentBuilder<C extends Agent, B extends AgentBuilder<C, B>>
+      extends EntityBuilder<C, B> {
 
     @Override
-    protected EntityType getEntityType() {
-      return EntityType.AGENT;
+    public C build() {
+      C c = prebuild();
+      c.init();
+      setInternalReferences(c);
+      return c;
     }
   }
 }
