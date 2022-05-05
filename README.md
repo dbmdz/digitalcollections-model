@@ -116,12 +116,12 @@ model objects in a fluent way.
 The builder internally holds all attributes of the model class and provides several methods
 to set or modify them.
 
-By calling the `build()` method, the model object is instanciated, filled and returned.
+By calling the `build()` method, the model object is instantiated, filled and returned.
 
 ### Implementing builders
 
 To implement a new builder, it is important to know, how they work internally.
-Since [Lombok](https://projectlombok.org/ is used, every model class must be annotated
+Since [Lombok](https://projectlombok.org/) is used, every model class must be annotated
 with `@SuperBuilder(buildMethodName = "prebuild")`, to enable multi-tier inheritance.
 
 As next step, you cave to customize the builder by inheriting it from the
@@ -139,7 +139,7 @@ which is renamed to `prebuild`, so that you can write your own `build` method, w
 at least execute `prebuild`.
 
 Since Lombok ignores all variable pre-settings of the classes, and internally holds a copy
-of all instance variables, a `init()` method to initialize the variables where neccessary 
+of all instance variables, an `init()` method to initialize the variables where neccessary 
 was applied, which is executed by the constructor and by the `build` method. Please note, 
 that you can execute `init` only after `prebuild`, since only `prebuild` gives you the 
 instance of your model object.
