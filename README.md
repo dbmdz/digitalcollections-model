@@ -110,7 +110,7 @@ Comes with a separate module for supporting serializing model objects to JSON (`
 
 ## Builder
 
-Many model objects already provide a builder method, which help to instanticate and fill
+Many model objects already provide a builder method, which help to instantiate and fill
 model objects in a fluent way.
 
 The builder internally holds all attributes of the model class and provides several methods
