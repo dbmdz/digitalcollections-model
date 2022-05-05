@@ -138,7 +138,7 @@ The `prebuild` configuration allows manipulation of the auto-generated `build` m
 which is renamed to `prebuild`, so that you can write your own `build` method, which must
 at least execute `prebuild`.
 
-Since Lombok ignores all variable pre-settings of the classes, and internally holds a copy
+Since Lombok ignores all member variable pre-settings of the classes (e.g. initializing a list member to an empty Array on instantiation), and internally holds a copy
 of all instance variables, an `init()` method to initialize the variables where neccessary 
 was applied, which is executed by the constructor and by the `build` method. Please note, 
 that you can execute `init` only after `prebuild`, since only `prebuild` gives you the 
