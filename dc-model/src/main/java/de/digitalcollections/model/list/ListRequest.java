@@ -11,11 +11,13 @@ import java.io.Serializable;
  * <ul>
  *   <li>filtering: container for filter criterias of result list
  *   <li>sorting: container for sorting order of result list
+ *   <li>searchTerm: search term for simple query term to be searched for
  * </ul>
  */
 public class ListRequest implements Serializable {
 
   protected Filtering filtering;
+  protected String searchTerm;
   protected Sorting sorting;
 
   public ListRequest() {}
@@ -27,11 +29,11 @@ public class ListRequest implements Serializable {
    * @param properties the properties to sorting by, must not be {@literal null} or empty.
    */
   public ListRequest(Direction direction, String... properties) {
-    this(new Sorting(direction, properties), null);
+    this(new Sorting(direction, properties), null, null);
   }
 
   public ListRequest(Sorting sorting) {
-    this(sorting, null);
+    this(sorting, null, null);
   }
 
   /**
@@ -39,9 +41,11 @@ public class ListRequest implements Serializable {
    *
    * @param sorting can be {@literal null}
    * @param filtering contains list of filter criterias
+   * @param searchTerm search term for simple query term to be searched for
    */
-  public ListRequest(Sorting sorting, Filtering filtering) {
+  public ListRequest(Sorting sorting, Filtering filtering, String searchTerm) {
     this.filtering = filtering;
+    this.searchTerm = searchTerm;
     this.sorting = sorting;
   }
 
@@ -107,6 +111,13 @@ public class ListRequest implements Serializable {
   }
 
   /**
+   * @return the search term to be searched for
+   */
+  public String getSearchTerm() {
+    return searchTerm;
+  }
+
+  /**
    * @return the sorting parameters
    */
   public Sorting getSorting() {
@@ -146,6 +157,10 @@ public class ListRequest implements Serializable {
     this.filtering = filtering;
   }
 
+  public void setSearchTerm(String searchTerm) {
+    this.searchTerm = searchTerm;
+  }
+
   /**
    * @param sorting the sorting parameters
    */
@@ -156,7 +171,8 @@ public class ListRequest implements Serializable {
   @Override
   public String toString() {
     return String.format(
-        "List request [sorting: %s, filtering: %s]",
+        "List request [searchTerm: %s, sorting: %s, filtering: %s]",
+        searchTerm == null ? null : searchTerm,
         sorting == null ? null : sorting.toString(),
         filtering == null ? null : filtering.toString());
   }

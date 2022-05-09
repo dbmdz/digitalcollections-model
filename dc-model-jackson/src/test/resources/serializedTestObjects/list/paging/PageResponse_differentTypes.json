@@ -22,9 +22,9 @@
   } ],
   "executedSearchTerm" : "Label",
   "pageRequest" : {
+    "searchTerm" : "Label",
     "pageNumber" : 3,
-    "pageSize" : 15,
-    "searchTerm" : "Label"
+    "pageSize" : 15
   },
   "totalElements" : 2
 }

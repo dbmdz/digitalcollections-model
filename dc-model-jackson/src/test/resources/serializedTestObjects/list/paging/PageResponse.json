@@ -21,9 +21,9 @@
         "maxValue" : [ "java.time.LocalDate", "2020-01-31" ]
       } ]
     },
+    "searchTerm" : "Hello",
     "pageNumber" : 3,
-    "pageSize" : 15,
-    "searchTerm" : "Hello"
+    "pageSize" : 15
   },
   "totalElements" : 1
 }

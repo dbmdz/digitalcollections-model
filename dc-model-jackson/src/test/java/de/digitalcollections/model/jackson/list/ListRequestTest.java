@@ -21,6 +21,7 @@ public class ListRequestTest extends BaseJsonSerializationTest {
         Sorting.builder()
             .order(Order.builder().direction(Direction.ASC).property("label").build())
             .build());
+    listRequest.setSearchTerm("hello");
     return listRequest;
   }
 

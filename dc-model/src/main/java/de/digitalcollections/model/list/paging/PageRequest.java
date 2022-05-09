@@ -24,7 +24,6 @@ public class PageRequest extends ListRequest {
 
   private int pageNumber;
   private int pageSize;
-  private String searchTerm;
 
   public PageRequest() {}
 
@@ -74,7 +73,7 @@ public class PageRequest extends ListRequest {
    */
   public PageRequest(
       int pageNumber, int pageSize, Sorting sorting, Filtering filtering, String searchTerm) {
-    super(sorting, filtering);
+    super(sorting, filtering, searchTerm);
     if (pageNumber < 0) {
       throw new IllegalArgumentException("Page index must not be less than zero!");
     }
@@ -84,7 +83,6 @@ public class PageRequest extends ListRequest {
     }
     this.pageNumber = pageNumber;
     this.pageSize = pageSize;
-    this.searchTerm = searchTerm;
   }
 
   @Override
@@ -139,13 +137,9 @@ public class PageRequest extends ListRequest {
   public int getPageSize() {
     return pageSize;
   }
-
   /**
    * @return the search term to be searched for
    */
-  public String getSearchTerm() {
-    return searchTerm;
-  }
 
   /**
    * Returns whether there's a previous {@link PageRequest} we can access from the current one. Will
@@ -210,10 +204,6 @@ public class PageRequest extends ListRequest {
    */
   public void setPageSize(int pageSize) {
     this.pageSize = pageSize;
-  }
-
-  public void setSearchTerm(String searchTerm) {
-    this.searchTerm = searchTerm;
   }
 
   @Override
