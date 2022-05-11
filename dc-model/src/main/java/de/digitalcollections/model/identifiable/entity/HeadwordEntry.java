@@ -44,7 +44,7 @@ public class HeadwordEntry extends Article {
   }
 
   public abstract static class HeadwordEntryBuilder<
-      C extends HeadwordEntry, B extends HeadwordEntryBuilder<C, B>>
+          C extends HeadwordEntry, B extends HeadwordEntryBuilder<C, B>>
       extends ArticleBuilder<C, B> {
 
     @Override

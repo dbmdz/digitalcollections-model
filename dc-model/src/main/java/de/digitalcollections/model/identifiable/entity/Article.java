@@ -61,8 +61,7 @@ public class Article extends Entity {
     this.timeValuePublished = timeValuePublished;
   }
 
-  public abstract static class ArticleBuilder<
-      C extends Article, B extends ArticleBuilder<C, B>>
+  public abstract static class ArticleBuilder<C extends Article, B extends ArticleBuilder<C, B>>
       extends EntityBuilder<C, B> {
 
     @Override
