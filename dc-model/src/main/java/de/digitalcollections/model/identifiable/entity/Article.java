@@ -5,19 +5,28 @@ import de.digitalcollections.model.text.LocalizedStructuredContent;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.experimental.SuperBuilder;
 import org.wikidata.wdtk.datamodel.interfaces.TimeValue;
 
 /** Article is used to manage cultural articles and their hierarchy. */
+@SuperBuilder(buildMethodName = "prebuild")
 public class Article extends Entity {
 
-  private List<Agent> creators = new ArrayList<>();
+  private List<Agent> creators;
   private LocalDate datePublished;
   private LocalizedStructuredContent text;
   private TimeValue timeValuePublished;
 
   public Article() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.entityType = EntityType.ARTICLE;
+    creators = new ArrayList<>();
   }
 
   public List<Agent> getCreators() {
@@ -50,5 +59,17 @@ public class Article extends Entity {
 
   public void setTimeValuePublished(TimeValue timeValuePublished) {
     this.timeValuePublished = timeValuePublished;
+  }
+
+  public abstract static class ArticleBuilder<
+      C extends Article, B extends ArticleBuilder<C, B>>
+      extends EntityBuilder<C, B> {
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      return c;
+    }
   }
 }
