@@ -92,8 +92,7 @@ public class Topic extends Entity implements INode<Topic> {
     node.setParent(parent);
   }
 
-  public abstract static class TopicBuilder<
-      C extends Topic, B extends TopicBuilder<C, B>>
+  public abstract static class TopicBuilder<C extends Topic, B extends TopicBuilder<C, B>>
       extends EntityBuilder<C, B> {
 
     @Override
