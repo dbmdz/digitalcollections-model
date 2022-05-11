@@ -5,6 +5,7 @@ import de.digitalcollections.model.identifiable.Node;
 import de.digitalcollections.model.identifiable.resource.FileResource;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.experimental.SuperBuilder;
 
 /**
  * https://www.merriam-webster.com/dictionary/topic: "the subject of something that is being
@@ -18,15 +19,22 @@ import java.util.List;
  * division of a main topic" https://www.linguee.com/english-german/translation/subtopic.html
  * german: "Unterthema"
  */
+@SuperBuilder(buildMethodName = "prebuild")
 public class Topic extends Entity implements INode<Topic> {
 
   private List<Entity> entities;
   private List<FileResource> fileResources;
-  private final Node<Topic> node = new Node<>();
+  private Node<Topic> node = new Node<>();
 
   public Topic() {
     super();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.entityType = EntityType.TOPIC;
+    node = new Node<>();
   }
 
   public Topic(List<Topic> children) {
@@ -82,5 +90,17 @@ public class Topic extends Entity implements INode<Topic> {
 
   public void setParent(Topic parent) {
     node.setParent(parent);
+  }
+
+  public abstract static class TopicBuilder<
+      C extends Topic, B extends TopicBuilder<C, B>>
+      extends EntityBuilder<C, B> {
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      return c;
+    }
   }
 }

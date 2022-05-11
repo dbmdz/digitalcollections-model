@@ -1,6 +1,7 @@
 package de.digitalcollections.model.identifiable.entity;
 
 import de.digitalcollections.model.semantic.Headword;
+import lombok.experimental.SuperBuilder;
 
 /**
  * The textual body to a specified headword (encyclopedia) or lemma (dictionary).
@@ -14,12 +15,18 @@ import de.digitalcollections.model.semantic.Headword;
  *
  * @see Headword
  */
+@SuperBuilder(buildMethodName = "prebuild")
 public class HeadwordEntry extends Article {
 
   private Headword headword;
 
   public HeadwordEntry() {
     super();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.entityType = EntityType.HEADWORD_ENTRY;
   }
 
@@ -34,5 +41,17 @@ public class HeadwordEntry extends Article {
 
   public void setHeadword(Headword headword) {
     this.headword = headword;
+  }
+
+  public abstract static class HeadwordEntryBuilder<
+      C extends HeadwordEntry, B extends HeadwordEntryBuilder<C, B>>
+      extends ArticleBuilder<C, B> {
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      return c;
+    }
   }
 }
