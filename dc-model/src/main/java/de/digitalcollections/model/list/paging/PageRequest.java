@@ -54,6 +54,10 @@ public class PageRequest extends ListRequest {
     this(pageNumber, pageSize, sorting, null, null);
   }
 
+  public PageRequest(int pageNumber, int pageSize, Sorting sorting, Filtering filtering) {
+    this(pageNumber, pageSize, sorting, filtering, null);
+  }
+
   public PageRequest(String searchTerm, int pageNumber, int pageSize) {
     this(pageNumber, pageSize, null, null, searchTerm);
   }
