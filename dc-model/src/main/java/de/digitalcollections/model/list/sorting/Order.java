@@ -1,7 +1,5 @@
 package de.digitalcollections.model.list.sorting;
 
-import static de.digitalcollections.model.list.sorting.Sorting.DEFAULT_DIRECTION;
-
 import java.util.Optional;
 import lombok.experimental.SuperBuilder;
 
@@ -13,7 +11,9 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(buildMethodName = "prebuild")
 public class Order {
 
-  private static final boolean DEFAULT_IGNORE_CASE = false;
+  private static final Direction DEFAULT_DIRECTION = Sorting.DEFAULT_DIRECTION;
+  private static final boolean DEFAULT_IGNORE_CASE = true;
+  private static final NullHandling DEFAULT_NULL_HANDLING = NullHandling.NATIVE;
 
   private Direction direction;
   private Boolean ignoreCase;
@@ -29,8 +29,9 @@ public class Order {
       Direction direction, boolean ignoreCase, NullHandling nullHandling, String property) {
     this.direction = direction;
     this.ignoreCase = ignoreCase;
-    this.nullHandling = nullHandling == null ? NullHandling.NATIVE : nullHandling;
+    this.nullHandling = nullHandling;
     this.property = property;
+    init();
   }
 
   /**
@@ -41,7 +42,7 @@ public class Order {
    * @param property must not be {@literal null} or empty.
    */
   public Order(Direction direction, String property) {
-    this(direction, property, DEFAULT_IGNORE_CASE, null);
+    this(direction, property, (Boolean) null, null);
   }
 
   /**
@@ -53,7 +54,7 @@ public class Order {
    * @param nullHandlingHint can be {@literal null}, will default to {@link NullHandling#NATIVE}.
    */
   public Order(Direction direction, String property, NullHandling nullHandlingHint) {
-    this(direction, property, DEFAULT_IGNORE_CASE, nullHandlingHint);
+    this(direction, property, (Boolean) null, nullHandlingHint);
   }
 
   /**
@@ -63,7 +64,7 @@ public class Order {
    * @param property must not be {@literal null} or empty.
    */
   public Order(String property) {
-    this(Sorting.DEFAULT_DIRECTION, property);
+    this(null, property);
   }
 
   /**
@@ -78,15 +79,15 @@ public class Order {
    */
   private Order(
       Direction direction, String property, boolean ignoreCase, NullHandling nullHandling) {
-
     if (property == null || property.isEmpty() || property.trim().isEmpty()) {
       throw new IllegalArgumentException("Property must not null or empty!");
     }
 
-    this.direction = direction == null ? DEFAULT_DIRECTION : direction;
+    this.direction = direction;
     this.property = property;
     this.ignoreCase = ignoreCase;
-    this.nullHandling = nullHandling == null ? NullHandling.NATIVE : nullHandling;
+    this.nullHandling = nullHandling;
+    init();
   }
 
   @Override
@@ -160,21 +161,15 @@ public class Order {
     return result;
   }
 
-  /**
-   * Returns a new {@link Order} with case insensitive sorting enabled.
-   *
-   * @return a new Order with case insensitive sorting enabled
-   */
-  public Order ignoreCase() {
-    return new Order(direction, property, true, nullHandling);
-  }
-
   protected void init() {
+    if (direction == null) {
+      this.direction = DEFAULT_DIRECTION;
+    }
     if (ignoreCase == null) {
-      this.ignoreCase = true;
+      this.ignoreCase = DEFAULT_IGNORE_CASE;
     }
     if (nullHandling == null) {
-      this.nullHandling = NullHandling.NATIVE;
+      this.nullHandling = DEFAULT_NULL_HANDLING;
     }
   }
 
@@ -203,33 +198,6 @@ public class Order {
    */
   public boolean isIgnoreCase() {
     return ignoreCase;
-  }
-
-  /**
-   * Returns a {@link Order} with {@link NullHandling#NULLS_FIRST} as null handling hint.
-   *
-   * @return an Order with NullHandling#NULLS_FIRST as null handling hint
-   */
-  public Order nullsFirst() {
-    return with(NullHandling.NULLS_FIRST);
-  }
-
-  /**
-   * Returns a {@link Order} with {@link NullHandling#NULLS_LAST} as null handling hint.
-   *
-   * @return an Order with NullHandling#NULLS_LAST as null handling hint.
-   */
-  public Order nullsLast() {
-    return with(NullHandling.NULLS_LAST);
-  }
-
-  /**
-   * Returns a {@link Order} with {@link NullHandling#NATIVE} as null handling hint.
-   *
-   * @return an Order with NullHandling#NATIVE as null handling hint.
-   */
-  public Order nullsNative() {
-    return with(NullHandling.NATIVE);
   }
 
   public void setDirection(Direction direction) {
@@ -266,46 +234,6 @@ public class Order {
     }
 
     return result;
-  }
-
-  /**
-   * Returns a new {@link Order} with the given {@link Direction}.
-   *
-   * @param direction given direction
-   * @return a new Order with the given Direction
-   */
-  public Order with(Direction direction) {
-    return new Order(direction, this.property, this.ignoreCase, this.nullHandling);
-  }
-
-  /**
-   * Returns a {@link Order} with the given {@link NullHandling}.
-   *
-   * @param nullHandling can be null.
-   * @return an Order with the given NullHandling
-   */
-  public Order with(NullHandling nullHandling) {
-    return new Order(direction, this.property, ignoreCase, nullHandling);
-  }
-
-  /**
-   * Returns a new {@link Sorting} instance for the given properties.
-   *
-   * @param properties given properties
-   * @return a new Sorting for the given properties
-   */
-  public Sorting withProperties(String... properties) {
-    return new Sorting(this.direction, properties);
-  }
-
-  /**
-   * Returns a new {@link Order}
-   *
-   * @param property must not be {@literal null} or empty.
-   * @return a new Order
-   */
-  public Order withProperty(String property) {
-    return new Order(this.direction, property, this.ignoreCase, this.nullHandling);
   }
 
   public abstract static class OrderBuilder<C extends Order, B extends OrderBuilder<C, B>> {

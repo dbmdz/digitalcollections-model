@@ -357,8 +357,6 @@ public class PageResponse<T> extends ListResponse<T> {
       Order order =
           Order.builder()
               .direction(Direction.ASC)
-              .ignoreCase(false)
-              .nullHandling(NullHandling.NATIVE)
               .property(expression)
               .subProperty(subfield)
               .build();
@@ -373,8 +371,6 @@ public class PageResponse<T> extends ListResponse<T> {
       Order order =
           Order.builder()
               .direction(Direction.DESC)
-              .ignoreCase(false)
-              .nullHandling(NullHandling.NATIVE)
               .property(expression)
               .subProperty(subfield)
               .build();
