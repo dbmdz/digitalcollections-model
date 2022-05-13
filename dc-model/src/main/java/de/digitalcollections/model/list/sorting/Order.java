@@ -6,9 +6,8 @@ import java.util.Optional;
 import lombok.experimental.SuperBuilder;
 
 /**
- * PropertyPath implements the pairing of an {@link Direction} and a property. It is used to provide
- * input for {@link Sorting}. See Spring Data Commons, but more flat design and independent of
- * Spring libraries.
+ * PropertyPath implements the pairing of an {@link Direction} and a property. It is used to provide input for {@link Sorting}. See Spring Data Commons, but more flat design and independent of Spring
+ * libraries.
  */
 @SuperBuilder(buildMethodName = "prebuild")
 public class Order {
@@ -16,7 +15,7 @@ public class Order {
   private static final boolean DEFAULT_IGNORE_CASE = false;
 
   private Direction direction;
-  private boolean ignoreCase;
+  private Boolean ignoreCase;
   private NullHandling nullHandling;
   private String property;
   private String subProperty;
@@ -26,7 +25,7 @@ public class Order {
   }
 
   public Order(
-      Direction direction, boolean ignoreCase, NullHandling nullHandling, String property) {
+          Direction direction, boolean ignoreCase, NullHandling nullHandling, String property) {
     this.direction = direction;
     this.ignoreCase = ignoreCase;
     this.nullHandling = nullHandling == null ? NullHandling.NATIVE : nullHandling;
@@ -72,12 +71,11 @@ public class Order {
    *
    * @param direction can be {@literal null}, will default to {@link Sorting#DEFAULT_DIRECTION}
    * @param property must not be {@literal null} or empty.
-   * @param ignoreCase true if sorting should be case insensitive. false if sorting should be case
-   *     sensitive.
+   * @param ignoreCase true if sorting should be case insensitive. false if sorting should be case sensitive.
    * @param nullHandling can be {@literal null}, will default to {@link NullHandling#NATIVE}.
    */
   private Order(
-      Direction direction, String property, boolean ignoreCase, NullHandling nullHandling) {
+          Direction direction, String property, boolean ignoreCase, NullHandling nullHandling) {
 
     if (property == null || property.isEmpty() || property.trim().isEmpty()) {
       throw new IllegalArgumentException("Property must not null or empty!");
@@ -103,9 +101,9 @@ public class Order {
     Order that = (Order) obj;
 
     return this.direction.equals(that.getDirection())
-        && this.property.equals(that.getProperty())
-        && this.ignoreCase == that.isIgnoreCase()
-        && this.nullHandling.equals(that.getNullHandling());
+            && this.property.equals(that.getProperty())
+            && this.ignoreCase == that.isIgnoreCase()
+            && this.nullHandling.equals(that.getNullHandling());
   }
 
   /**
@@ -118,8 +116,7 @@ public class Order {
   }
 
   /**
-   * Returns the used {@link NullHandling} hint, which can but may not be respected by the used
-   * datastore.
+   * Returns the used {@link NullHandling} hint, which can but may not be respected by the used datastore.
    *
    * @return the used NullHandling hint, which can but may not be respected by the used datastore.
    */
@@ -139,7 +136,8 @@ public class Order {
   /**
    * Returns the optional sub property to order for.
    *
-   * <p>A sub property is always related to the main property.
+   * <p>
+   * A sub property is always related to the main property.
    *
    * @return the optional sub property to order for
    */
@@ -170,8 +168,12 @@ public class Order {
   }
 
   protected void init() {
-    this.ignoreCase = true;
-    this.nullHandling = NullHandling.NATIVE;
+    if (ignoreCase == null) {
+      this.ignoreCase = true;
+    }
+    if (nullHandling == null) {
+      this.nullHandling = NullHandling.NATIVE;
+    }
   }
 
   /**
