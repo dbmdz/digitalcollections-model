@@ -3,27 +3,27 @@ package de.digitalcollections.model.list.sorting;
 import static de.digitalcollections.model.list.sorting.Sorting.DEFAULT_DIRECTION;
 
 import java.util.Optional;
+import lombok.experimental.SuperBuilder;
 
 /**
  * PropertyPath implements the pairing of an {@link Direction} and a property. It is used to provide
  * input for {@link Sorting}. See Spring Data Commons, but more flat design and independent of
  * Spring libraries.
  */
+@SuperBuilder(buildMethodName = "prebuild")
 public class Order {
 
   private static final boolean DEFAULT_IGNORE_CASE = false;
 
-  public static Builder builder() {
-    return new Builder();
-  }
-
   private Direction direction;
   private boolean ignoreCase;
-  private NullHandling nullHandling = NullHandling.NATIVE;
+  private NullHandling nullHandling;
   private String property;
-  private String subProperty = null;
+  private String subProperty;
 
-  public Order() {}
+  public Order() {
+    init();
+  }
 
   public Order(
       Direction direction, boolean ignoreCase, NullHandling nullHandling, String property) {
@@ -169,6 +169,11 @@ public class Order {
     return new Order(direction, property, true, nullHandling);
   }
 
+  protected void init() {
+    this.ignoreCase = true;
+    this.nullHandling = NullHandling.NATIVE;
+  }
+
   /**
    * Returns whether sorting for this property shall be ascending.
    *
@@ -299,45 +304,12 @@ public class Order {
     return new Order(this.direction, property, this.ignoreCase, this.nullHandling);
   }
 
-  public static class Builder {
+  public abstract static class OrderBuilder<C extends Order, B extends OrderBuilder<C, B>> {
 
-    private Direction direction;
-    private boolean ignoreCase;
-    private NullHandling nullHandling;
-    private String property;
-    private String subProperty;
-
-    public Order build() {
-      Order order = new Order(direction, ignoreCase, nullHandling, property);
-      if (subProperty != null) {
-        order.setSubProperty(subProperty);
-      }
-      return order;
-    }
-
-    public Builder direction(Direction direction) {
-      this.direction = direction;
-      return this;
-    }
-
-    public Builder ignoreCase(boolean ignoreCase) {
-      this.ignoreCase = ignoreCase;
-      return this;
-    }
-
-    public Builder nullHandling(NullHandling nullHandling) {
-      this.nullHandling = nullHandling;
-      return this;
-    }
-
-    public Builder property(String property) {
-      this.property = property;
-      return this;
-    }
-
-    public Builder subProperty(String property) {
-      this.subProperty = property;
-      return this;
+    public C build() {
+      C c = prebuild();
+      c.init();
+      return c;
     }
   }
 }
