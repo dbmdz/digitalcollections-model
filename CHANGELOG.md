@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **Breaking**: Refactored Builder classes into inner classes of their belonging model classes and made their API consistent
-- set ignore case as default for sorting order
+- **Breaking**: Set ignore case as default for sorting order
 
 ### Removed
 
