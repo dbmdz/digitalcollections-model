@@ -42,7 +42,7 @@ public class Order {
    * @param property must not be {@literal null} or empty.
    */
   public Order(Direction direction, String property) {
-    this(direction, property, (Boolean) null, null);
+    this(direction, property, DEFAULT_IGNORE_CASE, null);
   }
 
   /**
@@ -54,7 +54,7 @@ public class Order {
    * @param nullHandlingHint can be {@literal null}, will default to {@link NullHandling#NATIVE}.
    */
   public Order(Direction direction, String property, NullHandling nullHandlingHint) {
-    this(direction, property, (Boolean) null, nullHandlingHint);
+    this(direction, property, DEFAULT_IGNORE_CASE, nullHandlingHint);
   }
 
   /**
