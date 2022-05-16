@@ -15,7 +15,7 @@
 
   <properties>
     <version.commons-beanutils>1.9.4</version.commons-beanutils>
-    <version.jackson>2.13.2</version.jackson>
+    <version.jackson>2.13.3</version.jackson>
     <!-- FIXME: remove this extra property when there is a new common version of all jackson dependencies -->
     <version.jackson-databind>2.13.2.2</version.jackson-databind>
     <version.slf4j>1.7.36</version.slf4j>
