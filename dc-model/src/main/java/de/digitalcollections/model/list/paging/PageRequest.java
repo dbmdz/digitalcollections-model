@@ -13,7 +13,7 @@ import de.digitalcollections.model.list.sorting.Sorting;
  *   <li>pageSize: how many items on one page
  *   <li>sorting: container for sorting order of result list
  *   <li>filtering: container for filter criterias of result list
- *   <li>searchTerm: search term for simple query term to be searched for
+ *   <li>searchTerm: searchTerm term for simple query term to be searched for
  * </ul>
  */
 public class PageRequest extends ListRequest {
@@ -73,7 +73,7 @@ public class PageRequest extends ListRequest {
    * @param pageSize the size of the page to be returned, must not be less than one.
    * @param sorting can be {@literal null}
    * @param filtering contains list of filter criterias
-   * @param searchTerm search term for simple query term to be searched for
+   * @param searchTerm searchTerm term for simple query term to be searched for
    */
   public PageRequest(
       int pageNumber, int pageSize, Sorting sorting, Filtering filtering, String searchTerm) {
@@ -248,7 +248,7 @@ public class PageRequest extends ListRequest {
       return this;
     }
 
-    public Builder search(String searchTerm) {
+    public Builder searchTerm(String searchTerm) {
       this.searchTerm = searchTerm;
       return this;
     }
