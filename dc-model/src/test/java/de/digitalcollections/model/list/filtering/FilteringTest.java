@@ -61,7 +61,7 @@ public class FilteringTest<T extends Object> {
     assertEquals(fc.getValues().size(), values1.length);
 
     // ArrayList
-    ArrayList<String> values2 = new ArrayList<>();
+    ArrayList<String> values2 = new ArrayList<>(0);
     values2.add("eins");
     values2.add("zwei");
     values2.add("drei");

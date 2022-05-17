@@ -6,6 +6,10 @@ import java.util.UUID;
 /** Version of a {@link de.digitalcollections.model.identifiable.entity.DigitalObject} */
 public class Version {
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   private Date created;
   private String description;
   private String instanceKey;
@@ -104,10 +108,6 @@ public class Version {
 
   public void setVersionValue(int versionValue) {
     this.versionValue = versionValue;
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   @Override

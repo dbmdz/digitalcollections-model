@@ -24,17 +24,11 @@ public class Topic extends Entity implements INode<Topic> {
 
   private List<Entity> entities;
   private List<FileResource> fileResources;
-  private Node<Topic> node = new Node<>();
+  private Node<Topic> node;
 
   public Topic() {
     super();
-  }
-
-  @Override
-  protected void init() {
-    super.init();
-    this.entityType = EntityType.TOPIC;
-    node = new Node<>();
+    init();
   }
 
   public Topic(List<Topic> children) {
@@ -42,24 +36,26 @@ public class Topic extends Entity implements INode<Topic> {
     node.setChildren(children);
   }
 
+  @Override
   public void addChild(Topic child) {
     node.addChild(child);
   }
 
   public void addEntity(Entity entity) {
     if (getEntities() == null) {
-      setEntities(new ArrayList<>());
+      setEntities(new ArrayList<>(0));
     }
     getEntities().add(entity);
   }
 
   public void addFileResource(FileResource fileResource) {
     if (getFileResources() == null) {
-      setFileResources(new ArrayList<>());
+      setFileResources(new ArrayList<>(0));
     }
     getFileResources().add(fileResource);
   }
 
+  @Override
   public List<Topic> getChildren() {
     return node.getChildren();
   }
@@ -72,14 +68,19 @@ public class Topic extends Entity implements INode<Topic> {
     return fileResources;
   }
 
-  public void setFileResources(List<FileResource> fileResources) {
-    this.fileResources = fileResources;
-  }
-
+  @Override
   public Topic getParent() {
     return node.getParent();
   }
 
+  @Override
+  protected void init() {
+    super.init();
+    this.entityType = EntityType.TOPIC;
+    node = new Node<>();
+  }
+
+  @Override
   public void setChildren(List<Topic> children) {
     node.setChildren(children);
   }
@@ -88,6 +89,11 @@ public class Topic extends Entity implements INode<Topic> {
     this.entities = entities;
   }
 
+  public void setFileResources(List<FileResource> fileResources) {
+    this.fileResources = fileResources;
+  }
+
+  @Override
   public void setParent(Topic parent) {
     node.setParent(parent);
   }

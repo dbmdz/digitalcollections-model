@@ -27,6 +27,12 @@ public class Manifestation extends Entity {
 
   public Manifestation() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.entityType = EntityType.MANIFESTATION;
   }
 }

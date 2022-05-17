@@ -11,7 +11,7 @@ public class PagingInfo {
   private final int pageSize;
   private final long totalItems;
   private final int totalPages;
-  private String url;
+  private final String url;
 
   /**
    * PagingInfo
@@ -35,7 +35,7 @@ public class PagingInfo {
     this.maxPageItemsToDisplay = maxPageItemsToDisplay;
     this.pageSize = pageSize;
     this.url = url;
-    items = new ArrayList<>();
+    items = new ArrayList<>(0);
 
     currentNumber = currentPage + 1; // start from 1 to match page.page
 

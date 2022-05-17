@@ -22,6 +22,18 @@ public class StructuredContent {
     getContentBlocks().add(contentBlock);
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof StructuredContent)) {
+      return false;
+    }
+    StructuredContent that = (StructuredContent) o;
+    return Objects.equals(contentBlocks, that.contentBlocks);
+  }
+
   public List<ContentBlock> getContentBlocks() {
     return contentBlocks;
   }
@@ -30,7 +42,7 @@ public class StructuredContent {
     if (contentBlocks == null || contentBlocks.isEmpty()) {
       return null;
     }
-    List<ToCEntry> toc = new ArrayList<>();
+    List<ToCEntry> toc = new ArrayList<>(0);
     ToCEntry previousEntry = null;
     int previousLevel = 1;
     int index = -1;
@@ -97,24 +109,12 @@ public class StructuredContent {
     return toc;
   }
 
-  public void setContentBlocks(List<ContentBlock> contentBlocks) {
-    this.contentBlocks = contentBlocks;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (!(o instanceof StructuredContent)) {
-      return false;
-    }
-    StructuredContent that = (StructuredContent) o;
-    return Objects.equals(contentBlocks, that.contentBlocks);
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(contentBlocks) + Objects.hash("StructuredContent");
+  }
+
+  public void setContentBlocks(List<ContentBlock> contentBlocks) {
+    this.contentBlocks = contentBlocks;
   }
 }

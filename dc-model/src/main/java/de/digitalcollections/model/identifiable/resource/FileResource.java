@@ -35,13 +35,6 @@ public class FileResource extends Identifiable {
   }
 
   @Override
-  protected void init() {
-    super.init();
-    this.type = IdentifiableType.RESOURCE;
-    this.fileResourceType = FileResourceType.UNDEFINED;
-  }
-
-  @Override
   public boolean equals(Object o) {
     if (this == o) {
       return true;
@@ -61,20 +54,6 @@ public class FileResource extends Identifiable {
         && Objects.equals(license, that.license)
         && Objects.equals(mimeType, that.mimeType)
         && Objects.equals(uri, that.uri);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(
-        super.hashCode(),
-        fileResourceType,
-        filename,
-        httpBaseUrl,
-        license,
-        mimeType,
-        readonly,
-        sizeInBytes,
-        uri);
   }
 
   public FileResourceType getFileResourceType() {
@@ -138,6 +117,27 @@ public class FileResource extends Identifiable {
 
   public URI getUri() {
     return this.uri;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(
+        super.hashCode(),
+        fileResourceType,
+        filename,
+        httpBaseUrl,
+        license,
+        mimeType,
+        readonly,
+        sizeInBytes,
+        uri);
+  }
+
+  @Override
+  protected void init() {
+    super.init();
+    this.type = IdentifiableType.RESOURCE;
+    this.fileResourceType = FileResourceType.UNDEFINED;
   }
 
   public boolean isReadonly() {
@@ -226,18 +226,12 @@ public class FileResource extends Identifiable {
           C extends FileResource, B extends FileResourceBuilder<C, B>>
       extends IdentifiableBuilder<C, B> {
 
-    public B type(FileResourceType fileResourceType) {
-      this.fileResourceType = fileResourceType;
-      return self();
-    }
-
-    public B uri(URI uri) {
-      this.uri = uri;
-      return self();
-    }
-
-    public B uri(String uri) {
-      return uri(URI.create(uri));
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      setInternalReferences(c);
+      return c;
     }
 
     public B httpBaseUrl(URL httpBaseUrl) {
@@ -268,12 +262,18 @@ public class FileResource extends Identifiable {
       return self();
     }
 
-    @Override
-    public C build() {
-      C c = prebuild();
-      c.init();
-      setInternalReferences(c);
-      return c;
+    public B type(FileResourceType fileResourceType) {
+      this.fileResourceType = fileResourceType;
+      return self();
+    }
+
+    public B uri(URI uri) {
+      this.uri = uri;
+      return self();
+    }
+
+    public B uri(String uri) {
+      return uri(URI.create(uri));
     }
   }
 }

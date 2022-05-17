@@ -55,12 +55,6 @@ public class Item extends Entity {
     init();
   }
 
-  @Override
-  protected void init() {
-    super.init();
-    this.entityType = EntityType.ITEM;
-  }
-
   public Locale getLanguage() {
     return language;
   }
@@ -83,6 +77,12 @@ public class Item extends Entity {
 
   public String getVersion() {
     return version;
+  }
+
+  @Override
+  protected void init() {
+    super.init();
+    this.entityType = EntityType.ITEM;
   }
 
   /**

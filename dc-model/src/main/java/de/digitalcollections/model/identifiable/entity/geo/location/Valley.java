@@ -9,6 +9,12 @@ public class Valley extends GeoLocation {
 
   public Valley() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.geoLocationType = GeoLocationType.VALLEY;
   }
 }

@@ -37,19 +37,25 @@ import de.digitalcollections.model.identifiable.entity.EntityType;
  * choreographic notation, sound, image, object, movement, etc., or any combination of such forms."
  *
  * <table summary="FRBR Model">
- *   <tr><th>Domain class</th><th>Property label</th><th>Range class</th></tr>
- *   <tr><td>Work</td><td>is realized through</td><td>Expression</td></tr>
- *   <tr><td>Expression</td><td>is embodied in</td><td>Manifestation</td></tr>
- *   <tr><td>Manifestation</td><td>is exemplified by</td><td>Item</td></tr>
- *   <tr><td>Item</td><td>is exemplar of</td><td>Manifestation</td></tr>
- *   <tr><td>Manifestation</td><td>is embodiment of</td><td>Expression</td></tr>
- *   <tr><td>Expression</td><td>is realization of</td><td>Work</td></tr>
+ * <tr><th>Domain class</th><th>Property label</th><th>Range class</th></tr>
+ * <tr><td>Work</td><td>is realized through</td><td>Expression</td></tr>
+ * <tr><td>Expression</td><td>is embodied in</td><td>Manifestation</td></tr>
+ * <tr><td>Manifestation</td><td>is exemplified by</td><td>Item</td></tr>
+ * <tr><td>Item</td><td>is exemplar of</td><td>Manifestation</td></tr>
+ * <tr><td>Manifestation</td><td>is embodiment of</td><td>Expression</td></tr>
+ * <tr><td>Expression</td><td>is realization of</td><td>Work</td></tr>
  * </table>
  */
 public class Expression extends Entity {
 
   public Expression() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.entityType = EntityType.EXPRESSION;
   }
 }

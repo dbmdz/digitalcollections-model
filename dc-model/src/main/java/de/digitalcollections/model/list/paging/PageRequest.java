@@ -25,7 +25,10 @@ public class PageRequest extends ListRequest {
   private int pageNumber;
   private int pageSize;
 
-  public PageRequest() {}
+  public PageRequest() {
+    super();
+    init();
+  }
 
   /**
    * Creates a new {@link PageRequest}. Pages are zero indexed, thus providing 0 for {@code page}
@@ -78,6 +81,8 @@ public class PageRequest extends ListRequest {
   public PageRequest(
       int pageNumber, int pageSize, Sorting sorting, Filtering filtering, String searchTerm) {
     super(sorting, filtering, searchTerm);
+    init();
+
     if (pageNumber < 0) {
       throw new IllegalArgumentException("Page index must not be less than zero!");
     }
@@ -141,6 +146,7 @@ public class PageRequest extends ListRequest {
   public int getPageSize() {
     return pageSize;
   }
+
   /**
    * @return the search term to be searched for
    */
@@ -166,6 +172,11 @@ public class PageRequest extends ListRequest {
     return 31 * result
         + (null == sorting ? 0 : sorting.hashCode())
         + (null == filtering ? 0 : filtering.hashCode());
+  }
+
+  @Override
+  protected void init() {
+    super.init();
   }
 
   /**

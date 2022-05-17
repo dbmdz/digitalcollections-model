@@ -28,12 +28,11 @@ public class PageResponse<T> extends ListResponse<T> {
   }
 
   private String executedSearchTerm;
-
   protected PageRequest pageRequest;
 
   public PageResponse() {
     super();
-    this.pageRequest = null;
+    init();
   }
 
   /**
@@ -194,6 +193,12 @@ public class PageResponse<T> extends ListResponse<T> {
     return result;
   }
 
+  @Override
+  protected void init() {
+    super.init();
+    this.pageRequest = null;
+  }
+
   /**
    * Returns whether the current {@link PageResponse} is the first one.
    *
@@ -253,7 +258,7 @@ public class PageResponse<T> extends ListResponse<T> {
     String contentType = "UNKNOWN";
     List<T> unmodifiableContent = getContent();
 
-    if (unmodifiableContent.size() > 0) {
+    if (!unmodifiableContent.isEmpty()) {
       contentType = unmodifiableContent.get(0).getClass().getName();
     }
 
@@ -263,10 +268,10 @@ public class PageResponse<T> extends ListResponse<T> {
 
   public static class Builder<T, B extends PageResponse<T>, C extends Builder> {
 
-    B pageResponse;
-    PageRequest pageRequest = new PageRequest();
     List<FilterCriterion> filterCriteria;
     List<Order> orders;
+    PageRequest pageRequest = new PageRequest();
+    B pageResponse;
 
     public Builder() {
       pageResponse = (B) new PageResponse<T>();
@@ -297,14 +302,81 @@ public class PageResponse<T> extends ListResponse<T> {
       return pageResponse;
     }
 
-    public C withoutContent() {
-      pageResponse.setTotalElements(0);
-      pageResponse.setContent(List.of());
+    public C forAscendingOrderedField(String expression, String subfield) {
+      Order order =
+          Order.builder()
+              .direction(Direction.ASC)
+              .property(expression)
+              .subProperty(subfield)
+              .build();
+      if (orders == null) {
+        orders = new ArrayList<>(0);
+      }
+      orders.add(order);
       return (C) this;
     }
 
-    public C withExecutedSearchTerm(String executedSearchTerm) {
-      pageResponse.setExecutedSearchTerm(executedSearchTerm);
+    public C forAscendingOrderedField(String expression) {
+      return forAscendingOrderedField(expression, "");
+    }
+
+    public C forDescendingOrderedField(String expression, String subfield) {
+      Order order =
+          Order.builder()
+              .direction(Direction.DESC)
+              .property(expression)
+              .subProperty(subfield)
+              .build();
+      if (orders == null) {
+        orders = new ArrayList<>(0);
+      }
+      orders.add(order);
+      return (C) this;
+    }
+
+    public C forDescendingOrderedField(String expression) {
+      return forDescendingOrderedField(expression, "");
+    }
+
+    public C forEndDate(String expression, String endDate) {
+      FilterCriterion filterCriterionEnd =
+          new FilterCriterion(
+              expression, FilterOperation.GREATER_THAN_OR_NOT_SET, LocalDate.parse(endDate));
+      if (filterCriteria == null) {
+        filterCriteria = new ArrayList<>(0);
+      }
+      filterCriteria.add(filterCriterionEnd);
+      return (C) this;
+    }
+
+    public C forEqualPredicate(String expression, String predicate) {
+      if (filterCriteria == null) {
+        filterCriteria = new ArrayList<>(0);
+      }
+      filterCriteria.add(new FilterCriterion(expression, FilterOperation.EQUALS, predicate));
+      return (C) this;
+    }
+
+    public C forPageSize(int pageSize) {
+      pageRequest.setPageSize(pageSize);
+      return (C) this;
+    }
+
+    public C forRequestPage(int requestPage) {
+      pageRequest.setPageNumber(requestPage);
+      return (C) this;
+    }
+
+    public C forStartDate(String expression, String startDate) {
+      FilterCriterion filterCriterionStart =
+          new FilterCriterion(
+              expression,
+              FilterOperation.LESS_THAN_OR_EQUAL_TO_AND_SET,
+              LocalDate.parse(startDate));
+      if (filterCriteria == null) {
+        filterCriteria = new ArrayList<>(0);
+      }
+      filterCriteria.add(filterCriterionStart);
       return (C) this;
     }
 
@@ -318,86 +390,19 @@ public class PageResponse<T> extends ListResponse<T> {
       return (C) this;
     }
 
-    public C forRequestPage(int requestPage) {
-      pageRequest.setPageNumber(requestPage);
+    public C withExecutedSearchTerm(String executedSearchTerm) {
+      pageResponse.setExecutedSearchTerm(executedSearchTerm);
       return (C) this;
-    }
-
-    public C forPageSize(int pageSize) {
-      pageRequest.setPageSize(pageSize);
-      return (C) this;
-    }
-
-    public C forStartDate(String expression, String startDate) {
-      FilterCriterion filterCriterionStart =
-          new FilterCriterion(
-              expression,
-              FilterOperation.LESS_THAN_OR_EQUAL_TO_AND_SET,
-              LocalDate.parse(startDate));
-      if (filterCriteria == null) {
-        filterCriteria = new ArrayList<>();
-      }
-      filterCriteria.add(filterCriterionStart);
-      return (C) this;
-    }
-
-    public C forEndDate(String expression, String endDate) {
-      FilterCriterion filterCriterionEnd =
-          new FilterCriterion(
-              expression, FilterOperation.GREATER_THAN_OR_NOT_SET, LocalDate.parse(endDate));
-      if (filterCriteria == null) {
-        filterCriteria = new ArrayList<>();
-      }
-      filterCriteria.add(filterCriterionEnd);
-      return (C) this;
-    }
-
-    public C forAscendingOrderedField(String expression, String subfield) {
-      Order order =
-          Order.builder()
-              .direction(Direction.ASC)
-              .property(expression)
-              .subProperty(subfield)
-              .build();
-      if (orders == null) {
-        orders = new ArrayList<>();
-      }
-      orders.add(order);
-      return (C) this;
-    }
-
-    public C forDescendingOrderedField(String expression, String subfield) {
-      Order order =
-          Order.builder()
-              .direction(Direction.DESC)
-              .property(expression)
-              .subProperty(subfield)
-              .build();
-      if (orders == null) {
-        orders = new ArrayList<>();
-      }
-      orders.add(order);
-      return (C) this;
-    }
-
-    public C forEqualPredicate(String expression, String predicate) {
-      if (filterCriteria == null) {
-        filterCriteria = new ArrayList<>();
-      }
-      filterCriteria.add(new FilterCriterion(expression, FilterOperation.EQUALS, predicate));
-      return (C) this;
-    }
-
-    public C forAscendingOrderedField(String expression) {
-      return forAscendingOrderedField(expression, "");
-    }
-
-    public C forDescendingOrderedField(String expression) {
-      return forDescendingOrderedField(expression, "");
     }
 
     public C withTotalElements(long totalElements) {
       pageResponse.setTotalElements(totalElements);
+      return (C) this;
+    }
+
+    public C withoutContent() {
+      pageResponse.setTotalElements(0);
+      pageResponse.setContent(List.of());
       return (C) this;
     }
   }

@@ -5,6 +5,12 @@ public class Continent extends GeoLocation {
 
   public Continent() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.geoLocationType = GeoLocationType.CONTINENT;
   }
 }

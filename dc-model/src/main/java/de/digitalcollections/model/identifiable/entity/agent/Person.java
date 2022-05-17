@@ -32,18 +32,6 @@ public class Person extends Agent {
     init();
   }
 
-  @Override
-  protected void init() {
-    super.init();
-    this.entityType = EntityType.PERSON;
-    if (familyNames == null) {
-      familyNames = new ArrayList<>();
-    }
-    if (givenNames == null) {
-      this.givenNames = new ArrayList<>();
-    }
-  }
-
   public Person(LocalizedText label, Set<Identifier> identifiers) {
     this();
     this.label = label;
@@ -88,6 +76,18 @@ public class Person extends Agent {
 
   public TimeValue getTimeValueOfDeath() {
     return timeValueOfDeath;
+  }
+
+  @Override
+  protected void init() {
+    super.init();
+    this.entityType = EntityType.PERSON;
+    if (familyNames == null) {
+      familyNames = new ArrayList<>(0);
+    }
+    if (givenNames == null) {
+      this.givenNames = new ArrayList<>(0);
+    }
   }
 
   public void setDateOfBirth(LocalDate dateOfBirth) {

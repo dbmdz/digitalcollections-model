@@ -8,6 +8,12 @@ public class Canyon extends GeoLocation {
 
   public Canyon() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.geoLocationType = GeoLocationType.CANYON;
   }
 }

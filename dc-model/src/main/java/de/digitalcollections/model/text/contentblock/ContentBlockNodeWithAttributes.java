@@ -10,7 +10,7 @@ public abstract class ContentBlockNodeWithAttributes extends ContentBlockNode {
 
   public void addAttribute(String key, Object value) {
     if (attributes == null) {
-      attributes = new HashMap<>();
+      attributes = new HashMap<>(0);
     }
 
     attributes.put(key, value);

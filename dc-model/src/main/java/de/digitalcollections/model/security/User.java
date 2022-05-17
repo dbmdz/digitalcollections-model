@@ -20,7 +20,7 @@ public class User extends UniqueObject {
 
   private String passwordHash;
 
-  private List<Role> roles = new ArrayList<>();
+  private List<Role> roles = new ArrayList<>(0);
 
   public User() {}
 

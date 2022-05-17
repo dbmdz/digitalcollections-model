@@ -61,21 +61,6 @@ public class DigitalObject extends Entity {
     init();
   }
 
-  @Override
-  protected void init() {
-    super.init();
-    this.entityType = EntityType.DIGITAL_OBJECT;
-    if (fileResources == null) {
-      fileResources = new ArrayList<>(0);
-    }
-    if (linkedDataResources == null) {
-      linkedDataResources = new ArrayList<>(0);
-    }
-    if (renderingResources == null) {
-      renderingResources = new ArrayList<>(0);
-    }
-  }
-
   public void addFileResource(FileResource fileResource) {
     fileResources.add(fileResource);
   }
@@ -141,6 +126,21 @@ public class DigitalObject extends Entity {
    */
   public Version getVersion() {
     return version;
+  }
+
+  @Override
+  protected void init() {
+    super.init();
+    this.entityType = EntityType.DIGITAL_OBJECT;
+    if (fileResources == null) {
+      fileResources = new ArrayList<>(0);
+    }
+    if (linkedDataResources == null) {
+      linkedDataResources = new ArrayList<>(0);
+    }
+    if (renderingResources == null) {
+      renderingResources = new ArrayList<>(0);
+    }
   }
 
   /**
@@ -274,9 +274,17 @@ public class DigitalObject extends Entity {
           C extends DigitalObject, B extends DigitalObjectBuilder<C, B>>
       extends EntityBuilder<C, B> {
 
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      setInternalReferences(c);
+      return c;
+    }
+
     public B linkedDataFileResource(LinkedDataFileResource linkedDataFileResource) {
       if (linkedDataResources == null) {
-        linkedDataResources = new ArrayList<>();
+        linkedDataResources = new ArrayList<>(0);
       }
       linkedDataResources.add(linkedDataFileResource);
       return self();
@@ -284,17 +292,10 @@ public class DigitalObject extends Entity {
 
     public B renderingResource(FileResource renderingResource) {
       if (renderingResources == null) {
-        renderingResources = new ArrayList<>();
+        renderingResources = new ArrayList<>(0);
       }
       renderingResources.add(renderingResource);
       return self();
-    }
-
-    public C build() {
-      C c = prebuild();
-      c.init();
-      setInternalReferences(c);
-      return c;
     }
   }
 }

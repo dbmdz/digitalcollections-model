@@ -15,6 +15,10 @@ import java.util.UUID;
  */
 public class UrlAlias {
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   private LocalDateTime created;
   private LocalDateTime lastPublished;
   private boolean primary;
@@ -146,10 +150,6 @@ public class UrlAlias {
     this.website = website;
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
-
   public static class Builder {
 
     UrlAlias urlAlias = new UrlAlias();
@@ -163,13 +163,13 @@ public class UrlAlias {
       return this;
     }
 
-    public Builder lastPublished(String lastPublished) {
-      urlAlias.setLastPublished(LocalDateTime.parse(lastPublished));
+    public Builder isPrimary() {
+      urlAlias.setPrimary(true);
       return this;
     }
 
-    public Builder isPrimary() {
-      urlAlias.setPrimary(true);
+    public Builder lastPublished(String lastPublished) {
+      urlAlias.setLastPublished(LocalDateTime.parse(lastPublished));
       return this;
     }
 

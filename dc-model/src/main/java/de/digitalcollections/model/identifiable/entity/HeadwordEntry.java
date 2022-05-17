@@ -22,12 +22,7 @@ public class HeadwordEntry extends Article {
 
   public HeadwordEntry() {
     super();
-  }
-
-  @Override
-  protected void init() {
-    super.init();
-    this.entityType = EntityType.HEADWORD_ENTRY;
+    init();
   }
 
   public HeadwordEntry(Headword headword) {
@@ -37,6 +32,12 @@ public class HeadwordEntry extends Article {
 
   public Headword getHeadword() {
     return headword;
+  }
+
+  @Override
+  protected void init() {
+    super.init();
+    this.entityType = EntityType.HEADWORD_ENTRY;
   }
 
   public void setHeadword(Headword headword) {

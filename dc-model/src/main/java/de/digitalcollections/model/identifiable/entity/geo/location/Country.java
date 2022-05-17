@@ -9,6 +9,12 @@ public class Country extends GeoLocation {
 
   public Country() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.geoLocationType = GeoLocationType.COUNTRY;
   }
 }

@@ -19,7 +19,7 @@ import org.junit.jupiter.api.Test;
 public class PageResponseTest extends BaseJsonSerializationTest {
 
   private PageResponse<User> createObject() {
-    List<User> content = new ArrayList<>();
+    List<User> content = new ArrayList<>(0);
     User user = new User();
     user.setEmail("test@user.de");
     content.add(user);

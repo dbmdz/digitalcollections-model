@@ -31,6 +31,21 @@ public class CoordinateLocation {
     }
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof CoordinateLocation)) {
+      return false;
+    }
+    CoordinateLocation that = (CoordinateLocation) o;
+    return Double.compare(that.altitude, altitude) == 0
+        && Double.compare(that.latitude, latitude) == 0
+        && Double.compare(that.longitude, longitude) == 0
+        && Double.compare(that.precision, precision) == 0;
+  }
+
   /**
    * @return altitude in meters
    */
@@ -63,6 +78,11 @@ public class CoordinateLocation {
     return precision;
   }
 
+  @Override
+  public int hashCode() {
+    return Objects.hash(altitude, latitude, longitude, precision);
+  }
+
   public void setAltitude(double altitude) {
     this.altitude = altitude;
   }
@@ -91,25 +111,5 @@ public class CoordinateLocation {
         + ", precision="
         + precision
         + '}';
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (!(o instanceof CoordinateLocation)) {
-      return false;
-    }
-    CoordinateLocation that = (CoordinateLocation) o;
-    return Double.compare(that.altitude, altitude) == 0
-        && Double.compare(that.latitude, latitude) == 0
-        && Double.compare(that.longitude, longitude) == 0
-        && Double.compare(that.precision, precision) == 0;
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(altitude, latitude, longitude, precision);
   }
 }

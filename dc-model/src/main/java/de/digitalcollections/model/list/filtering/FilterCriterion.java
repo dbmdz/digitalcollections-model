@@ -25,6 +25,14 @@ import java.util.stream.Collectors;
  */
 public class FilterCriterion<T extends Object> {
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  public static Builder nativeBuilder() {
+    return new Builder().withNativeExpression(true);
+  }
+
   private String expression;
   private Comparable<?> maxValue;
   private Comparable<?> minValue;
@@ -33,7 +41,9 @@ public class FilterCriterion<T extends Object> {
   private Object value;
   private Collection<?> values;
 
-  public FilterCriterion() {}
+  public FilterCriterion() {
+    init();
+  }
 
   /**
    * Constructor for a filter criterion.
@@ -161,6 +171,24 @@ public class FilterCriterion<T extends Object> {
     this.values = other.values;
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof FilterCriterion)) {
+      return false;
+    }
+    FilterCriterion<?> that = (FilterCriterion<?>) o;
+    return nativeExpression == that.nativeExpression
+        && Objects.equals(expression, that.expression)
+        && Objects.equals(maxValue, that.maxValue)
+        && Objects.equals(minValue, that.minValue)
+        && operation == that.operation
+        && Objects.equals(value, that.value)
+        && Objects.equals(values, that.values);
+  }
+
   /**
    * @return expression being target of filter operation
    */
@@ -202,6 +230,13 @@ public class FilterCriterion<T extends Object> {
   public Collection<?> getValues() {
     return values;
   }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(expression, maxValue, minValue, nativeExpression, operation, value, values);
+  }
+
+  protected void init() {}
 
   public boolean isNativeExpression() {
     return nativeExpression;
@@ -290,59 +325,13 @@ public class FilterCriterion<T extends Object> {
     }
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (!(o instanceof FilterCriterion)) {
-      return false;
-    }
-    FilterCriterion<?> that = (FilterCriterion<?>) o;
-    return nativeExpression == that.nativeExpression
-        && Objects.equals(expression, that.expression)
-        && Objects.equals(maxValue, that.maxValue)
-        && Objects.equals(minValue, that.minValue)
-        && operation == that.operation
-        && Objects.equals(value, that.value)
-        && Objects.equals(values, that.values);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(expression, maxValue, minValue, nativeExpression, operation, value, values);
-  }
-
-  public static Builder builder() {
-    return new Builder();
-  }
-
-  public static Builder nativeBuilder() {
-    return new Builder().withNativeExpression(true);
-  }
-
   public static class Builder {
 
     private String expression;
+    private FilterCriterion filterCriterion;
     private boolean nativeExpression;
 
-    private FilterCriterion filterCriterion;
-
     Builder() {}
-
-    public Builder withExpression(String expression) {
-      this.expression = expression;
-      return this;
-    }
-
-    public Builder withNativeExpression(boolean nativeExpression) {
-      this.nativeExpression = nativeExpression;
-      return this;
-    }
-
-    public FilterCriterion build() {
-      return filterCriterion;
-    }
 
     /**
      * Completes construction of a filter criterion for a field with operation {@link
@@ -357,6 +346,10 @@ public class FilterCriterion<T extends Object> {
           new FilterCriterion(
               expression, false, FilterOperation.BETWEEN, null, minValue, maxValue, null);
       return this;
+    }
+
+    public FilterCriterion build() {
+      return filterCriterion;
     }
 
     /**
@@ -642,6 +635,16 @@ public class FilterCriterion<T extends Object> {
     public Builder startsWith(Object value) {
       filterCriterion =
           new FilterCriterion(expression, nativeExpression, FilterOperation.STARTS_WITH, value);
+      return this;
+    }
+
+    public Builder withExpression(String expression) {
+      this.expression = expression;
+      return this;
+    }
+
+    public Builder withNativeExpression(boolean nativeExpression) {
+      this.nativeExpression = nativeExpression;
       return this;
     }
   }

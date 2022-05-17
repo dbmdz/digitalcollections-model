@@ -13,14 +13,14 @@ public class HumanSettlement extends GeoLocation {
     init();
   }
 
+  public HumanSettlementType getHumanSettlementType() {
+    return humanSettlementType;
+  }
+
   @Override
   protected void init() {
     super.init();
     this.geoLocationType = GeoLocationType.HUMAN_SETTLEMENT;
-  }
-
-  public HumanSettlementType getHumanSettlementType() {
-    return humanSettlementType;
   }
 
   public void setHumanSettlementType(HumanSettlementType humanSettlementType) {

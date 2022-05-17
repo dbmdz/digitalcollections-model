@@ -12,11 +12,14 @@ public class Filtering {
     return new Builder();
   }
 
-  private List<FilterCriterion> filterCriteria = new ArrayList<>();
+  private List<FilterCriterion> filterCriteria;
 
-  public Filtering() {}
+  public Filtering() {
+    init();
+  }
 
   public Filtering(List<FilterCriterion> filterCriteria) {
+    this();
     this.filterCriteria = filterCriteria;
   }
 
@@ -59,6 +62,18 @@ public class Filtering {
     filterCriteria.add(filterCriterionWithExpression);
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Filtering)) {
+      return false;
+    }
+    Filtering filtering = (Filtering) o;
+    return Objects.equals(filterCriteria, filtering.filterCriteria);
+  }
+
   /**
    * @return returns all filter criterias
    */
@@ -79,6 +94,15 @@ public class Filtering {
         .orElse(null);
   }
 
+  @Override
+  public int hashCode() {
+    return Objects.hash(filterCriteria) + Objects.hash("Filtering");
+  }
+
+  protected void init() {
+    this.filterCriteria = new ArrayList<>(0);
+  }
+
   public Iterator<FilterCriterion> iterator() {
     return filterCriteria.iterator();
   }
@@ -88,23 +112,6 @@ public class Filtering {
    */
   public void setFilterCriteria(List<FilterCriterion> filterCriteria) {
     this.filterCriteria = filterCriteria;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (!(o instanceof Filtering)) {
-      return false;
-    }
-    Filtering filtering = (Filtering) o;
-    return Objects.equals(filterCriteria, filtering.filterCriteria);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(filterCriteria) + Objects.hash("Filtering");
   }
 
   @Override
@@ -118,7 +125,7 @@ public class Filtering {
    */
   public static class Builder {
 
-    private final List<FilterCriterion> filterCriterias = new ArrayList<>();
+    private final List<FilterCriterion> filterCriterias = new ArrayList<>(0);
 
     /**
      * Method needed for mapping URL filter param to a filter criterion. only param value available

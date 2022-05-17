@@ -12,6 +12,10 @@ import java.util.UUID;
  */
 public class RenderingTemplate extends UniqueObject {
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   private LocalizedText description;
   private LocalizedText label;
   private String name;
@@ -40,26 +44,12 @@ public class RenderingTemplate extends UniqueObject {
     this.name = name;
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
-
   public static class Builder {
 
     private RenderingTemplate renderingTemplate = new RenderingTemplate();
 
     public RenderingTemplate build() {
       return renderingTemplate;
-    }
-
-    public Builder name(String name) {
-      renderingTemplate.setName(name);
-      return this;
-    }
-
-    public Builder uuid(String uuid) {
-      renderingTemplate.setUuid(UUID.fromString(uuid));
-      return this;
     }
 
     public Builder description(Locale locale, String text) {
@@ -79,6 +69,16 @@ public class RenderingTemplate extends UniqueObject {
       }
       label.setText(locale, localizedLabel);
       renderingTemplate.setLabel(label);
+      return this;
+    }
+
+    public Builder name(String name) {
+      renderingTemplate.setName(name);
+      return this;
+    }
+
+    public Builder uuid(String uuid) {
+      renderingTemplate.setUuid(UUID.fromString(uuid));
       return this;
     }
   }

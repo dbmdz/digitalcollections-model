@@ -3,37 +3,27 @@ package de.digitalcollections.model.text.contentblock;
 /** A paragraph (can contain text and other content blocks). */
 public class Paragraph extends ContentBlockNode {
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   public Paragraph() {}
 
   public Paragraph(String text) {
     addContentBlock(new Text(text));
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
-
   public static class Builder {
 
     Paragraph paragraph = new Paragraph();
 
-    public Builder addHeading(int level, String text, String... marks) {
-      paragraph.addContentBlock(new Heading(level, text));
-      return this;
-    }
-
-    public Builder addText(String text) {
-      paragraph.addContentBlock(new Text(text));
-      return this;
-    }
-
-    public Builder addText(String text, String... marks) {
-      paragraph.addContentBlock(new Text(text, marks));
-      return this;
-    }
-
     public Builder addHardBreak() {
       paragraph.addContentBlock(new HardBreak());
+      return this;
+    }
+
+    public Builder addHeading(int level, String text, String... marks) {
+      paragraph.addContentBlock(new Heading(level, text));
       return this;
     }
 
@@ -53,6 +43,16 @@ public class Paragraph extends ContentBlockNode {
       mark.addAttribute("title", title);
       linkText.addMark(mark);
       paragraph.addContentBlock(linkText);
+      return this;
+    }
+
+    public Builder addText(String text) {
+      paragraph.addContentBlock(new Text(text));
+      return this;
+    }
+
+    public Builder addText(String text, String... marks) {
+      paragraph.addContentBlock(new Text(text, marks));
       return this;
     }
 

@@ -10,7 +10,7 @@ public abstract class ContentBlockNode extends ContentBlock {
 
   public void addContentBlock(ContentBlock contentBlock) {
     if (contentBlocks == null) {
-      contentBlocks = new ArrayList<>();
+      contentBlocks = new ArrayList<>(0);
     }
 
     contentBlocks.add(contentBlock);

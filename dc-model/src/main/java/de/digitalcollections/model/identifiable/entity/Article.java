@@ -22,13 +22,6 @@ public class Article extends Entity {
     init();
   }
 
-  @Override
-  protected void init() {
-    super.init();
-    this.entityType = EntityType.ARTICLE;
-    creators = new ArrayList<>();
-  }
-
   public List<Agent> getCreators() {
     return creators;
   }
@@ -43,6 +36,13 @@ public class Article extends Entity {
 
   public TimeValue getTimeValuePublished() {
     return timeValuePublished;
+  }
+
+  @Override
+  protected void init() {
+    super.init();
+    this.entityType = EntityType.ARTICLE;
+    creators = new ArrayList<>(0);
   }
 
   public void setCreators(List<Agent> creators) {

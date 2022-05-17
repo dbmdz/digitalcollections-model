@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class BreadcrumbNavigation {
 
-  private List<BreadcrumbNode> navigationItems = new ArrayList<>();
+  private List<BreadcrumbNode> navigationItems = new ArrayList<>(0);
 
   public BreadcrumbNavigation() {}
 

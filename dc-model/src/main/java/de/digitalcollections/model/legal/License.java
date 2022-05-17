@@ -25,9 +25,25 @@ public class License extends UniqueObject {
   }
 
   public License(String acronym, LocalizedText label, URL url) {
+    this();
     this.acronym = acronym;
     this.label = label;
     this.url = url;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof License)) {
+      return false;
+    }
+    License license = (License) o;
+    return Objects.equals(acronym, license.acronym)
+        && Objects.equals(label, license.label)
+        && Objects.equals(url, license.url)
+        && Objects.equals(uuid, license.uuid);
   }
 
   /**
@@ -52,6 +68,11 @@ public class License extends UniqueObject {
    */
   public URL getUrl() {
     return url;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(acronym, label, url, uuid);
   }
 
   public void setAcronym(String acronym) {
@@ -85,28 +106,23 @@ public class License extends UniqueObject {
         + '}';
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (!(o instanceof License)) {
-      return false;
-    }
-    License license = (License) o;
-    return Objects.equals(acronym, license.acronym)
-        && Objects.equals(label, license.label)
-        && Objects.equals(url, license.url)
-        && Objects.equals(uuid, license.uuid);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(acronym, label, url, uuid);
-  }
-
   public abstract static class LicenseBuilder<C extends License, B extends LicenseBuilder<C, B>>
       extends UniqueObjectBuilder<C, B> {
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      return c;
+    }
+
+    public B label(Locale locale, String localizedLabel) {
+      if (label == null) {
+        label = new LocalizedText();
+      }
+      label.setText(locale, localizedLabel);
+      return self();
+    }
 
     public B url(String url) {
       if (url == null) {
@@ -119,21 +135,6 @@ public class License extends UniqueObject {
         throw new RuntimeException("Cannot set url=" + url + ": " + e, e);
       }
       return self();
-    }
-
-    public B label(Locale locale, String localizedLabel) {
-      if (label == null) {
-        label = new LocalizedText();
-      }
-      label.setText(locale, localizedLabel);
-      return self();
-    }
-
-    @Override
-    public C build() {
-      C c = prebuild();
-      c.init();
-      return c;
     }
   }
 }

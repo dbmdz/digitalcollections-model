@@ -16,9 +16,6 @@ public abstract class UniqueObject {
     init();
   }
 
-  /** Use to initialize member variables, used by default constructor and builder */
-  protected void init() {}
-
   /**
    * @return the creation date of the object
    */
@@ -39,6 +36,9 @@ public abstract class UniqueObject {
   public UUID getUuid() {
     return uuid;
   }
+
+  /** Use to initialize member variables, used by default constructor and builder */
+  protected void init() {}
 
   /**
    * @param created the creation date of the object
@@ -63,6 +63,13 @@ public abstract class UniqueObject {
 
   public abstract static class UniqueObjectBuilder<
       C extends UniqueObject, B extends UniqueObjectBuilder<C, B>> {
+
+    public C build() {
+      C c = prebuild();
+      c.init();
+      return c;
+    }
+
     public B created(String created) {
       this.created = LocalDateTime.parse(created);
       return self();
@@ -71,6 +78,10 @@ public abstract class UniqueObject {
     public B created(LocalDateTime created) {
       this.created = created;
       return self();
+    }
+
+    public UUID getUuid() {
+      return uuid;
     }
 
     public B lastModified(String lastModified) {
@@ -96,16 +107,6 @@ public abstract class UniqueObject {
     public B uuid(UUID uuid) {
       this.uuid = uuid;
       return self();
-    }
-
-    public UUID getUuid() {
-      return uuid;
-    }
-
-    public C build() {
-      C c = prebuild();
-      c.init();
-      return c;
     }
   }
 }
