@@ -13,54 +13,42 @@
   <artifactId>dc-model-jackson</artifactId>
   <packaging>jar</packaging>
 
-  <properties>
-    <version.commons-beanutils>1.9.4</version.commons-beanutils>
-    <version.jackson>2.13.2</version.jackson>
-    <!-- FIXME: remove this extra property when there is a new common version of all jackson dependencies -->
-    <version.jackson-databind>2.13.2.2</version.jackson-databind>
-    <version.slf4j>1.7.36</version.slf4j>
-    <version.wdtk-datamodel>0.13.2</version.wdtk-datamodel>
-
-    <!-- Plugin versions -->
-    <version.maven-resources-plugin>3.2.0</version.maven-resources-plugin>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>${version.guava}</version>
+      <version>31.1-jre</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>
-      <version>${version.jackson}</version>
+      <version>2.13.2</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
-      <version>${version.jackson}</version>
+      <version>2.13.2</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>${version.jackson-databind}</version>
+      <version>2.13.2.2</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.datatype</groupId>
       <artifactId>jackson-datatype-jdk8</artifactId>
-      <version>${version.jackson}</version>
+      <version>2.13.2</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.datatype</groupId>
       <artifactId>jackson-datatype-jsr310</artifactId>
-      <version>${version.jackson}</version>
+      <version>2.13.2</version>
     </dependency>
     <dependency>
       <groupId>commons-beanutils</groupId>
       <artifactId>commons-beanutils</artifactId>
-      <version>${version.commons-beanutils}</version>
+      <version>1.9.4</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -81,12 +69,12 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>${version.slf4j}</version>
+      <version>1.7.36</version>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
-      <version>${version.slf4j}</version>
+      <version>1.7.36</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -113,7 +101,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
-        <version>${version.maven-resources-plugin}</version>
+        <version>3.2.0</version>
         <configuration>
           <delimiters>
             <delimiter>@</delimiter>

@@ -1,14 +1,14 @@
 package de.digitalcollections.model.view;
 
+import de.digitalcollections.model.identifiable.resource.ImageFileResource;
 import de.digitalcollections.model.text.LocalizedText;
 import java.net.URL;
 import java.util.Objects;
 
 /**
  * Contains hints for rendering a preview image, e.g. in a webpage as HTML.<br>
- * These are related to an {@link
- * de.digitalcollections.model.api.identifiable.resource.ImageFileResource} but there may exist more
- * than one rendering hints container, each per individual use case.<br>
+ * These are related to an {@link ImageFileResource} but there may exist more than one rendering
+ * hints container, each per individual use case.<br>
  * This makes it possible to use/embed an image in several projects and locations, each time
  * rendered individually.<br>
  * The rendering hints therefore are kept separate in an own rendering hints object and have to be
@@ -17,11 +17,9 @@ import java.util.Objects;
  * <p>Example:<br>
  * A person object has a portrait photo as preview image. On the detail page of this person (= use
  * case) specific caption and link are defined.<br>
- * So at the person storage an {@link
- * de.digitalcollections.model.api.identifiable.resource.ImageFileResource} is defined as preview
- * image and individual filled rendering hints are stored beside at the person object (and not
- * "centrally" at the reusable {@link
- * de.digitalcollections.model.api.identifiable.resource.ImageFileResource}).
+ * So at the person storage an {@link ImageFileResource} is defined as preview image and individual
+ * filled rendering hints are stored beside at the person object (and not "centrally" at the
+ * reusable {@link ImageFileResource}).
  *
  * <p>This makes it possible to reuse an image in different use cases but with individual alt-text,
  * caption, (mouseover) title and link.

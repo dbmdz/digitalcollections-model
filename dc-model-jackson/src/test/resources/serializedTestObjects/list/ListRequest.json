@@ -7,10 +7,11 @@
       "value" : "A"
     } ]
   },
+  "searchTerm" : "hello",
   "sorting" : {
     "orders" : [ {
       "direction" : "ASC",
-      "ignoreCase" : false,
+      "ignoreCase" : true,
       "nullHandling" : "NATIVE",
       "property" : "label"
     } ]

@@ -60,21 +60,6 @@
     <maven.compiler.source>11</maven.compiler.source> <!-- default configuration property name used by maven compiler plugin -->
     <maven.compiler.target>11</maven.compiler.target> <!-- default configuration property name used by maven compiler plugin -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> <!-- default configuration property name used by maven compiler plugin -->
-
-    <version.assertj>3.22.0</version.assertj>
-    <version.guava>31.1-jre</version.guava>
-    <version.junit>5.8.2</version.junit>
-    <version.wdtk-datamodel>0.13.2</version.wdtk-datamodel>
-
-    <!-- Plugin versions -->
-    <version.jacoco-maven-plugin>0.8.8</version.jacoco-maven-plugin>
-    <version.maven-compiler-plugin>3.10.1</version.maven-compiler-plugin>
-    <version.maven-fmt-plugin>2.13</version.maven-fmt-plugin>
-    <version.maven-gpg-plugin>3.0.1</version.maven-gpg-plugin>
-    <version.maven-javadoc-plugin>3.4.0</version.maven-javadoc-plugin>
-    <version.maven-source-plugin>3.2.1</version.maven-source-plugin>
-    <version.maven-surefire-plugin>3.0.0-M6</version.maven-surefire-plugin>
-    <version.nexus-staging-maven-plugin>1.6.13</version.nexus-staging-maven-plugin>
   </properties>
 
   <dependencyManagement>
@@ -82,12 +67,12 @@
       <dependency>
         <groupId>org.assertj</groupId>
         <artifactId>assertj-core</artifactId>
-        <version>${version.assertj}</version>
+        <version>3.22.0</version>
       </dependency>
       <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter</artifactId>
-        <version>${version.junit}</version>
+        <version>5.8.2</version>
       </dependency>
       <dependency>
         <groupId>org.projectlombok</groupId>
@@ -98,7 +83,7 @@
       <dependency>
         <groupId>org.wikidata.wdtk</groupId>
         <artifactId>wdtk-datamodel</artifactId>
-        <version>${version.wdtk-datamodel}</version>
+        <version>0.13.2</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -145,7 +130,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
-        <version>${version.maven-source-plugin}</version>
+        <version>3.2.1</version>
         <executions>
           <execution>
             <id>attach-sources</id>
@@ -158,12 +143,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>${version.maven-surefire-plugin}</version>
+        <version>3.0.0-M6</version>
       </plugin>
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>${version.jacoco-maven-plugin}</version>
+        <version>0.8.8</version>
         <executions>
           <execution>
             <id>pre-unit-test</id>
@@ -182,7 +167,7 @@
       <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>nexus-staging-maven-plugin</artifactId>
-        <version>${version.nexus-staging-maven-plugin}</version>
+        <version>1.6.13</version>
         <extensions>true</extensions>
         <configuration>
           <serverId>ossrh</serverId>
@@ -220,7 +205,7 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>${version.jacoco-maven-plugin}</version>
+        <version>0.8.8</version>
       </plugin>
     </plugins>
   </reporting>
@@ -233,7 +218,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>${version.maven-gpg-plugin}</version>
+            <version>3.0.1</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>
