@@ -62,7 +62,9 @@ public class Work extends Entity {
   protected void init() {
     super.init();
     this.entityType = EntityType.WORK;
-    this.creators = new ArrayList<>(0);
+    if (creators == null) {
+      this.creators = new ArrayList<>(0);
+    }
   }
 
   public void setCreators(List<Agent> creators) {

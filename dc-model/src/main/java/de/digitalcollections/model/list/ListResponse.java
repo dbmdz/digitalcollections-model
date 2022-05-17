@@ -106,9 +106,9 @@ public class ListResponse<T> implements Iterable<T> {
   }
 
   protected void init() {
-    this.content = new ArrayList<>(0);
-    this.listRequest = null;
-    this.total = 0;
+    if (content == null) {
+      this.content = new ArrayList<>(0);
+    }
   }
 
   @Override

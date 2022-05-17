@@ -163,9 +163,15 @@ public class Order {
   }
 
   protected void init() {
-    this.direction = DEFAULT_DIRECTION;
-    this.ignoreCase = DEFAULT_IGNORE_CASE;
-    this.nullHandling = DEFAULT_NULL_HANDLING;
+    if (direction == null) {
+      this.direction = DEFAULT_DIRECTION;
+    }
+    if (ignoreCase == null) {
+      this.ignoreCase = DEFAULT_IGNORE_CASE;
+    }
+    if (nullHandling == null) {
+      this.nullHandling = DEFAULT_NULL_HANDLING;
+    }
   }
 
   /**
