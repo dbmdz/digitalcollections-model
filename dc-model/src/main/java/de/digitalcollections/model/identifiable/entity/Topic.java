@@ -77,7 +77,9 @@ public class Topic extends Entity implements INode<Topic> {
   protected void init() {
     super.init();
     this.entityType = EntityType.TOPIC;
-    node = new Node<>();
+    if (node == null) {
+      node = new Node<>();
+    }
   }
 
   @Override

@@ -42,7 +42,9 @@ public class Article extends Entity {
   protected void init() {
     super.init();
     this.entityType = EntityType.ARTICLE;
-    creators = new ArrayList<>(0);
+    if (creators == null) {
+      creators = new ArrayList<>(0);
+    }
   }
 
   public void setCreators(List<Agent> creators) {

@@ -196,7 +196,6 @@ public class PageResponse<T> extends ListResponse<T> {
   @Override
   protected void init() {
     super.init();
-    this.pageRequest = null;
   }
 
   /**

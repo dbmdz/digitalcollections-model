@@ -100,7 +100,9 @@ public class Filtering {
   }
 
   protected void init() {
-    this.filterCriteria = new ArrayList<>(0);
+    if (filterCriteria == null) {
+      this.filterCriteria = new ArrayList<>(0);
+    }
   }
 
   public Iterator<FilterCriterion> iterator() {

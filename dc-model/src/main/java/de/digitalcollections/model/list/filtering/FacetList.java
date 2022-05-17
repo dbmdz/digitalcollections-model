@@ -25,7 +25,9 @@ public class FacetList {
   }
 
   protected void init() {
-    this.items = new LinkedList<>();
+    if (items == null) {
+      this.items = new LinkedList<>();
+    }
   }
 
   public void setItems(List<FacetListItem> items) {
