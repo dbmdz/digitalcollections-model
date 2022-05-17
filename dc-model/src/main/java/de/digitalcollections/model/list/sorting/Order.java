@@ -27,11 +27,7 @@ public class Order {
 
   public Order(
       Direction direction, boolean ignoreCase, NullHandling nullHandling, String property) {
-    this.direction = direction;
-    this.ignoreCase = ignoreCase;
-    this.nullHandling = nullHandling;
-    this.property = property;
-    init();
+    this(direction, property, ignoreCase, nullHandling);
   }
 
   /**
@@ -79,15 +75,20 @@ public class Order {
    */
   private Order(
       Direction direction, String property, boolean ignoreCase, NullHandling nullHandling) {
+    init();
+    if (direction != null) {
+      this.direction = direction;
+    }
+    this.ignoreCase = ignoreCase;
+    if (nullHandling != null) {
+      this.nullHandling = nullHandling;
+    }
+    this.property = property;
+
     if (property == null || property.isEmpty() || property.trim().isEmpty()) {
       throw new IllegalArgumentException("Property must not null or empty!");
     }
-
-    this.direction = direction;
     this.property = property;
-    this.ignoreCase = ignoreCase;
-    this.nullHandling = nullHandling;
-    init();
   }
 
   @Override
@@ -162,15 +163,9 @@ public class Order {
   }
 
   protected void init() {
-    if (direction == null) {
-      this.direction = DEFAULT_DIRECTION;
-    }
-    if (ignoreCase == null) {
-      this.ignoreCase = DEFAULT_IGNORE_CASE;
-    }
-    if (nullHandling == null) {
-      this.nullHandling = DEFAULT_NULL_HANDLING;
-    }
+    this.direction = DEFAULT_DIRECTION;
+    this.ignoreCase = DEFAULT_IGNORE_CASE;
+    this.nullHandling = DEFAULT_NULL_HANDLING;
   }
 
   /**

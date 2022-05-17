@@ -17,15 +17,15 @@ public class FamilyName extends Identifiable {
     init();
   }
 
-  @Override
-  protected void init() {
-    super.init();
-    this.type = IdentifiableType.RESOURCE;
-  }
-
   public FamilyName(LocalizedText label, Set<Identifier> identifiers) {
     this();
     this.label = label;
     getIdentifiers().addAll(identifiers);
+  }
+
+  @Override
+  protected void init() {
+    super.init();
+    this.type = IdentifiableType.RESOURCE;
   }
 }

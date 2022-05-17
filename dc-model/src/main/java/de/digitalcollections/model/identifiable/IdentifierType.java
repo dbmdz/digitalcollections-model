@@ -10,6 +10,9 @@ import java.util.UUID;
  * identifiers.
  */
 public class IdentifierType extends UniqueObject {
+  public static Builder builder() {
+    return new Builder();
+  }
 
   private String label;
   private String namespace;
@@ -37,10 +40,6 @@ public class IdentifierType extends UniqueObject {
 
   public void setPattern(String pattern) {
     this.pattern = pattern;
-  }
-
-  public static Builder builder() {
-    return new Builder();
   }
 
   public static class Builder {

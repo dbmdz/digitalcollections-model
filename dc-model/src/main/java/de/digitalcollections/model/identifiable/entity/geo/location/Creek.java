@@ -5,6 +5,12 @@ public class Creek extends GeoLocation {
 
   public Creek() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.geoLocationType = GeoLocationType.CREEK;
   }
 }

@@ -8,7 +8,7 @@ public class Mountain extends GeoLocation {
 
   public Mountain() {
     super();
-    this.geoLocationType = GeoLocationType.MOUNTAIN;
+    init();
   }
 
   /**
@@ -16,6 +16,12 @@ public class Mountain extends GeoLocation {
    */
   public int getHeight() {
     return (int) getCustomAttribute("height");
+  }
+
+  @Override
+  protected void init() {
+    super.init();
+    this.geoLocationType = GeoLocationType.MOUNTAIN;
   }
 
   /**

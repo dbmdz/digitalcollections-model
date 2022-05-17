@@ -49,9 +49,18 @@ public class LinkedDataFileResource extends FileResource {
   }
 
   @Override
-  protected void init() {
-    super.init();
-    this.fileResourceType = FileResourceType.LINKED_DATA;
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof LinkedDataFileResource)) {
+      return false;
+    }
+    if (!super.equals(o)) {
+      return false;
+    }
+    LinkedDataFileResource that = (LinkedDataFileResource) o;
+    return Objects.equals(context, that.context) && Objects.equals(objectType, that.objectType);
   }
 
   /**
@@ -69,6 +78,17 @@ public class LinkedDataFileResource extends FileResource {
     return objectType;
   }
 
+  @Override
+  public int hashCode() {
+    return Objects.hash(super.hashCode(), context, objectType);
+  }
+
+  @Override
+  protected void init() {
+    super.init();
+    this.fileResourceType = FileResourceType.LINKED_DATA;
+  }
+
   /**
    * @param context set the linked data context to given context
    */
@@ -83,38 +103,9 @@ public class LinkedDataFileResource extends FileResource {
     this.objectType = objectType;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (!(o instanceof LinkedDataFileResource)) {
-      return false;
-    }
-    if (!super.equals(o)) {
-      return false;
-    }
-    LinkedDataFileResource that = (LinkedDataFileResource) o;
-    return Objects.equals(context, that.context) && Objects.equals(objectType, that.objectType);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(super.hashCode(), context, objectType);
-  }
-
   public abstract static class LinkedDataFileResourceBuilder<
           C extends LinkedDataFileResource, B extends LinkedDataFileResourceBuilder<C, B>>
       extends FileResourceBuilder<C, B> {
-
-    public B context(String context) {
-      this.context = URI.create(context);
-      return self();
-    }
-
-    public B uri(String uri) {
-      return this.uri(URI.create(uri));
-    }
 
     @Override
     public C build() {
@@ -122,6 +113,16 @@ public class LinkedDataFileResource extends FileResource {
       c.init();
       setInternalReferences(c);
       return c;
+    }
+
+    public B context(String context) {
+      this.context = URI.create(context);
+      return self();
+    }
+
+    @Override
+    public B uri(String uri) {
+      return this.uri(URI.create(uri));
     }
   }
 }

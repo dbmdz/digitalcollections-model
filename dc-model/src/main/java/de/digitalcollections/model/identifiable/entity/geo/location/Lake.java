@@ -8,6 +8,12 @@ public class Lake extends GeoLocation {
 
   public Lake() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.geoLocationType = GeoLocationType.LAKE;
   }
 }

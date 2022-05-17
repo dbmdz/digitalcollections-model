@@ -56,23 +56,6 @@ public enum FilterOperation {
   SET("set", OperandCount.NO_VALUE),
   STARTS_WITH("stw", OperandCount.SINGLEVALUE);
 
-  private final String value;
-  private final OperandCount opCount;
-
-  public OperandCount getOperandCount() {
-    return opCount;
-  }
-
-  FilterOperation(String value, OperandCount opCount) {
-    this.value = value;
-    this.opCount = opCount;
-  }
-
-  @Override
-  public String toString() {
-    return String.valueOf(value);
-  }
-
   public static FilterOperation fromValue(String value) {
     for (FilterOperation op : FilterOperation.values()) {
 
@@ -82,6 +65,24 @@ public enum FilterOperation {
       }
     }
     return null;
+  }
+
+  private final OperandCount opCount;
+
+  private final String value;
+
+  FilterOperation(String value, OperandCount opCount) {
+    this.value = value;
+    this.opCount = opCount;
+  }
+
+  public OperandCount getOperandCount() {
+    return opCount;
+  }
+
+  @Override
+  public String toString() {
+    return String.valueOf(value);
   }
 
   public enum OperandCount {

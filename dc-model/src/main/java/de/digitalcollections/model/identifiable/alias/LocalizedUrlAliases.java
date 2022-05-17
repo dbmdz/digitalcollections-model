@@ -39,7 +39,10 @@ public class LocalizedUrlAliases extends HashMap<Locale, List<UrlAlias>> {
     }
   }
 
-  /** Check whether the passed {@code UrlAlias} is contained in any of the locale specific lists. */
+  /**
+   * @param urlAlias url alias to be checked
+   * @return true if the passed {@code UrlAlias} is contained in any of the locale specific lists
+   */
   public boolean containsUrlAlias(UrlAlias urlAlias) {
     return this.flatten().contains(urlAlias);
   }
@@ -58,9 +61,7 @@ public class LocalizedUrlAliases extends HashMap<Locale, List<UrlAlias>> {
         return false;
       }
       return flatten().containsAll(other.flatten());
-    } catch (NullPointerException unused) {
-      return false;
-    } catch (ClassCastException unused) {
+    } catch (NullPointerException | ClassCastException unused) {
       return false;
     }
   }

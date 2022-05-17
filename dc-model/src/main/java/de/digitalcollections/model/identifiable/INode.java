@@ -9,7 +9,7 @@ public interface INode<N extends Identifiable> {
 
   default void addChild(N child) {
     if (getChildren() == null) {
-      setChildren(new ArrayList<>());
+      setChildren(new ArrayList<>(0));
     }
     getChildren().add(child);
   }

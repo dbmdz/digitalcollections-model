@@ -5,6 +5,12 @@ public class River extends GeoLocation {
 
   public River() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.geoLocationType = GeoLocationType.RIVER;
   }
 }

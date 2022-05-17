@@ -10,6 +10,20 @@ import org.junit.jupiter.api.Test;
 @DisplayName("The FileResource")
 public class FileResourceTest {
 
+  @Test
+  public void testGetFilenameAndExtensionFromUri() {
+    FileResource instance = new FileResource();
+    instance.setUri(
+        URI.create(
+            "https://commons.wikimedia.org/wiki/Special:FilePath/DFG-logo-blau.svg?width=270"));
+    String result = instance.getFilename();
+    String expResult = "DFG-logo-blau.svg";
+    assertThat(result).isEqualTo(expResult);
+
+    String extension = instance.getFilenameExtension();
+    assertThat(extension).isEqualTo("svg");
+  }
+
   /** Test of getFilenameExtension method, of class FileResource. */
   @Test
   public void testGetFilenameExtension() {
@@ -62,15 +76,6 @@ public class FileResourceTest {
   }
 
   @Test
-  public void testToString() {
-    FileResource instance = new ImageFileResource();
-    instance.setFilename("image001.xyz123");
-    instance.setMimeType(MimeType.fromExtension("xyz123"));
-    String result = instance.toString();
-    assertThat(result).isNotEqualTo(null);
-  }
-
-  @Test
   public void testGetFilenameFromUri() {
     FileResource instance = new FileResource();
     instance.setUri(URI.create("http://localhost/iiif/some/other/default.jpg"));
@@ -80,16 +85,11 @@ public class FileResourceTest {
   }
 
   @Test
-  public void testGetFilenameAndExtensionFromUri() {
-    FileResource instance = new FileResource();
-    instance.setUri(
-        URI.create(
-            "https://commons.wikimedia.org/wiki/Special:FilePath/DFG-logo-blau.svg?width=270"));
-    String result = instance.getFilename();
-    String expResult = "DFG-logo-blau.svg";
-    assertThat(result).isEqualTo(expResult);
-
-    String extension = instance.getFilenameExtension();
-    assertThat(extension).isEqualTo("svg");
+  public void testToString() {
+    FileResource instance = new ImageFileResource();
+    instance.setFilename("image001.xyz123");
+    instance.setMimeType(MimeType.fromExtension("xyz123"));
+    String result = instance.toString();
+    assertThat(result).isNotEqualTo(null);
   }
 }

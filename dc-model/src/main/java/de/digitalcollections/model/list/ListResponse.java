@@ -13,13 +13,12 @@ import java.util.List;
  */
 public class ListResponse<T> implements Iterable<T> {
 
-  protected List<T> content = new ArrayList<>();
+  protected List<T> content;
   protected ListRequest listRequest;
   protected long total;
 
   public ListResponse() {
-    this.listRequest = null;
-    this.total = 0;
+    init();
   }
 
   /**
@@ -29,8 +28,9 @@ public class ListResponse<T> implements Iterable<T> {
    * @param listRequest the request information, can be {@literal null}.
    */
   public ListResponse(List<T> content, ListRequest listRequest) {
-    assert content != null : "content must not be null!";
+    this();
 
+    assert content != null : "content must not be null!";
     this.content.addAll(content);
     this.listRequest = listRequest;
     this.total = content.size();
@@ -105,6 +105,12 @@ public class ListResponse<T> implements Iterable<T> {
     return result;
   }
 
+  protected void init() {
+    this.content = new ArrayList<>(0);
+    this.listRequest = null;
+    this.total = 0;
+  }
+
   @Override
   public Iterator<T> iterator() {
     return content.iterator();
@@ -133,7 +139,7 @@ public class ListResponse<T> implements Iterable<T> {
     String contentType = "UNKNOWN";
     List<T> unmodifiableContent = getContent();
 
-    if (unmodifiableContent.size() > 0) {
+    if (!unmodifiableContent.isEmpty()) {
       contentType = unmodifiableContent.get(0).getClass().getName();
     }
 

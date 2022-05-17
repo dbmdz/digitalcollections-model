@@ -8,6 +8,12 @@ public class StillWaters extends GeoLocation {
 
   public StillWaters() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.geoLocationType = GeoLocationType.STILL_WATERS;
   }
 }

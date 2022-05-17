@@ -20,12 +20,6 @@ public class Project extends Entity {
     init();
   }
 
-  @Override
-  protected void init() {
-    super.init();
-    this.entityType = EntityType.PROJECT;
-  }
-
   /**
    * @return date when project ended (null if still running)
    */
@@ -45,6 +39,12 @@ public class Project extends Entity {
    */
   public LocalizedStructuredContent getText() {
     return text;
+  }
+
+  @Override
+  protected void init() {
+    super.init();
+    this.entityType = EntityType.PROJECT;
   }
 
   /**

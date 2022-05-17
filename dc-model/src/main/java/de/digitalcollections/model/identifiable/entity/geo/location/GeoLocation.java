@@ -17,13 +17,6 @@ public class GeoLocation extends Entity {
     init();
   }
 
-  @Override
-  protected void init() {
-    super.init();
-    this.entityType = EntityType.GEOLOCATION;
-    this.geoLocationType = GeoLocationType.GEOLOCATION;
-  }
-
   public CoordinateLocation getCoordinateLocation() {
     return coordinateLocation;
   }
@@ -44,6 +37,13 @@ public class GeoLocation extends Entity {
       return null;
     }
     return getCoordinateLocation().getLongitude();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
+    this.entityType = EntityType.GEOLOCATION;
+    this.geoLocationType = GeoLocationType.GEOLOCATION;
   }
 
   public void setCoordinateLocation(CoordinateLocation coordinateLocation) {

@@ -59,18 +59,18 @@
       }, {
         "type" : "image",
         "attrs" : {
-          "resourceId" : "135ec10b-ac65-4217-83fc-db5e9ff62cac",
-          "linkNewTab" : true,
           "width" : "33%",
+          "resourceId" : "135ec10b-ac65-4217-83fc-db5e9ff62cac",
           "alignment" : "left",
+          "linkNewTab" : true,
           "url" : "https://www.bsb-muenchen.de/logo.png"
         }
       }, {
         "type" : "iframe",
         "attrs" : {
-          "src" : "https://external.content.org/index.php?language=de&action=test",
           "width" : "90%",
           "title" : "Iframe title",
+          "src" : "https://external.content.org/index.php?language=de&action=test",
           "height" : "150px"
         }
       } ]

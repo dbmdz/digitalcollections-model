@@ -7,14 +7,30 @@ import java.time.LocalDate;
 /** Details (who, when and where) about the creation of the digital object. */
 public class CreationInfo {
 
-  /** The geolocation, where the creation of the digital object took geolocation */
-  private GeoLocation geoLocation;
+  public static Builder builder() {
+    return new Builder();
+  }
+  /** The creator of the digital object */
+  private Agent creator;
 
   /** The date, when the digital object was created */
   private LocalDate date;
+  /** The geolocation, where the creation of the digital object took geolocation */
+  private GeoLocation geoLocation;
 
-  /** The creator of the digital object */
-  private Agent creator;
+  /**
+   * @return the creator of the digital object
+   */
+  public Agent getCreator() {
+    return creator;
+  }
+
+  /**
+   * @return the date, when the creation of the digital object happened
+   */
+  public LocalDate getDate() {
+    return date;
+  }
 
   /**
    * @return the geolocation, where the creation of the digital object took geolocation
@@ -24,19 +40,12 @@ public class CreationInfo {
   }
 
   /**
-   * Set the geolocation, where the creation of the digital object took geolocation
+   * Specify, who created the digital object
    *
-   * @param geoLocation the geolocation
+   * @param creator the creator
    */
-  public void setGeoLocation(GeoLocation geoLocation) {
-    this.geoLocation = geoLocation;
-  }
-
-  /**
-   * @return the date, when the creation of the digital object happened
-   */
-  public LocalDate getDate() {
-    return date;
+  public void setCreator(Agent creator) {
+    this.creator = creator;
   }
 
   /**
@@ -49,23 +58,12 @@ public class CreationInfo {
   }
 
   /**
-   * @return the creator of the digital object
-   */
-  public Agent getCreator() {
-    return creator;
-  }
-
-  /**
-   * Specify, who created the digital object
+   * Set the geolocation, where the creation of the digital object took geolocation
    *
-   * @param creator the creator
+   * @param geoLocation the geolocation
    */
-  public void setCreator(Agent creator) {
-    this.creator = creator;
-  }
-
-  public static Builder builder() {
-    return new Builder();
+  public void setGeoLocation(GeoLocation geoLocation) {
+    this.geoLocation = geoLocation;
   }
 
   @Override
@@ -81,11 +79,11 @@ public class CreationInfo {
   }
 
   public static class Builder {
+
     CreationInfo creationInfo = new CreationInfo();
 
-    public Builder geoLocation(GeoLocation geoLocation) {
-      creationInfo.setGeoLocation(geoLocation);
-      return this;
+    public CreationInfo build() {
+      return creationInfo;
     }
 
     public Builder creator(Agent creator) {
@@ -98,8 +96,9 @@ public class CreationInfo {
       return this;
     }
 
-    public CreationInfo build() {
-      return creationInfo;
+    public Builder geoLocation(GeoLocation geoLocation) {
+      creationInfo.setGeoLocation(geoLocation);
+      return this;
     }
   }
 }

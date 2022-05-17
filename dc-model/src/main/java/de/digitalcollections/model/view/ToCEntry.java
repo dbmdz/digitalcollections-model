@@ -13,7 +13,7 @@ public class ToCEntry {
 
   public void addChild(ToCEntry child) {
     if (getChildren() == null) {
-      setChildren(new ArrayList<>());
+      setChildren(new ArrayList<>(0));
     }
     getChildren().add(child);
   }

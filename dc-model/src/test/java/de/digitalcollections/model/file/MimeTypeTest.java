@@ -44,13 +44,14 @@ public class MimeTypeTest {
   }
 
   @Test
-  public void returnsNullForUnknownMimetype1() throws Exception {
-    assertThat(MimeType.fromTypename("foo/bar")).isNull();
+  public void returnsAppOctectStreamForUnknownMimetype1() throws Exception {
+    assertThat(MimeType.fromTypename("foo/bar").getTypeName())
+        .isEqualTo("application/octet-stream");
   }
 
   @Test
   public void returnsNullForUnknownMimetype2() throws Exception {
-    assertThat(MimeType.fromExtension("xcfxy")).isNull();
+    assertThat(MimeType.fromExtension("xcfxy").getTypeName()).isEqualTo("application/octet-stream");
   }
 
   @Test
@@ -86,7 +87,8 @@ public class MimeTypeTest {
 
   @Test
   public void testFromFilename() throws Exception {
-    assertThat(MimeType.fromFilename("hahaha.tar.gz")).isNull();
+    assertThat(MimeType.fromFilename("hahaha.tar.gz").getTypeName())
+        .isEqualTo("application/octet-stream");
     assertThat(MimeType.fromFilename("hahaha.zip").getTypeName()).isEqualTo("application/zip");
     assertThat(
             MimeType.fromFilename("libjavascriptcoregtk-1.0-0_2.4.11-3ubuntu3_amd64.deb")

@@ -12,10 +12,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.function.Function;
-import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -23,21 +21,15 @@ import org.apache.commons.io.FilenameUtils;
 
 public class MimeType {
 
-  private static Map<String, MimeType> knownTypes;
-  private static Map<String, String> extensionMapping;
-
   /** Regular Expression used for decoding a MIME type * */
   private static final Pattern MIME_PATTERN =
       Pattern.compile(
           "^(?<primaryType>[-a-z]+?)/(?<subType>[-\\\\.a-z0-9*]+?)(?:\\+(?<suffix>\\w+))?$");
 
-  private static String getMimeTypeColumn(String line) {
-    return Arrays.stream(line.split("\t"))
-        .map(String::strip)
-        .filter(Predicate.not(String::isEmpty))
-        .findFirst()
-        .orElseThrow(NoSuchElementException::new);
-  }
+  /** Convenience definitions for commonly used MIME types */
+  private static Map<String, String> extensionMapping;
+
+  private static Map<String, MimeType> knownTypes;
 
   static {
     // Load list of known MIME types and their extensions from the IANA list in the
@@ -97,23 +89,16 @@ public class MimeType {
     }
   }
 
-  /** Convenience definitions for commonly used MIME types */
-  public static final MimeType MIME_WILDCARD = new MimeType("*", Collections.emptyList());
-
-  public static final MimeType MIME_IMAGE = knownTypes.get("image/*");
   public static final MimeType MIME_APPLICATION_JSON = knownTypes.get("application/json");
   public static final MimeType MIME_APPLICATION_OCTET_STREAM =
       knownTypes.get("application/octet-stream");
   public static final MimeType MIME_APPLICATION_XML = knownTypes.get("application/xml");
+  public static final MimeType MIME_IMAGE = knownTypes.get("image/*");
   public static final MimeType MIME_IMAGE_JPEG = knownTypes.get("image/jpeg");
-  public static final MimeType MIME_IMAGE_TIF = knownTypes.get("image/tiff");
   public static final MimeType MIME_IMAGE_PNG = knownTypes.get("image/png");
+  public static final MimeType MIME_IMAGE_TIF = knownTypes.get("image/tiff");
   public static final MimeType MIME_TYPE_MARKDOWN = knownTypes.get("text/markdown");
-
-  private final String primaryType;
-  private final String subType;
-  private final String suffix;
-  private List<String> extensions;
+  public static final MimeType MIME_WILDCARD = new MimeType("*", Collections.emptyList());
 
   /**
    * Determine MIME type for the given file extension
@@ -132,7 +117,7 @@ public class MimeType {
     if (typeName != null) {
       return knownTypes.get(typeName);
     } else {
-      return null;
+      return MIME_APPLICATION_OCTET_STREAM;
     }
   }
 
@@ -144,21 +129,6 @@ public class MimeType {
    */
   public static MimeType fromFilename(String filename) {
     return fromExtension(FilenameUtils.getExtension(filename));
-  }
-
-  /**
-   * Determine MIME type from URI.
-   *
-   * @param uri uri including filename with extension
-   * @return corresponding MimeType
-   */
-  public static MimeType fromURI(URI uri) {
-    try {
-      return fromFilename(Paths.get(uri).toString());
-    } catch (FileSystemNotFoundException e) {
-      // For non-file URIs, try to guess the MIME type from the URL path, if possible
-      return fromExtension(FilenameUtils.getExtension(uri.toString()));
-    }
   }
 
   /**
@@ -177,11 +147,31 @@ public class MimeType {
     if (!unknownType.getPrimaryType().startsWith("x-")
         || !unknownType.getSubType().startsWith("vnd.")
         || !unknownType.getSubType().startsWith("prs.")) {
-      return null;
+      return MIME_APPLICATION_OCTET_STREAM;
     } else {
       return unknownType;
     }
   }
+
+  /**
+   * Determine MIME type from URI.
+   *
+   * @param uri uri including filename with extension
+   * @return corresponding MimeType
+   */
+  public static MimeType fromURI(URI uri) {
+    try {
+      return fromFilename(Paths.get(uri).toString());
+    } catch (FileSystemNotFoundException e) {
+      // For non-file URIs, try to guess the MIME type from the URL path, if possible
+      return fromExtension(FilenameUtils.getExtension(uri.toString()));
+    }
+  }
+
+  private List<String> extensions;
+  private final String primaryType;
+  private final String subType;
+  private final String suffix;
 
   // NOTE: Constructors are private, since we want users to rely on the pre-defined MIME types
   private MimeType(String typeName) {
@@ -205,6 +195,35 @@ public class MimeType {
     }
   }
 
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null || !(obj.getClass().isAssignableFrom(MimeType.class))) {
+      return false;
+    }
+    return this.hashCode() == obj.hashCode();
+  }
+
+  /**
+   * Get the known file extensions for the MIME type
+   *
+   * @return List of known file extensions for given MiemType
+   */
+  public List<String> getExtensions() {
+    return extensions;
+  }
+
+  public String getPrimaryType() {
+    return primaryType;
+  }
+
+  public String getSubType() {
+    return subType;
+  }
+
+  public String getSuffix() {
+    return suffix;
+  }
+
   /**
    * Get the MIME type's name (e.g."application/json")
    *
@@ -218,29 +237,11 @@ public class MimeType {
     return sb.toString();
   }
 
-  /**
-   * Get the known file extensions for the MIME type
-   *
-   * @return List of known file extensions for given MiemType
-   */
-  public List<String> getExtensions() {
-    return extensions;
-  }
-
-  private void setExtensions(List<String> extensions) {
-    this.extensions = extensions;
-  }
-
-  public String getPrimaryType() {
-    return primaryType;
-  }
-
-  public String getSubType() {
-    return subType;
-  }
-
-  public String getSuffix() {
-    return suffix;
+  @Override
+  public int hashCode() {
+    int hash = 3;
+    hash = 37 * hash + Objects.hashCode(getTypeName());
+    return hash;
   }
 
   /**
@@ -265,19 +266,8 @@ public class MimeType {
     }
   }
 
-  @Override
-  public boolean equals(Object obj) {
-    if (obj == null || !(obj.getClass().isAssignableFrom(MimeType.class))) {
-      return false;
-    }
-    return this.hashCode() == ((MimeType) obj).hashCode();
-  }
-
-  @Override
-  public int hashCode() {
-    int hash = 3;
-    hash = 37 * hash + Objects.hashCode(getTypeName());
-    return hash;
+  private void setExtensions(List<String> extensions) {
+    this.extensions = extensions;
   }
 
   @Override

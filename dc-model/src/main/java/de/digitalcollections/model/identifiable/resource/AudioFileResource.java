@@ -13,17 +13,17 @@ public class AudioFileResource extends FileResource {
     init();
   }
 
-  @Override
-  protected void init() {
-    super.init();
-    this.fileResourceType = FileResourceType.AUDIO;
-  }
-
   /**
    * @return duration in seconds
    */
   public int getDuration() {
     return duration;
+  }
+
+  @Override
+  protected void init() {
+    super.init();
+    this.fileResourceType = FileResourceType.AUDIO;
   }
 
   /**

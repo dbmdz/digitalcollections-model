@@ -8,7 +8,12 @@ public class FacetListItem {
   String name;
   boolean selected;
 
+  public FacetListItem() {
+    init();
+  }
+
   public FacetListItem(String name, Long count) {
+    this();
     this.name = name;
     this.count = count;
   }
@@ -24,6 +29,8 @@ public class FacetListItem {
   public String getName() {
     return name;
   }
+
+  protected void init() {}
 
   public boolean isSelected() {
     return selected;

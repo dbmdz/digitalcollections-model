@@ -20,7 +20,9 @@ public class ListRequest implements Serializable {
   protected String searchTerm;
   protected Sorting sorting;
 
-  public ListRequest() {}
+  public ListRequest() {
+    init();
+  }
 
   /**
    * Creates a new {@link ListRequest} with sorting parameters applied.
@@ -44,6 +46,7 @@ public class ListRequest implements Serializable {
    * @param searchTerm search term for simple query term to be searched for
    */
   public ListRequest(Sorting sorting, Filtering filtering, String searchTerm) {
+    this();
     this.filtering = filtering;
     this.searchTerm = searchTerm;
     this.sorting = sorting;
@@ -149,6 +152,8 @@ public class ListRequest implements Serializable {
         + (null == sorting ? 0 : sorting.hashCode())
         + (null == filtering ? 0 : filtering.hashCode());
   }
+
+  protected void init() {}
 
   /**
    * @param filtering the filtering criterias

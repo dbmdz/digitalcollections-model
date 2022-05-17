@@ -28,7 +28,7 @@ public class Text extends ContentBlock {
 
   public void addMark(Mark mark) {
     if (marks == null) {
-      marks = new ArrayList<>();
+      marks = new ArrayList<>(0);
     }
 
     marks.add(mark);

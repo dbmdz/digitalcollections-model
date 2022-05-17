@@ -5,8 +5,12 @@ import java.util.List;
 
 public class FacetList {
 
-  List<FacetListItem> items = new LinkedList<>();
+  List<FacetListItem> items;
   String title;
+
+  public FacetList() {
+    init();
+  }
 
   public void addItem(FacetListItem item) {
     items.add(item);
@@ -18,6 +22,10 @@ public class FacetList {
 
   public String getTitle() {
     return title;
+  }
+
+  protected void init() {
+    this.items = new LinkedList<>();
   }
 
   public void setItems(List<FacetListItem> items) {

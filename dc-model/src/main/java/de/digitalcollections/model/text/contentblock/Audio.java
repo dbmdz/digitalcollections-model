@@ -17,8 +17,8 @@ public class Audio extends ContentBlockWithAttributes {
     super();
     addAttribute("alignment", alignment);
     addAttribute("caption", caption);
-    addAttribute("previewUrl", previewUrl);
     addAttribute("previewResourceId", previewResourceId);
+    addAttribute("previewUrl", previewUrl);
     addAttribute("resourceId", resourceId);
     addAttribute("title", title);
     addAttribute("url", url);

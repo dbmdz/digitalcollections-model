@@ -19,12 +19,6 @@ public class GivenName extends Identifiable {
     init();
   }
 
-  @Override
-  protected void init() {
-    super.init();
-    this.type = IdentifiableType.RESOURCE;
-  }
-
   public GivenName(Gender gender, LocalizedText label, Set<Identifier> identifiers) {
     this();
     this.gender = gender;
@@ -34,6 +28,12 @@ public class GivenName extends Identifiable {
 
   public Gender getGender() {
     return gender;
+  }
+
+  @Override
+  protected void init() {
+    super.init();
+    this.type = IdentifiableType.RESOURCE;
   }
 
   public void setGender(Gender gender) {

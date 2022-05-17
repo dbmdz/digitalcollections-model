@@ -116,7 +116,7 @@ public class Sorting implements Iterable<Order> {
     if (coll == null || coll.isEmpty()) {
       return "";
     }
-    StringBuilder sb = new StringBuilder();
+    StringBuilder sb = new StringBuilder(0);
     Iterator<?> it = coll.iterator();
     while (it.hasNext()) {
       sb.append("").append(it.next()).append("");
@@ -179,7 +179,7 @@ public class Sorting implements Iterable<Order> {
 
   public void setOrders(List<Order> orders) {
     if (orders == null) {
-      orders = new ArrayList<>();
+      orders = new ArrayList<>(0);
     }
     orders = orders.stream().filter(Objects::nonNull).collect(Collectors.toList());
     if (orders.isEmpty()) {
@@ -204,7 +204,7 @@ public class Sorting implements Iterable<Order> {
 
     public Builder order(Order order) {
       if (orders == null) {
-        orders = new ArrayList<>();
+        orders = new ArrayList<>(0);
       }
       orders.add(order);
       return this;

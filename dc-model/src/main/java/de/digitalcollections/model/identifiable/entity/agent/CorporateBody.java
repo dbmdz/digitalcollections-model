@@ -30,9 +30,18 @@ public class CorporateBody extends Agent {
   }
 
   @Override
-  protected void init() {
-    super.init();
-    this.entityType = EntityType.CORPORATE_BODY;
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof CorporateBody)) {
+      return false;
+    }
+    if (!super.equals(o)) {
+      return false;
+    }
+    CorporateBody that = (CorporateBody) o;
+    return Objects.equals(homepageUrl, that.homepageUrl) && Objects.equals(text, that.text);
   }
 
   /**
@@ -47,6 +56,17 @@ public class CorporateBody extends Agent {
    */
   public LocalizedStructuredContent getText() {
     return text;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(super.hashCode(), homepageUrl, text);
+  }
+
+  @Override
+  protected void init() {
+    super.init();
+    this.entityType = EntityType.CORPORATE_BODY;
   }
 
   /**
@@ -102,43 +122,16 @@ public class CorporateBody extends Agent {
         + hashCode();
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (!(o instanceof CorporateBody)) {
-      return false;
-    }
-    if (!super.equals(o)) {
-      return false;
-    }
-    CorporateBody that = (CorporateBody) o;
-    return Objects.equals(homepageUrl, that.homepageUrl) && Objects.equals(text, that.text);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(super.hashCode(), homepageUrl, text);
-  }
-
   public abstract static class CorporateBodyBuilder<
           C extends CorporateBody, B extends CorporateBodyBuilder<C, B>>
       extends AgentBuilder<C, B> {
 
-    public B text(Locale locale, String text) {
-      if (this.text == null) {
-        this.text = new LocalizedStructuredContent();
-      }
-      StructuredContent localizedDescription = this.text.get(locale);
-      if (localizedDescription == null) {
-        localizedDescription = new StructuredContent();
-      }
-      ContentBlock paragraph =
-          text != null && !text.isBlank() ? new Paragraph(text) : new Paragraph();
-      localizedDescription.addContentBlock(paragraph);
-      this.text.put(locale, localizedDescription);
-      return self();
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      setInternalReferences(c);
+      return c;
     }
 
     public B homepageUrl(String homepageUrl) {
@@ -155,12 +148,19 @@ public class CorporateBody extends Agent {
       return self();
     }
 
-    @Override
-    public C build() {
-      C c = prebuild();
-      c.init();
-      setInternalReferences(c);
-      return c;
+    public B text(Locale locale, String text) {
+      if (this.text == null) {
+        this.text = new LocalizedStructuredContent();
+      }
+      StructuredContent localizedDescription = this.text.get(locale);
+      if (localizedDescription == null) {
+        localizedDescription = new StructuredContent();
+      }
+      ContentBlock paragraph =
+          text != null && !text.isBlank() ? new Paragraph(text) : new Paragraph();
+      localizedDescription.addContentBlock(paragraph);
+      this.text.put(locale, localizedDescription);
+      return self();
     }
   }
 }

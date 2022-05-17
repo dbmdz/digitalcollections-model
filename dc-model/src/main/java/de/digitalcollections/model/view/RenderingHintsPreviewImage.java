@@ -32,6 +32,22 @@ public class RenderingHintsPreviewImage {
   private URL targetLink;
   private LocalizedText title;
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof RenderingHintsPreviewImage)) {
+      return false;
+    }
+    RenderingHintsPreviewImage that = (RenderingHintsPreviewImage) o;
+    return openLinkInNewWindow == that.openLinkInNewWindow
+        && Objects.equals(altText, that.altText)
+        && Objects.equals(caption, that.caption)
+        && Objects.equals(targetLink, that.targetLink)
+        && Objects.equals(title, that.title);
+  }
+
   /**
    * @return localized text that is shown as alternative if image can not be shown and for
    *     accessibility (e.g. screen-reader)
@@ -61,6 +77,11 @@ public class RenderingHintsPreviewImage {
    */
   public LocalizedText getTitle() {
     return title;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(altText, caption, openLinkInNewWindow, targetLink, title);
   }
 
   /**
@@ -106,26 +127,5 @@ public class RenderingHintsPreviewImage {
    */
   public void setTitle(LocalizedText title) {
     this.title = title;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (!(o instanceof RenderingHintsPreviewImage)) {
-      return false;
-    }
-    RenderingHintsPreviewImage that = (RenderingHintsPreviewImage) o;
-    return openLinkInNewWindow == that.openLinkInNewWindow
-        && Objects.equals(altText, that.altText)
-        && Objects.equals(caption, that.caption)
-        && Objects.equals(targetLink, that.targetLink)
-        && Objects.equals(title, that.title);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(altText, caption, openLinkInNewWindow, targetLink, title);
   }
 }

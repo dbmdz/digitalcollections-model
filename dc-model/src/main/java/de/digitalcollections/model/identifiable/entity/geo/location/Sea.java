@@ -8,6 +8,12 @@ public class Sea extends GeoLocation {
 
   public Sea() {
     super();
+    init();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
     this.geoLocationType = GeoLocationType.SEA;
   }
 }

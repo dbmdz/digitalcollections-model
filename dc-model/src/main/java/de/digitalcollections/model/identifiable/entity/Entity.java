@@ -35,13 +35,6 @@ public class Entity extends Identifiable {
   }
 
   @Override
-  protected void init() {
-    super.init();
-    this.entityType = EntityType.ENTITY;
-    this.type = IdentifiableType.ENTITY;
-  }
-
-  @Override
   public boolean equals(Object o) {
     if (this == o) {
       return true;
@@ -85,6 +78,13 @@ public class Entity extends Identifiable {
   }
 
   /**
+   * @return a date for "navigation" purposes, e.g. a timeline
+   */
+  public LocalDate getNavDate() {
+    return navDate;
+  }
+
+  /**
    * Get the system wide unique reference id. Makes it possible to create very short permanent URIs
    * by using a number.
    *
@@ -99,13 +99,19 @@ public class Entity extends Identifiable {
    * @return true if map contains custom attribute of given name
    */
   private boolean hasCustomAttribute(String attributeName) {
-    CustomAttributes customAttributes = getCustomAttributes();
     return customAttributes != null && customAttributes.containsKey(attributeName);
   }
 
   @Override
   public int hashCode() {
     return Objects.hash(super.hashCode(), customAttributes, entityType, refId);
+  }
+
+  @Override
+  protected void init() {
+    super.init();
+    this.entityType = EntityType.ENTITY;
+    this.type = IdentifiableType.ENTITY;
   }
 
   /**
@@ -138,13 +144,6 @@ public class Entity extends Identifiable {
   }
 
   /**
-   * @return a date for "navigation" purposes, e.g. a timeline
-   */
-  public LocalDate getNavDate() {
-    return navDate;
-  }
-
-  /**
    * Sets the "navigation" date
    *
    * @param navDate the "navigation" date
@@ -163,6 +162,13 @@ public class Entity extends Identifiable {
   public abstract static class EntityBuilder<C extends Entity, B extends EntityBuilder<C, B>>
       extends IdentifiableBuilder<C, B> {
 
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      return c;
+    }
+
     public B customAttribute(String key, Object value) {
       if (this.customAttributes == null) {
         this.customAttributes = new CustomAttributes();
@@ -174,12 +180,6 @@ public class Entity extends Identifiable {
     public B navDate(String navDate) {
       this.navDate = LocalDate.parse(navDate);
       return self();
-    }
-
-    public C build() {
-      C c = prebuild();
-      c.init();
-      return c;
     }
   }
 }

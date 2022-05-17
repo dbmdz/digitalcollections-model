@@ -24,18 +24,9 @@ public class Collection extends Entity implements INode<Collection> {
     init();
   }
 
-  @Override
-  protected void init() {
-    super.init();
-    this.entityType = EntityType.COLLECTION;
-    if (node == null) {
-      node = new Node<>();
-    }
-  }
-
   public void addEntity(Entity entity) {
     if (getEntities() == null) {
-      setEntities(new ArrayList<>());
+      setEntities(new ArrayList<>(0));
     }
     getEntities().add(entity);
   }
@@ -59,6 +50,7 @@ public class Collection extends Entity implements INode<Collection> {
         && Objects.equals(text, that.text);
   }
 
+  @Override
   public List<Collection> getChildren() {
     return node.getChildren();
   }
@@ -71,6 +63,7 @@ public class Collection extends Entity implements INode<Collection> {
     return node;
   }
 
+  @Override
   public Collection getParent() {
     return node.getParent();
   }
@@ -92,6 +85,16 @@ public class Collection extends Entity implements INode<Collection> {
     return Objects.hash(super.hashCode(), entities, node, publicationEnd, publicationStart, text);
   }
 
+  @Override
+  protected void init() {
+    super.init();
+    this.entityType = EntityType.COLLECTION;
+    if (node == null) {
+      node = new Node<>();
+    }
+  }
+
+  @Override
   public void setChildren(List<Collection> children) {
     node.setChildren(children);
   }
@@ -100,6 +103,7 @@ public class Collection extends Entity implements INode<Collection> {
     this.entities = entities;
   }
 
+  @Override
   public void setParent(Collection parent) {
     node.setParent(parent);
   }
@@ -158,9 +162,12 @@ public class Collection extends Entity implements INode<Collection> {
           C extends Collection, B extends CollectionBuilder<C, B>>
       extends EntityBuilder<C, B> {
 
-    public B publicationStart(String publicationStart) {
-      this.publicationStart = LocalDate.parse(publicationStart);
-      return self();
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      setInternalReferences(c);
+      return c;
     }
 
     public B publicationEnd(String publicationEnd) {
@@ -168,12 +175,9 @@ public class Collection extends Entity implements INode<Collection> {
       return self();
     }
 
-    @Override
-    public C build() {
-      C c = prebuild();
-      c.init();
-      setInternalReferences(c);
-      return c;
+    public B publicationStart(String publicationStart) {
+      this.publicationStart = LocalDate.parse(publicationStart);
+      return self();
     }
   }
 }

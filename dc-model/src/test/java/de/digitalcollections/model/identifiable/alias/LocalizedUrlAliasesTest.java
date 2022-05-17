@@ -13,17 +13,24 @@ import org.junit.jupiter.api.Test;
 
 public class LocalizedUrlAliasesTest {
 
+  private UrlAlias createUrlAlias(Locale locale, String slug) {
+    UrlAlias urlAlias = new UrlAlias();
+    urlAlias.setCreated(LocalDateTime.now());
+    urlAlias.setSlug(slug == null ? "test" : slug);
+    urlAlias.setTargetIdentifiableType(IdentifiableType.RESOURCE);
+    urlAlias.setTargetLanguage(locale == null ? Locale.GERMAN : locale);
+    urlAlias.setTargetUuid(UUID.randomUUID());
+    urlAlias.setUuid(UUID.randomUUID());
+    Website website = new Website();
+    website.setUuid(UUID.randomUUID());
+    urlAlias.setWebsite(website);
+    return urlAlias;
+  }
+
   @Test
   public void emptyConstructorTest() {
     LocalizedUrlAliases o = new LocalizedUrlAliases();
     assertThat(o).isEmpty();
-  }
-
-  @Test
-  public void parameterizedConstructorTest() {
-    UrlAlias urlAlias = createUrlAlias(null, null);
-    LocalizedUrlAliases o = new LocalizedUrlAliases(urlAlias);
-    assertThat(o).containsExactly(entry(Locale.GERMAN, List.of(urlAlias)));
   }
 
   @Test
@@ -48,17 +55,10 @@ public class LocalizedUrlAliasesTest {
     assertThat(o.flatten()).containsExactlyInAnyOrder(u1, u2, u3);
   }
 
-  private UrlAlias createUrlAlias(Locale locale, String slug) {
-    UrlAlias urlAlias = new UrlAlias();
-    urlAlias.setCreated(LocalDateTime.now());
-    urlAlias.setSlug(slug == null ? "test" : slug);
-    urlAlias.setTargetIdentifiableType(IdentifiableType.RESOURCE);
-    urlAlias.setTargetLanguage(locale == null ? Locale.GERMAN : locale);
-    urlAlias.setTargetUuid(UUID.randomUUID());
-    urlAlias.setUuid(UUID.randomUUID());
-    Website website = new Website();
-    website.setUuid(UUID.randomUUID());
-    urlAlias.setWebsite(website);
-    return urlAlias;
+  @Test
+  public void parameterizedConstructorTest() {
+    UrlAlias urlAlias = createUrlAlias(null, null);
+    LocalizedUrlAliases o = new LocalizedUrlAliases(urlAlias);
+    assertThat(o).containsExactly(entry(Locale.GERMAN, List.of(urlAlias)));
   }
 }

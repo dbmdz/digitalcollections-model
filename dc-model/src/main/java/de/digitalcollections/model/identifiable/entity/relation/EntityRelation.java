@@ -8,6 +8,10 @@ import de.digitalcollections.model.identifiable.entity.Entity;
  */
 public class EntityRelation {
 
+  public static Builder builder() {
+    return new Builder();
+  }
+
   private Entity object;
   private String predicate;
   private Entity subject;
@@ -44,16 +48,17 @@ public class EntityRelation {
     this.subject = subjectEntity;
   }
 
-  public static Builder builder() {
-    return new Builder();
-  }
-
   public static class Builder {
 
     EntityRelation entityRelation = new EntityRelation();
 
     public EntityRelation build() {
       return entityRelation;
+    }
+
+    public Builder object(Entity objectEntity) {
+      entityRelation.setObject(objectEntity);
+      return this;
     }
 
     public Builder predicate(String predicate) {
@@ -63,11 +68,6 @@ public class EntityRelation {
 
     public Builder subject(Entity subjectEntity) {
       entityRelation.setSubject(subjectEntity);
-      return this;
-    }
-
-    public Builder object(Entity objectEntity) {
-      entityRelation.setObject(objectEntity);
       return this;
     }
   }

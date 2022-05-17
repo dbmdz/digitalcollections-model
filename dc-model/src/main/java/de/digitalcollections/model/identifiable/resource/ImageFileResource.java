@@ -12,46 +12,16 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(buildMethodName = "prebuild")
 public class ImageFileResource extends FileResource {
 
+  public static PreviewImageBuilder previewImageBuilder() {
+    return new PreviewImageBuilder();
+  }
+
   private int height;
   private int width;
 
   public ImageFileResource() {
     super();
     init();
-  }
-
-  @Override
-  protected void init() {
-    super.init();
-    this.fileResourceType = FileResourceType.IMAGE;
-  }
-
-  /**
-   * @return height in pixel
-   */
-  public int getHeight() {
-    return height;
-  }
-
-  /**
-   * @return width in pixel
-   */
-  public int getWidth() {
-    return width;
-  }
-
-  /**
-   * @param height height in pixel
-   */
-  public void setHeight(int height) {
-    this.height = height;
-  }
-
-  /**
-   * @param width width in pixel
-   */
-  public void setWidth(int width) {
-    this.width = width;
   }
 
   @Override
@@ -69,13 +39,56 @@ public class ImageFileResource extends FileResource {
     return height == that.height && width == that.width;
   }
 
+  /**
+   * @return height in pixel
+   */
+  public int getHeight() {
+    return height;
+  }
+
+  /**
+   * @return width in pixel
+   */
+  public int getWidth() {
+    return width;
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(super.hashCode(), height, width);
   }
 
-  public static PreviewImageBuilder previewImageBuilder() {
-    return new PreviewImageBuilder();
+  @Override
+  protected void init() {
+    super.init();
+    this.fileResourceType = FileResourceType.IMAGE;
+  }
+
+  /**
+   * @param height height in pixel
+   */
+  public void setHeight(int height) {
+    this.height = height;
+  }
+
+  /**
+   * @param width width in pixel
+   */
+  public void setWidth(int width) {
+    this.width = width;
+  }
+
+  public abstract static class ImageFileResourceBuilder<
+          C extends ImageFileResource, B extends ImageFileResourceBuilder<C, B>>
+      extends FileResourceBuilder<C, B> {
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      setInternalReferences(c);
+      return c;
+    }
   }
 
   public static class PreviewImageBuilder {
@@ -106,16 +119,6 @@ public class ImageFileResource extends FileResource {
       return this;
     }
 
-    public PreviewImageBuilder uri(String uri) {
-      previewImage.setUri(URI.create(uri));
-      return this;
-    }
-
-    public PreviewImageBuilder mimeType(MimeType mimeType) {
-      previewImage.setMimeType(mimeType);
-      return this;
-    }
-
     public PreviewImageBuilder httpBaseUrl(String httpBaseUrl) {
       try {
         previewImage.setHttpBaseUrl(new URL(httpBaseUrl));
@@ -125,9 +128,19 @@ public class ImageFileResource extends FileResource {
       return this;
     }
 
+    public PreviewImageBuilder mimeType(MimeType mimeType) {
+      previewImage.setMimeType(mimeType);
+      return this;
+    }
+
     public PreviewImageBuilder size(int width, int height) {
       previewImage.setWidth(width);
       previewImage.setHeight(height);
+      return this;
+    }
+
+    public PreviewImageBuilder uri(String uri) {
+      previewImage.setUri(URI.create(uri));
       return this;
     }
 
@@ -139,19 +152,6 @@ public class ImageFileResource extends FileResource {
     public PreviewImageBuilder uuid(String uuid) {
       previewImage.setUuid(UUID.fromString(uuid));
       return this;
-    }
-  }
-
-  public abstract static class ImageFileResourceBuilder<
-          C extends ImageFileResource, B extends ImageFileResourceBuilder<C, B>>
-      extends FileResourceBuilder<C, B> {
-
-    @Override
-    public C build() {
-      C c = prebuild();
-      c.init();
-      setInternalReferences(c);
-      return c;
     }
   }
 }

@@ -19,17 +19,6 @@
   "entityType" : "DIGITAL_OBJECT",
   "refId" : 0,
   "creationInfo" : {
-    "geoLocation" : {
-      "identifiers" : [ ],
-      "label" : {
-        "" : "Geolocation"
-      },
-      "type" : "ENTITY",
-      "entityType" : "GEOLOCATION",
-      "refId" : 0,
-      "geoLocationType" : "HUMAN_SETTLEMENT"
-    },
-    "date" : "2021-12-01",
     "creator" : {
       "identifiers" : [ ],
       "label" : {
@@ -40,6 +29,17 @@
       "refId" : 0,
       "familyNames" : [ ],
       "givenNames" : [ ]
+    },
+    "date" : "2021-12-01",
+    "geoLocation" : {
+      "identifiers" : [ ],
+      "label" : {
+        "" : "Geolocation"
+      },
+      "type" : "ENTITY",
+      "entityType" : "GEOLOCATION",
+      "refId" : 0,
+      "geoLocationType" : "HUMAN_SETTLEMENT"
     }
   },
   "fileResources" : [ {

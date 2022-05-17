@@ -52,14 +52,6 @@ public class Identifiable extends UniqueObject {
     init();
   }
 
-  @Override
-  protected void init() {
-    super.init();
-    if (identifiers == null) {
-      identifiers = new HashSet<>();
-    }
-  }
-
   public void addIdentifier(Identifier identifier) {
     identifiers.add(Objects.requireNonNull(identifier));
   }
@@ -178,6 +170,14 @@ public class Identifiable extends UniqueObject {
         uuid);
   }
 
+  @Override
+  protected void init() {
+    super.init();
+    if (identifiers == null) {
+      identifiers = new HashSet<>(0);
+    }
+  }
+
   public void setDescription(LocalizedStructuredContent description) {
     this.description = description;
   }
@@ -216,6 +216,35 @@ public class Identifiable extends UniqueObject {
 
     private Set<Identifier> identifiers;
 
+    public B altText(Locale locale, String text) {
+      if (previewImageRenderingHints == null) {
+        previewImageRenderingHints = new RenderingHintsPreviewImage();
+      }
+      LocalizedText altText = previewImageRenderingHints.getAltText();
+      if (altText == null) {
+        altText = new LocalizedText();
+      }
+      altText.setText(locale, text);
+      previewImageRenderingHints.setAltText(altText);
+      return self();
+    }
+
+    public B altTextFromLabel() {
+      if (previewImageRenderingHints == null) {
+        previewImageRenderingHints = new RenderingHintsPreviewImage();
+      }
+      previewImageRenderingHints.setAltText(this.label);
+      return self();
+    }
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      setInternalReferences(c);
+      return c;
+    }
+
     public B description(Locale locale, String text) {
       if (description == null) {
         description = new LocalizedStructuredContent();
@@ -234,28 +263,17 @@ public class Identifiable extends UniqueObject {
       return description(Locale.forLanguageTag(lang), text);
     }
 
-    public B label(Locale locale, String localizedLabel) {
-      if (label == null) {
-        label = new LocalizedText();
+    public B dontOpenPreviewImageInNewWindow() {
+      if (previewImageRenderingHints == null) {
+        previewImageRenderingHints = new RenderingHintsPreviewImage();
       }
-      label.setText(locale, localizedLabel);
-      return self();
-    }
-
-    public B label(String nonlocalizedLabel) {
-      this.label = new LocalizedText(Locale.ROOT, nonlocalizedLabel);
-      return self();
-    }
-
-    public B primaryLocalizedUrlAlias(String slug) {
-      this.localizedUrlAliases =
-          new LocalizedUrlAliases(UrlAlias.builder().slug(slug).isPrimary().build());
+      previewImageRenderingHints.setOpenLinkInNewWindow(false);
       return self();
     }
 
     public B identifier(Identifier identifier) {
       if (this.identifiers == null) {
-        this.identifiers = new HashSet<>();
+        this.identifiers = new HashSet<>(0);
       }
       identifiers.add(identifier);
       return self();
@@ -263,7 +281,7 @@ public class Identifiable extends UniqueObject {
 
     public B identifier(String namespace, String id, String uuid) {
       if (this.identifiers == null) {
-        this.identifiers = new HashSet<>();
+        this.identifiers = new HashSet<>(0);
       }
       Identifier identifier = new Identifier();
       identifier.setNamespace(namespace);
@@ -278,6 +296,31 @@ public class Identifiable extends UniqueObject {
 
     public B identifier(String namespace, String id) {
       return identifier(namespace, id, null);
+    }
+
+    public B label(Locale locale, String localizedLabel) {
+      if (label == null) {
+        label = new LocalizedText();
+      }
+      label.setText(locale, localizedLabel);
+      return self();
+    }
+
+    public B label(String nonlocalizedLabel) {
+      this.label = new LocalizedText(Locale.ROOT, nonlocalizedLabel);
+      return self();
+    }
+
+    public B openLinkInNewWindow() {
+      return openPreviewImageInNewWindow();
+    }
+
+    public B openPreviewImageInNewWindow() {
+      if (previewImageRenderingHints == null) {
+        previewImageRenderingHints = new RenderingHintsPreviewImage();
+      }
+      previewImageRenderingHints.setOpenLinkInNewWindow(true);
+      return self();
     }
 
     public B previewImage(ImageFileResource previewImage) {
@@ -322,53 +365,31 @@ public class Identifiable extends UniqueObject {
               .build());
     }
 
-    public B openPreviewImageInNewWindow() {
-      if (previewImageRenderingHints == null) {
-        previewImageRenderingHints = new RenderingHintsPreviewImage();
-      }
-      previewImageRenderingHints.setOpenLinkInNewWindow(true);
+    public B primaryLocalizedUrlAlias(String slug) {
+      this.localizedUrlAliases =
+          new LocalizedUrlAliases(UrlAlias.builder().slug(slug).isPrimary().build());
       return self();
     }
 
-    public B dontOpenPreviewImageInNewWindow() {
-      if (previewImageRenderingHints == null) {
-        previewImageRenderingHints = new RenderingHintsPreviewImage();
+    public void setInternalReferences(C c) {
+      // Each identifier must get the UUID of the identifiable
+      if (this.identifiers != null && !this.identifiers.isEmpty()) {
+        c.setIdentifiers(
+            this.identifiers.stream()
+                .peek(i -> i.setIdentifiable(c.getUuid()))
+                .collect(Collectors.toSet()));
+      } else {
+        c.setIdentifiers(new HashSet<>(0));
       }
-      previewImageRenderingHints.setOpenLinkInNewWindow(false);
-      return self();
-    }
 
-    public B openLinkInNewWindow() {
-      return openPreviewImageInNewWindow();
-    }
-
-    public B altText(Locale locale, String text) {
-      if (previewImageRenderingHints == null) {
-        previewImageRenderingHints = new RenderingHintsPreviewImage();
+      // For each UrlAlias, the target UUID must be set to the UUID of the identifiable
+      if (c.getLocalizedUrlAliases() != null && !c.getLocalizedUrlAliases().isEmpty()) {
+        c.getLocalizedUrlAliases()
+            .forEach(
+                (locale, urlAliasList) -> {
+                  urlAliasList.forEach(u -> u.setTargetUuid(c.getUuid()));
+                });
       }
-      LocalizedText altText = previewImageRenderingHints.getAltText();
-      if (altText == null) {
-        altText = new LocalizedText();
-      }
-      altText.setText(locale, text);
-      previewImageRenderingHints.setAltText(altText);
-      return self();
-    }
-
-    public B altTextFromLabel() {
-      if (previewImageRenderingHints == null) {
-        previewImageRenderingHints = new RenderingHintsPreviewImage();
-      }
-      previewImageRenderingHints.setAltText(this.label);
-      return self();
-    }
-
-    public B titleFromLabel() {
-      if (previewImageRenderingHints == null) {
-        previewImageRenderingHints = new RenderingHintsPreviewImage();
-      }
-      previewImageRenderingHints.setTitle(this.label);
-      return self();
     }
 
     public B title(Locale locale, String text) {
@@ -384,32 +405,12 @@ public class Identifiable extends UniqueObject {
       return self();
     }
 
-    public void setInternalReferences(C c) {
-      // Each identifier must get the UUID of the identifiable
-      if (this.identifiers != null && !this.identifiers.isEmpty()) {
-        c.setIdentifiers(
-            this.identifiers.stream()
-                .peek(i -> i.setIdentifiable(c.getUuid()))
-                .collect(Collectors.toSet()));
-      } else {
-        c.setIdentifiers(new HashSet<>());
+    public B titleFromLabel() {
+      if (previewImageRenderingHints == null) {
+        previewImageRenderingHints = new RenderingHintsPreviewImage();
       }
-
-      // For each UrlAlias, the target UUID must be set to the UUID of the identifiable
-      if (c.getLocalizedUrlAliases() != null && !c.getLocalizedUrlAliases().isEmpty()) {
-        c.getLocalizedUrlAliases()
-            .forEach(
-                (locale, urlAliasList) -> {
-                  urlAliasList.forEach(u -> u.setTargetUuid(c.getUuid()));
-                });
-      }
-    }
-
-    public C build() {
-      C c = prebuild();
-      c.init();
-      setInternalReferences(c);
-      return c;
+      previewImageRenderingHints.setTitle(this.label);
+      return self();
     }
   }
 }

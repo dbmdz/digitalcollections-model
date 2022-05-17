@@ -26,15 +26,6 @@ public class Webpage extends Identifiable implements INode<Webpage> {
     init();
   }
 
-  @Override
-  protected void init() {
-    super.init();
-    this.type = IdentifiableType.RESOURCE;
-    if (node == null) {
-      node = new Node<>();
-    }
-  }
-
   public Webpage(List<Webpage> children) {
     this();
     this.node.setChildren(children);
@@ -43,6 +34,11 @@ public class Webpage extends Identifiable implements INode<Webpage> {
   @Override
   public List<Webpage> getChildren() {
     return node.getChildren();
+  }
+
+  @Override
+  public LocalizedText getLabel() {
+    return label;
   }
 
   @Override
@@ -67,8 +63,12 @@ public class Webpage extends Identifiable implements INode<Webpage> {
   }
 
   @Override
-  public LocalizedText getLabel() {
-    return label;
+  protected void init() {
+    super.init();
+    this.type = IdentifiableType.RESOURCE;
+    if (node == null) {
+      node = new Node<>();
+    }
   }
 
   @Override
@@ -102,21 +102,18 @@ public class Webpage extends Identifiable implements INode<Webpage> {
 
     private List<Webpage> children;
 
-    public B publicationStart(String publicationStart) {
-      this.publicationStart = LocalDate.parse(publicationStart);
-      return self();
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      return c;
     }
 
-    public B publicationEnd(String publicationEnd) {
-      this.publicationEnd = LocalDate.parse(publicationEnd);
-      return self();
-    }
-
-    public B shownInNavigation() {
-      if (renderingHints == null) {
-        renderingHints = new RenderingHints();
+    public B children(List<Webpage> children) {
+      if (node == null) {
+        node = new Node<>();
       }
-      renderingHints.setShowInPageNavigation(true);
+      node.setChildren(children);
       return self();
     }
 
@@ -128,11 +125,21 @@ public class Webpage extends Identifiable implements INode<Webpage> {
       return self();
     }
 
-    public B children(List<Webpage> children) {
-      if (node == null) {
-        node = new Node<>();
+    public B publicationEnd(String publicationEnd) {
+      this.publicationEnd = LocalDate.parse(publicationEnd);
+      return self();
+    }
+
+    public B publicationStart(String publicationStart) {
+      this.publicationStart = LocalDate.parse(publicationStart);
+      return self();
+    }
+
+    public B shownInNavigation() {
+      if (renderingHints == null) {
+        renderingHints = new RenderingHints();
       }
-      node.setChildren(children);
+      renderingHints.setShowInPageNavigation(true);
       return self();
     }
 
@@ -142,13 +149,6 @@ public class Webpage extends Identifiable implements INode<Webpage> {
       }
       renderingHints.setTemplateName(templateName);
       return self();
-    }
-
-    @Override
-    public C build() {
-      C c = prebuild();
-      c.init();
-      return c;
     }
   }
 }

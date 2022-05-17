@@ -33,13 +33,13 @@ import org.wikidata.wdtk.datamodel.interfaces.TimeValue;
  */
 public class Work extends Entity {
 
-  private List<Agent> creators = new ArrayList<>();
+  private List<Agent> creators;
   private LocalDate datePublished;
   private TimeValue timeValuePublished;
 
   public Work() {
     super();
-    this.entityType = EntityType.WORK;
+    init();
   }
 
   public List<Agent> getCreators() {
@@ -56,6 +56,13 @@ public class Work extends Entity {
 
   public LocalizedText getTitle() {
     return getLabel();
+  }
+
+  @Override
+  protected void init() {
+    super.init();
+    this.entityType = EntityType.WORK;
+    this.creators = new ArrayList<>(0);
   }
 
   public void setCreators(List<Agent> creators) {
