@@ -52,9 +52,9 @@ public class Item extends Entity {
   private String publicationPlace;
   private String publisher;
   private String version;
-  
+
   private Boolean exemplifiesManifestation;
-  
+
   private Manifestation manifestation;
 
   private List<Agent> holders;
@@ -217,13 +217,32 @@ public class Item extends Entity {
       return false;
     }
     Item item = (Item) o;
-    return Objects.equals(language, item.language) && Objects.equals(publicationDate, item.publicationDate) && Objects.equals(publicationPlace, item.publicationPlace) && Objects.equals(publisher, item.publisher) && Objects.equals(version, item.version) && Objects.equals(exemplifiesManifestation, item.exemplifiesManifestation) && Objects.equals(manifestation, item.manifestation) && Objects.equals(holders, item.holders)
-        && Objects.equals(notes, item.notes) && Objects.equals(isPartOfItem, item.isPartOfItem);
+    return Objects.equals(language, item.language)
+        && Objects.equals(publicationDate, item.publicationDate)
+        && Objects.equals(publicationPlace, item.publicationPlace)
+        && Objects.equals(publisher, item.publisher)
+        && Objects.equals(version, item.version)
+        && Objects.equals(exemplifiesManifestation, item.exemplifiesManifestation)
+        && Objects.equals(manifestation, item.manifestation)
+        && Objects.equals(holders, item.holders)
+        && Objects.equals(notes, item.notes)
+        && Objects.equals(isPartOfItem, item.isPartOfItem);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), language, publicationDate, publicationPlace, publisher, version, exemplifiesManifestation, manifestation, holders, notes, isPartOfItem);
+    return super.hashCode()
+        + Objects.hash(
+            language,
+            publicationDate,
+            publicationPlace,
+            publisher,
+            version,
+            exemplifiesManifestation,
+            manifestation,
+            holders,
+            notes,
+            isPartOfItem);
   }
 
   @Override
