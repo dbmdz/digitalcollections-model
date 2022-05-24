@@ -11,6 +11,7 @@
       } ]
     }
   },
+  "identifiableObjectType" : "WEBSITE",
   "identifiers" : [ ],
   "type" : "ENTITY",
   "entityType" : "WEBSITE",

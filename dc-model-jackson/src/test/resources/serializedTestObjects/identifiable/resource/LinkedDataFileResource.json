@@ -1,4 +1,5 @@
 {
+  "identifiableObjectType" : "LINKED_DATA_FILE_RESOURCE",
   "identifiers" : [ ],
   "type" : "RESOURCE",
   "fileResourceType" : "LINKED_DATA",

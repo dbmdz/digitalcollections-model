@@ -2,6 +2,7 @@ package de.digitalcollections.model.identifiable.entity;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import de.digitalcollections.model.identifiable.IdentifiableObjectType;
 import java.util.Locale;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,5 +26,6 @@ class EntityTest {
             .primaryLocalizedUrlAlias("blubb")
             .build();
     assertThat(entity).isExactlyInstanceOf(Entity.class);
+    assertThat(entity.getIdentifiableObjectType()).isEqualTo(IdentifiableObjectType.ENTITY);
   }
 }

@@ -1,4 +1,5 @@
 {
+  "identifiableObjectType" : "WORK",
   "identifiers" : [ ],
   "label" : {
     "de" : "Zimmer-Gymnastik ohne Geräte"
@@ -7,6 +8,7 @@
   "entityType" : "WORK",
   "refId" : 0,
   "creators" : [ {
+    "identifiableObjectType" : "PERSON",
     "identifiers" : [ ],
     "label" : {
       "de" : "Arnold Hiller"

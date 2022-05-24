@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added `IdentifiableObjectType` enumeration to specify all types of `Identifiable`s
+- Added `identifiableObjectType` field to `Identifiable` (and all inherited classes)
+- Added `targetIdentifiableObjectType` field to `UrlAlias`
+
 ### Changed
 
 - **Breaking**: Refactored Builder classes into inner classes of their belonging model classes and made their API consistent

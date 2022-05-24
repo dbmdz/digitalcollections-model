@@ -1,4 +1,5 @@
 {
+  "identifiableObjectType" : "HEADWORD_ENTRY",
   "identifiers" : [ ],
   "type" : "ENTITY",
   "entityType" : "HEADWORD_ENTRY",

@@ -1,4 +1,5 @@
 {
+  "identifiableObjectType" : "COUNTRY",
   "identifiers" : [ ],
   "label" : {
     "en" : "Country"

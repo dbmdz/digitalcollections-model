@@ -40,6 +40,7 @@ import org.springframework.util.StringUtils;
 public class Identifiable extends UniqueObject {
 
   protected LocalizedStructuredContent description;
+  protected IdentifiableObjectType identifiableObjectType;
   protected Set<Identifier> identifiers;
   protected LocalizedText label;
   protected LocalizedUrlAliases localizedUrlAliases;
@@ -79,6 +80,10 @@ public class Identifiable extends UniqueObject {
 
   public LocalizedStructuredContent getDescription() {
     return description;
+  }
+
+  public IdentifiableObjectType getIdentifiableObjectType() {
+    return identifiableObjectType;
   }
 
   public Identifier getIdentifierByNamespace(String namespace) {
@@ -173,6 +178,7 @@ public class Identifiable extends UniqueObject {
   @Override
   protected void init() {
     super.init();
+    this.identifiableObjectType = IdentifiableObjectType.getByClass(getClass());
     if (identifiers == null) {
       identifiers = new HashSet<>(0);
     }
@@ -180,6 +186,10 @@ public class Identifiable extends UniqueObject {
 
   public void setDescription(LocalizedStructuredContent description) {
     this.description = description;
+  }
+
+  public void setIdentifiableObjectType(IdentifiableObjectType identifiableObjectType) {
+    this.identifiableObjectType = identifiableObjectType;
   }
 
   public void setIdentifiers(Set<Identifier> identifiers) {
