@@ -11,6 +11,7 @@
       } ]
     }
   },
+  "identifiableObjectType" : "TOPIC",
   "identifiers" : [ ],
   "label" : {
     "en" : "King Ludwig II of Bavaria and his Times"
@@ -31,6 +32,7 @@
         } ]
       }
     },
+    "identifiableObjectType" : "TOPIC",
     "identifiers" : [ ],
     "label" : {
       "en" : "Sources about the Life and Times of Ludwig II"
@@ -51,6 +53,7 @@
         } ]
       }
     },
+    "identifiableObjectType" : "TOPIC",
     "identifiers" : [ ],
     "label" : {
       "en" : "Artistic Influences and Models"
@@ -71,6 +74,7 @@
         } ]
       }
     },
+    "identifiableObjectType" : "TOPIC",
     "identifiers" : [ ],
     "label" : {
       "en" : "Castles and Constructions of Ludwig II"
@@ -91,6 +95,7 @@
         } ]
       }
     },
+    "identifiableObjectType" : "TOPIC",
     "identifiers" : [ ],
     "label" : {
       "en" : "Ludwig II and the Bayerische Staatsbibliothek"

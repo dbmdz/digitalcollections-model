@@ -1,4 +1,5 @@
 {
+  "identifiableObjectType" : "IMAGE_FILE_RESOURCE",
   "identifiers" : [ ],
   "type" : "RESOURCE",
   "fileResourceType" : "IMAGE",

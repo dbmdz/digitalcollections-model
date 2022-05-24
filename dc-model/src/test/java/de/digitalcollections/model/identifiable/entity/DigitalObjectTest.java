@@ -2,6 +2,7 @@ package de.digitalcollections.model.identifiable.entity;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import de.digitalcollections.model.identifiable.IdentifiableObjectType;
 import de.digitalcollections.model.identifiable.IdentifiableType;
 import java.util.Locale;
 import org.junit.jupiter.api.DisplayName;
@@ -28,5 +29,7 @@ class DigitalObjectTest {
     assertThat(digitalObject).isExactlyInstanceOf(DigitalObject.class);
     assertThat(digitalObject.getType()).isEqualTo(IdentifiableType.ENTITY);
     assertThat(digitalObject.getEntityType()).isEqualTo(EntityType.DIGITAL_OBJECT);
+    assertThat(digitalObject.getIdentifiableObjectType())
+        .isEqualTo(IdentifiableObjectType.DIGITAL_OBJECT);
   }
 }

@@ -1,6 +1,7 @@
 {
   "content" : [ {
     "objectType" : "DIGITAL_OBJECT",
+    "identifiableObjectType" : "DIGITAL_OBJECT",
     "identifiers" : [ ],
     "label" : {
       "" : "DigitalObject-Label"
@@ -14,6 +15,7 @@
     "renderingResources" : [ ]
   }, {
     "objectType" : "WEBPAGE",
+    "identifiableObjectType" : "WEBPAGE",
     "identifiers" : [ ],
     "label" : {
       "" : "Webpage-Label"

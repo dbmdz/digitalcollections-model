@@ -11,6 +11,7 @@
       } ]
     }
   },
+  "identifiableObjectType" : "COLLECTION",
   "identifiers" : [ ],
   "type" : "ENTITY",
   "entityType" : "COLLECTION",

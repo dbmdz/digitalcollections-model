@@ -1,9 +1,11 @@
 {
+  "identifiableObjectType" : "ENTITY",
   "identifiers" : [ ],
   "label" : {
     "de" : "Bayerische Staatsbibliothek"
   },
   "previewImage" : {
+    "identifiableObjectType" : "IMAGE_FILE_RESOURCE",
     "identifiers" : [ ],
     "type" : "RESOURCE",
     "fileResourceType" : "IMAGE",

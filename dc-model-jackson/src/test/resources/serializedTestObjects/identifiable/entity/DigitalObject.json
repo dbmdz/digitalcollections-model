@@ -1,9 +1,11 @@
 {
+  "identifiableObjectType" : "DIGITAL_OBJECT",
   "identifiers" : [ {
     "id" : "bsb10001234",
     "namespace" : "myId"
   } ],
   "previewImage" : {
+    "identifiableObjectType" : "IMAGE_FILE_RESOURCE",
     "identifiers" : [ ],
     "type" : "RESOURCE",
     "fileResourceType" : "IMAGE",
@@ -20,6 +22,7 @@
   "refId" : 0,
   "creationInfo" : {
     "creator" : {
+      "identifiableObjectType" : "PERSON",
       "identifiers" : [ ],
       "label" : {
         "" : "Creator"
@@ -32,6 +35,7 @@
     },
     "date" : "2021-12-01",
     "geoLocation" : {
+      "identifiableObjectType" : "HUMAN_SETTLEMENT",
       "identifiers" : [ ],
       "label" : {
         "" : "Geolocation"
@@ -43,6 +47,7 @@
     }
   },
   "fileResources" : [ {
+    "identifiableObjectType" : "IMAGE_FILE_RESOURCE",
     "identifiers" : [ ],
     "type" : "RESOURCE",
     "fileResourceType" : "IMAGE",
@@ -51,6 +56,7 @@
     "height" : 100,
     "width" : 400
   }, {
+    "identifiableObjectType" : "APPLICATION_FILE_RESOURCE",
     "identifiers" : [ ],
     "type" : "RESOURCE",
     "fileResourceType" : "APPLICATION",

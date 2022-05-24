@@ -1,5 +1,6 @@
 package de.digitalcollections.model.identifiable.alias;
 
+import de.digitalcollections.model.identifiable.IdentifiableObjectType;
 import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.entity.EntityType;
 import de.digitalcollections.model.identifiable.entity.Website;
@@ -24,6 +25,7 @@ public class UrlAlias {
   private boolean primary;
   private String slug;
   private EntityType targetEntityType;
+  private IdentifiableObjectType targetIdentifiableObjectType;
   private IdentifiableType targetIdentifiableType;
   private Locale targetLanguage;
   private UUID targetUuid;
@@ -46,6 +48,7 @@ public class UrlAlias {
         && this.primary == other.primary
         && Objects.equals(this.slug, other.slug)
         && Objects.equals(this.targetLanguage, other.targetLanguage)
+        && Objects.equals(this.targetIdentifiableObjectType, other.targetIdentifiableObjectType)
         && Objects.equals(this.targetIdentifiableType, other.targetIdentifiableType)
         && Objects.equals(this.targetEntityType, other.targetEntityType)
         && Objects.equals(this.targetUuid, other.targetUuid)
@@ -69,6 +72,10 @@ public class UrlAlias {
 
   public EntityType getTargetEntityType() {
     return this.targetEntityType;
+  }
+
+  public IdentifiableObjectType getTargetIdentifiableObjectType() {
+    return targetIdentifiableObjectType;
   }
 
   public IdentifiableType getTargetIdentifiableType() {
@@ -99,6 +106,7 @@ public class UrlAlias {
         this.primary,
         this.slug,
         this.targetLanguage,
+        this.targetIdentifiableObjectType,
         this.targetIdentifiableType,
         this.targetEntityType,
         this.targetUuid,
@@ -128,6 +136,10 @@ public class UrlAlias {
 
   public void setTargetEntityType(EntityType targetEntityType) {
     this.targetEntityType = targetEntityType;
+  }
+
+  public void setTargetIdentifiableObjectType(IdentifiableObjectType targetIdentifiableObjectType) {
+    this.targetIdentifiableObjectType = targetIdentifiableObjectType;
   }
 
   public void setTargetIdentifiableType(IdentifiableType identifiableType) {
@@ -188,7 +200,11 @@ public class UrlAlias {
       return this;
     }
 
-    public Builder targetType(IdentifiableType identifiableType, EntityType entityType) {
+    public Builder targetType(
+        IdentifiableObjectType identifiableObjectType,
+        IdentifiableType identifiableType,
+        EntityType entityType) {
+      urlAlias.setTargetIdentifiableObjectType(identifiableObjectType);
       urlAlias.setTargetIdentifiableType(identifiableType);
       urlAlias.setTargetEntityType(entityType);
       return this;

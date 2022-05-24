@@ -13,6 +13,7 @@
       } ]
     }
   },
+  "identifiableObjectType" : "WEBPAGE",
   "identifiers" : [ ],
   "label" : {
     "de_DE" : "Meine Homepage"

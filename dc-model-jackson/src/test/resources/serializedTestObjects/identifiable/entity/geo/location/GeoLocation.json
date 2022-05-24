@@ -1,4 +1,5 @@
 {
+  "identifiableObjectType" : "GEO_LOCATION",
   "identifiers" : [ ],
   "label" : {
     "de" : "Homebase"

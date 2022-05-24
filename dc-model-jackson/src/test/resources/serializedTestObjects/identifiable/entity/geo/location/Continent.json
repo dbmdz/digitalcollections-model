@@ -1,4 +1,5 @@
 {
+  "identifiableObjectType" : "CONTINENT",
   "identifiers" : [ ],
   "label" : {
     "en" : "Continent"
