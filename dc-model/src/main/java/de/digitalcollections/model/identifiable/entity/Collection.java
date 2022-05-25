@@ -88,7 +88,6 @@ public class Collection extends Entity implements INode<Collection> {
   @Override
   protected void init() {
     super.init();
-    this.entityType = EntityType.COLLECTION;
     if (node == null) {
       node = new Node<>();
     }
@@ -135,8 +134,6 @@ public class Collection extends Entity implements INode<Collection> {
         + text
         + ", customAttributes="
         + customAttributes
-        + ", entityType="
-        + entityType
         + ", refId="
         + refId
         + ", created="

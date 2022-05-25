@@ -37,7 +37,6 @@ public class HeadwordEntry extends Article {
   @Override
   protected void init() {
     super.init();
-    this.entityType = EntityType.HEADWORD_ENTRY;
   }
 
   public void setHeadword(Headword headword) {

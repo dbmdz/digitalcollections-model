@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 - Removed build with Java 8
+- Remove `Entity.entityType` field (deprecated `getEntityType` method)
 
 ## [9.2.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/9.2.0) - 2022-04-06
 

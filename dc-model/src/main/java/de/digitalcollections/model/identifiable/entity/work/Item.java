@@ -1,7 +1,6 @@
 package de.digitalcollections.model.identifiable.entity.work;
 
 import de.digitalcollections.model.identifiable.entity.Entity;
-import de.digitalcollections.model.identifiable.entity.EntityType;
 import de.digitalcollections.model.text.LocalizedText;
 import java.util.Locale;
 import lombok.experimental.SuperBuilder;
@@ -82,7 +81,6 @@ public class Item extends Entity {
   @Override
   protected void init() {
     super.init();
-    this.entityType = EntityType.ITEM;
   }
 
   /**
@@ -166,8 +164,6 @@ public class Item extends Entity {
         + publisher
         + "', version='"
         + version
-        + "', entityType="
-        + entityType
         + ", refId="
         + refId
         + ", created="

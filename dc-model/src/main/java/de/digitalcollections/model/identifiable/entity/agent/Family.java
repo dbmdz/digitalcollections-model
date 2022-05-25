@@ -1,6 +1,5 @@
 package de.digitalcollections.model.identifiable.entity.agent;
 
-import de.digitalcollections.model.identifiable.entity.EntityType;
 import lombok.experimental.SuperBuilder;
 
 /** A family (e.g. the "Clintons"). */
@@ -15,7 +14,6 @@ public class Family extends Agent {
   @Override
   protected void init() {
     super.init();
-    this.entityType = EntityType.FAMILY;
   }
 
   public abstract static class FamilyBuilder<C extends Family, B extends FamilyBuilder<C, B>>

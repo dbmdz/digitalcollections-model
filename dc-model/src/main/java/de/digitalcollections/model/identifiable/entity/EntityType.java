@@ -1,6 +1,11 @@
 package de.digitalcollections.model.identifiable.entity;
 
-/** All entity types cudami can handle */
+/**
+ * All entity types cudami can handle
+ *
+ * @deprecated Use IdentifiableObjectType instead.
+ */
+@Deprecated(forRemoval = true, since = "10.0.0")
 public enum EntityType {
   AGENT,
   ARTICLE,

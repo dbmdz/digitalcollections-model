@@ -3,7 +3,7 @@
   "lastPublished" : "2021-12-24T12:00:00",
   "primary" : true,
   "slug" : "foobar",
-  "targetEntityType" : "COLLECTION",
+  "targetIdentifiableObjectType" : "COLLECTION",
   "targetIdentifiableType" : "ENTITY",
   "targetLanguage" : "de",
   "targetUuid" : "c31593a4-9620-484b-a4f5-4112731d953b",
@@ -13,7 +13,7 @@
     "identifiableObjectType" : "WEBSITE",
     "identifiers" : [ ],
     "type" : "ENTITY",
-    "entityType" : "WEBSITE",
-    "refId" : 0
+    "refId" : 0,
+    "entityType" : "WEBSITE"
   }
 }

@@ -28,7 +28,6 @@ class DigitalObjectTest {
             .build();
     assertThat(digitalObject).isExactlyInstanceOf(DigitalObject.class);
     assertThat(digitalObject.getType()).isEqualTo(IdentifiableType.ENTITY);
-    assertThat(digitalObject.getEntityType()).isEqualTo(EntityType.DIGITAL_OBJECT);
     assertThat(digitalObject.getIdentifiableObjectType())
         .isEqualTo(IdentifiableObjectType.DIGITAL_OBJECT);
   }

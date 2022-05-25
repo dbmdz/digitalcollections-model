@@ -131,7 +131,6 @@ public class DigitalObject extends Entity {
   @Override
   protected void init() {
     super.init();
-    this.entityType = EntityType.DIGITAL_OBJECT;
     if (fileResources == null) {
       fileResources = new ArrayList<>(0);
     }

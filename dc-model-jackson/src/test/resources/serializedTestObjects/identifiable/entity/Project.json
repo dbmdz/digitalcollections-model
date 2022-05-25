@@ -5,7 +5,7 @@
     "de" : "Projekt XY"
   },
   "type" : "ENTITY",
-  "entityType" : "PROJECT",
   "refId" : 0,
-  "startDate" : "2019-07-31"
+  "startDate" : "2019-07-31",
+  "entityType" : "PROJECT"
 }

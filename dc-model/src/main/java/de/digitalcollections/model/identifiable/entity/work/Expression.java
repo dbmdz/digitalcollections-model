@@ -1,7 +1,6 @@
 package de.digitalcollections.model.identifiable.entity.work;
 
 import de.digitalcollections.model.identifiable.entity.Entity;
-import de.digitalcollections.model.identifiable.entity.EntityType;
 
 /**
  * From https://web.library.yale.edu/cataloging/music/frbr-wemi-music#work:
@@ -56,6 +55,5 @@ public class Expression extends Entity {
   @Override
   protected void init() {
     super.init();
-    this.entityType = EntityType.EXPRESSION;
   }
 }

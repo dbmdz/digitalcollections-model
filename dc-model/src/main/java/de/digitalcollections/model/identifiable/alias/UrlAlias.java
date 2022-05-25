@@ -70,6 +70,7 @@ public class UrlAlias {
     return this.slug;
   }
 
+  @Deprecated(forRemoval = true, since = "10.0.0")
   public EntityType getTargetEntityType() {
     return this.targetEntityType;
   }
@@ -108,7 +109,6 @@ public class UrlAlias {
         this.targetLanguage,
         this.targetIdentifiableObjectType,
         this.targetIdentifiableType,
-        this.targetEntityType,
         this.targetUuid,
         this.uuid,
         this.website);
@@ -134,6 +134,7 @@ public class UrlAlias {
     this.slug = slug;
   }
 
+  @Deprecated(forRemoval = true, since = "10.0.0")
   public void setTargetEntityType(EntityType targetEntityType) {
     this.targetEntityType = targetEntityType;
   }

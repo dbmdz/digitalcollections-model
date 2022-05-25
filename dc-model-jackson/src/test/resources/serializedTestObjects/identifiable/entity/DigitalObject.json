@@ -18,7 +18,6 @@
   "customAttributes" : {
     "companySpecificAttributeX" : "foobar"
   },
-  "entityType" : "DIGITAL_OBJECT",
   "refId" : 0,
   "creationInfo" : {
     "creator" : {
@@ -28,10 +27,10 @@
         "" : "Creator"
       },
       "type" : "ENTITY",
-      "entityType" : "PERSON",
       "refId" : 0,
       "familyNames" : [ ],
-      "givenNames" : [ ]
+      "givenNames" : [ ],
+      "entityType" : "PERSON"
     },
     "date" : "2021-12-01",
     "geoLocation" : {
@@ -41,9 +40,9 @@
         "" : "Geolocation"
       },
       "type" : "ENTITY",
-      "entityType" : "GEOLOCATION",
       "refId" : 0,
-      "geoLocationType" : "HUMAN_SETTLEMENT"
+      "geoLocationType" : "HUMAN_SETTLEMENT",
+      "entityType" : "GEOLOCATION"
     }
   },
   "fileResources" : [ {
@@ -67,5 +66,6 @@
   } ],
   "linkedDataResources" : [ ],
   "numberOfBinaryResources" : 0,
-  "renderingResources" : [ ]
+  "renderingResources" : [ ],
+  "entityType" : "DIGITAL_OBJECT"
 }

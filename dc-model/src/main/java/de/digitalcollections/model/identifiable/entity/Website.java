@@ -46,7 +46,6 @@ public class Website extends Entity {
   @Override
   protected void init() {
     super.init();
-    this.entityType = EntityType.WEBSITE;
   }
 
   public void setRegistrationDate(LocalDate registrationDate) {

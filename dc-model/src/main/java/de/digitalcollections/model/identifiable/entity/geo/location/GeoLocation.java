@@ -2,7 +2,6 @@ package de.digitalcollections.model.identifiable.entity.geo.location;
 
 import de.digitalcollections.model.geo.CoordinateLocation;
 import de.digitalcollections.model.identifiable.entity.Entity;
-import de.digitalcollections.model.identifiable.entity.EntityType;
 import lombok.experimental.SuperBuilder;
 
 /** A location located on earth. */
@@ -42,7 +41,6 @@ public class GeoLocation extends Entity {
   @Override
   protected void init() {
     super.init();
-    this.entityType = EntityType.GEOLOCATION;
     this.geoLocationType = GeoLocationType.GEOLOCATION;
   }
 

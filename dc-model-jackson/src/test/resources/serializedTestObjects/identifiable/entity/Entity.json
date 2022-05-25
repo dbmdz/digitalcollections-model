@@ -15,6 +15,6 @@
     "width" : 0
   },
   "type" : "ENTITY",
-  "entityType" : "ENTITY",
-  "refId" : 0
+  "refId" : 0,
+  "entityType" : "ENTITY"
 }

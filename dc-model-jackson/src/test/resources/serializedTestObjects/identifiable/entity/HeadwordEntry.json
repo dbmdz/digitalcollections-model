@@ -2,11 +2,11 @@
   "identifiableObjectType" : "HEADWORD_ENTRY",
   "identifiers" : [ ],
   "type" : "ENTITY",
-  "entityType" : "HEADWORD_ENTRY",
   "refId" : 0,
   "creators" : [ ],
   "headword" : {
     "label" : "Kaiserschmarrn",
     "locale" : "de"
-  }
+  },
+  "entityType" : "HEADWORD_ENTRY"
 }
