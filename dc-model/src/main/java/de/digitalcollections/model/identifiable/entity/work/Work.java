@@ -1,7 +1,6 @@
 package de.digitalcollections.model.identifiable.entity.work;
 
 import de.digitalcollections.model.identifiable.entity.Entity;
-import de.digitalcollections.model.identifiable.entity.EntityType;
 import de.digitalcollections.model.identifiable.entity.agent.Agent;
 import de.digitalcollections.model.text.LocalizedText;
 import java.time.LocalDate;
@@ -61,7 +60,6 @@ public class Work extends Entity {
   @Override
   protected void init() {
     super.init();
-    this.entityType = EntityType.WORK;
     if (creators == null) {
       this.creators = new ArrayList<>(0);
     }

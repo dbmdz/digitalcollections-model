@@ -1,7 +1,6 @@
 package de.digitalcollections.model.identifiable.entity.agent;
 
 import de.digitalcollections.model.identifiable.entity.Entity;
-import de.digitalcollections.model.identifiable.entity.EntityType;
 import lombok.experimental.SuperBuilder;
 
 /**
@@ -23,7 +22,6 @@ public class Agent extends Entity {
   @Override
   protected void init() {
     super.init();
-    this.entityType = EntityType.AGENT;
   }
 
   @Override
@@ -51,8 +49,6 @@ public class Agent extends Entity {
         + type
         + ", customAttributes="
         + customAttributes
-        + ", entityType="
-        + entityType
         + ", navDate="
         + navDate
         + ", refId="

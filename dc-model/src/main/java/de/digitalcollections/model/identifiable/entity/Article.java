@@ -41,7 +41,6 @@ public class Article extends Entity {
   @Override
   protected void init() {
     super.init();
-    this.entityType = EntityType.ARTICLE;
     if (creators == null) {
       creators = new ArrayList<>(0);
     }

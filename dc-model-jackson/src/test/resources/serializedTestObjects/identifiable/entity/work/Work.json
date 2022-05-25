@@ -5,7 +5,6 @@
     "de" : "Zimmer-Gymnastik ohne Geräte"
   },
   "type" : "ENTITY",
-  "entityType" : "WORK",
   "refId" : 0,
   "creators" : [ {
     "identifiableObjectType" : "PERSON",
@@ -14,10 +13,10 @@
       "de" : "Arnold Hiller"
     },
     "type" : "ENTITY",
-    "entityType" : "PERSON",
     "refId" : 0,
     "familyNames" : [ ],
-    "givenNames" : [ ]
+    "givenNames" : [ ],
+    "entityType" : "PERSON"
   } ],
   "datePublished" : "2020-04-28",
   "timeValuePublished" : {
@@ -32,5 +31,6 @@
     "second" : 0,
     "timezoneOffset" : 0,
     "year" : 2020
-  }
+  },
+  "entityType" : "WORK"
 }

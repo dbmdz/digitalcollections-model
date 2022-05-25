@@ -23,7 +23,6 @@ import lombok.experimental.SuperBuilder;
 public class Entity extends Identifiable {
 
   protected CustomAttributes customAttributes;
-  protected EntityType entityType;
   /** A "navigable" date, required when you need to the display the digital object on a timeline. */
   protected LocalDate navDate;
 
@@ -46,9 +45,7 @@ public class Entity extends Identifiable {
       return false;
     }
     Entity entity = (Entity) o;
-    return refId == entity.refId
-        && Objects.equals(customAttributes, entity.customAttributes)
-        && entityType == entity.entityType;
+    return refId == entity.refId && Objects.equals(customAttributes, entity.customAttributes);
   }
 
   /**
@@ -70,11 +67,37 @@ public class Entity extends Identifiable {
   }
 
   /**
+   * @deprecated Use {@link Identifiable#getType()} and {@link
+   *     Identifiable#getIdentifiableObjectType()} instead.
    * @return the type of the entity (one of the types this system can manage, defined in enum
    *     EntityType).
    */
+  @Deprecated(forRemoval = true, since = "10.0.0")
   public EntityType getEntityType() {
-    return entityType;
+    if (IdentifiableType.RESOURCE == getType()) {
+      return null;
+    }
+    switch (identifiableObjectType) {
+      case CANYON:
+      case CAVE:
+      case CONTINENT:
+      case COUNTRY:
+      case CREEK:
+      case GEO_LOCATION:
+      case HUMAN_SETTLEMENT:
+      case LAKE:
+      case MOUNTAIN:
+      case OCEAN:
+      case RIVER:
+      case SEA:
+      case STILL_WATERS:
+      case VALLEY:
+        return EntityType.GEOLOCATION;
+      default:
+        // as both enum have String identical enum values in all other cases, we can simply map by
+        // String:
+        return EntityType.valueOf(getIdentifiableObjectType().toString());
+    }
   }
 
   /**
@@ -104,13 +127,12 @@ public class Entity extends Identifiable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), customAttributes, entityType, refId);
+    return Objects.hash(super.hashCode(), customAttributes, refId);
   }
 
   @Override
   protected void init() {
     super.init();
-    this.entityType = EntityType.ENTITY;
     this.type = IdentifiableType.ENTITY;
   }
 
@@ -134,13 +156,6 @@ public class Entity extends Identifiable {
    */
   public void setCustomAttributes(CustomAttributes customAttributes) {
     this.customAttributes = customAttributes;
-  }
-
-  /**
-   * @param entityType the type of the entity
-   */
-  public void setEntityType(EntityType entityType) {
-    this.entityType = entityType;
   }
 
   /**

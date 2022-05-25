@@ -8,7 +8,6 @@
   "customAttributes" : {
     "height" : 8999
   },
-  "entityType" : "GEOLOCATION",
   "refId" : 0,
   "coordinateLocation" : {
     "altitude" : 0.0,
@@ -16,5 +15,6 @@
     "longitude" : 11.52559973769878,
     "precision" : 6.0
   },
-  "geoLocationType" : "MOUNTAIN"
+  "geoLocationType" : "MOUNTAIN",
+  "entityType" : "GEOLOCATION"
 }

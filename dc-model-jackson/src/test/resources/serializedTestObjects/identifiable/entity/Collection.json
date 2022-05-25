@@ -14,8 +14,8 @@
   "identifiableObjectType" : "COLLECTION",
   "identifiers" : [ ],
   "type" : "ENTITY",
-  "entityType" : "COLLECTION",
   "refId" : 0,
   "publicationEnd" : "+999999999-12-31",
-  "publicationStart" : "-999999999-01-01"
+  "publicationStart" : "-999999999-01-01",
+  "entityType" : "COLLECTION"
 }

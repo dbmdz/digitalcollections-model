@@ -3,7 +3,6 @@ package de.digitalcollections.model.identifiable.entity.agent;
 import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.identifiable.agent.FamilyName;
 import de.digitalcollections.model.identifiable.agent.GivenName;
-import de.digitalcollections.model.identifiable.entity.EntityType;
 import de.digitalcollections.model.identifiable.entity.geo.location.GeoLocation;
 import de.digitalcollections.model.text.LocalizedText;
 import java.time.LocalDate;
@@ -81,7 +80,6 @@ public class Person extends Agent {
   @Override
   protected void init() {
     super.init();
-    this.entityType = EntityType.PERSON;
     if (familyNames == null) {
       familyNames = new ArrayList<>(0);
     }
