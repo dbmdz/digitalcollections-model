@@ -163,6 +163,23 @@ public class UrlAlias {
     this.website = website;
   }
 
+  @Override
+  public String toString() {
+    return "UrlAlias{"
+        + "created=" + created
+        + ", lastPublished=" + lastPublished
+        + ", primary=" + primary
+        + ", slug='" + slug + '\''
+        + ", targetEntityType=" + targetEntityType
+        + ", targetIdentifiableObjectType=" + targetIdentifiableObjectType
+        + ", targetIdentifiableType=" + targetIdentifiableType
+        + ", targetLanguage=" + targetLanguage
+        + ", targetUuid=" + targetUuid
+        + ", uuid=" + uuid
+        + ", website=" + website
+        + '}';
+  }
+
   public static class Builder {
 
     UrlAlias urlAlias = new UrlAlias();
