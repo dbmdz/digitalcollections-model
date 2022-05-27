@@ -27,6 +27,9 @@ public class LocalizedUrlAliases extends HashMap<Locale, List<UrlAlias>> {
       return;
     }
     for (UrlAlias urlAlias : urlAliases) {
+      if (urlAlias==null) {
+        continue;
+      }
       this.compute(
           urlAlias.getTargetLanguage(),
           (locale, listOfAliases) -> {
