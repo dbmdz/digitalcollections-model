@@ -248,30 +248,58 @@ public class Item extends Entity {
   @Override
   public String toString() {
     return this.getClass().getSimpleName()
-        + "language=" + language
-        + ", publicationDate='" + publicationDate + '\''
-        + ", publicationPlace='" + publicationPlace + '\''
-        + ", publisher='" + publisher + '\''
-        + ", version='" + version + '\''
-        + ", exemplifiesManifestation=" + exemplifiesManifestation
-        + ", manifestation=" + manifestation
-        + ", holders=" + holders
-        + ", notes=" + notes
-        + ", isPartOfItem=" + isPartOfItem
-        + ", customAttributes=" + customAttributes
-        + ", identifiableObjecttype=" + identifiableObjectType
-        + ", navDate=" + navDate
-        + ", refId=" + refId
-        + ", description=" + description
-        + ", identifiers=" + identifiers
-        + ", label=" + label
-        + ", localizedUrlAliases=" + localizedUrlAliases
-        + ", previewImage=" + previewImage
-        + ", previewImageRenderingHints=" + previewImageRenderingHints
-        + ", type=" + type
-        + ", created=" + created
-        + ", lastModified=" + lastModified
-        + ", uuid=" + uuid
+        + "language="
+        + language
+        + ", publicationDate='"
+        + publicationDate
+        + '\''
+        + ", publicationPlace='"
+        + publicationPlace
+        + '\''
+        + ", publisher='"
+        + publisher
+        + '\''
+        + ", version='"
+        + version
+        + '\''
+        + ", exemplifiesManifestation="
+        + exemplifiesManifestation
+        + ", manifestation="
+        + manifestation
+        + ", holders="
+        + holders
+        + ", notes="
+        + notes
+        + ", isPartOfItem="
+        + isPartOfItem
+        + ", customAttributes="
+        + customAttributes
+        + ", identifiableObjecttype="
+        + identifiableObjectType
+        + ", navDate="
+        + navDate
+        + ", refId="
+        + refId
+        + ", description="
+        + description
+        + ", identifiers="
+        + identifiers
+        + ", label="
+        + label
+        + ", localizedUrlAliases="
+        + localizedUrlAliases
+        + ", previewImage="
+        + previewImage
+        + ", previewImageRenderingHints="
+        + previewImageRenderingHints
+        + ", type="
+        + type
+        + ", created="
+        + created
+        + ", lastModified="
+        + lastModified
+        + ", uuid="
+        + uuid
         + '}';
   }
 

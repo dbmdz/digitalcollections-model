@@ -2,6 +2,7 @@ package de.digitalcollections.model.identifiable.entity.work;
 
 import de.digitalcollections.model.identifiable.entity.Entity;
 import lombok.experimental.SuperBuilder;
+
 /**
  * From https://web.library.yale.edu/cataloging/music/frbr-wemi-music#work:
  *
@@ -35,7 +36,8 @@ public class Manifestation extends Entity {
     super.init();
   }
 
-  public abstract static class ManifestationBuilder<C extends Manifestation, B extends ManifestationBuilder<C, B>>
+  public abstract static class ManifestationBuilder<
+          C extends Manifestation, B extends ManifestationBuilder<C, B>>
       extends EntityBuilder<C, B> {
 
     @Override
