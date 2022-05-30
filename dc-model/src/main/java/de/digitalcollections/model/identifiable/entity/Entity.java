@@ -54,14 +54,10 @@ public class Entity extends Identifiable {
     if (!(o instanceof Entity)) {
       return false;
     }
-    if (!super.equals(o)) {
-      return false;
-    }
     Entity entity = (Entity) o;
     return super.equals(o)
         && refId == entity.refId
         && Objects.equals(customAttributes, entity.customAttributes)
-        && identifiableObjectType == entity.identifiableObjectType
         && Objects.equals(navDate, entity.navDate)
         && Objects.equals(notes, entity.notes);
   }
@@ -150,8 +146,7 @@ public class Entity extends Identifiable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(
-        super.hashCode(), customAttributes, identifiableObjectType, navDate, notes, refId);
+    return Objects.hash(super.hashCode(), customAttributes, navDate, notes, refId);
   }
 
   @Override
