@@ -2,7 +2,11 @@ package de.digitalcollections.model.identifiable.entity;
 
 import de.digitalcollections.model.identifiable.Identifiable;
 import de.digitalcollections.model.identifiable.IdentifiableType;
+import de.digitalcollections.model.text.LocalizedStructuredContent;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import lombok.experimental.SuperBuilder;
 
@@ -28,9 +32,18 @@ public class Entity extends Identifiable {
 
   protected long refId;
 
+  protected List<LocalizedStructuredContent> notes;
+
   public Entity() {
     super();
     init();
+  }
+
+  public void addNotes(LocalizedStructuredContent... notesToAdd) {
+    if (notes == null) {
+      notes = new ArrayList<>();
+    }
+    Arrays.stream(notesToAdd).forEachOrdered(note -> notes.add(note));
   }
 
   @Override
@@ -45,9 +58,12 @@ public class Entity extends Identifiable {
       return false;
     }
     Entity entity = (Entity) o;
-    return refId == entity.refId
+    return super.equals(o)
+        && refId == entity.refId
         && Objects.equals(customAttributes, entity.customAttributes)
-        && Objects.equals(navDate, entity.navDate);
+        && identifiableObjectType == entity.identifiableObjectType
+        && Objects.equals(navDate, entity.navDate)
+        && Objects.equals(notes, entity.notes);
   }
 
   /**
@@ -109,6 +125,11 @@ public class Entity extends Identifiable {
     return navDate;
   }
 
+  /** Arbitrary notes and remarks */
+  public List<LocalizedStructuredContent> getNotes() {
+    return notes;
+  }
+
   /**
    * Get the system wide unique reference id. Makes it possible to create very short permanent URIs
    * by using a number.
@@ -129,7 +150,7 @@ public class Entity extends Identifiable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), customAttributes, navDate, refId);
+    return Objects.hash(super.hashCode(), customAttributes, identifiableObjectType, navDate, notes, refId);
   }
 
   @Override
@@ -169,6 +190,10 @@ public class Entity extends Identifiable {
     this.navDate = navDate;
   }
 
+  public void setNotes(List<LocalizedStructuredContent> notes) {
+    this.notes = notes;
+  }
+
   /**
    * @param refId system wide unique entity reference id.
    */
@@ -196,6 +221,14 @@ public class Entity extends Identifiable {
 
     public B navDate(String navDate) {
       this.navDate = LocalDate.parse(navDate);
+      return self();
+    }
+
+    public B note(LocalizedStructuredContent content) {
+      if (notes == null) {
+        notes = new ArrayList<>();
+      }
+      notes.add(content);
       return self();
     }
   }
