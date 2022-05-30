@@ -45,7 +45,9 @@ public class Entity extends Identifiable {
       return false;
     }
     Entity entity = (Entity) o;
-    return refId == entity.refId && Objects.equals(customAttributes, entity.customAttributes);
+    return refId == entity.refId
+        && Objects.equals(customAttributes, entity.customAttributes)
+        && Objects.equals(navDate, entity.navDate);
   }
 
   /**
@@ -127,7 +129,7 @@ public class Entity extends Identifiable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), customAttributes, refId);
+    return Objects.hash(super.hashCode(), customAttributes, navDate, refId);
   }
 
   @Override
