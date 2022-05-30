@@ -66,16 +66,15 @@ public class Identifiable extends UniqueObject {
       return false;
     }
     Identifiable that = (Identifiable) o;
-    return Objects.equals(created, that.created)
+    return super.equals(o)
         && Objects.equals(description, that.description)
+        && identifiableObjectType == that.identifiableObjectType
         && Objects.equals(identifiers, that.identifiers)
         && Objects.equals(label, that.label)
-        && Objects.equals(lastModified, that.lastModified)
         && Objects.equals(localizedUrlAliases, that.localizedUrlAliases)
         && Objects.equals(previewImage, that.previewImage)
         && Objects.equals(previewImageRenderingHints, that.previewImageRenderingHints)
-        && type == that.type
-        && Objects.equals(uuid, that.uuid);
+        && type == that.type;
   }
 
   public LocalizedStructuredContent getDescription() {
@@ -162,17 +161,16 @@ public class Identifiable extends UniqueObject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(
-        created,
-        description,
-        identifiers,
-        label,
-        lastModified,
-        localizedUrlAliases,
-        previewImage,
-        previewImageRenderingHints,
-        type,
-        uuid);
+    return super.hashCode()
+        + Objects.hash(
+            description,
+            identifiableObjectType,
+            identifiers,
+            label,
+            localizedUrlAliases,
+            previewImage,
+            previewImageRenderingHints,
+            type);
   }
 
   @Override

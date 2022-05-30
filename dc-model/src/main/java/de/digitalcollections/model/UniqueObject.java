@@ -1,6 +1,7 @@
 package de.digitalcollections.model;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.UUID;
 import lombok.experimental.SuperBuilder;
 
@@ -14,6 +15,20 @@ public abstract class UniqueObject {
 
   public UniqueObject() {
     init();
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (!(obj instanceof UniqueObject)) {
+      return false;
+    }
+    UniqueObject other = (UniqueObject) obj;
+    return Objects.equals(created, other.created)
+        && Objects.equals(lastModified, other.lastModified)
+        && Objects.equals(uuid, other.uuid);
   }
 
   /**
@@ -35,6 +50,11 @@ public abstract class UniqueObject {
    */
   public UUID getUuid() {
     return uuid;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(created, lastModified, uuid);
   }
 
   /** Use to initialize member variables, used by default constructor and builder */
