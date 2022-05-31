@@ -14,6 +14,7 @@ import java.util.List;
 public class ListResponse<T> implements Iterable<T> {
 
   protected List<T> content;
+  protected String executedSearchTerm;
   protected ListRequest listRequest;
   protected long total;
 
@@ -36,6 +37,19 @@ public class ListResponse<T> implements Iterable<T> {
     this.total = content.size();
   }
 
+  /**
+   * Constructor with the given content and the given governing {@link ListRequest}.
+   *
+   * @param content the content of this list, must not be {@literal null}.
+   * @param listRequest the request information, can be {@literal null}.
+   * @param executedSearchTerm finally executed search term based on given search term (e.g. after
+   *     escaping special characters etc.)
+   */
+  public ListResponse(List<T> content, ListRequest listRequest, String executedSearchTerm) {
+    this(content, listRequest);
+    this.executedSearchTerm = executedSearchTerm;
+  }
+
   @Override
   public boolean equals(Object obj) {
     if (this == obj) {
@@ -48,12 +62,19 @@ public class ListResponse<T> implements Iterable<T> {
     ListResponse<?> that = (ListResponse<?>) obj;
 
     boolean contentEqual = this.content.equals(that.content);
+    boolean executedSearchTermEqual =
+        (this.executedSearchTerm == null
+            ? that.executedSearchTerm == null
+            : this.executedSearchTerm.equals(that.executedSearchTerm));
     boolean listRequestEqual =
         this.listRequest == null
             ? that.listRequest == null
             : this.listRequest.equals(that.listRequest);
 
-    return (this.total == that.total) && contentEqual && listRequestEqual;
+    return (this.total == that.total)
+        && contentEqual
+        && executedSearchTermEqual
+        && listRequestEqual;
   }
 
   /**
@@ -61,6 +82,14 @@ public class ListResponse<T> implements Iterable<T> {
    */
   public List<T> getContent() {
     return Collections.unmodifiableList(content);
+  }
+
+  public String getExecutedSearchTerm() {
+    if (executedSearchTerm == null) {
+      // no changes on original searchTerm
+      return listRequest.getSearchTerm();
+    }
+    return executedSearchTerm;
   }
 
   /**
@@ -101,6 +130,7 @@ public class ListResponse<T> implements Iterable<T> {
     result += 31 * (int) (total ^ total >>> 32);
     result += 31 * (listRequest == null ? 0 : listRequest.hashCode());
     result += 31 * content.hashCode();
+    result += 31 * executedSearchTerm.hashCode();
 
     return result;
   }
@@ -123,6 +153,10 @@ public class ListResponse<T> implements Iterable<T> {
    */
   public void setContent(List<T> content) {
     this.content = content;
+  }
+
+  public void setExecutedSearchTerm(String executedSearchTerm) {
+    this.executedSearchTerm = executedSearchTerm;
   }
 
   public void setListRequest(ListRequest listRequest) {
