@@ -27,7 +27,6 @@ public class PageResponse<T> extends ListResponse<T> {
     return new Builder(c);
   }
 
-  private String executedSearchTerm;
   protected PageRequest pageRequest;
 
   public PageResponse() {
@@ -73,7 +72,7 @@ public class PageResponse<T> extends ListResponse<T> {
    */
   public PageResponse(
       List<T> content, PageRequest pageRequest, long total, String executedSearchTerm) {
-    super(content, null);
+    super(content, null, executedSearchTerm);
 
     this.pageRequest = pageRequest;
     this.total =
@@ -82,7 +81,6 @@ public class PageResponse<T> extends ListResponse<T> {
                 && pageRequest.getOffset() + pageRequest.getPageSize() > total
             ? pageRequest.getOffset() + content.size()
             : total;
-    this.executedSearchTerm = executedSearchTerm;
   }
 
   @Override
@@ -96,28 +94,12 @@ public class PageResponse<T> extends ListResponse<T> {
 
     PageResponse<?> that = (PageResponse<?>) obj;
 
-    boolean contentEqual = this.content.equals(that.content);
     boolean pageRequestEqual =
         this.pageRequest == null
             ? that.pageRequest == null
             : this.pageRequest.equals(that.pageRequest);
-    boolean executedSearchTermEqual =
-        (this.executedSearchTerm == null
-            ? that.executedSearchTerm == null
-            : this.executedSearchTerm.equals(that.executedSearchTerm));
 
-    return (this.total == that.total)
-        && contentEqual
-        && pageRequestEqual
-        && executedSearchTermEqual;
-  }
-
-  public String getExecutedSearchTerm() {
-    if (executedSearchTerm == null) {
-      // no changes on original searchTerm
-      return getPageRequest().getSearchTerm();
-    }
-    return executedSearchTerm;
+    return super.equals(obj) && this.total == that.total && pageRequestEqual;
   }
 
   /**
@@ -186,9 +168,8 @@ public class PageResponse<T> extends ListResponse<T> {
 
     int result = 17;
 
-    result += 31 * (int) (total ^ total >>> 32);
+    result += super.hashCode();
     result += 31 * (pageRequest == null ? 0 : pageRequest.hashCode());
-    result += 31 * content.hashCode();
 
     return result;
   }
@@ -241,10 +222,6 @@ public class PageResponse<T> extends ListResponse<T> {
       return pageRequest.previousOrFirst();
     }
     return null;
-  }
-
-  public void setExecutedSearchTerm(String changedSearchTerm) {
-    this.executedSearchTerm = changedSearchTerm;
   }
 
   public void setPageRequest(PageRequest pageRequest) {
