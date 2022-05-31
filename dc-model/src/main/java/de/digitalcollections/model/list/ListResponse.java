@@ -87,7 +87,7 @@ public class ListResponse<T> implements Iterable<T> {
   public String getExecutedSearchTerm() {
     if (executedSearchTerm == null) {
       // no changes on original searchTerm
-      return listRequest.getSearchTerm();
+      return listRequest != null ? listRequest.getSearchTerm() : null;
     }
     return executedSearchTerm;
   }
