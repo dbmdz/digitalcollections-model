@@ -130,7 +130,7 @@ public class ListResponse<T> implements Iterable<T> {
     result += 31 * (int) (total ^ total >>> 32);
     result += 31 * (listRequest == null ? 0 : listRequest.hashCode());
     result += 31 * content.hashCode();
-    result += 31 * executedSearchTerm.hashCode();
+    result += 31 * (executedSearchTerm == null ? 0 : executedSearchTerm.hashCode());
 
     return result;
   }

@@ -46,6 +46,7 @@ public class PageResponseTest extends BaseJsonSerializationTest {
     pageRequest.setFiltering(filtering);
 
     pageResponse.setPageRequest(pageRequest);
+    pageResponse.setExecutedSearchTerm("Hello");
 
     return pageResponse;
   }
@@ -66,6 +67,7 @@ public class PageResponseTest extends BaseJsonSerializationTest {
     resp.setPageRequest(pageRequest);
     resp.setContent(content);
     resp.setTotalElements(2);
+    resp.setExecutedSearchTerm("Label");
 
     checkSerializeDeserialize(
         resp, "serializedTestObjects/list/paging/PageResponse_differentTypes.json");
