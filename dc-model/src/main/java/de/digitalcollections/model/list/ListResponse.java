@@ -83,7 +83,7 @@ public class ListResponse<T, R extends ListRequest> implements Iterable<T> {
   }
 
   /**
-   * @return the ListRequest used to get this ListResponse
+   * @return the request used to get this response
    */
   public R getRequest() {
     return request;

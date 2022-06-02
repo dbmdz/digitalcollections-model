@@ -110,13 +110,6 @@ public class PageResponse<T> extends ListResponse<T, PageRequest> {
   }
 
   /**
-   * @return the PageRequest used to get this PageResponse
-   */
-  public PageRequest getPageRequest() {
-    return request;
-  }
-
-  /**
    * Returns the size of the {@link PageResponse}.
    *
    * @return the size of the {@link PageResponse}.
@@ -207,10 +200,6 @@ public class PageResponse<T> extends ListResponse<T, PageRequest> {
     return null;
   }
 
-  public void setPageRequest(PageRequest request) {
-    this.request = request;
-  }
-
   @Override
   public String toString() {
 
@@ -257,7 +246,7 @@ public class PageResponse<T> extends ListResponse<T, PageRequest> {
         pageResponse.setTotalElements(pageResponse.getContent().size());
       }
 
-      pageResponse.setPageRequest(request);
+      pageResponse.setRequest(request);
       return pageResponse;
     }
 
