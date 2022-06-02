@@ -28,6 +28,7 @@ import de.digitalcollections.model.identifiable.entity.work.Item;
 import de.digitalcollections.model.identifiable.entity.work.Work;
 import de.digitalcollections.model.identifiable.resource.FileResource;
 import de.digitalcollections.model.identifiable.web.Webpage;
+import de.digitalcollections.model.list.paging.PageRequest;
 import de.digitalcollections.model.list.paging.PageResponse;
 import de.digitalcollections.model.list.sorting.Sorting;
 import de.digitalcollections.model.security.User;
@@ -76,6 +77,10 @@ public abstract class PageResponseMixIn<T> extends PageResponse<T> {
   @JsonIgnore
   @Override
   public abstract int getNumberOfElements();
+
+  @JsonIgnore
+  @Override
+  public abstract PageRequest getRequest();
 
   @JsonIgnore
   @Override

@@ -27,6 +27,7 @@ import de.digitalcollections.model.identifiable.entity.work.Item;
 import de.digitalcollections.model.identifiable.entity.work.Work;
 import de.digitalcollections.model.identifiable.resource.FileResource;
 import de.digitalcollections.model.identifiable.web.Webpage;
+import de.digitalcollections.model.list.ListRequest;
 import de.digitalcollections.model.list.ListResponse;
 import de.digitalcollections.model.list.sorting.Sorting;
 import de.digitalcollections.model.security.User;
@@ -35,7 +36,7 @@ import java.util.List;
 
 @JsonDeserialize(as = ListResponse.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public abstract class ListResponseMixIn<T> extends ListResponse<T> {
+public abstract class ListResponseMixIn<T, R extends ListRequest> extends ListResponse<T, R> {
 
   @JsonTypeInfo(use = Id.NAME, property = "objectType", visible = true)
   @JsonSubTypes({
