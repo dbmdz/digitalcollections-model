@@ -42,12 +42,12 @@ public class ListResponse<T, R extends ListRequest> implements Iterable<T> {
    * Constructor with the given content and the given governing {@link ListRequest}.
    *
    * @param content the content of this list, must not be {@literal null}.
-   * @param listRequest the request information, can be {@literal null}.
+   * @param request the request information, can be {@literal null}.
    * @param executedSearchTerm finally executed search term based on given search term (e.g. after
    *     escaping special characters etc.)
    */
-  public ListResponse(List<T> content, ListRequest listRequest, String executedSearchTerm) {
-    this(content, listRequest);
+  public ListResponse(List<T> content, R request, String executedSearchTerm) {
+    this(content, request);
     this.executedSearchTerm = executedSearchTerm;
   }
 
@@ -77,7 +77,7 @@ public class ListResponse<T, R extends ListRequest> implements Iterable<T> {
   public String getExecutedSearchTerm() {
     if (executedSearchTerm == null) {
       // no changes on original searchTerm
-      return listRequest != null ? listRequest.getSearchTerm() : null;
+      return request != null ? request.getSearchTerm() : null;
     }
     return executedSearchTerm;
   }

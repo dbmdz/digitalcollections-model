@@ -10,7 +10,6 @@ import de.digitalcollections.model.list.sorting.Sorting;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Container for pagination information. See Spring Data Commons, but more flat design and
@@ -86,8 +85,6 @@ public class PageResponse<T> extends ListResponse<T, PageRequest> {
     if (!(obj instanceof PageResponse<?>)) {
       return false;
     }
-
-    PageResponse<?> that = (PageResponse<?>) obj;
     return super.equals(obj);
   }
 
@@ -143,11 +140,6 @@ public class PageResponse<T> extends ListResponse<T, PageRequest> {
    */
   public boolean hasPrevious() {
     return getPageNumber() > 0;
-  }
-
-  @Override
-  public int hashCode() {
-    return super.hashCode();
   }
 
   @Override
