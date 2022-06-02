@@ -23,10 +23,10 @@
     "type" : "RESOURCE"
   } ],
   "executedSearchTerm" : "Label",
+  "totalElements" : 2,
   "pageRequest" : {
     "searchTerm" : "Label",
     "pageNumber" : 3,
     "pageSize" : 15
-  },
-  "totalElements" : 2
+  }
 }

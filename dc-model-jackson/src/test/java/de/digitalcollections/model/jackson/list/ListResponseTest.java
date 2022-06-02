@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 public class ListResponseTest extends BaseJsonSerializationTest {
 
-  private ListResponse<User> createObject() {
+  private ListResponse<User, ListRequest> createObject() {
     ListRequest listRequest = new ListRequest();
     // filtering
     FilterCriterion filterCriteria1 =
@@ -41,7 +41,7 @@ public class ListResponseTest extends BaseJsonSerializationTest {
 
   @Test
   public void testSerializeDeserialize() throws Exception {
-    ListResponse<User> listResponse = createObject();
+    ListResponse<User, ListRequest> listResponse = createObject();
     checkSerializeDeserialize(listResponse, "serializedTestObjects/list/ListResponse.json");
   }
 }
