@@ -5,17 +5,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Container for list information.
  *
  * @param <T> object type of list items
  */
-public class ListResponse<T> implements Iterable<T> {
+public class ListResponse<T, R extends ListRequest> implements Iterable<T> {
 
   protected List<T> content;
   protected String executedSearchTerm;
-  protected ListRequest listRequest;
+  protected R request;
   protected long total;
 
   public ListResponse() {
@@ -26,14 +27,14 @@ public class ListResponse<T> implements Iterable<T> {
    * Constructor with the given content and the given governing {@link ListRequest}.
    *
    * @param content the content of this list, must not be {@literal null}.
-   * @param listRequest the request information, can be {@literal null}.
+   * @param request the request information, can be {@literal null}.
    */
-  public ListResponse(List<T> content, ListRequest listRequest) {
+  public ListResponse(List<T> content, R request) {
     this();
 
     assert content != null : "content must not be null!";
     this.content.addAll(content);
-    this.listRequest = listRequest;
+    this.request = request;
     this.total = content.size();
   }
 
@@ -55,26 +56,15 @@ public class ListResponse<T> implements Iterable<T> {
     if (this == obj) {
       return true;
     }
-    if (!(obj instanceof ListResponse<?>)) {
+    if (!(obj instanceof ListResponse<?, ?>)) {
       return false;
     }
 
-    ListResponse<?> that = (ListResponse<?>) obj;
-
-    boolean contentEqual = this.content.equals(that.content);
-    boolean executedSearchTermEqual =
-        (this.executedSearchTerm == null
-            ? that.executedSearchTerm == null
-            : this.executedSearchTerm.equals(that.executedSearchTerm));
-    boolean listRequestEqual =
-        this.listRequest == null
-            ? that.listRequest == null
-            : this.listRequest.equals(that.listRequest);
-
+    ListResponse<?, ?> that = (ListResponse<?, ?>) obj;
     return (this.total == that.total)
-        && contentEqual
-        && executedSearchTermEqual
-        && listRequestEqual;
+        && Objects.equals(content, that.content)
+        && Objects.equals(executedSearchTerm, that.executedSearchTerm)
+        && Objects.equals(request, that.request);
   }
 
   /**
@@ -95,15 +85,15 @@ public class ListResponse<T> implements Iterable<T> {
   /**
    * @return the ListRequest used to get this ListResponse
    */
-  public ListRequest getListRequest() {
-    return listRequest;
+  public R getRequest() {
+    return request;
   }
 
   /**
    * @return the sorting parameters for the {@link ListResponse}.
    */
   public Sorting getSorting() {
-    return listRequest == null ? null : listRequest.getSorting();
+    return request == null ? null : request.getSorting();
   }
 
   /**
@@ -128,7 +118,7 @@ public class ListResponse<T> implements Iterable<T> {
     int result = 17;
 
     result += 31 * (int) (total ^ total >>> 32);
-    result += 31 * (listRequest == null ? 0 : listRequest.hashCode());
+    result += 31 * (request == null ? 0 : request.hashCode());
     result += 31 * content.hashCode();
     result += 31 * (executedSearchTerm == null ? 0 : executedSearchTerm.hashCode());
 
@@ -159,8 +149,8 @@ public class ListResponse<T> implements Iterable<T> {
     this.executedSearchTerm = executedSearchTerm;
   }
 
-  public void setListRequest(ListRequest listRequest) {
-    this.listRequest = listRequest;
+  public void setRequest(R request) {
+    this.request = request;
   }
 
   public void setTotalElements(long totalElements) {
