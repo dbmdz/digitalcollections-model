@@ -45,7 +45,7 @@ public class PageResponseTest extends BaseJsonSerializationTest {
     Filtering filtering = Filtering.builder().add(filterCriteria1).add(filterCriteria2).build();
     pageRequest.setFiltering(filtering);
 
-    pageResponse.setPageRequest(pageRequest);
+    pageResponse.setRequest(pageRequest);
     pageResponse.setExecutedSearchTerm("Hello");
 
     return pageResponse;
@@ -64,7 +64,7 @@ public class PageResponseTest extends BaseJsonSerializationTest {
 
     PageRequest pageRequest = new PageRequest("Label", 3, 15, null);
     PageResponse<Identifiable> resp = new PageResponse<>();
-    resp.setPageRequest(pageRequest);
+    resp.setRequest(pageRequest);
     resp.setContent(content);
     resp.setTotalElements(2);
     resp.setExecutedSearchTerm("Label");

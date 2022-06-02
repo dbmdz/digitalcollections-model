@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @param <T> object type listed in page
  */
-public class PageResponse<T> extends ListResponse<T> {
+public class PageResponse<T> extends ListResponse<T, PageRequest> {
 
   public static Builder builder() {
     return new Builder();
@@ -26,8 +26,6 @@ public class PageResponse<T> extends ListResponse<T> {
   public static Builder builder(Class c) {
     return new Builder(c);
   }
-
-  protected PageRequest pageRequest;
 
   public PageResponse() {
     super();
@@ -49,13 +47,13 @@ public class PageResponse<T> extends ListResponse<T> {
    * PageRequest}.
    *
    * @param content the content of this page, must not be {@literal null}.
-   * @param pageRequest the paging information, can be {@literal null}.
+   * @param request the paging information, can be {@literal null}.
    * @param total the total amount of items available. The total might be adapted considering the
    *     length of the content given, if it is going to be the content of the last page. This is in
    *     place to mitigate inconsistencies
    */
-  public PageResponse(List<T> content, PageRequest pageRequest, long total) {
-    this(content, pageRequest, total, null);
+  public PageResponse(List<T> content, PageRequest request, long total) {
+    this(content, request, total, null);
   }
 
   /**
@@ -63,23 +61,19 @@ public class PageResponse<T> extends ListResponse<T> {
    * PageRequest}.
    *
    * @param content the content of this page, must not be {@literal null}.
-   * @param pageRequest the paging information, can be {@literal null}.
+   * @param request the paging information, can be {@literal null}.
    * @param total the total amount of items available. The total might be adapted considering the
    *     length of the content given, if it is going to be the content of the last page. This is in
    *     place to mitigate inconsistencies
    * @param executedSearchTerm search term being effectively used (may bechanged/normalized in
    *     comparance to original sent request search term) on server side for some reason
    */
-  public PageResponse(
-      List<T> content, PageRequest pageRequest, long total, String executedSearchTerm) {
-    super(content, null, executedSearchTerm);
+  public PageResponse(List<T> content, PageRequest request, long total, String executedSearchTerm) {
+    super(content, request, executedSearchTerm);
 
-    this.pageRequest = pageRequest;
     this.total =
-        !content.isEmpty()
-                && pageRequest != null
-                && pageRequest.getOffset() + pageRequest.getPageSize() > total
-            ? pageRequest.getOffset() + content.size()
+        !content.isEmpty() && request != null && request.getOffset() + request.getPageSize() > total
+            ? request.getOffset() + content.size()
             : total;
   }
 
@@ -91,15 +85,7 @@ public class PageResponse<T> extends ListResponse<T> {
     if (!(obj instanceof PageResponse<?>)) {
       return false;
     }
-
-    PageResponse<?> that = (PageResponse<?>) obj;
-
-    boolean pageRequestEqual =
-        this.pageRequest == null
-            ? that.pageRequest == null
-            : this.pageRequest.equals(that.pageRequest);
-
-    return super.equals(obj) && this.total == that.total && pageRequestEqual;
+    return super.equals(obj);
   }
 
   /**
@@ -117,14 +103,7 @@ public class PageResponse<T> extends ListResponse<T> {
    * @return the number of the current {@link PageResponse}.
    */
   public int getPageNumber() {
-    return pageRequest == null ? 0 : pageRequest.getPageNumber();
-  }
-
-  /**
-   * @return the PageRequest used to get this PageResponse
-   */
-  public PageRequest getPageRequest() {
-    return pageRequest;
+    return request == null ? 0 : request.getPageNumber();
   }
 
   /**
@@ -133,7 +112,7 @@ public class PageResponse<T> extends ListResponse<T> {
    * @return the size of the {@link PageResponse}.
    */
   public int getSize() {
-    return pageRequest == null ? 0 : pageRequest.getPageSize();
+    return request == null ? 0 : request.getPageSize();
   }
 
   /**
@@ -161,17 +140,6 @@ public class PageResponse<T> extends ListResponse<T> {
    */
   public boolean hasPrevious() {
     return getPageNumber() > 0;
-  }
-
-  @Override
-  public int hashCode() {
-
-    int result = 17;
-
-    result += super.hashCode();
-    result += 31 * (pageRequest == null ? 0 : pageRequest.hashCode());
-
-    return result;
   }
 
   @Override
@@ -206,7 +174,7 @@ public class PageResponse<T> extends ListResponse<T> {
    * @return the {@link PageRequest} to request the next {@link PageResponse}
    */
   public PageRequest nextPageRequest() {
-    return hasNext() ? pageRequest.next() : null;
+    return hasNext() ? request.next() : null;
   }
 
   /**
@@ -219,13 +187,9 @@ public class PageResponse<T> extends ListResponse<T> {
    */
   public PageRequest previousPageRequest() {
     if (hasPrevious()) {
-      return pageRequest.previousOrFirst();
+      return request.previousOrFirst();
     }
     return null;
-  }
-
-  public void setPageRequest(PageRequest pageRequest) {
-    this.pageRequest = pageRequest;
   }
 
   @Override
@@ -246,7 +210,7 @@ public class PageResponse<T> extends ListResponse<T> {
 
     List<FilterCriterion> filterCriteria;
     List<Order> orders;
-    PageRequest pageRequest = new PageRequest();
+    PageRequest request = new PageRequest();
     B pageResponse;
 
     public Builder() {
@@ -259,13 +223,13 @@ public class PageResponse<T> extends ListResponse<T> {
 
     public B build() {
       if (filterCriteria != null && !filterCriteria.isEmpty()) {
-        pageRequest.setFiltering(new Filtering(filterCriteria));
+        request.setFiltering(new Filtering(filterCriteria));
       }
 
       if (orders != null && !orders.isEmpty()) {
         Sorting sorting = new Sorting();
         sorting.setOrders(orders);
-        pageRequest.setSorting(sorting);
+        request.setSorting(sorting);
       }
 
       if (pageResponse.getTotalElements() == 0
@@ -274,7 +238,7 @@ public class PageResponse<T> extends ListResponse<T> {
         pageResponse.setTotalElements(pageResponse.getContent().size());
       }
 
-      pageResponse.setPageRequest(pageRequest);
+      pageResponse.setRequest(request);
       return pageResponse;
     }
 
@@ -334,12 +298,12 @@ public class PageResponse<T> extends ListResponse<T> {
     }
 
     public C forPageSize(int pageSize) {
-      pageRequest.setPageSize(pageSize);
+      request.setPageSize(pageSize);
       return (C) this;
     }
 
     public C forRequestPage(int requestPage) {
-      pageRequest.setPageNumber(requestPage);
+      request.setPageNumber(requestPage);
       return (C) this;
     }
 

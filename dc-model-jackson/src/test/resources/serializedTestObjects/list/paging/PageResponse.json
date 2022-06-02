@@ -6,6 +6,7 @@
     "roles" : [ ]
   } ],
   "executedSearchTerm" : "Hello",
+  "totalElements" : 1,
   "pageRequest" : {
     "filtering" : {
       "filterCriteria" : [ {
@@ -24,6 +25,5 @@
     "searchTerm" : "Hello",
     "pageNumber" : 3,
     "pageSize" : 15
-  },
-  "totalElements" : 1
+  }
 }

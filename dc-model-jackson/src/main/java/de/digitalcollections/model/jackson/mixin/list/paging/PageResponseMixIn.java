@@ -2,6 +2,7 @@ package de.digitalcollections.model.jackson.mixin.list.paging;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -28,6 +29,7 @@ import de.digitalcollections.model.identifiable.entity.work.Item;
 import de.digitalcollections.model.identifiable.entity.work.Work;
 import de.digitalcollections.model.identifiable.resource.FileResource;
 import de.digitalcollections.model.identifiable.web.Webpage;
+import de.digitalcollections.model.list.paging.PageRequest;
 import de.digitalcollections.model.list.paging.PageResponse;
 import de.digitalcollections.model.list.sorting.Sorting;
 import de.digitalcollections.model.security.User;
@@ -76,6 +78,10 @@ public abstract class PageResponseMixIn<T> extends PageResponse<T> {
   @JsonIgnore
   @Override
   public abstract int getNumberOfElements();
+
+  @JsonProperty(value = "pageRequest")
+  @Override
+  public abstract PageRequest getRequest();
 
   @JsonIgnore
   @Override
