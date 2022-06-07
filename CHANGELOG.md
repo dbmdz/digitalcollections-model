@@ -12,17 +12,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `IdentifiableObjectType` enumeration to specify all types of `Identifiable`s
 - Added `identifiableObjectType` field to `Identifiable` (and all inherited classes)
 - Added `targetIdentifiableObjectType` field to `UrlAlias`
+- Added `searchTerm` to `ListRequest` and `executedSearchTerm` to `ListResponse`
 
 ### Changed
 
 - **Breaking**: Refactored Builder classes into inner classes of their belonging model classes and made their API consistent
 - **Breaking**: Set ignore case as default for sorting order
 - **Breaking**: If Mimetype can not be detected for a filename (or extension) "application/octet-stream" (instead of null) is returned.
+- **Breaking**: Refactored `ListRequest`, `ListResponse`, `PageRequest` and `PageResponse` packages
 
 ### Removed
 
 - Removed build with Java 8
-- Remove `Entity.entityType` field (deprecated `getEntityType` method)
+- Removed `Entity.entityType` field (deprecated `getEntityType` method)
+- **Breaking**: Removed `SearchPageRequest` and `SearchPageResponse`
 
 ## [9.2.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/9.2.0) - 2022-04-06
 
