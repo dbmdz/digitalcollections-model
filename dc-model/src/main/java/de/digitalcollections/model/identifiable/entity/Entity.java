@@ -150,7 +150,8 @@ public class Entity extends Identifiable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), customAttributes, identifiableObjectType, navDate, notes, refId);
+    return Objects.hash(
+        super.hashCode(), customAttributes, identifiableObjectType, navDate, notes, refId);
   }
 
   @Override
