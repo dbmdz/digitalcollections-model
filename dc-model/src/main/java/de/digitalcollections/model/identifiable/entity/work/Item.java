@@ -2,7 +2,6 @@ package de.digitalcollections.model.identifiable.entity.work;
 
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.agent.Agent;
-import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.LocalizedText;
 import java.util.List;
 import java.util.Locale;
@@ -58,8 +57,6 @@ public class Item extends Entity {
   private Manifestation manifestation;
 
   private List<Agent> holders;
-
-  private List<LocalizedStructuredContent> notes;
 
   private Item isPartOfItem;
 
@@ -189,14 +186,6 @@ public class Item extends Entity {
     this.holders = holders;
   }
 
-  public List<LocalizedStructuredContent> getNotes() {
-    return notes;
-  }
-
-  public void setNotes(List<LocalizedStructuredContent> notes) {
-    this.notes = notes;
-  }
-
   public Item getIsPartOfItem() {
     return isPartOfItem;
   }
@@ -213,11 +202,9 @@ public class Item extends Entity {
     if (!(o instanceof Item)) {
       return false;
     }
-    if (!super.equals(o)) {
-      return false;
-    }
     Item item = (Item) o;
-    return Objects.equals(language, item.language)
+    return super.equals(o)
+        && Objects.equals(language, item.language)
         && Objects.equals(publicationDate, item.publicationDate)
         && Objects.equals(publicationPlace, item.publicationPlace)
         && Objects.equals(publisher, item.publisher)
@@ -225,7 +212,6 @@ public class Item extends Entity {
         && Objects.equals(exemplifiesManifestation, item.exemplifiesManifestation)
         && Objects.equals(manifestation, item.manifestation)
         && Objects.equals(holders, item.holders)
-        && Objects.equals(notes, item.notes)
         && Objects.equals(isPartOfItem, item.isPartOfItem);
   }
 
@@ -241,7 +227,6 @@ public class Item extends Entity {
             exemplifiesManifestation,
             manifestation,
             holders,
-            notes,
             isPartOfItem);
   }
 
