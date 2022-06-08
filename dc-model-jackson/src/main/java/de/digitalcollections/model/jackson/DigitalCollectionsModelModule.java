@@ -20,6 +20,7 @@ import de.digitalcollections.model.identifiable.alias.UrlAlias;
 import de.digitalcollections.model.identifiable.entity.Article;
 import de.digitalcollections.model.identifiable.entity.Collection;
 import de.digitalcollections.model.identifiable.entity.DigitalObject;
+import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.HeadwordEntry;
 import de.digitalcollections.model.identifiable.entity.Project;
 import de.digitalcollections.model.identifiable.entity.Topic;
@@ -56,6 +57,7 @@ import de.digitalcollections.model.jackson.mixin.identifiable.alias.UrlAliasMixI
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.ArticleMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.CollectionMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.DigitalObjectMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.EntityMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.HeadwordEntryMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.ProjectMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.TopicMixIn;
@@ -228,6 +230,7 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(Collection.class, CollectionMixIn.class);
     context.setMixInAnnotations(ContentBlock.class, ContentBlockMixIn.class);
     context.setMixInAnnotations(DigitalObject.class, DigitalObjectMixIn.class);
+    context.setMixInAnnotations(Entity.class, EntityMixIn.class);
     context.setMixInAnnotations(EntityRelation.class, EntityRelationMixIn.class);
     context.setMixInAnnotations(FileResource.class, FileResourceMixIn.class);
     context.setMixInAnnotations(FilterCriterion.class, FilterCriterionMixIn.class);

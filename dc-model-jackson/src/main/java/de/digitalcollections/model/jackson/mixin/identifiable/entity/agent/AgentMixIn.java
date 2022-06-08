@@ -12,7 +12,7 @@ import de.digitalcollections.model.jackson.mixin.identifiable.entity.EntityMixIn
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
     include = JsonTypeInfo.As.EXISTING_PROPERTY,
-    property = "entityType",
+    property = "identifiableObjectType",
     visible = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSubTypes({
