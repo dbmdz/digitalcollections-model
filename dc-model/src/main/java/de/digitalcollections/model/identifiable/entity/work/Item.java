@@ -58,7 +58,7 @@ public class Item extends Entity {
 
   private List<Agent> holders;
 
-  private Item isPartOfItem;
+  private Item partOfItem;
 
   public Item() {
     super();
@@ -186,12 +186,12 @@ public class Item extends Entity {
     this.holders = holders;
   }
 
-  public Item getIsPartOfItem() {
-    return isPartOfItem;
+  public Item getPartOfItem() {
+    return partOfItem;
   }
 
-  public void setIsPartOfItem(Item isPartOfItem) {
-    this.isPartOfItem = isPartOfItem;
+  public void setPartOfItem(Item partOfItem) {
+    this.partOfItem = partOfItem;
   }
 
   @Override
@@ -212,7 +212,7 @@ public class Item extends Entity {
         && Objects.equals(exemplifiesManifestation, item.exemplifiesManifestation)
         && Objects.equals(manifestation, item.manifestation)
         && Objects.equals(holders, item.holders)
-        && Objects.equals(isPartOfItem, item.isPartOfItem);
+        && Objects.equals(partOfItem, item.partOfItem);
   }
 
   @Override
@@ -227,7 +227,7 @@ public class Item extends Entity {
             exemplifiesManifestation,
             manifestation,
             holders,
-            isPartOfItem);
+            partOfItem);
   }
 
   @Override
@@ -255,8 +255,8 @@ public class Item extends Entity {
         + holders
         + ", notes="
         + notes
-        + ", isPartOfItem="
-        + isPartOfItem
+        + ", partOfItem="
+        + partOfItem
         + ", customAttributes="
         + customAttributes
         + ", identifiableObjecttype="
