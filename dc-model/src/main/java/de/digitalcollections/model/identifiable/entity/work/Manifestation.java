@@ -1,6 +1,7 @@
 package de.digitalcollections.model.identifiable.entity.work;
 
 import de.digitalcollections.model.identifiable.entity.Entity;
+import lombok.experimental.SuperBuilder;
 
 /**
  * From https://web.library.yale.edu/cataloging/music/frbr-wemi-music#work:
@@ -22,6 +23,7 @@ import de.digitalcollections.model.identifiable.entity.Entity;
  * Manifestation 1: the recording on a phonograph record Manifestation 2: a re-release on a compact
  * disc Manifestation 3: a digitization on an MP3 file
  */
+@SuperBuilder(buildMethodName = "prebuild")
 public class Manifestation extends Entity {
 
   public Manifestation() {
@@ -32,5 +34,18 @@ public class Manifestation extends Entity {
   @Override
   protected void init() {
     super.init();
+  }
+
+  public abstract static class ManifestationBuilder<
+          C extends Manifestation, B extends ManifestationBuilder<C, B>>
+      extends EntityBuilder<C, B> {
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      setInternalReferences(c);
+      return c;
+    }
   }
 }

@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- New fields in `Item`
+
+## [10.0.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/10.0.0) - 2022-06-07
+
+### Added
+
 - Added `IdentifiableObjectType` enumeration to specify all types of `Identifiable`s
 - Added `identifiableObjectType` field to `Identifiable` (and all inherited classes)
 - Added `targetIdentifiableObjectType` field to `UrlAlias`

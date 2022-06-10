@@ -1,8 +1,11 @@
 package de.digitalcollections.model.identifiable.entity.work;
 
 import de.digitalcollections.model.identifiable.entity.Entity;
+import de.digitalcollections.model.identifiable.entity.agent.Agent;
 import de.digitalcollections.model.text.LocalizedText;
+import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import lombok.experimental.SuperBuilder;
 
 /**
@@ -48,6 +51,14 @@ public class Item extends Entity {
   private String publicationPlace;
   private String publisher;
   private String version;
+
+  private Boolean exemplifiesManifestation;
+
+  private Manifestation manifestation;
+
+  private List<Agent> holders;
+
+  private Item partOfItem;
 
   public Item() {
     super();
@@ -151,36 +162,130 @@ public class Item extends Entity {
     this.version = version;
   }
 
+  public Boolean getExemplifiesManifestation() {
+    return exemplifiesManifestation;
+  }
+
+  public void setExemplifiesManifestation(Boolean exemplifiesManifestation) {
+    this.exemplifiesManifestation = exemplifiesManifestation;
+  }
+
+  public Manifestation getManifestation() {
+    return manifestation;
+  }
+
+  public void setManifestation(Manifestation manifestation) {
+    this.manifestation = manifestation;
+  }
+
+  public List<Agent> getHolders() {
+    return holders;
+  }
+
+  public void setHolders(List<Agent> holders) {
+    this.holders = holders;
+  }
+
+  public Item getPartOfItem() {
+    return partOfItem;
+  }
+
+  public void setPartOfItem(Item partOfItem) {
+    this.partOfItem = partOfItem;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Item)) {
+      return false;
+    }
+    Item item = (Item) o;
+    return super.equals(o)
+        && Objects.equals(language, item.language)
+        && Objects.equals(publicationDate, item.publicationDate)
+        && Objects.equals(publicationPlace, item.publicationPlace)
+        && Objects.equals(publisher, item.publisher)
+        && Objects.equals(version, item.version)
+        && Objects.equals(exemplifiesManifestation, item.exemplifiesManifestation)
+        && Objects.equals(manifestation, item.manifestation)
+        && Objects.equals(holders, item.holders)
+        && Objects.equals(partOfItem, item.partOfItem);
+  }
+
+  @Override
+  public int hashCode() {
+    return super.hashCode()
+        + Objects.hash(
+            language,
+            publicationDate,
+            publicationPlace,
+            publisher,
+            version,
+            exemplifiesManifestation,
+            manifestation,
+            holders,
+            partOfItem);
+  }
+
   @Override
   public String toString() {
     return this.getClass().getSimpleName()
-        + "{language="
+        + "language="
         + language
         + ", publicationDate='"
         + publicationDate
-        + "', publicationPlace='"
+        + '\''
+        + ", publicationPlace='"
         + publicationPlace
-        + "', publisher='"
+        + '\''
+        + ", publisher='"
         + publisher
-        + "', version='"
+        + '\''
+        + ", version='"
         + version
+        + '\''
+        + ", exemplifiesManifestation="
+        + exemplifiesManifestation
+        + ", manifestation="
+        + manifestation
+        + ", holders="
+        + holders
+        + ", notes="
+        + notes
+        + ", partOfItem="
+        + partOfItem
+        + ", customAttributes="
+        + customAttributes
+        + ", identifiableObjecttype="
+        + identifiableObjectType
+        + ", navDate="
+        + navDate
         + ", refId="
         + refId
-        + ", created="
-        + created
         + ", description="
         + description
+        + ", identifiers="
+        + identifiers
         + ", label="
         + label
-        + ", lastModified="
-        + lastModified
+        + ", localizedUrlAliases="
+        + localizedUrlAliases
         + ", previewImage="
         + previewImage
         + ", previewImageRenderingHints="
         + previewImageRenderingHints
         + ", type="
         + type
-        + "}";
+        + ", created="
+        + created
+        + ", lastModified="
+        + lastModified
+        + ", uuid="
+        + uuid
+        + '}';
   }
 
   public abstract static class ItemBuilder<C extends Item, B extends ItemBuilder<C, B>>
