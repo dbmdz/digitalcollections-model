@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New fields in `Item`
 
+## [10.0.1](https://github.com/dbmdz/digitalcollections-model/releases/tag/10.0.1) - 2022-06-20
+
+### Changed
+
+- Readd missing field `targetEntityType`
+
 ## [10.0.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/10.0.0) - 2022-06-07
 
 ### Added
