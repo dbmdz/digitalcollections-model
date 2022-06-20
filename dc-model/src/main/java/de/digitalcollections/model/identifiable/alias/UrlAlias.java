@@ -72,7 +72,30 @@ public class UrlAlias {
 
   @Deprecated(forRemoval = true, since = "10.0.0")
   public EntityType getTargetEntityType() {
-    return this.targetEntityType;
+    if (IdentifiableType.RESOURCE == targetIdentifiableType) {
+      return null;
+    }
+    switch (targetIdentifiableObjectType) {
+      case CANYON:
+      case CAVE:
+      case CONTINENT:
+      case COUNTRY:
+      case CREEK:
+      case GEO_LOCATION:
+      case HUMAN_SETTLEMENT:
+      case LAKE:
+      case MOUNTAIN:
+      case OCEAN:
+      case RIVER:
+      case SEA:
+      case STILL_WATERS:
+      case VALLEY:
+        return EntityType.GEOLOCATION;
+      default:
+        // as both enum have String identical enum values in all other cases, we can simply map by
+        // String:
+        return EntityType.valueOf(targetIdentifiableObjectType.toString());
+    }
   }
 
   public IdentifiableObjectType getTargetIdentifiableObjectType() {
