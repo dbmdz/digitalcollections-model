@@ -4,6 +4,7 @@
     "lastPublished" : "2021-12-24T12:00:00",
     "primary" : true,
     "slug" : "foobar",
+    "targetEntityType" : "COLLECTION",
     "targetIdentifiableObjectType" : "COLLECTION",
     "targetIdentifiableType" : "ENTITY",
     "targetLanguage" : "de",
