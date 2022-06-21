@@ -24,7 +24,6 @@ public class UrlAlias {
   private LocalDateTime lastPublished;
   private boolean primary;
   private String slug;
-  private EntityType targetEntityType;
   private IdentifiableObjectType targetIdentifiableObjectType;
   private IdentifiableType targetIdentifiableType;
   private Locale targetLanguage;
@@ -50,7 +49,6 @@ public class UrlAlias {
         && Objects.equals(this.targetLanguage, other.targetLanguage)
         && Objects.equals(this.targetIdentifiableObjectType, other.targetIdentifiableObjectType)
         && Objects.equals(this.targetIdentifiableType, other.targetIdentifiableType)
-        && Objects.equals(this.targetEntityType, other.targetEntityType)
         && Objects.equals(this.targetUuid, other.targetUuid)
         && Objects.equals(this.uuid, other.uuid)
         && Objects.equals(
@@ -157,11 +155,6 @@ public class UrlAlias {
     this.slug = slug;
   }
 
-  @Deprecated(forRemoval = true, since = "10.0.0")
-  public void setTargetEntityType(EntityType targetEntityType) {
-    this.targetEntityType = targetEntityType;
-  }
-
   public void setTargetIdentifiableObjectType(IdentifiableObjectType targetIdentifiableObjectType) {
     this.targetIdentifiableObjectType = targetIdentifiableObjectType;
   }
@@ -198,8 +191,6 @@ public class UrlAlias {
         + ", slug='"
         + slug
         + '\''
-        + ", targetEntityType="
-        + targetEntityType
         + ", targetIdentifiableObjectType="
         + targetIdentifiableObjectType
         + ", targetIdentifiableType="
@@ -254,12 +245,9 @@ public class UrlAlias {
     }
 
     public Builder targetType(
-        IdentifiableObjectType identifiableObjectType,
-        IdentifiableType identifiableType,
-        EntityType entityType) {
+        IdentifiableObjectType identifiableObjectType, IdentifiableType identifiableType) {
       urlAlias.setTargetIdentifiableObjectType(identifiableObjectType);
       urlAlias.setTargetIdentifiableType(identifiableType);
-      urlAlias.setTargetEntityType(entityType);
       return this;
     }
 

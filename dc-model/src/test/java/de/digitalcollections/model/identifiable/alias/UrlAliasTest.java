@@ -16,8 +16,7 @@ class UrlAliasTest {
   void fillTargetEntityTypeForColletion() {
     UrlAlias urlAlias =
         UrlAlias.builder()
-            .targetType(
-                IdentifiableObjectType.COLLECTION, IdentifiableType.ENTITY, EntityType.COLLECTION)
+            .targetType(IdentifiableObjectType.COLLECTION, IdentifiableType.ENTITY)
             .build();
     assertThat(urlAlias.getTargetEntityType()).isEqualTo(EntityType.COLLECTION);
   }
@@ -27,7 +26,7 @@ class UrlAliasTest {
   void fillTargetEntityTypeForWebpage() {
     UrlAlias urlAlias =
         UrlAlias.builder()
-            .targetType(IdentifiableObjectType.WEBPAGE, IdentifiableType.RESOURCE, null)
+            .targetType(IdentifiableObjectType.WEBPAGE, IdentifiableType.RESOURCE)
             .build();
     assertThat(urlAlias.getTargetEntityType()).isNull();
   }
@@ -37,7 +36,7 @@ class UrlAliasTest {
   void fillTargetEntityTypeForFamily() {
     UrlAlias urlAlias =
         UrlAlias.builder()
-            .targetType(IdentifiableObjectType.FAMILY, IdentifiableType.ENTITY, EntityType.FAMILY)
+            .targetType(IdentifiableObjectType.FAMILY, IdentifiableType.ENTITY)
             .build();
     assertThat(urlAlias.getTargetEntityType()).isEqualTo(EntityType.FAMILY);
   }
@@ -47,8 +46,7 @@ class UrlAliasTest {
   void fillTargetEntityTypeForFileResource() {
     UrlAlias urlAlias =
         UrlAlias.builder()
-            .targetType(
-                IdentifiableObjectType.APPLICATION_FILE_RESOURCE, IdentifiableType.RESOURCE, null)
+            .targetType(IdentifiableObjectType.APPLICATION_FILE_RESOURCE, IdentifiableType.RESOURCE)
             .build();
     assertThat(urlAlias.getTargetEntityType()).isNull();
   }
@@ -58,10 +56,7 @@ class UrlAliasTest {
   void fillTargetEntityTypeForHumanSettlement() {
     UrlAlias urlAlias =
         UrlAlias.builder()
-            .targetType(
-                IdentifiableObjectType.HUMAN_SETTLEMENT,
-                IdentifiableType.ENTITY,
-                EntityType.GEOLOCATION)
+            .targetType(IdentifiableObjectType.HUMAN_SETTLEMENT, IdentifiableType.ENTITY)
             .build();
     assertThat(urlAlias.getTargetEntityType()).isEqualTo(EntityType.GEOLOCATION);
   }
