@@ -7,11 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [10.0.2](https://github.com/dbmdz/digitalcollections-model/releases/tag/10.0.2) - 2022-06-21
+
+## Changed
+
+- Remove setter of field `targetEntityType`
+- Remove field `targetEntityType` from `equals`
+
 ## [10.0.1](https://github.com/dbmdz/digitalcollections-model/releases/tag/10.0.1) - 2022-06-20
 
 ### Changed
 
-- Readd missing field `targetEntityType`
+- Fix getter of field `targetEntityType`
 
 ## [10.0.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/10.0.0) - 2022-06-07
 
