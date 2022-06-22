@@ -29,6 +29,7 @@ import de.digitalcollections.model.identifiable.entity.work.Item;
 import de.digitalcollections.model.identifiable.entity.work.Work;
 import de.digitalcollections.model.identifiable.resource.FileResource;
 import de.digitalcollections.model.identifiable.web.Webpage;
+import de.digitalcollections.model.legal.License;
 import de.digitalcollections.model.list.paging.PageRequest;
 import de.digitalcollections.model.list.paging.PageResponse;
 import de.digitalcollections.model.list.sorting.Sorting;
@@ -59,6 +60,7 @@ public abstract class PageResponseMixIn<T> extends PageResponse<T> {
     @Type(value = Identifiable.class, name = "IDENTIFIABLE"),
     @Type(value = IdentifierType.class, name = "IDENTIFIER_TYPE"),
     @Type(value = Item.class, name = "ITEM"),
+    @Type(value = License.class, name = "LICENSE"),
     @Type(value = Person.class, name = "PERSON"),
     @Type(value = Project.class, name = "PROJECT"),
     @Type(value = RenderingTemplate.class, name = "RENDERING_TEMPLATE"),
