@@ -3,6 +3,7 @@ package de.digitalcollections.model.identifiable.entity.work;
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.agent.Agent;
 import de.digitalcollections.model.text.LocalizedText;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -92,6 +93,9 @@ public class Item extends Entity {
   @Override
   protected void init() {
     super.init();
+    if (holders == null) {
+      holders = new ArrayList<>();
+    }
   }
 
   /**
