@@ -6,8 +6,10 @@ import de.digitalcollections.model.identifiable.alias.LocalizedUrlAliases;
 import de.digitalcollections.model.identifiable.alias.UrlAlias;
 import de.digitalcollections.model.identifiable.entity.Website;
 import java.util.Locale;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("The Identifiable")
 public class IdentifiableTest {
   @Test
   public void getPrimaryUrlAliasTest() {
@@ -61,5 +63,51 @@ public class IdentifiableTest {
     found = identifiable.getPrimaryUrlAlias(Locale.GERMAN, website);
     assertThat(found).isNotNull();
     assertThat(found.getSlug()).isEqualTo("this-is-a-test");
+  }
+
+  @DisplayName("can remove an identifier by its key")
+  @Test
+  public void removeIdentifierByKey() {
+    Identifiable identifiable =
+        Identifiable.builder().identifier("foo", "bar").identifier("baz", "bla").build();
+
+    identifiable.removeIdentifier("foo");
+
+    assertThat(identifiable.getIdentifierByNamespace("foo")).isNull();
+    assertThat(identifiable.getIdentifiers()).hasSize(1);
+    assertThat(identifiable.getIdentifierByNamespace("baz").getId()).isEqualTo("bla");
+  }
+
+  @DisplayName("ignores removing an identifier when no identifiers were set")
+  @Test
+  public void removeIdentifierByKeyWithEmptyIdentifiers() {
+    Identifiable identifiable = Identifiable.builder().build();
+
+    identifiable.removeIdentifier("foo");
+
+    assertThat(identifiable).isNotNull();
+  }
+
+  @DisplayName("ignores removing an identifier with an empty or null key")
+  @Test
+  public void removeIdentifierByEmptyOrNullKey() {
+    Identifiable identifiable = Identifiable.builder().build();
+
+    identifiable.removeIdentifier(null);
+    identifiable.removeIdentifier("");
+
+    assertThat(identifiable).isNotNull();
+  }
+
+  @DisplayName("can set multiple identifiers in builder")
+  @Test
+  public void testMultipleIdentifiersInBuilder() {
+    Identifier identifier1 = new Identifier(null, "foo", "bar");
+    Identifier identifier2 = new Identifier(null, "baz", "bla");
+
+    Identifiable actual =
+        Identifiable.builder().identifier(identifier1).identifier(identifier2).build();
+
+    assertThat(actual.getIdentifiers()).containsExactlyInAnyOrder(identifier1, identifier2);
   }
 }

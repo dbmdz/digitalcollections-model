@@ -57,6 +57,16 @@ public class Identifiable extends UniqueObject {
     identifiers.add(Objects.requireNonNull(identifier));
   }
 
+  public void removeIdentifier(String namespace) {
+    if (namespace == null || namespace.isBlank()) {
+      return;
+    }
+    identifiers =
+        identifiers.stream()
+            .filter(i -> !namespace.equals(i.getNamespace()))
+            .collect(Collectors.toSet());
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -221,8 +231,6 @@ public class Identifiable extends UniqueObject {
   public abstract static class IdentifiableBuilder<
           C extends Identifiable, B extends IdentifiableBuilder<C, B>>
       extends UniqueObjectBuilder<C, B> {
-
-    private Set<Identifier> identifiers;
 
     public B altText(Locale locale, String text) {
       if (previewImageRenderingHints == null) {
