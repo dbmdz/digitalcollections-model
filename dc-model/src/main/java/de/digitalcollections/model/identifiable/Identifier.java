@@ -83,23 +83,4 @@ public class Identifier extends UniqueObject {
   public String toString() {
     return namespace + ":" + id + ":" + identifiable;
   }
-
-  public abstract static class IdentifierBuilder<
-          C extends Identifier, B extends IdentifierBuilder<C, B>>
-      extends UniqueObjectBuilder<C, B> {
-    public B id(String id) {
-      this.id = id;
-      return self();
-    }
-
-    public B identifiable(UUID identifiable) {
-      this.identifiable = identifiable;
-      return self();
-    }
-
-    public B namespace(String namespace) {
-      this.namespace = namespace;
-      return self();
-    }
-  }
 }
