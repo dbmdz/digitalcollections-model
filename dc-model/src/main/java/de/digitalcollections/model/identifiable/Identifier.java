@@ -3,6 +3,7 @@ package de.digitalcollections.model.identifiable;
 import de.digitalcollections.model.UniqueObject;
 import java.util.Objects;
 import java.util.UUID;
+import lombok.experimental.SuperBuilder;
 
 /**
  * An Identifier identifies an object uniquely in an external system that created the id. Each
@@ -10,6 +11,7 @@ import java.util.UUID;
  *
  * <p>Examples: GND-ID ("gnd:104330171") or VIAF-ID ("viaf:96994450")
  */
+@SuperBuilder(buildMethodName = "prebuild")
 public class Identifier extends UniqueObject {
 
   private static final long serialVersionUID = 1L;
@@ -18,9 +20,12 @@ public class Identifier extends UniqueObject {
   private UUID identifiable;
   private String namespace;
 
-  public Identifier() {}
+  public Identifier() {
+    super();
+  }
 
   public Identifier(UUID identifiable, String namespace, String id) {
+    this();
     this.id = id;
     this.identifiable = identifiable;
     this.namespace = namespace;
@@ -71,5 +76,24 @@ public class Identifier extends UniqueObject {
   @Override
   public String toString() {
     return namespace + ":" + id + ":" + identifiable;
+  }
+
+  public abstract static class IdentifierBuilder<
+          C extends Identifier, B extends IdentifierBuilder<C, B>>
+      extends UniqueObjectBuilder<C, B> {
+    public B id(String id) {
+      this.id = id;
+      return self();
+    }
+
+    public B identifiable(UUID identifiable) {
+      this.identifiable = identifiable;
+      return self();
+    }
+
+    public B namespace(String namespace) {
+      this.namespace = namespace;
+      return self();
+    }
   }
 }
