@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New fields in `Item`
 - Ability to remove an Identifier of an (inherited) `Itendifiable`
+- Builder for `Identifier`
 
 ## [10.0.2](https://github.com/dbmdz/digitalcollections-model/releases/tag/10.0.2) - 2022-06-21
 
