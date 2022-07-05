@@ -24,6 +24,12 @@ public class Identifier extends UniqueObject {
     super();
   }
 
+  public Identifier(String id, String namespace) {
+    this();
+    this.id = id;
+    this.namespace = namespace;
+  }
+
   public Identifier(UUID identifiable, String namespace, String id) {
     this();
     this.id = id;
