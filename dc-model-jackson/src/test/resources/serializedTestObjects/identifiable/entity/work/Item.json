@@ -17,11 +17,6 @@
   },
   "type" : "ENTITY",
   "refId" : 0,
-  "language" : "de",
-  "publicationDate" : "1912",
-  "publicationPlace" : "Leipzig",
-  "publisher" : "Thieme",
-  "version" : "Zweite Auflage",
   "holders" : [ ],
   "entityType" : "ITEM"
 }

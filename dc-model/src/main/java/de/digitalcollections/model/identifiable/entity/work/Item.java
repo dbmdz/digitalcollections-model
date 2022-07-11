@@ -5,7 +5,6 @@ import de.digitalcollections.model.identifiable.entity.agent.Agent;
 import de.digitalcollections.model.text.LocalizedText;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 import lombok.experimental.SuperBuilder;
 
@@ -47,12 +46,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(buildMethodName = "prebuild")
 public class Item extends Entity {
 
-  private Locale language;
-  private String publicationDate;
-  private String publicationPlace;
-  private String publisher;
-  private String version;
-
   private Boolean exemplifiesManifestation;
 
   private Manifestation manifestation;
@@ -66,28 +59,8 @@ public class Item extends Entity {
     init();
   }
 
-  public Locale getLanguage() {
-    return language;
-  }
-
-  public String getPublicationDate() {
-    return publicationDate;
-  }
-
-  public String getPublicationPlace() {
-    return publicationPlace;
-  }
-
-  public String getPublisher() {
-    return publisher;
-  }
-
   public LocalizedText getTitle() {
     return getLabel();
-  }
-
-  public String getVersion() {
-    return version;
   }
 
   @Override
@@ -98,72 +71,12 @@ public class Item extends Entity {
     }
   }
 
-  /**
-   * @param language language of item (if text, audio, video, etc.)
-   */
-  public void setLanguage(Locale language) {
-    this.language = language;
-  }
-
-  /**
-   * http://irsc.libguides.com/MLA:
-   *
-   * <p>Whether the year, month and year, or complete date is cited depends on the information
-   * available, the type of source, and the use of the source. Give the date as shown or use what is
-   * most relevant to your use of the source. If the month, day, and year are given, use all three.
-   * If only the year is given, that is sufficient.
-   *
-   * @param publicationDate date of publication
-   */
-  public void setPublicationDate(String publicationDate) {
-    this.publicationDate = publicationDate;
-  }
-
-  /**
-   * http://irsc.libguides.com/APA/:
-   *
-   * <p>The place of publication is the "name of the city where the publisher is located." The place
-   * can be found on the title page or verso of the title page. Use the first city listed or the
-   * city where the publisher's headquarters is located. Follow city names from other countries with
-   * the name of the country, e.g. "Frankfurt, Germany"
-   *
-   * @param publicationPlace place of publication
-   */
-  public void setPublicationPlace(String publicationPlace) {
-    this.publicationPlace = publicationPlace;
-  }
-
-  /**
-   * http://irsc.libguides.com/MLA:
-   *
-   * <p>The company or organization primarily responsible for producing the source or making it
-   * available is the publisher. For books, the publisher is listed on the title page.
-   *
-   * @param publisher name of publisher
-   */
-  public void setPublisher(String publisher) {
-    this.publisher = publisher;
-  }
-
   public void setTitle(LocalizedText title) {
     setLabel(title);
   }
 
   public void setTitle(String title) {
     setLabel(title);
-  }
-
-  /**
-   * http://irsc.libguides.com/MLA:
-   *
-   * <p>It is not always needed. If different versions of the source exist, use this element to
-   * state which version is being cited. Some examples of different versions include editions (e.g.
-   * "2nd ed."), director's cuts, and abridged or unabridged versions.
-   *
-   * @param version version of item
-   */
-  public void setVersion(String version) {
-    this.version = version;
   }
 
   public Boolean getExemplifiesManifestation() {
@@ -208,11 +121,6 @@ public class Item extends Entity {
     }
     Item item = (Item) o;
     return super.equals(o)
-        && Objects.equals(language, item.language)
-        && Objects.equals(publicationDate, item.publicationDate)
-        && Objects.equals(publicationPlace, item.publicationPlace)
-        && Objects.equals(publisher, item.publisher)
-        && Objects.equals(version, item.version)
         && Objects.equals(exemplifiesManifestation, item.exemplifiesManifestation)
         && Objects.equals(manifestation, item.manifestation)
         && Objects.equals(holders, item.holders)
@@ -222,36 +130,13 @@ public class Item extends Entity {
   @Override
   public int hashCode() {
     return super.hashCode()
-        + Objects.hash(
-            language,
-            publicationDate,
-            publicationPlace,
-            publisher,
-            version,
-            exemplifiesManifestation,
-            manifestation,
-            holders,
-            partOfItem);
+        + Objects.hash(exemplifiesManifestation, manifestation, holders, partOfItem);
   }
 
   @Override
   public String toString() {
     return this.getClass().getSimpleName()
-        + "language="
-        + language
-        + ", publicationDate='"
-        + publicationDate
-        + '\''
-        + ", publicationPlace='"
-        + publicationPlace
-        + '\''
-        + ", publisher='"
-        + publisher
-        + '\''
-        + ", version='"
-        + version
-        + '\''
-        + ", exemplifiesManifestation="
+        + "exemplifiesManifestation="
         + exemplifiesManifestation
         + ", manifestation="
         + manifestation

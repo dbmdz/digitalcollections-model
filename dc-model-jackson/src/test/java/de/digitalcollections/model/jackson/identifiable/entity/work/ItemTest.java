@@ -16,14 +16,9 @@ public class ItemTest extends BaseJsonSerializationTest {
         new LocalizedText(
             Locale.GERMAN,
             "Zimmer-Gymnastik ohne Geräte : 50 tägliche Übungen für die gesamte Körpermuskulatur, zur Erhaltung der Gesundheit und Förderung der Gewandtheit"));
-    item.setLanguage(Locale.GERMAN);
     final ImageFileResource previewImage = new ImageFileResource();
     previewImage.setUuid(UUID.fromString("6bed2ff9-4ad5-4e18-b520-bb9843fe9a73"));
     item.setPreviewImage(previewImage);
-    item.setPublicationDate("1912");
-    item.setPublicationPlace("Leipzig");
-    item.setPublisher("Thieme");
-    item.setVersion("Zweite Auflage");
     return item;
   }
 
