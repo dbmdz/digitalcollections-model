@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-- **Breaking** Removed obsolete fields `language`, `publicationDat`,
+- **Breaking** Removed obsolete fields `language`, `publicationDate`,
   `publicationPlace`, `publisher` and `version` in `Item` since they
   belong to the Manifestation/Expression.
 
