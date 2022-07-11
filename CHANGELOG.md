@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - New fields in `Item`
-- Ability to remove an Identifier of an (inherited) `Itendifiable`
+- Ability to remove an Identifier of an (inherited) `Identifiable`
 - Builder for `Identifier`
 
 ### Removed
