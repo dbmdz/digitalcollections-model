@@ -65,7 +65,7 @@
     "filenameExtension" : "pdf"
   } ],
   "linkedDataResources" : [ ],
-  "numberOfBinaryResources" : 0,
+  "numberOfBinaryResources" : 42,
   "renderingResources" : [ ],
   "entityType" : "DIGITAL_OBJECT"
 }

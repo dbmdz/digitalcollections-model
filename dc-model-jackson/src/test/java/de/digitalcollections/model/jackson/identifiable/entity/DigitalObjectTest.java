@@ -37,6 +37,8 @@ public class DigitalObjectTest extends BaseJsonSerializationTest {
     creationInfo.setGeoLocation(geoLocation);
     creationInfo.setDate(LocalDate.of(2021, 12, 1));
     digitalObject.setCreationInfo(creationInfo);
+
+    digitalObject.setNumberOfBinaryResources(42);
     return digitalObject;
   }
 
