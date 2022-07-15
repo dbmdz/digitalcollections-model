@@ -13,9 +13,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Ability to remove an Identifier of an (inherited) `Identifiable`
 - Builder for `Identifier`
 
+### Changed
+
+- **Breaking**: Changed the type of `numberOfBinaryResources` in `DigitalObject` from `int` to `Integer`, so it can also be `null`
+
 ### Removed
 
-- **Breaking** Removed obsolete fields `language`, `publicationDate`,
+- **Breaking**: Removed obsolete fields `language`, `publicationDate`,
   `publicationPlace`, `publisher` and `version` in `Item` since they
   belong to the Manifestation/Expression.
 
