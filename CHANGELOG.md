@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [11.0.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/11.0.0) - 2022-07-18
+
 ### Added
 
 - New fields in `Item`
