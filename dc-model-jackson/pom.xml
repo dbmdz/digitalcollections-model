@@ -6,7 +6,7 @@
   <parent>
     <groupId>de.digitalcollections.model</groupId>
     <artifactId>dc-model-parent</artifactId>
-    <version>11.0.0</version>
+    <version>11.1.0-SNAPSHOT</version>
   </parent>
 
   <name>DigitalCollections: Model (Jackson)</name>
