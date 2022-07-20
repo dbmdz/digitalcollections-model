@@ -45,11 +45,25 @@ public class BucketsRequest<T extends UniqueObject> extends ListRequest {
     this(bucketSize, new Bucket<>(startObject, endObject), sorting, filtering);
   }
 
+  public BucketsRequest(int bucketSize) {
+    this(bucketSize, (Bucket<T>) null, (Sorting) null, (Filtering) null);
+  }
+
+  public BucketsRequest() {}
+
   public int getNumberOfBuckets() {
     return numberOfBuckets;
   }
 
   public Bucket<T> getParentBucket() {
     return parentBucket;
+  }
+
+  public void setNumberOfBuckets(int numberOfBuckets) {
+    this.numberOfBuckets = numberOfBuckets;
+  }
+
+  public void setParentBucket(Bucket<T> parentBucket) {
+    this.parentBucket = parentBucket;
   }
 }

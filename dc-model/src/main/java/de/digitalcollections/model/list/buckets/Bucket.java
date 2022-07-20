@@ -4,9 +4,14 @@ import de.digitalcollections.model.UniqueObject;
 
 public class Bucket<T extends UniqueObject> {
 
-  private final T endObject;
+  private T endObject;
 
-  private final T startObject;
+  private T startObject;
+
+  public Bucket() {
+    this.endObject = null;
+    this.startObject = null;
+  }
 
   public Bucket(T startObject, T endObject) {
     this.startObject = startObject;
@@ -19,5 +24,13 @@ public class Bucket<T extends UniqueObject> {
 
   public T getStartObject() {
     return startObject;
+  }
+
+  public void setEndObject(T endObject) {
+    this.endObject = endObject;
+  }
+
+  public void setStartObject(T startObject) {
+    this.startObject = startObject;
   }
 }
