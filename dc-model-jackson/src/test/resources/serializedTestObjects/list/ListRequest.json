@@ -1,4 +1,5 @@
 {
+  "listRequestType" : "LIST_REQUEST",
   "filtering" : {
     "filterCriteria" : [ {
       "expression" : "label",

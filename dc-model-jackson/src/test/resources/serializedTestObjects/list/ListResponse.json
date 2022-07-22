@@ -1,4 +1,5 @@
 {
+  "listResponseType" : "LIST_RESPONSE",
   "content" : [ {
     "objectType" : "USER",
     "email" : "test@user.de",
@@ -6,6 +7,7 @@
     "roles" : [ ]
   } ],
   "request" : {
+    "listRequestType" : "LIST_REQUEST",
     "filtering" : {
       "filterCriteria" : [ {
         "expression" : "longField",
