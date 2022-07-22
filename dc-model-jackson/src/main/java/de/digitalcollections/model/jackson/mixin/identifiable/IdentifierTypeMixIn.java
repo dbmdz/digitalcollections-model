@@ -4,8 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import de.digitalcollections.model.identifiable.IdentifierType;
+import de.digitalcollections.model.jackson.mixin.UniqueObjectMixIn;
 
 @JsonDeserialize(as = IdentifierType.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("identifierType")
-public interface IdentifierTypeMixIn {}
+public interface IdentifierTypeMixIn extends UniqueObjectMixIn {}
