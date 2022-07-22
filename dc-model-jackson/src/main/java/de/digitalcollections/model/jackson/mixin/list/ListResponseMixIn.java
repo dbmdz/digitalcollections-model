@@ -29,13 +29,22 @@ import de.digitalcollections.model.identifiable.resource.FileResource;
 import de.digitalcollections.model.identifiable.web.Webpage;
 import de.digitalcollections.model.list.ListRequest;
 import de.digitalcollections.model.list.ListResponse;
+import de.digitalcollections.model.list.buckets.BucketObjectsResponse;
+import de.digitalcollections.model.list.paging.PageResponse;
 import de.digitalcollections.model.list.sorting.Sorting;
 import de.digitalcollections.model.security.User;
+import de.digitalcollections.model.semantic.Headword;
 import de.digitalcollections.model.view.RenderingTemplate;
 import java.util.List;
 
 @JsonDeserialize(as = ListResponse.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "listResponseType", visible = true)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value = ListResponse.class, name = "LIST_RESPONSE"),
+  @JsonSubTypes.Type(value = PageResponse.class, name = "PAGE_RESPONSE"),
+  @JsonSubTypes.Type(value = BucketObjectsResponse.class, name = "BUCKET_OBJECTS_RESPONSE")
+})
 public abstract class ListResponseMixIn<T, R extends ListRequest> extends ListResponse<T, R> {
 
   @JsonTypeInfo(use = Id.NAME, property = "objectType", visible = true)
@@ -50,6 +59,7 @@ public abstract class ListResponseMixIn<T, R extends ListRequest> extends ListRe
     @Type(value = FileResource.class, name = "FILE_RESOURCE"),
     @Type(value = GeoLocation.class, name = "GEO_LOCATION"),
     @Type(value = GivenName.class, name = "GIVEN_NAME"),
+    @Type(value = Headword.class, name = "HEADWORD"),
     @Type(value = HumanSettlement.class, name = "HUMAN_SETTLEMENT"),
     @Type(value = Identifiable.class, name = "IDENTIFIABLE"),
     @Type(value = IdentifierType.class, name = "IDENTIFIER_TYPE"),
