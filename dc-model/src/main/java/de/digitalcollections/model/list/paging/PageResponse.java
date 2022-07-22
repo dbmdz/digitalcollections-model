@@ -88,6 +88,36 @@ public class PageResponse<T> extends ListResponse<T, PageRequest> {
     return super.equals(obj);
   }
 
+  public List<PageItem> getNavItems(int maxNumberOfItems) {
+    List<PageItem> items = new ArrayList<>(maxNumberOfItems);
+
+    int firstPageNumber;
+    int numberOfItems;
+
+    int currentPageNumber = getPageNumber() + 1;
+    if (getTotalPages() <= maxNumberOfItems) {
+      firstPageNumber = 1;
+      numberOfItems = getTotalPages();
+    } else if (currentPageNumber <= (maxNumberOfItems - (maxNumberOfItems / 2))) {
+      firstPageNumber = 1;
+      numberOfItems = maxNumberOfItems;
+    } else if (currentPageNumber >= getTotalPages() - maxNumberOfItems / 2) {
+      firstPageNumber = getTotalPages() - maxNumberOfItems + 1;
+      numberOfItems = maxNumberOfItems;
+    } else {
+      firstPageNumber = currentPageNumber - maxNumberOfItems / 2;
+      numberOfItems = maxNumberOfItems;
+    }
+
+    for (int i = 0; i < numberOfItems; i++) {
+      int number = firstPageNumber + i;
+      boolean isCurrent = (number == currentPageNumber);
+      items.add(new PageItem(number, isCurrent));
+    }
+
+    return items;
+  }
+
   /**
    * Returns the number of elements currently on this {@link PageResponse}.
    *

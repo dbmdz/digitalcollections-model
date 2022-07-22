@@ -3,6 +3,10 @@ package de.digitalcollections.model.list.paging;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @deprecated use {@link PageResponse#getNavItems} instead.
+ */
+@Deprecated(forRemoval = true, since = "11.1.0")
 public class PagingInfo {
 
   private final int currentNumber;
