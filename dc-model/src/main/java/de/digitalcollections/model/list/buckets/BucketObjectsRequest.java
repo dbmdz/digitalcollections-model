@@ -11,6 +11,10 @@ public class BucketObjectsRequest<T extends UniqueObject> extends PageRequest {
 
   private Bucket<T> bucket;
 
+  public BucketObjectsRequest() {
+    super();
+  }
+
   public BucketObjectsRequest(
       Bucket<T> bucket, int pageNumber, int pageSize, Sorting sorting, Filtering filtering) {
     super(pageNumber, pageSize, sorting, filtering);
@@ -19,5 +23,9 @@ public class BucketObjectsRequest<T extends UniqueObject> extends PageRequest {
 
   public Bucket<T> getBucket() {
     return bucket;
+  }
+
+  public void setBucket(Bucket<T> bucket) {
+    this.bucket = bucket;
   }
 }
