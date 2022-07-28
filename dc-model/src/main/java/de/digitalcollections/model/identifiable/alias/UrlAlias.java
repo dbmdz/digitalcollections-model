@@ -1,5 +1,7 @@
 package de.digitalcollections.model.identifiable.alias;
 
+import static de.digitalcollections.model.time.TimestampHelper.truncatedToMicros;
+
 import de.digitalcollections.model.identifiable.IdentifiableObjectType;
 import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.entity.EntityType;
@@ -140,11 +142,11 @@ public class UrlAlias {
   }
 
   public void setCreated(LocalDateTime created) {
-    this.created = created;
+    this.created = truncatedToMicros(created);
   }
 
   public void setLastPublished(LocalDateTime lastPublished) {
-    this.lastPublished = lastPublished;
+    this.lastPublished = truncatedToMicros(lastPublished);
   }
 
   public void setPrimary(boolean primary) {
