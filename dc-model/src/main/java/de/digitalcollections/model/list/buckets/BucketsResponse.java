@@ -7,8 +7,6 @@ import java.util.List;
 public class BucketsResponse<T extends UniqueObject>
     extends ListResponse<Bucket<T>, BucketsRequest<T>> {
 
-  private BucketsRequest<T> bucketsRequest;
-
   public BucketsResponse() {
     super();
   }
@@ -18,16 +16,7 @@ public class BucketsResponse<T extends UniqueObject>
   }
 
   public BucketsResponse(BucketsRequest<T> bucketsRequest, List<Bucket<T>> content, long total) {
-    super(content, null);
-    this.bucketsRequest = bucketsRequest;
+    super(content, bucketsRequest);
     this.total = total;
-  }
-
-  public BucketsRequest<T> getBucketsRequest() {
-    return bucketsRequest;
-  }
-
-  public void setBucketsRequest(BucketsRequest<T> bucketsRequest) {
-    this.bucketsRequest = bucketsRequest;
   }
 }

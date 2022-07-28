@@ -30,6 +30,7 @@ import de.digitalcollections.model.identifiable.web.Webpage;
 import de.digitalcollections.model.list.ListRequest;
 import de.digitalcollections.model.list.ListResponse;
 import de.digitalcollections.model.list.buckets.BucketObjectsResponse;
+import de.digitalcollections.model.list.buckets.BucketsResponse;
 import de.digitalcollections.model.list.paging.PageResponse;
 import de.digitalcollections.model.list.sorting.Sorting;
 import de.digitalcollections.model.security.User;
@@ -41,9 +42,10 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "listResponseType", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = BucketObjectsResponse.class, name = "BUCKET_OBJECTS_RESPONSE"),
+  @JsonSubTypes.Type(value = BucketsResponse.class, name = "BUCKETS_RESPONSE"),
   @JsonSubTypes.Type(value = ListResponse.class, name = "LIST_RESPONSE"),
   @JsonSubTypes.Type(value = PageResponse.class, name = "PAGE_RESPONSE"),
-  @JsonSubTypes.Type(value = BucketObjectsResponse.class, name = "BUCKET_OBJECTS_RESPONSE")
 })
 public abstract class ListResponseMixIn<T, R extends ListRequest> extends ListResponse<T, R> {
 
