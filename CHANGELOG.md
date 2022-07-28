@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Bucket-Handling: Bucket (Sublist/Range of UniqueObjects), BucketRequest/Response and List of Bucket-Objects-Handling added
+- Jackson-MixIns (type info `objectType`) for classes directly extending `UniqueObject` (`Headword, Identifiable, Identifier, IdentifierType, License, Predicate, RenderingTemplate, User`)
+
+### Changed
+
+- Deprecated `PagingInfo` after adding paging util method `List<PageItem> getNavItems(int maxNumberOfItems)` to `PageResponse`.
+
 ## [11.0.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/11.0.0) - 2022-07-18
 
 ### Added

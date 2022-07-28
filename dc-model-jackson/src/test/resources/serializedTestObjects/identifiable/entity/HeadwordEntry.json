@@ -5,6 +5,7 @@
   "refId" : 0,
   "creators" : [ ],
   "headword" : {
+    "objectType" : "HEADWORD",
     "label" : "Kaiserschmarrn",
     "locale" : "de"
   },

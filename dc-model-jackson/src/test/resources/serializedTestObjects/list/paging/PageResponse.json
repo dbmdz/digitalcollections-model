@@ -1,4 +1,5 @@
 {
+  "listResponseType" : "PAGE_RESPONSE",
   "content" : [ {
     "objectType" : "USER",
     "email" : "test@user.de",
@@ -8,6 +9,7 @@
   "executedSearchTerm" : "Hello",
   "totalElements" : 1,
   "pageRequest" : {
+    "listRequestType" : "PAGE_REQUEST",
     "filtering" : {
       "filterCriteria" : [ {
         "expression" : "longField",

@@ -89,6 +89,62 @@ public class PageResponse<T> extends ListResponse<T, PageRequest> {
   }
 
   /**
+   * Utility method for creating a paging navigation.
+   *
+   * <p>Based on the current page number a list (of maximum length of maxNumberOfItems) of
+   * navigation items is returned.
+   *
+   * <p>The current page should be in the middle of the returned PageItems if possible (having
+   * enough previous and next pages).
+   *
+   * <p>Each navigation item ({@link PageItem} contains a number (= label) and a flag if it is the
+   * current page.
+   *
+   * <p>Examples:
+   *
+   * <ul>
+   *   <li>current page is 1 (of e.g. 202 total pages), given maxNumberOfItems is 5: returning 5
+   *       page items for pages: [1], 2, 3, 4, 5
+   *   <li>current page is 17 (of e.g. 202 total pages), given maxNumberOfItems is 5: returning 5
+   *       page items for pages: 15, 16, [17], 18, 19
+   *   <li>current page is 201 (of e.g. 202 total pages), given maxNumberOfItems is 5: returning 4
+   *       page items for pages: 199, 200, [201], 202
+   * </ul>
+   *
+   * @param maxNumberOfItems maximum number of returned navigation items
+   * @return list of navigation items of type {@link PageItem}
+   */
+  public List<PageItem> getNavItems(int maxNumberOfItems) {
+    List<PageItem> items = new ArrayList<>(maxNumberOfItems);
+
+    int firstPageNumber;
+    int numberOfItems;
+
+    int currentPageNumber = getPageNumber() + 1;
+    if (getTotalPages() <= maxNumberOfItems) {
+      firstPageNumber = 1;
+      numberOfItems = getTotalPages();
+    } else if (currentPageNumber <= (maxNumberOfItems - (maxNumberOfItems / 2))) {
+      firstPageNumber = 1;
+      numberOfItems = maxNumberOfItems;
+    } else if (currentPageNumber >= getTotalPages() - maxNumberOfItems / 2) {
+      firstPageNumber = getTotalPages() - maxNumberOfItems + 1;
+      numberOfItems = maxNumberOfItems;
+    } else {
+      firstPageNumber = currentPageNumber - maxNumberOfItems / 2;
+      numberOfItems = maxNumberOfItems;
+    }
+
+    for (int i = 0; i < numberOfItems; i++) {
+      int number = firstPageNumber + i;
+      boolean isCurrent = (number == currentPageNumber);
+      items.add(new PageItem(number, isCurrent));
+    }
+
+    return items;
+  }
+
+  /**
    * Returns the number of elements currently on this {@link PageResponse}.
    *
    * @return the number of elements currently on this {@link PageResponse}.
