@@ -1,5 +1,7 @@
 package de.digitalcollections.model;
 
+import static de.digitalcollections.model.time.TimestampHelper.truncatedToMicros;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
@@ -64,14 +66,14 @@ public abstract class UniqueObject {
    * @param created the creation date of the object
    */
   public void setCreated(LocalDateTime created) {
-    this.created = created;
+    this.created = truncatedToMicros(created);
   }
 
   /**
    * @param lastModified the date of last modification of the object
    */
   public void setLastModified(LocalDateTime lastModified) {
-    this.lastModified = lastModified;
+    this.lastModified = truncatedToMicros(lastModified);
   }
 
   /**
