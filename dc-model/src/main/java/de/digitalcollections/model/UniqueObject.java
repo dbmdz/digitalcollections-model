@@ -98,7 +98,7 @@ public abstract class UniqueObject {
     }
 
     public B created(LocalDateTime created) {
-      this.created = created;
+      this.created = truncatedToMicros(created);
       return self();
     }
 
@@ -112,7 +112,7 @@ public abstract class UniqueObject {
     }
 
     public B lastModified(LocalDateTime lastModified) {
-      this.lastModified = lastModified;
+      this.lastModified = truncatedToMicros(lastModified);
       return self();
     }
 
