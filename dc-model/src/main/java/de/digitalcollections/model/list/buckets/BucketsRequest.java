@@ -40,29 +40,58 @@ public class BucketsRequest<T extends UniqueObject> extends ListRequest {
     this.parentBucket = parentBucket;
   }
 
+  /**
+   * Creates a new {@link BucketsRequest} with sorting parameters applied to a previously calculated
+   * (sub)bucket of all objects.
+   *
+   * @param numberOfBuckets number (which is a literal positive integer number) of buckets the list
+   *     should be divided into.
+   * @param startObject left border object (first object in source list)
+   * @param endObject right border object (last object in source list)
+   * @param sorting can be {@literal null}
+   * @param filtering contains list of filter criterias
+   */
   public BucketsRequest(
-      int bucketSize, T startObject, T endObject, Sorting sorting, Filtering filtering) {
-    this(bucketSize, new Bucket<>(startObject, endObject), sorting, filtering);
+      int numberOfBuckets, T startObject, T endObject, Sorting sorting, Filtering filtering) {
+    this(numberOfBuckets, new Bucket<>(startObject, endObject), sorting, filtering);
   }
 
-  public BucketsRequest(int bucketSize) {
-    this(bucketSize, (Bucket<T>) null, (Sorting) null, (Filtering) null);
+  /**
+   * Creates a new {@link BucketsRequest} targeting a list of objects.
+   *
+   * @param numberOfBuckets number (which is a literal positive integer number) of buckets the list
+   *     should be divided into.
+   */
+  public BucketsRequest(int numberOfBuckets) {
+    this(numberOfBuckets, (Bucket<T>) null, (Sorting) null, (Filtering) null);
   }
 
   public BucketsRequest() {}
 
+  /**
+   * @return number of buckets requested
+   */
   public int getNumberOfBuckets() {
     return numberOfBuckets;
   }
 
+  /**
+   * @return parent bucket being the border for sub buckets request
+   */
   public Bucket<T> getParentBucket() {
     return parentBucket;
   }
 
+  /**
+   * @param numberOfBuckets number of buckets requested
+   */
   public void setNumberOfBuckets(int numberOfBuckets) {
     this.numberOfBuckets = numberOfBuckets;
   }
 
+  /**
+   * @param parentBucket parent bucket being the border for sub buckets request (or null)
+   */
   public void setParentBucket(Bucket<T> parentBucket) {
     this.parentBucket = parentBucket;
   }
