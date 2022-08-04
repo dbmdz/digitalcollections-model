@@ -136,7 +136,7 @@ public class Item extends Entity {
   @Override
   public String toString() {
     return this.getClass().getSimpleName()
-        + "exemplifiesManifestation="
+        + "{exemplifiesManifestation="
         + exemplifiesManifestation
         + ", manifestation="
         + manifestation

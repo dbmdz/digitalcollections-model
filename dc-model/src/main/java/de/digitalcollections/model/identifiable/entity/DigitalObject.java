@@ -192,7 +192,7 @@ public class DigitalObject extends Entity {
    *
    * @param numberOfBinaryResources the number of binary resources
    */
-  public void setNumberOfBinaryResources(int numberOfBinaryResources) {
+  public void setNumberOfBinaryResources(Integer numberOfBinaryResources) {
     this.numberOfBinaryResources = numberOfBinaryResources;
   }
 
