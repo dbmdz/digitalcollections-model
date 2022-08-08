@@ -26,14 +26,78 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(buildMethodName = "prebuild")
 public class Manifestation extends Entity {
 
+  /**
+   * Text describing amount of material or content of manifestation.
+   *
+   * <p>Examples: "37 Seiten", "1 ungezähltes Blatt Bildtafel, 108 Seiten", "1 Partitur (39
+   * Seiten)", "V, 64 S., [12] Bl.", "1 Buchdeckel"
+   */
+  private String composition;
+
+  /**
+   * Text describing physical dimensions of object.
+   *
+   * <p>Examples: "29,2 x 76,9 x 2,8 cm", "8°", "4", "42 x 31 cm"
+   */
+  private String dimensions;
+
+  /**
+   * Text describing the scale of object, e.g. of a map.
+   *
+   * <p>Examples: "[Ca. 1:820 000]"
+   */
+  private String statementOfScale;
+
   public Manifestation() {
     super();
     init();
   }
 
+  /**
+   * @return Text describing amount of material or content of manifestation.
+   */
+  public String getComposition() {
+    return composition;
+  }
+
+  /**
+   * @return Text describing physical dimensions of object
+   */
+  public String getDimensions() {
+    return dimensions;
+  }
+
+  /**
+   * @return Text describing the scale of object, e.g. of a map
+   */
+  public String getStatementOfScale() {
+    return statementOfScale;
+  }
+
   @Override
   protected void init() {
     super.init();
+  }
+
+  /**
+   * @param composition Text describing amount of material or content of manifestation.
+   */
+  public void setComposition(String composition) {
+    this.composition = composition;
+  }
+
+  /**
+   * @param dimensions Text describing physical dimensions of object
+   */
+  public void setDimensions(String dimensions) {
+    this.dimensions = dimensions;
+  }
+
+  /**
+   * @param statementOfScale Text describing the scale of object, e.g. of a map
+   */
+  public void setStatementOfScale(String statementOfScale) {
+    this.statementOfScale = statementOfScale;
   }
 
   public abstract static class ManifestationBuilder<
