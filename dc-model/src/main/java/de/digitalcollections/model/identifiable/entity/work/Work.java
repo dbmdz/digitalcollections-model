@@ -34,7 +34,9 @@ public class Work extends Entity {
 
   private List<Agent> creators;
   private LocalDate datePublished;
+  private List<Involvement> involvements;
   private TimeValue timeValuePublished;
+  protected WorkType workType;
 
   public Work() {
     super();
@@ -49,6 +51,10 @@ public class Work extends Entity {
     return datePublished;
   }
 
+  public List<Involvement> getInvolvements() {
+    return involvements;
+  }
+
   public TimeValue getTimeValuePublished() {
     return timeValuePublished;
   }
@@ -57,9 +63,14 @@ public class Work extends Entity {
     return getLabel();
   }
 
+  public WorkType getWorkType() {
+    return workType;
+  }
+
   @Override
   protected void init() {
     super.init();
+    workType = WorkType.SINGLE; // default type
     if (creators == null) {
       this.creators = new ArrayList<>(0);
     }
@@ -73,6 +84,10 @@ public class Work extends Entity {
     this.datePublished = datePublished;
   }
 
+  public void setInvolvements(List<Involvement> involvements) {
+    this.involvements = involvements;
+  }
+
   public void setTimeValuePublished(TimeValue timeValuePublished) {
     this.timeValuePublished = timeValuePublished;
   }
@@ -83,5 +98,9 @@ public class Work extends Entity {
 
   public void setTitle(String title) {
     setLabel(title);
+  }
+
+  public void setWorkType(WorkType workType) {
+    this.workType = workType;
   }
 }

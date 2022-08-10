@@ -32,5 +32,6 @@
     "timezoneOffset" : 0,
     "year" : 2020
   },
+  "workType" : "SINGLE",
   "entityType" : "WORK"
 }
