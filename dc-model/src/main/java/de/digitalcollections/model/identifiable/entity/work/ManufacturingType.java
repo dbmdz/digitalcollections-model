@@ -2,15 +2,14 @@ package de.digitalcollections.model.identifiable.entity.work;
 
 import de.digitalcollections.model.text.LocalizedText;
 
-/** An involvement role defines how an agent is involved related to a work. */
-public class InvolvementRole {
+public class ManufacturingType {
 
   private LocalizedText label;
   private String name;
 
-  public InvolvementRole() {}
+  public ManufacturingType() {}
 
-  public InvolvementRole(LocalizedText label, String name) {
+  public ManufacturingType(LocalizedText label, String name) {
     this.label = label;
     this.name = name;
   }

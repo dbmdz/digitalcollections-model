@@ -28,9 +28,9 @@ import de.digitalcollections.model.identifiable.entity.geo.location.River;
 import de.digitalcollections.model.identifiable.entity.geo.location.Sea;
 import de.digitalcollections.model.identifiable.entity.geo.location.StillWaters;
 import de.digitalcollections.model.identifiable.entity.geo.location.Valley;
-import de.digitalcollections.model.identifiable.entity.work.Expression;
 import de.digitalcollections.model.identifiable.entity.work.Item;
 import de.digitalcollections.model.identifiable.entity.work.Manifestation;
+import de.digitalcollections.model.identifiable.entity.work.Series;
 import de.digitalcollections.model.identifiable.entity.work.Work;
 import de.digitalcollections.model.identifiable.resource.ApplicationFileResource;
 import de.digitalcollections.model.identifiable.resource.AudioFileResource;
@@ -55,7 +55,6 @@ public enum IdentifiableObjectType {
   CREEK(Creek.class),
   DIGITAL_OBJECT(DigitalObject.class),
   ENTITY(Entity.class),
-  EXPRESSION(Expression.class),
   FAMILY(Family.class),
   FAMILY_NAME(FamilyName.class),
   FILE_RESOURCE(FileResource.class),
@@ -75,6 +74,7 @@ public enum IdentifiableObjectType {
   PROJECT(Project.class),
   RIVER(River.class),
   SEA(Sea.class),
+  SERIES(Series.class),
   STILL_WATERS(StillWaters.class),
   TEXT_FILE_RESOURCE(TextFileResource.class),
   TOPIC(Topic.class),

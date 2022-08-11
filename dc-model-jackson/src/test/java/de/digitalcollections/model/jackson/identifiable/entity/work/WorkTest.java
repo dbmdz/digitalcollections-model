@@ -18,7 +18,7 @@ public class WorkTest extends BaseJsonSerializationTest {
     Person person = new Person();
     person.setLabel(new LocalizedText(Locale.GERMAN, "Arnold Hiller"));
     work.setCreators(Arrays.asList(person));
-    work.setDatePublished(LocalDate.parse("2020-04-28"));
+    work.setFirstAppearedDate(LocalDate.parse("2020-04-28"));
     TimeValue timeValuePublished =
         new TimeValue(
             2020,
@@ -32,7 +32,7 @@ public class WorkTest extends BaseJsonSerializationTest {
             0,
             0,
             TimeValue.CM_GREGORIAN_PRO);
-    work.setTimeValuePublished(timeValuePublished);
+    work.setFirstAppearedTimeValue(timeValuePublished);
     return work;
   }
 

@@ -1,6 +1,12 @@
 package de.digitalcollections.model.identifiable.entity.work;
 
 import de.digitalcollections.model.identifiable.entity.Entity;
+import de.digitalcollections.model.identifiable.entity.semantic.Subject;
+import de.digitalcollections.model.time.LocalDateRange;
+import de.digitalcollections.model.time.TimeValueRange;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
 import lombok.experimental.SuperBuilder;
 
 /**
@@ -41,12 +47,30 @@ public class Manifestation extends Entity {
    */
   private String dimensions;
 
+  private Set<ExpressionType> expressionTypes;
+  private List<Involvement> involvements;
+  private Locale language;
+  private ManufacturingType manufacturingType;
+  private Set<MediaType> mediaTypes;
+  private Set<Locale> otherLanguages;
+  private Manifestation parent;
+  private List<Publication> publications;
+  private String publishingDatePresentation;
+  private LocalDateRange publishingDateRange;
+  private TimeValueRange publishingTimeValueRange;
+  private Set<Series> series;
+  private String sortKey;
   /**
    * Text describing the scale of object, e.g. of a map.
    *
    * <p>Examples: "[Ca. 1:820 000]"
    */
   private String statementOfScale;
+
+  private Set<Subject> subjects;
+  private List<Title> titles;
+  private String version;
+  private Work work;
 
   public Manifestation() {
     super();
@@ -67,11 +91,79 @@ public class Manifestation extends Entity {
     return dimensions;
   }
 
+  public Set<ExpressionType> getExpressionTypes() {
+    return expressionTypes;
+  }
+
+  public List<Involvement> getInvolvements() {
+    return involvements;
+  }
+
+  public Locale getLanguage() {
+    return language;
+  }
+
+  public ManufacturingType getManufacturingType() {
+    return manufacturingType;
+  }
+
+  public Set<MediaType> getMediaTypes() {
+    return mediaTypes;
+  }
+
+  public Set<Locale> getOtherLanguages() {
+    return otherLanguages;
+  }
+
+  public Manifestation getParent() {
+    return parent;
+  }
+
+  public List<Publication> getPublications() {
+    return publications;
+  }
+
+  public String getPublishingDatePresentation() {
+    return publishingDatePresentation;
+  }
+
+  public LocalDateRange getPublishingDateRange() {
+    return publishingDateRange;
+  }
+
+  public TimeValueRange getPublishingTimeValueRange() {
+    return publishingTimeValueRange;
+  }
+
+  public Set<Series> getSeries() {
+    return series;
+  }
+
+  public String getSortKey() {
+    return sortKey;
+  }
+
   /**
    * @return Text describing the scale of object, e.g. of a map
    */
   public String getStatementOfScale() {
     return statementOfScale;
+  }
+
+  public Set<Subject> getSubjects() {
+    return subjects;
+  }
+
+  public List<Title> getTitles() {
+    return titles;
+  }
+
+  public String getVersion() {
+    return version;
+  }
+
+  public Work getWork() {
+    return work;
   }
 
   @Override
@@ -93,11 +185,79 @@ public class Manifestation extends Entity {
     this.dimensions = dimensions;
   }
 
+  public void setExpressionTypes(Set<ExpressionType> expressionTypes) {
+    this.expressionTypes = expressionTypes;
+  }
+
+  public void setInvolvements(List<Involvement> involvements) {
+    this.involvements = involvements;
+  }
+
+  public void setLanguage(Locale language) {
+    this.language = language;
+  }
+
+  public void setManufacturingType(ManufacturingType manufacturingType) {
+    this.manufacturingType = manufacturingType;
+  }
+
+  public void setMediaTypes(Set<MediaType> mediaTypes) {
+    this.mediaTypes = mediaTypes;
+  }
+
+  public void setOtherLanguages(Set<Locale> otherLanguages) {
+    this.otherLanguages = otherLanguages;
+  }
+
+  public void setParent(Manifestation parent) {
+    this.parent = parent;
+  }
+
+  public void setPublications(List<Publication> publications) {
+    this.publications = publications;
+  }
+
+  public void setPublishingDatePresentation(String publishingDatePresentation) {
+    this.publishingDatePresentation = publishingDatePresentation;
+  }
+
+  public void setPublishingDateRange(LocalDateRange publishingDateRange) {
+    this.publishingDateRange = publishingDateRange;
+  }
+
+  public void setPublishingTimeValueRange(TimeValueRange publishingTimeValueRange) {
+    this.publishingTimeValueRange = publishingTimeValueRange;
+  }
+
+  public void setSeries(Set<Series> series) {
+    this.series = series;
+  }
+
+  public void setSortKey(String sortKey) {
+    this.sortKey = sortKey;
+  }
+
   /**
    * @param statementOfScale Text describing the scale of object, e.g. of a map
    */
   public void setStatementOfScale(String statementOfScale) {
     this.statementOfScale = statementOfScale;
+  }
+
+  public void setSubjects(Set<Subject> subjects) {
+    this.subjects = subjects;
+  }
+
+  public void setTitles(List<Title> titles) {
+    this.titles = titles;
+  }
+
+  public void setVersion(String version) {
+    this.version = version;
+  }
+
+  public void setWork(Work work) {
+    this.work = work;
   }
 
   public abstract static class ManifestationBuilder<

@@ -34,9 +34,9 @@ import de.digitalcollections.model.identifiable.entity.geo.location.GeoLocation;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
 import de.digitalcollections.model.identifiable.entity.geo.location.Mountain;
 import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
-import de.digitalcollections.model.identifiable.entity.work.Expression;
 import de.digitalcollections.model.identifiable.entity.work.Item;
 import de.digitalcollections.model.identifiable.entity.work.Manifestation;
+import de.digitalcollections.model.identifiable.entity.work.Series;
 import de.digitalcollections.model.identifiable.entity.work.Work;
 import de.digitalcollections.model.identifiable.resource.ApplicationFileResource;
 import de.digitalcollections.model.identifiable.resource.AudioFileResource;
@@ -62,6 +62,7 @@ import de.digitalcollections.model.jackson.mixin.identifiable.entity.DigitalObje
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.EntityMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.HeadwordEntryMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.ProjectMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.SeriesMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.TopicMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.WebsiteMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.agent.AgentMixIn;
@@ -72,7 +73,6 @@ import de.digitalcollections.model.jackson.mixin.identifiable.entity.geo.locatio
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.geo.location.HumanSettlementMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.geo.location.MountainMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.relation.EntityRelationMixIn;
-import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.ExpressionMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.ItemMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.ManifestationMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.WorkMixIn;
@@ -222,9 +222,9 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(Mountain.class, MountainMixIn.class);
 
     // work
-    context.setMixInAnnotations(Expression.class, ExpressionMixIn.class);
     context.setMixInAnnotations(Item.class, ItemMixIn.class);
     context.setMixInAnnotations(Manifestation.class, ManifestationMixIn.class);
+    context.setMixInAnnotations(Series.class, SeriesMixIn.class);
     context.setMixInAnnotations(Work.class, WorkMixIn.class);
 
     // semantic

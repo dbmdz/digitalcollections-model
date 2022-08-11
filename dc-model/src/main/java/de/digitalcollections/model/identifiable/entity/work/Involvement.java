@@ -22,8 +22,8 @@ public class Involvement {
   /** set of involvement roles the agent is involved in the related work */
   private Set<InvolvementRole> involvementRoles;
 
-  /** to be used for displaying original involment roles */
-  private List<String> originalInvolvementRoles;
+  /** to be used for displaying original involvement roles */
+  private List<String> involvementRolesPresentation;
 
   public Agent getAgent() {
     return agent;
@@ -57,11 +57,11 @@ public class Involvement {
     this.involvementRoles = involvementRoles;
   }
 
-  public List<String> getOriginalInvolvementRoles() {
-    return originalInvolvementRoles;
+  public List<String> getInvolvementRolesPresentation() {
+    return involvementRolesPresentation;
   }
 
-  public void setOriginalInvolvementRoles(List<String> originalInvolvementRoles) {
-    this.originalInvolvementRoles = originalInvolvementRoles;
+  public void setInvolvementRolesPresentation(List<String> involvementRolesPresentation) {
+    this.involvementRolesPresentation = involvementRolesPresentation;
   }
 }

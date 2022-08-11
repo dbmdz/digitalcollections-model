@@ -18,8 +18,8 @@
     "givenNames" : [ ],
     "entityType" : "PERSON"
   } ],
-  "datePublished" : "2020-04-28",
-  "timeValuePublished" : {
+  "firstAppearedDate" : "2020-04-28",
+  "firstAppearedTimeValue" : {
     "afterTolerance" : 0,
     "beforeTolerance" : 0,
     "day" : 0,

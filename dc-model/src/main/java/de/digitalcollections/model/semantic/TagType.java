@@ -1,16 +1,15 @@
-package de.digitalcollections.model.identifiable.entity.work;
+package de.digitalcollections.model.semantic;
 
 import de.digitalcollections.model.text.LocalizedText;
 
-/** An involvement role defines how an agent is involved related to a work. */
-public class InvolvementRole {
+public class TagType {
 
   private LocalizedText label;
   private String name;
 
-  public InvolvementRole() {}
+  public TagType() {}
 
-  public InvolvementRole(LocalizedText label, String name) {
+  public TagType(LocalizedText label, String name) {
     this.label = label;
     this.name = name;
   }

@@ -3,6 +3,7 @@ package de.digitalcollections.model.identifiable.entity.work;
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.agent.Agent;
 import de.digitalcollections.model.text.LocalizedText;
+import de.digitalcollections.model.time.LocalDateRange;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,10 +33,14 @@ import org.wikidata.wdtk.datamodel.interfaces.TimeValue;
  */
 public class Work extends Entity {
 
+  private LocalDateRange creationDateRange;
+  private TimeValue creationTimeValue;
   private List<Agent> creators;
-  private LocalDate datePublished;
+  private LocalDate firstAppearedDate;
+  private String firstAppearedDatePresentation;
+  private TimeValue firstAppearedTimeValue;
   private List<Involvement> involvements;
-  private TimeValue timeValuePublished;
+  private List<Title> titles;
   protected WorkType workType;
 
   public Work() {
@@ -43,24 +48,40 @@ public class Work extends Entity {
     init();
   }
 
+  public LocalDateRange getCreationDateRange() {
+    return creationDateRange;
+  }
+
+  public TimeValue getCreationTimeValue() {
+    return creationTimeValue;
+  }
+
   public List<Agent> getCreators() {
     return creators;
   }
 
-  public LocalDate getDatePublished() {
-    return datePublished;
+  public LocalDate getFirstAppearedDate() {
+    return firstAppearedDate;
+  }
+
+  public String getFirstAppearedDatePresentation() {
+    return firstAppearedDatePresentation;
+  }
+
+  public TimeValue getFirstAppearedTimeValue() {
+    return firstAppearedTimeValue;
   }
 
   public List<Involvement> getInvolvements() {
     return involvements;
   }
 
-  public TimeValue getTimeValuePublished() {
-    return timeValuePublished;
-  }
-
   public LocalizedText getTitle() {
     return getLabel();
+  }
+
+  public List<Title> getTitles() {
+    return titles;
   }
 
   public WorkType getWorkType() {
@@ -76,20 +97,32 @@ public class Work extends Entity {
     }
   }
 
+  public void setCreationDateRange(LocalDateRange creationDateRange) {
+    this.creationDateRange = creationDateRange;
+  }
+
+  public void setCreationTimeValue(TimeValue timeValueCreation) {
+    this.creationTimeValue = timeValueCreation;
+  }
+
   public void setCreators(List<Agent> creators) {
     this.creators = creators;
   }
 
-  public void setDatePublished(LocalDate datePublished) {
-    this.datePublished = datePublished;
+  public void setFirstAppearedDate(LocalDate firstAppearedDate) {
+    this.firstAppearedDate = firstAppearedDate;
+  }
+
+  public void setFirstAppearedDatePresentation(String firstAppearedDatePresentation) {
+    this.firstAppearedDatePresentation = firstAppearedDatePresentation;
+  }
+
+  public void setFirstAppearedTimeValue(TimeValue firstAppearedTimeValue) {
+    this.firstAppearedTimeValue = firstAppearedTimeValue;
   }
 
   public void setInvolvements(List<Involvement> involvements) {
     this.involvements = involvements;
-  }
-
-  public void setTimeValuePublished(TimeValue timeValuePublished) {
-    this.timeValuePublished = timeValuePublished;
   }
 
   public void setTitle(LocalizedText title) {
@@ -98,6 +131,10 @@ public class Work extends Entity {
 
   public void setTitle(String title) {
     setLabel(title);
+  }
+
+  public void setTitles(List<Title> titles) {
+    this.titles = titles;
   }
 
   public void setWorkType(WorkType workType) {
