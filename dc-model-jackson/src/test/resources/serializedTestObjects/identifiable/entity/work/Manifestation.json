@@ -1,0 +1,33 @@
+{
+  "identifiableObjectType" : "MANIFESTATION",
+  "identifiers" : [ ],
+  "type" : "ENTITY",
+  "refId" : 0,
+  "notes" : [ {
+    "de" : {
+      "type" : "doc",
+      "content" : [ {
+        "type" : "paragraph",
+        "content" : [ {
+          "type" : "text",
+          "text" : "Plattendruck"
+        } ]
+      } ]
+    }
+  }, {
+    "de" : {
+      "type" : "doc",
+      "content" : [ {
+        "type" : "paragraph",
+        "content" : [ {
+          "type" : "text",
+          "text" : "Pr. 54 kr"
+        } ]
+      } ]
+    }
+  } ],
+  "composition" : "1 Partitur (11 Seiten)",
+  "dimensions" : "26,5 x 70 x 2 cm",
+  "scale" : "[Ca. 1:820 000]",
+  "entityType" : "MANIFESTATION"
+}

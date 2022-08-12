@@ -58,14 +58,15 @@ public class Manifestation extends Entity {
   private String publishingDatePresentation;
   private LocalDateRange publishingDateRange;
   private TimeValueRange publishingTimeValueRange;
-  private Set<Series> series;
-  private String sortKey;
   /**
    * Text describing the scale of object, e.g. of a map.
    *
    * <p>Examples: "[Ca. 1:820 000]"
    */
-  private String statementOfScale;
+  private String scale;
+
+  private Set<Series> series;
+  private String sortKey;
 
   private Set<Subject> subjects;
   private List<Title> titles;
@@ -134,6 +135,12 @@ public class Manifestation extends Entity {
   public TimeValueRange getPublishingTimeValueRange() {
     return publishingTimeValueRange;
   }
+  /**
+   * @return Text describing the scale of object, e.g. of a map
+   */
+  public String getScale() {
+    return scale;
+  }
 
   public Set<Series> getSeries() {
     return series;
@@ -141,13 +148,6 @@ public class Manifestation extends Entity {
 
   public String getSortKey() {
     return sortKey;
-  }
-
-  /**
-   * @return Text describing the scale of object, e.g. of a map
-   */
-  public String getStatementOfScale() {
-    return statementOfScale;
   }
 
   public Set<Subject> getSubjects() {
@@ -228,6 +228,12 @@ public class Manifestation extends Entity {
   public void setPublishingTimeValueRange(TimeValueRange publishingTimeValueRange) {
     this.publishingTimeValueRange = publishingTimeValueRange;
   }
+  /**
+   * @param scale Text describing the scale of object, e.g. of a map
+   */
+  public void setScale(String scale) {
+    this.scale = scale;
+  }
 
   public void setSeries(Set<Series> series) {
     this.series = series;
@@ -235,13 +241,6 @@ public class Manifestation extends Entity {
 
   public void setSortKey(String sortKey) {
     this.sortKey = sortKey;
-  }
-
-  /**
-   * @param statementOfScale Text describing the scale of object, e.g. of a map
-   */
-  public void setStatementOfScale(String statementOfScale) {
-    this.statementOfScale = statementOfScale;
   }
 
   public void setSubjects(Set<Subject> subjects) {
