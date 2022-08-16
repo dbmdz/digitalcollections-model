@@ -1,6 +1,7 @@
 package de.digitalcollections.model.jackson.identifiable.entity.work;
 
 import de.digitalcollections.model.identifiable.entity.work.Manifestation;
+import de.digitalcollections.model.identifiable.entity.work.Series;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.StructuredContent;
@@ -22,6 +23,8 @@ public class ManifestationTest extends BaseJsonSerializationTest {
   }
 
   private Manifestation createObject() {
+    Series series = (Series) Series.builder().label("Aus Natur und Geisteswelt").build();
+
     Manifestation manifestation =
         Manifestation.builder()
             .composition("1 Partitur (11 Seiten)")

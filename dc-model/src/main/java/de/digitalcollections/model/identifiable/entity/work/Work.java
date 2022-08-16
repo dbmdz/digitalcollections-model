@@ -7,6 +7,7 @@ import de.digitalcollections.model.time.LocalDateRange;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.experimental.SuperBuilder;
 import org.wikidata.wdtk.datamodel.interfaces.TimeValue;
 
 /**
@@ -31,6 +32,7 @@ import org.wikidata.wdtk.datamodel.interfaces.TimeValue;
  * <p>Die Zauberflöte by Mozart and J.S. Bach's Goldberg variations, apart from all ways of
  * expressing them, are works.
  */
+@SuperBuilder(buildMethodName = "prebuild")
 public class Work extends Entity {
 
   private LocalDateRange creationDateRange;
@@ -139,5 +141,17 @@ public class Work extends Entity {
 
   public void setWorkType(WorkType workType) {
     this.workType = workType;
+  }
+
+  public abstract static class WorkBuilder<C extends Work, B extends WorkBuilder<C, B>>
+      extends EntityBuilder<C, B> {
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      setInternalReferences(c);
+      return c;
+    }
   }
 }

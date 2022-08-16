@@ -4,16 +4,21 @@ import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.text.LocalizedText;
 import java.util.Set;
+import lombok.experimental.SuperBuilder;
 
+@SuperBuilder(buildMethodName = "prebuild")
 public class Subject {
 
   private Set<Identifier> identifiers;
   private LocalizedText label;
   private Set<Entity> relatedEntities;
 
-  public Subject() {}
+  public Subject() {
+    init();
+  }
 
   public Subject(LocalizedText label, Set<Identifier> identifiers, Set<Entity> relatedEntities) {
+    this();
     this.label = label;
     this.identifiers = identifiers;
     this.relatedEntities = relatedEntities;
@@ -31,6 +36,8 @@ public class Subject {
     return relatedEntities;
   }
 
+  protected void init() {}
+
   public void setIdentifiers(Set<Identifier> identifiers) {
     this.identifiers = identifiers;
   }
@@ -41,5 +48,14 @@ public class Subject {
 
   public void setRelatedEntities(Set<Entity> relatedEntities) {
     this.relatedEntities = relatedEntities;
+  }
+
+  public abstract static class SubjectBuilder<C extends Subject, B extends SubjectBuilder<C, B>> {
+
+    public C build() {
+      C c = prebuild();
+      c.init();
+      return c;
+    }
   }
 }

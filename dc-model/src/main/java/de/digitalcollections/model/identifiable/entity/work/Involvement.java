@@ -4,7 +4,9 @@ import de.digitalcollections.model.identifiable.entity.agent.Agent;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
 import java.util.List;
 import java.util.Set;
+import lombok.experimental.SuperBuilder;
 
+@SuperBuilder(buildMethodName = "prebuild")
 public class Involvement {
 
   /** involved agent */
@@ -25,9 +27,29 @@ public class Involvement {
   /** to be used for displaying original involvement roles */
   private List<String> involvementRolesPresentation;
 
+  public Involvement() {
+    init();
+  }
+
+  public Involvement(
+      Agent agent,
+      Boolean isCreator,
+      HumanSettlement involvementPlace,
+      Set<InvolvementRole> involvementRoles,
+      List<String> involvementRolesPresentation) {
+    this();
+    this.agent = agent;
+    this.isCreator = isCreator;
+    this.involvementPlace = involvementPlace;
+    this.involvementRoles = involvementRoles;
+    this.involvementRolesPresentation = involvementRolesPresentation;
+  }
+
   public Agent getAgent() {
     return agent;
   }
+
+  protected void init() {}
 
   public void setAgent(Agent agent) {
     this.agent = agent;
@@ -63,5 +85,15 @@ public class Involvement {
 
   public void setInvolvementRolesPresentation(List<String> involvementRolesPresentation) {
     this.involvementRolesPresentation = involvementRolesPresentation;
+  }
+
+  public abstract static class InvolvementBuilder<
+      C extends Involvement, B extends InvolvementBuilder<C, B>> {
+
+    public C build() {
+      C c = prebuild();
+      c.init();
+      return c;
+    }
   }
 }
