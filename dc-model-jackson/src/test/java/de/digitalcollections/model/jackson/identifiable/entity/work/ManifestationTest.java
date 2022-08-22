@@ -23,6 +23,7 @@ public class ManifestationTest extends BaseJsonSerializationTest {
   }
 
   private Manifestation createObject() {
+    // Later, because series extends work
     Series series = (Series) Series.builder().label("Aus Natur und Geisteswelt").build();
 
     Manifestation manifestation =
@@ -32,6 +33,9 @@ public class ManifestationTest extends BaseJsonSerializationTest {
             .scale("[Ca. 1:820 000]")
             .note(createNote("Plattendruck"))
             .note(createNote("Pr. 54 kr"))
+            // .series(Set.of(series))
+            .sortKey("1932-40-12-25-41")
+            .version("2. Auflage")
             .build();
     //    manifestation.setLabel(new LocalizedText(Locale.GERMAN, "Zimmer-Gymnastik ohne Geräte"));
     //    Person person = new Person();
