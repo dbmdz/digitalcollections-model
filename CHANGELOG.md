@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [11.0.1](https://github.com/dbmdz/digitalcollections-model/releases/tag/11.0.0) - 2022-08-22
+
+### Changed
+
+- Fixed deserialization of `CorporateBody`
+
 ## [11.0.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/11.0.0) - 2022-07-18
 
 ### Added
