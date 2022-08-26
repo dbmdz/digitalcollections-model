@@ -1,17 +1,18 @@
 package de.digitalcollections.model.identifiable.entity.work;
 
+import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.text.LocalizedText;
 import lombok.experimental.SuperBuilder;
 
 @SuperBuilder(buildMethodName = "prebuild")
-public class ExpressionType {
+public class ExpressionType extends UniqueObject {
 
   private LocalizedText label;
   private String mainType;
   private String subType;
 
   public ExpressionType() {
-    init();
+    super();
   }
 
   public ExpressionType(LocalizedText label, String mainType, String subType) {
@@ -33,7 +34,10 @@ public class ExpressionType {
     return subType;
   }
 
-  protected void init() {}
+  @Override
+  protected void init() {
+    super.init();
+  }
 
   public void setLabel(LocalizedText label) {
     this.label = label;
@@ -48,8 +52,10 @@ public class ExpressionType {
   }
 
   public abstract static class ExpressionTypeBuilder<
-      C extends ExpressionType, B extends ExpressionTypeBuilder<C, B>> {
+          C extends ExpressionType, B extends ExpressionTypeBuilder<C, B>>
+      extends UniqueObjectBuilder<C, B> {
 
+    @Override
     public C build() {
       C c = prebuild();
       c.init();

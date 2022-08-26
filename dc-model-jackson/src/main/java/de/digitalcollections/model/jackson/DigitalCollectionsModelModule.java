@@ -34,8 +34,12 @@ import de.digitalcollections.model.identifiable.entity.geo.location.GeoLocation;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
 import de.digitalcollections.model.identifiable.entity.geo.location.Mountain;
 import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
+import de.digitalcollections.model.identifiable.entity.semantic.Subject;
+import de.digitalcollections.model.identifiable.entity.work.ExpressionType;
+import de.digitalcollections.model.identifiable.entity.work.Involvement;
 import de.digitalcollections.model.identifiable.entity.work.Item;
 import de.digitalcollections.model.identifiable.entity.work.Manifestation;
+import de.digitalcollections.model.identifiable.entity.work.Publication;
 import de.digitalcollections.model.identifiable.entity.work.Series;
 import de.digitalcollections.model.identifiable.entity.work.Work;
 import de.digitalcollections.model.identifiable.resource.ApplicationFileResource;
@@ -73,8 +77,12 @@ import de.digitalcollections.model.jackson.mixin.identifiable.entity.geo.locatio
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.geo.location.HumanSettlementMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.geo.location.MountainMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.relation.EntityRelationMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.semantic.SubjectMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.ExpressionTypeMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.InvolvementMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.ItemMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.ManifestationMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.PublicationMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.WorkMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.ApplicationFileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.AudioFileResourceMixIn;
@@ -102,6 +110,7 @@ import de.digitalcollections.model.jackson.mixin.list.sorting.SortingMixIn;
 import de.digitalcollections.model.jackson.mixin.relation.PredicateMixIn;
 import de.digitalcollections.model.jackson.mixin.security.UserMixIn;
 import de.digitalcollections.model.jackson.mixin.semantic.HeadwordMixIn;
+import de.digitalcollections.model.jackson.mixin.semantic.TagMixIn;
 import de.digitalcollections.model.jackson.mixin.text.LocalizedStructuredContentMixIn;
 import de.digitalcollections.model.jackson.mixin.text.LocalizedTextMixIn;
 import de.digitalcollections.model.jackson.mixin.text.StructuredContentMixIn;
@@ -144,6 +153,7 @@ import de.digitalcollections.model.list.sorting.Sorting;
 import de.digitalcollections.model.relation.Predicate;
 import de.digitalcollections.model.security.User;
 import de.digitalcollections.model.semantic.Headword;
+import de.digitalcollections.model.semantic.Tag;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.LocalizedText;
 import de.digitalcollections.model.text.StructuredContent;
@@ -222,14 +232,19 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(Mountain.class, MountainMixIn.class);
 
     // work
+    context.setMixInAnnotations(ExpressionType.class, ExpressionTypeMixIn.class);
+    context.setMixInAnnotations(Involvement.class, InvolvementMixIn.class);
     context.setMixInAnnotations(Item.class, ItemMixIn.class);
     context.setMixInAnnotations(Manifestation.class, ManifestationMixIn.class);
+    context.setMixInAnnotations(Publication.class, PublicationMixIn.class);
     context.setMixInAnnotations(Series.class, SeriesMixIn.class);
     context.setMixInAnnotations(Work.class, WorkMixIn.class);
 
     // semantic
     context.setMixInAnnotations(Headword.class, HeadwordMixIn.class);
     context.setMixInAnnotations(HeadwordEntry.class, HeadwordEntryMixIn.class);
+    context.setMixInAnnotations(Subject.class, SubjectMixIn.class);
+    context.setMixInAnnotations(Tag.class, TagMixIn.class);
 
     // other
     context.setMixInAnnotations(ApplicationFileResource.class, ApplicationFileResourceMixIn.class);

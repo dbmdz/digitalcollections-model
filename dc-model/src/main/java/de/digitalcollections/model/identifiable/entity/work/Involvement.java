@@ -1,5 +1,6 @@
 package de.digitalcollections.model.identifiable.entity.work;
 
+import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.identifiable.entity.agent.Agent;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.Set;
 import lombok.experimental.SuperBuilder;
 
 @SuperBuilder(buildMethodName = "prebuild")
-public class Involvement {
+public class Involvement extends UniqueObject {
 
   /** involved agent */
   private Agent agent;
@@ -22,20 +23,20 @@ public class Involvement {
   private HumanSettlement involvementPlace;
 
   /** set of involvement roles the agent is involved in the related work */
-  private Set<InvolvementRole> involvementRoles;
+  private Set<String> involvementRoles;
 
   /** to be used for displaying original involvement roles */
   private List<String> involvementRolesPresentation;
 
   public Involvement() {
-    init();
+    super();
   }
 
   public Involvement(
       Agent agent,
       Boolean isCreator,
       HumanSettlement involvementPlace,
-      Set<InvolvementRole> involvementRoles,
+      Set<String> involvementRoles,
       List<String> involvementRolesPresentation) {
     this();
     this.agent = agent;
@@ -49,7 +50,10 @@ public class Involvement {
     return agent;
   }
 
-  protected void init() {}
+  @Override
+  protected void init() {
+    super.init();
+  }
 
   public void setAgent(Agent agent) {
     this.agent = agent;
@@ -71,11 +75,11 @@ public class Involvement {
     this.involvementPlace = involvementPlace;
   }
 
-  public Set<InvolvementRole> getInvolvementRoles() {
+  public Set<String> getInvolvementRoles() {
     return involvementRoles;
   }
 
-  public void setInvolvementRoles(Set<InvolvementRole> involvementRoles) {
+  public void setInvolvementRoles(Set<String> involvementRoles) {
     this.involvementRoles = involvementRoles;
   }
 
@@ -88,8 +92,10 @@ public class Involvement {
   }
 
   public abstract static class InvolvementBuilder<
-      C extends Involvement, B extends InvolvementBuilder<C, B>> {
+          C extends Involvement, B extends InvolvementBuilder<C, B>>
+      extends UniqueObjectBuilder<C, B> {
 
+    @Override
     public C build() {
       C c = prebuild();
       c.init();

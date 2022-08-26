@@ -1,5 +1,6 @@
 package de.digitalcollections.model.identifiable.entity.work;
 
+import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.identifiable.entity.agent.Agent;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
 import java.util.List;
@@ -7,14 +8,14 @@ import lombok.experimental.SuperBuilder;
 
 /** Example: Mayence, Anvers, Bruxelles : chez les fils de B. Schott */
 @SuperBuilder(buildMethodName = "prebuild")
-public class Publication {
+public class Publication extends UniqueObject {
 
   private List<HumanSettlement> publicationLocations;
   private List<Agent> publishers;
   private List<String> publishersPresentation;
 
   public Publication() {
-    init();
+    super();
   }
 
   public Publication(
@@ -39,7 +40,10 @@ public class Publication {
     return publishersPresentation;
   }
 
-  protected void init() {}
+  @Override
+  protected void init() {
+    super.init();
+  }
 
   public void setPublicationLocations(List<HumanSettlement> publicationLocations) {
     this.publicationLocations = publicationLocations;
@@ -54,8 +58,10 @@ public class Publication {
   }
 
   public abstract static class PublicationBuilder<
-      C extends Publication, B extends PublicationBuilder<C, B>> {
+          C extends Publication, B extends PublicationBuilder<C, B>>
+      extends UniqueObjectBuilder<C, B> {
 
+    @Override
     public C build() {
       C c = prebuild();
       c.init();

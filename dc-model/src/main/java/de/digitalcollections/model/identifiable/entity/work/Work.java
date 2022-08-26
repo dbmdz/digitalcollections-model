@@ -47,7 +47,6 @@ public class Work extends Entity {
 
   public Work() {
     super();
-    init();
   }
 
   public LocalDateRange getCreationDateRange() {

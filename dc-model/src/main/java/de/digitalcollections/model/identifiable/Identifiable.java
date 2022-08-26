@@ -52,11 +52,20 @@ public class Identifiable extends UniqueObject {
 
   public Identifiable() {
     super();
-    init();
   }
 
   public void addIdentifier(Identifier identifier) {
+    if (identifiers == null) {
+      identifiers = new HashSet<>(1);
+    }
     identifiers.add(Objects.requireNonNull(identifier));
+  }
+
+  public void addTag(Tag tag) {
+    if (tags == null) {
+      tags = new HashSet<>(1);
+    }
+    tags.add(tag);
   }
 
   @Override
@@ -177,6 +186,7 @@ public class Identifiable extends UniqueObject {
             localizedUrlAliases,
             previewImage,
             previewImageRenderingHints,
+            tags,
             type);
   }
 
@@ -300,24 +310,22 @@ public class Identifiable extends UniqueObject {
 
     public B identifier(Identifier identifier) {
       if (this.identifiers == null) {
-        this.identifiers = new HashSet<>(0);
+        this.identifiers = new HashSet<>(1);
       }
       identifiers.add(identifier);
       return self();
     }
 
     public B identifier(String namespace, String id, String uuid) {
-      if (this.identifiers == null) {
-        this.identifiers = new HashSet<>(0);
+      if (identifiers == null) {
+        identifiers = new HashSet<>(1);
       }
-      Identifier identifier = new Identifier();
-      identifier.setNamespace(namespace);
-      identifier.setId(id);
+      Identifier identifier =
+          Identifier.builder().namespace(namespace).id(id).identifiable(getUuid()).build();
       if (uuid != null) {
         identifier.setUuid(UUID.fromString(uuid));
       }
-      identifier.setIdentifiable(super.getUuid());
-      this.identifiers.add(identifier);
+      identifiers.add(identifier);
       return self();
     }
 
@@ -420,8 +428,8 @@ public class Identifiable extends UniqueObject {
     }
 
     public B tag(Tag tag) {
-      if (this.tags == null) {
-        this.tags = new HashSet<>(0);
+      if (tags == null) {
+        tags = new HashSet<>(1);
       }
       tags.add(tag);
       return self();

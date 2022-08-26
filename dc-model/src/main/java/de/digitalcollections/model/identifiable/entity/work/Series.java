@@ -10,7 +10,6 @@ public class Series extends Work {
 
   public Series() {
     super();
-    init();
   }
 
   public LinkedHashMap<String, Manifestation> getSortedManifestations() {

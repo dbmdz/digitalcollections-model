@@ -36,7 +36,6 @@ public class Entity extends Identifiable {
 
   public Entity() {
     super();
-    init();
   }
 
   public void addNotes(LocalizedStructuredContent... notesToAdd) {

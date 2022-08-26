@@ -51,7 +51,7 @@ public class Manifestation extends Entity {
   private List<Involvement> involvements;
   private Locale language;
   private ManufacturingType manufacturingType;
-  private Set<MediaType> mediaTypes;
+  private Set<String> mediaTypes;
   private Set<Locale> otherLanguages;
   private Manifestation parent;
   private List<Publication> publications;
@@ -75,7 +75,6 @@ public class Manifestation extends Entity {
 
   public Manifestation() {
     super();
-    init();
   }
 
   /**
@@ -108,7 +107,7 @@ public class Manifestation extends Entity {
     return manufacturingType;
   }
 
-  public Set<MediaType> getMediaTypes() {
+  public Set<String> getMediaTypes() {
     return mediaTypes;
   }
 
@@ -201,7 +200,7 @@ public class Manifestation extends Entity {
     this.manufacturingType = manufacturingType;
   }
 
-  public void setMediaTypes(Set<MediaType> mediaTypes) {
+  public void setMediaTypes(Set<String> mediaTypes) {
     this.mediaTypes = mediaTypes;
   }
 
