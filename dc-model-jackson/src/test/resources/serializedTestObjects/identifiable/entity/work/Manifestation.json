@@ -1,7 +1,15 @@
 {
   "identifiableObjectType" : "MANIFESTATION",
-  "identifiers" : [ ],
+  "identifiers" : [ {
+    "objectType" : "IDENTIFIER",
+    "id" : "bar",
+    "namespace" : "foo"
+  } ],
+  "label" : {
+    "de" : "Zimmer-Gymnastik ohne Geräte"
+  },
   "type" : "ENTITY",
+  "navDate" : "2022-08-30",
   "refId" : 0,
   "notes" : [ {
     "de" : {
@@ -28,6 +36,57 @@
   } ],
   "composition" : "1 Partitur (11 Seiten)",
   "dimensions" : "26,5 x 70 x 2 cm",
+  "involvements" : [ {
+    "objectType" : "INVOLVEMENT",
+    "agent" : {
+      "identifiableObjectType" : "PERSON",
+      "identifiers" : [ ],
+      "label" : {
+        "de" : "Arnold Hiller"
+      },
+      "type" : "ENTITY",
+      "refId" : 0,
+      "familyNames" : [ ],
+      "givenNames" : [ ],
+      "entityType" : "PERSON"
+    },
+    "isCreator" : true
+  } ],
+  "language" : "de",
+  "otherLanguages" : [ "it" ],
+  "publishingDatePresentation" : "2020",
+  "publishingDateRange" : {
+    "end" : "2020-04-28",
+    "start" : "2020-04-28"
+  },
+  "publishingTimeValueRange" : {
+    "end" : {
+      "afterTolerance" : 0,
+      "beforeTolerance" : 0,
+      "day" : 0,
+      "hour" : 0,
+      "minute" : 0,
+      "month" : 0,
+      "precision" : 9,
+      "preferredCalendarModel" : "http://www.wikidata.org/entity/Q1985727",
+      "second" : 0,
+      "timezoneOffset" : 0,
+      "year" : 2020
+    },
+    "start" : {
+      "afterTolerance" : 0,
+      "beforeTolerance" : 0,
+      "day" : 0,
+      "hour" : 0,
+      "minute" : 0,
+      "month" : 0,
+      "precision" : 9,
+      "preferredCalendarModel" : "http://www.wikidata.org/entity/Q1985727",
+      "second" : 0,
+      "timezoneOffset" : 0,
+      "year" : 2020
+    }
+  },
   "scale" : "[Ca. 1:820 000]",
   "sortKey" : "1932-40-12-25-41",
   "version" : "2. Auflage",

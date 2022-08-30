@@ -1,5 +1,7 @@
 package de.digitalcollections.model.jackson.identifiable.entity.work;
 
+import de.digitalcollections.model.identifiable.entity.agent.Person;
+import de.digitalcollections.model.identifiable.entity.work.Involvement;
 import de.digitalcollections.model.identifiable.entity.work.Manifestation;
 import de.digitalcollections.model.identifiable.entity.work.Series;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
@@ -7,7 +9,13 @@ import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.StructuredContent;
 import de.digitalcollections.model.text.contentblock.ContentBlock;
 import de.digitalcollections.model.text.contentblock.Paragraph;
+import de.digitalcollections.model.time.LocalDateRange;
+import de.digitalcollections.model.time.TimeValue;
+import de.digitalcollections.model.time.TimeValueRange;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 public class ManifestationTest extends BaseJsonSerializationTest {
@@ -28,6 +36,8 @@ public class ManifestationTest extends BaseJsonSerializationTest {
 
     Manifestation manifestation =
         Manifestation.builder()
+            .identifier("foo", "bar")
+            .label(Locale.GERMAN, "Zimmer-Gymnastik ohne Geräte")
             .composition("1 Partitur (11 Seiten)")
             .dimensions("26,5 x 70 x 2 cm")
             .scale("[Ca. 1:820 000]")
@@ -36,26 +46,46 @@ public class ManifestationTest extends BaseJsonSerializationTest {
             // .series(Set.of(series))
             .sortKey("1932-40-12-25-41")
             .version("2. Auflage")
+            .involvements(
+                List.of(
+                    Involvement.builder()
+                        .isCreator(true)
+                        .agent(Person.builder().label(Locale.GERMAN, "Arnold Hiller").build())
+                        .build()))
+            .publishingTimeValueRange(
+                new TimeValueRange(
+                    new TimeValue(
+                        2020,
+                        (byte) 0,
+                        (byte) 0,
+                        (byte) 0,
+                        (byte) 0,
+                        (byte) 0,
+                        TimeValue.PREC_YEAR,
+                        0,
+                        0,
+                        0,
+                        TimeValue.CM_GREGORIAN_PRO),
+                    new TimeValue(
+                        2020,
+                        (byte) 0,
+                        (byte) 0,
+                        (byte) 0,
+                        (byte) 0,
+                        (byte) 0,
+                        TimeValue.PREC_YEAR,
+                        0,
+                        0,
+                        0,
+                        TimeValue.CM_GREGORIAN_PRO)))
+            .publishingDatePresentation("2020")
+            .publishingDateRange(
+                new LocalDateRange(LocalDate.parse("2020-04-28"), LocalDate.parse("2020-04-28")))
+            .navDate("2022-08-30")
+            .language(Locale.GERMAN)
+            .otherLanguages(Set.of(Locale.ITALIAN))
+            // TODO, wenn TitleType fertig ist .titles(List.of())
             .build();
-    //    manifestation.setLabel(new LocalizedText(Locale.GERMAN, "Zimmer-Gymnastik ohne Geräte"));
-    //    Person person = new Person();
-    //    person.setLabel(new LocalizedText(Locale.GERMAN, "Arnold Hiller"));
-    //    manifestation.setCreators(Arrays.asList(person));
-    //    manifestation.setFirstAppearedDate(LocalDate.parse("2020-04-28"));
-    //    TimeValue timeValuePublished =
-    //        new TimeValue(
-    //            2020,
-    //            (byte) 0,
-    //            (byte) 0,
-    //            (byte) 0,
-    //            (byte) 0,
-    //            (byte) 0,
-    //            TimeValue.PREC_YEAR,
-    //            0,
-    //            0,
-    //            0,
-    //            TimeValue.CM_GREGORIAN_PRO);
-    //    manifestation.setFirstAppearedTimeValue(timeValuePublished);
     return manifestation;
   }
 
