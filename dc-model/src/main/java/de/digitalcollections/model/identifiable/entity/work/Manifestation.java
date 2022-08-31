@@ -258,6 +258,90 @@ public class Manifestation extends Entity {
     this.work = work;
   }
 
+  @Override
+  public String toString() {
+    return "Manifestation{"
+        + "composition='"
+        + composition
+        + '\''
+        + ", dimensions='"
+        + dimensions
+        + '\''
+        + ", expressionTypes="
+        + expressionTypes
+        + ", involvements="
+        + involvements
+        + ", language="
+        + language
+        + ", manufacturingType="
+        + manufacturingType
+        + ", mediaTypes="
+        + mediaTypes
+        + ", otherLanguages="
+        + otherLanguages
+        + ", parent="
+        + parent
+        + ", publications="
+        + publications
+        + ", publishingDatePresentation='"
+        + publishingDatePresentation
+        + '\''
+        + ", publishingDateRange="
+        + publishingDateRange
+        + ", publishingTimeValueRange="
+        + publishingTimeValueRange
+        + ", scale='"
+        + scale
+        + '\''
+        + ", series="
+        + series
+        + ", sortKey='"
+        + sortKey
+        + '\''
+        + ", subjects="
+        + subjects
+        + ", titles="
+        + titles
+        + ", version='"
+        + version
+        + '\''
+        + ", work="
+        + work
+        + ", customAttributes="
+        + customAttributes
+        + ", navDate="
+        + navDate
+        + ", refId="
+        + refId
+        + ", notes="
+        + notes
+        + ", description="
+        + description
+        + ", identifiableObjectType="
+        + identifiableObjectType
+        + ", identifiers="
+        + identifiers
+        + ", label="
+        + label
+        + ", localizedUrlAliases="
+        + localizedUrlAliases
+        + ", previewImage="
+        + previewImage
+        + ", previewImageRenderingHints="
+        + previewImageRenderingHints
+        + ", tags="
+        + tags
+        + ", type="
+        + type
+        + ", created="
+        + created
+        + ", lastModified="
+        + lastModified
+        + ", uuid="
+        + uuid
+        + '}';
+  }
+
   public abstract static class ManifestationBuilder<
           C extends Manifestation, B extends ManifestationBuilder<C, B>>
       extends EntityBuilder<C, B> {
