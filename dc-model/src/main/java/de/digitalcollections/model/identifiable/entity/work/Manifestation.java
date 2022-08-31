@@ -50,7 +50,7 @@ public class Manifestation extends Entity {
   private Set<ExpressionType> expressionTypes;
   private List<Involvement> involvements;
   private Locale language;
-  private ManufacturingType manufacturingType;
+  private String manufacturingType;
   private Set<String> mediaTypes;
   private Set<Locale> otherLanguages;
   private Manifestation parent;
@@ -103,7 +103,7 @@ public class Manifestation extends Entity {
     return language;
   }
 
-  public ManufacturingType getManufacturingType() {
+  public String getManufacturingType() {
     return manufacturingType;
   }
 
@@ -196,7 +196,7 @@ public class Manifestation extends Entity {
     this.language = language;
   }
 
-  public void setManufacturingType(ManufacturingType manufacturingType) {
+  public void setManufacturingType(String manufacturingType) {
     this.manufacturingType = manufacturingType;
   }
 
