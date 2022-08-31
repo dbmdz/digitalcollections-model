@@ -7,7 +7,6 @@ import de.digitalcollections.model.identifiable.Identifiable;
 import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.identifiable.IdentifierType;
 import de.digitalcollections.model.identifiable.entity.semantic.Subject;
-import de.digitalcollections.model.identifiable.entity.work.ExpressionType;
 import de.digitalcollections.model.identifiable.entity.work.Involvement;
 import de.digitalcollections.model.identifiable.entity.work.Publication;
 import de.digitalcollections.model.legal.License;
@@ -19,7 +18,6 @@ import de.digitalcollections.model.view.RenderingTemplate;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "objectType", visible = true)
 @JsonSubTypes({
-  @JsonSubTypes.Type(value = ExpressionType.class, name = "EXPRESSION_TYPE"),
   @JsonSubTypes.Type(value = Headword.class, name = "HEADWORD"),
   @JsonSubTypes.Type(value = Identifiable.class, name = "IDENTIFIABLE"),
   @JsonSubTypes.Type(value = Identifier.class, name = "IDENTIFIER"),
