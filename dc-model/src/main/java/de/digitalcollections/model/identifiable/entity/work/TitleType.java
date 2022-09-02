@@ -1,47 +1,25 @@
 package de.digitalcollections.model.identifiable.entity.work;
 
+import de.digitalcollections.model.MainSubType;
 import lombok.experimental.SuperBuilder;
 
 @SuperBuilder(buildMethodName = "prebuild")
-public class TitleType {
-
-  private String mainType;
-  private String subType;
+public class TitleType extends MainSubType {
 
   public TitleType() {
-    init();
+    super();
   }
 
   public TitleType(String mainType, String subType) {
-    this();
-    this.mainType = mainType;
-    this.subType = subType;
-  }
-
-  public String getMainType() {
-    return mainType;
-  }
-
-  public String getSubType() {
-    return subType;
-  }
-
-  protected void init() {}
-
-  public void setMainType(String mainType) {
-    this.mainType = mainType;
-  }
-
-  public void setSubType(String subType) {
-    this.subType = subType;
+    super(mainType, subType);
   }
 
   public abstract static class TitleTypeBuilder<
-      C extends TitleType, B extends TitleTypeBuilder<C, B>> {
+          C extends TitleType, B extends TitleTypeBuilder<C, B>>
+      extends MainSubTypeBuilder<C, B> {
 
     public C build() {
       C c = prebuild();
-      c.init();
       return c;
     }
   }
