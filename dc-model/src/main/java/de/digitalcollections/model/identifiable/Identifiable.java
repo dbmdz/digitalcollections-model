@@ -200,13 +200,16 @@ public class Identifiable extends UniqueObject {
   }
 
   public void removeIdentifier(String namespace) {
-    if (namespace == null || namespace.isBlank()) {
+    if (identifiers == null || namespace == null || namespace.isBlank()) {
       return;
     }
     identifiers =
         identifiers.stream()
             .filter(i -> !namespace.equals(i.getNamespace()))
             .collect(Collectors.toSet());
+    if (identifiers.isEmpty()) {
+      identifiers = null;
+    }
   }
 
   public void setDescription(LocalizedStructuredContent description) {

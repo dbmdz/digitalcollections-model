@@ -2,7 +2,6 @@ package de.digitalcollections.model.identifiable.entity.semantic;
 
 import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.identifiable.Identifier;
-import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.text.LocalizedText;
 import java.util.Set;
 import lombok.experimental.SuperBuilder;
@@ -17,7 +16,7 @@ public class Subject extends UniqueObject {
     super();
   }
 
-  public Subject(LocalizedText label, Set<Identifier> identifiers, Set<Entity> relatedEntities) {
+  public Subject(LocalizedText label, Set<Identifier> identifiers) {
     this();
     this.label = label;
     this.identifiers = identifiers;

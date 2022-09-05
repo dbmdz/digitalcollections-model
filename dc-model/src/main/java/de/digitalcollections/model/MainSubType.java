@@ -3,7 +3,7 @@ package de.digitalcollections.model;
 import java.util.Objects;
 import lombok.experimental.SuperBuilder;
 
-@SuperBuilder(buildMethodName = "prebuild")
+@SuperBuilder
 public class MainSubType {
 
   private String mainType;

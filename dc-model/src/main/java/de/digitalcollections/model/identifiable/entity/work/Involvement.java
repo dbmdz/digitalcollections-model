@@ -46,13 +46,13 @@ public class Involvement extends UniqueObject {
     this.involvementRolesPresentation = involvementRolesPresentation;
   }
 
-  public Agent getAgent() {
-    return agent;
-  }
-
   @Override
   protected void init() {
     super.init();
+  }
+
+  public Agent getAgent() {
+    return agent;
   }
 
   public void setAgent(Agent agent) {

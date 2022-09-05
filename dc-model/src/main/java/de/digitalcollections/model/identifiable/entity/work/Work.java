@@ -1,8 +1,8 @@
 package de.digitalcollections.model.identifiable.entity.work;
 
+import de.digitalcollections.model.identifiable.IdentifiableObjectType;
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.agent.Agent;
-import de.digitalcollections.model.text.LocalizedText;
 import de.digitalcollections.model.time.LocalDateRange;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -77,10 +77,6 @@ public class Work extends Entity {
     return involvements;
   }
 
-  public LocalizedText getTitle() {
-    return getLabel();
-  }
-
   public List<Title> getTitles() {
     return titles;
   }
@@ -96,6 +92,7 @@ public class Work extends Entity {
     if (creators == null) {
       this.creators = new ArrayList<>(0);
     }
+    identifiableObjectType = IdentifiableObjectType.WORK;
   }
 
   public void setCreationDateRange(LocalDateRange creationDateRange) {
@@ -126,10 +123,6 @@ public class Work extends Entity {
     this.involvements = involvements;
   }
 
-  public void setTitle(LocalizedText title) {
-    setLabel(title);
-  }
-
   public void setTitle(String title) {
     setLabel(title);
   }
@@ -151,6 +144,30 @@ public class Work extends Entity {
       c.init();
       setInternalReferences(c);
       return c;
+    }
+
+    public B creator(Agent creator) {
+      if (creators == null) {
+        creators = new ArrayList<>(1);
+      }
+      creators.add(creator);
+      return self();
+    }
+
+    public B involvement(Involvement involvement) {
+      if (involvements == null) {
+        involvements = new ArrayList<>(1);
+      }
+      involvements.add(involvement);
+      return self();
+    }
+
+    public B title(Title title) {
+      if (titles == null) {
+        titles = new ArrayList<>(1);
+      }
+      titles.add(title);
+      return self();
     }
   }
 }

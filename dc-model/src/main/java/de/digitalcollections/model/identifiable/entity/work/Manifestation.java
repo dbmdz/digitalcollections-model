@@ -1,9 +1,13 @@
 package de.digitalcollections.model.identifiable.entity.work;
 
+import de.digitalcollections.model.identifiable.IdentifiableObjectType;
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.semantic.Subject;
 import de.digitalcollections.model.time.LocalDateRange;
 import de.digitalcollections.model.time.TimeValueRange;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
@@ -168,6 +172,7 @@ public class Manifestation extends Entity {
   @Override
   protected void init() {
     super.init();
+    identifiableObjectType = IdentifiableObjectType.MANIFESTATION;
   }
 
   /**
@@ -352,6 +357,62 @@ public class Manifestation extends Entity {
       c.init();
       setInternalReferences(c);
       return c;
+    }
+
+    public B expressionType(ExpressionType type) {
+      if (expressionTypes == null) {
+        expressionTypes = new LinkedHashSet<>(1);
+      }
+      expressionTypes.add(type);
+      return self();
+    }
+
+    public B involvement(Involvement involvement) {
+      if (involvements == null) {
+        involvements = new ArrayList<>(1);
+      }
+      involvements.add(involvement);
+      return self();
+    }
+
+    public B mediaType(String mediaType) {
+      if (mediaTypes == null) {
+        mediaTypes = new HashSet<>(1);
+      }
+      mediaTypes.add(mediaType);
+      return self();
+    }
+
+    public B otherLanguage(Locale lang) {
+      if (otherLanguages == null) {
+        otherLanguages = new HashSet<>(1);
+      }
+      otherLanguages.add(lang);
+      return self();
+    }
+
+    public B publication(Publication publication) {
+      if (publications == null) {
+        publications = new ArrayList<>(1);
+      }
+      publications.add(publication);
+      return self();
+    }
+
+    public B subject(Subject subject) {
+      if (subjects == null) {
+        subjects = new HashSet<>(1);
+      }
+      subjects.add(subject);
+      return self();
+    }
+
+    public B title(Title title) {
+      if (titles == null) {
+        titles = new ArrayList<>(1);
+      }
+      titles.add(title);
+      return self();
     }
   }
 }
