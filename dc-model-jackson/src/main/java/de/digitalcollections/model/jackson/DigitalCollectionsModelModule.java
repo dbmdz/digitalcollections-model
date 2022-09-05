@@ -66,7 +66,6 @@ import de.digitalcollections.model.jackson.mixin.identifiable.entity.DigitalObje
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.EntityMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.HeadwordEntryMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.ProjectMixIn;
-import de.digitalcollections.model.jackson.mixin.identifiable.entity.SeriesMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.TopicMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.WebsiteMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.agent.AgentMixIn;
@@ -83,6 +82,7 @@ import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.Involv
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.ItemMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.ManifestationMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.PublicationMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.SeriesMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.WorkMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.ApplicationFileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.AudioFileResourceMixIn;
