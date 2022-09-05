@@ -4,6 +4,7 @@ import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.semantic.Subject;
 import de.digitalcollections.model.time.LocalDateRange;
 import de.digitalcollections.model.time.TimeValueRange;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
@@ -47,12 +48,12 @@ public class Manifestation extends Entity {
    */
   private String dimensions;
 
-  private Set<ExpressionType> expressionTypes;
+  private LinkedHashSet<ExpressionType> expressionTypes;
   private List<Involvement> involvements;
   private Locale language;
   private String manufacturingType;
-  private Set<String> mediaTypes;
-  private Set<Locale> otherLanguages;
+  private LinkedHashSet<String> mediaTypes;
+  private LinkedHashSet<Locale> otherLanguages;
   private Manifestation parent;
   private List<Publication> publications;
   private String publishingDatePresentation;
@@ -65,10 +66,10 @@ public class Manifestation extends Entity {
    */
   private String scale;
 
-  private Set<Series> series;
+  private LinkedHashSet<Series> series;
   private String sortKey;
 
-  private Set<Subject> subjects;
+  private LinkedHashSet<Subject> subjects;
   private List<Title> titles;
   private String version;
   private Work work;
@@ -91,7 +92,7 @@ public class Manifestation extends Entity {
     return dimensions;
   }
 
-  public Set<ExpressionType> getExpressionTypes() {
+  public LinkedHashSet<ExpressionType> getExpressionTypes() {
     return expressionTypes;
   }
 
@@ -107,11 +108,11 @@ public class Manifestation extends Entity {
     return manufacturingType;
   }
 
-  public Set<String> getMediaTypes() {
+  public LinkedHashSet<String> getMediaTypes() {
     return mediaTypes;
   }
 
-  public Set<Locale> getOtherLanguages() {
+  public LinkedHashSet<Locale> getOtherLanguages() {
     return otherLanguages;
   }
 
@@ -141,7 +142,7 @@ public class Manifestation extends Entity {
     return scale;
   }
 
-  public Set<Series> getSeries() {
+  public LinkedHashSet<Series> getSeries() {
     return series;
   }
 
@@ -149,7 +150,7 @@ public class Manifestation extends Entity {
     return sortKey;
   }
 
-  public Set<Subject> getSubjects() {
+  public LinkedHashSet<Subject> getSubjects() {
     return subjects;
   }
 
@@ -185,7 +186,7 @@ public class Manifestation extends Entity {
   }
 
   public void setExpressionTypes(Set<ExpressionType> expressionTypes) {
-    this.expressionTypes = expressionTypes;
+    this.expressionTypes = new LinkedHashSet<>(expressionTypes);
   }
 
   public void setInvolvements(List<Involvement> involvements) {
@@ -200,11 +201,11 @@ public class Manifestation extends Entity {
     this.manufacturingType = manufacturingType;
   }
 
-  public void setMediaTypes(Set<String> mediaTypes) {
+  public void setMediaTypes(LinkedHashSet<String> mediaTypes) {
     this.mediaTypes = mediaTypes;
   }
 
-  public void setOtherLanguages(Set<Locale> otherLanguages) {
+  public void setOtherLanguages(LinkedHashSet<Locale> otherLanguages) {
     this.otherLanguages = otherLanguages;
   }
 
@@ -234,7 +235,7 @@ public class Manifestation extends Entity {
     this.scale = scale;
   }
 
-  public void setSeries(Set<Series> series) {
+  public void setSeries(LinkedHashSet<Series> series) {
     this.series = series;
   }
 
@@ -242,7 +243,7 @@ public class Manifestation extends Entity {
     this.sortKey = sortKey;
   }
 
-  public void setSubjects(Set<Subject> subjects) {
+  public void setSubjects(LinkedHashSet<Subject> subjects) {
     this.subjects = subjects;
   }
 
