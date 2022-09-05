@@ -62,4 +62,9 @@ public class MainSubType {
       return self();
     }
   }
+
+  @Override
+  public String toString() {
+    return "MainSubType{" + "mainType='" + mainType + '\'' + ", subType='" + subType + '\'' + '}';
+  }
 }
