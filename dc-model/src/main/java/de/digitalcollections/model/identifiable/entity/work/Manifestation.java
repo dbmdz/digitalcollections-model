@@ -171,6 +171,9 @@ public class Manifestation extends Entity {
   protected void init() {
     super.init();
     identifiableObjectType = IdentifiableObjectType.MANIFESTATION;
+    if (titles == null) {
+      titles = new ArrayList<>();
+    }
   }
 
   /**
