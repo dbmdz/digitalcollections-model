@@ -64,6 +64,11 @@ public class Subject extends UniqueObject {
     return Objects.hash(super.hashCode(), identifiers, label);
   }
 
+  @Override
+  public String toString() {
+    return "Subject{" + "identifiers=" + identifiers + ", label=" + label + ", uuid=" + uuid + '}';
+  }
+
   public abstract static class SubjectBuilder<C extends Subject, B extends SubjectBuilder<C, B>>
       extends UniqueObjectBuilder<C, B> {
 
@@ -81,10 +86,5 @@ public class Subject extends UniqueObject {
       c.init();
       return c;
     }
-  }
-
-  @Override
-  public String toString() {
-    return "Subject{" + "identifiers=" + identifiers + ", label=" + label + ", uuid=" + uuid + '}';
   }
 }

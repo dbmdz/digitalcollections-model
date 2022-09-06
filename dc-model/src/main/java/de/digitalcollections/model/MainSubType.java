@@ -49,6 +49,11 @@ public class MainSubType {
     this.subType = subType.toUpperCase();
   }
 
+  @Override
+  public String toString() {
+    return "MainSubType{" + "mainType='" + mainType + '\'' + ", subType='" + subType + '\'' + '}';
+  }
+
   public abstract static class MainSubTypeBuilder<
       C extends MainSubType, B extends MainSubTypeBuilder<C, B>> {
 
@@ -61,10 +66,5 @@ public class MainSubType {
       this.subType = subType.toUpperCase();
       return self();
     }
-  }
-
-  @Override
-  public String toString() {
-    return "MainSubType{" + "mainType='" + mainType + '\'' + ", subType='" + subType + '\'' + '}';
   }
 }

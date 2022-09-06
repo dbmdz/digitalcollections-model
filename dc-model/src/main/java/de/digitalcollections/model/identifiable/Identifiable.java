@@ -207,9 +207,6 @@ public class Identifiable extends UniqueObject {
         identifiers.stream()
             .filter(i -> !namespace.equals(i.getNamespace()))
             .collect(Collectors.toSet());
-    if (identifiers.isEmpty()) {
-      identifiers = null;
-    }
   }
 
   public void setDescription(LocalizedStructuredContent description) {

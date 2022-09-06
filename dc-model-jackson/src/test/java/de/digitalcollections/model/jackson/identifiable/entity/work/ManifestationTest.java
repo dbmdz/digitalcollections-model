@@ -149,7 +149,6 @@ public class ManifestationTest extends BaseJsonSerializationTest {
                         .titleType(TitleType.builder().mainType("main").subType("sub").build())
                         .text(new LocalizedText(Locale.GERMAN, "Ein Test"))
                         .build()))
-            // TODO, wenn TitleType fertig ist .titles(List.of())
             .build();
     return manifestation;
   }
