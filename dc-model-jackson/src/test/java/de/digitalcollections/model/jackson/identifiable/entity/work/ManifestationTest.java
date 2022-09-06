@@ -72,7 +72,7 @@ public class ManifestationTest extends BaseJsonSerializationTest {
             .publishingTimeValueRange(
                 new TimeValueRange(
                     new TimeValue(
-                        2020L,
+                        2020,
                         0,
                         0,
                         0,
