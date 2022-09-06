@@ -5,7 +5,6 @@ import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.text.LocalizedText;
 import java.util.LinkedHashSet;
 import java.util.Objects;
-import java.util.Set;
 import lombok.experimental.SuperBuilder;
 
 @SuperBuilder(buildMethodName = "prebuild")
@@ -18,13 +17,13 @@ public class Subject extends UniqueObject {
     super();
   }
 
-  public Subject(LocalizedText label, Set<Identifier> identifiers) {
+  public Subject(LocalizedText label, LinkedHashSet<Identifier> identifiers) {
     this();
     this.label = label;
-    this.identifiers = new LinkedHashSet<>(identifiers);
+    this.identifiers = identifiers;
   }
 
-  public Set<Identifier> getIdentifiers() {
+  public LinkedHashSet<Identifier> getIdentifiers() {
     return identifiers;
   }
 
@@ -37,8 +36,8 @@ public class Subject extends UniqueObject {
     super.init();
   }
 
-  public void setIdentifiers(Set<Identifier> identifiers) {
-    this.identifiers = new LinkedHashSet<>(identifiers);
+  public void setIdentifiers(LinkedHashSet<Identifier> identifiers) {
+    this.identifiers = identifiers;
   }
 
   public void setLabel(LocalizedText label) {

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
 import lombok.experimental.SuperBuilder;
 
 /**
@@ -188,8 +187,8 @@ public class Manifestation extends Entity {
     this.dimensions = dimensions;
   }
 
-  public void setExpressionTypes(Set<ExpressionType> expressionTypes) {
-    this.expressionTypes = new LinkedHashSet<>(expressionTypes);
+  public void setExpressionTypes(LinkedHashSet<ExpressionType> expressionTypes) {
+    this.expressionTypes = expressionTypes;
   }
 
   public void setInvolvements(List<Involvement> involvements) {
