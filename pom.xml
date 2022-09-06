@@ -83,7 +83,7 @@
       <dependency>
         <groupId>org.wikidata.wdtk</groupId>
         <artifactId>wdtk-datamodel</artifactId>
-        <version>0.14.0</version>
+        <version>0.14.1</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -113,7 +113,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.4.0</version>
+        <version>3.4.1</version>
         <executions>
           <execution>
             <id>attach-javadocs</id>

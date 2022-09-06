@@ -1,10 +1,12 @@
 package de.digitalcollections.model.jackson.identifiable.entity.work;
 
+import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.identifiable.entity.work.Item;
 import de.digitalcollections.model.identifiable.resource.ImageFileResource;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.text.LocalizedText;
 import java.util.Locale;
+import java.util.Set;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +21,7 @@ public class ItemTest extends BaseJsonSerializationTest {
     final ImageFileResource previewImage = new ImageFileResource();
     previewImage.setUuid(UUID.fromString("6bed2ff9-4ad5-4e18-b520-bb9843fe9a73"));
     item.setPreviewImage(previewImage);
+    item.setIdentifiers(Set.of(new Identifier("id", "namespace")));
     return item;
   }
 
