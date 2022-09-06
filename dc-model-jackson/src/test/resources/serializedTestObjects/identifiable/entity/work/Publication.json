@@ -1,0 +1,74 @@
+{
+  "objectType" : "PUBLICATION",
+  "publicationLocations" : [ {
+    "identifiableObjectType" : "HUMAN_SETTLEMENT",
+    "identifiers" : [ ],
+    "label" : {
+      "de" : "Stadt: München"
+    },
+    "previewImageRenderingHints" : {
+      "openLinkInNewWindow" : false,
+      "title" : {
+        "de" : "München"
+      }
+    },
+    "type" : "ENTITY",
+    "refId" : 0,
+    "geoLocationType" : "HUMAN_SETTLEMENT",
+    "humanSettlementType" : "CITY",
+    "entityType" : "GEOLOCATION"
+  }, {
+    "identifiableObjectType" : "HUMAN_SETTLEMENT",
+    "identifiers" : [ ],
+    "label" : {
+      "de" : "Stadt: Hamburg"
+    },
+    "previewImageRenderingHints" : {
+      "openLinkInNewWindow" : false,
+      "title" : {
+        "de" : "Hamburg"
+      }
+    },
+    "type" : "ENTITY",
+    "refId" : 0,
+    "geoLocationType" : "HUMAN_SETTLEMENT",
+    "humanSettlementType" : "CITY",
+    "entityType" : "GEOLOCATION"
+  } ],
+  "publishers" : [ {
+    "identifiableObjectType" : "PERSON",
+    "identifiers" : [ ],
+    "label" : {
+      "de" : "Karl Ranseier, der erfolgloseste Herausgeber aller Zeiten"
+    },
+    "previewImageRenderingHints" : {
+      "openLinkInNewWindow" : false,
+      "title" : {
+        "de" : "Karl Ranseier"
+      }
+    },
+    "type" : "ENTITY",
+    "refId" : 0,
+    "familyNames" : [ ],
+    "givenNames" : [ ],
+    "entityType" : "PERSON"
+  }, {
+    "identifiableObjectType" : "PERSON",
+    "identifiers" : [ ],
+    "label" : {
+      "de" : "Herausgeber: Hans Dampf"
+    },
+    "previewImageRenderingHints" : {
+      "openLinkInNewWindow" : false,
+      "title" : {
+        "de" : "Hans Dampf"
+      }
+    },
+    "type" : "ENTITY",
+    "refId" : 0,
+    "familyNames" : [ ],
+    "givenNames" : [ ],
+    "entityType" : "PERSON"
+  } ],
+  "publishersPresentation" : [ "Karl Ranseier", "Hans Dampf" ]
+}

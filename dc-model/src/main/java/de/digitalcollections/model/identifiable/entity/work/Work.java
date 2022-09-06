@@ -1,11 +1,13 @@
 package de.digitalcollections.model.identifiable.entity.work;
 
+import de.digitalcollections.model.identifiable.IdentifiableObjectType;
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.agent.Agent;
-import de.digitalcollections.model.text.LocalizedText;
+import de.digitalcollections.model.time.LocalDateRange;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.experimental.SuperBuilder;
 import org.wikidata.wdtk.datamodel.interfaces.TimeValue;
 
 /**
@@ -30,58 +32,142 @@ import org.wikidata.wdtk.datamodel.interfaces.TimeValue;
  * <p>Die Zauberflöte by Mozart and J.S. Bach's Goldberg variations, apart from all ways of
  * expressing them, are works.
  */
+@SuperBuilder(buildMethodName = "prebuild")
 public class Work extends Entity {
 
+  private LocalDateRange creationDateRange;
+  private TimeValue creationTimeValue;
   private List<Agent> creators;
-  private LocalDate datePublished;
-  private TimeValue timeValuePublished;
+  private LocalDate firstAppearedDate;
+  private String firstAppearedDatePresentation;
+  private TimeValue firstAppearedTimeValue;
+  private List<Involvement> involvements;
+  private List<Title> titles;
+  protected WorkType workType;
 
   public Work() {
     super();
-    init();
+  }
+
+  public LocalDateRange getCreationDateRange() {
+    return creationDateRange;
+  }
+
+  public TimeValue getCreationTimeValue() {
+    return creationTimeValue;
   }
 
   public List<Agent> getCreators() {
     return creators;
   }
 
-  public LocalDate getDatePublished() {
-    return datePublished;
+  public LocalDate getFirstAppearedDate() {
+    return firstAppearedDate;
   }
 
-  public TimeValue getTimeValuePublished() {
-    return timeValuePublished;
+  public String getFirstAppearedDatePresentation() {
+    return firstAppearedDatePresentation;
   }
 
-  public LocalizedText getTitle() {
-    return getLabel();
+  public TimeValue getFirstAppearedTimeValue() {
+    return firstAppearedTimeValue;
+  }
+
+  public List<Involvement> getInvolvements() {
+    return involvements;
+  }
+
+  public List<Title> getTitles() {
+    return titles;
+  }
+
+  public WorkType getWorkType() {
+    return workType;
   }
 
   @Override
   protected void init() {
     super.init();
+    workType = WorkType.SINGLE; // default type
     if (creators == null) {
       this.creators = new ArrayList<>(0);
     }
+    identifiableObjectType = IdentifiableObjectType.WORK;
+  }
+
+  public void setCreationDateRange(LocalDateRange creationDateRange) {
+    this.creationDateRange = creationDateRange;
+  }
+
+  public void setCreationTimeValue(TimeValue timeValueCreation) {
+    this.creationTimeValue = timeValueCreation;
   }
 
   public void setCreators(List<Agent> creators) {
     this.creators = creators;
   }
 
-  public void setDatePublished(LocalDate datePublished) {
-    this.datePublished = datePublished;
+  public void setFirstAppearedDate(LocalDate firstAppearedDate) {
+    this.firstAppearedDate = firstAppearedDate;
   }
 
-  public void setTimeValuePublished(TimeValue timeValuePublished) {
-    this.timeValuePublished = timeValuePublished;
+  public void setFirstAppearedDatePresentation(String firstAppearedDatePresentation) {
+    this.firstAppearedDatePresentation = firstAppearedDatePresentation;
   }
 
-  public void setTitle(LocalizedText title) {
-    setLabel(title);
+  public void setFirstAppearedTimeValue(TimeValue firstAppearedTimeValue) {
+    this.firstAppearedTimeValue = firstAppearedTimeValue;
+  }
+
+  public void setInvolvements(List<Involvement> involvements) {
+    this.involvements = involvements;
   }
 
   public void setTitle(String title) {
     setLabel(title);
+  }
+
+  public void setTitles(List<Title> titles) {
+    this.titles = titles;
+  }
+
+  public void setWorkType(WorkType workType) {
+    this.workType = workType;
+  }
+
+  public abstract static class WorkBuilder<C extends Work, B extends WorkBuilder<C, B>>
+      extends EntityBuilder<C, B> {
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      setInternalReferences(c);
+      return c;
+    }
+
+    public B creator(Agent creator) {
+      if (creators == null) {
+        creators = new ArrayList<>(1);
+      }
+      creators.add(creator);
+      return self();
+    }
+
+    public B involvement(Involvement involvement) {
+      if (involvements == null) {
+        involvements = new ArrayList<>(1);
+      }
+      involvements.add(involvement);
+      return self();
+    }
+
+    public B title(Title title) {
+      if (titles == null) {
+        titles = new ArrayList<>(1);
+      }
+      titles.add(title);
+      return self();
+    }
   }
 }

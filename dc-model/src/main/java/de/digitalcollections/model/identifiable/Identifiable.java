@@ -8,6 +8,7 @@ import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.Website;
 import de.digitalcollections.model.identifiable.resource.FileResource;
 import de.digitalcollections.model.identifiable.resource.ImageFileResource;
+import de.digitalcollections.model.semantic.Tag;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.LocalizedText;
 import de.digitalcollections.model.text.StructuredContent;
@@ -46,25 +47,25 @@ public class Identifiable extends UniqueObject {
   protected LocalizedUrlAliases localizedUrlAliases;
   protected ImageFileResource previewImage;
   protected RenderingHintsPreviewImage previewImageRenderingHints;
+  protected Set<Tag> tags;
   protected IdentifiableType type;
 
   public Identifiable() {
     super();
-    init();
   }
 
   public void addIdentifier(Identifier identifier) {
+    if (identifiers == null) {
+      identifiers = new HashSet<>(1);
+    }
     identifiers.add(Objects.requireNonNull(identifier));
   }
 
-  public void removeIdentifier(String namespace) {
-    if (namespace == null || namespace.isBlank()) {
-      return;
+  public void addTag(Tag tag) {
+    if (tags == null) {
+      tags = new HashSet<>(1);
     }
-    identifiers =
-        identifiers.stream()
-            .filter(i -> !namespace.equals(i.getNamespace()))
-            .collect(Collectors.toSet());
+    tags.add(tag);
   }
 
   @Override
@@ -84,6 +85,7 @@ public class Identifiable extends UniqueObject {
         && Objects.equals(localizedUrlAliases, that.localizedUrlAliases)
         && Objects.equals(previewImage, that.previewImage)
         && Objects.equals(previewImageRenderingHints, that.previewImageRenderingHints)
+        && Objects.equals(tags, that.tags)
         && type == that.type;
   }
 
@@ -165,6 +167,10 @@ public class Identifiable extends UniqueObject {
     return primaries.get().filter(u -> u.getWebsite() == null).findFirst().orElse(null);
   }
 
+  public Set<Tag> getTags() {
+    return tags;
+  }
+
   public IdentifiableType getType() {
     return this.type;
   }
@@ -180,6 +186,7 @@ public class Identifiable extends UniqueObject {
             localizedUrlAliases,
             previewImage,
             previewImageRenderingHints,
+            tags,
             type);
   }
 
@@ -190,6 +197,16 @@ public class Identifiable extends UniqueObject {
     if (identifiers == null) {
       identifiers = new HashSet<>(0);
     }
+  }
+
+  public void removeIdentifier(String namespace) {
+    if (identifiers == null || namespace == null || namespace.isBlank()) {
+      return;
+    }
+    identifiers =
+        identifiers.stream()
+            .filter(i -> !namespace.equals(i.getNamespace()))
+            .collect(Collectors.toSet());
   }
 
   public void setDescription(LocalizedStructuredContent description) {
@@ -222,6 +239,10 @@ public class Identifiable extends UniqueObject {
 
   public void setPreviewImageRenderingHints(RenderingHintsPreviewImage previewImageRenderingHints) {
     this.previewImageRenderingHints = previewImageRenderingHints;
+  }
+
+  public void setTags(Set<Tag> tags) {
+    this.tags = tags;
   }
 
   public void setType(IdentifiableType identifiableType) {
@@ -289,24 +310,22 @@ public class Identifiable extends UniqueObject {
 
     public B identifier(Identifier identifier) {
       if (this.identifiers == null) {
-        this.identifiers = new HashSet<>(0);
+        this.identifiers = new HashSet<>(1);
       }
       identifiers.add(identifier);
       return self();
     }
 
     public B identifier(String namespace, String id, String uuid) {
-      if (this.identifiers == null) {
-        this.identifiers = new HashSet<>(0);
+      if (identifiers == null) {
+        identifiers = new HashSet<>(1);
       }
-      Identifier identifier = new Identifier();
-      identifier.setNamespace(namespace);
-      identifier.setId(id);
+      Identifier identifier =
+          Identifier.builder().namespace(namespace).id(id).identifiable(getUuid()).build();
       if (uuid != null) {
         identifier.setUuid(UUID.fromString(uuid));
       }
-      identifier.setIdentifiable(super.getUuid());
-      this.identifiers.add(identifier);
+      identifiers.add(identifier);
       return self();
     }
 
@@ -406,6 +425,14 @@ public class Identifiable extends UniqueObject {
                   urlAliasList.forEach(u -> u.setTargetUuid(c.getUuid()));
                 });
       }
+    }
+
+    public B tag(Tag tag) {
+      if (tags == null) {
+        tags = new HashSet<>(1);
+      }
+      tags.add(tag);
+      return self();
     }
 
     public B title(Locale locale, String text) {

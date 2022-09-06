@@ -1,0 +1,9 @@
+{
+  "objectType" : "TAG",
+  "id" : "tag-id",
+  "label" : {
+    "de" : "Das Label"
+  },
+  "namespace" : "tag-name",
+  "tagType" : "tag-type"
+}

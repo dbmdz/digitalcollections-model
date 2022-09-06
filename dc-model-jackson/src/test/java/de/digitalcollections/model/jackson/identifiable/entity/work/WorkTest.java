@@ -6,7 +6,7 @@ import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.text.LocalizedText;
 import de.digitalcollections.model.time.TimeValue;
 import java.time.LocalDate;
-import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 import org.junit.jupiter.api.Test;
 
@@ -17,22 +17,12 @@ public class WorkTest extends BaseJsonSerializationTest {
     work.setLabel(new LocalizedText(Locale.GERMAN, "Zimmer-Gymnastik ohne Geräte"));
     Person person = new Person();
     person.setLabel(new LocalizedText(Locale.GERMAN, "Arnold Hiller"));
-    work.setCreators(Arrays.asList(person));
-    work.setDatePublished(LocalDate.parse("2020-04-28"));
+    work.setCreators(List.of(person));
+    work.setFirstAppearedDate(LocalDate.parse("2020-04-28"));
     TimeValue timeValuePublished =
         new TimeValue(
-            2020,
-            (byte) 0,
-            (byte) 0,
-            (byte) 0,
-            (byte) 0,
-            (byte) 0,
-            TimeValue.PREC_YEAR,
-            0,
-            0,
-            0,
-            TimeValue.CM_GREGORIAN_PRO);
-    work.setTimeValuePublished(timeValuePublished);
+            2020, 0, 0, 0, 0, 0, TimeValue.PREC_YEAR, 0, 0, 0, TimeValue.CM_GREGORIAN_PRO);
+    work.setFirstAppearedTimeValue(timeValuePublished);
     return work;
   }
 

@@ -92,6 +92,31 @@ public class TimeValue implements org.wikidata.wdtk.datamodel.interfaces.TimeVal
     this.year = year;
   }
 
+  public TimeValue(
+      long year,
+      int month,
+      int day,
+      int hour,
+      int minute,
+      int second,
+      byte precision,
+      int beforeTolerance,
+      int afterTolerance,
+      int timezoneOffset,
+      String preferredCalendarModel) {
+    this.afterTolerance = afterTolerance;
+    this.beforeTolerance = beforeTolerance;
+    this.preferredCalendarModel = preferredCalendarModel;
+    this.day = (byte) day;
+    this.hour = (byte) hour;
+    this.minute = (byte) minute;
+    this.month = (byte) month;
+    this.second = (byte) second;
+    this.precision = precision;
+    this.timezoneOffset = timezoneOffset;
+    this.year = year;
+  }
+
   public TimeValue(long year) {
     this();
     this.precision = TimeValue.PREC_YEAR;

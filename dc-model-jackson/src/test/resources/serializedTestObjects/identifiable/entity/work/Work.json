@@ -18,8 +18,8 @@
     "givenNames" : [ ],
     "entityType" : "PERSON"
   } ],
-  "datePublished" : "2020-04-28",
-  "timeValuePublished" : {
+  "firstAppearedDate" : "2020-04-28",
+  "firstAppearedTimeValue" : {
     "afterTolerance" : 0,
     "beforeTolerance" : 0,
     "day" : 0,
@@ -32,5 +32,6 @@
     "timezoneOffset" : 0,
     "year" : 2020
   },
+  "workType" : "SINGLE",
   "entityType" : "WORK"
 }
