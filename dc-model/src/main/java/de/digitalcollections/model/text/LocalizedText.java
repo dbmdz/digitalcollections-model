@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 /** LocalizedText is used for unformatted text content in multiple languages. */
 public class LocalizedText extends HashMap<Locale, String> {
@@ -58,5 +59,32 @@ public class LocalizedText extends HashMap<Locale, String> {
    */
   public void setText(Locale locale, String text) {
     this.put(locale, text);
+  }
+
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  public static class Builder {
+
+    LocalizedText localizedText;
+
+    public Builder() {
+      localizedText = new LocalizedText();
+    }
+
+    public Builder text(Locale locale, String text) {
+      localizedText.put(locale, text);
+      return this;
+    }
+
+    public Builder text(Map<Locale, String> texts) {
+      localizedText.putAll(texts);
+      return this;
+    }
+
+    public LocalizedText build() {
+      return localizedText;
+    }
   }
 }

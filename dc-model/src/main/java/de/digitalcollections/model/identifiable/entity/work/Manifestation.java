@@ -79,6 +79,13 @@ public class Manifestation extends Entity {
     super();
   }
 
+  public void addInvolvement(Involvement involvement) {
+    if (involvements == null) {
+      involvements = new ArrayList<>(1);
+    }
+    involvements.add(involvement);
+  }
+
   /**
    * @return Text describing amount of material or content of manifestation.
    */

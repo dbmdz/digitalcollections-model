@@ -346,6 +346,11 @@ public class Identifiable extends UniqueObject {
       return self();
     }
 
+    public B label(LocalizedText localizedText) {
+      this.label = localizedText;
+      return self();
+    }
+
     public B openLinkInNewWindow() {
       return openPreviewImageInNewWindow();
     }
