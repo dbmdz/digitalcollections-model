@@ -181,6 +181,9 @@ public class Manifestation extends Entity {
     if (involvements == null) {
       involvements = new ArrayList<>();
     }
+    if (publications == null) {
+      publications = new ArrayList<>();
+    }
   }
 
   /**
@@ -397,9 +400,6 @@ public class Manifestation extends Entity {
     }
 
     public B publication(Publication publication) {
-      if (publications == null) {
-        publications = new ArrayList<>(1);
-      }
       publications.add(publication);
       return self();
     }
