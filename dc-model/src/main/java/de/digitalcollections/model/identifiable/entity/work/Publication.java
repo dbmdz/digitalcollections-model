@@ -57,6 +57,20 @@ public class Publication extends UniqueObject {
     this.publishersPresentation = publishersPresentation;
   }
 
+  @Override
+  public String toString() {
+    return "Publication{"
+        + "publicationLocations="
+        + publicationLocations
+        + ", publishers="
+        + publishers
+        + ", publishersPresentation="
+        + publishersPresentation
+        + ", uuid="
+        + uuid
+        + '}';
+  }
+
   public abstract static class PublicationBuilder<
           C extends Publication, B extends PublicationBuilder<C, B>>
       extends UniqueObjectBuilder<C, B> {

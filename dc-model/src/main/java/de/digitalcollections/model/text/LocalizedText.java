@@ -79,7 +79,9 @@ public class LocalizedText extends HashMap<Locale, String> {
     }
 
     public Builder text(Map<Locale, String> texts) {
-      localizedText.putAll(texts);
+      if (texts != null) {
+        localizedText.putAll(texts);
+      }
       return this;
     }
 
