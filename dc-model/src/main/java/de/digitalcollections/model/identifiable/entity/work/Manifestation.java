@@ -80,9 +80,6 @@ public class Manifestation extends Entity {
   }
 
   public void addInvolvement(Involvement involvement) {
-    if (involvements == null) {
-      involvements = new ArrayList<>(1);
-    }
     involvements.add(involvement);
   }
 
@@ -180,6 +177,9 @@ public class Manifestation extends Entity {
     identifiableObjectType = IdentifiableObjectType.MANIFESTATION;
     if (titles == null) {
       titles = new ArrayList<>();
+    }
+    if (involvements == null) {
+      involvements = new ArrayList<>();
     }
   }
 
@@ -376,9 +376,6 @@ public class Manifestation extends Entity {
     }
 
     public B involvement(Involvement involvement) {
-      if (involvements == null) {
-        involvements = new ArrayList<>(1);
-      }
       involvements.add(involvement);
       return self();
     }
