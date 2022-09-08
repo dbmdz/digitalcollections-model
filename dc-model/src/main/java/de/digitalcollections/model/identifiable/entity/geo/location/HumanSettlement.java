@@ -27,6 +27,48 @@ public class HumanSettlement extends GeoLocation {
     this.humanSettlementType = humanSettlementType;
   }
 
+  @Override
+  public String toString() {
+    return "HumanSettlement{"
+        + "humanSettlementType="
+        + humanSettlementType
+        + ", geoLocationType="
+        + geoLocationType
+        + ", customAttributes="
+        + customAttributes
+        + ", navDate="
+        + navDate
+        + ", refId="
+        + refId
+        + ", notes="
+        + notes
+        + ", description="
+        + description
+        + ", identifiableObjectType="
+        + identifiableObjectType
+        + ", identifiers="
+        + identifiers
+        + ", label="
+        + label
+        + ", localizedUrlAliases="
+        + localizedUrlAliases
+        + ", previewImage="
+        + previewImage
+        + ", previewImageRenderingHints="
+        + previewImageRenderingHints
+        + ", tags="
+        + tags
+        + ", type="
+        + type
+        + ", created="
+        + created
+        + ", lastModified="
+        + lastModified
+        + ", uuid="
+        + uuid
+        + '}';
+  }
+
   public abstract static class HumanSettlementBuilder<
           C extends HumanSettlement, B extends HumanSettlementBuilder<C, B>>
       extends GeoLocationBuilder<C, B> {
