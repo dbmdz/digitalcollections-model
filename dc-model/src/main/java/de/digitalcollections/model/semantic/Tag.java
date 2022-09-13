@@ -2,6 +2,7 @@ package de.digitalcollections.model.semantic;
 
 import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.text.LocalizedText;
+import java.util.Objects;
 import lombok.experimental.SuperBuilder;
 
 /**
@@ -25,6 +26,29 @@ public class Tag extends UniqueObject {
     this.label = label;
     this.namespace = namespace;
     this.tagType = tagType;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Tag)) {
+      return false;
+    }
+    if (!super.equals(o)) {
+      return false;
+    }
+    Tag tag = (Tag) o;
+    return Objects.equals(id, tag.id)
+        && Objects.equals(label, tag.label)
+        && Objects.equals(namespace, tag.namespace)
+        && Objects.equals(tagType, tag.tagType);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(super.hashCode(), id, label, namespace, tagType);
   }
 
   public String getId() {
@@ -57,6 +81,29 @@ public class Tag extends UniqueObject {
 
   public void setTagType(String tagType) {
     this.tagType = tagType;
+  }
+
+  @Override
+  public String toString() {
+    return "Tag{"
+        + "id='"
+        + id
+        + '\''
+        + ", label="
+        + label
+        + ", namespace='"
+        + namespace
+        + '\''
+        + ", tagType='"
+        + tagType
+        + '\''
+        + ", created="
+        + created
+        + ", lastModified="
+        + lastModified
+        + ", uuid="
+        + uuid
+        + '}';
   }
 
   public abstract static class TagBuilder<C extends Tag, B extends TagBuilder<C, B>>
