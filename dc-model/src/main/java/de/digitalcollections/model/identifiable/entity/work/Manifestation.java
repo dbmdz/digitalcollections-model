@@ -6,9 +6,11 @@ import de.digitalcollections.model.identifiable.entity.semantic.Subject;
 import de.digitalcollections.model.time.LocalDateRange;
 import de.digitalcollections.model.time.TimeValueRange;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 import lombok.experimental.SuperBuilder;
 
 /**
@@ -70,7 +72,7 @@ public class Manifestation extends Entity {
   private LinkedHashSet<Series> series;
   private String sortKey;
 
-  private LinkedHashSet<Subject> subjects;
+  private Set<Subject> subjects;
   private List<Title> titles;
   private String version;
   private Work work;
@@ -81,6 +83,10 @@ public class Manifestation extends Entity {
 
   public void addInvolvement(Involvement involvement) {
     involvements.add(involvement);
+  }
+
+  public void addSubject(Subject subject) {
+    subjects.add(subject);
   }
 
   /**
@@ -155,7 +161,7 @@ public class Manifestation extends Entity {
     return sortKey;
   }
 
-  public LinkedHashSet<Subject> getSubjects() {
+  public Set<Subject> getSubjects() {
     return subjects;
   }
 
@@ -183,6 +189,9 @@ public class Manifestation extends Entity {
     }
     if (publications == null) {
       publications = new ArrayList<>();
+    }
+    if (subjects == null) {
+      subjects = new HashSet<>();
     }
   }
 
@@ -258,7 +267,7 @@ public class Manifestation extends Entity {
     this.sortKey = sortKey;
   }
 
-  public void setSubjects(LinkedHashSet<Subject> subjects) {
+  public void setSubjects(Set<Subject> subjects) {
     this.subjects = subjects;
   }
 
@@ -405,9 +414,6 @@ public class Manifestation extends Entity {
     }
 
     public B subject(Subject subject) {
-      if (subjects == null) {
-        subjects = new LinkedHashSet<>(1);
-      }
       subjects.add(subject);
       return self();
     }

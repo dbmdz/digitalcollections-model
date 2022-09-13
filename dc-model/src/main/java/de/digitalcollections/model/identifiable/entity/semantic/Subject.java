@@ -3,27 +3,28 @@ package de.digitalcollections.model.identifiable.entity.semantic;
 import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.text.LocalizedText;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import lombok.experimental.SuperBuilder;
 
 @SuperBuilder(buildMethodName = "prebuild")
 public class Subject extends UniqueObject {
 
-  private LinkedHashSet<Identifier> identifiers;
+  private Set<Identifier> identifiers;
   private LocalizedText label;
 
   public Subject() {
     super();
   }
 
-  public Subject(LocalizedText label, LinkedHashSet<Identifier> identifiers) {
+  public Subject(LocalizedText label, Set<Identifier> identifiers) {
     this();
     this.label = label;
     this.identifiers = identifiers;
   }
 
-  public LinkedHashSet<Identifier> getIdentifiers() {
+  public Set<Identifier> getIdentifiers() {
     return identifiers;
   }
 
@@ -36,7 +37,7 @@ public class Subject extends UniqueObject {
     super.init();
   }
 
-  public void setIdentifiers(LinkedHashSet<Identifier> identifiers) {
+  public void setIdentifiers(Set<Identifier> identifiers) {
     this.identifiers = identifiers;
   }
 
@@ -74,7 +75,7 @@ public class Subject extends UniqueObject {
 
     public B identifier(Identifier identifier) {
       if (identifiers == null) {
-        identifiers = new LinkedHashSet<>(1);
+        identifiers = new HashSet<>(1);
       }
       identifiers.add(identifier);
       return self();
