@@ -388,6 +388,9 @@ public class Manifestation extends Entity {
     }
 
     public B involvement(Involvement involvement) {
+      if (involvements == null) {
+        involvements = new ArrayList<>(1);
+      }
       involvements.add(involvement);
       return self();
     }
@@ -409,11 +412,17 @@ public class Manifestation extends Entity {
     }
 
     public B publication(Publication publication) {
+      if (publications == null) {
+        publications = new ArrayList<>(1);
+      }
       publications.add(publication);
       return self();
     }
 
     public B subject(Subject subject) {
+      if (subjects == null) {
+        subjects = new HashSet<>(1);
+      }
       subjects.add(subject);
       return self();
     }
