@@ -22,6 +22,7 @@ import de.digitalcollections.model.time.LocalDateRange;
 import de.digitalcollections.model.time.TimeValue;
 import de.digitalcollections.model.time.TimeValueRange;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
@@ -120,7 +121,7 @@ public class ManifestationTest extends BaseJsonSerializationTest {
                     .label(new LocalizedText(Locale.GERMAN, "tag-label"))
                     .build())
             .subjects(
-                new LinkedHashSet<>(
+                new HashSet<>(
                     List.of(
                         Subject.builder()
                             .identifier(

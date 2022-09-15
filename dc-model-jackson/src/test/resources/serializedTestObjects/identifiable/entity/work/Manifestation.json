@@ -86,7 +86,6 @@
   "mediaTypes" : [ "Buch", "CD" ],
   "otherLanguages" : [ "it" ],
   "publications" : [ {
-    "objectType" : "PUBLICATION",
     "publicationLocations" : [ {
       "identifiableObjectType" : "HUMAN_SETTLEMENT",
       "identifiers" : [ ],
@@ -124,7 +123,6 @@
     } ],
     "publishersPresentation" : [ "Karl Ranseier" ]
   }, {
-    "objectType" : "PUBLICATION",
     "publicationLocations" : [ {
       "identifiableObjectType" : "HUMAN_SETTLEMENT",
       "identifiers" : [ ],
@@ -178,7 +176,6 @@
     } ],
     "publishersPresentation" : [ "Hans Dampf" ]
   }, {
-    "objectType" : "PUBLICATION",
     "publicationLocations" : [ {
       "identifiableObjectType" : "HUMAN_SETTLEMENT",
       "identifiers" : [ ],
