@@ -8,7 +8,6 @@ import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.identifiable.IdentifierType;
 import de.digitalcollections.model.identifiable.entity.semantic.Subject;
 import de.digitalcollections.model.identifiable.entity.work.Involvement;
-import de.digitalcollections.model.identifiable.entity.work.Publication;
 import de.digitalcollections.model.legal.License;
 import de.digitalcollections.model.relation.Predicate;
 import de.digitalcollections.model.security.User;
@@ -25,7 +24,6 @@ import de.digitalcollections.model.view.RenderingTemplate;
   @JsonSubTypes.Type(value = Involvement.class, name = "INVOLVEMENT"),
   @JsonSubTypes.Type(value = License.class, name = "LICENSE"),
   @JsonSubTypes.Type(value = Predicate.class, name = "PREDICATE"),
-  @JsonSubTypes.Type(value = Publication.class, name = "PUBLICATION"),
   @JsonSubTypes.Type(value = RenderingTemplate.class, name = "RENDERING_TEMPLATE"),
   @JsonSubTypes.Type(value = Subject.class, name = "SUBJECT"),
   @JsonSubTypes.Type(value = Tag.class, name = "TAG"),
