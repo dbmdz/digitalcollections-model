@@ -1,6 +1,11 @@
 package de.digitalcollections.model.identifiable.entity.agent;
 
 import de.digitalcollections.model.identifiable.entity.Entity;
+import de.digitalcollections.model.text.LocalizedText;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.Set;
 import lombok.experimental.SuperBuilder;
 
 /**
@@ -14,6 +19,9 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(buildMethodName = "prebuild")
 public class Agent extends Entity {
 
+  private LocalizedText name;
+  private Set<Locale> nameLocalesOfOriginalScript;
+
   public Agent() {
     super();
     init();
@@ -22,19 +30,62 @@ public class Agent extends Entity {
   @Override
   protected void init() {
     super.init();
+    if (nameLocalesOfOriginalScript == null) {
+      nameLocalesOfOriginalScript = new HashSet<>(0);
+    }
+  }
+
+  public LocalizedText getName() {
+    return name;
+  }
+
+  public Set<Locale> getNameLocalesOfOriginalScript() {
+    return nameLocalesOfOriginalScript;
+  }
+
+  public void setName(LocalizedText name) {
+    this.name = name;
+  }
+
+  public void setNameLocalesOfOriginalScript(Set<Locale> nameLocalesOfOriginalScript) {
+    this.nameLocalesOfOriginalScript = nameLocalesOfOriginalScript;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null || !(obj instanceof Agent)) {
+      return false;
+    }
+    Agent other = (Agent) obj;
+    return obj == this
+        || super.equals(obj)
+            && Objects.equals(name, other.name)
+            && Objects.equals(nameLocalesOfOriginalScript, other.nameLocalesOfOriginalScript);
+  }
+
+  @Override
+  public int hashCode() {
+    return super.hashCode() + Objects.hash(name, nameLocalesOfOriginalScript) + 93;
   }
 
   @Override
   public String toString() {
-    return "Agent{"
-        + "created="
-        + created
-        + ", lastModified="
-        + lastModified
-        + ", uuid="
-        + uuid
+    return "Agent [name="
+        + name
+        + ", nameLocalesOfOriginalScript="
+        + nameLocalesOfOriginalScript
+        + ", customAttributes="
+        + customAttributes
+        + ", navDate="
+        + navDate
+        + ", refId="
+        + refId
+        + ", notes="
+        + notes
         + ", description="
         + description
+        + ", identifiableObjectType="
+        + identifiableObjectType
         + ", identifiers="
         + identifiers
         + ", label="
@@ -45,15 +96,17 @@ public class Agent extends Entity {
         + previewImage
         + ", previewImageRenderingHints="
         + previewImageRenderingHints
+        + ", tags="
+        + tags
         + ", type="
         + type
-        + ", customAttributes="
-        + customAttributes
-        + ", navDate="
-        + navDate
-        + ", refId="
-        + refId
-        + '}';
+        + ", created="
+        + created
+        + ", lastModified="
+        + lastModified
+        + ", uuid="
+        + uuid
+        + "]";
   }
 
   public abstract static class AgentBuilder<C extends Agent, B extends AgentBuilder<C, B>>
@@ -65,6 +118,24 @@ public class Agent extends Entity {
       c.init();
       setInternalReferences(c);
       return c;
+    }
+
+    public B addName(Locale locale, String name) {
+      if (this.name == null) {
+        this.name = new LocalizedText(locale, name);
+      } else {
+        this.name.put(locale, name);
+      }
+      return self();
+    }
+
+    public B addName(String name) {
+      if (this.name == null) {
+        this.name = new LocalizedText(Locale.ROOT, name);
+      } else {
+        this.name.put(Locale.ROOT, name);
+      }
+      return self();
     }
   }
 }
