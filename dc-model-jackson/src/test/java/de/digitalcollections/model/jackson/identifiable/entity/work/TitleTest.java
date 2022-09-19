@@ -17,10 +17,15 @@ public class TitleTest extends BaseJsonSerializationTest {
     Title title =
         Title.builder()
             .titleType(TitleType.builder().mainType("main").subType("main").build())
-            .text(new LocalizedText(Locale.GERMAN, "Titel"))
-            .textOriginalScript(
-                new LocalizedText(
-                    new Locale.Builder().setLanguage("zh").setScript("hani").build(), "圖註八十一難經辨眞"))
+            .text(
+                LocalizedText.builder()
+                    .text(Locale.GERMAN, "Titel")
+                    .text(
+                        new Locale.Builder().setLanguage("zh").setScript("hani").build(),
+                        "圖註八十一難經辨眞")
+                    .build())
+            .textLocalesOfOriginalScript(
+                new Locale.Builder().setLanguage("zh").setScript("hani").build())
             .build();
 
     checkSerializeDeserialize(title, "serializedTestObjects/identifiable/entity/work/Title.json");

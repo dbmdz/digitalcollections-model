@@ -48,6 +48,7 @@
     },
     "type" : "ENTITY",
     "refId" : 0,
+    "nameLocalesOfOriginalScript" : [ ],
     "familyNames" : [ ],
     "givenNames" : [ ],
     "entityType" : "PERSON"
@@ -65,6 +66,7 @@
     },
     "type" : "ENTITY",
     "refId" : 0,
+    "nameLocalesOfOriginalScript" : [ ],
     "familyNames" : [ ],
     "givenNames" : [ ],
     "entityType" : "PERSON"
