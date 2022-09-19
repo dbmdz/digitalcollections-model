@@ -1,31 +1,42 @@
 package de.digitalcollections.model.identifiable.entity.work;
 
 import de.digitalcollections.model.text.LocalizedText;
+import java.util.HashSet;
+import java.util.Locale;
 import java.util.Objects;
+import java.util.Set;
 import lombok.experimental.SuperBuilder;
 
-@SuperBuilder
+@SuperBuilder(buildMethodName = "prebuild")
 public class Title {
 
   private LocalizedText text;
-  private LocalizedText textOriginalScript;
+  private Set<Locale> textLocalesOfOriginalScript;
   private TitleType titleType;
 
-  public Title() {}
+  public Title() {
+    init();
+  }
 
-  public Title(LocalizedText text, LocalizedText textOriginalScript, TitleType titleType) {
+  public Title(LocalizedText text, Set<Locale> textLocalesOfOriginalScript, TitleType titleType) {
     this();
     this.text = text;
-    this.textOriginalScript = textOriginalScript;
+    this.textLocalesOfOriginalScript = textLocalesOfOriginalScript;
     this.titleType = titleType;
+  }
+
+  protected void init() {
+    if (textLocalesOfOriginalScript == null) {
+      textLocalesOfOriginalScript = new HashSet<>(0);
+    }
   }
 
   public LocalizedText getText() {
     return text;
   }
 
-  public LocalizedText getTextOriginalScript() {
-    return textOriginalScript;
+  public Set<Locale> getTextLocalesOfOriginalScript() {
+    return textLocalesOfOriginalScript;
   }
 
   public TitleType getTitleType() {
@@ -36,8 +47,8 @@ public class Title {
     this.text = text;
   }
 
-  public void setTextOriginalScript(LocalizedText textOriginalScript) {
-    this.textOriginalScript = textOriginalScript;
+  public void setTextLocalesOfOriginalScript(Set<Locale> textLocalesOfOriginalScript) {
+    this.textLocalesOfOriginalScript = textLocalesOfOriginalScript;
   }
 
   public void setTitleType(TitleType titleType) {
@@ -54,13 +65,13 @@ public class Title {
     }
     Title title = (Title) o;
     return Objects.equals(text, title.text)
-        && Objects.equals(textOriginalScript, title.textOriginalScript)
+        && Objects.equals(textLocalesOfOriginalScript, title.textLocalesOfOriginalScript)
         && Objects.equals(titleType, title.titleType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, textOriginalScript, titleType);
+    return Objects.hash(text, textLocalesOfOriginalScript, titleType);
   }
 
   @Override
@@ -68,10 +79,27 @@ public class Title {
     return "Title{"
         + "text="
         + text
-        + ", textOriginalScript="
-        + textOriginalScript
+        + ", textLocalesOfOriginalScript="
+        + textLocalesOfOriginalScript
         + ", titleType="
         + titleType
         + '}';
+  }
+
+  public abstract static class TitleBuilder<C extends Title, B extends TitleBuilder<C, B>> {
+
+    public C build() {
+      C c = prebuild();
+      c.init();
+      return c;
+    }
+
+    public B textLocalesOfOriginalScript(Locale locale) {
+      if (textLocalesOfOriginalScript == null) {
+        textLocalesOfOriginalScript = new HashSet<>(1);
+      }
+      textLocalesOfOriginalScript.add(locale);
+      return self();
+    }
   }
 }
