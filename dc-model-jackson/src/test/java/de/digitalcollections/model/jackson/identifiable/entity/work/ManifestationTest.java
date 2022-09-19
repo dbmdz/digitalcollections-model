@@ -46,7 +46,7 @@ public class ManifestationTest extends BaseJsonSerializationTest {
 
   private Manifestation createObject() {
     // Later, because series extends work
-    Series series = (Series) Series.builder().label("Aus Natur und Geisteswelt").build();
+    Series series = Series.builder().label("Aus Natur und Geisteswelt").build();
 
     Manifestation manifestation =
         Manifestation.builder()
@@ -140,11 +140,18 @@ public class ManifestationTest extends BaseJsonSerializationTest {
                 List.of(
                     Title.builder()
                         .titleType(TitleType.builder().mainType("main").subType("main").build())
-                        .text(new LocalizedText(Locale.GERMAN, "Titel"))
-                        .textOriginalScript(
-                            new LocalizedText(
-                                new Locale.Builder().setLanguage("zh").setScript("hani").build(),
-                                "圖註八十一難經辨眞"))
+                        .text(
+                            LocalizedText.builder()
+                                .text(Locale.GERMAN, "Titel")
+                                .text(
+                                    new Locale.Builder()
+                                        .setLanguage("zh")
+                                        .setScript("hani")
+                                        .build(),
+                                    "圖註八十一難經辨眞")
+                                .build())
+                        .textLocalesOfOriginalScript(
+                            new Locale.Builder().setLanguage("zh").setScript("hani").build())
                         .build(),
                     Title.builder()
                         .titleType(TitleType.builder().mainType("main").subType("sub").build())

@@ -1,10 +1,9 @@
 {
   "text" : {
-    "de" : "Titel"
-  },
-  "textOriginalScript" : {
+    "de" : "Titel",
     "zh__#Hani" : "圖註八十一難經辨眞"
   },
+  "textLocalesOfOriginalScript" : [ "zh__#Hani" ],
   "titleType" : {
     "mainType" : "MAIN",
     "subType" : "MAIN"
