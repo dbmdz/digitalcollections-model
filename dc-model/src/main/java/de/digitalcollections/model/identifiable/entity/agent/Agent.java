@@ -1,6 +1,7 @@
 package de.digitalcollections.model.identifiable.entity.agent;
 
 import de.digitalcollections.model.identifiable.entity.Entity;
+import de.digitalcollections.model.identifiable.entity.NamedEntity;
 import de.digitalcollections.model.text.LocalizedText;
 import java.util.HashSet;
 import java.util.Locale;
@@ -17,7 +18,7 @@ import lombok.experimental.SuperBuilder;
  * gathered into classes like "Person", "Family" and "Corporate body".
  */
 @SuperBuilder(buildMethodName = "prebuild")
-public class Agent extends Entity {
+public class Agent extends Entity implements NamedEntity {
 
   private LocalizedText name;
   private Set<Locale> nameLocalesOfOriginalScript;
@@ -35,14 +36,17 @@ public class Agent extends Entity {
     }
   }
 
+  @Override
   public LocalizedText getName() {
     return name;
   }
 
+  @Override
   public Set<Locale> getNameLocalesOfOriginalScript() {
     return nameLocalesOfOriginalScript;
   }
 
+  @Override
   public void setName(LocalizedText name) {
     this.name = name;
   }
