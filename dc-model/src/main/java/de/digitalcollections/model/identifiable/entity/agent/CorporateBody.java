@@ -83,15 +83,22 @@ public class CorporateBody extends Agent {
 
   @Override
   public String toString() {
-    return "CorporateBody{"
-        + "created="
-        + created
-        + ", lastModified="
-        + lastModified
-        + ", uuid="
-        + uuid
+    return "CorporateBody [homepageUrl="
+        + homepageUrl
+        + ", text="
+        + text
+        + ", customAttributes="
+        + customAttributes
+        + ", navDate="
+        + navDate
+        + ", refId="
+        + refId
+        + ", notes="
+        + notes
         + ", description="
         + description
+        + ", identifiableObjectType="
+        + identifiableObjectType
         + ", identifiers="
         + identifiers
         + ", label="
@@ -102,20 +109,17 @@ public class CorporateBody extends Agent {
         + previewImage
         + ", previewImageRenderingHints="
         + previewImageRenderingHints
+        + ", tags="
+        + tags
         + ", type="
         + type
-        + ", customAttributes="
-        + customAttributes
-        + ", navDate="
-        + navDate
-        + ", refId="
-        + refId
-        + ", homepageUrl="
-        + homepageUrl
-        + ", text="
-        + text
-        + "}@"
-        + hashCode();
+        + ", created="
+        + created
+        + ", lastModified="
+        + lastModified
+        + ", uuid="
+        + uuid
+        + "]";
   }
 
   public abstract static class CorporateBodyBuilder<

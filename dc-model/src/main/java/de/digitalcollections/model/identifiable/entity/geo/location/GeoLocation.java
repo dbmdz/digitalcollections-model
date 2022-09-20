@@ -2,18 +2,46 @@ package de.digitalcollections.model.identifiable.entity.geo.location;
 
 import de.digitalcollections.model.geo.CoordinateLocation;
 import de.digitalcollections.model.identifiable.entity.Entity;
+import de.digitalcollections.model.identifiable.entity.NamedEntity;
+import de.digitalcollections.model.text.LocalizedText;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.Set;
 import lombok.experimental.SuperBuilder;
 
 /** A location located on earth. */
 @SuperBuilder(buildMethodName = "prebuild")
-public class GeoLocation extends Entity {
+public class GeoLocation extends Entity implements NamedEntity {
 
   private CoordinateLocation coordinateLocation;
   protected GeoLocationType geoLocationType;
+  private LocalizedText name;
+  private Set<Locale> nameLocalesOfOriginalScript;
 
   public GeoLocation() {
     super();
     init();
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null || !(obj instanceof GeoLocation)) {
+      return false;
+    }
+    GeoLocation other = (GeoLocation) obj;
+    return this == other
+        || super.equals(obj)
+            && Objects.equals(coordinateLocation, other.coordinateLocation)
+            && geoLocationType == other.geoLocationType
+            && Objects.equals(name, other.name)
+            && Objects.equals(nameLocalesOfOriginalScript, other.nameLocalesOfOriginalScript);
+  }
+
+  @Override
+  public int hashCode() {
+    return super.hashCode()
+        + Objects.hash(coordinateLocation, geoLocationType, name, nameLocalesOfOriginalScript)
+        + 18;
   }
 
   public CoordinateLocation getCoordinateLocation() {
@@ -39,6 +67,16 @@ public class GeoLocation extends Entity {
   }
 
   @Override
+  public LocalizedText getName() {
+    return name;
+  }
+
+  @Override
+  public Set<Locale> getNameLocalesOfOriginalScript() {
+    return nameLocalesOfOriginalScript;
+  }
+
+  @Override
   protected void init() {
     super.init();
     this.geoLocationType = GeoLocationType.GEOLOCATION;
@@ -50,6 +88,16 @@ public class GeoLocation extends Entity {
 
   public void setGeoLocationType(GeoLocationType geoLocationType) {
     this.geoLocationType = geoLocationType;
+  }
+
+  @Override
+  public void setName(LocalizedText name) {
+    this.name = name;
+  }
+
+  @Override
+  public void setNameLocalesOfOriginalScript(Set<Locale> nameLocalesOfOriginalScript) {
+    this.nameLocalesOfOriginalScript = nameLocalesOfOriginalScript;
   }
 
   public abstract static class GeoLocationBuilder<
