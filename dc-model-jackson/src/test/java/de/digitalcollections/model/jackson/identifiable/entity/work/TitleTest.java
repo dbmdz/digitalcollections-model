@@ -1,5 +1,7 @@
 package de.digitalcollections.model.jackson.identifiable.entity.work;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import de.digitalcollections.model.identifiable.entity.work.Title;
 import de.digitalcollections.model.identifiable.entity.work.TitleType;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
@@ -29,5 +31,26 @@ public class TitleTest extends BaseJsonSerializationTest {
             .build();
 
     checkSerializeDeserialize(title, "serializedTestObjects/identifiable/entity/work/Title.json");
+  }
+
+  @DisplayName("ignores a null locale, provided in the builder")
+  @Test
+  public void ignoreNullLocaleInBuilder() {
+    Title title = Title.builder().textLocalesOfOriginalScript(null).build();
+
+    assertThat(title.getTextLocalesOfOriginalScript()).isEmpty();
+  }
+
+  @DisplayName("can set locales in the builder")
+  @Test
+  public void setLocalesInBuilder() {
+    Title title =
+        Title.builder()
+            .textLocalesOfOriginalScript(Locale.GERMAN)
+            .textLocalesOfOriginalScript(Locale.ITALIAN)
+            .build();
+
+    assertThat(title.getTextLocalesOfOriginalScript())
+        .containsExactly(Locale.GERMAN, Locale.ITALIAN);
   }
 }
