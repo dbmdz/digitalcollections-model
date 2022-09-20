@@ -95,6 +95,10 @@ public class Title {
     }
 
     public B textLocalesOfOriginalScript(Locale locale) {
+      if (locale == null) {
+        return self();
+      }
+
       if (textLocalesOfOriginalScript == null) {
         textLocalesOfOriginalScript = new HashSet<>(1);
       }
