@@ -150,7 +150,7 @@ public class ManifestationTest extends BaseJsonSerializationTest {
                                         .build(),
                                     "圖註八十一難經辨眞")
                                 .build())
-                        .textLocalesOfOriginalScript(
+                        .textLocaleOfOriginalScript(
                             new Locale.Builder().setLanguage("zh").setScript("hani").build())
                         .build(),
                     Title.builder()

@@ -62,7 +62,6 @@
       },
       "type" : "ENTITY",
       "refId" : 0,
-      "nameLocalesOfOriginalScript" : [ ],
       "familyNames" : [ ],
       "givenNames" : [ ],
       "entityType" : "PERSON"
@@ -118,7 +117,6 @@
       },
       "type" : "ENTITY",
       "refId" : 0,
-      "nameLocalesOfOriginalScript" : [ ],
       "familyNames" : [ ],
       "givenNames" : [ ],
       "entityType" : "PERSON"
@@ -172,7 +170,6 @@
       },
       "type" : "ENTITY",
       "refId" : 0,
-      "nameLocalesOfOriginalScript" : [ ],
       "familyNames" : [ ],
       "givenNames" : [ ],
       "entityType" : "PERSON"
@@ -226,7 +223,6 @@
       },
       "type" : "ENTITY",
       "refId" : 0,
-      "nameLocalesOfOriginalScript" : [ ],
       "familyNames" : [ ],
       "givenNames" : [ ],
       "entityType" : "PERSON"
@@ -244,7 +240,6 @@
       },
       "type" : "ENTITY",
       "refId" : 0,
-      "nameLocalesOfOriginalScript" : [ ],
       "familyNames" : [ ],
       "givenNames" : [ ],
       "entityType" : "PERSON"
@@ -316,7 +311,7 @@
       "de" : "Titel",
       "zh__#Hani" : "圖註八十一難經辨眞"
     },
-    "textLocalesOfOriginalScript" : [ "zh__#Hani" ],
+    "textLocalesOfOriginalScripts" : [ "zh__#Hani" ],
     "titleType" : {
       "mainType" : "MAIN",
       "subType" : "MAIN"
@@ -325,7 +320,6 @@
     "text" : {
       "de" : "Ein Test"
     },
-    "textLocalesOfOriginalScript" : [ ],
     "titleType" : {
       "mainType" : "MAIN",
       "subType" : "SUB"
