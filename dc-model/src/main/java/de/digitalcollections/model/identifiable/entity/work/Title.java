@@ -7,27 +7,27 @@ import java.util.Objects;
 import java.util.Set;
 import lombok.experimental.SuperBuilder;
 
-@SuperBuilder(buildMethodName = "prebuild")
+@SuperBuilder
 public class Title {
 
   private LocalizedText text;
-  private Set<Locale> textLocalesOfOriginalScript;
+  private Set<Locale> textLocalesOfOriginalScripts;
   private TitleType titleType;
 
-  public Title() {
-    init();
-  }
+  public Title() {}
 
-  public Title(LocalizedText text, Set<Locale> textLocalesOfOriginalScript, TitleType titleType) {
+  public Title(LocalizedText text, Set<Locale> textLocalesOfOriginalScripts, TitleType titleType) {
     this();
     this.text = text;
-    this.textLocalesOfOriginalScript = textLocalesOfOriginalScript;
+    this.textLocalesOfOriginalScripts = textLocalesOfOriginalScripts;
     this.titleType = titleType;
   }
 
-  protected void init() {
-    if (textLocalesOfOriginalScript == null) {
-      textLocalesOfOriginalScript = new HashSet<>(0);
+  public void addTextLocaleOfOriginalScript(Locale locale) {
+    if (textLocalesOfOriginalScripts == null) {
+      textLocalesOfOriginalScripts = new HashSet<>(Set.of(locale));
+    } else {
+      textLocalesOfOriginalScripts.add(locale);
     }
   }
 
@@ -35,8 +35,8 @@ public class Title {
     return text;
   }
 
-  public Set<Locale> getTextLocalesOfOriginalScript() {
-    return textLocalesOfOriginalScript;
+  public Set<Locale> getTextLocalesOfOriginalScripts() {
+    return textLocalesOfOriginalScripts;
   }
 
   public TitleType getTitleType() {
@@ -47,8 +47,8 @@ public class Title {
     this.text = text;
   }
 
-  public void setTextLocalesOfOriginalScript(Set<Locale> textLocalesOfOriginalScript) {
-    this.textLocalesOfOriginalScript = textLocalesOfOriginalScript;
+  public void setTextLocalesOfOriginalScripts(Set<Locale> localesOfOriginalScripts) {
+    this.textLocalesOfOriginalScripts = localesOfOriginalScripts;
   }
 
   public void setTitleType(TitleType titleType) {
@@ -57,21 +57,19 @@ public class Title {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (!(o instanceof Title)) {
+    if (o == null || !(o instanceof Title)) {
       return false;
     }
     Title title = (Title) o;
-    return Objects.equals(text, title.text)
-        && Objects.equals(textLocalesOfOriginalScript, title.textLocalesOfOriginalScript)
-        && Objects.equals(titleType, title.titleType);
+    return this == title
+        || Objects.equals(text, title.text)
+            && Objects.equals(textLocalesOfOriginalScripts, title.textLocalesOfOriginalScripts)
+            && Objects.equals(titleType, title.titleType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, textLocalesOfOriginalScript, titleType);
+    return Objects.hash(text, textLocalesOfOriginalScripts, titleType);
   }
 
   @Override
@@ -79,8 +77,8 @@ public class Title {
     return "Title{"
         + "text="
         + text
-        + ", textLocalesOfOriginalScript="
-        + textLocalesOfOriginalScript
+        + ", textLocalesOfOriginalScripts="
+        + textLocalesOfOriginalScripts
         + ", titleType="
         + titleType
         + '}';
@@ -88,21 +86,14 @@ public class Title {
 
   public abstract static class TitleBuilder<C extends Title, B extends TitleBuilder<C, B>> {
 
-    public C build() {
-      C c = prebuild();
-      c.init();
-      return c;
-    }
-
-    public B textLocalesOfOriginalScript(Locale locale) {
+    public B textLocaleOfOriginalScript(Locale locale) {
       if (locale == null) {
         return self();
       }
-
-      if (textLocalesOfOriginalScript == null) {
-        textLocalesOfOriginalScript = new HashSet<>(1);
+      if (textLocalesOfOriginalScripts == null) {
+        textLocalesOfOriginalScripts = new HashSet<>(1);
       }
-      textLocalesOfOriginalScript.add(locale);
+      textLocalesOfOriginalScripts.add(locale);
       return self();
     }
   }

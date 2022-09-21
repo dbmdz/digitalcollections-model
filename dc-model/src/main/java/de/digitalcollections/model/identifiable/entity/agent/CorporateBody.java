@@ -25,7 +25,6 @@ public class CorporateBody extends Agent {
 
   public CorporateBody() {
     super();
-    init();
   }
 
   @Override
@@ -87,6 +86,10 @@ public class CorporateBody extends Agent {
         + homepageUrl
         + ", text="
         + text
+        + ", name="
+        + name
+        + ", nameLocalesOfOriginalScripts="
+        + nameLocalesOfOriginalScripts
         + ", customAttributes="
         + customAttributes
         + ", navDate="
