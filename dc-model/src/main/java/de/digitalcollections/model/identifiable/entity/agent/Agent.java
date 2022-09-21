@@ -3,7 +3,6 @@ package de.digitalcollections.model.identifiable.entity.agent;
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.NamedEntity;
 import de.digitalcollections.model.text.LocalizedText;
-import java.util.HashSet;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
@@ -20,20 +19,16 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(buildMethodName = "prebuild")
 public class Agent extends Entity implements NamedEntity {
 
-  private LocalizedText name;
-  private Set<Locale> nameLocalesOfOriginalScript;
+  protected LocalizedText name;
+  protected Set<Locale> nameLocalesOfOriginalScripts;
 
   public Agent() {
     super();
-    init();
   }
 
   @Override
   protected void init() {
     super.init();
-    if (nameLocalesOfOriginalScript == null) {
-      nameLocalesOfOriginalScript = new HashSet<>(0);
-    }
   }
 
   @Override
@@ -42,8 +37,8 @@ public class Agent extends Entity implements NamedEntity {
   }
 
   @Override
-  public Set<Locale> getNameLocalesOfOriginalScript() {
-    return nameLocalesOfOriginalScript;
+  public Set<Locale> getNameLocalesOfOriginalScripts() {
+    return nameLocalesOfOriginalScripts;
   }
 
   @Override
@@ -51,8 +46,9 @@ public class Agent extends Entity implements NamedEntity {
     this.name = name;
   }
 
-  public void setNameLocalesOfOriginalScript(Set<Locale> nameLocalesOfOriginalScript) {
-    this.nameLocalesOfOriginalScript = nameLocalesOfOriginalScript;
+  @Override
+  public void setNameLocalesOfOriginalScripts(Set<Locale> localesOfOriginalScripts) {
+    this.nameLocalesOfOriginalScripts = localesOfOriginalScripts;
   }
 
   @Override
@@ -64,20 +60,20 @@ public class Agent extends Entity implements NamedEntity {
     return obj == this
         || super.equals(obj)
             && Objects.equals(name, other.name)
-            && Objects.equals(nameLocalesOfOriginalScript, other.nameLocalesOfOriginalScript);
+            && Objects.equals(nameLocalesOfOriginalScripts, other.nameLocalesOfOriginalScripts);
   }
 
   @Override
   public int hashCode() {
-    return super.hashCode() + Objects.hash(name, nameLocalesOfOriginalScript) + 93;
+    return super.hashCode() + Objects.hash(name, nameLocalesOfOriginalScripts) + 93;
   }
 
   @Override
   public String toString() {
     return "Agent [name="
         + name
-        + ", nameLocalesOfOriginalScript="
-        + nameLocalesOfOriginalScript
+        + ", nameLocalesOfOriginalScripts="
+        + nameLocalesOfOriginalScripts
         + ", customAttributes="
         + customAttributes
         + ", navDate="

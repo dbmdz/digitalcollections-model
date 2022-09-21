@@ -13,14 +13,13 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(buildMethodName = "prebuild")
 public class GeoLocation extends Entity implements NamedEntity {
 
-  private CoordinateLocation coordinateLocation;
+  protected CoordinateLocation coordinateLocation;
   protected GeoLocationType geoLocationType;
-  private LocalizedText name;
-  private Set<Locale> nameLocalesOfOriginalScript;
+  protected LocalizedText name;
+  protected Set<Locale> nameLocalesOfOriginalScripts;
 
   public GeoLocation() {
     super();
-    init();
   }
 
   @Override
@@ -34,13 +33,13 @@ public class GeoLocation extends Entity implements NamedEntity {
             && Objects.equals(coordinateLocation, other.coordinateLocation)
             && geoLocationType == other.geoLocationType
             && Objects.equals(name, other.name)
-            && Objects.equals(nameLocalesOfOriginalScript, other.nameLocalesOfOriginalScript);
+            && Objects.equals(nameLocalesOfOriginalScripts, other.nameLocalesOfOriginalScripts);
   }
 
   @Override
   public int hashCode() {
     return super.hashCode()
-        + Objects.hash(coordinateLocation, geoLocationType, name, nameLocalesOfOriginalScript)
+        + Objects.hash(coordinateLocation, geoLocationType, name, nameLocalesOfOriginalScripts)
         + 18;
   }
 
@@ -72,8 +71,8 @@ public class GeoLocation extends Entity implements NamedEntity {
   }
 
   @Override
-  public Set<Locale> getNameLocalesOfOriginalScript() {
-    return nameLocalesOfOriginalScript;
+  public Set<Locale> getNameLocalesOfOriginalScripts() {
+    return nameLocalesOfOriginalScripts;
   }
 
   @Override
@@ -96,8 +95,53 @@ public class GeoLocation extends Entity implements NamedEntity {
   }
 
   @Override
-  public void setNameLocalesOfOriginalScript(Set<Locale> nameLocalesOfOriginalScript) {
-    this.nameLocalesOfOriginalScript = nameLocalesOfOriginalScript;
+  public void setNameLocalesOfOriginalScripts(Set<Locale> localesOfOriginalScripts) {
+    this.nameLocalesOfOriginalScripts = localesOfOriginalScripts;
+  }
+
+  @Override
+  public String toString() {
+    return "GeoLocation [coordinateLocation="
+        + coordinateLocation
+        + ", geoLocationType="
+        + geoLocationType
+        + ", name="
+        + name
+        + ", nameLocalesOfOriginalScripts="
+        + nameLocalesOfOriginalScripts
+        + ", created="
+        + created
+        + ", customAttributes="
+        + customAttributes
+        + ", description="
+        + description
+        + ", identifiableObjectType="
+        + identifiableObjectType
+        + ", identifiers="
+        + identifiers
+        + ", label="
+        + label
+        + ", lastModified="
+        + lastModified
+        + ", localizedUrlAliases="
+        + localizedUrlAliases
+        + ", navDate="
+        + navDate
+        + ", notes="
+        + notes
+        + ", previewImage="
+        + previewImage
+        + ", previewImageRenderingHints="
+        + previewImageRenderingHints
+        + ", refId="
+        + refId
+        + ", tags="
+        + tags
+        + ", type="
+        + type
+        + ", uuid="
+        + uuid
+        + "]";
   }
 
   public abstract static class GeoLocationBuilder<

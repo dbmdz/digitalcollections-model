@@ -29,7 +29,6 @@ public class Person extends Agent {
 
   public Person() {
     super();
-    init();
   }
 
   public Person(LocalizedText label, Set<Identifier> identifiers) {
@@ -180,6 +179,10 @@ public class Person extends Agent {
         + timeValueOfBirth
         + ", timeValueOfDeath="
         + timeValueOfDeath
+        + ", name="
+        + name
+        + ", nameLocalesOfOriginalScripts="
+        + nameLocalesOfOriginalScripts
         + ", customAttributes="
         + customAttributes
         + ", navDate="
