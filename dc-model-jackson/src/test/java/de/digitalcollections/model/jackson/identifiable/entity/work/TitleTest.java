@@ -26,7 +26,7 @@ public class TitleTest extends BaseJsonSerializationTest {
                         new Locale.Builder().setLanguage("zh").setScript("hani").build(),
                         "圖註八十一難經辨眞")
                     .build())
-            .textLocalesOfOriginalScript(
+            .textLocaleOfOriginalScript(
                 new Locale.Builder().setLanguage("zh").setScript("hani").build())
             .build();
 
@@ -36,9 +36,9 @@ public class TitleTest extends BaseJsonSerializationTest {
   @DisplayName("ignores a null locale, provided in the builder")
   @Test
   public void ignoreNullLocaleInBuilder() {
-    Title title = Title.builder().textLocalesOfOriginalScript(null).build();
+    Title title = Title.builder().textLocalesOfOriginalScripts(null).build();
 
-    assertThat(title.getTextLocalesOfOriginalScript()).isEmpty();
+    assertThat(title.getTextLocalesOfOriginalScripts()).isNull();
   }
 
   @DisplayName("can set locales in the builder")
@@ -46,11 +46,11 @@ public class TitleTest extends BaseJsonSerializationTest {
   public void setLocalesInBuilder() {
     Title title =
         Title.builder()
-            .textLocalesOfOriginalScript(Locale.GERMAN)
-            .textLocalesOfOriginalScript(Locale.ITALIAN)
+            .textLocaleOfOriginalScript(Locale.GERMAN)
+            .textLocaleOfOriginalScript(Locale.ITALIAN)
             .build();
 
-    assertThat(title.getTextLocalesOfOriginalScript())
+    assertThat(title.getTextLocalesOfOriginalScripts())
         .containsExactly(Locale.GERMAN, Locale.ITALIAN);
   }
 }
