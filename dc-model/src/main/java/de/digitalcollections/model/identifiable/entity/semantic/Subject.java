@@ -14,14 +14,17 @@ public class Subject extends UniqueObject {
   private Set<Identifier> identifiers;
   private LocalizedText label;
 
+  private String type;
+
   public Subject() {
     super();
   }
 
-  public Subject(LocalizedText label, Set<Identifier> identifiers) {
+  public Subject(LocalizedText label, Set<Identifier> identifiers, String type) {
     this();
     this.label = label;
     this.identifiers = identifiers;
+    this.type = type;
   }
 
   public Set<Identifier> getIdentifiers() {
@@ -30,6 +33,10 @@ public class Subject extends UniqueObject {
 
   public LocalizedText getLabel() {
     return label;
+  }
+
+  public String getType() {
+    return type;
   }
 
   @Override
@@ -45,6 +52,10 @@ public class Subject extends UniqueObject {
     this.label = label;
   }
 
+  public void setType(String type) {
+    this.type = type;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -57,7 +68,9 @@ public class Subject extends UniqueObject {
       return false;
     }
     Subject subject = (Subject) o;
-    return Objects.equals(identifiers, subject.identifiers) && Objects.equals(label, subject.label);
+    return Objects.equals(identifiers, subject.identifiers)
+        && Objects.equals(label, subject.label)
+        && Objects.equals(type, subject.type);
   }
 
   @Override
@@ -67,7 +80,17 @@ public class Subject extends UniqueObject {
 
   @Override
   public String toString() {
-    return "Subject{" + "identifiers=" + identifiers + ", label=" + label + ", uuid=" + uuid + '}';
+    return "Subject{"
+        + "identifiers="
+        + identifiers
+        + ", label="
+        + label
+        + ", type='"
+        + type
+        + '\''
+        + ", uuid="
+        + uuid
+        + '}';
   }
 
   public abstract static class SubjectBuilder<C extends Subject, B extends SubjectBuilder<C, B>>
