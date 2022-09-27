@@ -4,8 +4,6 @@ import de.digitalcollections.model.identifiable.Identifiable;
 import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.text.LocalizedText;
-import java.util.List;
-import java.util.Locale;
 import java.util.Set;
 
 /**
@@ -13,9 +11,6 @@ import java.util.Set;
  * used in many cultures worldwide."
  */
 public class FamilyName extends Identifiable {
-
-  LocalizedText name;
-  List<Locale> nameÓriginalScriptLocales;
 
   public FamilyName() {
     super();

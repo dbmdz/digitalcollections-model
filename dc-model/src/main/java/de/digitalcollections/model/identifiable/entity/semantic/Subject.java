@@ -75,7 +75,7 @@ public class Subject extends UniqueObject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), identifiers, label);
+    return Objects.hash(super.hashCode(), identifiers, label, type);
   }
 
   @Override
