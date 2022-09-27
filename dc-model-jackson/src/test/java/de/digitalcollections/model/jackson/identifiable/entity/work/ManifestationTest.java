@@ -22,7 +22,6 @@ import de.digitalcollections.model.time.LocalDateRange;
 import de.digitalcollections.model.time.TimeValue;
 import de.digitalcollections.model.time.TimeValueRange;
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
@@ -120,23 +119,19 @@ public class ManifestationTest extends BaseJsonSerializationTest {
                     .id("tag-id")
                     .label(new LocalizedText(Locale.GERMAN, "tag-label"))
                     .build())
-            .subjects(
-                new HashSet<>(
-                    List.of(
-                        Subject.builder()
-                            .type("type")
-                            .identifier(
-                                Identifier.builder().namespace("namespace1").id("id1").build())
-                            .identifier(
-                                Identifier.builder().namespace("namespace2").id("id2").build())
-                            .label(new LocalizedText(Locale.GERMAN, "Subject A"))
-                            .build(),
-                        Subject.builder()
-                            .type("type")
-                            .identifier(
-                                Identifier.builder().namespace("namespace3").id("id3").build())
-                            .label(new LocalizedText(Locale.GERMAN, "Subject B"))
-                            .build())))
+            .subject(
+                Subject.builder()
+                    .type("type")
+                    .identifier(Identifier.builder().namespace("namespace1").id("id1").build())
+                    .identifier(Identifier.builder().namespace("namespace2").id("id2").build())
+                    .label(new LocalizedText(Locale.GERMAN, "Subject A"))
+                    .build())
+            .subject(
+                Subject.builder()
+                    .type("type")
+                    .identifier(Identifier.builder().namespace("namespace3").id("id3").build())
+                    .label(new LocalizedText(Locale.GERMAN, "Subject B"))
+                    .build())
             .mediaTypes(new LinkedHashSet<>(List.of("Buch", "CD")))
             .titles(
                 List.of(
