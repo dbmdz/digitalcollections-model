@@ -16,6 +16,7 @@ public class SubjectTest extends BaseJsonSerializationTest {
   public void testSerializeDeserialize() throws Exception {
     Subject subject =
         Subject.builder()
+            .type("type")
             .identifier(Identifier.builder().namespace("namespace1").id("id1").build())
             .identifier(Identifier.builder().namespace("namespace2").id("id2").build())
             .label(new LocalizedText(Locale.GERMAN, "Subject"))

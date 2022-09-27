@@ -5,5 +5,5 @@
     "de" : "Das Label"
   },
   "namespace" : "tag-name",
-  "tagType" : "tag-type"
+  "type" : "type"
 }

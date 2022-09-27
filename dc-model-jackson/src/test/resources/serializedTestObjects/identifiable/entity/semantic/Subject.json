@@ -11,5 +11,6 @@
   } ],
   "label" : {
     "de" : "Subject"
-  }
+  },
+  "type" : "type"
 }

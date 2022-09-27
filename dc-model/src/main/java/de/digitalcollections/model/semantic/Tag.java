@@ -15,17 +15,17 @@ public class Tag extends UniqueObject {
   private String id;
   private LocalizedText label;
   private String namespace;
-  private String tagType;
+  private String type;
 
   public Tag() {
     super();
   }
 
-  public Tag(LocalizedText label, String tagType, String namespace, String id) {
+  public Tag(LocalizedText label, String type, String namespace, String id) {
     this.id = id;
     this.label = label;
     this.namespace = namespace;
-    this.tagType = tagType;
+    this.type = type;
   }
 
   @Override
@@ -43,12 +43,12 @@ public class Tag extends UniqueObject {
     return Objects.equals(id, tag.id)
         && Objects.equals(label, tag.label)
         && Objects.equals(namespace, tag.namespace)
-        && Objects.equals(tagType, tag.tagType);
+        && Objects.equals(type, tag.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), id, label, namespace, tagType);
+    return Objects.hash(super.hashCode(), id, label, namespace, type);
   }
 
   public String getId() {
@@ -63,8 +63,8 @@ public class Tag extends UniqueObject {
     return namespace;
   }
 
-  public String getTagType() {
-    return tagType;
+  public String getType() {
+    return type;
   }
 
   public void setId(String id) {
@@ -79,8 +79,8 @@ public class Tag extends UniqueObject {
     this.namespace = namespace;
   }
 
-  public void setTagType(String tagType) {
-    this.tagType = tagType;
+  public void setType(String type) {
+    this.type = type;
   }
 
   @Override
@@ -94,8 +94,8 @@ public class Tag extends UniqueObject {
         + ", namespace='"
         + namespace
         + '\''
-        + ", tagType='"
-        + tagType
+        + ", type='"
+        + type
         + '\''
         + ", created="
         + created

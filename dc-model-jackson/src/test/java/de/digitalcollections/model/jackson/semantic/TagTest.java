@@ -15,7 +15,7 @@ public class TagTest extends BaseJsonSerializationTest {
   public void testSerializeDeserialize() throws Exception {
     Tag tag =
         Tag.builder()
-            .tagType("tag-type")
+            .type("type")
             .id("tag-id")
             .label(new LocalizedText(Locale.GERMAN, "Das Label"))
             .namespace("tag-name")
