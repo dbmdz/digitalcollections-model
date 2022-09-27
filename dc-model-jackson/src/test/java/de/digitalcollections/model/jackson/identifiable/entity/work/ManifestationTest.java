@@ -115,7 +115,7 @@ public class ManifestationTest extends BaseJsonSerializationTest {
                     buildPublication(List.of("n.n.", "x,y"), List.of("München", "Berlin"))))
             .tag(
                 Tag.builder()
-                    .tagType("tag-type")
+                    .type("tag-type")
                     .namespace("tag-namespace")
                     .id("tag-id")
                     .label(new LocalizedText(Locale.GERMAN, "tag-label"))
@@ -124,6 +124,7 @@ public class ManifestationTest extends BaseJsonSerializationTest {
                 new HashSet<>(
                     List.of(
                         Subject.builder()
+                            .type("type")
                             .identifier(
                                 Identifier.builder().namespace("namespace1").id("id1").build())
                             .identifier(
@@ -131,6 +132,7 @@ public class ManifestationTest extends BaseJsonSerializationTest {
                             .label(new LocalizedText(Locale.GERMAN, "Subject A"))
                             .build(),
                         Subject.builder()
+                            .type("type")
                             .identifier(
                                 Identifier.builder().namespace("namespace3").id("id3").build())
                             .label(new LocalizedText(Locale.GERMAN, "Subject B"))
