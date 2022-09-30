@@ -2,7 +2,7 @@ package de.digitalcollections.model.identifiable.entity.work;
 
 import de.digitalcollections.model.identifiable.IdentifiableObjectType;
 import de.digitalcollections.model.identifiable.entity.Entity;
-import de.digitalcollections.model.identifiable.entity.semantic.Subject;
+import de.digitalcollections.model.semantic.Subject;
 import de.digitalcollections.model.time.LocalDateRange;
 import de.digitalcollections.model.time.TimeValueRange;
 import java.util.ArrayList;

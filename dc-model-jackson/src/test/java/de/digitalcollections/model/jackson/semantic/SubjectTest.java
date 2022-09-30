@@ -1,8 +1,8 @@
-package de.digitalcollections.model.jackson.identifiable.entity.semantic;
+package de.digitalcollections.model.jackson.semantic;
 
 import de.digitalcollections.model.identifiable.Identifier;
-import de.digitalcollections.model.identifiable.entity.semantic.Subject;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
+import de.digitalcollections.model.semantic.Subject;
 import de.digitalcollections.model.text.LocalizedText;
 import java.util.Locale;
 import org.junit.jupiter.api.DisplayName;
@@ -22,7 +22,6 @@ public class SubjectTest extends BaseJsonSerializationTest {
             .label(new LocalizedText(Locale.GERMAN, "Subject"))
             .build();
 
-    checkSerializeDeserialize(
-        subject, "serializedTestObjects/identifiable/entity/semantic/Subject.json");
+    checkSerializeDeserialize(subject, "serializedTestObjects/semantic/Subject.json");
   }
 }
