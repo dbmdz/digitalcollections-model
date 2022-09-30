@@ -6,12 +6,12 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.digitalcollections.model.identifiable.Identifiable;
 import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.identifiable.IdentifierType;
-import de.digitalcollections.model.identifiable.entity.semantic.Subject;
 import de.digitalcollections.model.identifiable.entity.work.Involvement;
 import de.digitalcollections.model.legal.License;
 import de.digitalcollections.model.relation.Predicate;
 import de.digitalcollections.model.security.User;
 import de.digitalcollections.model.semantic.Headword;
+import de.digitalcollections.model.semantic.Subject;
 import de.digitalcollections.model.semantic.Tag;
 import de.digitalcollections.model.view.RenderingTemplate;
 

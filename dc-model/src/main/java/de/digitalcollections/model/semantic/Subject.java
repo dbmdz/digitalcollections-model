@@ -1,4 +1,4 @@
-package de.digitalcollections.model.identifiable.entity.semantic;
+package de.digitalcollections.model.semantic;
 
 import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.identifiable.Identifier;
