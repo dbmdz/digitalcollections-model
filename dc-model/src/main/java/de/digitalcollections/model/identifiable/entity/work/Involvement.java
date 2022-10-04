@@ -4,7 +4,6 @@ import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.identifiable.entity.agent.Agent;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
 import java.util.List;
-import java.util.Set;
 import lombok.experimental.SuperBuilder;
 
 @SuperBuilder(buildMethodName = "prebuild")
@@ -23,7 +22,7 @@ public class Involvement extends UniqueObject {
   private HumanSettlement involvementPlace;
 
   /** set of involvement roles the agent is involved in the related work */
-  private Set<String> involvementRoles;
+  private List<String> involvementRoles;
 
   /** to be used for displaying original involvement roles */
   private List<String> involvementRolesPresentation;
@@ -36,7 +35,7 @@ public class Involvement extends UniqueObject {
       Agent agent,
       Boolean isCreator,
       HumanSettlement involvementPlace,
-      Set<String> involvementRoles,
+      List<String> involvementRoles,
       List<String> involvementRolesPresentation) {
     this();
     this.agent = agent;
@@ -75,11 +74,11 @@ public class Involvement extends UniqueObject {
     this.involvementPlace = involvementPlace;
   }
 
-  public Set<String> getInvolvementRoles() {
+  public List<String> getInvolvementRoles() {
     return involvementRoles;
   }
 
-  public void setInvolvementRoles(Set<String> involvementRoles) {
+  public void setInvolvementRoles(List<String> involvementRoles) {
     this.involvementRoles = involvementRoles;
   }
 

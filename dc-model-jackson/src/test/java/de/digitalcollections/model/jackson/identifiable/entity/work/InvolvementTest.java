@@ -4,7 +4,6 @@ import de.digitalcollections.model.identifiable.entity.agent.Person;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
 import de.digitalcollections.model.identifiable.entity.work.Involvement;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import org.junit.jupiter.api.DisplayName;
@@ -21,7 +20,7 @@ public class InvolvementTest extends BaseJsonSerializationTest {
             .isCreator(null)
             .agent(Person.builder().label(Locale.GERMAN, "Karl Ranseier").build())
             .involvementPlace(HumanSettlement.builder().label(Locale.GERMAN, "Köln").build())
-            .involvementRoles(new HashSet<>(List.of("Autor", "Verleger")))
+            .involvementRoles(List.of("Autor", "Verleger"))
             .involvementRolesPresentation(
                 List.of("erfolglosester Autor", "erfolglosester Verleger"))
             .build();

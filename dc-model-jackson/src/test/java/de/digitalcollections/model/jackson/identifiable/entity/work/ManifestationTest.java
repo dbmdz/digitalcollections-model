@@ -25,7 +25,6 @@ import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -63,7 +62,7 @@ public class ManifestationTest extends BaseJsonSerializationTest {
                 List.of(
                     Involvement.builder()
                         .isCreator(true)
-                        .involvementRoles(Set.of("author"))
+                        .involvementRoles(List.of("author"))
                         .involvementRolesPresentation(List.of("Autor"))
                         .agent(Person.builder().label(Locale.GERMAN, "Arnold Hiller").build())
                         .involvementPlace(
