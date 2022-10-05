@@ -52,9 +52,9 @@
     "mainType" : "TEXT",
     "subType" : "HANDWRITING"
   } ],
-  "involvements" : [ {
-    "objectType" : "INVOLVEMENT",
-    "agent" : {
+  "relations" : [ {
+    "predicate" : "is_author_of",
+    "subject" : {
       "identifiableObjectType" : "PERSON",
       "identifiers" : [ ],
       "label" : {
@@ -65,21 +65,7 @@
       "familyNames" : [ ],
       "givenNames" : [ ],
       "entityType" : "PERSON"
-    },
-    "isCreator" : true,
-    "involvementPlace" : {
-      "identifiableObjectType" : "HUMAN_SETTLEMENT",
-      "identifiers" : [ ],
-      "label" : {
-        "de" : "München"
-      },
-      "type" : "ENTITY",
-      "refId" : 0,
-      "geoLocationType" : "HUMAN_SETTLEMENT",
-      "entityType" : "GEOLOCATION"
-    },
-    "involvementRoles" : [ "author" ],
-    "involvementRolesPresentation" : [ "Autor" ]
+    }
   } ],
   "language" : "de",
   "manufacturingType" : "PRINT",

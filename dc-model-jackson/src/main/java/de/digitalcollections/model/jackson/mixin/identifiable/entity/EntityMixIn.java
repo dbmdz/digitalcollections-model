@@ -12,6 +12,7 @@ import de.digitalcollections.model.identifiable.entity.Project;
 import de.digitalcollections.model.identifiable.entity.Topic;
 import de.digitalcollections.model.identifiable.entity.Website;
 import de.digitalcollections.model.identifiable.entity.agent.CorporateBody;
+import de.digitalcollections.model.identifiable.entity.agent.Person;
 import de.digitalcollections.model.identifiable.entity.geo.location.GeoLocation;
 import de.digitalcollections.model.identifiable.entity.work.Item;
 import de.digitalcollections.model.identifiable.entity.work.Manifestation;
@@ -36,6 +37,7 @@ import de.digitalcollections.model.identifiable.entity.work.Work;
   @JsonSubTypes.Type(value = HeadwordEntry.class, name = "HEADWORD_ENTRY"),
   @JsonSubTypes.Type(value = Item.class, name = "ITEM"),
   @JsonSubTypes.Type(value = Manifestation.class, name = "MANIFESTATION"),
+  @JsonSubTypes.Type(value = Person.class, name = "PERSON"),
   @JsonSubTypes.Type(value = Project.class, name = "PROJECT"),
   @JsonSubTypes.Type(value = Series.class, name = "SERIES"),
   @JsonSubTypes.Type(value = Topic.class, name = "TOPIC"),

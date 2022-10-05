@@ -2,6 +2,7 @@ package de.digitalcollections.model.identifiable.entity.work;
 
 import de.digitalcollections.model.identifiable.IdentifiableObjectType;
 import de.digitalcollections.model.identifiable.entity.Entity;
+import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 import de.digitalcollections.model.semantic.Subject;
 import de.digitalcollections.model.time.LocalDateRange;
 import de.digitalcollections.model.time.TimeValueRange;
@@ -52,7 +53,7 @@ public class Manifestation extends Entity {
   private String dimensions;
 
   private LinkedHashSet<ExpressionType> expressionTypes;
-  private List<Involvement> involvements;
+  private List<EntityRelation> relations;
   private Locale language;
   private String manufacturingType;
   private LinkedHashSet<String> mediaTypes;
@@ -81,8 +82,8 @@ public class Manifestation extends Entity {
     super();
   }
 
-  public void addInvolvement(Involvement involvement) {
-    involvements.add(involvement);
+  public void addRelation(EntityRelation relation) {
+    relations.add(relation);
   }
 
   public void addSubject(Subject subject) {
@@ -107,8 +108,8 @@ public class Manifestation extends Entity {
     return expressionTypes;
   }
 
-  public List<Involvement> getInvolvements() {
-    return involvements;
+  public List<EntityRelation> getRelations() {
+    return relations;
   }
 
   public Locale getLanguage() {
@@ -184,8 +185,8 @@ public class Manifestation extends Entity {
     if (titles == null) {
       titles = new ArrayList<>();
     }
-    if (involvements == null) {
-      involvements = new ArrayList<>();
+    if (relations == null) {
+      relations = new ArrayList<>();
     }
     if (publications == null) {
       publications = new ArrayList<>();
@@ -213,8 +214,8 @@ public class Manifestation extends Entity {
     this.expressionTypes = expressionTypes;
   }
 
-  public void setInvolvements(List<Involvement> involvements) {
-    this.involvements = involvements;
+  public void setRelations(List<EntityRelation> relations) {
+    this.relations = relations;
   }
 
   public void setLanguage(Locale language) {
@@ -294,8 +295,8 @@ public class Manifestation extends Entity {
         + '\''
         + ", expressionTypes="
         + expressionTypes
-        + ", involvements="
-        + involvements
+        + ", relations="
+        + relations
         + ", language="
         + language
         + ", manufacturingType="
@@ -387,11 +388,11 @@ public class Manifestation extends Entity {
       return self();
     }
 
-    public B involvement(Involvement involvement) {
-      if (involvements == null) {
-        involvements = new ArrayList<>(1);
+    public B relation(EntityRelation relation) {
+      if (relations == null) {
+        relations = new ArrayList<>(1);
       }
-      involvements.add(involvement);
+      relations.add(relation);
       return self();
     }
 
