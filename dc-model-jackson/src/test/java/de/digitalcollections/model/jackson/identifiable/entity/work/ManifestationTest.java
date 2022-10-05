@@ -3,8 +3,8 @@ package de.digitalcollections.model.jackson.identifiable.entity.work;
 import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.identifiable.entity.agent.Person;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
+import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 import de.digitalcollections.model.identifiable.entity.work.ExpressionType;
-import de.digitalcollections.model.identifiable.entity.work.Involvement;
 import de.digitalcollections.model.identifiable.entity.work.Manifestation;
 import de.digitalcollections.model.identifiable.entity.work.Publication;
 import de.digitalcollections.model.identifiable.entity.work.Series;
@@ -58,15 +58,11 @@ public class ManifestationTest extends BaseJsonSerializationTest {
             // .series(Set.of(series))
             .sortKey("1932-40-12-25-41")
             .version("2. Auflage")
-            .involvements(
+            .relations(
                 List.of(
-                    Involvement.builder()
-                        .isCreator(true)
-                        .involvementRoles(List.of("author"))
-                        .involvementRolesPresentation(List.of("Autor"))
-                        .agent(Person.builder().label(Locale.GERMAN, "Arnold Hiller").build())
-                        .involvementPlace(
-                            HumanSettlement.builder().label(Locale.GERMAN, "München").build())
+                    EntityRelation.builder()
+                        .subject(Person.builder().label(Locale.GERMAN, "Arnold Hiller").build())
+                        .predicate("is_author_of")
                         .build()))
             .publishingTimeValueRange(
                 new TimeValueRange(
