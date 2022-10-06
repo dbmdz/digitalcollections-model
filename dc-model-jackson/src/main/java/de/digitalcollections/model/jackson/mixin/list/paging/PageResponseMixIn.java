@@ -33,6 +33,7 @@ import de.digitalcollections.model.legal.License;
 import de.digitalcollections.model.list.paging.PageRequest;
 import de.digitalcollections.model.list.paging.PageResponse;
 import de.digitalcollections.model.list.sorting.Sorting;
+import de.digitalcollections.model.relation.Predicate;
 import de.digitalcollections.model.security.User;
 import de.digitalcollections.model.semantic.Headword;
 import de.digitalcollections.model.view.RenderingTemplate;
@@ -62,6 +63,7 @@ public abstract class PageResponseMixIn<T> extends PageResponse<T> {
     @Type(value = Item.class, name = "ITEM"),
     @Type(value = License.class, name = "LICENSE"),
     @Type(value = Person.class, name = "PERSON"),
+    @Type(value = Predicate.class, name = "PREDICATE"),
     @Type(value = Project.class, name = "PROJECT"),
     @Type(value = RenderingTemplate.class, name = "RENDERING_TEMPLATE"),
     @Type(value = Topic.class, name = "TOPIC"),
