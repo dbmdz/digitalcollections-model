@@ -10,6 +10,13 @@ public class Predicate extends UniqueObject {
   private LocalizedText label;
   private String value;
 
+  public Predicate() {}
+  ;
+
+  public Predicate(String value) {
+    this.value = value;
+  }
+
   /**
    * The multilingual, verbose description of the predicate
    *
