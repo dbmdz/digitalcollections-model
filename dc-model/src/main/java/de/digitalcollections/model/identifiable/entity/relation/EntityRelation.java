@@ -1,6 +1,10 @@
 package de.digitalcollections.model.identifiable.entity.relation;
 
 import de.digitalcollections.model.identifiable.entity.Entity;
+import de.digitalcollections.model.relation.Predicate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * An EntityRelation describes the relation between two entities (subject being related to object in
@@ -15,6 +19,8 @@ public class EntityRelation {
   private Entity object;
   private String predicate;
   private Entity subject;
+
+  private List<Predicate> additionalPredicates;
 
   public EntityRelation() {}
 
@@ -48,6 +54,49 @@ public class EntityRelation {
     this.subject = subjectEntity;
   }
 
+  public List<Predicate> getAdditionalPredicates() {
+    return additionalPredicates;
+  }
+
+  public void setAdditionalPredicates(List<Predicate> additionalPredicates) {
+    this.additionalPredicates = additionalPredicates;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof EntityRelation)) {
+      return false;
+    }
+    EntityRelation that = (EntityRelation) o;
+    return Objects.equals(object, that.object)
+        && Objects.equals(predicate, that.predicate)
+        && Objects.equals(subject, that.subject)
+        && Objects.equals(additionalPredicates, that.additionalPredicates);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(object, predicate, subject);
+  }
+
+  @Override
+  public String toString() {
+    return "EntityRelation{"
+        + "object="
+        + object
+        + ", predicate='"
+        + predicate
+        + '\''
+        + ", subject="
+        + subject
+        + ", additionalPredicates="
+        + additionalPredicates
+        + '}';
+  }
+
   public static class Builder {
 
     EntityRelation entityRelation = new EntityRelation();
@@ -68,6 +117,19 @@ public class EntityRelation {
 
     public Builder subject(Entity subjectEntity) {
       entityRelation.setSubject(subjectEntity);
+      return this;
+    }
+
+    public Builder additionalPredicate(Predicate additionalPredicate) {
+      if (entityRelation.additionalPredicates == null) {
+        entityRelation.additionalPredicates = new ArrayList<>(1);
+      }
+      entityRelation.additionalPredicates.add(additionalPredicate);
+      return this;
+    }
+
+    public Builder additionalPredicates(List<Predicate> additionalPredicates) {
+      entityRelation.setAdditionalPredicates(additionalPredicates);
       return this;
     }
   }

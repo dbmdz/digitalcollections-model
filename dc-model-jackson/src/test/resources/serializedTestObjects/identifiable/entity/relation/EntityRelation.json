@@ -19,5 +19,9 @@
     "refId" : 0,
     "creators" : [ ],
     "entityType" : "ARTICLE"
-  }
+  },
+  "additionalPredicates" : [ {
+    "objectType" : "PREDICATE",
+    "value" : "is_pianist_of"
+  } ]
 }
