@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New subtypes `MainSubType`, `ExpressionType`, `TitleType`, `WorkType`
 - Add field `tags` to `Identifiable`
 - Bucket-Handling: Bucket (Sublist/Range of UniqueObjects), BucketRequest/Response and List of Bucket-Objects-Handling added
+- `EntityRelation` can contain additional predicates
 - **Breaking**: Jackson-MixIns (type info `objectType`) for classes directly extending `UniqueObject` (`Headword, Identifiable, Identifier, IdentifierType, License, Predicate, RenderingTemplate, User`)
 
 ### Changed
