@@ -5,6 +5,7 @@ import de.digitalcollections.model.text.contentblock.BulletList;
 import de.digitalcollections.model.text.contentblock.ContentBlock;
 import de.digitalcollections.model.text.contentblock.ContentBlockNode;
 import de.digitalcollections.model.text.contentblock.ListItem;
+import de.digitalcollections.model.text.contentblock.Mark;
 import de.digitalcollections.model.text.contentblock.Text;
 import java.util.List;
 import org.jsoup.Jsoup;
@@ -20,13 +21,23 @@ public class HtmlMapper {
 
     if (node instanceof Element) {
       Element element = (Element) node;
+      String tagName = element.tagName();
 
-      if ("ul".equalsIgnoreCase(element.tagName())) {
+      if ("ul".equalsIgnoreCase(tagName)) {
         contentBlock = new BulletList();
-      } else if ("li".equalsIgnoreCase(element.tagName())) {
+      } else if ("li".equalsIgnoreCase(tagName)) {
         contentBlock = new ListItem();
+      } else if ("a".equalsIgnoreCase(tagName)) {
+        // TODO only simple plain text links are supported until now; dive into nodes of a-element
+        // for further linked content
+        String text = element.text();
+        contentBlock = new Text(text);
+        String href = element.attr("href");
+        Mark link = new Mark("link");
+        link.addAttribute("href", href);
+        ((Text) contentBlock).addMark(link);
       } else {
-        System.out.println("Unsupported element " + element.tagName() + ": " + node.toString());
+        System.out.println("Unsupported element " + tagName + ": " + node.toString());
       }
 
       if (contentBlock != null
