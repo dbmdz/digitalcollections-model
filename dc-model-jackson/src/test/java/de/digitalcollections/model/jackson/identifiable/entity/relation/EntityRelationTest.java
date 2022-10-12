@@ -4,7 +4,6 @@ import de.digitalcollections.model.identifiable.entity.Article;
 import de.digitalcollections.model.identifiable.entity.DigitalObject;
 import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
-import de.digitalcollections.model.relation.Predicate;
 import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;
@@ -20,10 +19,7 @@ public class EntityRelationTest extends BaseJsonSerializationTest {
     DigitalObject objectEntity = new DigitalObject();
     objectEntity.setUuid(UUID.fromString("baf5a649-dd8a-43f2-8fac-f535b311af03"));
     entityRelation.setObject(objectEntity);
-
-    Predicate additionalPredicate = new Predicate();
-    additionalPredicate.setValue("is_pianist_of");
-    entityRelation.setAdditionalPredicates(List.of(additionalPredicate));
+    entityRelation.setAdditionalPredicates(List.of("is_pianist_of"));
     return entityRelation;
   }
 
