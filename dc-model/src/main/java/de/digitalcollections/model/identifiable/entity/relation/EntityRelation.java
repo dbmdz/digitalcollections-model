@@ -1,7 +1,6 @@
 package de.digitalcollections.model.identifiable.entity.relation;
 
 import de.digitalcollections.model.identifiable.entity.Entity;
-import de.digitalcollections.model.relation.Predicate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -20,7 +19,7 @@ public class EntityRelation {
   private String predicate;
   private Entity subject;
 
-  private List<Predicate> additionalPredicates;
+  private List<String> additionalPredicates;
 
   public EntityRelation() {}
 
@@ -54,11 +53,11 @@ public class EntityRelation {
     this.subject = subjectEntity;
   }
 
-  public List<Predicate> getAdditionalPredicates() {
+  public List<String> getAdditionalPredicates() {
     return additionalPredicates;
   }
 
-  public void setAdditionalPredicates(List<Predicate> additionalPredicates) {
+  public void setAdditionalPredicates(List<String> additionalPredicates) {
     this.additionalPredicates = additionalPredicates;
   }
 
@@ -120,7 +119,7 @@ public class EntityRelation {
       return this;
     }
 
-    public Builder additionalPredicate(Predicate additionalPredicate) {
+    public Builder additionalPredicate(String additionalPredicate) {
       if (entityRelation.additionalPredicates == null) {
         entityRelation.additionalPredicates = new ArrayList<>(1);
       }
@@ -128,7 +127,7 @@ public class EntityRelation {
       return this;
     }
 
-    public Builder additionalPredicates(List<Predicate> additionalPredicates) {
+    public Builder additionalPredicates(List<String> additionalPredicates) {
       entityRelation.setAdditionalPredicates(additionalPredicates);
       return this;
     }

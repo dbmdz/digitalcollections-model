@@ -2,16 +2,19 @@ package de.digitalcollections.model.relation;
 
 import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.text.LocalizedText;
+import lombok.experimental.SuperBuilder;
 
 /** Specifies the type of a relation */
+@SuperBuilder(buildMethodName = "prebuild")
 public class Predicate extends UniqueObject {
 
   private LocalizedText description;
   private LocalizedText label;
   private String value;
 
-  public Predicate() {}
-  ;
+  public Predicate() {
+    super();
+  }
 
   public Predicate(String value) {
     this.value = value;
@@ -85,5 +88,17 @@ public class Predicate extends UniqueObject {
         + ", lastModified="
         + lastModified
         + "}";
+  }
+
+  public abstract static class PredicateBuilder<
+          C extends Predicate, B extends PredicateBuilder<C, B>>
+      extends UniqueObjectBuilder<C, B> {
+
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      return c;
+    }
   }
 }
