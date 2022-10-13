@@ -122,6 +122,10 @@ public class CorporateBody extends Agent {
         + lastModified
         + ", uuid="
         + uuid
+        + ", name="
+        + name
+        + ", nameLocalesOfOriginalScripts="
+        + nameLocalesOfOriginalScripts
         + "]";
   }
 
