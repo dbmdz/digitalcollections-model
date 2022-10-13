@@ -2,6 +2,7 @@ package de.digitalcollections.model.time;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.util.Objects;
 import org.threeten.extra.chrono.JulianDate;
 import org.wikidata.wdtk.datamodel.interfaces.ItemIdValue;
 import org.wikidata.wdtk.datamodel.interfaces.ValueVisitor;
@@ -275,5 +276,72 @@ public class TimeValue implements org.wikidata.wdtk.datamodel.interfaces.TimeVal
     }
 
     return null;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof TimeValue)) {
+      return false;
+    }
+    TimeValue timeValue = (TimeValue) o;
+    return afterTolerance == timeValue.afterTolerance
+        && beforeTolerance == timeValue.beforeTolerance
+        && day == timeValue.day
+        && hour == timeValue.hour
+        && minute == timeValue.minute
+        && month == timeValue.month
+        && precision == timeValue.precision
+        && second == timeValue.second
+        && timezoneOffset == timeValue.timezoneOffset
+        && year == timeValue.year
+        && Objects.equals(preferredCalendarModel, timeValue.preferredCalendarModel);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(
+        afterTolerance,
+        beforeTolerance,
+        day,
+        hour,
+        minute,
+        month,
+        precision,
+        preferredCalendarModel,
+        second,
+        timezoneOffset,
+        year);
+  }
+
+  @Override
+  public String toString() {
+    return "TimeValue{"
+        + "afterTolerance="
+        + afterTolerance
+        + ", beforeTolerance="
+        + beforeTolerance
+        + ", day="
+        + day
+        + ", hour="
+        + hour
+        + ", minute="
+        + minute
+        + ", month="
+        + month
+        + ", precision="
+        + precision
+        + ", preferredCalendarModel='"
+        + preferredCalendarModel
+        + '\''
+        + ", second="
+        + second
+        + ", timezoneOffset="
+        + timezoneOffset
+        + ", year="
+        + year
+        + '}';
   }
 }
