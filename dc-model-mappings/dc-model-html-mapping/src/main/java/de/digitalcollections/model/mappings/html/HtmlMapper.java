@@ -14,6 +14,17 @@ import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
 import org.jsoup.nodes.TextNode;
 
+/**
+ * Mapper for mapping between Digital Collections Model "StructuredContent" and HTML.
+ *
+ * <p>Supports the following HTML elements:
+ *
+ * <ul>
+ *   <li>a (text links only)
+ *   <li>li (list item)
+ *   <li>ul (unordered list)
+ * </ul>
+ */
 public class HtmlMapper {
 
   private static ContentBlock getContentBlock(Node node) {
@@ -57,6 +68,12 @@ public class HtmlMapper {
     return contentBlock;
   }
 
+  /**
+   * Map html to StructuredContent.
+   *
+   * @param html html code to be mapped
+   * @return filled StructuredContent instance
+   */
   public static StructuredContent toStructuredContent(String html) {
     StructuredContent structuredContent = new StructuredContent();
 
