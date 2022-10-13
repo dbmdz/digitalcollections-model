@@ -1,5 +1,6 @@
 package de.digitalcollections.model.identifiable.entity.geo.location;
 
+import java.util.Objects;
 import lombok.experimental.SuperBuilder;
 
 /** A community of any size, in which people live see https://www.wikidata.org/wiki/Q486972 */
@@ -66,7 +67,35 @@ public class HumanSettlement extends GeoLocation {
         + lastModified
         + ", uuid="
         + uuid
+        + ", coordinateLocation="
+        + coordinateLocation
+        + ", geoLocationType="
+        + geoLocationType
+        + ", name="
+        + name
+        + ", nameLocalesOfOriginalScripts="
+        + nameLocalesOfOriginalScripts
         + '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof HumanSettlement)) {
+      return false;
+    }
+    if (!super.equals(o)) {
+      return false;
+    }
+    HumanSettlement that = (HumanSettlement) o;
+    return humanSettlementType == that.humanSettlementType;
+  }
+
+  @Override
+  public int hashCode() {
+    return super.hashCode() + Objects.hash(humanSettlementType);
   }
 
   public abstract static class HumanSettlementBuilder<

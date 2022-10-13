@@ -215,6 +215,10 @@ public class Person extends Agent {
         + lastModified
         + ", uuid="
         + uuid
+        + ", name="
+        + name
+        + ", nameLocalesOfOriginalScripts="
+        + nameLocalesOfOriginalScripts
         + "]";
   }
 

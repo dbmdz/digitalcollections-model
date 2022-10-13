@@ -106,6 +106,10 @@ public class Agent extends Entity implements NamedEntity {
         + lastModified
         + ", uuid="
         + uuid
+        + ", name="
+        + name
+        + ", nameLocalesOfOriginalScripts="
+        + nameLocalesOfOriginalScripts
         + "]";
   }
 
