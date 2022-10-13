@@ -78,7 +78,7 @@ public class EntityRelation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(object, predicate, subject);
+    return Objects.hash(object, predicate, subject, additionalPredicates);
   }
 
   @Override
