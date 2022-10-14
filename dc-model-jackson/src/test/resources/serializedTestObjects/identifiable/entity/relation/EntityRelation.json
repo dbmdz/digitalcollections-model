@@ -20,8 +20,5 @@
     "creators" : [ ],
     "entityType" : "ARTICLE"
   },
-  "additionalPredicates" : [ {
-    "objectType" : "PREDICATE",
-    "value" : "is_pianist_of"
-  } ]
+  "additionalPredicates" : [ "is_pianist_of" ]
 }
