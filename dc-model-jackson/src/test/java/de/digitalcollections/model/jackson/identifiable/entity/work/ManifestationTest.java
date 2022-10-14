@@ -1,5 +1,7 @@
 package de.digitalcollections.model.jackson.identifiable.entity.work;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.identifiable.entity.agent.Person;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
@@ -25,6 +27,7 @@ import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -173,5 +176,28 @@ public class ManifestationTest extends BaseJsonSerializationTest {
     Manifestation manifestation = createObject();
     checkSerializeDeserialize(
         manifestation, "serializedTestObjects/identifiable/entity/work/Manifestation.json");
+  }
+
+  @DisplayName("only dumps uuids of relations in toString to avoid recursion")
+  @Test
+  public void testToString() {
+    Person author = Person.builder().uuid(UUID.randomUUID()).build();
+    Manifestation manifestation = Manifestation.builder().uuid(UUID.randomUUID()).build();
+    EntityRelation entityRelation =
+        EntityRelation.builder().subject(author).predicate("foo").object(manifestation).build();
+    manifestation.setRelations(List.of(entityRelation));
+
+    String actual = manifestation.toString();
+
+    String expected =
+        "Manifestation{composition='null', dimensions='null', expressionTypes=null, relations=[EntityRelation{subject="
+            + author.getUuid()
+            + ", predicate='foo', object="
+            + manifestation.getUuid()
+            + "}], language=null, manufacturingType=null, mediaTypes=null, otherLanguages=null, parent=null, publications=[], publishingDatePresentation='null', publishingDateRange=null, publishingTimeValueRange=null, scale='null', series=null, sortKey='null', subjects=[], "
+            + "titles=[], version='null', work=null, customAttributes=null, navDate=null, refId=0, notes=null, description=null, identifiableObjectType=MANIFESTATION, identifiers=[], label=null, localizedUrlAliases=null, previewImage=null, previewImageRenderingHints=null, tags=null, type=ENTITY, created=null, lastModified=null, uuid="
+            + manifestation.getUuid()
+            + "}";
+    assertThat(actual).isEqualTo(expected);
   }
 }

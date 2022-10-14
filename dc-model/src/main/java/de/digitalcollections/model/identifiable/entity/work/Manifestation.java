@@ -12,6 +12,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.stream.Collectors;
 import lombok.experimental.SuperBuilder;
 
 /**
@@ -285,6 +286,8 @@ public class Manifestation extends Entity {
   }
 
   @Override
+  // IMPORTANT: Dump only the UUIDs of the relations, otherwise you'll land
+  // in recursion hell!
   public String toString() {
     return "Manifestation{"
         + "composition='"
@@ -296,7 +299,7 @@ public class Manifestation extends Entity {
         + ", expressionTypes="
         + expressionTypes
         + ", relations="
-        + relations
+        + shortenRelations(relations)
         + ", language="
         + language
         + ", manufacturingType="
@@ -366,6 +369,20 @@ public class Manifestation extends Entity {
         + ", uuid="
         + uuid
         + '}';
+  }
+
+  private String shortenRelations(List<EntityRelation> relations) {
+    return "["
+        + relations.stream()
+            .map(
+                r ->
+                    String.format(
+                        "EntityRelation{subject=%s, predicate='%s', object=%s}",
+                        r.getSubject() != null ? r.getSubject().getUuid() : null,
+                        r.getPredicate(),
+                        r.getObject() != null ? r.getObject().getUuid() : null))
+            .collect(Collectors.joining(","))
+        + "]";
   }
 
   public abstract static class ManifestationBuilder<
