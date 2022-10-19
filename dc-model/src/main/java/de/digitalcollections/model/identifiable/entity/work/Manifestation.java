@@ -1,5 +1,6 @@
 package de.digitalcollections.model.identifiable.entity.work;
 
+import de.digitalcollections.model.RelationSpecification;
 import de.digitalcollections.model.identifiable.IdentifiableObjectType;
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
@@ -11,6 +12,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 import lombok.experimental.SuperBuilder;
@@ -56,10 +58,11 @@ public class Manifestation extends Entity {
   private LinkedHashSet<ExpressionType> expressionTypes;
   private List<EntityRelation> relations;
   private Locale language;
+  private String manifestationType;
   private String manufacturingType;
   private LinkedHashSet<String> mediaTypes;
   private LinkedHashSet<Locale> otherLanguages;
-  private Manifestation parent;
+  private List<RelationSpecification<Manifestation>> parents;
   private List<Publication> publications;
   private String publishingDatePresentation;
   private LocalDateRange publishingDateRange;
@@ -70,9 +73,6 @@ public class Manifestation extends Entity {
    * <p>Examples: "[Ca. 1:820 000]"
    */
   private String scale;
-
-  private LinkedHashSet<Series> series;
-  private String sortKey;
 
   private Set<Subject> subjects;
   private List<Title> titles;
@@ -117,6 +117,10 @@ public class Manifestation extends Entity {
     return language;
   }
 
+  public String getManifestationType() {
+    return manifestationType;
+  }
+
   public String getManufacturingType() {
     return manufacturingType;
   }
@@ -129,8 +133,8 @@ public class Manifestation extends Entity {
     return otherLanguages;
   }
 
-  public Manifestation getParent() {
-    return parent;
+  public List<RelationSpecification<Manifestation>> getParents() {
+    return parents;
   }
 
   public List<Publication> getPublications() {
@@ -153,14 +157,6 @@ public class Manifestation extends Entity {
    */
   public String getScale() {
     return scale;
-  }
-
-  public LinkedHashSet<Series> getSeries() {
-    return series;
-  }
-
-  public String getSortKey() {
-    return sortKey;
   }
 
   public Set<Subject> getSubjects() {
@@ -223,6 +219,10 @@ public class Manifestation extends Entity {
     this.language = language;
   }
 
+  public void setManifestationType(String manifestationType) {
+    this.manifestationType = manifestationType;
+  }
+
   public void setManufacturingType(String manufacturingType) {
     this.manufacturingType = manufacturingType;
   }
@@ -235,8 +235,8 @@ public class Manifestation extends Entity {
     this.otherLanguages = otherLanguages;
   }
 
-  public void setParent(Manifestation parent) {
-    this.parent = parent;
+  public void setParents(List<RelationSpecification<Manifestation>> parents) {
+    this.parents = parents;
   }
 
   public void setPublications(List<Publication> publications) {
@@ -259,14 +259,6 @@ public class Manifestation extends Entity {
    */
   public void setScale(String scale) {
     this.scale = scale;
-  }
-
-  public void setSeries(LinkedHashSet<Series> series) {
-    this.series = series;
-  }
-
-  public void setSortKey(String sortKey) {
-    this.sortKey = sortKey;
   }
 
   public void setSubjects(Set<Subject> subjects) {
@@ -302,14 +294,16 @@ public class Manifestation extends Entity {
         + dumpShortenedRelations(relations)
         + ", language="
         + language
+        + ", manifestationType="
+        + manifestationType
         + ", manufacturingType="
         + manufacturingType
         + ", mediaTypes="
         + mediaTypes
         + ", otherLanguages="
         + otherLanguages
-        + ", parent="
-        + parent
+        + ", parents="
+        + parents
         + ", publications="
         + publications
         + ", publishingDatePresentation='"
@@ -321,11 +315,6 @@ public class Manifestation extends Entity {
         + publishingTimeValueRange
         + ", scale='"
         + scale
-        + '\''
-        + ", series="
-        + series
-        + ", sortKey='"
-        + sortKey
         + '\''
         + ", subjects="
         + subjects
@@ -369,6 +358,64 @@ public class Manifestation extends Entity {
         + ", uuid="
         + uuid
         + '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Manifestation)) {
+      return false;
+    }
+    if (!super.equals(o)) {
+      return false;
+    }
+    Manifestation that = (Manifestation) o;
+    return Objects.equals(composition, that.composition)
+        && Objects.equals(dimensions, that.dimensions)
+        && Objects.equals(expressionTypes, that.expressionTypes)
+        && Objects.equals(relations, that.relations)
+        && Objects.equals(language, that.language)
+        && Objects.equals(manifestationType, that.manifestationType)
+        && Objects.equals(manufacturingType, that.manufacturingType)
+        && Objects.equals(mediaTypes, that.mediaTypes)
+        && Objects.equals(otherLanguages, that.otherLanguages)
+        && Objects.equals(parents, that.parents)
+        && Objects.equals(publications, that.publications)
+        && Objects.equals(publishingDatePresentation, that.publishingDatePresentation)
+        && Objects.equals(publishingDateRange, that.publishingDateRange)
+        && Objects.equals(publishingTimeValueRange, that.publishingTimeValueRange)
+        && Objects.equals(scale, that.scale)
+        && Objects.equals(subjects, that.subjects)
+        && Objects.equals(titles, that.titles)
+        && Objects.equals(version, that.version)
+        && Objects.equals(work, that.work);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(
+        super.hashCode(),
+        composition,
+        dimensions,
+        expressionTypes,
+        relations,
+        language,
+        manifestationType,
+        manufacturingType,
+        mediaTypes,
+        otherLanguages,
+        parents,
+        publications,
+        publishingDatePresentation,
+        publishingDateRange,
+        publishingTimeValueRange,
+        scale,
+        subjects,
+        titles,
+        version,
+        work);
   }
 
   /**
@@ -415,6 +462,11 @@ public class Manifestation extends Entity {
       return self();
     }
 
+    public B manifestationType(String manifestationType) {
+      this.manifestationType = manifestationType;
+      return self();
+    }
+
     public B mediaType(String mediaType) {
       if (mediaTypes == null) {
         mediaTypes = new LinkedHashSet<>(1);
@@ -428,6 +480,14 @@ public class Manifestation extends Entity {
         otherLanguages = new LinkedHashSet<>(1);
       }
       otherLanguages.add(lang);
+      return self();
+    }
+
+    public B parent(RelationSpecification<Manifestation> parent) {
+      if (parents == null) {
+        parents = new ArrayList<>(1);
+      }
+      parents.add(parent);
       return self();
     }
 

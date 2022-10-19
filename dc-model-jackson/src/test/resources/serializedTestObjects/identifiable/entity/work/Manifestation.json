@@ -68,9 +68,29 @@
     }
   } ],
   "language" : "de",
+  "manifestationType" : "SINGLE",
   "manufacturingType" : "PRINT",
   "mediaTypes" : [ "Buch", "CD" ],
   "otherLanguages" : [ "it" ],
+  "parents" : [ {
+    "title" : "Parent",
+    "sortKey" : "sortme",
+    "subject" : {
+      "uuid" : "8a9c3c34-c36c-4671-8f2f-9d96a5fc32e4",
+      "identifiableObjectType" : "MANIFESTATION",
+      "identifiers" : [ ],
+      "label" : {
+        "" : "Parent"
+      },
+      "type" : "ENTITY",
+      "refId" : 0,
+      "relations" : [ ],
+      "publications" : [ ],
+      "subjects" : [ ],
+      "titles" : [ ],
+      "entityType" : "MANIFESTATION"
+    }
+  } ],
   "publications" : [ {
     "publicationLocations" : [ {
       "identifiableObjectType" : "HUMAN_SETTLEMENT",
@@ -266,7 +286,6 @@
     }
   },
   "scale" : "[Ca. 1:820 000]",
-  "sortKey" : "1932-40-12-25-41",
   "subjects" : [ {
     "objectType" : "SUBJECT",
     "identifiers" : [ {
