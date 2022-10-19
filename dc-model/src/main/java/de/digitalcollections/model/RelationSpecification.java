@@ -2,10 +2,8 @@ package de.digitalcollections.model;
 
 import java.util.Objects;
 import lombok.Builder;
-import lombok.Value;
 
 /** A decorator for a relation, which adds two fields for a title and a sort key */
-@Value
 @Builder
 public class RelationSpecification<U extends UniqueObject> {
 
@@ -36,6 +34,18 @@ public class RelationSpecification<U extends UniqueObject> {
 
   public U getSubject() {
     return subject;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public void setSortKey(String sortKey) {
+    this.sortKey = sortKey;
+  }
+
+  public void setSubject(U subject) {
+    this.subject = subject;
   }
 
   @Override
