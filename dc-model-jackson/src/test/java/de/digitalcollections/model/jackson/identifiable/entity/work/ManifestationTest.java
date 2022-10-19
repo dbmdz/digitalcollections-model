@@ -2,6 +2,7 @@ package de.digitalcollections.model.jackson.identifiable.entity.work;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import de.digitalcollections.model.RelationSpecification;
 import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.identifiable.entity.agent.Person;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
@@ -9,7 +10,6 @@ import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 import de.digitalcollections.model.identifiable.entity.work.ExpressionType;
 import de.digitalcollections.model.identifiable.entity.work.Manifestation;
 import de.digitalcollections.model.identifiable.entity.work.Publication;
-import de.digitalcollections.model.identifiable.entity.work.Series;
 import de.digitalcollections.model.identifiable.entity.work.Title;
 import de.digitalcollections.model.identifiable.entity.work.TitleType;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
@@ -47,10 +47,20 @@ public class ManifestationTest extends BaseJsonSerializationTest {
 
   private Manifestation createObject() {
     // Later, because series extends work
-    Series series = Series.builder().label("Aus Natur und Geisteswelt").build();
+    UUID parentUUID = UUID.fromString("8a9c3c34-c36c-4671-8f2f-9d96a5fc32e4");
+    Manifestation parentManifestation =
+        Manifestation.builder().uuid(parentUUID).label("Parent").build();
+
+    RelationSpecification<Manifestation> parent =
+        RelationSpecification.<Manifestation>builder()
+            .title("Parent")
+            .sortKey("sortme")
+            .subject(parentManifestation)
+            .build();
 
     Manifestation manifestation =
         Manifestation.builder()
+            .manifestationType("SINGLE")
             .identifier("foo", "bar")
             .label(Locale.GERMAN, "Zimmer-Gymnastik ohne Geräte")
             .composition("1 Partitur (11 Seiten)")
@@ -58,8 +68,6 @@ public class ManifestationTest extends BaseJsonSerializationTest {
             .scale("[Ca. 1:820 000]")
             .note(createNote("Plattendruck"))
             .note(createNote("Pr. 54 kr"))
-            // .series(Set.of(series))
-            .sortKey("1932-40-12-25-41")
             .version("2. Auflage")
             .relations(
                 List.of(
@@ -152,6 +160,7 @@ public class ManifestationTest extends BaseJsonSerializationTest {
                         .titleType(TitleType.builder().mainType("main").subType("sub").build())
                         .text(new LocalizedText(Locale.GERMAN, "Ein Test"))
                         .build()))
+            .parent(parent)
             .build();
     return manifestation;
   }
@@ -194,7 +203,7 @@ public class ManifestationTest extends BaseJsonSerializationTest {
             + author.getUuid()
             + ", predicate='foo', object="
             + manifestation.getUuid()
-            + "}], language=null, manufacturingType=null, mediaTypes=null, otherLanguages=null, parent=null, publications=[], publishingDatePresentation='null', publishingDateRange=null, publishingTimeValueRange=null, scale='null', series=null, sortKey='null', subjects=[], "
+            + "}], language=null, manifestationType=null, manufacturingType=null, mediaTypes=null, otherLanguages=null, parents=null, publications=[], publishingDatePresentation='null', publishingDateRange=null, publishingTimeValueRange=null, scale='null', subjects=[], "
             + "titles=[], version='null', work=null, customAttributes=null, navDate=null, refId=0, notes=null, description=null, identifiableObjectType=MANIFESTATION, identifiers=[], label=null, localizedUrlAliases=null, previewImage=null, previewImageRenderingHints=null, tags=null, type=ENTITY, created=null, lastModified=null, uuid="
             + manifestation.getUuid()
             + "}";
