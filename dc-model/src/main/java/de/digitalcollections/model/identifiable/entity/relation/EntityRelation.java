@@ -96,6 +96,23 @@ public class EntityRelation {
         + '}';
   }
 
+  /**
+   * Since EntityRelations reference Entities, e.g. a Manifestation, we can get into a recursion
+   * here by applying toString recursivly onto subject and object.
+   *
+   * <p>To avoid this, subject and object are dumped in a shortened way by only returning their
+   * UUIDs
+   *
+   * @return A texual representation with subject uuid, predicate and object uuid
+   */
+  public String toShortenedString() {
+    return String.format(
+        "EntityRelation{subject=%s, predicate='%s', object=%s}",
+        subject != null ? subject.getUuid() : null,
+        predicate,
+        object != null ? object.getUuid() : null);
+  }
+
   public static class Builder {
 
     EntityRelation entityRelation = new EntityRelation();

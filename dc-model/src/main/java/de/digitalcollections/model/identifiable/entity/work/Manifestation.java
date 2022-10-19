@@ -299,7 +299,7 @@ public class Manifestation extends Entity {
         + ", expressionTypes="
         + expressionTypes
         + ", relations="
-        + shortenRelations(relations)
+        + dumpShortenedRelations(relations)
         + ", language="
         + language
         + ", manufacturingType="
@@ -371,17 +371,19 @@ public class Manifestation extends Entity {
         + '}';
   }
 
-  private String shortenRelations(List<EntityRelation> relations) {
+  /**
+   * Since EntityRelations reference Entities, e.g. a Manifestation, we can get into a recursion
+   * here.
+   *
+   * <p>To avoid this, the EntityRelations are dumped in a shortened way by only returning the UUIDs
+   * of the entities.
+   *
+   * @param relations a list of EntityRelations
+   * @return A texual representation of the list with subject uuid, predicate and object uuid
+   */
+  private String dumpShortenedRelations(List<EntityRelation> relations) {
     return "["
-        + relations.stream()
-            .map(
-                r ->
-                    String.format(
-                        "EntityRelation{subject=%s, predicate='%s', object=%s}",
-                        r.getSubject() != null ? r.getSubject().getUuid() : null,
-                        r.getPredicate(),
-                        r.getObject() != null ? r.getObject().getUuid() : null))
-            .collect(Collectors.joining(","))
+        + relations.stream().map(EntityRelation::toShortenedString).collect(Collectors.joining(","))
         + "]";
   }
 
