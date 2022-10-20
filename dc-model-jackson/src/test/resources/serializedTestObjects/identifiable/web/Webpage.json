@@ -21,6 +21,9 @@
   "type" : "RESOURCE",
   "publicationEnd" : "+999999999-12-31",
   "publicationStart" : "-999999999-01-01",
+  "renderingHints" : {
+    "showInPageNavigation" : false
+  },
   "text" : {
     "de_DE" : {
       "type" : "doc",
