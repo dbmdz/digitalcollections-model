@@ -69,6 +69,9 @@ public class Webpage extends Identifiable implements INode<Webpage> {
     if (node == null) {
       node = new Node<>();
     }
+    if (renderingHints == null) {
+      renderingHints = new RenderingHints();
+    }
   }
 
   @Override
