@@ -20,7 +20,10 @@
     "label" : {
       "" : "Webpage-Label"
     },
-    "type" : "RESOURCE"
+    "type" : "RESOURCE",
+    "renderingHints" : {
+      "showInPageNavigation" : false
+    }
   } ],
   "executedSearchTerm" : "Label",
   "totalElements" : 2,
