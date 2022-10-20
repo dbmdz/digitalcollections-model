@@ -35,6 +35,8 @@ import de.digitalcollections.model.list.paging.PageResponse;
 import de.digitalcollections.model.list.sorting.Sorting;
 import de.digitalcollections.model.security.User;
 import de.digitalcollections.model.semantic.Headword;
+import de.digitalcollections.model.semantic.Subject;
+import de.digitalcollections.model.semantic.Tag;
 import de.digitalcollections.model.view.RenderingTemplate;
 import java.util.List;
 
@@ -69,6 +71,8 @@ public abstract class ListResponseMixIn<T, R extends ListRequest> extends ListRe
     @Type(value = Person.class, name = "PERSON"),
     @Type(value = Project.class, name = "PROJECT"),
     @Type(value = RenderingTemplate.class, name = "RENDERING_TEMPLATE"),
+    @Type(value = Subject.class, name = "SUBJECT"),
+    @Type(value = Tag.class, name = "TAG"),
     @Type(value = Topic.class, name = "TOPIC"),
     @Type(value = User.class, name = "USER"),
     @Type(value = Webpage.class, name = "WEBPAGE"),
