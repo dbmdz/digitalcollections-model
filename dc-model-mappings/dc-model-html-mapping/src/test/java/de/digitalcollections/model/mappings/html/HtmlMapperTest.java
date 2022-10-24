@@ -1,8 +1,10 @@
 package de.digitalcollections.model.mappings.html;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import de.digitalcollections.model.text.StructuredContent;
+import org.jsoup.nodes.Element;
 import org.junit.jupiter.api.Test;
 
 public class HtmlMapperTest {
@@ -42,5 +44,14 @@ public class HtmlMapperTest {
     StructuredContent sc = HtmlMapper.toStructuredContent(html);
     assertEquals(1, sc.getContentBlocks().size());
     // TODO better assert
+  }
+
+  @Test
+  public void testGetContentBlockForUnsupportedElement() {
+    assertThrows(
+        UnsupportedOperationException.class,
+        () -> {
+          HtmlMapper.getContentBlock(new Element("blabla"));
+        });
   }
 }

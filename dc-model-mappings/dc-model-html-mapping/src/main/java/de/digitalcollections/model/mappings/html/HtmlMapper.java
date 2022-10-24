@@ -27,7 +27,7 @@ import org.jsoup.nodes.TextNode;
  */
 public class HtmlMapper {
 
-  private static ContentBlock getContentBlock(Node node) {
+  public static ContentBlock getContentBlock(Node node) {
     ContentBlock contentBlock = null;
 
     if (node instanceof Element) {
@@ -48,12 +48,11 @@ public class HtmlMapper {
         link.addAttribute("href", href);
         ((Text) contentBlock).addMark(link);
       } else {
-        System.out.println("Unsupported element " + tagName + ": " + node.toString());
+        throw new UnsupportedOperationException(
+            "Not yet implemented: getContentBlock() for HTML element " + tagName);
       }
 
-      if (contentBlock != null
-          && contentBlock instanceof ContentBlockNode
-          && element.childNodeSize() > 0) {
+      if (contentBlock instanceof ContentBlockNode && element.childNodeSize() > 0) {
         List<Node> children = element.childNodes();
         for (Node child : children) {
           ContentBlock childContentBlock = getContentBlock(child);
