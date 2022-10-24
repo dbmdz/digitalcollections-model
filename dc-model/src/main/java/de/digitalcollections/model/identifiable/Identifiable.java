@@ -61,6 +61,14 @@ public class Identifiable extends UniqueObject {
     identifiers.add(Objects.requireNonNull(identifier));
   }
 
+  public void addLocalizedUrlAlias(UrlAlias urlAlias) {
+    if (localizedUrlAliases == null) {
+      localizedUrlAliases = new LocalizedUrlAliases(urlAlias);
+    } else {
+      localizedUrlAliases.add(urlAlias);
+    }
+  }
+
   public void addTag(Tag tag) {
     if (tags == null) {
       tags = new HashSet<>(1);
