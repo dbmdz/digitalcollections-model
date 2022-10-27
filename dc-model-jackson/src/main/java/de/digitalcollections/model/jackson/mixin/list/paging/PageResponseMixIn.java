@@ -26,6 +26,7 @@ import de.digitalcollections.model.identifiable.entity.geo.location.GeoLocation;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
 import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 import de.digitalcollections.model.identifiable.entity.work.Item;
+import de.digitalcollections.model.identifiable.entity.work.Publisher;
 import de.digitalcollections.model.identifiable.entity.work.Work;
 import de.digitalcollections.model.identifiable.resource.FileResource;
 import de.digitalcollections.model.identifiable.web.Webpage;
@@ -67,6 +68,7 @@ public abstract class PageResponseMixIn<T> extends PageResponse<T> {
     @Type(value = Person.class, name = "PERSON"),
     @Type(value = Predicate.class, name = "PREDICATE"),
     @Type(value = Project.class, name = "PROJECT"),
+    @Type(value = Publisher.class, name = "PUBLISHER"),
     @Type(value = RenderingTemplate.class, name = "RENDERING_TEMPLATE"),
     @Type(value = Subject.class, name = "SUBJECT"),
     @Type(value = Tag.class, name = "TAG"),

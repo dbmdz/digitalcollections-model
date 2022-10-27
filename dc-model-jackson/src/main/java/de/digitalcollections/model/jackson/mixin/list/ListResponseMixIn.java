@@ -24,6 +24,7 @@ import de.digitalcollections.model.identifiable.entity.geo.location.GeoLocation;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
 import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 import de.digitalcollections.model.identifiable.entity.work.Item;
+import de.digitalcollections.model.identifiable.entity.work.Publisher;
 import de.digitalcollections.model.identifiable.entity.work.Work;
 import de.digitalcollections.model.identifiable.resource.FileResource;
 import de.digitalcollections.model.identifiable.web.Webpage;
@@ -69,6 +70,7 @@ public abstract class ListResponseMixIn<T, R extends ListRequest> extends ListRe
     @Type(value = IdentifierType.class, name = "IDENTIFIER_TYPE"),
     @Type(value = Item.class, name = "ITEM"),
     @Type(value = Person.class, name = "PERSON"),
+    @Type(value = Publisher.class, name = "PUBLISHER"),
     @Type(value = Project.class, name = "PROJECT"),
     @Type(value = RenderingTemplate.class, name = "RENDERING_TEMPLATE"),
     @Type(value = Subject.class, name = "SUBJECT"),
