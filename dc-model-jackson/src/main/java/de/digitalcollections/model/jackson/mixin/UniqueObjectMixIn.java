@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.digitalcollections.model.identifiable.Identifiable;
 import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.identifiable.IdentifierType;
+import de.digitalcollections.model.identifiable.entity.work.Publisher;
 import de.digitalcollections.model.legal.License;
 import de.digitalcollections.model.relation.Predicate;
 import de.digitalcollections.model.security.User;
@@ -22,6 +23,7 @@ import de.digitalcollections.model.view.RenderingTemplate;
   @JsonSubTypes.Type(value = IdentifierType.class, name = "IDENTIFIER_TYPE"),
   @JsonSubTypes.Type(value = License.class, name = "LICENSE"),
   @JsonSubTypes.Type(value = Predicate.class, name = "PREDICATE"),
+  @JsonSubTypes.Type(value = Publisher.class, name = "PUBLISHER"),
   @JsonSubTypes.Type(value = RenderingTemplate.class, name = "RENDERING_TEMPLATE"),
   @JsonSubTypes.Type(value = Subject.class, name = "SUBJECT"),
   @JsonSubTypes.Type(value = Tag.class, name = "TAG"),

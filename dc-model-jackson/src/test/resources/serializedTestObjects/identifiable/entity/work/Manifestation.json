@@ -85,14 +85,15 @@
       "type" : "ENTITY",
       "refId" : 0,
       "relations" : [ ],
-      "publications" : [ ],
+      "publishers" : [ ],
       "subjects" : [ ],
       "titles" : [ ],
       "entityType" : "MANIFESTATION"
     }
   } ],
-  "publications" : [ {
-    "publicationLocations" : [ {
+  "publishers" : [ {
+    "objectType" : "PUBLISHER",
+    "locations" : [ {
       "identifiableObjectType" : "HUMAN_SETTLEMENT",
       "identifiers" : [ ],
       "label" : {
@@ -109,7 +110,7 @@
       "geoLocationType" : "HUMAN_SETTLEMENT",
       "entityType" : "GEOLOCATION"
     } ],
-    "publishers" : [ {
+    "agent" : {
       "identifiableObjectType" : "PERSON",
       "identifiers" : [ ],
       "label" : {
@@ -126,10 +127,11 @@
       "familyNames" : [ ],
       "givenNames" : [ ],
       "entityType" : "PERSON"
-    } ],
-    "publishersPresentation" : [ "Karl Ranseier" ]
+    },
+    "publisherPresentation" : "Köln : Karl Ranseier"
   }, {
-    "publicationLocations" : [ {
+    "objectType" : "PUBLISHER",
+    "locations" : [ {
       "identifiableObjectType" : "HUMAN_SETTLEMENT",
       "identifiers" : [ ],
       "label" : {
@@ -162,7 +164,7 @@
       "geoLocationType" : "HUMAN_SETTLEMENT",
       "entityType" : "GEOLOCATION"
     } ],
-    "publishers" : [ {
+    "agent" : {
       "identifiableObjectType" : "PERSON",
       "identifiers" : [ ],
       "label" : {
@@ -179,10 +181,11 @@
       "familyNames" : [ ],
       "givenNames" : [ ],
       "entityType" : "PERSON"
-    } ],
-    "publishersPresentation" : [ "Hans Dampf" ]
+    },
+    "publisherPresentation" : "Frankfurt, München : Hans Dampf"
   }, {
-    "publicationLocations" : [ {
+    "objectType" : "PUBLISHER",
+    "locations" : [ {
       "identifiableObjectType" : "HUMAN_SETTLEMENT",
       "identifiers" : [ ],
       "label" : {
@@ -215,16 +218,19 @@
       "geoLocationType" : "HUMAN_SETTLEMENT",
       "entityType" : "GEOLOCATION"
     } ],
-    "publishers" : [ {
+    "publisherPresentation" : "München, Berlin"
+  }, {
+    "objectType" : "PUBLISHER",
+    "agent" : {
       "identifiableObjectType" : "PERSON",
       "identifiers" : [ ],
       "label" : {
-        "" : "n.n."
+        "" : "Max Moritz"
       },
       "previewImageRenderingHints" : {
         "openLinkInNewWindow" : false,
         "title" : {
-          "de" : "n.n."
+          "de" : "Max Moritz"
         }
       },
       "type" : "ENTITY",
@@ -232,25 +238,8 @@
       "familyNames" : [ ],
       "givenNames" : [ ],
       "entityType" : "PERSON"
-    }, {
-      "identifiableObjectType" : "PERSON",
-      "identifiers" : [ ],
-      "label" : {
-        "" : "x,y"
-      },
-      "previewImageRenderingHints" : {
-        "openLinkInNewWindow" : false,
-        "title" : {
-          "de" : "x,y"
-        }
-      },
-      "type" : "ENTITY",
-      "refId" : 0,
-      "familyNames" : [ ],
-      "givenNames" : [ ],
-      "entityType" : "PERSON"
-    } ],
-    "publishersPresentation" : [ "n.n.", "x,y" ]
+    },
+    "publisherPresentation" : "Max Moritz"
   } ],
   "publishingDatePresentation" : "2020",
   "publishingDateRange" : {

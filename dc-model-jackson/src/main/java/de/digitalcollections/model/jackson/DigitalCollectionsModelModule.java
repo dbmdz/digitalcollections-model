@@ -37,7 +37,7 @@ import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 import de.digitalcollections.model.identifiable.entity.work.ExpressionType;
 import de.digitalcollections.model.identifiable.entity.work.Item;
 import de.digitalcollections.model.identifiable.entity.work.Manifestation;
-import de.digitalcollections.model.identifiable.entity.work.Publication;
+import de.digitalcollections.model.identifiable.entity.work.Publisher;
 import de.digitalcollections.model.identifiable.entity.work.Series;
 import de.digitalcollections.model.identifiable.entity.work.Work;
 import de.digitalcollections.model.identifiable.resource.ApplicationFileResource;
@@ -77,7 +77,7 @@ import de.digitalcollections.model.jackson.mixin.identifiable.entity.relation.En
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.ExpressionTypeMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.ItemMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.ManifestationMixIn;
-import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.PublicationMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.PublisherMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.SeriesMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.WorkMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.ApplicationFileResourceMixIn;
@@ -233,7 +233,7 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(ExpressionType.class, ExpressionTypeMixIn.class);
     context.setMixInAnnotations(Item.class, ItemMixIn.class);
     context.setMixInAnnotations(Manifestation.class, ManifestationMixIn.class);
-    context.setMixInAnnotations(Publication.class, PublicationMixIn.class);
+    context.setMixInAnnotations(Publisher.class, PublisherMixIn.class);
     context.setMixInAnnotations(Series.class, SeriesMixIn.class);
     context.setMixInAnnotations(Work.class, WorkMixIn.class);
 

@@ -9,7 +9,7 @@ import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlem
 import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 import de.digitalcollections.model.identifiable.entity.work.ExpressionType;
 import de.digitalcollections.model.identifiable.entity.work.Manifestation;
-import de.digitalcollections.model.identifiable.entity.work.Publication;
+import de.digitalcollections.model.identifiable.entity.work.Publisher;
 import de.digitalcollections.model.identifiable.entity.work.Title;
 import de.digitalcollections.model.identifiable.entity.work.TitleType;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
@@ -24,6 +24,7 @@ import de.digitalcollections.model.time.LocalDateRange;
 import de.digitalcollections.model.time.TimeValue;
 import de.digitalcollections.model.time.TimeValueRange;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
@@ -113,11 +114,12 @@ public class ManifestationTest extends BaseJsonSerializationTest {
                     List.of( // list ensures order
                         ExpressionType.builder().mainType("TEXT").subType("PRINT").build(),
                         ExpressionType.builder().mainType("TEXT").subType("HANDWRITING").build())))
-            .publications(
+            .publishers(
                 List.of(
-                    buildPublication(List.of("Karl Ranseier"), List.of("Köln")),
-                    buildPublication(List.of("Hans Dampf"), List.of("Frankfurt", "München")),
-                    buildPublication(List.of("n.n.", "x,y"), List.of("München", "Berlin"))))
+                    buildPublisher("Karl Ranseier", List.of("Köln")),
+                    buildPublisher("Hans Dampf", List.of("Frankfurt", "München")),
+                    buildPublisher(null, List.of("München", "Berlin")),
+                    buildPublisher("Max Moritz", null)))
             .tag(
                 Tag.builder()
                     .type("tag-type")
@@ -165,17 +167,27 @@ public class ManifestationTest extends BaseJsonSerializationTest {
     return manifestation;
   }
 
-  private Publication buildPublication(List<String> personNames, List<String> cityNames) {
-    return Publication.builder()
-        .publishers(
-            personNames.stream()
-                .map(p -> Person.builder().label(p).title(Locale.GERMAN, p).build())
-                .collect(Collectors.toList()))
-        .publishersPresentation(personNames)
-        .publicationLocations(
-            cityNames.stream()
-                .map(c -> HumanSettlement.builder().label(c).title(Locale.GERMAN, c).build())
-                .collect(Collectors.toList()))
+  private Publisher buildPublisher(String personName, List<String> cityNames) {
+    List<String> presentationParts = new ArrayList<>();
+    if (cityNames != null) {
+      presentationParts.add(cityNames.stream().collect(Collectors.joining(", ")));
+    }
+    if (personName != null) {
+      presentationParts.add(personName);
+    }
+
+    return Publisher.builder()
+        .agent(
+            personName != null
+                ? Person.builder().label(personName).title(Locale.GERMAN, personName).build()
+                : null)
+        .publisherPresentation(presentationParts.stream().collect(Collectors.joining(" : ")))
+        .locations(
+            cityNames != null
+                ? cityNames.stream()
+                    .map(c -> HumanSettlement.builder().label(c).title(Locale.GERMAN, c).build())
+                    .collect(Collectors.toList())
+                : null)
         .build();
   }
 
@@ -203,7 +215,7 @@ public class ManifestationTest extends BaseJsonSerializationTest {
             + author.getUuid()
             + ", predicate='foo', object="
             + manifestation.getUuid()
-            + "}], language=null, manifestationType=null, manufacturingType=null, mediaTypes=null, otherLanguages=null, parents=null, publications=[], publishingDatePresentation='null', publishingDateRange=null, publishingTimeValueRange=null, scale='null', subjects=[], "
+            + "}], language=null, manifestationType=null, manufacturingType=null, mediaTypes=null, otherLanguages=null, parents=null, publishers=[], publishingDatePresentation='null', publishingDateRange=null, publishingTimeValueRange=null, scale='null', subjects=[], "
             + "titles=[], version='null', work=null, customAttributes=null, navDate=null, refId=0, notes=null, description=null, identifiableObjectType=MANIFESTATION, identifiers=[], label=null, localizedUrlAliases=null, previewImage=null, previewImageRenderingHints=null, tags=null, type=ENTITY, created=null, lastModified=null, uuid="
             + manifestation.getUuid()
             + "}";
