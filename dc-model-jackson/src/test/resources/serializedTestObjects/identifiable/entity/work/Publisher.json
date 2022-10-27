@@ -1,5 +1,6 @@
 {
-  "publicationLocations" : [ {
+  "objectType" : "PUBLISHER",
+  "locations" : [ {
     "identifiableObjectType" : "HUMAN_SETTLEMENT",
     "identifiers" : [ ],
     "label" : {
@@ -34,7 +35,7 @@
     "humanSettlementType" : "CITY",
     "entityType" : "GEOLOCATION"
   } ],
-  "publishers" : [ {
+  "agent" : {
     "identifiableObjectType" : "PERSON",
     "identifiers" : [ ],
     "label" : {
@@ -51,23 +52,6 @@
     "familyNames" : [ ],
     "givenNames" : [ ],
     "entityType" : "PERSON"
-  }, {
-    "identifiableObjectType" : "PERSON",
-    "identifiers" : [ ],
-    "label" : {
-      "de" : "Herausgeber: Hans Dampf"
-    },
-    "previewImageRenderingHints" : {
-      "openLinkInNewWindow" : false,
-      "title" : {
-        "de" : "Hans Dampf"
-      }
-    },
-    "type" : "ENTITY",
-    "refId" : 0,
-    "familyNames" : [ ],
-    "givenNames" : [ ],
-    "entityType" : "PERSON"
-  } ],
-  "publishersPresentation" : [ "Karl Ranseier", "Hans Dampf" ]
+  },
+  "publisherPresentation" : "München : Karl Ranseier"
 }

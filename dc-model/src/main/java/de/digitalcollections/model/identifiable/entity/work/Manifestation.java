@@ -63,7 +63,7 @@ public class Manifestation extends Entity {
   private LinkedHashSet<String> mediaTypes;
   private LinkedHashSet<Locale> otherLanguages;
   private List<RelationSpecification<Manifestation>> parents;
-  private List<Publication> publications;
+  private List<Publisher> publishers;
   private String publishingDatePresentation;
   private LocalDateRange publishingDateRange;
   private TimeValueRange publishingTimeValueRange;
@@ -137,8 +137,8 @@ public class Manifestation extends Entity {
     return parents;
   }
 
-  public List<Publication> getPublications() {
-    return publications;
+  public List<Publisher> getPublishers() {
+    return publishers;
   }
 
   public String getPublishingDatePresentation() {
@@ -185,8 +185,8 @@ public class Manifestation extends Entity {
     if (relations == null) {
       relations = new ArrayList<>();
     }
-    if (publications == null) {
-      publications = new ArrayList<>();
+    if (publishers == null) {
+      publishers = new ArrayList<>();
     }
     if (subjects == null) {
       subjects = new HashSet<>();
@@ -239,8 +239,8 @@ public class Manifestation extends Entity {
     this.parents = parents;
   }
 
-  public void setPublications(List<Publication> publications) {
-    this.publications = publications;
+  public void setPublishers(List<Publisher> publishers) {
+    this.publishers = publishers;
   }
 
   public void setPublishingDatePresentation(String publishingDatePresentation) {
@@ -304,8 +304,8 @@ public class Manifestation extends Entity {
         + otherLanguages
         + ", parents="
         + parents
-        + ", publications="
-        + publications
+        + ", publishers="
+        + publishers
         + ", publishingDatePresentation='"
         + publishingDatePresentation
         + '\''
@@ -382,7 +382,7 @@ public class Manifestation extends Entity {
         && Objects.equals(mediaTypes, that.mediaTypes)
         && Objects.equals(otherLanguages, that.otherLanguages)
         && Objects.equals(parents, that.parents)
-        && Objects.equals(publications, that.publications)
+        && Objects.equals(publishers, that.publishers)
         && Objects.equals(publishingDatePresentation, that.publishingDatePresentation)
         && Objects.equals(publishingDateRange, that.publishingDateRange)
         && Objects.equals(publishingTimeValueRange, that.publishingTimeValueRange)
@@ -407,7 +407,7 @@ public class Manifestation extends Entity {
         mediaTypes,
         otherLanguages,
         parents,
-        publications,
+        publishers,
         publishingDatePresentation,
         publishingDateRange,
         publishingTimeValueRange,
@@ -491,11 +491,11 @@ public class Manifestation extends Entity {
       return self();
     }
 
-    public B publication(Publication publication) {
-      if (publications == null) {
-        publications = new ArrayList<>(1);
+    public B publisher(Publisher publisher) {
+      if (publishers == null) {
+        publishers = new ArrayList<>(1);
       }
-      publications.add(publication);
+      publishers.add(publisher);
       return self();
     }
 
