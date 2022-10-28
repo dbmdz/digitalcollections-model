@@ -62,6 +62,13 @@ public class Publisher extends UniqueObject {
     this.locations = locations;
   }
 
+  public void addLocation(HumanSettlement location) {
+    if (locations == null) {
+      locations = new ArrayList<>(1);
+    }
+    locations.add(location);
+  }
+
   public void setAgent(Agent agent) {
     this.agent = agent;
   }
