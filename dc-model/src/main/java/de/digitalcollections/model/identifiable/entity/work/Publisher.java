@@ -3,6 +3,7 @@ package de.digitalcollections.model.identifiable.entity.work;
 import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.identifiable.entity.agent.Agent;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import lombok.experimental.SuperBuilder;
@@ -90,6 +91,14 @@ public class Publisher extends UniqueObject {
       C c = prebuild();
       c.init();
       return c;
+    }
+
+    public B location(HumanSettlement location) {
+      if (locations == null) {
+        locations = new ArrayList<>(1);
+      }
+      locations.add(location);
+      return self();
     }
   }
 }
