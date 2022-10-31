@@ -50,6 +50,13 @@ public class Work extends Entity {
     super();
   }
 
+  public void addCreator(Agent creator) {
+    if (creators == null) {
+      creators = new ArrayList<>(1);
+    }
+    creators.add(creator);
+  }
+
   public LocalDateRange getCreationDateRange() {
     return creationDateRange;
   }
