@@ -36,14 +36,15 @@ public class Publisher extends UniqueObject {
       return false;
     }
     Publisher that = (Publisher) o;
-    return Objects.equals(locations, that.locations)
+    return super.equals(that)
+        && Objects.equals(locations, that.locations)
         && Objects.equals(agent, that.agent)
         && Objects.equals(publisherPresentation, that.publisherPresentation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(locations, agent, publisherPresentation);
+    return Objects.hash(locations, agent, publisherPresentation) + super.hashCode() + 330;
   }
 
   public List<HumanSettlement> getLocations() {
@@ -79,8 +80,10 @@ public class Publisher extends UniqueObject {
 
   @Override
   public String toString() {
-    return "Publication{"
-        + "locations="
+    return "Publisher{"
+        + "uuid="
+        + uuid
+        + ", locations="
         + locations
         + ", agent="
         + agent
