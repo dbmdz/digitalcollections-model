@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
  *     example application using Spring boot MVC, Spring Data JPA with the ability to do filter,
  *     pagination and sorting.</a>
  */
-public class FilterCriterion<T extends Object> {
+public class FilterCriterion<T> {
 
   public static Builder builder() {
     return new Builder();
@@ -34,12 +34,12 @@ public class FilterCriterion<T extends Object> {
   }
 
   private String expression;
-  private Comparable<?> maxValue;
-  private Comparable<?> minValue;
+  private Comparable<T> maxValue;
+  private Comparable<T> minValue;
   private boolean nativeExpression;
   private FilterOperation operation;
-  private Object value;
-  private Collection<?> values;
+  private T value;
+  private Collection<T> values;
 
   public FilterCriterion() {
     init();
@@ -65,10 +65,10 @@ public class FilterCriterion<T extends Object> {
       String expression,
       boolean nativeExpression,
       FilterOperation operation,
-      Object value,
-      Comparable<?> minValue,
-      Comparable<?> maxValue,
-      Collection<?> values) {
+      T value,
+      Comparable<T> minValue,
+      Comparable<T> maxValue,
+      Collection<T> values) {
     this.expression = expression;
     this.nativeExpression = nativeExpression;
     this.operation = operation;
@@ -99,10 +99,10 @@ public class FilterCriterion<T extends Object> {
   public FilterCriterion(
       String expression,
       FilterOperation operation,
-      Object value,
-      Comparable<?> minValue,
-      Comparable<?> maxValue,
-      Collection<?> values) {
+      T value,
+      Comparable<T> minValue,
+      Comparable<T> maxValue,
+      Collection<T> values) {
     this(expression, false, operation, value, minValue, maxValue, values);
   }
 
@@ -113,7 +113,7 @@ public class FilterCriterion<T extends Object> {
    * @param operation operation of criterion
    * @param value operand of criterion
    */
-  public FilterCriterion(String expression, FilterOperation operation, Object value) {
+  public FilterCriterion(String expression, FilterOperation operation, T value) {
     this(expression, false, operation, value);
   }
 
@@ -126,7 +126,7 @@ public class FilterCriterion<T extends Object> {
    * @param value operand of criterion
    */
   public FilterCriterion(
-      String expression, boolean nativeExpression, FilterOperation operation, Object value) {
+      String expression, boolean nativeExpression, FilterOperation operation, T value) {
     this(expression, nativeExpression, operation, value, null, null, null);
     if (operation == FilterOperation.BETWEEN
         || operation == FilterOperation.IN
@@ -167,7 +167,7 @@ public class FilterCriterion<T extends Object> {
     this.minValue = other.minValue;
     this.nativeExpression = other.nativeExpression;
     this.operation = other.operation;
-    this.value = other.value;
+    this.value = (T) other.value;
     this.values = other.values;
   }
 
