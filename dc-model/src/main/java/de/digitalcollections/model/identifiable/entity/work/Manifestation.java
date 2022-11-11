@@ -83,6 +83,13 @@ public class Manifestation extends Entity {
     super();
   }
 
+  public void addParent(RelationSpecification<Manifestation> parent) {
+    if (parents == null) {
+      parents = new ArrayList<>();
+    }
+    parents.add(parent);
+  }
+
   public void addRelation(EntityRelation relation) {
     relations.add(relation);
   }
@@ -152,6 +159,7 @@ public class Manifestation extends Entity {
   public TimeValueRange getPublishingTimeValueRange() {
     return publishingTimeValueRange;
   }
+
   /**
    * @return Text describing the scale of object, e.g. of a map
    */
@@ -254,6 +262,7 @@ public class Manifestation extends Entity {
   public void setPublishingTimeValueRange(TimeValueRange publishingTimeValueRange) {
     this.publishingTimeValueRange = publishingTimeValueRange;
   }
+
   /**
    * @param scale Text describing the scale of object, e.g. of a map
    */
