@@ -46,6 +46,13 @@ public abstract class FilterCriterionMixIn extends FilterCriterion<Object> {
       @JsonProperty("minValue") Comparable<?> minValue,
       @JsonProperty("maxValue") Comparable<?> maxValue,
       @JsonProperty("values") Collection<?> values) {
-    super(expression, nativeExpression, operation, value, minValue, maxValue, values);
+    super(
+        expression,
+        nativeExpression,
+        operation,
+        value,
+        (Comparable<Object>) minValue,
+        (Comparable<Object>) maxValue,
+        (Collection<Object>) values);
   }
 }
