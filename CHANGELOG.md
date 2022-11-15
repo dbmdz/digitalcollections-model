@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bucket-Handling: Bucket (Sublist/Range of UniqueObjects), BucketRequest/Response and List of Bucket-Objects-Handling added
 - `EntityRelation` can contain additional predicates
 - **Breaking**: Jackson-MixIns (type info `objectType`) for classes directly extending `UniqueObject` (`Headword, Identifiable, Identifier, IdentifierType, License, Predicate, RenderingTemplate, User`)
+- **Breaking**: Predicate's description field changed from LocalizedText to LocalizedStructuredContent
 - Add submodule "mappings" with submodule "html" for mapping HTML code (currently supporting ul, li, a) to DC-Model StructuredContent
 - Add convenience method addLocalizedUrlAlias(UrlAlias urlAlias) to Identifiable
 - ValidationError/ValidationException classes for providing field specific validation errors over system borders (e.g. via REST)
