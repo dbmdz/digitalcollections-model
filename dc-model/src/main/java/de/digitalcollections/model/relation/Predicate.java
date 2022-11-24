@@ -1,7 +1,6 @@
 package de.digitalcollections.model.relation;
 
 import de.digitalcollections.model.UniqueObject;
-import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.LocalizedText;
 import javax.validation.constraints.NotBlank;
 import lombok.experimental.SuperBuilder;
@@ -10,7 +9,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(buildMethodName = "prebuild")
 public class Predicate extends UniqueObject {
 
-  private LocalizedStructuredContent description;
+  private LocalizedText description;
   private LocalizedText label;
 
   @NotBlank private String value;
@@ -28,7 +27,7 @@ public class Predicate extends UniqueObject {
    *
    * @return the description
    */
-  public LocalizedStructuredContent getDescription() {
+  public LocalizedText getDescription() {
     return description;
   }
 
@@ -55,7 +54,7 @@ public class Predicate extends UniqueObject {
    *
    * @param description the description
    */
-  public void setDescription(LocalizedStructuredContent description) {
+  public void setDescription(LocalizedText description) {
     this.description = description;
   }
 
