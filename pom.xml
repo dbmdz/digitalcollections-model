@@ -84,7 +84,7 @@
       <dependency>
         <groupId>org.wikidata.wdtk</groupId>
         <artifactId>wdtk-datamodel</artifactId>
-        <version>0.14.1</version>
+        <version>0.14.3</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
