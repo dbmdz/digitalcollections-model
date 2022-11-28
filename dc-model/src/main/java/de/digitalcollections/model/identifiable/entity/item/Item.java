@@ -1,7 +1,8 @@
-package de.digitalcollections.model.identifiable.entity.work;
+package de.digitalcollections.model.identifiable.entity.item;
 
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.agent.Agent;
+import de.digitalcollections.model.identifiable.entity.manifestation.Manifestation;
 import de.digitalcollections.model.text.LocalizedText;
 import java.util.ArrayList;
 import java.util.List;

@@ -2,8 +2,8 @@ package de.digitalcollections.model.jackson.identifiable.entity.work;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import de.digitalcollections.model.identifiable.entity.work.Title;
-import de.digitalcollections.model.identifiable.entity.work.TitleType;
+import de.digitalcollections.model.identifiable.entity.manifestation.Title;
+import de.digitalcollections.model.identifiable.entity.manifestation.TitleType;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.text.LocalizedText;
 import java.util.Locale;

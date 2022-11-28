@@ -1,5 +1,7 @@
-package de.digitalcollections.model.identifiable.entity.work;
+package de.digitalcollections.model.identifiable.entity.manifestation;
 
+import de.digitalcollections.model.identifiable.entity.work.Work;
+import de.digitalcollections.model.identifiable.entity.work.WorkType;
 import java.util.LinkedHashMap;
 import lombok.experimental.SuperBuilder;
 

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.digitalcollections.model.identifiable.Identifiable;
 import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.identifiable.IdentifierType;
-import de.digitalcollections.model.identifiable.entity.work.Publisher;
+import de.digitalcollections.model.identifiable.entity.manifestation.Publisher;
 import de.digitalcollections.model.legal.License;
 import de.digitalcollections.model.relation.Predicate;
 import de.digitalcollections.model.security.User;

@@ -1,6 +1,6 @@
 package de.digitalcollections.model.jackson.identifiable.entity.work;
 
-import de.digitalcollections.model.identifiable.entity.work.ExpressionType;
+import de.digitalcollections.model.identifiable.entity.manifestation.ExpressionType;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

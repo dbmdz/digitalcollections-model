@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - New fields in `Manifestation`
-- New models: `Subject`, `Publisher`, `Series`, `Title`, `Tag`, `LocalDateRange`, `TimeValueRange`
+- New models: `Subject`, `Publisher`, `Series`, `Title`, `Tag`, `LocalDateRange`, `TimeValueRange`, `PublicationInfo`, `DistributionInfo`, `ProductionInfo`,
 - New models: Interface `ManagedContent` and Enumeration `PublicationStatus` for content being managed in a content management system and having different states of publication ("online visibility")
 - New subtypes `MainSubType`, `ExpressionType`, `TitleType`, `WorkType`
 - Add field `tags` to `Identifiable`
@@ -25,7 +25,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Deprecated `PagingInfo` after adding paging util method `List<PageItem> getNavItems(int maxNumberOfItems)` to `PageResponse`.
+<<<<<<< HEAD
 - `Collection` implements `ManagedContent`
+=======
+- **Breaking**: Moved WEMI classes into new packaged structure
+>>>>>>> Three kinds of publishers
 
 ### Removed
 
