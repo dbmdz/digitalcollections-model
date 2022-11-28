@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import de.digitalcollections.model.identifiable.entity.work.Series;
+import de.digitalcollections.model.identifiable.entity.manifestation.Series;
 import de.digitalcollections.model.identifiable.entity.work.Work;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.EntityMixIn;
 

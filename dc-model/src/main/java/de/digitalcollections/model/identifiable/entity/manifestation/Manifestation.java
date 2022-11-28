@@ -1,12 +1,11 @@
-package de.digitalcollections.model.identifiable.entity.work;
+package de.digitalcollections.model.identifiable.entity.manifestation;
 
 import de.digitalcollections.model.RelationSpecification;
 import de.digitalcollections.model.identifiable.IdentifiableObjectType;
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
+import de.digitalcollections.model.identifiable.entity.work.Work;
 import de.digitalcollections.model.semantic.Subject;
-import de.digitalcollections.model.time.LocalDateRange;
-import de.digitalcollections.model.time.TimeValueRange;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -63,10 +62,10 @@ public class Manifestation extends Entity {
   private LinkedHashSet<String> mediaTypes;
   private LinkedHashSet<Locale> otherLanguages;
   private List<RelationSpecification<Manifestation>> parents;
-  private List<Publisher> publishers;
-  private String publishingDatePresentation;
-  private LocalDateRange publishingDateRange;
-  private TimeValueRange publishingTimeValueRange;
+  private List<PublicationInfo> publicationInfos;
+  private List<DistributionInfo> distributionInfos;
+  private List<ProductionInfo> productionInfos;
+
   /**
    * Text describing the scale of object, e.g. of a map.
    *
@@ -144,20 +143,16 @@ public class Manifestation extends Entity {
     return parents;
   }
 
-  public List<Publisher> getPublishers() {
-    return publishers;
+  public List<PublicationInfo> getPublicationInfos() {
+    return publicationInfos;
   }
 
-  public String getPublishingDatePresentation() {
-    return publishingDatePresentation;
+  public List<DistributionInfo> getDistributionInfos() {
+    return distributionInfos;
   }
 
-  public LocalDateRange getPublishingDateRange() {
-    return publishingDateRange;
-  }
-
-  public TimeValueRange getPublishingTimeValueRange() {
-    return publishingTimeValueRange;
+  public List<ProductionInfo> getProductionInfos() {
+    return productionInfos;
   }
 
   /**
@@ -193,8 +188,14 @@ public class Manifestation extends Entity {
     if (relations == null) {
       relations = new ArrayList<>();
     }
-    if (publishers == null) {
-      publishers = new ArrayList<>();
+    if (publicationInfos == null) {
+      publicationInfos = new ArrayList<>();
+    }
+    if (distributionInfos == null) {
+      distributionInfos = new ArrayList<>();
+    }
+    if (productionInfos == null) {
+      productionInfos = new ArrayList<>();
     }
     if (subjects == null) {
       subjects = new HashSet<>();
@@ -247,20 +248,16 @@ public class Manifestation extends Entity {
     this.parents = parents;
   }
 
-  public void setPublishers(List<Publisher> publishers) {
-    this.publishers = publishers;
+  public void setPublicationInfos(List<PublicationInfo> publicationInfos) {
+    this.publicationInfos = publicationInfos;
   }
 
-  public void setPublishingDatePresentation(String publishingDatePresentation) {
-    this.publishingDatePresentation = publishingDatePresentation;
+  public void setDistributionInfos(List<DistributionInfo> distributionInfos) {
+    this.distributionInfos = distributionInfos;
   }
 
-  public void setPublishingDateRange(LocalDateRange publishingDateRange) {
-    this.publishingDateRange = publishingDateRange;
-  }
-
-  public void setPublishingTimeValueRange(TimeValueRange publishingTimeValueRange) {
-    this.publishingTimeValueRange = publishingTimeValueRange;
+  public void setProductionInfos(List<ProductionInfo> productionInfos) {
+    this.productionInfos = productionInfos;
   }
 
   /**
@@ -313,15 +310,12 @@ public class Manifestation extends Entity {
         + otherLanguages
         + ", parents="
         + parents
-        + ", publishers="
-        + publishers
-        + ", publishingDatePresentation='"
-        + publishingDatePresentation
-        + '\''
-        + ", publishingDateRange="
-        + publishingDateRange
-        + ", publishingTimeValueRange="
-        + publishingTimeValueRange
+        + ", publicationInfos="
+        + publicationInfos
+        + ", distributionInfos="
+        + distributionInfos
+        + ", productionInfos="
+        + productionInfos
         + ", scale='"
         + scale
         + '\''
@@ -391,10 +385,9 @@ public class Manifestation extends Entity {
         && Objects.equals(mediaTypes, that.mediaTypes)
         && Objects.equals(otherLanguages, that.otherLanguages)
         && Objects.equals(parents, that.parents)
-        && Objects.equals(publishers, that.publishers)
-        && Objects.equals(publishingDatePresentation, that.publishingDatePresentation)
-        && Objects.equals(publishingDateRange, that.publishingDateRange)
-        && Objects.equals(publishingTimeValueRange, that.publishingTimeValueRange)
+        && Objects.equals(publicationInfos, that.publicationInfos)
+        && Objects.equals(distributionInfos, that.distributionInfos)
+        && Objects.equals(productionInfos, that.productionInfos)
         && Objects.equals(scale, that.scale)
         && Objects.equals(subjects, that.subjects)
         && Objects.equals(titles, that.titles)
@@ -416,10 +409,9 @@ public class Manifestation extends Entity {
         mediaTypes,
         otherLanguages,
         parents,
-        publishers,
-        publishingDatePresentation,
-        publishingDateRange,
-        publishingTimeValueRange,
+        publicationInfos,
+        distributionInfos,
+        productionInfos,
         scale,
         subjects,
         titles,
@@ -500,11 +492,27 @@ public class Manifestation extends Entity {
       return self();
     }
 
-    public B publisher(Publisher publisher) {
-      if (publishers == null) {
-        publishers = new ArrayList<>(1);
+    public B publicationInfo(PublicationInfo publicationInfo) {
+      if (publicationInfos == null) {
+        publicationInfos = new ArrayList<>(1);
       }
-      publishers.add(publisher);
+      publicationInfos.add(publicationInfo);
+      return self();
+    }
+
+    public B distributionInfo(DistributionInfo distributionInfo) {
+      if (distributionInfos == null) {
+        distributionInfos = new ArrayList<>(1);
+      }
+      distributionInfos.add(distributionInfo);
+      return self();
+    }
+
+    public B productionInfo(ProductionInfo productionInfo) {
+      if (productionInfos == null) {
+        productionInfos = new ArrayList<>(1);
+      }
+      productionInfos.add(productionInfo);
       return self();
     }
 

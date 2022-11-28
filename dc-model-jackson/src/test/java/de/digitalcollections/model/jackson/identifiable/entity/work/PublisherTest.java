@@ -3,7 +3,7 @@ package de.digitalcollections.model.jackson.identifiable.entity.work;
 import de.digitalcollections.model.identifiable.entity.agent.Person;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlementType;
-import de.digitalcollections.model.identifiable.entity.work.Publisher;
+import de.digitalcollections.model.identifiable.entity.manifestation.Publisher;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import java.util.List;
 import java.util.Locale;

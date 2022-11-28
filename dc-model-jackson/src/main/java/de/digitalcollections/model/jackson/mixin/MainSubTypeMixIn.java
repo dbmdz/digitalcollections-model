@@ -8,8 +8,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import de.digitalcollections.model.MainSubType;
-import de.digitalcollections.model.identifiable.entity.work.ExpressionType;
-import de.digitalcollections.model.identifiable.entity.work.TitleType;
+import de.digitalcollections.model.identifiable.entity.manifestation.ExpressionType;
+import de.digitalcollections.model.identifiable.entity.manifestation.TitleType;
 
 @JsonDeserialize(as = MainSubType.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

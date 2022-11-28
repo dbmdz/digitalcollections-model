@@ -1,4 +1,4 @@
-package de.digitalcollections.model.identifiable.entity.work;
+package de.digitalcollections.model.identifiable.entity.manifestation;
 
 import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.identifiable.entity.agent.Agent;
