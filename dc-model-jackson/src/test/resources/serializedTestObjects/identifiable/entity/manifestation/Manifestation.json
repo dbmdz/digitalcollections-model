@@ -85,7 +85,9 @@
       "type" : "ENTITY",
       "refId" : 0,
       "relations" : [ ],
-      "publishers" : [ ],
+      "publicationInfos" : [ ],
+      "distributionInfos" : [ ],
+      "productionInfos" : [ ],
       "subjects" : [ ],
       "titles" : [ ],
       "entityType" : "MANIFESTATION"

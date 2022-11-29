@@ -1,15 +1,15 @@
-package de.digitalcollections.model.jackson.identifiable.entity;
+package de.digitalcollections.model.jackson.identifiable.entity.digitalobject;
 
 import de.digitalcollections.model.identifiable.Identifier;
-import de.digitalcollections.model.identifiable.entity.DigitalObject;
 import de.digitalcollections.model.identifiable.entity.agent.Agent;
 import de.digitalcollections.model.identifiable.entity.agent.Person;
+import de.digitalcollections.model.identifiable.entity.digitalobject.CreationInfo;
+import de.digitalcollections.model.identifiable.entity.digitalobject.DigitalObject;
 import de.digitalcollections.model.identifiable.entity.geo.location.GeoLocation;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
 import de.digitalcollections.model.identifiable.resource.ApplicationFileResource;
 import de.digitalcollections.model.identifiable.resource.ImageFileResource;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
-import de.digitalcollections.model.production.CreationInfo;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 

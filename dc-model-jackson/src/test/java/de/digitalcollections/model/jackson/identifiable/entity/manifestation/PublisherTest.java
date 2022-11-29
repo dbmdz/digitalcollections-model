@@ -1,4 +1,4 @@
-package de.digitalcollections.model.jackson.identifiable.entity.work;
+package de.digitalcollections.model.jackson.identifiable.entity.manifestation;
 
 import de.digitalcollections.model.identifiable.entity.agent.Person;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
@@ -40,6 +40,6 @@ public class PublisherTest extends BaseJsonSerializationTest {
             .build();
 
     checkSerializeDeserialize(
-        publication, "serializedTestObjects/identifiable/entity/work/Publisher.json");
+        publication, "serializedTestObjects/identifiable/entity/manifestation/Publisher.json");
   }
 }

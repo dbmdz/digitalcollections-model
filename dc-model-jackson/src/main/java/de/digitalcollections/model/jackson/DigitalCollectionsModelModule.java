@@ -20,7 +20,6 @@ import de.digitalcollections.model.identifiable.alias.LocalizedUrlAliases;
 import de.digitalcollections.model.identifiable.alias.UrlAlias;
 import de.digitalcollections.model.identifiable.entity.Article;
 import de.digitalcollections.model.identifiable.entity.Collection;
-import de.digitalcollections.model.identifiable.entity.DigitalObject;
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.HeadwordEntry;
 import de.digitalcollections.model.identifiable.entity.Project;
@@ -30,12 +29,16 @@ import de.digitalcollections.model.identifiable.entity.agent.Agent;
 import de.digitalcollections.model.identifiable.entity.agent.CorporateBody;
 import de.digitalcollections.model.identifiable.entity.agent.Family;
 import de.digitalcollections.model.identifiable.entity.agent.Person;
+import de.digitalcollections.model.identifiable.entity.digitalobject.DigitalObject;
 import de.digitalcollections.model.identifiable.entity.geo.location.GeoLocation;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
 import de.digitalcollections.model.identifiable.entity.geo.location.Mountain;
 import de.digitalcollections.model.identifiable.entity.item.Item;
+import de.digitalcollections.model.identifiable.entity.manifestation.DistributionInfo;
 import de.digitalcollections.model.identifiable.entity.manifestation.ExpressionType;
 import de.digitalcollections.model.identifiable.entity.manifestation.Manifestation;
+import de.digitalcollections.model.identifiable.entity.manifestation.ProductionInfo;
+import de.digitalcollections.model.identifiable.entity.manifestation.PublicationInfo;
 import de.digitalcollections.model.identifiable.entity.manifestation.Publisher;
 import de.digitalcollections.model.identifiable.entity.manifestation.Series;
 import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
@@ -60,7 +63,6 @@ import de.digitalcollections.model.jackson.mixin.identifiable.alias.LocalizedUrl
 import de.digitalcollections.model.jackson.mixin.identifiable.alias.UrlAliasMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.ArticleMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.CollectionMixIn;
-import de.digitalcollections.model.jackson.mixin.identifiable.entity.DigitalObjectMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.EntityMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.HeadwordEntryMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.ProjectMixIn;
@@ -70,15 +72,19 @@ import de.digitalcollections.model.jackson.mixin.identifiable.entity.agent.Agent
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.agent.CorporateBodyMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.agent.FamilyMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.agent.PersonMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.digitalobject.DigitalObjectMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.geo.location.GeoLocationMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.geo.location.HumanSettlementMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.geo.location.MountainMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.item.ItemMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.manifestation.DistributionInfoMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.manifestation.ExpressionTypeMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.manifestation.ManifestationMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.manifestation.ProductionInfoMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.manifestation.PublicationInfoMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.manifestation.PublisherMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.manifestation.SeriesMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.relation.EntityRelationMixIn;
-import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.ExpressionTypeMixIn;
-import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.ItemMixIn;
-import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.ManifestationMixIn;
-import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.PublisherMixIn;
-import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.SeriesMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.WorkMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.ApplicationFileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.AudioFileResourceMixIn;
@@ -230,12 +236,19 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(Mountain.class, MountainMixIn.class);
 
     // work
+    context.setMixInAnnotations(Work.class, WorkMixIn.class);
+
+    // manifestation and expression
     context.setMixInAnnotations(ExpressionType.class, ExpressionTypeMixIn.class);
-    context.setMixInAnnotations(Item.class, ItemMixIn.class);
     context.setMixInAnnotations(Manifestation.class, ManifestationMixIn.class);
     context.setMixInAnnotations(Publisher.class, PublisherMixIn.class);
+    context.setMixInAnnotations(PublicationInfo.class, PublicationInfoMixIn.class);
+    context.setMixInAnnotations(ProductionInfo.class, ProductionInfoMixIn.class);
+    context.setMixInAnnotations(DistributionInfo.class, DistributionInfoMixIn.class);
     context.setMixInAnnotations(Series.class, SeriesMixIn.class);
-    context.setMixInAnnotations(Work.class, WorkMixIn.class);
+
+    // item
+    context.setMixInAnnotations(Item.class, ItemMixIn.class);
 
     // semantic
     context.setMixInAnnotations(Headword.class, HeadwordMixIn.class);

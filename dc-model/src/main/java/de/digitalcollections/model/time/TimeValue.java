@@ -132,6 +132,8 @@ public class TimeValue implements org.wikidata.wdtk.datamodel.interfaces.TimeVal
     this.year = year;
   }
 
+  // TODO Konstuktur mit int values oder besser: builder
+
   @Override
   public <T> T accept(ValueVisitor<T> valueVisitor) {
     return null;
