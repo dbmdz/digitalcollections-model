@@ -53,5 +53,38 @@
     "givenNames" : [ ],
     "entityType" : "PERSON"
   },
+  "dateRange" : {
+    "end" : "2021-12-31",
+    "start" : "1929-01-01"
+  },
+  "timeValueRange" : {
+    "end" : {
+      "afterTolerance" : 0,
+      "beforeTolerance" : 0,
+      "day" : 0,
+      "hour" : 0,
+      "minute" : 0,
+      "month" : 0,
+      "precision" : 9,
+      "preferredCalendarModel" : "http://www.wikidata.org/entity/Q1985727",
+      "second" : 0,
+      "timezoneOffset" : 0,
+      "year" : 2021
+    },
+    "start" : {
+      "afterTolerance" : 0,
+      "beforeTolerance" : 0,
+      "day" : 0,
+      "hour" : 0,
+      "minute" : 0,
+      "month" : 0,
+      "precision" : 9,
+      "preferredCalendarModel" : "http://www.wikidata.org/entity/Q1985727",
+      "second" : 0,
+      "timezoneOffset" : 0,
+      "year" : 1929
+    }
+  },
+  "datePresentation" : "1929 - 2021",
   "publisherPresentation" : "München : Karl Ranseier"
 }
