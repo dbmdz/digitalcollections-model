@@ -85,15 +85,12 @@
       "type" : "ENTITY",
       "refId" : 0,
       "relations" : [ ],
-      "publicationInfos" : [ ],
-      "distributionInfos" : [ ],
-      "productionInfos" : [ ],
       "subjects" : [ ],
       "titles" : [ ],
       "entityType" : "MANIFESTATION"
     }
   } ],
-  "publicationInfos" : [ {
+  "publicationInfo" : {
     "publishers" : [ {
       "objectType" : "PUBLISHER",
       "locations" : [ {
@@ -277,9 +274,7 @@
         "year" : 2020
       }
     }
-  } ],
-  "distributionInfos" : [ ],
-  "productionInfos" : [ ],
+  },
   "scale" : "[Ca. 1:820 000]",
   "subjects" : [ {
     "objectType" : "SUBJECT",

@@ -62,9 +62,9 @@ public class Manifestation extends Entity {
   private LinkedHashSet<String> mediaTypes;
   private LinkedHashSet<Locale> otherLanguages;
   private List<RelationSpecification<Manifestation>> parents;
-  private List<PublicationInfo> publicationInfos;
-  private List<DistributionInfo> distributionInfos;
-  private List<ProductionInfo> productionInfos;
+  private PublicationInfo publicationInfo;
+  private DistributionInfo distributionInfo;
+  private ProductionInfo productionInfo;
 
   /**
    * Text describing the scale of object, e.g. of a map.
@@ -143,16 +143,16 @@ public class Manifestation extends Entity {
     return parents;
   }
 
-  public List<PublicationInfo> getPublicationInfos() {
-    return publicationInfos;
+  public PublicationInfo getPublicationInfo() {
+    return publicationInfo;
   }
 
-  public List<DistributionInfo> getDistributionInfos() {
-    return distributionInfos;
+  public DistributionInfo getDistributionInfo() {
+    return distributionInfo;
   }
 
-  public List<ProductionInfo> getProductionInfos() {
-    return productionInfos;
+  public ProductionInfo getProductionInfo() {
+    return productionInfo;
   }
 
   /**
@@ -187,15 +187,6 @@ public class Manifestation extends Entity {
     }
     if (relations == null) {
       relations = new ArrayList<>();
-    }
-    if (publicationInfos == null) {
-      publicationInfos = new ArrayList<>();
-    }
-    if (distributionInfos == null) {
-      distributionInfos = new ArrayList<>();
-    }
-    if (productionInfos == null) {
-      productionInfos = new ArrayList<>();
     }
     if (subjects == null) {
       subjects = new HashSet<>();
@@ -248,16 +239,16 @@ public class Manifestation extends Entity {
     this.parents = parents;
   }
 
-  public void setPublicationInfos(List<PublicationInfo> publicationInfos) {
-    this.publicationInfos = publicationInfos;
+  public void setPublicationInfo(PublicationInfo publicationInfo) {
+    this.publicationInfo = publicationInfo;
   }
 
-  public void setDistributionInfos(List<DistributionInfo> distributionInfos) {
-    this.distributionInfos = distributionInfos;
+  public void setDistributionInfo(DistributionInfo distributionInfo) {
+    this.distributionInfo = distributionInfo;
   }
 
-  public void setProductionInfos(List<ProductionInfo> productionInfos) {
-    this.productionInfos = productionInfos;
+  public void setProductionInfo(ProductionInfo productionInfo) {
+    this.productionInfo = productionInfo;
   }
 
   /**
@@ -310,12 +301,12 @@ public class Manifestation extends Entity {
         + otherLanguages
         + ", parents="
         + parents
-        + ", publicationInfos="
-        + publicationInfos
-        + ", distributionInfos="
-        + distributionInfos
-        + ", productionInfos="
-        + productionInfos
+        + ", publicationInfo="
+        + publicationInfo
+        + ", distributionInfo="
+        + distributionInfo
+        + ", productionInfo="
+        + productionInfo
         + ", scale='"
         + scale
         + '\''
@@ -385,9 +376,9 @@ public class Manifestation extends Entity {
         && Objects.equals(mediaTypes, that.mediaTypes)
         && Objects.equals(otherLanguages, that.otherLanguages)
         && Objects.equals(parents, that.parents)
-        && Objects.equals(publicationInfos, that.publicationInfos)
-        && Objects.equals(distributionInfos, that.distributionInfos)
-        && Objects.equals(productionInfos, that.productionInfos)
+        && Objects.equals(publicationInfo, that.publicationInfo)
+        && Objects.equals(distributionInfo, that.distributionInfo)
+        && Objects.equals(productionInfo, that.productionInfo)
         && Objects.equals(scale, that.scale)
         && Objects.equals(subjects, that.subjects)
         && Objects.equals(titles, that.titles)
@@ -409,9 +400,9 @@ public class Manifestation extends Entity {
         mediaTypes,
         otherLanguages,
         parents,
-        publicationInfos,
-        distributionInfos,
-        productionInfos,
+        publicationInfo,
+        distributionInfo,
+        productionInfo,
         scale,
         subjects,
         titles,
@@ -489,30 +480,6 @@ public class Manifestation extends Entity {
         parents = new ArrayList<>(1);
       }
       parents.add(parent);
-      return self();
-    }
-
-    public B publicationInfo(PublicationInfo publicationInfo) {
-      if (publicationInfos == null) {
-        publicationInfos = new ArrayList<>(1);
-      }
-      publicationInfos.add(publicationInfo);
-      return self();
-    }
-
-    public B distributionInfo(DistributionInfo distributionInfo) {
-      if (distributionInfos == null) {
-        distributionInfos = new ArrayList<>(1);
-      }
-      distributionInfos.add(distributionInfo);
-      return self();
-    }
-
-    public B productionInfo(ProductionInfo productionInfo) {
-      if (productionInfos == null) {
-        productionInfos = new ArrayList<>(1);
-      }
-      productionInfos.add(productionInfo);
       return self();
     }
 
