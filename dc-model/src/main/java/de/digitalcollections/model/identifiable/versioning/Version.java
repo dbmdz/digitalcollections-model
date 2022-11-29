@@ -1,9 +1,10 @@
 package de.digitalcollections.model.identifiable.versioning;
 
+import de.digitalcollections.model.identifiable.entity.digitalobject.DigitalObject;
 import java.util.Date;
 import java.util.UUID;
 
-/** Version of a {@link de.digitalcollections.model.identifiable.entity.DigitalObject} */
+/** Version of a {@link DigitalObject} */
 public class Version {
 
   public static Builder builder() {

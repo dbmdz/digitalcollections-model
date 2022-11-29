@@ -1,4 +1,4 @@
-package de.digitalcollections.model.production;
+package de.digitalcollections.model.identifiable.entity.digitalobject;
 
 import de.digitalcollections.model.identifiable.entity.agent.Agent;
 import de.digitalcollections.model.identifiable.entity.geo.location.GeoLocation;

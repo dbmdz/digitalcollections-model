@@ -1,4 +1,4 @@
-package de.digitalcollections.model.identifiable.entity;
+package de.digitalcollections.model.identifiable.entity.digitalobject;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

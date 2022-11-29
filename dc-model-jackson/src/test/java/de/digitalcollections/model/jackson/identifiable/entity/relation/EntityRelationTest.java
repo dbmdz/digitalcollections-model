@@ -1,7 +1,7 @@
 package de.digitalcollections.model.jackson.identifiable.entity.relation;
 
 import de.digitalcollections.model.identifiable.entity.Article;
-import de.digitalcollections.model.identifiable.entity.DigitalObject;
+import de.digitalcollections.model.identifiable.entity.digitalobject.DigitalObject;
 import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import java.util.List;

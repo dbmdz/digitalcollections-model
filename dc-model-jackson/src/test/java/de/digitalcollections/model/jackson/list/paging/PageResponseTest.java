@@ -1,7 +1,7 @@
 package de.digitalcollections.model.jackson.list.paging;
 
 import de.digitalcollections.model.identifiable.Identifiable;
-import de.digitalcollections.model.identifiable.entity.DigitalObject;
+import de.digitalcollections.model.identifiable.entity.digitalobject.DigitalObject;
 import de.digitalcollections.model.identifiable.web.Webpage;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.list.filtering.FilterCriterion;

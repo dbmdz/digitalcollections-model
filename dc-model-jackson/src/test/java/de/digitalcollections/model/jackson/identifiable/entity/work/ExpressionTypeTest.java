@@ -15,6 +15,7 @@ class ExpressionTypeTest extends BaseJsonSerializationTest {
         ExpressionType.builder().mainType("TEXT").subType("PRINT").build();
 
     checkSerializeDeserialize(
-        expressionType, "serializedTestObjects/identifiable/entity/work/ExpressionType.json");
+        expressionType,
+        "serializedTestObjects/identifiable/entity/manifestation/ExpressionType.json");
   }
 }

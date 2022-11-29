@@ -1,4 +1,4 @@
-package de.digitalcollections.model.jackson.mixin.identifiable.entity.work;
+package de.digitalcollections.model.jackson.mixin.identifiable.entity.item;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

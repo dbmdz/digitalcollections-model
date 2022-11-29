@@ -1,11 +1,12 @@
-package de.digitalcollections.model.identifiable.entity;
+package de.digitalcollections.model.identifiable.entity.digitalobject;
 
+import de.digitalcollections.model.identifiable.entity.Entity;
+import de.digitalcollections.model.identifiable.entity.EntityType;
 import de.digitalcollections.model.identifiable.entity.item.Item;
 import de.digitalcollections.model.identifiable.resource.FileResource;
 import de.digitalcollections.model.identifiable.resource.LinkedDataFileResource;
 import de.digitalcollections.model.identifiable.versioning.Version;
 import de.digitalcollections.model.legal.License;
-import de.digitalcollections.model.production.CreationInfo;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.experimental.SuperBuilder;

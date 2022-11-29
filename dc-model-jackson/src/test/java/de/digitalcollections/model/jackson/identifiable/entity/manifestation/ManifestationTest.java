@@ -1,4 +1,4 @@
-package de.digitalcollections.model.jackson.identifiable.entity.work;
+package de.digitalcollections.model.jackson.identifiable.entity.manifestation;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -8,6 +8,7 @@ import de.digitalcollections.model.identifiable.entity.agent.Person;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
 import de.digitalcollections.model.identifiable.entity.manifestation.ExpressionType;
 import de.digitalcollections.model.identifiable.entity.manifestation.Manifestation;
+import de.digitalcollections.model.identifiable.entity.manifestation.PublicationInfo;
 import de.digitalcollections.model.identifiable.entity.manifestation.Publisher;
 import de.digitalcollections.model.identifiable.entity.manifestation.Title;
 import de.digitalcollections.model.identifiable.entity.manifestation.TitleType;
@@ -76,35 +77,45 @@ public class ManifestationTest extends BaseJsonSerializationTest {
                         .subject(Person.builder().label(Locale.GERMAN, "Arnold Hiller").build())
                         .predicate("is_author_of")
                         .build()))
-            .publishingTimeValueRange(
-                new TimeValueRange(
-                    new TimeValue(
-                        2020,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        TimeValue.PREC_YEAR,
-                        0,
-                        0,
-                        0,
-                        TimeValue.CM_GREGORIAN_PRO),
-                    new TimeValue(
-                        2020,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        TimeValue.PREC_YEAR,
-                        0,
-                        0,
-                        0,
-                        TimeValue.CM_GREGORIAN_PRO)))
-            .publishingDatePresentation("2020")
-            .publishingDateRange(
-                new LocalDateRange(LocalDate.parse("2020-04-28"), LocalDate.parse("2020-04-28")))
+            .publicationInfo(
+                PublicationInfo.builder()
+                    .datePresentation("2020")
+                    .dateRange(
+                        new LocalDateRange(
+                            LocalDate.parse("2020-04-28"), LocalDate.parse("2020-04-28")))
+                    .timeValueRange(
+                        new TimeValueRange(
+                            new TimeValue(
+                                2020,
+                                0,
+                                0,
+                                0,
+                                0,
+                                0,
+                                TimeValue.PREC_YEAR,
+                                0,
+                                0,
+                                0,
+                                TimeValue.CM_GREGORIAN_PRO),
+                            new TimeValue(
+                                2020,
+                                0,
+                                0,
+                                0,
+                                0,
+                                0,
+                                TimeValue.PREC_YEAR,
+                                0,
+                                0,
+                                0,
+                                TimeValue.CM_GREGORIAN_PRO)))
+                    .publishers(
+                        List.of(
+                            buildPublisher("Karl Ranseier", List.of("Köln")),
+                            buildPublisher("Hans Dampf", List.of("Frankfurt", "München")),
+                            buildPublisher(null, List.of("München", "Berlin")),
+                            buildPublisher("Max Moritz", null)))
+                    .build())
             .navDate("2022-08-30")
             .language(Locale.GERMAN)
             .otherLanguages(new LinkedHashSet<>(List.of(Locale.ITALIAN)))
@@ -114,12 +125,6 @@ public class ManifestationTest extends BaseJsonSerializationTest {
                     List.of( // list ensures order
                         ExpressionType.builder().mainType("TEXT").subType("PRINT").build(),
                         ExpressionType.builder().mainType("TEXT").subType("HANDWRITING").build())))
-            .publishers(
-                List.of(
-                    buildPublisher("Karl Ranseier", List.of("Köln")),
-                    buildPublisher("Hans Dampf", List.of("Frankfurt", "München")),
-                    buildPublisher(null, List.of("München", "Berlin")),
-                    buildPublisher("Max Moritz", null)))
             .tag(
                 Tag.builder()
                     .type("tag-type")
@@ -196,7 +201,8 @@ public class ManifestationTest extends BaseJsonSerializationTest {
   public void testSerializeDeserialize() throws Exception {
     Manifestation manifestation = createObject();
     checkSerializeDeserialize(
-        manifestation, "serializedTestObjects/identifiable/entity/work/Manifestation.json");
+        manifestation,
+        "serializedTestObjects/identifiable/entity/manifestation/Manifestation.json");
   }
 
   @DisplayName("only dumps uuids of relations in toString to avoid recursion")

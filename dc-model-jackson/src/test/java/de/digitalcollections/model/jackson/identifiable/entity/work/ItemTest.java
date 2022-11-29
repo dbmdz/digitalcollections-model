@@ -28,6 +28,6 @@ public class ItemTest extends BaseJsonSerializationTest {
   @Test
   public void testSerializeDeserialize() throws Exception {
     Item item = createObject();
-    checkSerializeDeserialize(item, "serializedTestObjects/identifiable/entity/work/Item.json");
+    checkSerializeDeserialize(item, "serializedTestObjects/identifiable/entity/item/Item.json");
   }
 }

@@ -58,6 +58,8 @@ public abstract class BaseJsonSerializationTest {
   }
 
   private String dump(Object o) throws JsonProcessingException {
+    System.out.println(getMapper().writeValueAsString(o));
+
     return getMapper().writerWithDefaultPrettyPrinter().writeValueAsString(o);
   }
 
