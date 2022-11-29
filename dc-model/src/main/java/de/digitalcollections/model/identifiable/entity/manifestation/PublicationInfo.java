@@ -15,6 +15,40 @@ public class PublicationInfo {
   private LocalDateRange dateRange;
   private TimeValueRange timeValueRange;
 
+  public PublicationInfo() {}
+
+  public List<Publisher> getPublishers() {
+    return publishers;
+  }
+
+  public void setPublishers(List<Publisher> publishers) {
+    this.publishers = publishers;
+  }
+
+  public String getDatePresentation() {
+    return datePresentation;
+  }
+
+  public void setDatePresentation(String datePresentation) {
+    this.datePresentation = datePresentation;
+  }
+
+  public LocalDateRange getDateRange() {
+    return dateRange;
+  }
+
+  public void setDateRange(LocalDateRange dateRange) {
+    this.dateRange = dateRange;
+  }
+
+  public TimeValueRange getTimeValueRange() {
+    return timeValueRange;
+  }
+
+  public void setTimeValueRange(TimeValueRange timeValueRange) {
+    this.timeValueRange = timeValueRange;
+  }
+
   @Override
   public String toString() {
     return "PublicationInfo{"
