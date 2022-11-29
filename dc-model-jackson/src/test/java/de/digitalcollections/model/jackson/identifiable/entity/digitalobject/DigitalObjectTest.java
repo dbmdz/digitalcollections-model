@@ -46,6 +46,7 @@ public class DigitalObjectTest extends BaseJsonSerializationTest {
   public void testSerializeDeserialize() throws Exception {
     DigitalObject digitalObject = createObject();
     checkSerializeDeserialize(
-        digitalObject, "serializedTestObjects/identifiable/entity/DigitalObject.json");
+        digitalObject,
+        "serializedTestObjects/identifiable/entity/digitalobject/DigitalObject.json");
   }
 }
