@@ -37,9 +37,9 @@ import de.digitalcollections.model.identifiable.entity.item.Item;
 import de.digitalcollections.model.identifiable.entity.manifestation.DistributionInfo;
 import de.digitalcollections.model.identifiable.entity.manifestation.ExpressionType;
 import de.digitalcollections.model.identifiable.entity.manifestation.Manifestation;
-import de.digitalcollections.model.identifiable.entity.manifestation.ProductionInfo;
 import de.digitalcollections.model.identifiable.entity.manifestation.PublicationInfo;
 import de.digitalcollections.model.identifiable.entity.manifestation.Publisher;
+import de.digitalcollections.model.identifiable.entity.manifestation.PublishingInfo;
 import de.digitalcollections.model.identifiable.entity.manifestation.Series;
 import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 import de.digitalcollections.model.identifiable.entity.work.Work;
@@ -243,7 +243,7 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(Manifestation.class, ManifestationMixIn.class);
     context.setMixInAnnotations(Publisher.class, PublisherMixIn.class);
     context.setMixInAnnotations(PublicationInfo.class, PublicationInfoMixIn.class);
-    context.setMixInAnnotations(ProductionInfo.class, ProductionInfoMixIn.class);
+    context.setMixInAnnotations(PublishingInfo.class, ProductionInfoMixIn.class);
     context.setMixInAnnotations(DistributionInfo.class, DistributionInfoMixIn.class);
     context.setMixInAnnotations(Series.class, SeriesMixIn.class);
 
