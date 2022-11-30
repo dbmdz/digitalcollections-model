@@ -8,7 +8,17 @@ import java.util.List;
 import java.util.Objects;
 import lombok.experimental.SuperBuilder;
 
-/** Example: Mayence, Anvers, Bruxelles : chez les fils de B. Schott */
+/**
+ * A Publisher is kind of involvement, consisting of the agent (zero or one), a list of locations
+ * (or zero locations) and a date (can be empty, too), which is relevant for this publisher
+ * involvement.
+ *
+ * <p>A Publisher can be an organization, which is active at multiple places and during a certain
+ * period of time.
+ *
+ * <p>Just think of a (here fictive) publishing house, e.g. "Karl-Ranseier-Verlag", which had
+ * dependencies in Cologne and Berlin and was active between 1994 and 1998.
+ */
 @SuperBuilder(buildMethodName = "prebuild")
 public class Publisher extends UniqueObject {
 

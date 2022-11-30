@@ -7,6 +7,11 @@ import java.util.List;
 import java.util.Objects;
 import lombok.experimental.SuperBuilder;
 
+/**
+ * A container, which integrated all publishers, which are responsible in a certain way (e.g.
+ * production) for a manifestation, and which also holds information about the time range of that
+ * involvement.
+ */
 @SuperBuilder(buildMethodName = "prebuild")
 public class PublishingInfo {
 
