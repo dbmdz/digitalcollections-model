@@ -12,7 +12,7 @@ public class PublishingInfo {
 
   private List<Publisher> publishers;
   private String datePresentation;
-  private LocalDateRange navDateRange; // für Sortierung und Suche, heuristisch befüllt
+  private LocalDateRange navDateRange;
   private TimeValueRange timeValueRange;
 
   public PublishingInfo() {}
@@ -32,26 +32,56 @@ public class PublishingInfo {
     this.publishers = publishers;
   }
 
+  /**
+   * The original free text representation of the date or date range
+   *
+   * @return the textual representation with no restrictions at all
+   */
   public String getDatePresentation() {
     return datePresentation;
   }
 
+  /**
+   * Used to fill the textual representation of the date or date range
+   *
+   * @param datePresentation A string with any data, you want
+   */
   public void setDatePresentation(String datePresentation) {
     this.datePresentation = datePresentation;
   }
 
+  /**
+   * The "navigation" date range - use for sorting and querying, will be filled heuristically
+   *
+   * @return a filled LocalDateRange
+   */
   public LocalDateRange getNavDateRange() {
     return navDateRange;
   }
 
+  /**
+   * Used to heuristically fill the "navigation" date range, which is used for sorting and querying
+   *
+   * @param navDateRange
+   */
   public void setNavDateRange(LocalDateRange navDateRange) {
     this.navDateRange = navDateRange;
   }
 
+  /**
+   * The date range with implicit precision
+   *
+   * @return a TimeValueRange
+   */
   public TimeValueRange getTimeValueRange() {
     return timeValueRange;
   }
 
+  /**
+   * Set the date range with the given implicit precision
+   *
+   * @param timeValueRange The TimeValueRange
+   */
   public void setTimeValueRange(TimeValueRange timeValueRange) {
     this.timeValueRange = timeValueRange;
   }

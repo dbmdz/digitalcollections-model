@@ -12,9 +12,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(buildMethodName = "prebuild")
 public class Publisher extends UniqueObject {
 
-  private List<HumanSettlement>
-      locations; // nur Name (Anzeigeform) wird verwendet, keine Wiederverwendung
-  private Agent agent; // nur Name (Anzeigeform) wird verwendet, keine Wiederverwendung
+  private List<HumanSettlement> locations;
+  private Agent agent;
 
   private String datePresentation;
 
@@ -55,10 +54,22 @@ public class Publisher extends UniqueObject {
     return Objects.hash(super.hashCode(), locations, agent, datePresentation);
   }
 
+  /**
+   * Returns the locations. Currently, only the name of the HumanSettlements is relevant, what
+   * means, that these HumanSettlemens won't be reused.
+   *
+   * @return List of locations where only the names are relevant
+   */
   public List<HumanSettlement> getLocations() {
     return locations;
   }
 
+  /**
+   * Returns the agent. Currently, only the name is relevant, what means, that you cannot reuse the
+   * agent
+   *
+   * @return the agent where only the name is relevant
+   */
   public Agent getAgent() {
     return agent;
   }
@@ -78,6 +89,11 @@ public class Publisher extends UniqueObject {
     this.agent = agent;
   }
 
+  /**
+   * Used for the textual (free text, no limitations) represenation of the date for the publisher.
+   *
+   * @return an unformatted, unspecified string
+   */
   public String getDatePresentation() {
     return datePresentation;
   }
