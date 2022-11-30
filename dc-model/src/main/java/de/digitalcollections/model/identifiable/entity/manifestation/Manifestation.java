@@ -143,14 +143,23 @@ public class Manifestation extends Entity {
     return parents;
   }
 
+  /**
+   * @return the publication information (date and involved publishers, if given)
+   */
   public PublishingInfo getPublicationInfo() {
     return publicationInfo;
   }
 
+  /**
+   * @return the distribution information (date and involved publishers, if given)
+   */
   public PublishingInfo getDistributionInfo() {
     return distributionInfo;
   }
 
+  /**
+   * @return the production information (date and involved publishers, if given)
+   */
   public PublishingInfo getProductionInfo() {
     return productionInfo;
   }
