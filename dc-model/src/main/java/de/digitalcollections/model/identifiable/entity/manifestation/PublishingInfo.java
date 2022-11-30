@@ -8,14 +8,21 @@ import java.util.Objects;
 import lombok.experimental.SuperBuilder;
 
 @SuperBuilder(buildMethodName = "prebuild")
-public class ProductionInfo {
+public class PublishingInfo {
 
   private List<Publisher> publishers;
   private String datePresentation;
-  private LocalDateRange dateRange;
+  private LocalDateRange navDateRange; // für Sortierung und Suche, heuristisch befüllt
   private TimeValueRange timeValueRange;
 
-  public ProductionInfo() {}
+  public PublishingInfo() {}
+
+  public boolean isEmpty() {
+    return (publishers == null || publishers.isEmpty())
+        && datePresentation == null
+        && navDateRange == null
+        && timeValueRange == null;
+  }
 
   public List<Publisher> getPublishers() {
     return publishers;
@@ -33,12 +40,12 @@ public class ProductionInfo {
     this.datePresentation = datePresentation;
   }
 
-  public LocalDateRange getDateRange() {
-    return dateRange;
+  public LocalDateRange getNavDateRange() {
+    return navDateRange;
   }
 
-  public void setDateRange(LocalDateRange dateRange) {
-    this.dateRange = dateRange;
+  public void setNavDateRange(LocalDateRange navDateRange) {
+    this.navDateRange = navDateRange;
   }
 
   public TimeValueRange getTimeValueRange() {
@@ -57,8 +64,8 @@ public class ProductionInfo {
         + ", datePresentation='"
         + datePresentation
         + '\''
-        + ", dateRange="
-        + dateRange
+        + ", navDateRange="
+        + navDateRange
         + ", timeValueRange="
         + timeValueRange
         + '}';
@@ -69,23 +76,23 @@ public class ProductionInfo {
     if (this == o) {
       return true;
     }
-    if (!(o instanceof ProductionInfo)) {
+    if (!(o instanceof PublishingInfo)) {
       return false;
     }
-    ProductionInfo that = (ProductionInfo) o;
+    PublishingInfo that = (PublishingInfo) o;
     return Objects.equals(publishers, that.publishers)
         && Objects.equals(datePresentation, that.datePresentation)
-        && Objects.equals(dateRange, that.dateRange)
+        && Objects.equals(navDateRange, that.navDateRange)
         && Objects.equals(timeValueRange, that.timeValueRange);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(publishers, datePresentation, dateRange, timeValueRange);
+    return Objects.hash(publishers, datePresentation, navDateRange, timeValueRange);
   }
 
-  public abstract static class ProductionInfoBuilder<
-      C extends ProductionInfo, B extends ProductionInfoBuilder<C, B>> {
+  public abstract static class PublishingInfoBuilder<
+      C extends PublishingInfo, B extends PublishingInfoBuilder<C, B>> {
 
     public B publisher(Publisher publisher) {
       if (publishers == null) {
