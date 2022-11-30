@@ -31,11 +31,7 @@ public class Publisher extends UniqueObject {
     super();
   }
 
-  public Publisher(
-      List<HumanSettlement> locations,
-      Agent agent,
-      String publisherPresentation,
-      String datePresentation) {
+  public Publisher(List<HumanSettlement> locations, Agent agent, String datePresentation) {
     this();
     this.locations = locations;
     this.agent = agent;
