@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New fields in `Manifestation`
 - New models: `Subject`, `Publisher`, `Series`, `Title`, `Tag`, `LocalDateRange`, `TimeValueRange`
+- New models: Interface `ManagedContent` and Enumeration `PublicationStatus` for content being managed in a content management system and having different states of publication ("online visibility")
 - New subtypes `MainSubType`, `ExpressionType`, `TitleType`, `WorkType`
 - Add field `tags` to `Identifiable`
 - Bucket-Handling: Bucket (Sublist/Range of UniqueObjects), BucketRequest/Response and List of Bucket-Objects-Handling added
@@ -24,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Deprecated `PagingInfo` after adding paging util method `List<PageItem> getNavItems(int maxNumberOfItems)` to `PageResponse`.
+- `Collection` implements `ManagedContent`
 
 ### Removed
 
