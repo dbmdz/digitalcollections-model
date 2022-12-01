@@ -1,5 +1,7 @@
 package de.digitalcollections.model.identifiable.entity;
 
+import de.digitalcollections.model.content.ManagedContent;
+import de.digitalcollections.model.content.PublicationStatus;
 import de.digitalcollections.model.identifiable.INode;
 import de.digitalcollections.model.identifiable.Node;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
@@ -11,12 +13,14 @@ import lombok.experimental.SuperBuilder;
 
 /** A collection of {@link Entity}s. */
 @SuperBuilder(buildMethodName = "prebuild")
-public class Collection extends Entity implements INode<Collection> {
+public class Collection extends Entity implements INode<Collection>, ManagedContent {
 
   private List<Entity> entities;
   private Node<Collection> node;
   private LocalDate publicationEnd;
   private LocalDate publicationStart;
+  private PublicationStatus publicationStatus;
+
   private LocalizedStructuredContent text;
 
   public Collection() {
@@ -47,6 +51,7 @@ public class Collection extends Entity implements INode<Collection> {
         && Objects.equals(node, that.node)
         && Objects.equals(publicationEnd, that.publicationEnd)
         && Objects.equals(publicationStart, that.publicationStart)
+        && Objects.equals(publicationStatus, that.publicationStatus)
         && Objects.equals(text, that.text);
   }
 
@@ -68,12 +73,19 @@ public class Collection extends Entity implements INode<Collection> {
     return node.getParent();
   }
 
+  @Override
   public LocalDate getPublicationEnd() {
     return publicationEnd;
   }
 
+  @Override
   public LocalDate getPublicationStart() {
     return publicationStart;
+  }
+
+  @Override
+  public PublicationStatus getPublicationStatus() {
+    return publicationStatus;
   }
 
   public LocalizedStructuredContent getText() {
@@ -107,12 +119,19 @@ public class Collection extends Entity implements INode<Collection> {
     node.setParent(parent);
   }
 
+  @Override
   public void setPublicationEnd(LocalDate publicationEnd) {
     this.publicationEnd = publicationEnd;
   }
 
+  @Override
   public void setPublicationStart(LocalDate publicationStart) {
     this.publicationStart = publicationStart;
+  }
+
+  @Override
+  public void setPublicationStatus(PublicationStatus publicationStatus) {
+    this.publicationStatus = publicationStatus;
   }
 
   public void setText(LocalizedStructuredContent text) {
@@ -130,6 +149,8 @@ public class Collection extends Entity implements INode<Collection> {
         + publicationEnd
         + ", publicationStart="
         + publicationStart
+        + ", publicationState="
+        + publicationStatus
         + ", text="
         + text
         + ", customAttributes="
