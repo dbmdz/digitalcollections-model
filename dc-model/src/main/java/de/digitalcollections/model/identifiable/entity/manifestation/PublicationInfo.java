@@ -11,5 +11,11 @@ public class PublicationInfo extends PublishingInfo {
 
   public abstract static class PublicationInfoBuilder<
           C extends PublicationInfo, B extends PublicationInfoBuilder<C, B>>
-      extends PublishingInfoBuilder<C, B> {}
+      extends PublishingInfoBuilder<C, B> {
+
+    public C build() {
+      C c = prebuild();
+      return c;
+    }
+  }
 }
