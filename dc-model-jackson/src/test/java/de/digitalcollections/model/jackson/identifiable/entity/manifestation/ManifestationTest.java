@@ -80,7 +80,7 @@ public class ManifestationTest extends BaseJsonSerializationTest {
             .publicationInfo(
                 PublicationInfo.builder()
                     .datePresentation("2020")
-                    .dateRange(
+                    .navDateRange(
                         new LocalDateRange(
                             LocalDate.parse("2020-04-28"), LocalDate.parse("2020-04-28")))
                     .timeValueRange(
@@ -186,7 +186,6 @@ public class ManifestationTest extends BaseJsonSerializationTest {
             personName != null
                 ? Person.builder().label(personName).title(Locale.GERMAN, personName).build()
                 : null)
-        .publisherPresentation(presentationParts.stream().collect(Collectors.joining(" : ")))
         .locations(
             cityNames != null
                 ? cityNames.stream()
@@ -221,7 +220,7 @@ public class ManifestationTest extends BaseJsonSerializationTest {
             + author.getUuid()
             + ", predicate='foo', object="
             + manifestation.getUuid()
-            + "}], language=null, manifestationType=null, manufacturingType=null, mediaTypes=null, otherLanguages=null, parents=null, publicationInfos=[], distributionInfos=[], productionInfos=[], scale='null', subjects=[], "
+            + "}], language=null, manifestationType=null, manufacturingType=null, mediaTypes=null, otherLanguages=null, parents=null, publicationInfo=null, distributionInfo=null, productionInfo=null, scale='null', subjects=[], "
             + "titles=[], version='null', work=null, customAttributes=null, navDate=null, refId=0, notes=null, description=null, identifiableObjectType=MANIFESTATION, identifiers=[], label=null, localizedUrlAliases=null, previewImage=null, previewImageRenderingHints=null, tags=null, type=ENTITY, created=null, lastModified=null, uuid="
             + manifestation.getUuid()
             + "}";

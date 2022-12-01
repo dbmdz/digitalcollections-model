@@ -127,8 +127,7 @@
         "familyNames" : [ ],
         "givenNames" : [ ],
         "entityType" : "PERSON"
-      },
-      "publisherPresentation" : "Köln : Karl Ranseier"
+      }
     }, {
       "objectType" : "PUBLISHER",
       "locations" : [ {
@@ -181,8 +180,7 @@
         "familyNames" : [ ],
         "givenNames" : [ ],
         "entityType" : "PERSON"
-      },
-      "publisherPresentation" : "Frankfurt, München : Hans Dampf"
+      }
     }, {
       "objectType" : "PUBLISHER",
       "locations" : [ {
@@ -217,8 +215,7 @@
         "refId" : 0,
         "geoLocationType" : "HUMAN_SETTLEMENT",
         "entityType" : "GEOLOCATION"
-      } ],
-      "publisherPresentation" : "München, Berlin"
+      } ]
     }, {
       "objectType" : "PUBLISHER",
       "agent" : {
@@ -238,11 +235,10 @@
         "familyNames" : [ ],
         "givenNames" : [ ],
         "entityType" : "PERSON"
-      },
-      "publisherPresentation" : "Max Moritz"
+      }
     } ],
     "datePresentation" : "2020",
-    "dateRange" : {
+    "navDateRange" : {
       "end" : "2020-04-28",
       "start" : "2020-04-28"
     },
@@ -273,7 +269,8 @@
         "timezoneOffset" : 0,
         "year" : 2020
       }
-    }
+    },
+    "empty" : false
   },
   "scale" : "[Ca. 1:820 000]",
   "subjects" : [ {

@@ -8,17 +8,17 @@ import java.util.Objects;
 import lombok.experimental.SuperBuilder;
 
 /**
- * A container, which integrated all publishers, which are responsible in a certain way (e.g.
- * production) for a manifestation, and which also holds information about the time range of that
- * involvement.
+ * An abstract container, which integrated all publishers, which are responsible in a certain way
+ * (e.g. production) for a manifestation, and which also holds information about the time range of
+ * that involvement.
  */
 @SuperBuilder(buildMethodName = "prebuild")
-public class PublishingInfo {
+public abstract class PublishingInfo {
 
-  private List<Publisher> publishers;
-  private String datePresentation;
-  private LocalDateRange navDateRange;
-  private TimeValueRange timeValueRange;
+  protected List<Publisher> publishers;
+  protected String datePresentation;
+  protected LocalDateRange navDateRange;
+  protected TimeValueRange timeValueRange;
 
   public PublishingInfo() {}
 

@@ -25,7 +25,7 @@ public class DistributionInfoTest extends BaseJsonSerializationTest {
     DistributionInfo distributionInfo =
         DistributionInfo.builder()
             .datePresentation("2020")
-            .dateRange(
+            .navDateRange(
                 new LocalDateRange(LocalDate.parse("2020-01-01"), LocalDate.parse("2020-12-31")))
             .timeValueRange(
                 new TimeValueRange(
@@ -81,7 +81,6 @@ public class DistributionInfoTest extends BaseJsonSerializationTest {
             personName != null
                 ? Person.builder().label(personName).title(Locale.GERMAN, personName).build()
                 : null)
-        .publisherPresentation(presentationParts.stream().collect(Collectors.joining(" : ")))
         .locations(
             cityNames != null
                 ? cityNames.stream()
