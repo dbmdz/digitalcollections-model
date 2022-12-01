@@ -25,11 +25,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Deprecated `PagingInfo` after adding paging util method `List<PageItem> getNavItems(int maxNumberOfItems)` to `PageResponse`.
-<<<<<<< HEAD
 - `Collection` implements `ManagedContent`
 =======
 - **Breaking**: Moved WEMI classes into new packaged structure
->>>>>>> Three kinds of publishers
 
 ### Removed
 
