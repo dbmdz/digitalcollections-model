@@ -2,8 +2,8 @@ package de.digitalcollections.model.jackson.identifiable.entity.manifestation;
 
 import de.digitalcollections.model.identifiable.entity.agent.Person;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
+import de.digitalcollections.model.identifiable.entity.manifestation.ProductionInfo;
 import de.digitalcollections.model.identifiable.entity.manifestation.Publisher;
-import de.digitalcollections.model.identifiable.entity.manifestation.PublishingInfo;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.time.LocalDateRange;
 import de.digitalcollections.model.time.TimeValue;
@@ -22,10 +22,10 @@ public class ProductionInfoTest extends BaseJsonSerializationTest {
   @DisplayName("can be serialized and deserialized")
   @Test
   public void testSerializeDeserialize() throws Exception {
-    PublishingInfo productionInfo =
-        PublishingInfo.builder()
+    ProductionInfo productionInfo =
+        ProductionInfo.builder()
             .datePresentation("2020")
-            .dateRange(
+            .navDateRange(
                 new LocalDateRange(LocalDate.parse("2020-01-01"), LocalDate.parse("2020-12-31")))
             .timeValueRange(
                 new TimeValueRange(
@@ -81,7 +81,6 @@ public class ProductionInfoTest extends BaseJsonSerializationTest {
             personName != null
                 ? Person.builder().label(personName).title(Locale.GERMAN, personName).build()
                 : null)
-        .publisherPresentation(presentationParts.stream().collect(Collectors.joining(" : ")))
         .locations(
             cityNames != null
                 ? cityNames.stream()

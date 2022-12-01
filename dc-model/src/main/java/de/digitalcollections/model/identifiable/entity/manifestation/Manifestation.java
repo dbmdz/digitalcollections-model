@@ -62,9 +62,9 @@ public class Manifestation extends Entity {
   private LinkedHashSet<String> mediaTypes;
   private LinkedHashSet<Locale> otherLanguages;
   private List<RelationSpecification<Manifestation>> parents;
-  private PublishingInfo publicationInfo;
-  private PublishingInfo distributionInfo;
-  private PublishingInfo productionInfo;
+  private PublicationInfo publicationInfo;
+  private DistributionInfo distributionInfo;
+  private ProductionInfo productionInfo;
 
   /**
    * Text describing the scale of object, e.g. of a map.
@@ -248,15 +248,15 @@ public class Manifestation extends Entity {
     this.parents = parents;
   }
 
-  public void setPublicationInfo(PublishingInfo publicationInfo) {
+  public void setPublicationInfo(PublicationInfo publicationInfo) {
     this.publicationInfo = publicationInfo;
   }
 
-  public void setDistributionInfo(PublishingInfo distributionInfo) {
+  public void setDistributionInfo(DistributionInfo distributionInfo) {
     this.distributionInfo = distributionInfo;
   }
 
-  public void setProductionInfo(PublishingInfo productionInfo) {
+  public void setProductionInfo(ProductionInfo productionInfo) {
     this.productionInfo = productionInfo;
   }
 
