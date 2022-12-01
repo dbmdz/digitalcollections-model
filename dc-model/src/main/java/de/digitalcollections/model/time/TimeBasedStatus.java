@@ -2,12 +2,12 @@ package de.digitalcollections.model.time;
 
 import java.time.LocalDate;
 
-public enum TimeBasedState {
+public enum TimeBasedStatus {
   NOT_YET_IN_RANGE,
   IS_IN_RANGE,
   NO_LONGER_IN_RANGE;
 
-  public static TimeBasedState get(LocalDateRange dateRange, LocalDate referenceDate) {
+  public static TimeBasedStatus get(LocalDateRange dateRange, LocalDate referenceDate) {
     if (dateRange == null || referenceDate == null) {
       throw new IllegalArgumentException("dateRange and referenceDate must not be null");
     }
