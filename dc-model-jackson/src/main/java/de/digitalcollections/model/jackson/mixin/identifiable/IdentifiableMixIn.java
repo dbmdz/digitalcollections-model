@@ -47,7 +47,7 @@ import de.digitalcollections.model.text.LocalizedText;
   @JsonSubTypes.Type(value = Creek.class, name = "CREEK"),
   @JsonSubTypes.Type(value = FamilyName.class, name = "FAMILY_NAME"),
   @JsonSubTypes.Type(value = GivenName.class, name = "GIVEN_NAME"),
-  @JsonSubTypes.Type(value = Identifiable.class, name = "IDENFITIABLE"),
+  @JsonSubTypes.Type(value = Identifiable.class, name = "IDENTIFIABLE"),
   @JsonSubTypes.Type(value = ImageFileResource.class, name = "IMAGE_FILE_RESOURCE"),
   @JsonSubTypes.Type(value = Lake.class, name = "LAKE"),
   @JsonSubTypes.Type(value = LinkedDataFileResource.class, name = "LINKED_DATA_FILE_RESOURCE"),
