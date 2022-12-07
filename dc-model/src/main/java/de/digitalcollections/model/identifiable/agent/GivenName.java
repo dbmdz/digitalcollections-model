@@ -19,7 +19,6 @@ public class GivenName extends Identifiable {
 
   public GivenName() {
     super();
-    init();
   }
 
   public GivenName(Gender gender, LocalizedText label, Set<Identifier> identifiers) {
