@@ -16,7 +16,6 @@ public class FamilyName extends Identifiable {
 
   public FamilyName() {
     super();
-    init();
   }
 
   public FamilyName(LocalizedText label, Set<Identifier> identifiers) {
