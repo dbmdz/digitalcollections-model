@@ -5,7 +5,7 @@
     "identifiableObjectType" : "DIGITAL_OBJECT",
     "identifiers" : [ ],
     "label" : {
-      "" : "DigitalObject-Label"
+      "und" : "DigitalObject-Label"
     },
     "type" : "ENTITY",
     "refId" : 0,
@@ -18,7 +18,7 @@
     "identifiableObjectType" : "WEBPAGE",
     "identifiers" : [ ],
     "label" : {
-      "" : "Webpage-Label"
+      "und" : "Webpage-Label"
     },
     "type" : "RESOURCE",
     "renderingHints" : {
