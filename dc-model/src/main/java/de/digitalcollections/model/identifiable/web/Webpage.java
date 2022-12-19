@@ -1,5 +1,7 @@
 package de.digitalcollections.model.identifiable.web;
 
+import de.digitalcollections.model.content.ManagedContent;
+import de.digitalcollections.model.content.PublicationStatus;
 import de.digitalcollections.model.identifiable.INode;
 import de.digitalcollections.model.identifiable.Identifiable;
 import de.digitalcollections.model.identifiable.IdentifiableType;
@@ -13,11 +15,12 @@ import lombok.experimental.SuperBuilder;
 
 /** A Webpage of a Website. */
 @SuperBuilder(buildMethodName = "prebuild")
-public class Webpage extends Identifiable implements INode<Webpage> {
+public class Webpage extends Identifiable implements INode<Webpage>, ManagedContent {
 
   private Node<Webpage> node;
   private LocalDate publicationEnd;
   private LocalDate publicationStart;
+  private PublicationStatus publicationStatus;
   private RenderingHints renderingHints;
   private LocalizedStructuredContent text;
 
@@ -46,12 +49,19 @@ public class Webpage extends Identifiable implements INode<Webpage> {
     return node.getParent();
   }
 
+  @Override
   public LocalDate getPublicationEnd() {
     return publicationEnd;
   }
 
+  @Override
   public LocalDate getPublicationStart() {
     return publicationStart;
+  }
+
+  @Override
+  public PublicationStatus getPublicationStatus() {
+    return publicationStatus;
   }
 
   public RenderingHints getRenderingHints() {
@@ -84,12 +94,19 @@ public class Webpage extends Identifiable implements INode<Webpage> {
     node.setParent(parent);
   }
 
+  @Override
   public void setPublicationEnd(LocalDate publicationEnd) {
     this.publicationEnd = publicationEnd;
   }
 
+  @Override
   public void setPublicationStart(LocalDate publicationStart) {
     this.publicationStart = publicationStart;
+  }
+
+  @Override
+  public void setPublicationStatus(PublicationStatus publicationStatus) {
+    this.publicationStatus = publicationStatus;
   }
 
   public void setRenderingHints(RenderingHints renderingHints) {
