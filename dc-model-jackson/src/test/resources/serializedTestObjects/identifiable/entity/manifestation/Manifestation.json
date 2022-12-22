@@ -80,7 +80,7 @@
       "identifiableObjectType" : "MANIFESTATION",
       "identifiers" : [ ],
       "label" : {
-        "" : "Parent"
+        "und" : "Parent"
       },
       "type" : "ENTITY",
       "refId" : 0,
@@ -97,7 +97,7 @@
         "identifiableObjectType" : "HUMAN_SETTLEMENT",
         "identifiers" : [ ],
         "label" : {
-          "" : "Köln"
+          "und" : "Köln"
         },
         "previewImageRenderingHints" : {
           "openLinkInNewWindow" : false,
@@ -114,7 +114,7 @@
         "identifiableObjectType" : "PERSON",
         "identifiers" : [ ],
         "label" : {
-          "" : "Karl Ranseier"
+          "und" : "Karl Ranseier"
         },
         "previewImageRenderingHints" : {
           "openLinkInNewWindow" : false,
@@ -134,7 +134,7 @@
         "identifiableObjectType" : "HUMAN_SETTLEMENT",
         "identifiers" : [ ],
         "label" : {
-          "" : "Frankfurt"
+          "und" : "Frankfurt"
         },
         "previewImageRenderingHints" : {
           "openLinkInNewWindow" : false,
@@ -150,7 +150,7 @@
         "identifiableObjectType" : "HUMAN_SETTLEMENT",
         "identifiers" : [ ],
         "label" : {
-          "" : "München"
+          "und" : "München"
         },
         "previewImageRenderingHints" : {
           "openLinkInNewWindow" : false,
@@ -167,7 +167,7 @@
         "identifiableObjectType" : "PERSON",
         "identifiers" : [ ],
         "label" : {
-          "" : "Hans Dampf"
+          "und" : "Hans Dampf"
         },
         "previewImageRenderingHints" : {
           "openLinkInNewWindow" : false,
@@ -187,7 +187,7 @@
         "identifiableObjectType" : "HUMAN_SETTLEMENT",
         "identifiers" : [ ],
         "label" : {
-          "" : "München"
+          "und" : "München"
         },
         "previewImageRenderingHints" : {
           "openLinkInNewWindow" : false,
@@ -203,7 +203,7 @@
         "identifiableObjectType" : "HUMAN_SETTLEMENT",
         "identifiers" : [ ],
         "label" : {
-          "" : "Berlin"
+          "und" : "Berlin"
         },
         "previewImageRenderingHints" : {
           "openLinkInNewWindow" : false,
@@ -222,7 +222,7 @@
         "identifiableObjectType" : "PERSON",
         "identifiers" : [ ],
         "label" : {
-          "" : "Max Moritz"
+          "und" : "Max Moritz"
         },
         "previewImageRenderingHints" : {
           "openLinkInNewWindow" : false,
@@ -303,9 +303,9 @@
   "titles" : [ {
     "text" : {
       "de" : "Titel",
-      "zh__#Hani" : "圖註八十一難經辨眞"
+      "zh-Hani" : "圖註八十一難經辨眞"
     },
-    "textLocalesOfOriginalScripts" : [ "zh__#Hani" ],
+    "textLocalesOfOriginalScripts" : [ "zh-Hani" ],
     "titleType" : {
       "mainType" : "MAIN",
       "subType" : "MAIN"

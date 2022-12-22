@@ -25,7 +25,7 @@
       "identifiableObjectType" : "PERSON",
       "identifiers" : [ ],
       "label" : {
-        "" : "Creator"
+        "und" : "Creator"
       },
       "type" : "ENTITY",
       "refId" : 0,
@@ -38,7 +38,7 @@
       "identifiableObjectType" : "HUMAN_SETTLEMENT",
       "identifiers" : [ ],
       "label" : {
-        "" : "Geolocation"
+        "und" : "Geolocation"
       },
       "type" : "ENTITY",
       "refId" : 0,

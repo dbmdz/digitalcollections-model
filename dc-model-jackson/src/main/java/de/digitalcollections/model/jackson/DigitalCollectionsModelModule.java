@@ -182,6 +182,7 @@ import de.digitalcollections.model.view.BreadcrumbNavigation;
 import de.digitalcollections.model.view.RenderingHints;
 import de.digitalcollections.model.view.RenderingHintsPreviewImage;
 import de.digitalcollections.model.view.RenderingTemplate;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.function.Function;
 import org.slf4j.Logger;
@@ -195,6 +196,13 @@ public class DigitalCollectionsModelModule extends SimpleModule {
 
   public DigitalCollectionsModelModule() {
     super();
+
+    // Just use Locale's toLanguageTag and forLanguageTag for serializing/deserializing it
+    addSerializer(new StdDelegatingSerializer(Locale.class, toString(Locale::toLanguageTag)));
+    addKeySerializer(Locale.class, new LocaleKeySerializer());
+    addDeserializer(
+        Locale.class, new StdDelegatingDeserializer<>(fromString(Locale::forLanguageTag)));
+    addKeyDeserializer(Locale.class, new LocaleKeyDeserializer());
 
     // Just use MimeType's getTypeName and String constructor for serializing/deserializing it
     addSerializer(new StdDelegatingSerializer(MimeType.class, toString(MimeType::getTypeName)));
