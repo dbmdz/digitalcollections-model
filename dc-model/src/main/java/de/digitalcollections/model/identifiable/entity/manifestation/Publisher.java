@@ -1,6 +1,5 @@
 package de.digitalcollections.model.identifiable.entity.manifestation;
 
-import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.identifiable.entity.agent.Agent;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
 import java.util.ArrayList;
@@ -20,7 +19,7 @@ import lombok.experimental.SuperBuilder;
  * dependencies in Cologne and Berlin and was active between 1994 and 1998.
  */
 @SuperBuilder(buildMethodName = "prebuild")
-public class Publisher extends UniqueObject {
+public class Publisher {
 
   private List<HumanSettlement> locations;
   private Agent agent;
@@ -119,19 +118,14 @@ public class Publisher extends UniqueObject {
         + datePresentation
         + '\''
         + '\''
-        + ", uuid="
-        + uuid
         + '}';
   }
 
   public abstract static class PublisherBuilder<
-          C extends Publisher, B extends PublisherBuilder<C, B>>
-      extends UniqueObjectBuilder<C, B> {
+      C extends Publisher, B extends PublisherBuilder<C, B>> {
 
-    @Override
     public C build() {
       C c = prebuild();
-      c.init();
       return c;
     }
 
