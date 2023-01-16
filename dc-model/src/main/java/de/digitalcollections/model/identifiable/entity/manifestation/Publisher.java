@@ -45,9 +45,6 @@ public class Publisher {
     if (!(o instanceof Publisher)) {
       return false;
     }
-    if (!super.equals(o)) {
-      return false;
-    }
     Publisher publisher = (Publisher) o;
     return Objects.equals(locations, publisher.locations)
         && Objects.equals(agent, publisher.agent)
@@ -56,7 +53,7 @@ public class Publisher {
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), locations, agent, datePresentation);
+    return Objects.hash(locations, agent, datePresentation);
   }
 
   /**
