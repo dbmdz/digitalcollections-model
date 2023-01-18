@@ -6,9 +6,10 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
 import lombok.experimental.SuperBuilder;
+import org.apache.commons.lang3.StringUtils;
 
 @SuperBuilder
-public class Title {
+public class Title implements Comparable<Title> {
 
   private LocalizedText text;
   private Set<Locale> textLocalesOfOriginalScripts;
@@ -70,6 +71,17 @@ public class Title {
   @Override
   public int hashCode() {
     return Objects.hash(text, textLocalesOfOriginalScripts, titleType);
+  }
+
+  @Override
+  public int compareTo(Title title) {
+    return 1000
+            * StringUtils.compare(
+                (titleType != null ? titleType.getMainType() : null),
+                (title.getTitleType() != null ? title.getTitleType().getMainType() : null))
+        + StringUtils.compare(
+            (titleType != null ? titleType.getSubType() : null),
+            (title.getTitleType() != null ? title.getTitleType().getSubType() : null));
   }
 
   @Override
