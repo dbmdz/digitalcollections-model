@@ -118,6 +118,13 @@ public class TimeValue implements org.wikidata.wdtk.datamodel.interfaces.TimeVal
     this.year = year;
   }
 
+  public TimeValue(long year, byte month) {
+    this();
+    this.precision = TimeValue.PREC_MONTH;
+    this.year = year;
+    this.month = month;
+  }
+
   public TimeValue(long year) {
     this();
     this.precision = TimeValue.PREC_YEAR;
