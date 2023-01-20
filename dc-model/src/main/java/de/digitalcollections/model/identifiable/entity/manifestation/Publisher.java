@@ -26,9 +26,7 @@ public class Publisher {
 
   private String datePresentation;
 
-  public Publisher() {
-    super();
-  }
+  public Publisher() {}
 
   public Publisher(List<HumanSettlement> locations, Agent agent, String datePresentation) {
     this();
