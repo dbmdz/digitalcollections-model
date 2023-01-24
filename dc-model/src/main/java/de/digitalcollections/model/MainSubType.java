@@ -14,7 +14,7 @@ public class MainSubType {
   public MainSubType(String mainType, String subType) {
     this();
     this.mainType = mainType.toUpperCase();
-    this.subType = subType.toUpperCase();
+    this.subType = subType != null ? subType.toUpperCase() : null;
   }
 
   @Override
@@ -46,12 +46,14 @@ public class MainSubType {
   }
 
   public void setSubType(String subType) {
-    this.subType = subType.toUpperCase();
+    this.subType = subType != null ? subType.toUpperCase() : null;
   }
 
   @Override
   public String toString() {
-    return "MainSubType{" + "mainType='" + mainType + '\'' + ", subType='" + subType + '\'' + '}';
+    return "MainSubType{" + mainType != null
+        ? "mainType='" + mainType + '\''
+        : "mainType=null" + subType != null ? ", subType='" + subType + '\'' : "subType=null" + '}';
   }
 
   public abstract static class MainSubTypeBuilder<
@@ -63,7 +65,7 @@ public class MainSubType {
     }
 
     public B subType(String subType) {
-      this.subType = subType.toUpperCase();
+      this.subType = subType != null ? subType.toUpperCase() : null;
       return self();
     }
   }
