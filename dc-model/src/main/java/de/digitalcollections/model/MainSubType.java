@@ -11,6 +11,10 @@ public class MainSubType {
 
   public MainSubType() {}
 
+  /**
+   * @param mainType main type is mandatory
+   * @param subType optional sub type, can be {@code null}
+   */
   public MainSubType(String mainType, String subType) {
     this();
     this.mainType = mainType.toUpperCase();
