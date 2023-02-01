@@ -3,8 +3,8 @@ package de.digitalcollections.model.jackson.mixin.identifiable.entity.manifestat
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import de.digitalcollections.model.identifiable.entity.manifestation.TitleType;
 import de.digitalcollections.model.jackson.mixin.MainSubTypeMixIn;
+import de.digitalcollections.model.text.TitleType;
 
 @JsonDeserialize(as = TitleType.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

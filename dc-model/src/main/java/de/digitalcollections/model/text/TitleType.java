@@ -1,4 +1,4 @@
-package de.digitalcollections.model.identifiable.entity.manifestation;
+package de.digitalcollections.model.text;
 
 import de.digitalcollections.model.MainSubType;
 import lombok.experimental.SuperBuilder;

@@ -1,6 +1,5 @@
-package de.digitalcollections.model.identifiable.entity.manifestation;
+package de.digitalcollections.model.text;
 
-import de.digitalcollections.model.text.LocalizedText;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Objects;

@@ -2,10 +2,10 @@ package de.digitalcollections.model.jackson.identifiable.entity.work;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import de.digitalcollections.model.identifiable.entity.manifestation.Title;
-import de.digitalcollections.model.identifiable.entity.manifestation.TitleType;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.text.LocalizedText;
+import de.digitalcollections.model.text.Title;
+import de.digitalcollections.model.text.TitleType;
 import java.util.Locale;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

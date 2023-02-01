@@ -60,6 +60,50 @@ public class Website extends Entity {
     this.url = url;
   }
 
+  @Override
+  public String toString() {
+    return "Website{"
+        + "registrationDate="
+        + registrationDate
+        + ", rootPages="
+        + rootPages
+        + ", url="
+        + url
+        + ", customAttributes="
+        + customAttributes
+        + ", navDate="
+        + navDate
+        + ", refId="
+        + refId
+        + ", notes="
+        + notes
+        + ", description="
+        + description
+        + ", identifiableObjectType="
+        + identifiableObjectType
+        + ", identifiers="
+        + identifiers
+        + ", label="
+        + label
+        + ", localizedUrlAliases="
+        + localizedUrlAliases
+        + ", previewImage="
+        + previewImage
+        + ", previewImageRenderingHints="
+        + previewImageRenderingHints
+        + ", tags="
+        + tags
+        + ", type="
+        + type
+        + ", created="
+        + created
+        + ", lastModified="
+        + lastModified
+        + ", uuid="
+        + uuid
+        + '}';
+  }
+
   public abstract static class WebsiteBuilder<C extends Website, B extends WebsiteBuilder<C, B>>
       extends EntityBuilder<C, B> {
 

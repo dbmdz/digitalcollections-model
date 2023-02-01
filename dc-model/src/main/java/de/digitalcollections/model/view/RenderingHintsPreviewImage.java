@@ -128,4 +128,20 @@ public class RenderingHintsPreviewImage {
   public void setTitle(LocalizedText title) {
     this.title = title;
   }
+
+  @Override
+  public String toString() {
+    return "RenderingHintsPreviewImage{"
+        + "altText="
+        + altText
+        + ", caption="
+        + caption
+        + ", openLinkInNewWindow="
+        + openLinkInNewWindow
+        + ", targetLink="
+        + targetLink
+        + ", title="
+        + title
+        + '}';
+  }
 }

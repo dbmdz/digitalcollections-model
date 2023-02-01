@@ -30,7 +30,6 @@ import de.digitalcollections.model.identifiable.entity.geo.location.StillWaters;
 import de.digitalcollections.model.identifiable.entity.geo.location.Valley;
 import de.digitalcollections.model.identifiable.entity.item.Item;
 import de.digitalcollections.model.identifiable.entity.manifestation.Manifestation;
-import de.digitalcollections.model.identifiable.entity.manifestation.Series;
 import de.digitalcollections.model.identifiable.entity.work.Work;
 import de.digitalcollections.model.identifiable.resource.ApplicationFileResource;
 import de.digitalcollections.model.identifiable.resource.AudioFileResource;
@@ -74,7 +73,6 @@ public enum IdentifiableObjectType {
   PROJECT(Project.class),
   RIVER(River.class),
   SEA(Sea.class),
-  SERIES(Series.class),
   STILL_WATERS(StillWaters.class),
   TEXT_FILE_RESOURCE(TextFileResource.class),
   TOPIC(Topic.class),

@@ -117,4 +117,9 @@ public class StructuredContent {
   public void setContentBlocks(List<ContentBlock> contentBlocks) {
     this.contentBlocks = contentBlocks;
   }
+
+  @Override
+  public String toString() {
+    return "StructuredContent{" + "contentBlocks=" + contentBlocks + '}';
+  }
 }
