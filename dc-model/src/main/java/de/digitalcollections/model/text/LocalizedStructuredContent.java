@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /** LocalizedStructuredContent is used for formatted text content in multiple languages. */
 public class LocalizedStructuredContent extends HashMap<Locale, StructuredContent> {
@@ -37,5 +38,18 @@ public class LocalizedStructuredContent extends HashMap<Locale, StructuredConten
       }
     }
     return tocs;
+  }
+
+  @Override
+  public String toString() {
+    return "LocalizedStructuredContent{"
+        + (isEmpty()
+            ? ""
+            : entrySet().stream()
+                .map(
+                    e ->
+                        (e.getKey() != null ? e.getKey().toLanguageTag() : "") + "=" + e.getValue())
+                .collect(Collectors.joining(",")))
+        + "}";
   }
 }

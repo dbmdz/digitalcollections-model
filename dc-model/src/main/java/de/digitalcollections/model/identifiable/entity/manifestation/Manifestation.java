@@ -6,6 +6,7 @@ import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 import de.digitalcollections.model.identifiable.entity.work.Work;
 import de.digitalcollections.model.semantic.Subject;
+import de.digitalcollections.model.text.Title;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashSet;

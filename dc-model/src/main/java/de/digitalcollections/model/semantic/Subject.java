@@ -88,6 +88,10 @@ public class Subject extends UniqueObject {
         + ", type='"
         + type
         + '\''
+        + ", created="
+        + created
+        + ", lastModified="
+        + lastModified
         + ", uuid="
         + uuid
         + '}';

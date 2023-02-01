@@ -9,8 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- New fields in `Work`
 - New fields in `Manifestation`
-- New models: `Subject`, `Publisher`, `Series`, `Title`, `Tag`, `LocalDateRange`, `TimeValueRange`, `PublicationInfo`, `DistributionInfo`, `ProductionInfo`,
+- New models: `Subject`, `Publisher`, `Title`, `Tag`, `LocalDateRange`, `TimeValueRange`, `PublicationInfo`, `DistributionInfo`, `ProductionInfo`,
 - New models: Interface `ManagedContent` and Enumeration `PublicationStatus` for content being managed in a content management system and having different states of publication ("online visibility")
 - New subtypes `MainSubType`, `ExpressionType`, `TitleType`, `WorkType`
 - Add field `tags` to `Identifiable`
@@ -26,13 +27,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Deprecated `PagingInfo` after adding paging util method `List<PageItem> getNavItems(int maxNumberOfItems)` to `PageResponse`.
 - `Collection` implements `ManagedContent`
-=======
 - **Breaking**: Moved WEMI classes into new packaged structure
 
 ### Removed
 
 - **Breaking**: Removed `Expression` (which is now part of `Manifestation`) including corresponding `IdentifiableObjectType`
 - **Breaking**: Removed `title` attribute from `Work` (which is now part of `Manifestation`)
+- **Breaking**: Removed `WorkType`
 
 ## [11.0.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/11.0.0) - 2022-07-18
 

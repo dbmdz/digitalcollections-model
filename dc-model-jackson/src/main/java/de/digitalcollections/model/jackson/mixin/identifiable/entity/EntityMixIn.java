@@ -16,7 +16,6 @@ import de.digitalcollections.model.identifiable.entity.digitalobject.DigitalObje
 import de.digitalcollections.model.identifiable.entity.geo.location.GeoLocation;
 import de.digitalcollections.model.identifiable.entity.item.Item;
 import de.digitalcollections.model.identifiable.entity.manifestation.Manifestation;
-import de.digitalcollections.model.identifiable.entity.manifestation.Series;
 import de.digitalcollections.model.identifiable.entity.work.Work;
 
 @JsonTypeInfo(
@@ -39,7 +38,6 @@ import de.digitalcollections.model.identifiable.entity.work.Work;
   @JsonSubTypes.Type(value = Manifestation.class, name = "MANIFESTATION"),
   @JsonSubTypes.Type(value = Person.class, name = "PERSON"),
   @JsonSubTypes.Type(value = Project.class, name = "PROJECT"),
-  @JsonSubTypes.Type(value = Series.class, name = "SERIES"),
   @JsonSubTypes.Type(value = Topic.class, name = "TOPIC"),
   @JsonSubTypes.Type(value = Website.class, name = "WEBSITE"),
   @JsonSubTypes.Type(value = Work.class, name = "WORK")

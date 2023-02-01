@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /** LocalizedText is used for unformatted text content in multiple languages. */
 public class LocalizedText extends HashMap<Locale, String> {
@@ -63,6 +64,19 @@ public class LocalizedText extends HashMap<Locale, String> {
 
   public static Builder builder() {
     return new Builder();
+  }
+
+  @Override
+  public String toString() {
+    return "LocalizedText{"
+        + (isEmpty()
+            ? ""
+            : entrySet().stream()
+                .map(
+                    e ->
+                        (e.getKey() != null ? e.getKey().toLanguageTag() : "") + "=" + e.getValue())
+                .collect(Collectors.joining(",")))
+        + "}";
   }
 
   public static class Builder {

@@ -93,7 +93,8 @@ public abstract class PublishingInfo {
 
   @Override
   public String toString() {
-    return "ProductionInfo{"
+    return getClass().getSimpleName()
+        + "{"
         + "publishers="
         + publishers
         + ", datePresentation='"
