@@ -33,7 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Breaking**: Removed `Expression` (which is now part of `Manifestation`) including corresponding `IdentifiableObjectType`
 - **Breaking**: Removed `title` attribute from `Work` (which is now part of `Manifestation`)
-- **Breaking**: Removed `WorkType`
+- **Breaking**: Removed `WorkType` and `creators` from `Work`
 
 ## [11.0.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/11.0.0) - 2022-07-18
 

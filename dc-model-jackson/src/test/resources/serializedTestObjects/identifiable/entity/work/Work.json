@@ -6,18 +6,6 @@
   },
   "type" : "ENTITY",
   "refId" : 0,
-  "creators" : [ {
-    "identifiableObjectType" : "PERSON",
-    "identifiers" : [ ],
-    "label" : {
-      "de" : "Arnold Hiller"
-    },
-    "type" : "ENTITY",
-    "refId" : 0,
-    "familyNames" : [ ],
-    "givenNames" : [ ],
-    "entityType" : "PERSON"
-  } ],
   "firstAppearedDate" : "2020-04-28",
   "firstAppearedTimeValue" : {
     "afterTolerance" : 0,
@@ -32,6 +20,8 @@
     "timezoneOffset" : 0,
     "year" : 2020
   },
-  "workType" : "SINGLE",
+  "relations" : [ ],
+  "subjects" : [ ],
+  "titles" : [ ],
   "entityType" : "WORK"
 }

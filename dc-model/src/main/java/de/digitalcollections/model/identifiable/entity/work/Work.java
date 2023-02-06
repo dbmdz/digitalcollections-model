@@ -2,7 +2,6 @@ package de.digitalcollections.model.identifiable.entity.work;
 
 import de.digitalcollections.model.identifiable.IdentifiableObjectType;
 import de.digitalcollections.model.identifiable.entity.Entity;
-import de.digitalcollections.model.identifiable.entity.agent.Agent;
 import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 import de.digitalcollections.model.semantic.Subject;
 import de.digitalcollections.model.text.Title;
@@ -43,7 +42,6 @@ public class Work extends Entity {
 
   private LocalDateRange creationDateRange;
   private TimeValue creationTimeValue;
-  private List<Agent> creators;
   private LocalDate firstAppearedDate;
   private String firstAppearedDatePresentation;
   private TimeValue firstAppearedTimeValue;
@@ -62,10 +60,6 @@ public class Work extends Entity {
 
   public TimeValue getCreationTimeValue() {
     return creationTimeValue;
-  }
-
-  public List<Agent> getCreators() {
-    return creators;
   }
 
   public LocalDate getFirstAppearedDate() {
@@ -99,9 +93,6 @@ public class Work extends Entity {
   @Override
   protected void init() {
     super.init();
-    if (creators == null) {
-      this.creators = new ArrayList<>(0);
-    }
     identifiableObjectType = IdentifiableObjectType.WORK;
     if (titles == null) {
       titles = new ArrayList<>();
@@ -114,23 +105,12 @@ public class Work extends Entity {
     }
   }
 
-  public void addCreator(Agent creator) {
-    if (this.creators == null) {
-      this.creators = new ArrayList<>();
-    }
-    this.creators.add(creator);
-  }
-
   public void setCreationDateRange(LocalDateRange creationDateRange) {
     this.creationDateRange = creationDateRange;
   }
 
   public void setCreationTimeValue(TimeValue timeValueCreation) {
     this.creationTimeValue = timeValueCreation;
-  }
-
-  public void setCreators(List<Agent> creators) {
-    this.creators = creators;
   }
 
   public void setFirstAppearedDate(LocalDate firstAppearedDate) {
@@ -155,6 +135,13 @@ public class Work extends Entity {
 
   public void setSubjects(Set<Subject> subjects) {
     this.subjects = subjects;
+  }
+
+  public void addSubject(Subject subject) {
+    if (subject == null) {
+      subjects = new HashSet<>(1);
+    }
+    subjects.add(subject);
   }
 
   /**
@@ -184,7 +171,6 @@ public class Work extends Entity {
     Work work = (Work) o;
     return Objects.equals(creationDateRange, work.creationDateRange)
         && Objects.equals(creationTimeValue, work.creationTimeValue)
-        && Objects.equals(creators, work.creators)
         && Objects.equals(firstAppearedDate, work.firstAppearedDate)
         && Objects.equals(firstAppearedDatePresentation, work.firstAppearedDatePresentation)
         && Objects.equals(firstAppearedTimeValue, work.firstAppearedTimeValue)
@@ -200,7 +186,6 @@ public class Work extends Entity {
         super.hashCode(),
         creationDateRange,
         creationTimeValue,
-        creators,
         firstAppearedDate,
         firstAppearedDatePresentation,
         firstAppearedTimeValue,
@@ -217,8 +202,6 @@ public class Work extends Entity {
         + creationDateRange
         + ", creationTimeValue="
         + creationTimeValue
-        + ", creators="
-        + creators
         + ", firstAppearedDate="
         + firstAppearedDate
         + ", firstAppearedDatePresentation='"
@@ -278,14 +261,6 @@ public class Work extends Entity {
       c.init();
       setInternalReferences(c);
       return c;
-    }
-
-    public B creator(Agent creator) {
-      if (creators == null) {
-        creators = new ArrayList<>(1);
-      }
-      creators.add(creator);
-      return self();
     }
 
     public B relation(EntityRelation relation) {
