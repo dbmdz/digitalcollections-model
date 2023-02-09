@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 import lombok.experimental.SuperBuilder;
 import org.wikidata.wdtk.datamodel.interfaces.TimeValue;
 
@@ -129,6 +130,13 @@ public class Work extends Entity {
     this.parents = parents;
   }
 
+  public void addRelation(EntityRelation relation) {
+    if (relations == null) {
+      relations = new ArrayList<>(1);
+    }
+    relations.add(relation);
+  }
+
   public void setRelations(List<EntityRelation> relations) {
     this.relations = relations;
   }
@@ -212,7 +220,19 @@ public class Work extends Entity {
         + ", parents="
         + parents
         + ", relations="
-        + relations
+        + (relations == null
+            ? "null"
+            : relations.stream()
+                .map(
+                    r ->
+                        "{"
+                            + (r.getSubject() != null ? r.getSubject().getUuid() : null)
+                            + " "
+                            + r.getPredicate()
+                            + " "
+                            + (r.getObject() != null ? r.getObject().getUuid() : null)
+                            + "}")
+                .collect(Collectors.joining(", ")))
         + ", subjects="
         + subjects
         + ", titles="
