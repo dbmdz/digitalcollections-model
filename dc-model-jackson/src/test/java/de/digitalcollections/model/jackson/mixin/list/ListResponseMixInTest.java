@@ -24,7 +24,7 @@ class ListResponseMixInTest extends BaseJsonSerializationTest {
   @DisplayName("can handle a tag")
   @Test
   public void testTag() throws Exception {
-    Tag tag = Tag.builder().type("foo").build();
+    Tag tag = Tag.builder().name("foo").build();
     ListResponse<Tag, ListRequest> listResponse = new ListResponse(List.of(tag), new ListRequest());
     checkSerializeDeserialize(listResponse, "serializedTestObjects/list/ListResponse_Tag.json");
   }

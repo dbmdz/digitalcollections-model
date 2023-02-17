@@ -125,13 +125,7 @@ public class ManifestationTest extends BaseJsonSerializationTest {
                     List.of( // list ensures order
                         ExpressionType.builder().mainType("TEXT").subType("PRINT").build(),
                         ExpressionType.builder().mainType("TEXT").subType("HANDWRITING").build())))
-            .tag(
-                Tag.builder()
-                    .type("tag-type")
-                    .namespace("tag-namespace")
-                    .id("tag-id")
-                    .label(new LocalizedText(Locale.GERMAN, "tag-label"))
-                    .build())
+            .tag(Tag.builder().name("tag-name").build())
             .subject(
                 Subject.builder()
                     .type("type")
