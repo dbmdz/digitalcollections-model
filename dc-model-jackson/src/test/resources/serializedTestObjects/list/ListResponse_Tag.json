@@ -2,7 +2,7 @@
   "listResponseType" : "LIST_RESPONSE",
   "content" : [ {
     "objectType" : "TAG",
-    "type" : "foo"
+    "name" : "foo"
   } ],
   "request" : {
     "listRequestType" : "LIST_REQUEST"

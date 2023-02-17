@@ -5,6 +5,7 @@ import de.digitalcollections.model.identifiable.agent.GivenName;
 import de.digitalcollections.model.identifiable.entity.Article;
 import de.digitalcollections.model.identifiable.entity.Collection;
 import de.digitalcollections.model.identifiable.entity.Entity;
+import de.digitalcollections.model.identifiable.entity.Event;
 import de.digitalcollections.model.identifiable.entity.HeadwordEntry;
 import de.digitalcollections.model.identifiable.entity.Project;
 import de.digitalcollections.model.identifiable.entity.Topic;
@@ -54,6 +55,7 @@ public enum IdentifiableObjectType {
   CREEK(Creek.class),
   DIGITAL_OBJECT(DigitalObject.class),
   ENTITY(Entity.class),
+  EVENT(Event.class),
   FAMILY(Family.class),
   FAMILY_NAME(FamilyName.class),
   FILE_RESOURCE(FileResource.class),

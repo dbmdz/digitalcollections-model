@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.digitalcollections.model.identifiable.entity.Article;
 import de.digitalcollections.model.identifiable.entity.Collection;
 import de.digitalcollections.model.identifiable.entity.Entity;
+import de.digitalcollections.model.identifiable.entity.Event;
 import de.digitalcollections.model.identifiable.entity.HeadwordEntry;
 import de.digitalcollections.model.identifiable.entity.Project;
 import de.digitalcollections.model.identifiable.entity.Topic;
@@ -32,6 +33,7 @@ import de.digitalcollections.model.identifiable.entity.work.Work;
   @JsonSubTypes.Type(value = CorporateBody.class, name = "CORPORATE_BODY"),
   @JsonSubTypes.Type(value = DigitalObject.class, name = "DIGITAL_OBJECT"),
   @JsonSubTypes.Type(value = Entity.class, name = "ENTITY"),
+  @JsonSubTypes.Type(value = Event.class, name = "EVENT"),
   @JsonSubTypes.Type(value = GeoLocation.class, name = "GEOLOCATION"),
   @JsonSubTypes.Type(value = HeadwordEntry.class, name = "HEADWORD_ENTRY"),
   @JsonSubTypes.Type(value = Item.class, name = "ITEM"),
