@@ -125,7 +125,7 @@ public class ManifestationTest extends BaseJsonSerializationTest {
                     List.of( // list ensures order
                         ExpressionType.builder().mainType("TEXT").subType("PRINT").build(),
                         ExpressionType.builder().mainType("TEXT").subType("HANDWRITING").build())))
-            .tag(Tag.builder().name("tag-name").build())
+            .tag(Tag.builder().value("tag-value").build())
             .subject(
                 Subject.builder()
                     .type("type")
