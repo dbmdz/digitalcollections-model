@@ -10,7 +10,7 @@
   },
   "tags" : [ {
     "objectType" : "TAG",
-    "name" : "tag-name"
+    "value" : "tag-value"
   } ],
   "type" : "ENTITY",
   "navDate" : "2022-08-30",

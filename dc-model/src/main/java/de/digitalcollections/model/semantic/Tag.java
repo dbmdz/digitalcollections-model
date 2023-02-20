@@ -8,14 +8,14 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(buildMethodName = "prebuild")
 public class Tag extends UniqueObject {
 
-  private String name;
+  private String value;
 
   public Tag() {
     super();
   }
 
-  public Tag(String name) {
-    this.name = name;
+  public Tag(String value) {
+    this.value = value;
   }
 
   @Override
@@ -30,27 +30,27 @@ public class Tag extends UniqueObject {
       return false;
     }
     Tag tag = (Tag) o;
-    return Objects.equals(name, tag.name);
+    return Objects.equals(value, tag.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode(), name);
+    return Objects.hash(super.hashCode(), value);
   }
 
-  public String getName() {
-    return name;
+  public String getValue() {
+    return value;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setValue(String value) {
+    this.value = value;
   }
 
   @Override
   public String toString() {
     return "Tag{"
-        + "name='"
-        + name
+        + "value='"
+        + value
         + "'"
         + ", created="
         + created

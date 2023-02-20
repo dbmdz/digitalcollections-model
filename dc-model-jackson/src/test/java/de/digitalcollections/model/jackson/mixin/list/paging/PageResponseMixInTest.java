@@ -24,7 +24,7 @@ class PageResponseMixInTest extends BaseJsonSerializationTest {
   @DisplayName("can handle a tag")
   @Test
   public void testTag() throws Exception {
-    Tag tag = Tag.builder().name("foo").build();
+    Tag tag = Tag.builder().value("foo").build();
     PageResponse<Tag> pageResponse = PageResponse.builder().withContent(List.of(tag)).build();
     checkSerializeDeserialize(
         pageResponse, "serializedTestObjects/list/paging/PageResponse_Tag.json");

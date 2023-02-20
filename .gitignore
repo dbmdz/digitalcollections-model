@@ -6,3 +6,7 @@
 /nb-configuration.xml
 /dc-model-xml/nbproject/
 /dc-model-mappings/dc-model-html-mapping/nbproject/
+**/.settings
+**/.classpath
+**/.project
+/bin/
