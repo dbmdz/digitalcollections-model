@@ -2,7 +2,7 @@
   "listResponseType" : "PAGE_RESPONSE",
   "content" : [ {
     "objectType" : "TAG",
-    "name" : "foo"
+    "value" : "foo"
   } ],
   "totalElements" : 1,
   "pageRequest" : {
