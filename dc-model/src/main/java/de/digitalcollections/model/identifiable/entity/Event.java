@@ -9,7 +9,7 @@ import lombok.experimental.SuperBuilder;
 /**
  * https://d-nb.info/standards/elementset/gnd#id-50ee5a233a390c91e26b0d72b0a9a437
  *
- * <p>A conference or event
+ * <p>A conference or (historical) event
  */
 @SuperBuilder(buildMethodName = "prebuild")
 public class Event extends Entity implements NamedEntity {
@@ -65,7 +65,7 @@ public class Event extends Entity implements NamedEntity {
 
   @Override
   public String toString() {
-    return "Agent [name="
+    return "Event [name="
         + name
         + ", nameLocalesOfOriginalScripts="
         + nameLocalesOfOriginalScripts
