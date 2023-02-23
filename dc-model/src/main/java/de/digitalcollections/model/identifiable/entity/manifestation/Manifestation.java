@@ -5,15 +5,12 @@ import de.digitalcollections.model.identifiable.IdentifiableObjectType;
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 import de.digitalcollections.model.identifiable.entity.work.Work;
-import de.digitalcollections.model.semantic.Subject;
 import de.digitalcollections.model.text.Title;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.Set;
 import java.util.stream.Collectors;
 import lombok.experimental.SuperBuilder;
 
@@ -74,7 +71,6 @@ public class Manifestation extends Entity {
    */
   private String scale;
 
-  private Set<Subject> subjects;
   private List<Title> titles;
   private String version;
   private Work work;
@@ -92,10 +88,6 @@ public class Manifestation extends Entity {
 
   public void addRelation(EntityRelation relation) {
     relations.add(relation);
-  }
-
-  public void addSubject(Subject subject) {
-    subjects.add(subject);
   }
 
   /**
@@ -172,10 +164,6 @@ public class Manifestation extends Entity {
     return scale;
   }
 
-  public Set<Subject> getSubjects() {
-    return subjects;
-  }
-
   public List<Title> getTitles() {
     return titles;
   }
@@ -197,9 +185,6 @@ public class Manifestation extends Entity {
     }
     if (relations == null) {
       relations = new ArrayList<>();
-    }
-    if (subjects == null) {
-      subjects = new HashSet<>();
     }
   }
 
@@ -266,10 +251,6 @@ public class Manifestation extends Entity {
    */
   public void setScale(String scale) {
     this.scale = scale;
-  }
-
-  public void setSubjects(Set<Subject> subjects) {
-    this.subjects = subjects;
   }
 
   public void setTitles(List<Title> titles) {
@@ -390,7 +371,6 @@ public class Manifestation extends Entity {
         && Objects.equals(distributionInfo, that.distributionInfo)
         && Objects.equals(productionInfo, that.productionInfo)
         && Objects.equals(scale, that.scale)
-        && Objects.equals(subjects, that.subjects)
         && Objects.equals(titles, that.titles)
         && Objects.equals(version, that.version)
         && Objects.equals(work, that.work);
@@ -414,7 +394,6 @@ public class Manifestation extends Entity {
         distributionInfo,
         productionInfo,
         scale,
-        subjects,
         titles,
         version,
         work);
@@ -490,14 +469,6 @@ public class Manifestation extends Entity {
         parents = new ArrayList<>(1);
       }
       parents.add(parent);
-      return self();
-    }
-
-    public B subject(Subject subject) {
-      if (subjects == null) {
-        subjects = new HashSet<>(1);
-      }
-      subjects.add(subject);
       return self();
     }
 
