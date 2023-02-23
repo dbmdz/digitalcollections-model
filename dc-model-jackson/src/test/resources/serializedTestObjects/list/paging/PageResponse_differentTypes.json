@@ -7,6 +7,7 @@
     "label" : {
       "und" : "DigitalObject-Label"
     },
+    "subjects" : [ ],
     "type" : "ENTITY",
     "refId" : 0,
     "fileResources" : [ ],
@@ -20,6 +21,7 @@
     "label" : {
       "und" : "Webpage-Label"
     },
+    "subjects" : [ ],
     "type" : "RESOURCE",
     "renderingHints" : {
       "showInPageNavigation" : false

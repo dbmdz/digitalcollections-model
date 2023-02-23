@@ -7,6 +7,7 @@
   "previewImage" : {
     "identifiableObjectType" : "IMAGE_FILE_RESOURCE",
     "identifiers" : [ ],
+    "subjects" : [ ],
     "type" : "RESOURCE",
     "fileResourceType" : "IMAGE",
     "readonly" : false,
@@ -14,6 +15,7 @@
     "height" : 0,
     "width" : 0
   },
+  "subjects" : [ ],
   "type" : "ENTITY",
   "refId" : 0,
   "entityType" : "ENTITY"

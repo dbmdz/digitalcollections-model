@@ -16,6 +16,7 @@
   "label" : {
     "en" : "King Ludwig II of Bavaria and his Times"
   },
+  "subjects" : [ ],
   "type" : "ENTITY",
   "refId" : 0,
   "children" : [ {
@@ -36,6 +37,7 @@
     "label" : {
       "en" : "Sources about the Life and Times of Ludwig II"
     },
+    "subjects" : [ ],
     "type" : "ENTITY",
     "refId" : 0,
     "entityType" : "TOPIC"
@@ -57,6 +59,7 @@
     "label" : {
       "en" : "Artistic Influences and Models"
     },
+    "subjects" : [ ],
     "type" : "ENTITY",
     "refId" : 0,
     "entityType" : "TOPIC"
@@ -78,6 +81,7 @@
     "label" : {
       "en" : "Castles and Constructions of Ludwig II"
     },
+    "subjects" : [ ],
     "type" : "ENTITY",
     "refId" : 0,
     "entityType" : "TOPIC"
@@ -99,6 +103,7 @@
     "label" : {
       "en" : "Ludwig II and the Bayerische Staatsbibliothek"
     },
+    "subjects" : [ ],
     "type" : "ENTITY",
     "refId" : 0,
     "entityType" : "TOPIC"

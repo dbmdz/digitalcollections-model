@@ -18,6 +18,7 @@
   "label" : {
     "de-DE" : "Meine Homepage"
   },
+  "subjects" : [ ],
   "type" : "RESOURCE",
   "publicationEnd" : "+999999999-12-31",
   "publicationStart" : "-999999999-01-01",

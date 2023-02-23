@@ -1,6 +1,7 @@
 {
   "identifiableObjectType" : "HEADWORD_ENTRY",
   "identifiers" : [ ],
+  "subjects" : [ ],
   "type" : "ENTITY",
   "refId" : 0,
   "creators" : [ ],

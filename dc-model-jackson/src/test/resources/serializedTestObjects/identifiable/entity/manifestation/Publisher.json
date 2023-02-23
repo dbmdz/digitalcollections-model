@@ -12,6 +12,7 @@
         "de" : "München"
       }
     },
+    "subjects" : [ ],
     "type" : "ENTITY",
     "refId" : 0,
     "geoLocationType" : "HUMAN_SETTLEMENT",
@@ -29,6 +30,7 @@
         "de" : "Hamburg"
       }
     },
+    "subjects" : [ ],
     "type" : "ENTITY",
     "refId" : 0,
     "geoLocationType" : "HUMAN_SETTLEMENT",
@@ -47,6 +49,7 @@
         "de" : "Karl Ranseier"
       }
     },
+    "subjects" : [ ],
     "type" : "ENTITY",
     "refId" : 0,
     "familyNames" : [ ],

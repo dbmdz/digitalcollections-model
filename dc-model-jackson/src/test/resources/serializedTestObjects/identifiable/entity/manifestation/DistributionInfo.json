@@ -13,6 +13,7 @@
           "de" : "Köln"
         }
       },
+      "subjects" : [ ],
       "type" : "ENTITY",
       "refId" : 0,
       "geoLocationType" : "HUMAN_SETTLEMENT",
@@ -30,6 +31,7 @@
           "de" : "Karl Ranseier"
         }
       },
+      "subjects" : [ ],
       "type" : "ENTITY",
       "refId" : 0,
       "familyNames" : [ ],
@@ -50,6 +52,7 @@
           "de" : "Frankfurt"
         }
       },
+      "subjects" : [ ],
       "type" : "ENTITY",
       "refId" : 0,
       "geoLocationType" : "HUMAN_SETTLEMENT",
@@ -66,6 +69,7 @@
           "de" : "München"
         }
       },
+      "subjects" : [ ],
       "type" : "ENTITY",
       "refId" : 0,
       "geoLocationType" : "HUMAN_SETTLEMENT",
@@ -83,6 +87,7 @@
           "de" : "Hans Dampf"
         }
       },
+      "subjects" : [ ],
       "type" : "ENTITY",
       "refId" : 0,
       "familyNames" : [ ],
@@ -103,6 +108,7 @@
           "de" : "München"
         }
       },
+      "subjects" : [ ],
       "type" : "ENTITY",
       "refId" : 0,
       "geoLocationType" : "HUMAN_SETTLEMENT",
@@ -119,6 +125,7 @@
           "de" : "Berlin"
         }
       },
+      "subjects" : [ ],
       "type" : "ENTITY",
       "refId" : 0,
       "geoLocationType" : "HUMAN_SETTLEMENT",
@@ -138,6 +145,7 @@
           "de" : "Max Moritz"
         }
       },
+      "subjects" : [ ],
       "type" : "ENTITY",
       "refId" : 0,
       "familyNames" : [ ],

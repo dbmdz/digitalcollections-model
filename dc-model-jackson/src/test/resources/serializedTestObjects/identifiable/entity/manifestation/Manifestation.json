@@ -8,6 +8,33 @@
   "label" : {
     "de" : "Zimmer-Gymnastik ohne Geräte"
   },
+  "subjects" : [ {
+    "objectType" : "SUBJECT",
+    "identifiers" : [ {
+      "objectType" : "IDENTIFIER",
+      "id" : "id1",
+      "namespace" : "namespace1"
+    }, {
+      "objectType" : "IDENTIFIER",
+      "id" : "id2",
+      "namespace" : "namespace2"
+    } ],
+    "label" : {
+      "de" : "Subject A"
+    },
+    "type" : "type"
+  }, {
+    "objectType" : "SUBJECT",
+    "identifiers" : [ {
+      "objectType" : "IDENTIFIER",
+      "id" : "id3",
+      "namespace" : "namespace3"
+    } ],
+    "label" : {
+      "de" : "Subject B"
+    },
+    "type" : "type"
+  } ],
   "tags" : [ {
     "objectType" : "TAG",
     "value" : "tag-value"
@@ -55,6 +82,7 @@
       "label" : {
         "de" : "Arnold Hiller"
       },
+      "subjects" : [ ],
       "type" : "ENTITY",
       "refId" : 0,
       "familyNames" : [ ],
@@ -77,10 +105,10 @@
       "label" : {
         "und" : "Parent"
       },
+      "subjects" : [ ],
       "type" : "ENTITY",
       "refId" : 0,
       "relations" : [ ],
-      "subjects" : [ ],
       "titles" : [ ],
       "entityType" : "MANIFESTATION"
     }
@@ -100,6 +128,7 @@
             "de" : "Köln"
           }
         },
+        "subjects" : [ ],
         "type" : "ENTITY",
         "refId" : 0,
         "geoLocationType" : "HUMAN_SETTLEMENT",
@@ -117,6 +146,7 @@
             "de" : "Karl Ranseier"
           }
         },
+        "subjects" : [ ],
         "type" : "ENTITY",
         "refId" : 0,
         "familyNames" : [ ],
@@ -137,6 +167,7 @@
             "de" : "Frankfurt"
           }
         },
+        "subjects" : [ ],
         "type" : "ENTITY",
         "refId" : 0,
         "geoLocationType" : "HUMAN_SETTLEMENT",
@@ -153,6 +184,7 @@
             "de" : "München"
           }
         },
+        "subjects" : [ ],
         "type" : "ENTITY",
         "refId" : 0,
         "geoLocationType" : "HUMAN_SETTLEMENT",
@@ -170,6 +202,7 @@
             "de" : "Hans Dampf"
           }
         },
+        "subjects" : [ ],
         "type" : "ENTITY",
         "refId" : 0,
         "familyNames" : [ ],
@@ -190,6 +223,7 @@
             "de" : "München"
           }
         },
+        "subjects" : [ ],
         "type" : "ENTITY",
         "refId" : 0,
         "geoLocationType" : "HUMAN_SETTLEMENT",
@@ -206,6 +240,7 @@
             "de" : "Berlin"
           }
         },
+        "subjects" : [ ],
         "type" : "ENTITY",
         "refId" : 0,
         "geoLocationType" : "HUMAN_SETTLEMENT",
@@ -225,6 +260,7 @@
             "de" : "Max Moritz"
           }
         },
+        "subjects" : [ ],
         "type" : "ENTITY",
         "refId" : 0,
         "familyNames" : [ ],
@@ -267,33 +303,6 @@
     }
   },
   "scale" : "[Ca. 1:820 000]",
-  "subjects" : [ {
-    "objectType" : "SUBJECT",
-    "identifiers" : [ {
-      "objectType" : "IDENTIFIER",
-      "id" : "id1",
-      "namespace" : "namespace1"
-    }, {
-      "objectType" : "IDENTIFIER",
-      "id" : "id2",
-      "namespace" : "namespace2"
-    } ],
-    "label" : {
-      "de" : "Subject A"
-    },
-    "type" : "type"
-  }, {
-    "objectType" : "SUBJECT",
-    "identifiers" : [ {
-      "objectType" : "IDENTIFIER",
-      "id" : "id3",
-      "namespace" : "namespace3"
-    } ],
-    "label" : {
-      "de" : "Subject B"
-    },
-    "type" : "type"
-  } ],
   "titles" : [ {
     "text" : {
       "de" : "Titel",

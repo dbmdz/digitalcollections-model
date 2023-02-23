@@ -1,6 +1,7 @@
 {
   "identifiableObjectType" : "IMAGE_FILE_RESOURCE",
   "identifiers" : [ ],
+  "subjects" : [ ],
   "type" : "RESOURCE",
   "fileResourceType" : "IMAGE",
   "readonly" : false,
