@@ -35,6 +35,9 @@ import de.digitalcollections.model.identifiable.entity.work.Work;
   @JsonSubTypes.Type(value = Entity.class, name = "ENTITY"),
   @JsonSubTypes.Type(value = Event.class, name = "EVENT"),
   @JsonSubTypes.Type(value = GeoLocation.class, name = "GEOLOCATION"),
+  @JsonSubTypes.Type(
+      value = GeoLocation.class,
+      name = "GEO_LOCATION"), // yes, we have both in many places :-(
   @JsonSubTypes.Type(value = HeadwordEntry.class, name = "HEADWORD_ENTRY"),
   @JsonSubTypes.Type(value = Item.class, name = "ITEM"),
   @JsonSubTypes.Type(value = Manifestation.class, name = "MANIFESTATION"),
