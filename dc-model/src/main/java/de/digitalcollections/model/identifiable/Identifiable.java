@@ -8,6 +8,7 @@ import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.Website;
 import de.digitalcollections.model.identifiable.resource.FileResource;
 import de.digitalcollections.model.identifiable.resource.ImageFileResource;
+import de.digitalcollections.model.semantic.Subject;
 import de.digitalcollections.model.semantic.Tag;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.LocalizedText;
@@ -47,6 +48,7 @@ public class Identifiable extends UniqueObject {
   protected LocalizedUrlAliases localizedUrlAliases;
   protected ImageFileResource previewImage;
   protected RenderingHintsPreviewImage previewImageRenderingHints;
+  protected Set<Subject> subjects;
   protected Set<Tag> tags;
   protected IdentifiableType type;
 
@@ -93,6 +95,7 @@ public class Identifiable extends UniqueObject {
         && Objects.equals(localizedUrlAliases, that.localizedUrlAliases)
         && Objects.equals(previewImage, that.previewImage)
         && Objects.equals(previewImageRenderingHints, that.previewImageRenderingHints)
+        && Objects.equals(subjects, that.subjects)
         && Objects.equals(tags, that.tags)
         && type == that.type;
   }
@@ -194,6 +197,7 @@ public class Identifiable extends UniqueObject {
             localizedUrlAliases,
             previewImage,
             previewImageRenderingHints,
+            subjects,
             tags,
             type);
   }
@@ -204,6 +208,9 @@ public class Identifiable extends UniqueObject {
     this.identifiableObjectType = IdentifiableObjectType.getByClass(getClass());
     if (identifiers == null) {
       identifiers = new HashSet<>(0);
+    }
+    if (subjects == null) {
+      subjects = new HashSet<>();
     }
   }
 
@@ -255,6 +262,18 @@ public class Identifiable extends UniqueObject {
 
   public void setType(IdentifiableType identifiableType) {
     this.type = identifiableType;
+  }
+
+  public void addSubject(Subject subject) {
+    subjects.add(subject);
+  }
+
+  public Set<Subject> getSubjects() {
+    return subjects;
+  }
+
+  public void setSubjects(Set<Subject> subjects) {
+    this.subjects = subjects;
   }
 
   public abstract static class IdentifiableBuilder<
@@ -438,6 +457,14 @@ public class Identifiable extends UniqueObject {
                   urlAliasList.forEach(u -> u.setTargetUuid(c.getUuid()));
                 });
       }
+    }
+
+    public B subject(Subject subject) {
+      if (subjects == null) {
+        subjects = new HashSet<>(1);
+      }
+      subjects.add(subject);
+      return self();
     }
 
     public B tag(Tag tag) {

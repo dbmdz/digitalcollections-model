@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add submodule "mappings" with submodule "html" for mapping HTML code (currently supporting ul, li, a) to DC-Model StructuredContent
 - Add convenience method addLocalizedUrlAlias(UrlAlias urlAlias) to Identifiable
 - ValidationError/ValidationException classes for providing field specific validation errors over system borders (e.g. via REST)
+- Property `subjects` to `Identifiable`
 
 ### Changed
 
@@ -34,6 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Breaking**: Removed `Expression` (which is now part of `Manifestation`) including corresponding `IdentifiableObjectType`
 - **Breaking**: Removed `title` attribute from `Work` (which is now part of `Manifestation`)
 - **Breaking**: Removed `WorkType` and `creators` from `Work`
+- `Work` and `Manifestation`: Subjects are inherited from `Identifiable` instead of being their own properties
 
 ## [11.0.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/11.0.0) - 2022-07-18
 

@@ -3,15 +3,12 @@ package de.digitalcollections.model.identifiable.entity.work;
 import de.digitalcollections.model.identifiable.IdentifiableObjectType;
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
-import de.digitalcollections.model.semantic.Subject;
 import de.digitalcollections.model.text.Title;
 import de.digitalcollections.model.time.LocalDateRange;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 import java.util.stream.Collectors;
 import lombok.experimental.SuperBuilder;
 import org.wikidata.wdtk.datamodel.interfaces.TimeValue;
@@ -48,7 +45,6 @@ public class Work extends Entity {
   private TimeValue firstAppearedTimeValue;
   private List<Work> parents;
   private List<EntityRelation> relations;
-  private Set<Subject> subjects;
   private List<Title> titles;
 
   public Work() {
@@ -83,10 +79,6 @@ public class Work extends Entity {
     return relations;
   }
 
-  public Set<Subject> getSubjects() {
-    return subjects;
-  }
-
   public List<Title> getTitles() {
     return titles;
   }
@@ -100,9 +92,6 @@ public class Work extends Entity {
     }
     if (relations == null) {
       relations = new ArrayList<>();
-    }
-    if (subjects == null) {
-      subjects = new HashSet<>();
     }
   }
 
@@ -141,17 +130,6 @@ public class Work extends Entity {
     this.relations = relations;
   }
 
-  public void setSubjects(Set<Subject> subjects) {
-    this.subjects = subjects;
-  }
-
-  public void addSubject(Subject subject) {
-    if (subject == null) {
-      subjects = new HashSet<>(1);
-    }
-    subjects.add(subject);
-  }
-
   /**
    * Sets the label, not one of the titles!
    *
@@ -184,7 +162,6 @@ public class Work extends Entity {
         && Objects.equals(firstAppearedTimeValue, work.firstAppearedTimeValue)
         && Objects.equals(parents, work.parents)
         && Objects.equals(relations, work.relations)
-        && Objects.equals(subjects, work.subjects)
         && Objects.equals(titles, work.titles);
   }
 
@@ -199,7 +176,6 @@ public class Work extends Entity {
         firstAppearedTimeValue,
         parents,
         relations,
-        subjects,
         titles);
   }
 
