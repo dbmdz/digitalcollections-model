@@ -5,6 +5,7 @@
     "label" : {
       "de" : "Acme Inc."
     },
+    "subjects" : [ ],
     "type" : "ENTITY",
     "refId" : 0,
     "entityType" : "CORPORATE_BODY"
@@ -16,6 +17,7 @@
     "label" : {
       "de" : "Dorfstadt"
     },
+    "subjects" : [ ],
     "type" : "ENTITY",
     "refId" : 0,
     "geoLocationType" : "HUMAN_SETTLEMENT",

@@ -4,6 +4,7 @@
   "label" : {
     "en" : "Mountain"
   },
+  "subjects" : [ ],
   "type" : "ENTITY",
   "customAttributes" : {
     "height" : 8999
