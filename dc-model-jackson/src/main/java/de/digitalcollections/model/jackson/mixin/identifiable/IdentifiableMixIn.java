@@ -1,10 +1,13 @@
 package de.digitalcollections.model.jackson.mixin.identifiable;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.digitalcollections.model.identifiable.Identifiable;
+import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.identifiable.agent.FamilyName;
 import de.digitalcollections.model.identifiable.agent.GivenName;
 import de.digitalcollections.model.identifiable.entity.agent.CorporateBody;
@@ -36,6 +39,7 @@ import de.digitalcollections.model.identifiable.resource.VideoFileResource;
 import de.digitalcollections.model.identifiable.web.Webpage;
 import de.digitalcollections.model.jackson.mixin.UniqueObjectMixIn;
 import de.digitalcollections.model.text.LocalizedText;
+import java.util.Set;
 
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
@@ -82,4 +86,7 @@ public interface IdentifiableMixIn extends UniqueObjectMixIn {
 
   @JsonSetter
   public void setLabel(LocalizedText label);
+
+  @JsonInclude(value = Include.NON_NULL)
+  public Set<Identifier> getIdentifiers();
 }

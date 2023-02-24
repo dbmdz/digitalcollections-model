@@ -8,7 +8,6 @@
   "previewImage" : {
     "identifiableObjectType" : "IMAGE_FILE_RESOURCE",
     "identifiers" : [ ],
-    "subjects" : [ ],
     "type" : "RESOURCE",
     "fileResourceType" : "IMAGE",
     "readonly" : false,
@@ -16,7 +15,6 @@
     "height" : 100,
     "width" : 400
   },
-  "subjects" : [ ],
   "type" : "ENTITY",
   "customAttributes" : {
     "companySpecificAttributeX" : "foobar"
@@ -29,11 +27,8 @@
       "label" : {
         "und" : "Creator"
       },
-      "subjects" : [ ],
       "type" : "ENTITY",
       "refId" : 0,
-      "familyNames" : [ ],
-      "givenNames" : [ ],
       "entityType" : "PERSON"
     },
     "date" : "2021-12-01",
@@ -43,7 +38,6 @@
       "label" : {
         "und" : "Geolocation"
       },
-      "subjects" : [ ],
       "type" : "ENTITY",
       "refId" : 0,
       "geoLocationType" : "HUMAN_SETTLEMENT",
@@ -53,7 +47,6 @@
   "fileResources" : [ {
     "identifiableObjectType" : "IMAGE_FILE_RESOURCE",
     "identifiers" : [ ],
-    "subjects" : [ ],
     "type" : "RESOURCE",
     "fileResourceType" : "IMAGE",
     "readonly" : false,
@@ -63,7 +56,6 @@
   }, {
     "identifiableObjectType" : "APPLICATION_FILE_RESOURCE",
     "identifiers" : [ ],
-    "subjects" : [ ],
     "type" : "RESOURCE",
     "fileResourceType" : "APPLICATION",
     "filename" : "dings.pdf",
@@ -71,8 +63,6 @@
     "sizeInBytes" : 0,
     "filenameExtension" : "pdf"
   } ],
-  "linkedDataResources" : [ ],
   "numberOfBinaryResources" : 42,
-  "renderingResources" : [ ],
   "entityType" : "DIGITAL_OBJECT"
 }
