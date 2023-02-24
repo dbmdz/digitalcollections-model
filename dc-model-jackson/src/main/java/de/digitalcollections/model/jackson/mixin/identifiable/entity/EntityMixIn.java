@@ -17,6 +17,7 @@ import de.digitalcollections.model.identifiable.entity.work.Expression;
 import de.digitalcollections.model.identifiable.entity.work.Item;
 import de.digitalcollections.model.identifiable.entity.work.Manifestation;
 import de.digitalcollections.model.identifiable.entity.work.Work;
+import de.digitalcollections.model.jackson.mixin.identifiable.IdentifiableMixIn;
 
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
@@ -42,4 +43,4 @@ import de.digitalcollections.model.identifiable.entity.work.Work;
   @JsonSubTypes.Type(value = Website.class, name = "WEBSITE"),
   @JsonSubTypes.Type(value = Work.class, name = "WORK")
 })
-public interface EntityMixIn {}
+public interface EntityMixIn extends IdentifiableMixIn {}
