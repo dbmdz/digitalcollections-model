@@ -12,7 +12,6 @@
     "uuid" : "6bed2ff9-4ad5-4e18-b520-bb9843fe9a73",
     "identifiableObjectType" : "IMAGE_FILE_RESOURCE",
     "identifiers" : [ ],
-    "subjects" : [ ],
     "type" : "RESOURCE",
     "fileResourceType" : "IMAGE",
     "readonly" : false,
@@ -20,9 +19,7 @@
     "height" : 0,
     "width" : 0
   },
-  "subjects" : [ ],
   "type" : "ENTITY",
   "refId" : 0,
-  "holders" : [ ],
   "entityType" : "ITEM"
 }

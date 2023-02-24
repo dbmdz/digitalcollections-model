@@ -1,10 +1,8 @@
 {
   "identifiableObjectType" : "HEADWORD_ENTRY",
   "identifiers" : [ ],
-  "subjects" : [ ],
   "type" : "ENTITY",
   "refId" : 0,
-  "creators" : [ ],
   "headword" : {
     "objectType" : "HEADWORD",
     "label" : "Kaiserschmarrn",

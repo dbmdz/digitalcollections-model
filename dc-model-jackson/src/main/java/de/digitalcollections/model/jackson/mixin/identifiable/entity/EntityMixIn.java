@@ -18,6 +18,7 @@ import de.digitalcollections.model.identifiable.entity.geo.location.GeoLocation;
 import de.digitalcollections.model.identifiable.entity.item.Item;
 import de.digitalcollections.model.identifiable.entity.manifestation.Manifestation;
 import de.digitalcollections.model.identifiable.entity.work.Work;
+import de.digitalcollections.model.jackson.mixin.identifiable.IdentifiableMixIn;
 
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
@@ -47,4 +48,4 @@ import de.digitalcollections.model.identifiable.entity.work.Work;
   @JsonSubTypes.Type(value = Website.class, name = "WEBSITE"),
   @JsonSubTypes.Type(value = Work.class, name = "WORK")
 })
-public interface EntityMixIn {}
+public interface EntityMixIn extends IdentifiableMixIn {}

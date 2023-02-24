@@ -6,11 +6,8 @@
     "label" : {
       "de" : "Karl Ranseier"
     },
-    "subjects" : [ ],
     "type" : "ENTITY",
     "refId" : 0,
-    "familyNames" : [ ],
-    "givenNames" : [ ],
     "entityType" : "PERSON"
   },
   "involvementPlace" : {
@@ -19,7 +16,6 @@
     "label" : {
       "de" : "Köln"
     },
-    "subjects" : [ ],
     "type" : "ENTITY",
     "refId" : 0,
     "geoLocationType" : "HUMAN_SETTLEMENT",

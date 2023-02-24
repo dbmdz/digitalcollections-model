@@ -3,12 +3,8 @@
     "uuid" : "baf5a649-dd8a-43f2-8fac-f535b311af03",
     "identifiableObjectType" : "DIGITAL_OBJECT",
     "identifiers" : [ ],
-    "subjects" : [ ],
     "type" : "ENTITY",
     "refId" : 0,
-    "fileResources" : [ ],
-    "linkedDataResources" : [ ],
-    "renderingResources" : [ ],
     "entityType" : "DIGITAL_OBJECT"
   },
   "predicate" : "is_describing_provenience",
@@ -16,10 +12,8 @@
     "uuid" : "8a9c3c34-c36c-4671-8f2f-9d96a5fc32e4",
     "identifiableObjectType" : "ARTICLE",
     "identifiers" : [ ],
-    "subjects" : [ ],
     "type" : "ENTITY",
     "refId" : 0,
-    "creators" : [ ],
     "entityType" : "ARTICLE"
   },
   "additionalPredicates" : [ "is_pianist_of" ]

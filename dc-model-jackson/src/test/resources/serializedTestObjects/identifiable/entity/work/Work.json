@@ -4,7 +4,6 @@
   "label" : {
     "de" : "Zimmer-Gymnastik ohne Geräte"
   },
-  "subjects" : [ ],
   "type" : "ENTITY",
   "refId" : 0,
   "firstAppearedDate" : "2020-04-28",
@@ -21,7 +20,5 @@
     "timezoneOffset" : 0,
     "year" : 2020
   },
-  "relations" : [ ],
-  "titles" : [ ],
   "entityType" : "WORK"
 }
