@@ -28,8 +28,6 @@
       },
       "type" : "ENTITY",
       "refId" : 0,
-      "familyNames" : [ ],
-      "givenNames" : [ ],
       "entityType" : "PERSON"
     },
     "date" : "2021-12-01",
@@ -64,8 +62,6 @@
     "sizeInBytes" : 0,
     "filenameExtension" : "pdf"
   } ],
-  "linkedDataResources" : [ ],
   "numberOfBinaryResources" : 42,
-  "renderingResources" : [ ],
   "entityType" : "DIGITAL_OBJECT"
 }

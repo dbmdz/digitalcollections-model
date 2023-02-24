@@ -8,9 +8,6 @@
     },
     "type" : "ENTITY",
     "refId" : 0,
-    "fileResources" : [ ],
-    "linkedDataResources" : [ ],
-    "renderingResources" : [ ],
     "entityType" : "DIGITAL_OBJECT"
   }, {
     "objectType" : "WEBPAGE",
@@ -19,7 +16,10 @@
     "label" : {
       "" : "Webpage-Label"
     },
-    "type" : "RESOURCE"
+    "type" : "RESOURCE",
+    "renderingHints" : {
+      "showInPageNavigation" : false
+    }
   } ],
   "executedSearchTerm" : "Label",
   "totalElements" : 2,
