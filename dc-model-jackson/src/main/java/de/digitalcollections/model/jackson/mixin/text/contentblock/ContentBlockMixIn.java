@@ -1,7 +1,6 @@
 package de.digitalcollections.model.jackson.mixin.text.contentblock;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -30,7 +29,6 @@ import java.util.List;
     include = JsonTypeInfo.As.PROPERTY,
     property = "type",
     visible = true)
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = Blockquote.class, name = "blockquote"),
   @JsonSubTypes.Type(value = BulletList.class, name = "bullet_list"),

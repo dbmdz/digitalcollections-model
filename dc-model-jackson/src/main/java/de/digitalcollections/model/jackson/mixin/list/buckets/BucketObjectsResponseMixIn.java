@@ -1,6 +1,5 @@
 package de.digitalcollections.model.jackson.mixin.list.buckets;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -13,7 +12,6 @@ import de.digitalcollections.model.semantic.Headword;
 import java.util.List;
 
 @JsonDeserialize(as = BucketObjectsResponse.class)
-@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class BucketObjectsResponseMixIn<T extends UniqueObject>
     extends PageResponseMixIn<T> {
 
