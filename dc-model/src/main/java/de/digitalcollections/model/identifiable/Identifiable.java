@@ -210,7 +210,7 @@ public class Identifiable extends UniqueObject {
       identifiers = new HashSet<>(0);
     }
     if (subjects == null) {
-      subjects = new HashSet<>();
+      subjects = new HashSet<>(0);
     }
   }
 
