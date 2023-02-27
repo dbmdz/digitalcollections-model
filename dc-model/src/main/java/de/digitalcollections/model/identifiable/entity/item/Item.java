@@ -68,7 +68,7 @@ public class Item extends Entity {
   protected void init() {
     super.init();
     if (holders == null) {
-      holders = new ArrayList<>();
+      holders = new ArrayList<>(0);
     }
   }
 
