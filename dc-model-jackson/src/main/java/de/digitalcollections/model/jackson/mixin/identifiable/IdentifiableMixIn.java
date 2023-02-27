@@ -1,6 +1,5 @@
 package de.digitalcollections.model.jackson.mixin.identifiable;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonSetter;
@@ -46,7 +45,6 @@ import java.util.Set;
     include = JsonTypeInfo.As.EXISTING_PROPERTY,
     property = "identifiableObjectType",
     visible = true)
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSubTypes({
   // need to be uppercase (and included as EXISTING_PROPERTY) to reuse enum field values (see
   // IdentifiableObjectType) for deserializing:

@@ -1,7 +1,6 @@
 package de.digitalcollections.model.jackson.mixin.list;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -42,7 +41,6 @@ import de.digitalcollections.model.view.RenderingTemplate;
 import java.util.List;
 
 @JsonDeserialize(as = ListResponse.class)
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "listResponseType", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = BucketObjectsResponse.class, name = "BUCKET_OBJECTS_RESPONSE"),

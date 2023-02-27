@@ -1,7 +1,6 @@
 package de.digitalcollections.model.jackson.mixin.list.filtering;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -9,7 +8,6 @@ import de.digitalcollections.model.list.filtering.FilterCriterion;
 import de.digitalcollections.model.list.filtering.FilterOperation;
 import java.util.Collection;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeName("FILTERCRITERION")
 public abstract class FilterCriterionMixIn extends FilterCriterion<Object> {
 
