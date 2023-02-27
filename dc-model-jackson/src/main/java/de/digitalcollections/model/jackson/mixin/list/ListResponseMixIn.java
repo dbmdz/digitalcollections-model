@@ -1,7 +1,6 @@
 package de.digitalcollections.model.jackson.mixin.list;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -35,7 +34,6 @@ import de.digitalcollections.model.view.RenderingTemplate;
 import java.util.List;
 
 @JsonDeserialize(as = ListResponse.class)
-@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class ListResponseMixIn<T, R extends ListRequest> extends ListResponse<T, R> {
 
   @JsonTypeInfo(use = Id.NAME, property = "objectType", visible = true)

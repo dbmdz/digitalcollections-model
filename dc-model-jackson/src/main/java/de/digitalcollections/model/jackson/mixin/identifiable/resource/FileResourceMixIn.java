@@ -1,6 +1,5 @@
 package de.digitalcollections.model.jackson.mixin.identifiable.resource;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.digitalcollections.model.identifiable.resource.ApplicationFileResource;
@@ -17,7 +16,6 @@ import de.digitalcollections.model.jackson.mixin.identifiable.IdentifiableMixIn;
     include = JsonTypeInfo.As.EXISTING_PROPERTY,
     property = "fileResourceType",
     visible = true)
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = ApplicationFileResource.class, name = "APPLICATION"),
   @JsonSubTypes.Type(value = AudioFileResource.class, name = "AUDIO"),
