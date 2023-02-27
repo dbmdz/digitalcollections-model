@@ -11,7 +11,7 @@ public class DigitalCollectionsObjectMapper extends ObjectMapper {
 
   public DigitalCollectionsObjectMapper() {
     super();
-    configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+    configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
     setSerializationInclusion(JsonInclude.Include.NON_ABSENT);
     disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);

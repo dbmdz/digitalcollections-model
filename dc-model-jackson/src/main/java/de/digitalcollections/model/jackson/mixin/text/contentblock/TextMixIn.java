@@ -1,7 +1,6 @@
 package de.digitalcollections.model.jackson.mixin.text.contentblock;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import de.digitalcollections.model.text.contentblock.Mark;
@@ -9,7 +8,6 @@ import de.digitalcollections.model.text.contentblock.Text;
 import java.util.List;
 
 @JsonDeserialize(as = Text.class)
-@JsonIgnoreProperties(ignoreUnknown = true)
 public interface TextMixIn {
 
   @JsonProperty("marks")

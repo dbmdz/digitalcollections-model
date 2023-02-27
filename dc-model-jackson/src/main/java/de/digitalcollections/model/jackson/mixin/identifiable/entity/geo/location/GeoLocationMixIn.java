@@ -1,7 +1,6 @@
 package de.digitalcollections.model.jackson.mixin.identifiable.entity.geo.location;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.digitalcollections.model.identifiable.entity.geo.location.Canyon;
@@ -25,7 +24,6 @@ import de.digitalcollections.model.jackson.mixin.identifiable.entity.EntityMixIn
     include = JsonTypeInfo.As.EXISTING_PROPERTY,
     property = "geoLocationType",
     visible = true)
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonSubTypes({
   // need to be uppercase (and included as EXISTING_PROPERTY) to reuse enum field values for
   // deserializing:
