@@ -29,12 +29,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Deprecated `PagingInfo` after adding paging util method `List<PageItem> getNavItems(int maxNumberOfItems)` to `PageResponse`.
 - `Collection` implements `ManagedContent`
 - **Breaking**: Moved WEMI classes into new packaged structure
+- Set "ignore unknown properties" as default (removes several `JsonIgnoreProperties` annotations)
 
 ### Removed
 
 - **Breaking**: Removed `Expression` (which is now part of `Manifestation`) including corresponding `IdentifiableObjectType`
 - **Breaking**: Removed `title` attribute from `Work` (which is now part of `Manifestation`)
 - **Breaking**: Removed `WorkType` and `creators` from `Work`
+- **Breaking**: In `UniqueObject` and its descendants empty collections and strings are not serialized (no empty brackets) except for `identifiers` and `User#roles`
 - `Work` and `Manifestation`: Subjects are inherited from `Identifiable` instead of being their own properties
 
 ## [11.0.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/11.0.0) - 2022-07-18
