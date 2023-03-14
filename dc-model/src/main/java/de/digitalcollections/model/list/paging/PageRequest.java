@@ -3,7 +3,9 @@ package de.digitalcollections.model.list.paging;
 import de.digitalcollections.model.list.ListRequest;
 import de.digitalcollections.model.list.filtering.Filtering;
 import de.digitalcollections.model.list.sorting.Direction;
+import de.digitalcollections.model.list.sorting.Order;
 import de.digitalcollections.model.list.sorting.Sorting;
+import java.util.List;
 
 /**
  * Container for paging, sorting, filtering and searching params:
@@ -92,6 +94,14 @@ public class PageRequest extends ListRequest {
     }
     this.pageNumber = pageNumber;
     this.pageSize = pageSize;
+  }
+
+  public PageRequest(int pageNumber, int pageSize, List<Order> sortBy) {
+    this(pageNumber, pageSize);
+    if (sortBy != null) {
+      Sorting sorting = new Sorting(sortBy);
+      setSorting(sorting);
+    }
   }
 
   @Override
