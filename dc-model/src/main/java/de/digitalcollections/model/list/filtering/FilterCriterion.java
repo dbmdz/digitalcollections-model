@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  * References:
  *
  * @param <T> target type for deserializing operand value
- * @see <a href="https://github.com/vijjayy81/spring-boot-jpa-rest-demo-filter-paging-sorting">An
+ * @see <a href= "https://github.com/vijjayy81/spring-boot-jpa-rest-demo-filter-paging-sorting">An
  *     example application using Spring boot MVC, Spring Data JPA with the ability to do filter,
  *     pagination and sorting.</a>
  */
@@ -328,8 +328,12 @@ public class FilterCriterion<T> {
   public static class Builder {
 
     private String expression;
-    private FilterCriterion filterCriterion;
+    private FilterOperation filterOperation;
+    private Comparable maxValue;
+    private Comparable minValue;
     private boolean nativeExpression;
+    private Object value;
+    private Collection values;
 
     Builder() {}
 
@@ -342,28 +346,15 @@ public class FilterCriterion<T> {
      * @return builder instance for fluent usage
      */
     public Builder between(Comparable<?> minValue, Comparable<?> maxValue) {
-      filterCriterion =
-          new FilterCriterion(
-              expression, false, FilterOperation.BETWEEN, null, minValue, maxValue, null);
+      this.filterOperation = FilterOperation.BETWEEN;
+      this.minValue = minValue;
+      this.maxValue = maxValue;
       return this;
     }
 
     public FilterCriterion build() {
-      return filterCriterion;
-    }
-
-    /**
-     * Completes construction of a filter criterion for a field with operation {@link
-     * FilterOperation#CONTAINS}
-     *
-     * @param expression expression (not a native expression)
-     * @param value operand
-     * @return builder instance for fluent usage
-     */
-    @Deprecated
-    public Builder contains(String expression, Object value) {
-      filterCriterion = new FilterCriterion(expression, false, FilterOperation.CONTAINS, value);
-      return this;
+      return new FilterCriterion(
+          expression, nativeExpression, filterOperation, value, minValue, maxValue, values);
     }
 
     /**
@@ -374,7 +365,8 @@ public class FilterCriterion<T> {
      * @return builder instance for fluent usage
      */
     public Builder contains(Object value) {
-      filterCriterion = new FilterCriterion(expression, false, FilterOperation.CONTAINS, value);
+      this.filterOperation = FilterOperation.CONTAINS;
+      this.value = value;
       return this;
     }
 
@@ -386,8 +378,8 @@ public class FilterCriterion<T> {
      * @return builder instance for fluent usage
      */
     public Builder greater(Object value) {
-      filterCriterion =
-          new FilterCriterion(expression, nativeExpression, FilterOperation.GREATER_THAN, value);
+      this.filterOperation = FilterOperation.GREATER_THAN;
+      this.value = value;
       return this;
     }
 
@@ -399,9 +391,8 @@ public class FilterCriterion<T> {
      * @return builder instance for fluent usage
      */
     public Builder greaterOrEqual(Object value) {
-      filterCriterion =
-          new FilterCriterion(
-              expression, nativeExpression, FilterOperation.GREATER_THAN_OR_EQUAL_TO, value);
+      this.filterOperation = FilterOperation.GREATER_THAN_OR_EQUAL_TO;
+      this.value = value;
       return this;
     }
 
@@ -413,12 +404,8 @@ public class FilterCriterion<T> {
      * @return builder instance for fluent usage
      */
     public Builder greaterOrEqualOrNotSet(Object value) {
-      filterCriterion =
-          new FilterCriterion(
-              expression,
-              nativeExpression,
-              FilterOperation.GREATER_THAN_OR_EQUAL_TO_OR_NOT_SET,
-              value);
+      this.filterOperation = FilterOperation.GREATER_THAN_OR_EQUAL_TO_OR_NOT_SET;
+      this.value = value;
       return this;
     }
 
@@ -430,9 +417,8 @@ public class FilterCriterion<T> {
      * @return builder instance for fluent usage
      */
     public Builder greaterOrNotSet(Object value) {
-      filterCriterion =
-          new FilterCriterion(
-              expression, nativeExpression, FilterOperation.GREATER_THAN_OR_NOT_SET, value);
+      this.filterOperation = FilterOperation.GREATER_THAN_OR_NOT_SET;
+      this.value = value;
       return this;
     }
 
@@ -444,9 +430,8 @@ public class FilterCriterion<T> {
      * @return builder instance for fluent usage
      */
     public Builder in(Collection<?> values) {
-      filterCriterion =
-          new FilterCriterion(
-              expression, nativeExpression, FilterOperation.IN, null, null, null, values);
+      this.filterOperation = FilterOperation.IN;
+      this.values = values;
       return this;
     }
 
@@ -461,11 +446,10 @@ public class FilterCriterion<T> {
      */
     public Builder isEquals(Object value) {
       if (value != null) {
-        filterCriterion =
-            new FilterCriterion(expression, nativeExpression, FilterOperation.EQUALS, value);
+        this.filterOperation = FilterOperation.EQUALS;
+        this.value = value;
       } else {
-        filterCriterion =
-            new FilterCriterion(expression, nativeExpression, FilterOperation.NOT_SET);
+        this.filterOperation = FilterOperation.NOT_SET;
       }
       return this;
     }
@@ -478,9 +462,8 @@ public class FilterCriterion<T> {
      * @return builder instance for fluent usage
      */
     public Builder isEqualsOrNotSet(Object value) {
-      filterCriterion =
-          new FilterCriterion(
-              expression, nativeExpression, FilterOperation.EQUALS_OR_NOT_SET, value);
+      this.filterOperation = FilterOperation.EQUALS_OR_NOT_SET;
+      this.value = value;
       return this;
     }
 
@@ -492,8 +475,8 @@ public class FilterCriterion<T> {
      * @return builder instance for fluent usage
      */
     public Builder less(Object value) {
-      filterCriterion =
-          new FilterCriterion(expression, nativeExpression, FilterOperation.LESS_THAN, value);
+      this.filterOperation = FilterOperation.LESS_THAN;
+      this.value = value;
       return this;
     }
 
@@ -505,9 +488,8 @@ public class FilterCriterion<T> {
      * @return builder instance for fluent usage
      */
     public Builder lessAndSet(Object value) {
-      filterCriterion =
-          new FilterCriterion(
-              expression, nativeExpression, FilterOperation.LESS_THAN_AND_SET, value);
+      this.filterOperation = FilterOperation.LESS_THAN_AND_SET;
+      this.value = value;
       return this;
     }
 
@@ -519,9 +501,8 @@ public class FilterCriterion<T> {
      * @return builder instance for fluent usage
      */
     public Builder lessOrEqual(Object value) {
-      filterCriterion =
-          new FilterCriterion(
-              expression, nativeExpression, FilterOperation.LESS_THAN_OR_EQUAL_TO, value);
+      this.filterOperation = FilterOperation.LESS_THAN_OR_EQUAL_TO;
+      this.value = value;
       return this;
     }
 
@@ -533,9 +514,8 @@ public class FilterCriterion<T> {
      * @return builder instance for fluent usage
      */
     public Builder lessOrEqualAndSet(Object value) {
-      filterCriterion =
-          new FilterCriterion(
-              expression, nativeExpression, FilterOperation.LESS_THAN_OR_EQUAL_TO_AND_SET, value);
+      this.filterOperation = FilterOperation.LESS_THAN_OR_EQUAL_TO_AND_SET;
+      this.value = value;
       return this;
     }
 
@@ -547,12 +527,8 @@ public class FilterCriterion<T> {
      * @return builder instance for fluent usage
      */
     public Builder lessOrEqualOrNotSet(Object value) {
-      filterCriterion =
-          new FilterCriterion(
-              expression,
-              nativeExpression,
-              FilterOperation.LESS_THAN_OR_EQUAL_TO_OR_NOT_SET,
-              value);
+      this.filterOperation = FilterOperation.LESS_THAN_OR_EQUAL_TO_OR_NOT_SET;
+      this.value = value;
       return this;
     }
 
@@ -564,9 +540,8 @@ public class FilterCriterion<T> {
      * @return builder instance for fluent usage
      */
     public Builder lessOrNotSet(Object value) {
-      filterCriterion =
-          new FilterCriterion(
-              expression, nativeExpression, FilterOperation.LESS_THAN_OR_NOT_SET, value);
+      this.filterOperation = FilterOperation.LESS_THAN_OR_NOT_SET;
+      this.value = value;
       return this;
     }
 
@@ -579,10 +554,10 @@ public class FilterCriterion<T> {
      */
     public Builder notEquals(Object value) {
       if (value != null) {
-        filterCriterion =
-            new FilterCriterion(expression, nativeExpression, FilterOperation.NOT_EQUALS, value);
+        this.filterOperation = FilterOperation.NOT_EQUALS;
+        this.value = value;
       } else {
-        filterCriterion = new FilterCriterion(expression, nativeExpression, FilterOperation.SET);
+        this.filterOperation = FilterOperation.SET;
       }
       return this;
     }
@@ -595,9 +570,8 @@ public class FilterCriterion<T> {
      * @return builder instance for fluent usage
      */
     public Builder notIn(Collection<?> values) {
-      filterCriterion =
-          new FilterCriterion(
-              expression, nativeExpression, FilterOperation.NOT_IN, null, null, null, values);
+      this.filterOperation = FilterOperation.NOT_IN;
+      this.values = values;
       return this;
     }
 
@@ -608,8 +582,7 @@ public class FilterCriterion<T> {
      * @return builder instance for fluent usage
      */
     public Builder notSet() {
-      filterCriterion =
-          new FilterCriterion(expression, nativeExpression, FilterOperation.NOT_SET, null);
+      this.filterOperation = FilterOperation.NOT_SET;
       return this;
     }
 
@@ -620,8 +593,7 @@ public class FilterCriterion<T> {
      * @return builder instance for fluent usage
      */
     public Builder set() {
-      filterCriterion =
-          new FilterCriterion(expression, nativeExpression, FilterOperation.SET, null);
+      this.filterOperation = FilterOperation.SET;
       return this;
     }
 
@@ -633,8 +605,8 @@ public class FilterCriterion<T> {
      * @return builder instance for fluent usage
      */
     public Builder startsWith(Object value) {
-      filterCriterion =
-          new FilterCriterion(expression, nativeExpression, FilterOperation.STARTS_WITH, value);
+      this.filterOperation = FilterOperation.STARTS_WITH;
+      this.value = value;
       return this;
     }
 
