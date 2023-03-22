@@ -30,6 +30,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Collection` implements `ManagedContent`
 - **Breaking**: Moved WEMI classes into new packaged structure
 - Set "ignore unknown properties" as default (removes several `JsonIgnoreProperties` annotations)
+- Fix `FilterCriterion.Builder` for native expressions (no longer setting native expression flag at the beginning necessary)
+- Updated `FilerCriterion` example documentation in `README.md`
 
 ### Removed
 
