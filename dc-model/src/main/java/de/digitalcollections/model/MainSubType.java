@@ -55,9 +55,10 @@ public class MainSubType {
 
   @Override
   public String toString() {
-    return "MainSubType{" + mainType != null
-        ? "mainType='" + mainType + '\''
-        : "mainType=null" + subType != null ? ", subType='" + subType + '\'' : "subType=null" + '}';
+    return "MainSubType{"
+        + (mainType != null ? "mainType='" + mainType + '\'' : ", mainType=null")
+        + (subType != null ? ", subType='" + subType + '\'' : ", subType=null")
+        + '}';
   }
 
   public abstract static class MainSubTypeBuilder<
