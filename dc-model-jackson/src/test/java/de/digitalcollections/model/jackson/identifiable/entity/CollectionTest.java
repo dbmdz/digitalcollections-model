@@ -1,5 +1,7 @@
 package de.digitalcollections.model.jackson.identifiable.entity;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import de.digitalcollections.model.identifiable.entity.Collection;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
@@ -28,7 +30,21 @@ public class CollectionTest extends BaseJsonSerializationTest {
   @Test
   public void testSerializeDeserialize() throws Exception {
     Collection collection = createObject();
-    checkSerializeDeserialize(
-        collection, "serializedTestObjects/identifiable/entity/Collection.json");
+    assertThat(collection.getChildren()).isNotNull().isEmpty();
+    assertThat(collection.getEntities()).isNotNull().isEmpty();
+    Collection deserializedCollection =
+        checkSerializeDeserialize(
+            collection, "serializedTestObjects/identifiable/entity/Collection.json");
+    assertThat(deserializedCollection.getChildren()).isNotNull().isEmpty();
+    assertThat(deserializedCollection.getEntities()).isNotNull().isEmpty();
+  }
+
+  @Test
+  public void testBuilder() {
+    Collection collection =
+        Collection.builder().label(Locale.forLanguageTag("en-Latn"), "A Collection").build();
+    assertThat(collection.getChildren()).isNotNull();
+    assertThat(collection.getEntities()).isNotNull();
+    assertThat(collection.getCreated()).isNull();
   }
 }

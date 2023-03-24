@@ -38,7 +38,7 @@ public class TitleTest extends BaseJsonSerializationTest {
   public void ignoreNullLocaleInBuilder() {
     Title title = Title.builder().textLocalesOfOriginalScripts(null).build();
 
-    assertThat(title.getTextLocalesOfOriginalScripts()).isNull();
+    assertThat(title.getTextLocalesOfOriginalScripts()).isNotNull().isEmpty();
   }
 
   @DisplayName("can set locales in the builder")

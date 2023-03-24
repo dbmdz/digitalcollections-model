@@ -42,6 +42,7 @@ public class Subject extends UniqueObject {
   @Override
   protected void init() {
     super.init();
+    if (identifiers == null) identifiers = new HashSet<>(0);
   }
 
   public void setIdentifiers(Set<Identifier> identifiers) {

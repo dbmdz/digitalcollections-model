@@ -1,5 +1,6 @@
 package de.digitalcollections.model.identifiable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,6 +13,11 @@ public class Node<N extends Identifiable> extends Identifiable implements INode<
   private List<N> children;
 
   private N parent;
+
+  public Node() {
+    super();
+    children = new ArrayList<>();
+  }
 
   @Override
   public List<N> getChildren() {

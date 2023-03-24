@@ -4,6 +4,7 @@ import de.digitalcollections.model.identifiable.web.Webpage;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.experimental.SuperBuilder;
 
@@ -17,7 +18,6 @@ public class Website extends Entity {
 
   public Website() {
     super();
-    init();
   }
 
   public Website(URL url) {
@@ -27,7 +27,7 @@ public class Website extends Entity {
   public Website(List<Webpage> rootPages, URL url, LocalDate registrationDate) {
     this();
     this.registrationDate = registrationDate;
-    this.rootPages = rootPages;
+    if (rootPages != null) this.rootPages = rootPages;
     this.url = url;
   }
 
@@ -46,6 +46,7 @@ public class Website extends Entity {
   @Override
   protected void init() {
     super.init();
+    if (rootPages == null) rootPages = new ArrayList<>(0);
   }
 
   public void setRegistrationDate(LocalDate registrationDate) {

@@ -8,7 +8,6 @@ public class TextFileResource extends FileResource {
 
   public TextFileResource() {
     super();
-    init();
   }
 
   @Override

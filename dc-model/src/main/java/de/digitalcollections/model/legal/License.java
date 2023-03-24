@@ -21,7 +21,6 @@ public class License extends UniqueObject {
 
   public License() {
     super();
-    init();
   }
 
   public License(String acronym, LocalizedText label, URL url) {

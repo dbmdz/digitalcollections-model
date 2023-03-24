@@ -31,7 +31,6 @@ public class FileResource extends Identifiable {
 
   public FileResource() {
     super();
-    init();
   }
 
   @Override

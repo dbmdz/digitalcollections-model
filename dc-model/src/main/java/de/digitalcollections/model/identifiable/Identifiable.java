@@ -212,6 +212,9 @@ public class Identifiable extends UniqueObject {
     if (subjects == null) {
       subjects = new HashSet<>(0);
     }
+    if (tags == null) {
+      tags = new HashSet<>(0);
+    }
   }
 
   public void removeIdentifier(String namespace) {

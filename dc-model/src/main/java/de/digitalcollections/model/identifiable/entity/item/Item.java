@@ -57,7 +57,6 @@ public class Item extends Entity {
 
   public Item() {
     super();
-    init();
   }
 
   public LocalizedText getTitle() {

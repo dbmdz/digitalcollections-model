@@ -210,12 +210,12 @@ public class ManifestationTest extends BaseJsonSerializationTest {
     String actual = manifestation.toString();
 
     String expected =
-        "Manifestation{composition='null', dimensions='null', expressionTypes=null, relations=[EntityRelation{subject="
+        "Manifestation{composition='null', dimensions='null', expressionTypes=[], relations=[EntityRelation{subject="
             + author.getUuid()
             + ", predicate='foo', object="
             + manifestation.getUuid()
-            + "}], language=null, manifestationType=null, manufacturingType=null, mediaTypes=null, otherLanguages=null, parents=null, publicationInfo=null, distributionInfo=null, productionInfo=null, scale='null', subjects=[], "
-            + "titles=[], version='null', work=null, customAttributes=null, navDate=null, refId=0, notes=null, description=null, identifiableObjectType=MANIFESTATION, identifiers=[], label=null, localizedUrlAliases=null, previewImage=null, previewImageRenderingHints=null, tags=null, type=ENTITY, created=null, lastModified=null, uuid="
+            + "}], language=null, manifestationType=null, manufacturingType=null, mediaTypes=[], otherLanguages=[], parents=[], publicationInfo=null, distributionInfo=null, productionInfo=null, scale='null', subjects=[], "
+            + "titles=[], version='null', work=null, customAttributes=null, navDate=null, refId=0, notes=[], description=null, identifiableObjectType=MANIFESTATION, identifiers=[], label=null, localizedUrlAliases=null, previewImage=null, previewImageRenderingHints=null, tags=[], type=ENTITY, created=null, lastModified=null, uuid="
             + manifestation.getUuid()
             + "}";
     assertThat(actual).isEqualTo(expected);

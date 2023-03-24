@@ -87,12 +87,9 @@ public class Work extends Entity {
   protected void init() {
     super.init();
     identifiableObjectType = IdentifiableObjectType.WORK;
-    if (titles == null) {
-      titles = new ArrayList<>();
-    }
-    if (relations == null) {
-      relations = new ArrayList<>();
-    }
+    if (titles == null) titles = new ArrayList<>(0);
+    if (relations == null) relations = new ArrayList<>(0);
+    if (parents == null) parents = new ArrayList<>(0);
   }
 
   public void setCreationDateRange(LocalDateRange creationDateRange) {
