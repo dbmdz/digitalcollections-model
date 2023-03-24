@@ -8,7 +8,6 @@ public class ApplicationFileResource extends FileResource {
 
   public ApplicationFileResource() {
     super();
-    init();
   }
 
   @Override

@@ -10,7 +10,6 @@ public class AudioFileResource extends FileResource {
 
   public AudioFileResource() {
     super();
-    init();
   }
 
   /**

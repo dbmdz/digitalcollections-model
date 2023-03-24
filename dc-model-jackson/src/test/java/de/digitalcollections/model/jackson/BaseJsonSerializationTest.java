@@ -6,10 +6,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.io.Resources;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.Charset;
-import java.util.Set;
-import org.apache.commons.beanutils.BeanUtils;
 import org.junit.jupiter.api.Assertions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,23 +21,24 @@ public abstract class BaseJsonSerializationTest {
     checkSerializeDeserialize(objectIn, null);
   }
 
-  protected <T> void checkSerializeDeserialize(T objectIn, String pathToJson) throws Exception {
+  protected <T> T checkSerializeDeserialize(T objectIn, String pathToJson) throws Exception {
     T objectOut = serializeDeserialize(objectIn, pathToJson);
 
-    try {
-      Set<String> keys = BeanUtils.describe(objectIn).keySet();
-      for (String key : keys) {
-        if ("UUID".equals(key)) {
-          BeanUtils.setProperty(objectIn, key, null);
-          BeanUtils.setProperty(objectOut, key, null);
-        } else {
-          BeanUtils.setProperty(objectIn, key + ".UUID", null);
-          BeanUtils.setProperty(objectOut, key + ".UUID", null);
-        }
-      }
-    } catch (InvocationTargetException e) {
-      LOGGER.warn(e.toString());
-    }
+    // FIXME: What is it good for? It makes trouble and works better w/o though.
+    //    try {
+    //      Set<String> keys = BeanUtils.describe(objectIn).keySet();
+    //      for (String key : keys) {
+    //        if ("UUID".equals(key)) {
+    //          BeanUtils.setProperty(objectIn, key, null);
+    //          BeanUtils.setProperty(objectOut, key, null);
+    //        } else {
+    //          BeanUtils.setProperty(objectIn, key + ".UUID", null);
+    //          BeanUtils.setProperty(objectOut, key + ".UUID", null);
+    //        }
+    //      }
+    //    } catch (InvocationTargetException e) {
+    //      LOGGER.warn(e.toString());
+    //    }
     try {
       assertThat(objectOut).usingRecursiveComparison().isEqualTo(objectIn);
     } catch (Throwable e) {
@@ -55,6 +53,7 @@ public abstract class BaseJsonSerializationTest {
               + e.getMessage());
       throw e;
     }
+    return objectOut;
   }
 
   private String dump(Object o) throws JsonProcessingException {

@@ -1,6 +1,7 @@
 package de.digitalcollections.model.identifiable.entity;
 
 import de.digitalcollections.model.text.LocalizedText;
+import java.util.HashSet;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
@@ -24,6 +25,7 @@ public class Event extends Entity implements NamedEntity {
   @Override
   protected void init() {
     super.init();
+    if (nameLocalesOfOriginalScripts == null) nameLocalesOfOriginalScripts = new HashSet<>(0);
   }
 
   @Override

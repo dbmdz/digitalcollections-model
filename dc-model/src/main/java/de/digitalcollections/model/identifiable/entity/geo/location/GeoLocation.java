@@ -4,6 +4,7 @@ import de.digitalcollections.model.geo.CoordinateLocation;
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.NamedEntity;
 import de.digitalcollections.model.text.LocalizedText;
+import java.util.HashSet;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
@@ -79,6 +80,7 @@ public class GeoLocation extends Entity implements NamedEntity {
   protected void init() {
     super.init();
     this.geoLocationType = GeoLocationType.GEOLOCATION;
+    if (nameLocalesOfOriginalScripts == null) nameLocalesOfOriginalScripts = new HashSet<>(0);
   }
 
   public void setCoordinateLocation(CoordinateLocation coordinateLocation) {

@@ -152,6 +152,7 @@ public class Entity extends Identifiable {
   protected void init() {
     super.init();
     this.type = IdentifiableType.ENTITY;
+    if (notes == null) notes = new ArrayList<>(0);
   }
 
   /**

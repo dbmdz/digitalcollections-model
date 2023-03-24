@@ -21,7 +21,6 @@ public class ImageFileResource extends FileResource {
 
   public ImageFileResource() {
     super();
-    init();
   }
 
   @Override

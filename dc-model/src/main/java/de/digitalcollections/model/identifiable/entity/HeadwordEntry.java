@@ -22,7 +22,6 @@ public class HeadwordEntry extends Article {
 
   public HeadwordEntry() {
     super();
-    init();
   }
 
   public HeadwordEntry(Headword headword) {

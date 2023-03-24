@@ -7,28 +7,31 @@ import java.util.Set;
 import lombok.experimental.SuperBuilder;
 import org.apache.commons.lang3.StringUtils;
 
-@SuperBuilder
+@SuperBuilder(buildMethodName = "prebuild")
 public class Title implements Comparable<Title> {
 
   private LocalizedText text;
   private Set<Locale> textLocalesOfOriginalScripts;
   private TitleType titleType;
 
-  public Title() {}
+  public Title() {
+    init();
+  }
 
   public Title(LocalizedText text, Set<Locale> textLocalesOfOriginalScripts, TitleType titleType) {
     this();
     this.text = text;
-    this.textLocalesOfOriginalScripts = textLocalesOfOriginalScripts;
+    if (textLocalesOfOriginalScripts != null)
+      this.textLocalesOfOriginalScripts = textLocalesOfOriginalScripts;
     this.titleType = titleType;
   }
 
+  protected void init() {
+    if (textLocalesOfOriginalScripts == null) textLocalesOfOriginalScripts = new HashSet<>(0);
+  }
+
   public void addTextLocaleOfOriginalScript(Locale locale) {
-    if (textLocalesOfOriginalScripts == null) {
-      textLocalesOfOriginalScripts = new HashSet<>(Set.of(locale));
-    } else {
-      textLocalesOfOriginalScripts.add(locale);
-    }
+    textLocalesOfOriginalScripts.add(locale);
   }
 
   public LocalizedText getText() {
@@ -96,6 +99,12 @@ public class Title implements Comparable<Title> {
   }
 
   public abstract static class TitleBuilder<C extends Title, B extends TitleBuilder<C, B>> {
+
+    public C build() {
+      C c = prebuild();
+      c.init();
+      return c;
+    }
 
     public B textLocaleOfOriginalScript(Locale locale) {
       if (locale == null) {

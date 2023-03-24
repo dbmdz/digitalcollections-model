@@ -28,7 +28,6 @@ public class Topic extends Entity implements INode<Topic> {
 
   public Topic() {
     super();
-    init();
   }
 
   public Topic(List<Topic> children) {
@@ -76,9 +75,9 @@ public class Topic extends Entity implements INode<Topic> {
   @Override
   protected void init() {
     super.init();
-    if (node == null) {
-      node = new Node<>();
-    }
+    if (node == null) node = new Node<>();
+    if (entities == null) entities = new ArrayList<>(0);
+    if (fileResources == null) fileResources = new ArrayList<>(0);
   }
 
   @Override

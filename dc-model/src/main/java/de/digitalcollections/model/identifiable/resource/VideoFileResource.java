@@ -10,7 +10,6 @@ public class VideoFileResource extends FileResource {
 
   public VideoFileResource() {
     super();
-    init();
   }
 
   /**

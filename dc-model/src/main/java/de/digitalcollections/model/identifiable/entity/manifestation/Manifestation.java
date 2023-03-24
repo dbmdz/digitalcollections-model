@@ -180,12 +180,12 @@ public class Manifestation extends Entity {
   protected void init() {
     super.init();
     identifiableObjectType = IdentifiableObjectType.MANIFESTATION;
-    if (titles == null) {
-      titles = new ArrayList<>();
-    }
-    if (relations == null) {
-      relations = new ArrayList<>();
-    }
+    if (expressionTypes == null) expressionTypes = new LinkedHashSet<>(0);
+    if (mediaTypes == null) mediaTypes = new LinkedHashSet<>(0);
+    if (otherLanguages == null) otherLanguages = new LinkedHashSet<>(0);
+    if (parents == null) parents = new ArrayList<>(0);
+    if (titles == null) titles = new ArrayList<>();
+    if (relations == null) relations = new ArrayList<>();
   }
 
   /**
