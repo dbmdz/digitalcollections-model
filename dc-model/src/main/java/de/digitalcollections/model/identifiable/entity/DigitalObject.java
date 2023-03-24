@@ -58,7 +58,6 @@ public class DigitalObject extends Entity {
   /** Default constructor, which also sets the EntityType to {@link EntityType#DIGITAL_OBJECT} */
   public DigitalObject() {
     super();
-    init();
   }
 
   public void addFileResource(FileResource fileResource) {

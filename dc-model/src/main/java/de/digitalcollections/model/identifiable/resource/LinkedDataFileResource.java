@@ -45,7 +45,6 @@ public class LinkedDataFileResource extends FileResource {
 
   public LinkedDataFileResource() {
     super();
-    init();
   }
 
   @Override

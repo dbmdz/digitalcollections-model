@@ -21,7 +21,6 @@ public class Collection extends Entity implements INode<Collection> {
 
   public Collection() {
     super();
-    init();
   }
 
   public void addEntity(Entity entity) {
@@ -88,9 +87,8 @@ public class Collection extends Entity implements INode<Collection> {
   @Override
   protected void init() {
     super.init();
-    if (node == null) {
-      node = new Node<>();
-    }
+    if (entities == null) entities = new ArrayList<>();
+    if (node == null) node = new Node<>();
   }
 
   @Override

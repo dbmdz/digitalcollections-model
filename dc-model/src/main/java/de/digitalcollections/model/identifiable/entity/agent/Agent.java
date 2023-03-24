@@ -22,6 +22,7 @@ public class Agent extends Entity {
   @Override
   protected void init() {
     super.init();
+    if (nameLocalesOfOriginalScripts == null) nameLocalesOfOriginalScripts = new HashSet<>(0);
   }
 
   @Override

@@ -17,7 +17,6 @@ public class Project extends Entity {
 
   public Project() {
     super();
-    init();
   }
 
   /**
