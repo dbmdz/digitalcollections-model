@@ -1,5 +1,6 @@
 package de.digitalcollections.model.identifiable.entity.work;
 
+import de.digitalcollections.model.identifiable.IdentifiableObjectType;
 import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.agent.Agent;
 import de.digitalcollections.model.text.LocalizedText;
@@ -63,6 +64,7 @@ public class Work extends Entity {
     if (creators == null) {
       this.creators = new ArrayList<>(0);
     }
+    identifiableObjectType = IdentifiableObjectType.WORK;
   }
 
   public void setCreators(List<Agent> creators) {

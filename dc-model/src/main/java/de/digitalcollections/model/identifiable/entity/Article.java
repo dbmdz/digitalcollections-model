@@ -19,7 +19,6 @@ public class Article extends Entity {
 
   public Article() {
     super();
-    init();
   }
 
   public List<Agent> getCreators() {

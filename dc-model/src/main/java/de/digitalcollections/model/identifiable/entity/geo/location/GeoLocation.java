@@ -42,6 +42,7 @@ public class GeoLocation extends Entity {
   protected void init() {
     super.init();
     this.geoLocationType = GeoLocationType.GEOLOCATION;
+    if (nameLocalesOfOriginalScripts == null) nameLocalesOfOriginalScripts = new HashSet<>(0);
   }
 
   public void setCoordinateLocation(CoordinateLocation coordinateLocation) {

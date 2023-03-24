@@ -23,7 +23,6 @@ public class Webpage extends Identifiable implements INode<Webpage> {
 
   public Webpage() {
     super();
-    init();
   }
 
   public Webpage(List<Webpage> children) {
