@@ -2,6 +2,7 @@ package de.digitalcollections.model.identifiable.alias;
 
 import static de.digitalcollections.model.time.TimestampHelper.truncatedToMicros;
 
+import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.identifiable.IdentifiableObjectType;
 import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.entity.EntityType;
@@ -10,19 +11,16 @@ import java.time.LocalDateTime;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.UUID;
+import lombok.experimental.SuperBuilder;
 
 /**
  * A website and language specific "alias" (= human readable unique key) used as relative url part
  * for a website specific domain. The absolute URL references an Identifiable, e.g. a specific
  * webpage or collection.
  */
-public class UrlAlias {
+@SuperBuilder(buildMethodName = "prebuild")
+public class UrlAlias extends UniqueObject {
 
-  public static Builder builder() {
-    return new Builder();
-  }
-
-  private LocalDateTime created;
   private LocalDateTime lastPublished;
   private boolean primary;
   private String slug;
@@ -30,10 +28,11 @@ public class UrlAlias {
   private IdentifiableType targetIdentifiableType;
   private Locale targetLanguage;
   private UUID targetUuid;
-  private UUID uuid;
   private Website website;
 
-  public UrlAlias() {}
+  public UrlAlias() {
+    super();
+  }
 
   @Override
   public boolean equals(Object obj) {
@@ -45,6 +44,7 @@ public class UrlAlias {
     }
     UrlAlias other = (UrlAlias) obj;
     return Objects.equals(this.created, other.created)
+        && Objects.equals(this.lastModified, other.lastModified)
         && Objects.equals(this.lastPublished, other.lastPublished)
         && this.primary == other.primary
         && Objects.equals(this.slug, other.slug)
@@ -56,10 +56,6 @@ public class UrlAlias {
         && Objects.equals(
             this.website != null ? this.website.getUuid() : null,
             other.website != null ? other.website.getUuid() : null);
-  }
-
-  public LocalDateTime getCreated() {
-    return this.created;
   }
 
   public LocalDateTime getLastPublished() {
@@ -114,10 +110,6 @@ public class UrlAlias {
     return this.targetUuid;
   }
 
-  public UUID getUuid() {
-    return this.uuid;
-  }
-
   public Website getWebsite() {
     return this.website;
   }
@@ -126,6 +118,7 @@ public class UrlAlias {
   public int hashCode() {
     return Objects.hash(
         this.created,
+        this.lastModified,
         this.lastPublished,
         this.primary,
         this.slug,
@@ -137,12 +130,13 @@ public class UrlAlias {
         this.website);
   }
 
-  public boolean isPrimary() {
-    return this.primary;
+  @Override
+  protected void init() {
+    super.init();
   }
 
-  public void setCreated(LocalDateTime created) {
-    this.created = truncatedToMicros(created);
+  public boolean isPrimary() {
+    return this.primary;
   }
 
   public void setLastPublished(LocalDateTime lastPublished) {
@@ -173,10 +167,6 @@ public class UrlAlias {
     this.targetUuid = targetUuid;
   }
 
-  public void setUuid(UUID uuid) {
-    this.uuid = uuid;
-  }
-
   public void setWebsite(Website website) {
     this.website = website;
   }
@@ -186,6 +176,8 @@ public class UrlAlias {
     return "UrlAlias{"
         + "created="
         + created
+        + ", lastModified="
+        + lastModified
         + ", lastPublished="
         + lastPublished
         + ", primary="
@@ -208,64 +200,56 @@ public class UrlAlias {
         + '}';
   }
 
-  public static class Builder {
+  public abstract static class UrlAliasBuilder<C extends UrlAlias, B extends UrlAliasBuilder<C, B>>
+      extends UniqueObjectBuilder<C, B> {
 
-    UrlAlias urlAlias = new UrlAlias();
-
-    public UrlAlias build() {
-      return urlAlias;
+    @Override
+    public C build() {
+      C c = prebuild();
+      c.init();
+      return c;
     }
 
-    public Builder created(String created) {
-      urlAlias.setCreated(LocalDateTime.parse(created));
-      return this;
+    public B isPrimary() {
+      this.primary = true;
+      return self();
     }
 
-    public Builder isPrimary() {
-      urlAlias.setPrimary(true);
-      return this;
+    public B lastPublished(String lastPublished) {
+      this.lastPublished = LocalDateTime.parse(lastPublished);
+      return self();
     }
 
-    public Builder lastPublished(String lastPublished) {
-      urlAlias.setLastPublished(LocalDateTime.parse(lastPublished));
-      return this;
+    public B slug(String slug) {
+      this.slug = slug;
+      return self();
     }
 
-    public Builder slug(String slug) {
-      urlAlias.setSlug(slug);
-      return this;
+    public B targetLanguage(Locale targetLanguage) {
+      this.targetLanguage = targetLanguage;
+      return self();
     }
 
-    public Builder targetLanguage(Locale targetLanguage) {
-      urlAlias.setTargetLanguage(targetLanguage);
-      return this;
+    public B targetLanguage(String targetLanguage) {
+      this.targetLanguage = Locale.forLanguageTag(targetLanguage);
+      return self();
     }
 
-    public Builder targetLanguage(String targetLanguage) {
-      urlAlias.setTargetLanguage(Locale.forLanguageTag(targetLanguage));
-      return this;
-    }
-
-    public Builder targetType(
+    public B targetType(
         IdentifiableObjectType identifiableObjectType, IdentifiableType identifiableType) {
-      urlAlias.setTargetIdentifiableObjectType(identifiableObjectType);
-      urlAlias.setTargetIdentifiableType(identifiableType);
-      return this;
+      this.targetIdentifiableObjectType = identifiableObjectType;
+      this.targetIdentifiableType = identifiableType;
+      return self();
     }
 
-    public Builder targetUuid(String targetUuid) {
-      urlAlias.setTargetUuid(UUID.fromString(targetUuid));
-      return this;
+    public B targetUuid(String targetUuid) {
+      this.targetUuid = UUID.fromString(targetUuid);
+      return self();
     }
 
-    public Builder uuid(String uuid) {
-      urlAlias.setUuid(UUID.fromString(uuid));
-      return this;
-    }
-
-    public Builder website(Website website) {
-      urlAlias.setWebsite(website);
-      return this;
+    public B website(Website website) {
+      this.website = website;
+      return self();
     }
   }
 }

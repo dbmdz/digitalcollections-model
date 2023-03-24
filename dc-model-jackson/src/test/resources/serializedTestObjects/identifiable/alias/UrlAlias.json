@@ -1,5 +1,7 @@
 {
+  "objectType" : "URL_ALIAS",
   "created" : "2021-01-01T00:00:00",
+  "uuid" : "d1dfbfbf-364e-4983-9d15-c33549145928",
   "lastPublished" : "2021-12-24T12:00:00",
   "primary" : true,
   "slug" : "foobar",
@@ -7,7 +9,6 @@
   "targetIdentifiableType" : "ENTITY",
   "targetLanguage" : "de",
   "targetUuid" : "c31593a4-9620-484b-a4f5-4112731d953b",
-  "uuid" : "d1dfbfbf-364e-4983-9d15-c33549145928",
   "website" : {
     "uuid" : "9b676195-f505-400c-acb2-b7aabb7c62f7",
     "identifiableObjectType" : "WEBSITE",
