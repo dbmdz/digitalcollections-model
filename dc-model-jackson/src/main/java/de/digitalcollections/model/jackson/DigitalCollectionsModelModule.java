@@ -41,7 +41,7 @@ import de.digitalcollections.model.identifiable.entity.manifestation.Manifestati
 import de.digitalcollections.model.identifiable.entity.manifestation.ProductionInfo;
 import de.digitalcollections.model.identifiable.entity.manifestation.PublicationInfo;
 import de.digitalcollections.model.identifiable.entity.manifestation.Publisher;
-import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
+import de.digitalcollections.model.identifiable.entity.relation.EntityToEntityRelation;
 import de.digitalcollections.model.identifiable.entity.work.Work;
 import de.digitalcollections.model.identifiable.resource.ApplicationFileResource;
 import de.digitalcollections.model.identifiable.resource.AudioFileResource;
@@ -84,7 +84,7 @@ import de.digitalcollections.model.jackson.mixin.identifiable.entity.manifestati
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.manifestation.ProductionInfoMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.manifestation.PublicationInfoMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.manifestation.PublisherMixIn;
-import de.digitalcollections.model.jackson.mixin.identifiable.entity.relation.EntityRelationMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.relation.EntityToEntityRelationMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.WorkMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.ApplicationFileResourceMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.resource.AudioFileResourceMixIn;
@@ -281,7 +281,7 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(ContentBlock.class, ContentBlockMixIn.class);
     context.setMixInAnnotations(DigitalObject.class, DigitalObjectMixIn.class);
     context.setMixInAnnotations(Entity.class, EntityMixIn.class);
-    context.setMixInAnnotations(EntityRelation.class, EntityRelationMixIn.class);
+    context.setMixInAnnotations(EntityToEntityRelation.class, EntityToEntityRelationMixIn.class);
     context.setMixInAnnotations(Event.class, EventMixIn.class);
     context.setMixInAnnotations(FileResource.class, FileResourceMixIn.class);
     context.setMixInAnnotations(FilterCriterion.class, FilterCriterionMixIn.class);

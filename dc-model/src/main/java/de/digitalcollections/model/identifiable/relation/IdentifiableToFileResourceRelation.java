@@ -1,35 +1,37 @@
-package de.digitalcollections.model.identifiable.entity.relation;
+package de.digitalcollections.model.identifiable.relation;
 
-import de.digitalcollections.model.identifiable.entity.Entity;
+import de.digitalcollections.model.identifiable.Identifiable;
+import de.digitalcollections.model.identifiable.resource.FileResource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /**
- * An EntityRelation describes the relation between two entities (subject being related to object in
- * terms of predicate)
+ * An IdentifiableToFileResourceRelation describes the relation between an identifiable and a
+ * fileresource (subject being related to object in terms of predicate)
  */
-public class EntityRelation {
+public class IdentifiableToFileResourceRelation {
 
   public static Builder builder() {
     return new Builder();
   }
 
-  private Entity object;
+  private FileResource object;
   private String predicate;
-  private Entity subject;
+  private Identifiable subject;
 
   private List<String> additionalPredicates;
 
-  public EntityRelation() {}
+  public IdentifiableToFileResourceRelation() {}
 
-  public EntityRelation(Entity subject, String predicate, Entity object) {
+  public IdentifiableToFileResourceRelation(
+      Identifiable subject, String predicate, FileResource object) {
     this.subject = subject;
     this.predicate = predicate;
     this.object = object;
   }
 
-  public Entity getObject() {
+  public FileResource getObject() {
     return object;
   }
 
@@ -37,19 +39,19 @@ public class EntityRelation {
     return predicate;
   }
 
-  public Entity getSubject() {
+  public Identifiable getSubject() {
     return subject;
   }
 
-  public void setObject(Entity objectEntity) {
-    this.object = objectEntity;
+  public void setObject(FileResource objectFileResource) {
+    this.object = objectFileResource;
   }
 
   public void setPredicate(String predicate) {
     this.predicate = predicate;
   }
 
-  public void setSubject(Entity subjectEntity) {
+  public void setSubject(Identifiable subjectEntity) {
     this.subject = subjectEntity;
   }
 
@@ -66,10 +68,10 @@ public class EntityRelation {
     if (this == o) {
       return true;
     }
-    if (!(o instanceof EntityRelation)) {
+    if (!(o instanceof IdentifiableToFileResourceRelation)) {
       return false;
     }
-    EntityRelation that = (EntityRelation) o;
+    IdentifiableToFileResourceRelation that = (IdentifiableToFileResourceRelation) o;
     return Objects.equals(object, that.object)
         && Objects.equals(predicate, that.predicate)
         && Objects.equals(subject, that.subject)
@@ -83,7 +85,7 @@ public class EntityRelation {
 
   @Override
   public String toString() {
-    return "EntityRelation{"
+    return "IdentifiableToFileResourceRelation{"
         + "object="
         + object
         + ", predicate='"
@@ -97,17 +99,11 @@ public class EntityRelation {
   }
 
   /**
-   * Since EntityRelations reference Entities, e.g. a Manifestation, we can get into a recursion
-   * here by applying toString recursivly onto subject and object.
-   *
-   * <p>To avoid this, subject and object are dumped in a shortened way by only returning their
-   * UUIDs
-   *
    * @return A texual representation with subject uuid, predicate and object uuid
    */
   public String toShortenedString() {
     return String.format(
-        "EntityRelation{subject=%s, predicate='%s', object=%s}",
+        "IdentifiableToFileResourceRelation{subject=%s, predicate='%s', object=%s}",
         subject != null ? subject.getUuid() : null,
         predicate,
         object != null ? object.getUuid() : null);
@@ -115,37 +111,37 @@ public class EntityRelation {
 
   public static class Builder {
 
-    EntityRelation entityRelation = new EntityRelation();
+    IdentifiableToFileResourceRelation relation = new IdentifiableToFileResourceRelation();
 
-    public EntityRelation build() {
-      return entityRelation;
+    public IdentifiableToFileResourceRelation build() {
+      return relation;
     }
 
-    public Builder object(Entity objectEntity) {
-      entityRelation.setObject(objectEntity);
+    public Builder object(FileResource objectFileResource) {
+      relation.setObject(objectFileResource);
       return this;
     }
 
     public Builder predicate(String predicate) {
-      entityRelation.setPredicate(predicate);
+      relation.setPredicate(predicate);
       return this;
     }
 
-    public Builder subject(Entity subjectEntity) {
-      entityRelation.setSubject(subjectEntity);
+    public Builder subject(Identifiable subjectEntity) {
+      relation.setSubject(subjectEntity);
       return this;
     }
 
     public Builder additionalPredicate(String additionalPredicate) {
-      if (entityRelation.additionalPredicates == null) {
-        entityRelation.additionalPredicates = new ArrayList<>(1);
+      if (relation.additionalPredicates == null) {
+        relation.additionalPredicates = new ArrayList<>(1);
       }
-      entityRelation.additionalPredicates.add(additionalPredicate);
+      relation.additionalPredicates.add(additionalPredicate);
       return this;
     }
 
     public Builder additionalPredicates(List<String> additionalPredicates) {
-      entityRelation.setAdditionalPredicates(additionalPredicates);
+      relation.setAdditionalPredicates(additionalPredicates);
       return this;
     }
   }

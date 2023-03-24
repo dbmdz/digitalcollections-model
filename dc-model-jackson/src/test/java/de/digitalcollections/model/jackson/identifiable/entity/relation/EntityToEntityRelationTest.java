@@ -2,16 +2,16 @@ package de.digitalcollections.model.jackson.identifiable.entity.relation;
 
 import de.digitalcollections.model.identifiable.entity.Article;
 import de.digitalcollections.model.identifiable.entity.digitalobject.DigitalObject;
-import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
+import de.digitalcollections.model.identifiable.entity.relation.EntityToEntityRelation;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;
 
-public class EntityRelationTest extends BaseJsonSerializationTest {
+public class EntityToEntityRelationTest extends BaseJsonSerializationTest {
 
-  private EntityRelation createObject() {
-    EntityRelation entityRelation = new EntityRelation();
+  private EntityToEntityRelation createObject() {
+    EntityToEntityRelation entityRelation = new EntityToEntityRelation();
     Article subjectEntity = new Article();
     subjectEntity.setUuid(UUID.fromString("8a9c3c34-c36c-4671-8f2f-9d96a5fc32e4"));
     entityRelation.setSubject(subjectEntity);
@@ -25,8 +25,9 @@ public class EntityRelationTest extends BaseJsonSerializationTest {
 
   @Test
   public void testSerializeDeserialize() throws Exception {
-    EntityRelation entityRelation = createObject();
+    EntityToEntityRelation entityRelation = createObject();
     checkSerializeDeserialize(
-        entityRelation, "serializedTestObjects/identifiable/entity/relation/EntityRelation.json");
+        entityRelation,
+        "serializedTestObjects/identifiable/entity/relation/EntityToEntityRelation.json");
   }
 }

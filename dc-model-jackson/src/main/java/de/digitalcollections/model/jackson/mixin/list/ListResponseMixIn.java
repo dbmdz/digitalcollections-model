@@ -23,7 +23,7 @@ import de.digitalcollections.model.identifiable.entity.geo.location.GeoLocation;
 import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
 import de.digitalcollections.model.identifiable.entity.item.Item;
 import de.digitalcollections.model.identifiable.entity.manifestation.Publisher;
-import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
+import de.digitalcollections.model.identifiable.entity.relation.EntityToEntityRelation;
 import de.digitalcollections.model.identifiable.entity.work.Work;
 import de.digitalcollections.model.identifiable.resource.FileResource;
 import de.digitalcollections.model.identifiable.web.Webpage;
@@ -57,7 +57,7 @@ public abstract class ListResponseMixIn<T, R extends ListRequest> extends ListRe
     @Type(value = CorporateBody.class, name = "CORPORATE_BODY"),
     @Type(value = DigitalObject.class, name = "DIGITAL_OBJECT"),
     @Type(value = Entity.class, name = "ENTITY"),
-    @Type(value = EntityRelation.class, name = "ENTITY_RELATION"),
+    @Type(value = EntityToEntityRelation.class, name = "ENTITY_RELATION"),
     @Type(value = FamilyName.class, name = "FAMILY_NAME"),
     @Type(value = FileResource.class, name = "FILE_RESOURCE"),
     @Type(value = GeoLocation.class, name = "GEO_LOCATION"),
