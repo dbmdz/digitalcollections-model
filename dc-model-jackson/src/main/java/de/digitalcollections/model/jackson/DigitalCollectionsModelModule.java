@@ -98,7 +98,6 @@ import de.digitalcollections.model.jackson.mixin.semantic.HeadwordMixIn;
 import de.digitalcollections.model.jackson.mixin.text.LocalizedStructuredContentMixIn;
 import de.digitalcollections.model.jackson.mixin.text.LocalizedTextMixIn;
 import de.digitalcollections.model.jackson.mixin.text.StructuredContentMixIn;
-import de.digitalcollections.model.jackson.mixin.text.TitleMixIn;
 import de.digitalcollections.model.jackson.mixin.text.contentblock.BlockquoteMixIn;
 import de.digitalcollections.model.jackson.mixin.text.contentblock.BulletListMixIn;
 import de.digitalcollections.model.jackson.mixin.text.contentblock.CodeBlockMixIn;
@@ -136,7 +135,6 @@ import de.digitalcollections.model.semantic.Headword;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.LocalizedText;
 import de.digitalcollections.model.text.StructuredContent;
-import de.digitalcollections.model.text.Title;
 import de.digitalcollections.model.text.contentblock.Blockquote;
 import de.digitalcollections.model.text.contentblock.BulletList;
 import de.digitalcollections.model.text.contentblock.CodeBlock;
@@ -283,7 +281,6 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(VideoFileResource.class, VideoFileResourceMixIn.class);
     context.setMixInAnnotations(Webpage.class, WebpageMixIn.class);
     context.setMixInAnnotations(Website.class, WebsiteMixIn.class);
-    context.setMixInAnnotations(Title.class, TitleMixIn.class);
   }
 
   /** Helper function to create Converter from lambda * */
