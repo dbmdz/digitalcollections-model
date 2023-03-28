@@ -87,7 +87,7 @@ public class Collection extends Entity implements INode<Collection> {
   @Override
   protected void init() {
     super.init();
-    if (entities == null) entities = new ArrayList<>();
+    if (entities == null) entities = new ArrayList<>(0);
     if (node == null) node = new Node<>();
   }
 
