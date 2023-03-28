@@ -4,6 +4,7 @@
   "type" : "ENTITY",
   "refId" : 0,
   "headword" : {
+    "objectType" : "HEADWORD",
     "label" : "Kaiserschmarrn",
     "locale" : "de"
   },
