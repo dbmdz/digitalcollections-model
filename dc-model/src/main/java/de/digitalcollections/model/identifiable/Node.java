@@ -16,7 +16,7 @@ public class Node<N extends Identifiable> extends Identifiable implements INode<
 
   public Node() {
     super();
-    children = new ArrayList<>();
+    children = new ArrayList<>(0);
   }
 
   @Override
