@@ -29,6 +29,7 @@ import de.digitalcollections.model.identifiable.resource.LinkedDataFileResource;
 import de.digitalcollections.model.identifiable.resource.TextFileResource;
 import de.digitalcollections.model.identifiable.resource.VideoFileResource;
 import de.digitalcollections.model.identifiable.web.Webpage;
+import de.digitalcollections.model.jackson.mixin.UniqueObjectMixIn;
 import de.digitalcollections.model.text.LocalizedText;
 import java.util.Set;
 
@@ -64,7 +65,7 @@ import java.util.Set;
   @JsonSubTypes.Type(value = VideoFileResource.class, name = "VIDEO_FILE_RESOURCE"),
   @JsonSubTypes.Type(value = Webpage.class, name = "WEBPAGE")
 })
-public interface IdentifiableMixIn {
+public interface IdentifiableMixIn extends UniqueObjectMixIn {
 
   @JsonSetter
   public void setLabel(LocalizedText label);
