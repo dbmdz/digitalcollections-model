@@ -16,14 +16,12 @@
     "label" : {
       "" : "Webpage-Label"
     },
-    "type" : "RESOURCE",
-    "renderingHints" : {
-      "showInPageNavigation" : false
-    }
+    "type" : "RESOURCE"
   } ],
   "executedSearchTerm" : "Label",
   "totalElements" : 2,
   "pageRequest" : {
+    "listRequestType" : "PAGE_REQUEST",
     "searchTerm" : "Label",
     "pageNumber" : 3,
     "pageSize" : 15
