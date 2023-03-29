@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * An EntityToEntityRelation describes the relation between two entities (subject being related to
- * object in terms of predicate)
+ * An EntityRelation describes the relation between two entities (subject being related to object in
+ * terms of predicate)
  */
-public class EntityToEntityRelation {
+public class EntityRelation {
 
   public static Builder builder() {
     return new Builder();
@@ -21,9 +21,9 @@ public class EntityToEntityRelation {
 
   private List<String> additionalPredicates;
 
-  public EntityToEntityRelation() {}
+  public EntityRelation() {}
 
-  public EntityToEntityRelation(Entity subject, String predicate, Entity object) {
+  public EntityRelation(Entity subject, String predicate, Entity object) {
     this.subject = subject;
     this.predicate = predicate;
     this.object = object;
@@ -66,10 +66,10 @@ public class EntityToEntityRelation {
     if (this == o) {
       return true;
     }
-    if (!(o instanceof EntityToEntityRelation)) {
+    if (!(o instanceof EntityRelation)) {
       return false;
     }
-    EntityToEntityRelation that = (EntityToEntityRelation) o;
+    EntityRelation that = (EntityRelation) o;
     return Objects.equals(object, that.object)
         && Objects.equals(predicate, that.predicate)
         && Objects.equals(subject, that.subject)
@@ -115,9 +115,9 @@ public class EntityToEntityRelation {
 
   public static class Builder {
 
-    EntityToEntityRelation entityRelation = new EntityToEntityRelation();
+    EntityRelation entityRelation = new EntityRelation();
 
-    public EntityToEntityRelation build() {
+    public EntityRelation build() {
       return entityRelation;
     }
 

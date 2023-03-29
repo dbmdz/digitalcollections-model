@@ -3,7 +3,7 @@ package de.digitalcollections.model.identifiable.entity.manifestation;
 import de.digitalcollections.model.RelationSpecification;
 import de.digitalcollections.model.identifiable.IdentifiableObjectType;
 import de.digitalcollections.model.identifiable.entity.Entity;
-import de.digitalcollections.model.identifiable.entity.relation.EntityToEntityRelation;
+import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 import de.digitalcollections.model.identifiable.entity.work.Work;
 import de.digitalcollections.model.text.Title;
 import java.util.ArrayList;
@@ -53,7 +53,7 @@ public class Manifestation extends Entity {
   private String dimensions;
 
   private LinkedHashSet<ExpressionType> expressionTypes;
-  private List<EntityToEntityRelation> relations;
+  private List<EntityRelation> relations;
   private Locale language;
   private String manifestationType;
   private String manufacturingType;
@@ -86,7 +86,7 @@ public class Manifestation extends Entity {
     parents.add(parent);
   }
 
-  public void addRelation(EntityToEntityRelation relation) {
+  public void addRelation(EntityRelation relation) {
     relations.add(relation);
   }
 
@@ -108,7 +108,7 @@ public class Manifestation extends Entity {
     return expressionTypes;
   }
 
-  public List<EntityToEntityRelation> getRelations() {
+  public List<EntityRelation> getRelations() {
     return relations;
   }
 
@@ -206,7 +206,7 @@ public class Manifestation extends Entity {
     this.expressionTypes = expressionTypes;
   }
 
-  public void setRelations(List<EntityToEntityRelation> relations) {
+  public void setRelations(List<EntityRelation> relations) {
     this.relations = relations;
   }
 
@@ -409,11 +409,9 @@ public class Manifestation extends Entity {
    * @param relations a list of EntityRelations
    * @return A texual representation of the list with subject uuid, predicate and object uuid
    */
-  private String dumpShortenedRelations(List<EntityToEntityRelation> relations) {
+  private String dumpShortenedRelations(List<EntityRelation> relations) {
     return "["
-        + relations.stream()
-            .map(EntityToEntityRelation::toShortenedString)
-            .collect(Collectors.joining(","))
+        + relations.stream().map(EntityRelation::toShortenedString).collect(Collectors.joining(","))
         + "]";
   }
 
@@ -437,7 +435,7 @@ public class Manifestation extends Entity {
       return self();
     }
 
-    public B relation(EntityToEntityRelation relation) {
+    public B relation(EntityRelation relation) {
       if (relations == null) {
         relations = new ArrayList<>(1);
       }

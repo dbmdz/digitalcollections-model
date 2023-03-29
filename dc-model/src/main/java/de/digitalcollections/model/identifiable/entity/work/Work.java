@@ -2,7 +2,7 @@ package de.digitalcollections.model.identifiable.entity.work;
 
 import de.digitalcollections.model.identifiable.IdentifiableObjectType;
 import de.digitalcollections.model.identifiable.entity.Entity;
-import de.digitalcollections.model.identifiable.entity.relation.EntityToEntityRelation;
+import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 import de.digitalcollections.model.text.Title;
 import de.digitalcollections.model.time.LocalDateRange;
 import java.time.LocalDate;
@@ -44,7 +44,7 @@ public class Work extends Entity {
   private String firstAppearedDatePresentation;
   private TimeValue firstAppearedTimeValue;
   private List<Work> parents;
-  private List<EntityToEntityRelation> relations;
+  private List<EntityRelation> relations;
   private List<Title> titles;
 
   public Work() {
@@ -75,7 +75,7 @@ public class Work extends Entity {
     return parents;
   }
 
-  public List<EntityToEntityRelation> getRelations() {
+  public List<EntityRelation> getRelations() {
     return relations;
   }
 
@@ -119,14 +119,14 @@ public class Work extends Entity {
     this.parents = parents;
   }
 
-  public void addRelation(EntityToEntityRelation relation) {
+  public void addRelation(EntityRelation relation) {
     if (relations == null) {
       relations = new ArrayList<>(1);
     }
     relations.add(relation);
   }
 
-  public void setRelations(List<EntityToEntityRelation> relations) {
+  public void setRelations(List<EntityRelation> relations) {
     this.relations = relations;
   }
 
@@ -259,7 +259,7 @@ public class Work extends Entity {
       return c;
     }
 
-    public B relation(EntityToEntityRelation relation) {
+    public B relation(EntityRelation relation) {
       if (relations == null) {
         relations = new ArrayList<>(1);
       }

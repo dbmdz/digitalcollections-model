@@ -10,7 +10,7 @@ import de.digitalcollections.model.identifiable.entity.manifestation.ExpressionT
 import de.digitalcollections.model.identifiable.entity.manifestation.Manifestation;
 import de.digitalcollections.model.identifiable.entity.manifestation.PublicationInfo;
 import de.digitalcollections.model.identifiable.entity.manifestation.Publisher;
-import de.digitalcollections.model.identifiable.entity.relation.EntityToEntityRelation;
+import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.semantic.Subject;
 import de.digitalcollections.model.semantic.Tag;
@@ -73,7 +73,7 @@ public class ManifestationTest extends BaseJsonSerializationTest {
             .version("2. Auflage")
             .relations(
                 List.of(
-                    EntityToEntityRelation.builder()
+                    EntityRelation.builder()
                         .subject(Person.builder().label(Locale.GERMAN, "Arnold Hiller").build())
                         .predicate("is_author_of")
                         .build()))
@@ -203,12 +203,8 @@ public class ManifestationTest extends BaseJsonSerializationTest {
   public void testToString() {
     Person author = Person.builder().uuid(UUID.randomUUID()).build();
     Manifestation manifestation = Manifestation.builder().uuid(UUID.randomUUID()).build();
-    EntityToEntityRelation entityRelation =
-        EntityToEntityRelation.builder()
-            .subject(author)
-            .predicate("foo")
-            .object(manifestation)
-            .build();
+    EntityRelation entityRelation =
+        EntityRelation.builder().subject(author).predicate("foo").object(manifestation).build();
     manifestation.setRelations(List.of(entityRelation));
 
     String actual = manifestation.toString();

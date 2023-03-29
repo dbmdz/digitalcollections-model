@@ -6,10 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * An EntityToEntityRelation describes the relation between two entities (subject being related to
- * object in terms of predicate)
- */
+/** An EntityToFileResourceRelation describes the relation between an entity and a fileresource. */
 public class EntityToFileResourceRelation {
 
   public static Builder builder() {
