@@ -7,7 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [11.0.1](https://github.com/dbmdz/digitalcollections-model/releases/tag/11.0.0) - 2022-08-22
+## [11.0.2](https://github.com/dbmdz/digitalcollections-model/releases/tag/11.0.2) - 2023-03-29
+
+### Fixed
+
+- Do not serialize empty collections (empty JSON array)
+- Initialised properties of a collection type with empty collections, with capacity of `0`
+
+## [11.0.1](https://github.com/dbmdz/digitalcollections-model/releases/tag/11.0.1) - 2022-08-22
 
 ### Changed
 
