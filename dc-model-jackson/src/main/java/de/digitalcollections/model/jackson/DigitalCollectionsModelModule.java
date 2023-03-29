@@ -87,7 +87,7 @@ import de.digitalcollections.model.jackson.mixin.identifiable.entity.manifestati
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.manifestation.ProductionInfoMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.manifestation.PublicationInfoMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.manifestation.PublisherMixIn;
-import de.digitalcollections.model.jackson.mixin.identifiable.entity.relation.EntityToEntityRelationMixIn;
+import de.digitalcollections.model.jackson.mixin.identifiable.entity.relation.EntityRelationMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.relation.EntityToFileResourceRelationMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.entity.work.WorkMixIn;
 import de.digitalcollections.model.jackson.mixin.identifiable.relation.IdentifiableToEntityRelationMixIn;
@@ -287,7 +287,7 @@ public class DigitalCollectionsModelModule extends SimpleModule {
     context.setMixInAnnotations(ContentBlock.class, ContentBlockMixIn.class);
     context.setMixInAnnotations(DigitalObject.class, DigitalObjectMixIn.class);
     context.setMixInAnnotations(Entity.class, EntityMixIn.class);
-    context.setMixInAnnotations(EntityRelation.class, EntityToEntityRelationMixIn.class);
+    context.setMixInAnnotations(EntityRelation.class, EntityRelationMixIn.class);
     context.setMixInAnnotations(
         EntityToFileResourceRelation.class, EntityToFileResourceRelationMixIn.class);
     context.setMixInAnnotations(Event.class, EventMixIn.class);

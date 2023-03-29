@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;
 
-public class EntityToEntityRelationTest extends BaseJsonSerializationTest {
+public class EntityRelationTest extends BaseJsonSerializationTest {
 
   private EntityRelation createObject() {
     EntityRelation entityRelation = new EntityRelation();
