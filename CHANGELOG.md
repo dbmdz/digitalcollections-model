@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add convenience method addLocalizedUrlAlias(UrlAlias urlAlias) to Identifiable
 - ValidationError/ValidationException classes for providing field specific validation errors over system borders (e.g. via REST)
 - Property `subjects` to `Identifiable`
+- Add `EntityToFileResourceRelation`, `IdentifiableToEntityRelation`, `IdentifiableToFileResourceRelation`
 
 ### Changed
 
