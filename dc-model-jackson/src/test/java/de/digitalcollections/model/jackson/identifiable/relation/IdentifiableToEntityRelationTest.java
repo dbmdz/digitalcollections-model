@@ -6,8 +6,10 @@ import de.digitalcollections.model.identifiable.relation.IdentifiableToEntityRel
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import java.util.List;
 import java.util.UUID;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("The IdentifiableToEntityRelation")
 public class IdentifiableToEntityRelationTest extends BaseJsonSerializationTest {
 
   private IdentifiableToEntityRelation createObject() {
@@ -23,6 +25,7 @@ public class IdentifiableToEntityRelationTest extends BaseJsonSerializationTest 
     return relation;
   }
 
+  @DisplayName("can be serialized and deserialized")
   @Test
   public void testSerializeDeserialize() throws Exception {
     IdentifiableToEntityRelation entityRelation = createObject();

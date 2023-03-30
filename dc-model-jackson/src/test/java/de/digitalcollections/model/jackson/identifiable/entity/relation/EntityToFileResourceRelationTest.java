@@ -6,8 +6,10 @@ import de.digitalcollections.model.identifiable.resource.ApplicationFileResource
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import java.util.List;
 import java.util.UUID;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("The EntityToFileRelation")
 public class EntityToFileResourceRelationTest extends BaseJsonSerializationTest {
 
   private EntityToFileResourceRelation createObject() {
@@ -24,6 +26,7 @@ public class EntityToFileResourceRelationTest extends BaseJsonSerializationTest 
     return relation;
   }
 
+  @DisplayName("can be serialized and deserialized")
   @Test
   public void testSerializeDeserialize() throws Exception {
     EntityToFileResourceRelation relation = createObject();
