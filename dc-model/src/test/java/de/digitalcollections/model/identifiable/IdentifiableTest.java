@@ -102,8 +102,8 @@ public class IdentifiableTest {
   @DisplayName("can set multiple identifiers in builder")
   @Test
   public void testMultipleIdentifiersInBuilder() {
-    Identifier identifier1 = new Identifier(null, "foo", "bar");
-    Identifier identifier2 = new Identifier(null, "baz", "bla");
+    Identifier identifier1 = new Identifier("foo", "bar");
+    Identifier identifier2 = new Identifier("baz", "bla");
 
     Identifiable actual =
         Identifiable.builder().identifier(identifier1).identifier(identifier2).build();

@@ -92,15 +92,16 @@ public class Predicate extends UniqueObject {
         + "}";
   }
 
-  public abstract static class PredicateBuilder<
-          C extends Predicate, B extends PredicateBuilder<C, B>>
-      extends UniqueObjectBuilder<C, B> {
-
-    @Override
-    public C build() {
-      C c = prebuild();
-      c.init();
-      return c;
-    }
-  }
+  // FIXME: delete comment
+  //  public abstract static class PredicateBuilder<
+  //          C extends Predicate, B extends PredicateBuilder<C, B>>
+  //      extends UniqueObjectBuilder<C, B> {
+  //
+  //    @Override
+  //    public C build() {
+  //      C c = prebuild();
+  //      c.init();
+  //      return c;
+  //    }
+  //  }
 }

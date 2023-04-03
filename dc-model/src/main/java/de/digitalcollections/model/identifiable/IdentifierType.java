@@ -1,7 +1,7 @@
 package de.digitalcollections.model.identifiable;
 
 import de.digitalcollections.model.UniqueObject;
-import java.util.UUID;
+import lombok.experimental.SuperBuilder;
 
 /**
  * Defines an identifier type to be used in the system implementing this library. It is up to the
@@ -9,14 +9,15 @@ import java.util.UUID;
  * described by a label, a namespace (describing the system) and a regex pattern for validating
  * identifiers.
  */
+@SuperBuilder(buildMethodName = "prebuild")
 public class IdentifierType extends UniqueObject {
-  public static Builder builder() {
-    return new Builder();
-  }
-
   private String label;
   private String namespace;
   private String pattern;
+
+  public IdentifierType() {
+    super();
+  }
 
   public String getLabel() {
     return label;
@@ -42,32 +43,30 @@ public class IdentifierType extends UniqueObject {
     this.pattern = pattern;
   }
 
-  public static class Builder {
-
-    public IdentifierType identifierType = new IdentifierType();
-
-    public IdentifierType build() {
-      return identifierType;
-    }
-
-    public Builder label(String label) {
-      identifierType.setLabel(label);
-      return this;
-    }
-
-    public Builder namespace(String namespace) {
-      identifierType.setNamespace(namespace);
-      return this;
-    }
-
-    public Builder pattern(String pattern) {
-      identifierType.setPattern(pattern);
-      return this;
-    }
-
-    public Builder uuid(String uuid) {
-      identifierType.setUuid(UUID.fromString(uuid));
-      return this;
-    }
-  }
+  // FIXME: delete comment
+  //  public abstract static class IdentifierTypeBuilder<C extends IdentifierType, B extends
+  // IdentifierTypeBuilder<C, B>>
+  //      extends UniqueObjectBuilder<C, B> {
+  //
+  //    public C build() {
+  //      C c = prebuild();
+  //      c.init();
+  //      return c;
+  //    }
+  //
+  //    public B label(String label) {
+  //      this.label = label;
+  //      return self();
+  //    }
+  //
+  //    public B namespace(String namespace) {
+  //      this.namespace = namespace;
+  //      return self();
+  //    }
+  //
+  //    public B pattern(String pattern) {
+  //      this.pattern = pattern;
+  //      return self();
+  //    }
+  //  }
 }

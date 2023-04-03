@@ -1,8 +1,7 @@
 package de.digitalcollections.model.jackson.identifiable.alias;
 
-import de.digitalcollections.model.identifiable.IdentifiableObjectType;
-import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.alias.UrlAlias;
+import de.digitalcollections.model.identifiable.entity.Collection;
 import de.digitalcollections.model.identifiable.entity.Website;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import java.time.LocalDateTime;
@@ -19,10 +18,11 @@ public class UrlAliasTest extends BaseJsonSerializationTest {
     urlAlias.setLastPublished(LocalDateTime.of(2021, Month.DECEMBER, 24, 12, 0, 0));
     urlAlias.setPrimary(true);
     urlAlias.setSlug("foobar");
-    urlAlias.setTargetIdentifiableObjectType(IdentifiableObjectType.COLLECTION);
-    urlAlias.setTargetIdentifiableType(IdentifiableType.ENTITY);
+
+    Collection target = Collection.builder().uuid("c31593a4-9620-484b-a4f5-4112731d953b").build();
+
     urlAlias.setTargetLanguage(Locale.GERMAN);
-    urlAlias.setTargetUuid(UUID.fromString("c31593a4-9620-484b-a4f5-4112731d953b"));
+    urlAlias.setTarget(target);
     urlAlias.setUuid(UUID.fromString("d1dfbfbf-364e-4983-9d15-c33549145928"));
     Website website = new Website();
     website.setUuid(UUID.fromString("9b676195-f505-400c-acb2-b7aabb7c62f7"));

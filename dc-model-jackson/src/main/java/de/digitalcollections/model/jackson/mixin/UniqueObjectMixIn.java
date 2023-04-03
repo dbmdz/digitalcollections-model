@@ -1,5 +1,6 @@
 package de.digitalcollections.model.jackson.mixin;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -33,4 +34,7 @@ import de.digitalcollections.model.view.RenderingTemplate;
   @JsonSubTypes.Type(value = User.class, name = "USER")
 })
 @JsonInclude(value = Include.NON_EMPTY)
-public interface UniqueObjectMixIn {}
+public interface UniqueObjectMixIn {
+  @JsonIgnore
+  boolean isPersisted();
+}

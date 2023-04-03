@@ -63,6 +63,16 @@ public abstract class UniqueObject {
   protected void init() {}
 
   /**
+   * check if the technical system fields uuid, created, lastModified are filled, what is the
+   * indicator for "has been persisted in system".
+   *
+   * @return true if unique object has been persisted already
+   */
+  public boolean isPersisted() {
+    return uuid != null && created != null && lastModified != null;
+  }
+
+  /**
    * @param created the creation date of the object
    */
   public void setCreated(LocalDateTime created) {

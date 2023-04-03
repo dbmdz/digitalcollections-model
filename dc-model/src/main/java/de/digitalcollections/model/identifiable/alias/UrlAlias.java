@@ -3,14 +3,13 @@ package de.digitalcollections.model.identifiable.alias;
 import static de.digitalcollections.model.time.TimestampHelper.truncatedToMicros;
 
 import de.digitalcollections.model.UniqueObject;
-import de.digitalcollections.model.identifiable.IdentifiableObjectType;
+import de.digitalcollections.model.identifiable.Identifiable;
 import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.entity.EntityType;
 import de.digitalcollections.model.identifiable.entity.Website;
 import java.time.LocalDateTime;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.UUID;
 import lombok.experimental.SuperBuilder;
 
 /**
@@ -24,10 +23,8 @@ public class UrlAlias extends UniqueObject {
   private LocalDateTime lastPublished;
   private boolean primary;
   private String slug;
-  private IdentifiableObjectType targetIdentifiableObjectType;
-  private IdentifiableType targetIdentifiableType;
+  private Identifiable target;
   private Locale targetLanguage;
-  private UUID targetUuid;
   private Website website;
 
   public UrlAlias() {
@@ -48,10 +45,8 @@ public class UrlAlias extends UniqueObject {
         && Objects.equals(this.lastPublished, other.lastPublished)
         && this.primary == other.primary
         && Objects.equals(this.slug, other.slug)
+        && Objects.equals(this.target, other.target)
         && Objects.equals(this.targetLanguage, other.targetLanguage)
-        && Objects.equals(this.targetIdentifiableObjectType, other.targetIdentifiableObjectType)
-        && Objects.equals(this.targetIdentifiableType, other.targetIdentifiableType)
-        && Objects.equals(this.targetUuid, other.targetUuid)
         && Objects.equals(this.uuid, other.uuid)
         && Objects.equals(
             this.website != null ? this.website.getUuid() : null,
@@ -68,10 +63,13 @@ public class UrlAlias extends UniqueObject {
 
   @Deprecated(forRemoval = true, since = "10.0.0")
   public EntityType getTargetEntityType() {
-    if (IdentifiableType.RESOURCE == targetIdentifiableType) {
+    if (target == null) {
       return null;
     }
-    switch (targetIdentifiableObjectType) {
+    if (IdentifiableType.RESOURCE == target.getType()) {
+      return null;
+    }
+    switch (target.getIdentifiableObjectType()) {
       case CANYON:
       case CAVE:
       case CONTINENT:
@@ -90,24 +88,16 @@ public class UrlAlias extends UniqueObject {
       default:
         // as both enum have String identical enum values in all other cases, we can simply map by
         // String:
-        return EntityType.valueOf(targetIdentifiableObjectType.toString());
+        return EntityType.valueOf(target.getIdentifiableObjectType().toString());
     }
   }
 
-  public IdentifiableObjectType getTargetIdentifiableObjectType() {
-    return targetIdentifiableObjectType;
-  }
-
-  public IdentifiableType getTargetIdentifiableType() {
-    return this.targetIdentifiableType;
+  public Identifiable getTarget() {
+    return target;
   }
 
   public Locale getTargetLanguage() {
     return this.targetLanguage;
-  }
-
-  public UUID getTargetUuid() {
-    return this.targetUuid;
   }
 
   public Website getWebsite() {
@@ -123,9 +113,7 @@ public class UrlAlias extends UniqueObject {
         this.primary,
         this.slug,
         this.targetLanguage,
-        this.targetIdentifiableObjectType,
-        this.targetIdentifiableType,
-        this.targetUuid,
+        this.target,
         this.uuid,
         this.website);
   }
@@ -151,20 +139,12 @@ public class UrlAlias extends UniqueObject {
     this.slug = slug;
   }
 
-  public void setTargetIdentifiableObjectType(IdentifiableObjectType targetIdentifiableObjectType) {
-    this.targetIdentifiableObjectType = targetIdentifiableObjectType;
-  }
-
-  public void setTargetIdentifiableType(IdentifiableType identifiableType) {
-    this.targetIdentifiableType = identifiableType;
-  }
-
   public void setTargetLanguage(Locale targetLanguage) {
     this.targetLanguage = targetLanguage;
   }
 
-  public void setTargetUuid(UUID targetUuid) {
-    this.targetUuid = targetUuid;
+  public void setTarget(Identifiable target) {
+    this.target = target;
   }
 
   public void setWebsite(Website website) {
@@ -185,14 +165,10 @@ public class UrlAlias extends UniqueObject {
         + ", slug='"
         + slug
         + '\''
-        + ", targetIdentifiableObjectType="
-        + targetIdentifiableObjectType
-        + ", targetIdentifiableType="
-        + targetIdentifiableType
+        + ", target="
+        + target
         + ", targetLanguage="
         + targetLanguage
-        + ", targetUuid="
-        + targetUuid
         + ", uuid="
         + uuid
         + ", website="
@@ -235,15 +211,8 @@ public class UrlAlias extends UniqueObject {
       return self();
     }
 
-    public B targetType(
-        IdentifiableObjectType identifiableObjectType, IdentifiableType identifiableType) {
-      this.targetIdentifiableObjectType = identifiableObjectType;
-      this.targetIdentifiableType = identifiableType;
-      return self();
-    }
-
-    public B targetUuid(String targetUuid) {
-      this.targetUuid = UUID.fromString(targetUuid);
+    public B target(Identifiable identifiable) {
+      this.target = identifiable;
       return self();
     }
 

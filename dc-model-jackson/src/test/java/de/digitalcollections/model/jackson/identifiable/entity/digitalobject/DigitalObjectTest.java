@@ -17,7 +17,7 @@ public class DigitalObjectTest extends BaseJsonSerializationTest {
 
   private DigitalObject createObject() {
     DigitalObject digitalObject = new DigitalObject();
-    digitalObject.addIdentifier(new Identifier(null, "myId", "bsb10001234"));
+    digitalObject.addIdentifier(new Identifier("myId", "bsb10001234"));
     ImageFileResource image = new ImageFileResource();
     image.setHeight(100);
     image.setWidth(400);

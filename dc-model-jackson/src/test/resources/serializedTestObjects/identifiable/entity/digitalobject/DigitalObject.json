@@ -2,8 +2,8 @@
   "identifiableObjectType" : "DIGITAL_OBJECT",
   "identifiers" : [ {
     "objectType" : "IDENTIFIER",
-    "id" : "bsb10001234",
-    "namespace" : "myId"
+    "id" : "myId",
+    "namespace" : "bsb10001234"
   } ],
   "previewImage" : {
     "identifiableObjectType" : "IMAGE_FILE_RESOURCE",

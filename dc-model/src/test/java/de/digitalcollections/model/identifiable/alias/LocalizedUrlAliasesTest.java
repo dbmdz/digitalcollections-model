@@ -3,6 +3,7 @@ package de.digitalcollections.model.identifiable.alias;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.entry;
 
+import de.digitalcollections.model.identifiable.Identifiable;
 import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.entity.Website;
 import java.time.LocalDateTime;
@@ -17,9 +18,12 @@ public class LocalizedUrlAliasesTest {
     UrlAlias urlAlias = new UrlAlias();
     urlAlias.setCreated(LocalDateTime.now());
     urlAlias.setSlug(slug == null ? "test" : slug);
-    urlAlias.setTargetIdentifiableType(IdentifiableType.RESOURCE);
+
+    Identifiable target =
+        Identifiable.builder().type(IdentifiableType.RESOURCE).uuid(UUID.randomUUID()).build();
+
+    urlAlias.setTarget(target);
     urlAlias.setTargetLanguage(locale == null ? Locale.GERMAN : locale);
-    urlAlias.setTargetUuid(UUID.randomUUID());
     urlAlias.setUuid(UUID.randomUUID());
     Website website = new Website();
     website.setUuid(UUID.randomUUID());
