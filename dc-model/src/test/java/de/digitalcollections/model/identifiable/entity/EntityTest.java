@@ -3,6 +3,7 @@ package de.digitalcollections.model.identifiable.entity;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import de.digitalcollections.model.identifiable.IdentifiableObjectType;
+import de.digitalcollections.model.identifiable.Identifier;
 import java.util.Locale;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,7 +19,7 @@ class EntityTest {
             .randomUuid()
             .created("2021-01-13T12:34:54")
             .lastModified("2021-01-14T02:45:24")
-            .identifier("foo", "bar")
+            .identifier(Identifier.builder().namespace("foo").id("bar").build())
             .description(Locale.GERMAN, "Beispiel-Bild")
             .description(Locale.ENGLISH, "Example Image")
             .label(Locale.GERMAN, "Beispielbild")

@@ -345,15 +345,6 @@ public class Identifiable extends UniqueObject {
       return self();
     }
 
-    public B identifier(String namespace, String id) {
-      if (identifiers == null) {
-        identifiers = new HashSet<>(1);
-      }
-      Identifier identifier = Identifier.builder().namespace(namespace).id(id).build();
-      identifiers.add(identifier);
-      return self();
-    }
-
     public B label(Locale locale, String localizedLabel) {
       if (label == null) {
         label = new LocalizedText();
@@ -436,23 +427,32 @@ public class Identifiable extends UniqueObject {
     public void setInternalReferences(C c) {
       // Each identifier must get the identifiable as target
       // FIXME: delete comment
-      //      if (this.identifiers != null && !this.identifiers.isEmpty()) {
-      //        c.setIdentifiers(
-      //            this.identifiers.stream().peek(i ->
+      // if (this.identifiers != null && !this.identifiers.isEmpty()) {
+      // c.setIdentifiers(
+      // this.identifiers.stream().peek(i ->
       // i.setIdentifiable(c)).collect(Collectors.toSet()));
-      //      } else {
-      //        c.setIdentifiers(new HashSet<>(0));
-      //      }
+      // } else {
+      // c.setIdentifiers(new HashSet<>(0));
+      // }
       if (identifiers == null) {
         c.setIdentifiers(new HashSet<>(0));
       }
 
-      // For each UrlAlias, the target must be set to the identifiable
+      // For each UrlAlias, the target must be set to an Identifiable with core data of the
+      // identifiable
+      // (important: not having the UrlAliasses again -> otherwise recursion!)
       if (c.getLocalizedUrlAliases() != null && !c.getLocalizedUrlAliases().isEmpty()) {
         c.getLocalizedUrlAliases()
             .forEach(
                 (locale, urlAliasList) -> {
-                  urlAliasList.forEach(u -> u.setTarget(c));
+                  urlAliasList.forEach(
+                      u ->
+                          u.setTarget(
+                              Identifiable.builder()
+                                  .uuid(c.getUuid())
+                                  .identifiableObjectType(c.getIdentifiableObjectType())
+                                  .type(c.getType())
+                                  .build()));
                 });
       }
     }

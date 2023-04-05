@@ -69,7 +69,10 @@ public class IdentifiableTest {
   @Test
   public void removeIdentifierByKey() {
     Identifiable identifiable =
-        Identifiable.builder().identifier("foo", "bar").identifier("baz", "bla").build();
+        Identifiable.builder()
+            .identifier(Identifier.builder().namespace("foo").id("bar").build())
+            .identifier(Identifier.builder().namespace("baz").id("bla").build())
+            .build();
 
     identifiable.removeIdentifier("foo");
 
@@ -102,8 +105,8 @@ public class IdentifiableTest {
   @DisplayName("can set multiple identifiers in builder")
   @Test
   public void testMultipleIdentifiersInBuilder() {
-    Identifier identifier1 = new Identifier("foo", "bar");
-    Identifier identifier2 = new Identifier("baz", "bla");
+    Identifier identifier1 = Identifier.builder().namespace("foo").id("bar").build();
+    Identifier identifier2 = Identifier.builder().namespace("baz").id("bla").build();
 
     Identifiable actual =
         Identifiable.builder().identifier(identifier1).identifier(identifier2).build();

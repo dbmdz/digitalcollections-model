@@ -42,31 +42,4 @@ public class IdentifierType extends UniqueObject {
   public void setPattern(String pattern) {
     this.pattern = pattern;
   }
-
-  // FIXME: delete comment
-  //  public abstract static class IdentifierTypeBuilder<C extends IdentifierType, B extends
-  // IdentifierTypeBuilder<C, B>>
-  //      extends UniqueObjectBuilder<C, B> {
-  //
-  //    public C build() {
-  //      C c = prebuild();
-  //      c.init();
-  //      return c;
-  //    }
-  //
-  //    public B label(String label) {
-  //      this.label = label;
-  //      return self();
-  //    }
-  //
-  //    public B namespace(String namespace) {
-  //      this.namespace = namespace;
-  //      return self();
-  //    }
-  //
-  //    public B pattern(String pattern) {
-  //      this.pattern = pattern;
-  //      return self();
-  //    }
-  //  }
 }

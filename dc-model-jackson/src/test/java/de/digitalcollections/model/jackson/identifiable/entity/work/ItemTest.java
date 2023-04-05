@@ -21,7 +21,7 @@ public class ItemTest extends BaseJsonSerializationTest {
     final ImageFileResource previewImage = new ImageFileResource();
     previewImage.setUuid(UUID.fromString("6bed2ff9-4ad5-4e18-b520-bb9843fe9a73"));
     item.setPreviewImage(previewImage);
-    item.setIdentifiers(Set.of(new Identifier("id", "namespace")));
+    item.setIdentifiers(Set.of(Identifier.builder().namespace("namespace").id("id").build()));
     return item;
   }
 

@@ -2,6 +2,7 @@ package de.digitalcollections.model.semantic;
 
 import de.digitalcollections.model.UniqueObject;
 import java.util.Locale;
+import lombok.experimental.SuperBuilder;
 
 /**
  * See https://en.wikipedia.org/wiki/Headword and
@@ -17,6 +18,7 @@ import java.util.Locale;
  * <p>As it is often interchangeable, we decided for practial reasons to use this class "Headword"
  * also for a lemma.
  */
+@SuperBuilder(buildMethodName = "prebuild")
 public class Headword extends UniqueObject {
 
   private String label;

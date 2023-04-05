@@ -21,8 +21,8 @@ public class LocalizedUrlAliasesTest {
 
     Identifiable target =
         Identifiable.builder().type(IdentifiableType.RESOURCE).uuid(UUID.randomUUID()).build();
-
     urlAlias.setTarget(target);
+
     urlAlias.setTargetLanguage(locale == null ? Locale.GERMAN : locale);
     urlAlias.setUuid(UUID.randomUUID());
     Website website = new Website();

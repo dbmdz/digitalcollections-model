@@ -2,14 +2,15 @@
   "identifiableObjectType" : "DIGITAL_OBJECT",
   "identifiers" : [ {
     "objectType" : "IDENTIFIER",
-    "id" : "myId",
-    "namespace" : "bsb10001234"
+    "id" : "bsb10001234",
+    "namespace" : "myId"
   } ],
   "previewImage" : {
     "identifiableObjectType" : "IMAGE_FILE_RESOURCE",
     "identifiers" : [ ],
     "type" : "RESOURCE",
     "fileResourceType" : "IMAGE",
+    "mimeType" : "image/*",
     "readonly" : false,
     "sizeInBytes" : 0,
     "height" : 100,
@@ -49,6 +50,7 @@
     "identifiers" : [ ],
     "type" : "RESOURCE",
     "fileResourceType" : "IMAGE",
+    "mimeType" : "image/*",
     "readonly" : false,
     "sizeInBytes" : 0,
     "height" : 100,

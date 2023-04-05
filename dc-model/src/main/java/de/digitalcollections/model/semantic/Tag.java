@@ -60,16 +60,4 @@ public class Tag extends UniqueObject {
         + uuid
         + '}';
   }
-
-  // FIXME: delete comment
-  //  public abstract static class TagBuilder<C extends Tag, B extends TagBuilder<C, B>>
-  //      extends UniqueObjectBuilder<C, B> {
-  //
-  //    @Override
-  //    public C build() {
-  //      C c = prebuild();
-  //      c.init();
-  //      return c;
-  //    }
-  //  }
 }

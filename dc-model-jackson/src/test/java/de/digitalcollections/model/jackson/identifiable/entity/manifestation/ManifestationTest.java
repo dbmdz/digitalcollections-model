@@ -63,7 +63,7 @@ public class ManifestationTest extends BaseJsonSerializationTest {
     Manifestation manifestation =
         Manifestation.builder()
             .manifestationType("SINGLE")
-            .identifier("foo", "bar")
+            .identifier(Identifier.builder().namespace("foo").id("bar").build())
             .label(Locale.GERMAN, "Zimmer-Gymnastik ohne Geräte")
             .composition("1 Partitur (11 Seiten)")
             .dimensions("26,5 x 70 x 2 cm")

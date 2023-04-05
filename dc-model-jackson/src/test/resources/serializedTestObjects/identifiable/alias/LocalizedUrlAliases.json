@@ -22,7 +22,6 @@
       "type" : "ENTITY",
       "refId" : 0,
       "entityType" : "WEBSITE"
-    },
-    "targetEntityType" : "COLLECTION"
+    }
   } ]
 }

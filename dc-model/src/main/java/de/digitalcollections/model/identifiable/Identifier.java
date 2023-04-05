@@ -22,12 +22,6 @@ public class Identifier extends UniqueObject {
     super();
   }
 
-  public Identifier(String id, String namespace) {
-    this();
-    this.id = id;
-    this.namespace = namespace;
-  }
-
   @Override
   public boolean equals(Object obj) {
     if (this == obj) {
