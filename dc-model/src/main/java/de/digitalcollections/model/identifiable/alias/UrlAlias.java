@@ -5,6 +5,7 @@ import static de.digitalcollections.model.time.TimestampHelper.truncatedToMicros
 import de.digitalcollections.model.UniqueObject;
 import de.digitalcollections.model.identifiable.Identifiable;
 import de.digitalcollections.model.identifiable.IdentifiableObjectType;
+import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.entity.Website;
 import java.time.LocalDateTime;
 import java.util.Locale;
@@ -149,6 +150,14 @@ public class UrlAlias extends UniqueObject {
   public IdentifiableObjectType getTargetIdentifiableObjectType() {
     if (target != null) {
       return target.getIdentifiableObjectType();
+    }
+    return null;
+  }
+
+  @Deprecated(forRemoval = true)
+  public IdentifiableType getTargetIdentifiableType() {
+    if (target != null) {
+      return target.getType();
     }
     return null;
   }
