@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import de.digitalcollections.model.identifiable.IdentifiableObjectType;
+import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.alias.UrlAlias;
 import de.digitalcollections.model.jackson.mixin.UniqueObjectMixIn;
 import java.util.UUID;
@@ -13,6 +14,9 @@ import java.util.UUID;
 public interface UrlAliasMixIn extends UniqueObjectMixIn {
   @JsonIgnore
   public IdentifiableObjectType getTargetIdentifiableObjectType();
+
+  @JsonIgnore
+  public IdentifiableType getTargetIdentifiableType();
 
   @JsonIgnore
   public UUID getTargetUuid();
