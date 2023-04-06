@@ -28,9 +28,12 @@ public abstract class UniqueObject {
       return false;
     }
     UniqueObject other = (UniqueObject) obj;
-    return Objects.equals(created, other.created)
-        && Objects.equals(lastModified, other.lastModified)
-        && Objects.equals(uuid, other.uuid);
+    return Objects.equals(uuid, other.uuid);
+    // We do not compare the technical fields lastModified and created.
+    // two objects are equal for business view if all other fields are equal.
+    //    return Objects.equals(created, other.created)
+    //        && Objects.equals(lastModified, other.lastModified)
+    //        && Objects.equals(uuid, other.uuid);
   }
 
   /**
