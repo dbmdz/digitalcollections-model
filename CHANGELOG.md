@@ -47,6 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Work` and `Manifestation`: Subjects are inherited from `Identifiable` instead of being their own properties
 - remove test specific `PreviewImageBuilder` from model
 - **Breaking**: remove `Identifiable` member from Identifier (as it always comes in pair with the related Identifiable), caused recursion.
+- **Breaking**: remove deprecated getTargetEntityType from UrlAlias
 
 ## [11.0.3](https://github.com/dbmdz/digitalcollections-model/releases/tag/11.0.3) - 2023-04-14
 
