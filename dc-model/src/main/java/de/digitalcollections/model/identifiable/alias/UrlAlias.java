@@ -105,39 +105,6 @@ public class UrlAlias extends UniqueObject {
     return this.lastPublished;
   }
 
-  // FIXME: delete comment
-  //  @Deprecated(forRemoval = true, since = "10.0.0")
-  //  public EntityType getTargetEntityType() {
-  //    if (target == null) {
-  //      return null;
-  //    }
-  //    if (IdentifiableType.RESOURCE == target.getType()) {
-  //      return null;
-  //    }
-  //    switch (target.getIdentifiableObjectType()) {
-  //    case CANYON:
-  //    case CAVE:
-  //    case CONTINENT:
-  //    case COUNTRY:
-  //    case CREEK:
-  //    case GEO_LOCATION:
-  //    case HUMAN_SETTLEMENT:
-  //    case LAKE:
-  //    case MOUNTAIN:
-  //    case OCEAN:
-  //    case RIVER:
-  //    case SEA:
-  //    case STILL_WATERS:
-  //    case VALLEY:
-  //      return EntityType.GEOLOCATION;
-  //    default:
-  //      // as both enum have String identical enum values in all other cases, we can
-  //      // simply map by
-  //      // String:
-  //      return EntityType.valueOf(target.getIdentifiableObjectType().toString());
-  //    }
-  //  }
-
   public String getSlug() {
     return this.slug;
   }

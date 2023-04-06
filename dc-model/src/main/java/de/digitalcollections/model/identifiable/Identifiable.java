@@ -425,15 +425,6 @@ public class Identifiable extends UniqueObject {
     }
 
     public void setInternalReferences(C c) {
-      // Each identifier must get the identifiable as target
-      // FIXME: delete comment
-      // if (this.identifiers != null && !this.identifiers.isEmpty()) {
-      // c.setIdentifiers(
-      // this.identifiers.stream().peek(i ->
-      // i.setIdentifiable(c)).collect(Collectors.toSet()));
-      // } else {
-      // c.setIdentifiers(new HashSet<>(0));
-      // }
       if (identifiers == null) {
         c.setIdentifiers(new HashSet<>(0));
       }
