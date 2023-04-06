@@ -1,17 +1,13 @@
 package de.digitalcollections.model.identifiable.resource;
 
-import de.digitalcollections.model.file.MimeType;
 import java.util.Objects;
+
+import de.digitalcollections.model.file.MimeType;
 import lombok.experimental.SuperBuilder;
 
 /** An image file resource. Mimetype starts with "image/". */
 @SuperBuilder(buildMethodName = "prebuild")
 public class ImageFileResource extends FileResource {
-
-  // FIXME: delete comment
-  // public static PreviewImageBuilder previewImageBuilder() {
-  // return new PreviewImageBuilder();
-  // }
 
   private int height;
   private int width;
@@ -89,69 +85,4 @@ public class ImageFileResource extends FileResource {
       return c;
     }
   }
-
-  // FIXME: delete comment
-  // public static class PreviewImageBuilder {
-  //
-  // ImageFileResource previewImage;
-  //
-  // public PreviewImageBuilder() {
-  // previewImage = new ImageFileResource();
-  // previewImage.setFileResourceType(FileResourceType.IMAGE);
-  // previewImage.setMimeType(MimeType.MIME_IMAGE);
-  // }
-  //
-  // public PreviewImageBuilder(String uuid) {
-  // this();
-  // previewImage.setUuid(UUID.fromString(uuid));
-  // }
-  //
-  // public ImageFileResource build() {
-  // previewImage.setFileResourceType(FileResourceType.IMAGE);
-  // if (previewImage.getMimeType() == null) {
-  // previewImage.setMimeType(MimeType.MIME_IMAGE);
-  // }
-  // return previewImage;
-  // }
-  //
-  // public PreviewImageBuilder fileName(String fileName) {
-  // previewImage.setFilename(fileName);
-  // return this;
-  // }
-  //
-  // public PreviewImageBuilder httpBaseUrl(String httpBaseUrl) {
-  // try {
-  // previewImage.setHttpBaseUrl(new URL(httpBaseUrl));
-  // } catch (MalformedURLException e) {
-  // throw new RuntimeException(e);
-  // }
-  // return this;
-  // }
-  //
-  // public PreviewImageBuilder mimeType(MimeType mimeType) {
-  // previewImage.setMimeType(mimeType);
-  // return this;
-  // }
-  //
-  // public PreviewImageBuilder size(int width, int height) {
-  // previewImage.setWidth(width);
-  // previewImage.setHeight(height);
-  // return this;
-  // }
-  //
-  // public PreviewImageBuilder uri(String uri) {
-  // previewImage.setUri(URI.create(uri));
-  // return this;
-  // }
-  //
-  // public PreviewImageBuilder uuid(UUID uuid) {
-  // previewImage.setUuid(uuid);
-  // return this;
-  // }
-  //
-  // public PreviewImageBuilder uuid(String uuid) {
-  // previewImage.setUuid(UUID.fromString(uuid));
-  // return this;
-  // }
-  // }
 }
