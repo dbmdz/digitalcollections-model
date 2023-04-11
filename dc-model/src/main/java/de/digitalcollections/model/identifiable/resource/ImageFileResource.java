@@ -1,8 +1,7 @@
 package de.digitalcollections.model.identifiable.resource;
 
-import java.util.Objects;
-
 import de.digitalcollections.model.file.MimeType;
+import java.util.Objects;
 import lombok.experimental.SuperBuilder;
 
 /** An image file resource. Mimetype starts with "image/". */
