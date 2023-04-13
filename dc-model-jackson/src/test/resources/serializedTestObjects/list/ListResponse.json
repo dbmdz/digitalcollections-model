@@ -6,7 +6,6 @@
     "roles" : [ ]
   } ],
   "request" : {
-    "listRequestType" : "LIST_REQUEST",
     "filtering" : {
       "filterCriteria" : [ {
         "expression" : "longField",

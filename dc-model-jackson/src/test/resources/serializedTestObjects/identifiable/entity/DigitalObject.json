@@ -1,7 +1,6 @@
 {
   "identifiableObjectType" : "DIGITAL_OBJECT",
   "identifiers" : [ {
-    "objectType" : "IDENTIFIER",
     "id" : "bsb10001234",
     "namespace" : "myId"
   } ],
