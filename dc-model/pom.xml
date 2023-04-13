@@ -37,13 +37,11 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.26</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-core</artifactId>
-      <version>5.7.5</version>
+      <version>5.8.2</version>
     </dependency>
     <dependency>
       <groupId>org.wikidata.wdtk</groupId>
@@ -51,4 +49,3 @@
     </dependency>
   </dependencies>
 </project>
-
