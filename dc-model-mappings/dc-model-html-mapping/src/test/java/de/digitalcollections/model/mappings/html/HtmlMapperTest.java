@@ -1,7 +1,7 @@
 package de.digitalcollections.model.mappings.html;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import de.digitalcollections.model.text.StructuredContent;
 import org.jsoup.nodes.Element;
@@ -23,7 +23,7 @@ public class HtmlMapperTest {
             + "</ul>";
 
     StructuredContent sc = HtmlMapper.toStructuredContent(html);
-    assertEquals(1, sc.getContentBlocks().size());
+    assertThat(sc.getContentBlocks().size()).isEqualTo(1);
     // TODO better assert
   }
 
@@ -32,7 +32,7 @@ public class HtmlMapperTest {
     String html = "<ul><li>item 1</li><li>item 2</li></ul>";
 
     StructuredContent sc = HtmlMapper.toStructuredContent(html);
-    assertEquals(1, sc.getContentBlocks().size());
+    assertThat(sc.getContentBlocks().size()).isEqualTo(1);
     // TODO better assert
   }
 
@@ -42,16 +42,16 @@ public class HtmlMapperTest {
         "<ul><li>item 1</li><li>Test <a href=\"https://mdz-nbn-resolving.de/view:bsb00009405?page=297\">Erscheinungsjahr: 1956, aufgeführt in ZBLG 22 (1959), Nr.2082</a> Test</li></ul>";
 
     StructuredContent sc = HtmlMapper.toStructuredContent(html);
-    assertEquals(1, sc.getContentBlocks().size());
+    assertThat(sc.getContentBlocks().size()).isEqualTo(1);
     // TODO better assert
   }
 
   @Test
   public void testGetContentBlockForUnsupportedElement() {
-    assertThrows(
-        UnsupportedOperationException.class,
-        () -> {
-          HtmlMapper.getContentBlock(new Element("blabla"));
-        });
+    assertThatExceptionOfType(UnsupportedOperationException.class)
+        .isThrownBy(
+            () -> {
+              HtmlMapper.getContentBlock(new Element("blabla"));
+            });
   }
 }
