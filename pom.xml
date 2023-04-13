@@ -79,7 +79,6 @@
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok</artifactId>
         <version>1.18.26</version>
-        <scope>compile</scope>
       </dependency>
       <dependency>
         <groupId>org.wikidata.wdtk</groupId>
