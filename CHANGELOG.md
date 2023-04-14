@@ -42,6 +42,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Breaking**: In `UniqueObject` and its descendants empty collections and strings are not serialized (no empty brackets) except for `identifiers` and `User#roles`
 - `Work` and `Manifestation`: Subjects are inherited from `Identifiable` instead of being their own properties
 
+## [11.0.3](https://github.com/dbmdz/digitalcollections-model/releases/tag/11.0.3) - 2023-04-14
+
+### Fixed
+
+- Fixed deserialization (unknown `objectType` and `listRequestType`)
+
 ## [11.0.2](https://github.com/dbmdz/digitalcollections-model/releases/tag/11.0.2) - 2023-03-29
 
 ### Fixed
