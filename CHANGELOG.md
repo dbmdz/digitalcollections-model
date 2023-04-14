@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [11.0.3](https://github.com/dbmdz/digitalcollections-model/releases/tag/11.0.3) - 2023-04-14
+
+### Fixed
+
+- Fixed deserialization (unknown `objectType` and `listRequestType`)
+
 ## [11.0.2](https://github.com/dbmdz/digitalcollections-model/releases/tag/11.0.2) - 2023-03-29
 
 ### Fixed
