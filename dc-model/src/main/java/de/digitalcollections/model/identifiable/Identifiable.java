@@ -8,7 +8,7 @@ import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.Website;
 import de.digitalcollections.model.identifiable.resource.FileResource;
 import de.digitalcollections.model.identifiable.resource.ImageFileResource;
-import de.digitalcollections.model.semantic.Subject;
+import de.digitalcollections.model.identifiable.semantic.Subject;
 import de.digitalcollections.model.semantic.Tag;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.LocalizedText;

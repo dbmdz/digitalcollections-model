@@ -2,7 +2,10 @@
   "listResponseType" : "LIST_RESPONSE",
   "content" : [ {
     "objectType" : "SUBJECT",
-    "type" : "foo"
+    "identifiableObjectType" : "SUBJECT",
+    "identifiers" : [ ],
+    "type" : "RESOURCE",
+    "subjectType" : "foo"
   } ],
   "request" : {
     "listRequestType" : "LIST_REQUEST"

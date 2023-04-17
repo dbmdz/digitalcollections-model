@@ -9,7 +9,19 @@
     "de" : "Zimmer-Gymnastik ohne Geräte"
   },
   "subjects" : [ {
-    "objectType" : "SUBJECT",
+    "identifiableObjectType" : "SUBJECT",
+    "identifiers" : [ {
+      "objectType" : "IDENTIFIER",
+      "id" : "id3",
+      "namespace" : "namespace3"
+    } ],
+    "label" : {
+      "de" : "Subject B"
+    },
+    "type" : "RESOURCE",
+    "subjectType" : "type"
+  }, {
+    "identifiableObjectType" : "SUBJECT",
     "identifiers" : [ {
       "objectType" : "IDENTIFIER",
       "id" : "id1",
@@ -22,18 +34,8 @@
     "label" : {
       "de" : "Subject A"
     },
-    "type" : "type"
-  }, {
-    "objectType" : "SUBJECT",
-    "identifiers" : [ {
-      "objectType" : "IDENTIFIER",
-      "id" : "id3",
-      "namespace" : "namespace3"
-    } ],
-    "label" : {
-      "de" : "Subject B"
-    },
-    "type" : "type"
+    "type" : "RESOURCE",
+    "subjectType" : "type"
   } ],
   "tags" : [ {
     "objectType" : "TAG",

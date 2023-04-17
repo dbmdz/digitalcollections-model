@@ -39,6 +39,7 @@ import de.digitalcollections.model.identifiable.resource.ImageFileResource;
 import de.digitalcollections.model.identifiable.resource.LinkedDataFileResource;
 import de.digitalcollections.model.identifiable.resource.TextFileResource;
 import de.digitalcollections.model.identifiable.resource.VideoFileResource;
+import de.digitalcollections.model.identifiable.semantic.Subject;
 import de.digitalcollections.model.identifiable.web.Webpage;
 
 public enum IdentifiableObjectType {
@@ -76,6 +77,7 @@ public enum IdentifiableObjectType {
   RIVER(River.class),
   SEA(Sea.class),
   STILL_WATERS(StillWaters.class),
+  SUBJECT(Subject.class),
   TEXT_FILE_RESOURCE(TextFileResource.class),
   TOPIC(Topic.class),
   VALLEY(Valley.class),

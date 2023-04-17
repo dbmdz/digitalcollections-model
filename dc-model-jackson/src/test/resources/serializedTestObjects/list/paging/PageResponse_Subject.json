@@ -2,7 +2,10 @@
   "listResponseType" : "PAGE_RESPONSE",
   "content" : [ {
     "objectType" : "SUBJECT",
-    "type" : "foo"
+    "identifiableObjectType" : "SUBJECT",
+    "identifiers" : [ ],
+    "type" : "RESOURCE",
+    "subjectType" : "foo"
   } ],
   "totalElements" : 1,
   "pageRequest" : {

@@ -16,6 +16,7 @@ import de.digitalcollections.model.identifiable.entity.Event;
 import de.digitalcollections.model.identifiable.entity.HeadwordEntry;
 import de.digitalcollections.model.identifiable.entity.Project;
 import de.digitalcollections.model.identifiable.entity.Topic;
+import de.digitalcollections.model.identifiable.entity.Website;
 import de.digitalcollections.model.identifiable.entity.agent.Agent;
 import de.digitalcollections.model.identifiable.entity.agent.CorporateBody;
 import de.digitalcollections.model.identifiable.entity.agent.Family;
@@ -44,6 +45,7 @@ import de.digitalcollections.model.identifiable.resource.ImageFileResource;
 import de.digitalcollections.model.identifiable.resource.LinkedDataFileResource;
 import de.digitalcollections.model.identifiable.resource.TextFileResource;
 import de.digitalcollections.model.identifiable.resource.VideoFileResource;
+import de.digitalcollections.model.identifiable.semantic.Subject;
 import de.digitalcollections.model.identifiable.web.Webpage;
 import de.digitalcollections.model.jackson.mixin.UniqueObjectMixIn;
 import de.digitalcollections.model.text.LocalizedText;
@@ -55,9 +57,10 @@ import java.util.Set;
     property = "identifiableObjectType",
     visible = true)
 @JsonSubTypes({
-  // need to be uppercase (and included as EXISTING_PROPERTY) to reuse enum field values (see
-  // IdentifiableObjectType) for deserializing:
-  // IDENTIFIABLES:
+  // need to be uppercase (and included as EXISTING_PROPERTY) to reuse enum field values
+  // (see IdentifiableObjectType) for deserializing:
+
+  // IDENTIFIABLES (extending Identifiable):
   @JsonSubTypes.Type(value = ApplicationFileResource.class, name = "APPLICATION_FILE_RESOURCE"),
   @JsonSubTypes.Type(value = AudioFileResource.class, name = "AUDIO_FILE_RESOURCE"),
   @JsonSubTypes.Type(value = FamilyName.class, name = "FAMILY_NAME"),
@@ -65,10 +68,12 @@ import java.util.Set;
   @JsonSubTypes.Type(value = Identifiable.class, name = "IDENTIFIABLE"),
   @JsonSubTypes.Type(value = ImageFileResource.class, name = "IMAGE_FILE_RESOURCE"),
   @JsonSubTypes.Type(value = LinkedDataFileResource.class, name = "LINKED_DATA_FILE_RESOURCE"),
+  @JsonSubTypes.Type(value = Subject.class, name = "SUBJECT"),
   @JsonSubTypes.Type(value = TextFileResource.class, name = "TEXT_FILE_RESOURCE"),
   @JsonSubTypes.Type(value = VideoFileResource.class, name = "VIDEO_FILE_RESOURCE"),
   @JsonSubTypes.Type(value = Webpage.class, name = "WEBPAGE"),
-  // ENTITIES:
+
+  // ENTITIES (extending Entity or a sub-Entity):
   @JsonSubTypes.Type(value = Agent.class, name = "AGENT"),
   @JsonSubTypes.Type(value = Article.class, name = "ARTICLE"),
   @JsonSubTypes.Type(value = Canyon.class, name = "CANYON"),
@@ -83,6 +88,9 @@ import java.util.Set;
   @JsonSubTypes.Type(value = Event.class, name = "EVENT"),
   @JsonSubTypes.Type(value = Family.class, name = "FAMILY"),
   @JsonSubTypes.Type(value = GeoLocation.class, name = "GEOLOCATION"),
+  @JsonSubTypes.Type(
+      value = GeoLocation.class,
+      name = "GEO_LOCATION"), // yes, we have both in many places :-(
   @JsonSubTypes.Type(value = HeadwordEntry.class, name = "HEADWORD_ENTRY"),
   @JsonSubTypes.Type(value = HumanSettlement.class, name = "HUMAN_SETTLEMENT"),
   @JsonSubTypes.Type(value = Item.class, name = "ITEM"),
@@ -97,7 +105,8 @@ import java.util.Set;
   @JsonSubTypes.Type(value = StillWaters.class, name = "STILL_WATERS"),
   @JsonSubTypes.Type(value = Topic.class, name = "TOPIC"),
   @JsonSubTypes.Type(value = Valley.class, name = "VALLEY"),
-  @JsonSubTypes.Type(value = Work.class, name = "WORK"),
+  @JsonSubTypes.Type(value = Website.class, name = "WEBSITE"),
+  @JsonSubTypes.Type(value = Work.class, name = "WORK")
 })
 public interface IdentifiableMixIn extends UniqueObjectMixIn {
 
