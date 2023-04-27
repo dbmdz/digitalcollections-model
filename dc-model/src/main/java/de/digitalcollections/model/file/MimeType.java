@@ -93,11 +93,14 @@ public class MimeType {
   public static final MimeType MIME_APPLICATION_OCTET_STREAM =
       knownTypes.get("application/octet-stream");
   public static final MimeType MIME_APPLICATION_XML = knownTypes.get("application/xml");
+  public static final MimeType MIME_AUDIO = knownTypes.get("audio/*");
   public static final MimeType MIME_IMAGE = knownTypes.get("image/*");
   public static final MimeType MIME_IMAGE_JPEG = knownTypes.get("image/jpeg");
   public static final MimeType MIME_IMAGE_PNG = knownTypes.get("image/png");
   public static final MimeType MIME_IMAGE_TIF = knownTypes.get("image/tiff");
+  public static final MimeType MIME_TEXT = knownTypes.get("text/*");
   public static final MimeType MIME_TYPE_MARKDOWN = knownTypes.get("text/markdown");
+  public static final MimeType MIME_VIDEO = knownTypes.get("video/*");
   public static final MimeType MIME_WILDCARD = new MimeType("*", Collections.emptyList());
 
   /**

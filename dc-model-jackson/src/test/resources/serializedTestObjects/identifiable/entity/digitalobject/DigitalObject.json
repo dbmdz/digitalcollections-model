@@ -61,6 +61,7 @@
     "type" : "RESOURCE",
     "fileResourceType" : "APPLICATION",
     "filename" : "dings.pdf",
+    "mimeType" : "application/octet-stream",
     "readonly" : false,
     "sizeInBytes" : 0,
     "filenameExtension" : "pdf"
