@@ -1,9 +1,9 @@
 package de.digitalcollections.model.jackson.mixin.list;
 
+import de.digitalcollections.model.identifiable.semantic.Subject;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.list.ListRequest;
 import de.digitalcollections.model.list.ListResponse;
-import de.digitalcollections.model.semantic.Subject;
 import de.digitalcollections.model.semantic.Tag;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -15,7 +15,7 @@ class ListResponseMixInTest extends BaseJsonSerializationTest {
   @DisplayName("can handle a subject")
   @Test
   public void testSubject() throws Exception {
-    Subject subject = Subject.builder().type("foo").build();
+    Subject subject = Subject.builder().subjectType("foo").build();
     ListResponse<Subject, ListRequest> listResponse =
         new ListResponse(List.of(subject), new ListRequest());
     checkSerializeDeserialize(listResponse, "serializedTestObjects/list/ListResponse_Subject.json");

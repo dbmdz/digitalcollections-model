@@ -28,9 +28,12 @@ public abstract class UniqueObject {
       return false;
     }
     UniqueObject other = (UniqueObject) obj;
-    return Objects.equals(created, other.created)
-        && Objects.equals(lastModified, other.lastModified)
-        && Objects.equals(uuid, other.uuid);
+    return Objects.equals(uuid, other.uuid);
+    // We do not compare the technical fields lastModified and created.
+    // two objects are equal for business view if all other fields are equal.
+    //    return Objects.equals(created, other.created)
+    //        && Objects.equals(lastModified, other.lastModified)
+    //        && Objects.equals(uuid, other.uuid);
   }
 
   /**
@@ -61,6 +64,16 @@ public abstract class UniqueObject {
 
   /** Use to initialize member variables, used by default constructor and builder */
   protected void init() {}
+
+  /**
+   * check if the technical system fields uuid, created, lastModified are filled, what is the
+   * indicator for "has been persisted in system".
+   *
+   * @return true if unique object has been persisted already
+   */
+  public boolean isPersisted() {
+    return uuid != null && created != null && lastModified != null;
+  }
 
   /**
    * @param created the creation date of the object

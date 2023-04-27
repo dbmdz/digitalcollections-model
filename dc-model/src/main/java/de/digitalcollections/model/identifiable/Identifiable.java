@@ -8,7 +8,7 @@ import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.Website;
 import de.digitalcollections.model.identifiable.resource.FileResource;
 import de.digitalcollections.model.identifiable.resource.ImageFileResource;
-import de.digitalcollections.model.semantic.Subject;
+import de.digitalcollections.model.identifiable.semantic.Subject;
 import de.digitalcollections.model.semantic.Tag;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.LocalizedText;
@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
-import java.util.UUID;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -346,23 +345,6 @@ public class Identifiable extends UniqueObject {
       return self();
     }
 
-    public B identifier(String namespace, String id, String uuid) {
-      if (identifiers == null) {
-        identifiers = new HashSet<>(1);
-      }
-      Identifier identifier =
-          Identifier.builder().namespace(namespace).id(id).identifiable(getUuid()).build();
-      if (uuid != null) {
-        identifier.setUuid(UUID.fromString(uuid));
-      }
-      identifiers.add(identifier);
-      return self();
-    }
-
-    public B identifier(String namespace, String id) {
-      return identifier(namespace, id, null);
-    }
-
     public B label(Locale locale, String localizedLabel) {
       if (label == null) {
         label = new LocalizedText();
@@ -401,23 +383,24 @@ public class Identifiable extends UniqueObject {
     public B previewImage(String url, int width, int height) {
       String[] fileNameParts = url.split("/\\//");
       return previewImage(
-          ImageFileResource.previewImageBuilder()
-              .fileName(fileNameParts[fileNameParts.length - 1])
+          ImageFileResource.builder()
+              .filename(fileNameParts[fileNameParts.length - 1])
               .uri(url)
-              .size(width, height)
+              .width(width)
+              .height(height)
               .build());
     }
 
     public B previewImage(String fileName, String uuid, String uri) {
       return previewImage(
-          ImageFileResource.previewImageBuilder().uuid(uuid).fileName(fileName).uri(uri).build());
+          ImageFileResource.builder().filename(fileName).uri(uri).uuid(uuid).build());
     }
 
     public B previewImage(String fileName, String uuid, String uri, MimeType mimeType) {
       return previewImage(
-          ImageFileResource.previewImageBuilder()
+          ImageFileResource.builder()
               .uuid(uuid)
-              .fileName(fileName)
+              .filename(fileName)
               .uri(uri)
               .mimeType(mimeType)
               .build());
@@ -426,9 +409,9 @@ public class Identifiable extends UniqueObject {
     public B previewImage(
         String fileName, String uuid, String uri, MimeType mimeType, String httpBaseUrl) {
       return previewImage(
-          ImageFileResource.previewImageBuilder()
+          ImageFileResource.builder()
               .uuid(uuid)
-              .fileName(fileName)
+              .filename(fileName)
               .uri(uri)
               .mimeType(mimeType)
               .httpBaseUrl(httpBaseUrl)
@@ -442,22 +425,25 @@ public class Identifiable extends UniqueObject {
     }
 
     public void setInternalReferences(C c) {
-      // Each identifier must get the UUID of the identifiable
-      if (this.identifiers != null && !this.identifiers.isEmpty()) {
-        c.setIdentifiers(
-            this.identifiers.stream()
-                .peek(i -> i.setIdentifiable(c.getUuid()))
-                .collect(Collectors.toSet()));
-      } else {
+      if (identifiers == null) {
         c.setIdentifiers(new HashSet<>(0));
       }
 
-      // For each UrlAlias, the target UUID must be set to the UUID of the identifiable
+      // For each UrlAlias, the target must be set to an Identifiable with core data of the
+      // identifiable
+      // (important: not having the UrlAliasses again -> otherwise recursion!)
       if (c.getLocalizedUrlAliases() != null && !c.getLocalizedUrlAliases().isEmpty()) {
         c.getLocalizedUrlAliases()
             .forEach(
                 (locale, urlAliasList) -> {
-                  urlAliasList.forEach(u -> u.setTargetUuid(c.getUuid()));
+                  urlAliasList.forEach(
+                      u ->
+                          u.setTarget(
+                              Identifiable.builder()
+                                  .uuid(c.getUuid())
+                                  .identifiableObjectType(c.getIdentifiableObjectType())
+                                  .type(c.getType())
+                                  .build()));
                 });
       }
     }

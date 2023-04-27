@@ -33,6 +33,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Set "ignore unknown properties" as default (removes several `JsonIgnoreProperties` annotations)
 - Fix `FilterCriterion.Builder` for native expressions (no longer setting native expression flag at the beginning necessary)
 - Updated `FilerCriterion` example documentation in `README.md`
+- **Breaking**: Replace flat uuid members with targeted objects instead: Replace DB-oriented fields targetIdentitfiableType, targetIdentifiableObjectType, targetUuid in UrlAlias with target Identifiable holding these data
+- Use Builders for test creation of objects
+- **Breaking**: remove error prone Identifier-constructor with two strings (namespace, id) - use Builder instead
+- **Breaking**: introduce lombok for all (uniqueobject) model objects (replacing other builders). access now by `.builder()`
 
 ### Removed
 
@@ -41,6 +45,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Breaking**: Removed `WorkType` and `creators` from `Work`
 - **Breaking**: In `UniqueObject` and its descendants empty collections and strings are not serialized (no empty brackets) except for `identifiers` and `User#roles`
 - `Work` and `Manifestation`: Subjects are inherited from `Identifiable` instead of being their own properties
+- remove test specific `PreviewImageBuilder` from model
+- **Breaking**: remove `Identifiable` member from Identifier (as it always comes in pair with the related Identifiable), caused recursion.
+- **Breaking**: remove deprecated getTargetEntityType from UrlAlias
 
 ## [11.0.3](https://github.com/dbmdz/digitalcollections-model/releases/tag/11.0.3) - 2023-04-14
 

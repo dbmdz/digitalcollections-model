@@ -1,5 +1,5 @@
 {
-  "objectType" : "SUBJECT",
+  "identifiableObjectType" : "SUBJECT",
   "identifiers" : [ {
     "objectType" : "IDENTIFIER",
     "id" : "id1",
@@ -12,5 +12,6 @@
   "label" : {
     "de" : "Subject"
   },
-  "type" : "type"
+  "type" : "RESOURCE",
+  "subjectType" : "type"
 }

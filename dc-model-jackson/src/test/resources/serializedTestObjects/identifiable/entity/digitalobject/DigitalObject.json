@@ -10,6 +10,7 @@
     "identifiers" : [ ],
     "type" : "RESOURCE",
     "fileResourceType" : "IMAGE",
+    "mimeType" : "image/*",
     "readonly" : false,
     "sizeInBytes" : 0,
     "height" : 100,
@@ -49,6 +50,7 @@
     "identifiers" : [ ],
     "type" : "RESOURCE",
     "fileResourceType" : "IMAGE",
+    "mimeType" : "image/*",
     "readonly" : false,
     "sizeInBytes" : 0,
     "height" : 100,
@@ -59,6 +61,7 @@
     "type" : "RESOURCE",
     "fileResourceType" : "APPLICATION",
     "filename" : "dings.pdf",
+    "mimeType" : "application/octet-stream",
     "readonly" : false,
     "sizeInBytes" : 0,
     "filenameExtension" : "pdf"

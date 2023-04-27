@@ -9,6 +9,7 @@
     "identifiers" : [ ],
     "type" : "RESOURCE",
     "fileResourceType" : "IMAGE",
+    "mimeType" : "image/*",
     "readonly" : false,
     "sizeInBytes" : 0,
     "height" : 0,

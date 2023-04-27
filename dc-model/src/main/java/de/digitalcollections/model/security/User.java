@@ -5,14 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import lombok.experimental.SuperBuilder;
 import org.springframework.util.ObjectUtils;
 
 /** An user of the system. */
+@SuperBuilder(buildMethodName = "prebuild")
 public class User extends UniqueObject {
 
   @NotBlank @Email private String email;
 
-  private boolean enabled = true;
+  private boolean enabled;
 
   @NotBlank private String firstname;
 
@@ -20,9 +22,11 @@ public class User extends UniqueObject {
 
   private String passwordHash;
 
-  private List<Role> roles = new ArrayList<>(0);
+  private List<Role> roles;
 
-  public User() {}
+  public User() {
+    super();
+  }
 
   public String getEmail() {
     return email;
@@ -42,6 +46,13 @@ public class User extends UniqueObject {
 
   public List<Role> getRoles() {
     return this.roles;
+  }
+
+  @Override
+  protected void init() {
+    super.init();
+    enabled = true;
+    roles = new ArrayList<>(0);
   }
 
   public boolean isEnabled() {

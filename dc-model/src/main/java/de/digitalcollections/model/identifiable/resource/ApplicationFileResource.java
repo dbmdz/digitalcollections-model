@@ -1,5 +1,6 @@
 package de.digitalcollections.model.identifiable.resource;
 
+import de.digitalcollections.model.file.MimeType;
 import lombok.experimental.SuperBuilder;
 
 /** An application file resource. Mimetype starts with "application/". */
@@ -14,6 +15,9 @@ public class ApplicationFileResource extends FileResource {
   protected void init() {
     super.init();
     this.fileResourceType = FileResourceType.APPLICATION;
+    if (getMimeType() == null) {
+      this.setMimeType(MimeType.MIME_APPLICATION_OCTET_STREAM);
+    }
   }
 
   public abstract static class ApplicationFileResourceBuilder<

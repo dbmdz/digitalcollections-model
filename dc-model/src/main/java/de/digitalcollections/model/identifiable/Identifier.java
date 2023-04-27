@@ -2,7 +2,6 @@ package de.digitalcollections.model.identifiable;
 
 import de.digitalcollections.model.UniqueObject;
 import java.util.Objects;
-import java.util.UUID;
 import lombok.experimental.SuperBuilder;
 
 /**
@@ -17,24 +16,10 @@ public class Identifier extends UniqueObject {
   private static final long serialVersionUID = 1L;
 
   private String id;
-  private UUID identifiable;
   private String namespace;
 
   public Identifier() {
     super();
-  }
-
-  public Identifier(String id, String namespace) {
-    this();
-    this.id = id;
-    this.namespace = namespace;
-  }
-
-  public Identifier(UUID identifiable, String namespace, String id) {
-    this();
-    this.id = id;
-    this.identifiable = identifiable;
-    this.namespace = namespace;
   }
 
   @Override
@@ -54,10 +39,6 @@ public class Identifier extends UniqueObject {
     return id;
   }
 
-  public UUID getIdentifiable() {
-    return this.identifiable;
-  }
-
   public String getNamespace() {
     return namespace;
   }
@@ -71,16 +52,12 @@ public class Identifier extends UniqueObject {
     this.id = id;
   }
 
-  public void setIdentifiable(UUID identifiable) {
-    this.identifiable = identifiable;
-  }
-
   public void setNamespace(String namespace) {
     this.namespace = namespace;
   }
 
   @Override
   public String toString() {
-    return namespace + ":" + id + ":" + identifiable;
+    return namespace + ":" + id;
   }
 }

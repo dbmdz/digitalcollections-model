@@ -5,6 +5,7 @@
     "identifiers" : [ ],
     "type" : "RESOURCE",
     "fileResourceType" : "APPLICATION",
+    "mimeType" : "application/octet-stream",
     "readonly" : false,
     "sizeInBytes" : 0
   },

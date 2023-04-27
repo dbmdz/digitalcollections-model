@@ -11,8 +11,8 @@ import de.digitalcollections.model.identifiable.entity.manifestation.Manifestati
 import de.digitalcollections.model.identifiable.entity.manifestation.PublicationInfo;
 import de.digitalcollections.model.identifiable.entity.manifestation.Publisher;
 import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
+import de.digitalcollections.model.identifiable.semantic.Subject;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
-import de.digitalcollections.model.semantic.Subject;
 import de.digitalcollections.model.semantic.Tag;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.LocalizedText;
@@ -63,7 +63,7 @@ public class ManifestationTest extends BaseJsonSerializationTest {
     Manifestation manifestation =
         Manifestation.builder()
             .manifestationType("SINGLE")
-            .identifier("foo", "bar")
+            .identifier(Identifier.builder().namespace("foo").id("bar").build())
             .label(Locale.GERMAN, "Zimmer-Gymnastik ohne Geräte")
             .composition("1 Partitur (11 Seiten)")
             .dimensions("26,5 x 70 x 2 cm")
@@ -128,14 +128,14 @@ public class ManifestationTest extends BaseJsonSerializationTest {
             .tag(Tag.builder().value("tag-value").build())
             .subject(
                 Subject.builder()
-                    .type("type")
+                    .subjectType("type")
                     .identifier(Identifier.builder().namespace("namespace1").id("id1").build())
                     .identifier(Identifier.builder().namespace("namespace2").id("id2").build())
                     .label(new LocalizedText(Locale.GERMAN, "Subject A"))
                     .build())
             .subject(
                 Subject.builder()
-                    .type("type")
+                    .subjectType("type")
                     .identifier(Identifier.builder().namespace("namespace3").id("id3").build())
                     .label(new LocalizedText(Locale.GERMAN, "Subject B"))
                     .build())

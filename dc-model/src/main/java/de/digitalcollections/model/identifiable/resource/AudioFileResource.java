@@ -1,5 +1,6 @@
 package de.digitalcollections.model.identifiable.resource;
 
+import de.digitalcollections.model.file.MimeType;
 import lombok.experimental.SuperBuilder;
 
 /** An audio file resource. Mimetype starts with "audio/". */
@@ -23,6 +24,9 @@ public class AudioFileResource extends FileResource {
   protected void init() {
     super.init();
     this.fileResourceType = FileResourceType.AUDIO;
+    if (getMimeType() == null) {
+      this.setMimeType(MimeType.MIME_AUDIO);
+    }
   }
 
   /**

@@ -1,5 +1,6 @@
 package de.digitalcollections.model.identifiable.resource;
 
+import de.digitalcollections.model.file.MimeType;
 import lombok.experimental.SuperBuilder;
 
 /** A text file resource. Mimetype starts with "text/". */
@@ -14,6 +15,9 @@ public class TextFileResource extends FileResource {
   protected void init() {
     super.init();
     this.fileResourceType = FileResourceType.TEXT;
+    if (getMimeType() == null) {
+      this.setMimeType(MimeType.MIME_TEXT);
+    }
   }
 
   public abstract static class TextFileResourceBuilder<
