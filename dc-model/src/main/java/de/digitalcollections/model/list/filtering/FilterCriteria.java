@@ -14,7 +14,7 @@ public class FilterCriteria extends ArrayList<FilterCriterion<?>> {
   private FilterLogicalOperator criterionLink = FilterLogicalOperator.AND;
 
   public FilterCriteria() {
-    super();
+    super(1);
   }
 
   public FilterCriteria(FilterLogicalOperator criterionLink) {
@@ -29,7 +29,7 @@ public class FilterCriteria extends ArrayList<FilterCriterion<?>> {
    */
   public FilterCriteria(FilterCriterion<?>... criterions) {
     this();
-    Stream.of(criterions).forEachOrdered(fc -> this.add(fc));
+    Stream.of(criterions).forEachOrdered(this::add);
   }
 
   /**

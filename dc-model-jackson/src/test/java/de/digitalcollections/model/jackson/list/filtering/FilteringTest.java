@@ -22,11 +22,7 @@ public class FilteringTest extends BaseJsonSerializationTest {
             LocalDate.parse("2020-01-31"),
             null);
 
-    Filtering filtering =
-        Filtering.builder()
-            .filterCriterion(FilterLogicalOperator.AND, filterCriteria1)
-            .filterCriterion(FilterLogicalOperator.AND, filterCriteria2)
-            .build();
+    Filtering filtering = Filtering.builder().add(filterCriteria1).add(filterCriteria2).build();
     return filtering;
   }
 
@@ -34,5 +30,19 @@ public class FilteringTest extends BaseJsonSerializationTest {
   public void testSerializeDeserialize() throws Exception {
     Filtering filtering = createObject();
     checkSerializeDeserialize(filtering, "serializedTestObjects/list/filtering/Filtering.json");
+  }
+
+  @Test
+  public void testOrFiltering() throws Exception {
+    var filterCriterion1 =
+        FilterCriterion.builder().withExpression("label").contains("some text").build();
+    var filterCriterion2 =
+        FilterCriterion.builder().withExpression("description").contains("some text").build();
+    var filtering =
+        Filtering.builder()
+            .filterCriterion(FilterLogicalOperator.OR, filterCriterion1)
+            .filterCriterion(FilterLogicalOperator.OR, filterCriterion2)
+            .build();
+    checkSerializeDeserialize(filtering, "serializedTestObjects/list/filtering/FilteringOr.json");
   }
 }

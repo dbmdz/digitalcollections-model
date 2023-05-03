@@ -14,7 +14,8 @@ public class FilterCriterionBuilderTest {
         Filtering.builder()
             .add(FilterCriterion.builder().withExpression("test").isEquals(null).build())
             .build();
-    assertEquals(FilterOperation.NOT_SET, filtering.getFilterCriteria().get(0).getOperation());
+    assertEquals(
+        FilterOperation.NOT_SET, filtering.getFilterCriteriaList().get(0).get(0).getOperation());
   }
 
   @Test
@@ -23,6 +24,7 @@ public class FilterCriterionBuilderTest {
         Filtering.builder()
             .add(FilterCriterion.builder().withExpression("test").notEquals(null).build())
             .build();
-    assertEquals(FilterOperation.SET, filtering.getFilterCriteria().get(0).getOperation());
+    assertEquals(
+        FilterOperation.SET, filtering.getFilterCriteriaList().get(0).get(0).getOperation());
   }
 }

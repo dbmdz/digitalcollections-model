@@ -53,15 +53,15 @@ public class ListRequest implements Serializable {
   }
 
   /**
-   * Add all filter criteria of given filtering to existing filtering. Initialise if no existing
-   * filtering.
+   * Add all filter criteria of given filtering to existing AND-linked filtering. Initialise if no
+   * existing filtering.
    *
    * @param filtering new filtering criteria to add
    * @return the updated ListRequest instance
    */
   public ListRequest add(Filtering filtering) {
     Filtering existingFiltering = getFiltering();
-    if (existingFiltering == null || existingFiltering.getFilterCriteria().isEmpty()) {
+    if (existingFiltering == null) {
       setFiltering(filtering);
     } else {
       existingFiltering.add(filtering);
@@ -131,9 +131,7 @@ public class ListRequest implements Serializable {
    * @return whether the request has defined any filtering.
    */
   public boolean hasFiltering() {
-    return filtering != null
-        && filtering.getFilterCriteria() != null
-        && !filtering.getFilterCriteria().isEmpty();
+    return filtering != null && !filtering.isEmpty();
   }
 
   /**

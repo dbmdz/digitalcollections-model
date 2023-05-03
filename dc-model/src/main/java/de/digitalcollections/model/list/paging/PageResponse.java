@@ -264,7 +264,7 @@ public class PageResponse<T> extends ListResponse<T, PageRequest> {
 
   public static class Builder<T, B extends PageResponse<T>, C extends Builder> {
 
-    List<FilterCriterion> filterCriteria;
+    List<FilterCriterion<?>> filterCriteria;
     List<Order> orders;
     PageRequest request = new PageRequest();
     B pageResponse;
