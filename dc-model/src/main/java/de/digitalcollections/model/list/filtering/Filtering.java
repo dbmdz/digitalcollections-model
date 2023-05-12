@@ -30,7 +30,7 @@ public class Filtering {
    * @param filterCriteria
    */
   @Deprecated
-  public Filtering(List<FilterCriterion<?>> filterCriteria) {
+  public Filtering(List<FilterCriterion> filterCriteria) {
     this();
     this.filterCriteriaList.add(new FilterCriteria(filterCriteria));
   }
@@ -71,7 +71,7 @@ public class Filtering {
    *     newly created
    * @param filterCriterions criterions to add
    */
-  public void add(FilterLogicalOperator criteriaLink, List<FilterCriterion<?>> filterCriterions) {
+  public void add(FilterLogicalOperator criteriaLink, List<FilterCriterion> filterCriterions) {
     if (filterCriteriaList.isEmpty()) {
       filterCriteriaList.add(new FilterCriteria(criteriaLink, filterCriterions));
       return;
@@ -131,12 +131,13 @@ public class Filtering {
   }
 
   /** Find the first {@link FilterCriterion} for the given property. */
-  public FilterCriterion<?> getFilterCriterionFor(String property) {
+  @SuppressWarnings("unchecked")
+  public <T> FilterCriterion<T> getFilterCriterionFor(String property) {
     return filterCriteriaList.stream()
         .flatMap(
             fcriteria ->
                 fcriteria.hasFilterCriterionFor(property)
-                    ? Stream.of(fcriteria.getFilterCriterionFor(property))
+                    ? Stream.of(fcriteria.<T>getFilterCriterionFor(property))
                     : null)
         .findFirst()
         .orElse(null);
@@ -189,7 +190,7 @@ public class Filtering {
      *     newly created
      * @param criterion {@link FilterCriterion} to add
      */
-    public B filterCriterion(FilterLogicalOperator criteriaLink, FilterCriterion<?> criterion) {
+    public B filterCriterion(FilterLogicalOperator criteriaLink, FilterCriterion criterion) {
       if (filterCriteriaList == null) filterCriteriaList = new ArrayList<>(1);
       filterCriteriaList.stream()
           .filter(fc -> fc.getCriterionLink() == criteriaLink)
@@ -206,7 +207,7 @@ public class Filtering {
      *
      * @param filterCriterion {@link FilterCriterion} to add
      */
-    public B add(FilterCriterion<?> filterCriterion) {
+    public B add(FilterCriterion filterCriterion) {
       return filterCriterion(FilterLogicalOperator.AND, filterCriterion);
     }
   }

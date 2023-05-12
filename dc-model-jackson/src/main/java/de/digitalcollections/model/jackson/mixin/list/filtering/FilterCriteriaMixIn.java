@@ -18,7 +18,7 @@ import java.util.List;
 @JsonInclude(value = Include.NON_EMPTY)
 // Otherwise Jackson would treat it as ARRAY and we would lose the `criterionLink`
 @JsonFormat(shape = Shape.OBJECT)
-public interface FilterCriteriaMixIn extends List<FilterCriterion<?>> {
+public interface FilterCriteriaMixIn extends List<FilterCriterion> {
 
   @Override
   @JsonIgnore
@@ -37,5 +37,5 @@ public interface FilterCriteriaMixIn extends List<FilterCriterion<?>> {
   @Override
   @JsonSetter(value = "content")
   @JsonDeserialize(contentAs = FilterCriterion.class)
-  boolean addAll(Collection<? extends FilterCriterion<?>> c);
+  boolean addAll(Collection<? extends FilterCriterion> c);
 }

@@ -9,7 +9,7 @@ import java.util.stream.Stream;
  * List of {@link FilterCriterion} extended by a {@code criterionLink} describing how the criteria
  * are logically linked.
  */
-public class FilterCriteria extends ArrayList<FilterCriterion<?>> {
+public class FilterCriteria extends ArrayList<FilterCriterion> {
 
   private FilterLogicalOperator criterionLink = FilterLogicalOperator.AND;
 
@@ -27,7 +27,7 @@ public class FilterCriteria extends ArrayList<FilterCriterion<?>> {
    *
    * @param criterions
    */
-  public FilterCriteria(FilterCriterion<?>... criterions) {
+  public FilterCriteria(FilterCriterion... criterions) {
     this();
     Stream.of(criterions).forEachOrdered(this::add);
   }
@@ -37,17 +37,17 @@ public class FilterCriteria extends ArrayList<FilterCriterion<?>> {
    *
    * @param criterions
    */
-  public FilterCriteria(List<FilterCriterion<?>> criterions) {
+  public FilterCriteria(List<FilterCriterion> criterions) {
     this();
     addAll(criterions);
   }
 
-  public FilterCriteria(FilterLogicalOperator criterionLink, FilterCriterion<?>... criterions) {
+  public FilterCriteria(FilterLogicalOperator criterionLink, FilterCriterion... criterions) {
     this(criterions);
     this.criterionLink = criterionLink;
   }
 
-  public FilterCriteria(FilterLogicalOperator criterionLink, List<FilterCriterion<?>> criterions) {
+  public FilterCriteria(FilterLogicalOperator criterionLink, List<FilterCriterion> criterions) {
     this(criterions);
     this.criterionLink = criterionLink;
   }
@@ -81,7 +81,8 @@ public class FilterCriteria extends ArrayList<FilterCriterion<?>> {
     return stream().anyMatch(fc -> Objects.equals(fc.getExpression(), property));
   }
 
-  public FilterCriterion<?> getFilterCriterionFor(String property) {
+  @SuppressWarnings("unchecked")
+  public <T> FilterCriterion<T> getFilterCriterionFor(String property) {
     return stream()
         .filter(fc -> Objects.equals(fc.getExpression(), property))
         .findFirst()
