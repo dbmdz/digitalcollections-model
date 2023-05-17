@@ -47,8 +47,7 @@ public class Filtering {
       return getFilterCriteriaList();
     }
     if (getFilterCriteriaList() == null) {
-      setFilterCriteriaList(filtering.getFilterCriteriaList());
-      return getFilterCriteriaList();
+      setFilterCriteriaList(new ArrayList<>());
     }
     getFilterCriteriaList().addAll(filtering.getFilterCriteriaList());
     return getFilterCriteriaList();
@@ -149,7 +148,8 @@ public class Filtering {
   }
 
   protected void init() {
-    if (filterCriteriaList == null) this.filterCriteriaList = new ArrayList<>(0);
+    if (filterCriteriaList == null || filterCriteriaList.isEmpty())
+      this.filterCriteriaList = new ArrayList<>();
   }
 
   public boolean isEmpty() {
