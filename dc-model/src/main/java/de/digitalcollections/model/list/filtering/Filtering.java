@@ -43,13 +43,14 @@ public class Filtering {
    * @return complete filtering
    */
   public List<FilterCriteria> add(Filtering filtering) {
-    if (filtering == null || filtering.getFilterCriteriaList() == null) {
-      return getFilterCriteriaList();
-    }
     if (getFilterCriteriaList() == null) {
       setFilterCriteriaList(new ArrayList<>());
     }
-    getFilterCriteriaList().addAll(filtering.getFilterCriteriaList());
+    if (filtering == null || filtering.getFilterCriteriaList() == null) {
+      return getFilterCriteriaList();
+    }
+    filtering.getFilterCriteriaList().stream()
+        .forEach(filterCriteria -> add(filterCriteria.getCriterionLink(), filterCriteria));
     return getFilterCriteriaList();
   }
 
@@ -168,6 +169,20 @@ public class Filtering {
     this.filterCriteriaList = filterCriteria;
   }
 
+  /**
+   * Streams all {@link FilterCriterion}s contained by this {@code Filtering} object's {@link
+   * FilterCriteria}s.
+   *
+   * <p>The logical link (AND or OR) of the {@link FilterCriteria} is ignored.
+   *
+   * @return a stream either of {@link FilterCriterion} or empty, never {@code null}
+   */
+  public Stream<FilterCriterion> stream() {
+    return filterCriteriaList != null && !filterCriteriaList.isEmpty()
+        ? filterCriteriaList.stream().flatMap(List::stream)
+        : Stream.empty();
+  }
+
   @Override
   public String toString() {
     return "Filtering{" + "filterCriteria=" + filterCriteriaList + '}';
@@ -191,6 +206,7 @@ public class Filtering {
      * @param criterion {@link FilterCriterion} to add
      */
     public B filterCriterion(FilterLogicalOperator criteriaLink, FilterCriterion criterion) {
+      if (criterion == null) return self();
       if (filterCriteriaList == null) filterCriteriaList = new ArrayList<>(1);
       filterCriteriaList.stream()
           .filter(fc -> fc.getCriterionLink() == criteriaLink)
@@ -208,6 +224,11 @@ public class Filtering {
      * @param filterCriterion {@link FilterCriterion} to add
      */
     public B add(FilterCriterion filterCriterion) {
+      return filterCriterion(FilterLogicalOperator.AND, filterCriterion);
+    }
+
+    public B add(String expression, FilterCriterion filterCriterion) {
+      if (filterCriterion != null) filterCriterion.setExpression(expression);
       return filterCriterion(FilterLogicalOperator.AND, filterCriterion);
     }
   }
