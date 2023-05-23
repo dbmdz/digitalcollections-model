@@ -66,7 +66,7 @@ public class FilterCriteria extends ArrayList<FilterCriterion> {
 
   @Override
   public String toString() {
-    return "FilterCriteria{criterionLink=" + criterionLink + "content=" + super.toString() + "}";
+    return "FilterCriteria{criterionLink=" + criterionLink + ", content=" + super.toString() + "}";
   }
 
   public FilterLogicalOperator getCriterionLink() {

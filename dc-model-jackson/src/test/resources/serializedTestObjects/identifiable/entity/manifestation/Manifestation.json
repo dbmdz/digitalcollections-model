@@ -12,6 +12,18 @@
     "identifiableObjectType" : "SUBJECT",
     "identifiers" : [ {
       "objectType" : "IDENTIFIER",
+      "id" : "id3",
+      "namespace" : "namespace3"
+    } ],
+    "label" : {
+      "de" : "Subject B"
+    },
+    "type" : "RESOURCE",
+    "subjectType" : "type"
+  }, {
+    "identifiableObjectType" : "SUBJECT",
+    "identifiers" : [ {
+      "objectType" : "IDENTIFIER",
       "id" : "id1",
       "namespace" : "namespace1"
     }, {
@@ -21,18 +33,6 @@
     } ],
     "label" : {
       "de" : "Subject A"
-    },
-    "type" : "RESOURCE",
-    "subjectType" : "type"
-  }, {
-    "identifiableObjectType" : "SUBJECT",
-    "identifiers" : [ {
-      "objectType" : "IDENTIFIER",
-      "id" : "id3",
-      "namespace" : "namespace3"
-    } ],
-    "label" : {
-      "de" : "Subject B"
     },
     "type" : "RESOURCE",
     "subjectType" : "type"
