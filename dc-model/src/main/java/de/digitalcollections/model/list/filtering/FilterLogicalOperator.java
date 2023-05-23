@@ -3,14 +3,14 @@ package de.digitalcollections.model.list.filtering;
 import java.util.stream.Stream;
 
 public enum FilterLogicalOperator {
-  AND("$AND"),
-  OR("$OR");
+  AND("AND"),
+  OR("OR");
 
   private String operand;
 
-  public static FilterLogicalOperator fromUrlOperand(String value) {
+  public static FilterLogicalOperator fromValue(String value) {
     return Stream.of(FilterLogicalOperator.values())
-        .filter(lo -> lo.getUrlOperand().equalsIgnoreCase(value))
+        .filter(lo -> lo.getOperand().equalsIgnoreCase(value))
         .findFirst()
         .orElse(null);
   }
@@ -19,7 +19,7 @@ public enum FilterLogicalOperator {
     this.operand = operand;
   }
 
-  public String getUrlOperand() {
+  public String getOperand() {
     return operand;
   }
 }
