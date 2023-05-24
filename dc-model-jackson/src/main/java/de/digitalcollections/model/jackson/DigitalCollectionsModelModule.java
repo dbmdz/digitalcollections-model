@@ -111,6 +111,7 @@ import de.digitalcollections.model.jackson.mixin.list.buckets.BucketObjectsReque
 import de.digitalcollections.model.jackson.mixin.list.buckets.BucketObjectsResponseMixIn;
 import de.digitalcollections.model.jackson.mixin.list.buckets.BucketsRequestMixIn;
 import de.digitalcollections.model.jackson.mixin.list.buckets.BucketsResponseMixIn;
+import de.digitalcollections.model.jackson.mixin.list.filtering.FilterCriteriaMixIn;
 import de.digitalcollections.model.jackson.mixin.list.filtering.FilterCriterionMixIn;
 import de.digitalcollections.model.jackson.mixin.list.filtering.FilteringMixIn;
 import de.digitalcollections.model.jackson.mixin.list.paging.PageRequestMixIn;
@@ -155,6 +156,7 @@ import de.digitalcollections.model.list.buckets.BucketObjectsRequest;
 import de.digitalcollections.model.list.buckets.BucketObjectsResponse;
 import de.digitalcollections.model.list.buckets.BucketsRequest;
 import de.digitalcollections.model.list.buckets.BucketsResponse;
+import de.digitalcollections.model.list.filtering.FilterCriteria;
 import de.digitalcollections.model.list.filtering.FilterCriterion;
 import de.digitalcollections.model.list.filtering.Filtering;
 import de.digitalcollections.model.list.paging.PageRequest;
@@ -294,6 +296,7 @@ public class DigitalCollectionsModelModule extends SimpleModule {
         EntityToFileResourceRelation.class, EntityToFileResourceRelationMixIn.class);
     context.setMixInAnnotations(Event.class, EventMixIn.class);
     context.setMixInAnnotations(FileResource.class, FileResourceMixIn.class);
+    context.setMixInAnnotations(FilterCriteria.class, FilterCriteriaMixIn.class);
     context.setMixInAnnotations(FilterCriterion.class, FilterCriterionMixIn.class);
     context.setMixInAnnotations(Filtering.class, FilteringMixIn.class);
     context.setMixInAnnotations(Heading.class, HeadingMixIn.class);

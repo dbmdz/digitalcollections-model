@@ -496,14 +496,14 @@ public class FilterCriterion<T> {
   /**
    * @return maximum value - applicable only for {@link FilterOperation#BETWEEN}
    */
-  public Comparable<?> getMaxValue() {
+  public Comparable<T> getMaxValue() {
     return maxValue;
   }
 
   /**
    * @return minimum value - applicable only for {@link FilterOperation#BETWEEN}
    */
-  public Comparable<?> getMinValue() {
+  public Comparable<T> getMinValue() {
     return minValue;
   }
 
@@ -517,14 +517,14 @@ public class FilterCriterion<T> {
   /**
    * @return value of a single value operation
    */
-  public Object getValue() {
+  public T getValue() {
     return value;
   }
 
   /**
    * @return values of a multi value operation of field type T
    */
-  public Collection<?> getValues() {
+  public Collection<T> getValues() {
     return values;
   }
 

@@ -79,6 +79,7 @@ public class FilterCriterionTest {
                     .build())
             .build();
 
-    assertThat(filtering.getFilterCriteria().get(0).toString()).isEqualTo("foo=in:one,two,three");
+    assertThat(filtering.getFilterCriteriaList().get(0).get(0).toString())
+        .isEqualTo("foo=in:one,two,three");
   }
 }

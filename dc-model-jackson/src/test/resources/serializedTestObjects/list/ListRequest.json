@@ -1,11 +1,14 @@
 {
   "listRequestType" : "LIST_REQUEST",
   "filtering" : {
-    "filterCriteria" : [ {
-      "expression" : "label",
-      "nativeExpression" : false,
-      "operation" : "STARTS_WITH",
-      "value" : "A"
+    "filterCriteriaList" : [ {
+      "criterionLink" : "AND",
+      "content" : [ {
+        "expression" : "label",
+        "nativeExpression" : false,
+        "operation" : "STARTS_WITH",
+        "value" : "A"
+      } ]
     } ]
   },
   "searchTerm" : "hello",
