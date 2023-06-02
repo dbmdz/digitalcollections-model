@@ -53,8 +53,8 @@ public class ListRequest implements Serializable {
   }
 
   /**
-   * Add all filter criteria of given filtering to existing AND-linked filtering. Initialise if no
-   * existing filtering.
+   * Add all filter criteria of given filtering to the existing filtering. Initialise if no existing
+   * filtering.
    *
    * @param filtering new filtering criteria to add
    * @return the updated ListRequest instance
