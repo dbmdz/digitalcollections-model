@@ -14,22 +14,14 @@ import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 import de.digitalcollections.model.identifiable.semantic.Subject;
 import de.digitalcollections.model.jackson.BaseJsonSerializationTest;
 import de.digitalcollections.model.semantic.Tag;
-import de.digitalcollections.model.text.LocalizedStructuredContent;
-import de.digitalcollections.model.text.LocalizedText;
-import de.digitalcollections.model.text.StructuredContent;
-import de.digitalcollections.model.text.Title;
-import de.digitalcollections.model.text.TitleType;
+import de.digitalcollections.model.text.*;
 import de.digitalcollections.model.text.contentblock.ContentBlock;
 import de.digitalcollections.model.text.contentblock.Paragraph;
 import de.digitalcollections.model.time.LocalDateRange;
 import de.digitalcollections.model.time.TimeValue;
 import de.digitalcollections.model.time.TimeValueRange;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -126,19 +118,19 @@ public class ManifestationTest extends BaseJsonSerializationTest {
                         ExpressionType.builder().mainType("TEXT").subType("PRINT").build(),
                         ExpressionType.builder().mainType("TEXT").subType("HANDWRITING").build())))
             .tag(Tag.builder().value("tag-value").build())
-            .subject(
-                Subject.builder()
-                    .subjectType("type")
-                    .identifier(Identifier.builder().namespace("namespace1").id("id1").build())
-                    .identifier(Identifier.builder().namespace("namespace2").id("id2").build())
-                    .label(new LocalizedText(Locale.GERMAN, "Subject A"))
-                    .build())
-            .subject(
-                Subject.builder()
-                    .subjectType("type")
-                    .identifier(Identifier.builder().namespace("namespace3").id("id3").build())
-                    .label(new LocalizedText(Locale.GERMAN, "Subject B"))
-                    .build())
+            .subjects(
+                Set.of(
+                    Subject.builder()
+                        .subjectType("type")
+                        .identifier(Identifier.builder().namespace("namespace1").id("id1").build())
+                        .identifier(Identifier.builder().namespace("namespace2").id("id2").build())
+                        .label(new LocalizedText(Locale.GERMAN, "Subject A"))
+                        .build(),
+                    Subject.builder()
+                        .subjectType("type")
+                        .identifier(Identifier.builder().namespace("namespace3").id("id3").build())
+                        .label(new LocalizedText(Locale.GERMAN, "Subject B"))
+                        .build()))
             .mediaTypes(new LinkedHashSet<>(List.of("Buch", "CD")))
             .titles(
                 List.of(

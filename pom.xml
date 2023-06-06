@@ -118,7 +118,7 @@
           <execution>
             <id>attach-javadocs</id>
             <goals>
-              <goal>jar</goal>
+              <goal>javadoc-no-fork</goal>
             </goals>
           </execution>
         </executions>
@@ -134,9 +134,13 @@
         <executions>
           <execution>
             <id>attach-sources</id>
+            <phase>verify</phase>
             <goals>
               <goal>jar-no-fork</goal>
             </goals>
+            <configuration>
+              <classifier>sources</classifier>
+            </configuration>
           </execution>
         </executions>
       </plugin>
