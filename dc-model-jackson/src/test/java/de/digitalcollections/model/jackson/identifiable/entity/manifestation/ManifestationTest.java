@@ -119,18 +119,23 @@ public class ManifestationTest extends BaseJsonSerializationTest {
                         ExpressionType.builder().mainType("TEXT").subType("HANDWRITING").build())))
             .tag(Tag.builder().value("tag-value").build())
             .subjects(
-                Set.of(
-                    Subject.builder()
-                        .subjectType("type")
-                        .identifier(Identifier.builder().namespace("namespace1").id("id1").build())
-                        .identifier(Identifier.builder().namespace("namespace2").id("id2").build())
-                        .label(new LocalizedText(Locale.GERMAN, "Subject A"))
-                        .build(),
-                    Subject.builder()
-                        .subjectType("type")
-                        .identifier(Identifier.builder().namespace("namespace3").id("id3").build())
-                        .label(new LocalizedText(Locale.GERMAN, "Subject B"))
-                        .build()))
+                new HashSet<>(
+                    new LinkedHashSet<>(
+                        List.of(
+                            Subject.builder()
+                                .subjectType("type")
+                                .identifier(
+                                    Identifier.builder().namespace("namespace3").id("id3").build())
+                                .label(new LocalizedText(Locale.GERMAN, "Subject B"))
+                                .build(),
+                            Subject.builder()
+                                .subjectType("type")
+                                .identifier(
+                                    Identifier.builder().namespace("namespace1").id("id1").build())
+                                .identifier(
+                                    Identifier.builder().namespace("namespace2").id("id2").build())
+                                .label(new LocalizedText(Locale.GERMAN, "Subject A"))
+                                .build()))))
             .mediaTypes(new LinkedHashSet<>(List.of("Buch", "CD")))
             .titles(
                 List.of(
