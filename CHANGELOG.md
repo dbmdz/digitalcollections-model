@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- LocalizedUrlAliases must contain a `targetLanguage`, also in builder
+
 ## [12.0.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/12.0.0) - 2023-06-06
 
 ### Added

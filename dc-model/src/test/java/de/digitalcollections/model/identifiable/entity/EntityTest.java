@@ -24,7 +24,7 @@ class EntityTest {
             .description(Locale.ENGLISH, "Example Image")
             .label(Locale.GERMAN, "Beispielbild")
             .label(Locale.ENGLISH, "Example Image")
-            .primaryLocalizedUrlAlias("blubb")
+            .primaryLocalizedUrlAlias(Locale.GERMAN, "blubb")
             .build();
     assertThat(entity).isExactlyInstanceOf(Entity.class);
     assertThat(entity.getIdentifiableObjectType()).isEqualTo(IdentifiableObjectType.ENTITY);

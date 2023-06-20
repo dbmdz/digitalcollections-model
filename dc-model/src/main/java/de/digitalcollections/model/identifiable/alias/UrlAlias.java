@@ -207,7 +207,7 @@ public class UrlAlias extends UniqueObject {
         + slug
         + '\''
         + ", target="
-        + (target != null ? target.getUuid().toString() : null)
+        + (target != null ? (target.getUuid() != null ? target.getUuid() : "????") : null)
         + ", targetLanguage="
         + targetLanguage
         + ", uuid="

@@ -22,7 +22,7 @@ class EventTest {
             .label(Locale.ENGLISH, "Example Label")
             .created("2021-01-13T12:34:54")
             .lastModified("2021-01-14T02:45:24")
-            .primaryLocalizedUrlAlias("blubb")
+            .primaryLocalizedUrlAlias(Locale.GERMAN, "blubb")
             .addName(Locale.ITALY, "Bello Gallico")
             .build();
     assertThat(event).isExactlyInstanceOf(Event.class);
