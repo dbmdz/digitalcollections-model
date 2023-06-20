@@ -2,6 +2,7 @@ package de.digitalcollections.model.identifiable.alias;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.entry;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import de.digitalcollections.model.identifiable.Identifiable;
 import de.digitalcollections.model.identifiable.IdentifiableType;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class LocalizedUrlAliasesTest {
@@ -64,5 +66,12 @@ public class LocalizedUrlAliasesTest {
     UrlAlias urlAlias = createUrlAlias(null, null);
     LocalizedUrlAliases o = new LocalizedUrlAliases(urlAlias);
     assertThat(o).containsExactly(entry(Locale.GERMAN, List.of(urlAlias)));
+  }
+
+  @DisplayName("throws an IllegalArgumentException when the targetLanguage is missing")
+  @Test
+  public void targetLanguageIsMandatory() {
+    UrlAlias urlAlias = UrlAlias.builder().slug("foo").build();
+    assertThrows(IllegalArgumentException.class, () -> new LocalizedUrlAliases(urlAlias));
   }
 }

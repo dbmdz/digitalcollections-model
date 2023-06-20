@@ -30,6 +30,10 @@ public class LocalizedUrlAliases extends HashMap<Locale, List<UrlAlias>> {
       if (urlAlias == null) {
         continue;
       }
+      if (urlAlias.getTargetLanguage() == null) {
+        throw new IllegalArgumentException(
+            "Missing mandatory targetLanguage for urlAlias=" + urlAlias);
+      }
       this.compute(
           urlAlias.getTargetLanguage(),
           (locale, listOfAliases) -> {
