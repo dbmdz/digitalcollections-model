@@ -5,50 +5,27 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import de.digitalcollections.model.identifiable.Identifiable;
 import de.digitalcollections.model.identifiable.Identifier;
 import de.digitalcollections.model.identifiable.agent.FamilyName;
 import de.digitalcollections.model.identifiable.agent.GivenName;
-import de.digitalcollections.model.identifiable.entity.Article;
-import de.digitalcollections.model.identifiable.entity.Collection;
-import de.digitalcollections.model.identifiable.entity.Entity;
-import de.digitalcollections.model.identifiable.entity.Event;
-import de.digitalcollections.model.identifiable.entity.HeadwordEntry;
-import de.digitalcollections.model.identifiable.entity.Project;
-import de.digitalcollections.model.identifiable.entity.Topic;
-import de.digitalcollections.model.identifiable.entity.Website;
+import de.digitalcollections.model.identifiable.entity.*;
 import de.digitalcollections.model.identifiable.entity.agent.Agent;
 import de.digitalcollections.model.identifiable.entity.agent.CorporateBody;
 import de.digitalcollections.model.identifiable.entity.agent.Family;
 import de.digitalcollections.model.identifiable.entity.agent.Person;
 import de.digitalcollections.model.identifiable.entity.digitalobject.DigitalObject;
-import de.digitalcollections.model.identifiable.entity.geo.location.Canyon;
-import de.digitalcollections.model.identifiable.entity.geo.location.Cave;
-import de.digitalcollections.model.identifiable.entity.geo.location.Continent;
-import de.digitalcollections.model.identifiable.entity.geo.location.Country;
-import de.digitalcollections.model.identifiable.entity.geo.location.Creek;
-import de.digitalcollections.model.identifiable.entity.geo.location.GeoLocation;
-import de.digitalcollections.model.identifiable.entity.geo.location.HumanSettlement;
-import de.digitalcollections.model.identifiable.entity.geo.location.Lake;
-import de.digitalcollections.model.identifiable.entity.geo.location.Mountain;
-import de.digitalcollections.model.identifiable.entity.geo.location.Ocean;
-import de.digitalcollections.model.identifiable.entity.geo.location.River;
-import de.digitalcollections.model.identifiable.entity.geo.location.Sea;
-import de.digitalcollections.model.identifiable.entity.geo.location.StillWaters;
-import de.digitalcollections.model.identifiable.entity.geo.location.Valley;
+import de.digitalcollections.model.identifiable.entity.geo.location.*;
 import de.digitalcollections.model.identifiable.entity.item.Item;
 import de.digitalcollections.model.identifiable.entity.manifestation.Manifestation;
 import de.digitalcollections.model.identifiable.entity.work.Work;
-import de.digitalcollections.model.identifiable.resource.ApplicationFileResource;
-import de.digitalcollections.model.identifiable.resource.AudioFileResource;
-import de.digitalcollections.model.identifiable.resource.ImageFileResource;
-import de.digitalcollections.model.identifiable.resource.LinkedDataFileResource;
-import de.digitalcollections.model.identifiable.resource.TextFileResource;
-import de.digitalcollections.model.identifiable.resource.VideoFileResource;
+import de.digitalcollections.model.identifiable.resource.*;
 import de.digitalcollections.model.identifiable.semantic.Subject;
 import de.digitalcollections.model.identifiable.web.Webpage;
 import de.digitalcollections.model.jackson.mixin.UniqueObjectMixIn;
 import de.digitalcollections.model.text.LocalizedText;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 @JsonTypeInfo(
@@ -115,4 +92,8 @@ public interface IdentifiableMixIn extends UniqueObjectMixIn {
 
   @JsonInclude(value = Include.NON_NULL)
   public Set<Identifier> getIdentifiers();
+
+  @JsonSetter
+  @JsonDeserialize(as = LinkedHashSet.class)
+  public void setSubjects(Set<Subject> subjects);
 }

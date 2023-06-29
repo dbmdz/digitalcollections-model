@@ -6,11 +6,7 @@ import de.digitalcollections.model.identifiable.entity.Entity;
 import de.digitalcollections.model.identifiable.entity.relation.EntityRelation;
 import de.digitalcollections.model.identifiable.entity.work.Work;
 import de.digitalcollections.model.text.Title;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 import lombok.experimental.SuperBuilder;
 
