@@ -18,4 +18,11 @@ public class HeadwordTest extends BaseJsonSerializationTest {
     Headword headword = createObject();
     checkSerializeDeserialize(headword, "serializedTestObjects/semantic/Headword.json");
   }
+
+  @Test
+  public void testLabelNormalizedSerializeDeserialize() throws Exception {
+    Headword headword = new Headword("État", Locale.FRENCH);
+    headword.setLabelNormalized("Etat");
+    checkSerializeDeserialize(headword, "serializedTestObjects/semantic/Headword_normalized.json");
+  }
 }

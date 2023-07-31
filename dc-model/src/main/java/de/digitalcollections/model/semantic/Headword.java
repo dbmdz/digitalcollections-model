@@ -22,6 +22,7 @@ import lombok.experimental.SuperBuilder;
 public class Headword extends UniqueObject {
 
   private String label;
+  private String labelNormalized;
   private Locale locale;
 
   public Headword() {}
@@ -31,8 +32,17 @@ public class Headword extends UniqueObject {
     this.locale = locale;
   }
 
+  public Headword(String label, String labelNormalized, Locale locale) {
+    this(label, locale);
+    this.labelNormalized = labelNormalized;
+  }
+
   public String getLabel() {
     return label;
+  }
+
+  public String getLabelNormalized() {
+    return labelNormalized;
   }
 
   public Locale getLocale() {
@@ -41,6 +51,15 @@ public class Headword extends UniqueObject {
 
   public void setLabel(String label) {
     this.label = label;
+  }
+
+  /**
+   * to allow project specific/language independent sorting/searching a normalized version of label
+   * should be put here. e.g. project specific replacing of characters with diacritics with basic
+   * form, like "É" normalized to "E" or "Č" to "C".
+   */
+  public void setLabelNormalized(String labelNormalized) {
+    this.labelNormalized = labelNormalized;
   }
 
   public void setLocale(Locale locale) {
