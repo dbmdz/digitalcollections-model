@@ -24,7 +24,6 @@ public class StillWaters extends GeoLocation {
 
   public StillWaters() {
     super();
-    init();
   }
 
   @Override

@@ -23,7 +23,6 @@ public class Canyon extends GeoLocation {
 
   public Canyon() {
     super();
-    init();
   }
 
   @Override

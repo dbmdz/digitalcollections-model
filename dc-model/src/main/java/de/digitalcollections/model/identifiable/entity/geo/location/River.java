@@ -20,7 +20,6 @@ public class River extends GeoLocation {
 
   public River() {
     super();
-    init();
   }
 
   @Override

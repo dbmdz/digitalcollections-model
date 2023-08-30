@@ -24,7 +24,6 @@ public class Valley extends GeoLocation {
 
   public Valley() {
     super();
-    init();
   }
 
   @Override

@@ -23,7 +23,6 @@ public class Lake extends GeoLocation {
 
   public Lake() {
     super();
-    init();
   }
 
   @Override

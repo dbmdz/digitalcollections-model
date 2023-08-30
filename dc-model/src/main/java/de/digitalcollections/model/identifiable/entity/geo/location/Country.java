@@ -24,7 +24,6 @@ public class Country extends GeoLocation {
 
   public Country() {
     super();
-    init();
   }
 
   @Override

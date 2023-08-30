@@ -23,7 +23,6 @@ public class Ocean extends GeoLocation {
 
   public Ocean() {
     super();
-    init();
   }
 
   @Override

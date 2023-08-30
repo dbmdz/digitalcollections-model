@@ -23,7 +23,6 @@ public class Cave extends GeoLocation {
 
   public Cave() {
     super();
-    init();
   }
 
   @Override

@@ -23,7 +23,6 @@ public class Mountain extends GeoLocation {
 
   public Mountain() {
     super();
-    init();
   }
 
   @Override

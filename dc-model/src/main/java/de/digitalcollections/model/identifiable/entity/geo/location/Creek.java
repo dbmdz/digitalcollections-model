@@ -20,7 +20,6 @@ public class Creek extends GeoLocation {
 
   public Creek() {
     super();
-    init();
   }
 
   @Override

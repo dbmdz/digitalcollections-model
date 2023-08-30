@@ -21,7 +21,6 @@ public class Continent extends GeoLocation {
 
   public Continent() {
     super();
-    init();
   }
 
   @Override
