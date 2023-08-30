@@ -11,7 +11,6 @@ public class HumanSettlement extends GeoLocation {
 
   public HumanSettlement() {
     super();
-    init();
   }
 
   public HumanSettlementType getHumanSettlementType() {
