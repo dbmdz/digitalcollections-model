@@ -6,6 +6,10 @@ import de.digitalcollections.model.text.contentblock.ContentBlock;
 import de.digitalcollections.model.text.contentblock.ContentBlockNode;
 import de.digitalcollections.model.text.contentblock.ListItem;
 import de.digitalcollections.model.text.contentblock.Mark;
+import de.digitalcollections.model.text.contentblock.Table;
+import de.digitalcollections.model.text.contentblock.TableCell;
+import de.digitalcollections.model.text.contentblock.TableHeader;
+import de.digitalcollections.model.text.contentblock.TableRow;
 import de.digitalcollections.model.text.contentblock.Text;
 import java.util.List;
 import org.jsoup.Jsoup;
@@ -38,6 +42,14 @@ public class HtmlMapper {
         contentBlock = new BulletList();
       } else if ("li".equalsIgnoreCase(tagName)) {
         contentBlock = new ListItem();
+      } else if ("table".equalsIgnoreCase(tagName)) {
+        contentBlock = new Table();
+      } else if ("tr".equalsIgnoreCase(tagName)) {
+        contentBlock = new TableRow();
+      } else if ("th".equalsIgnoreCase(tagName)) {
+        contentBlock = new TableHeader();
+      } else if ("th".equalsIgnoreCase(tagName)) {
+        contentBlock = new TableCell();
       } else if ("a".equalsIgnoreCase(tagName)) {
         // TODO only simple plain text links are supported until now; dive into nodes of a-element
         // for further linked content
