@@ -49,7 +49,7 @@ public class HtmlMapper {
         contentBlock = new TableRow();
       } else if ("th".equalsIgnoreCase(tagName)) {
         contentBlock = new TableHeader();
-      } else if ("th".equalsIgnoreCase(tagName)) {
+      } else if ("td".equalsIgnoreCase(tagName)) {
         contentBlock = new TableCell();
       } else if ("a".equalsIgnoreCase(tagName)) {
         // TODO only simple plain text links are supported until now; dive into nodes of a-element
