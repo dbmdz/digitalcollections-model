@@ -17,6 +17,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
 import org.jsoup.nodes.TextNode;
+import org.jsoup.parser.Parser;
 
 /**
  * Mapper for mapping between Digital Collections Model "StructuredContent" and HTML.
@@ -86,9 +87,20 @@ public class HtmlMapper {
    * @return filled StructuredContent instance
    */
   public static StructuredContent toStructuredContent(String html) {
+    return toStructuredContent(html, Parser.htmlParser());
+  }
+
+  /**
+   * Map html to StructuredContent.
+   *
+   * @param html html code to be mapped
+   * @param parser a custom parser
+   * @return filled StructuredContent instance
+   */
+  public static StructuredContent toStructuredContent(String html, Parser parser) {
     StructuredContent structuredContent = new StructuredContent();
 
-    Document doc = Jsoup.parse(html);
+    Document doc = Jsoup.parse(html, parser);
     Element body = doc.body();
 
     List<Node> childNodes = body.childNodes();
