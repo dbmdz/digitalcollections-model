@@ -144,8 +144,18 @@ public class Webpage extends Identifiable implements INode<Webpage>, ManagedCont
       return self();
     }
 
+    public B publicationEnd(LocalDate publicationEnd) {
+      this.publicationEnd = publicationEnd;
+      return self();
+    }
+
     public B publicationEnd(String publicationEnd) {
       this.publicationEnd = LocalDate.parse(publicationEnd);
+      return self();
+    }
+
+    public B publicationStart(LocalDate publicationStart) {
+      this.publicationStart = publicationStart;
       return self();
     }
 
