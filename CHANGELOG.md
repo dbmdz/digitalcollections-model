@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added missing builders and missing `hashCode`, `equals`, `toString` methods
+- Added mapping logic for table elements to `HtmlMapper`
+- Added possibility to define a custom parser in `HtmlMapper`
+
+## [12.1.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/12.1.0) - 2023-08-01
+
+### Added
+
 - Add field `labelNormalized` to `Headword` to allow language independent sorting and searching in a normalized version of `label`.
 
 ## [12.0.1](https://github.com/dbmdz/digitalcollections-model/releases/tag/12.0.1) - 2023-07-06
