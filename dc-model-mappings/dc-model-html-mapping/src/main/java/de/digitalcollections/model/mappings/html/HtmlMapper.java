@@ -4,6 +4,7 @@ import de.digitalcollections.model.text.StructuredContent;
 import de.digitalcollections.model.text.contentblock.BulletList;
 import de.digitalcollections.model.text.contentblock.ContentBlock;
 import de.digitalcollections.model.text.contentblock.ContentBlockNode;
+import de.digitalcollections.model.text.contentblock.HardBreak;
 import de.digitalcollections.model.text.contentblock.ListItem;
 import de.digitalcollections.model.text.contentblock.Mark;
 import de.digitalcollections.model.text.contentblock.Table;
@@ -51,6 +52,8 @@ public class HtmlMapper {
         contentBlock = new TableHeader();
       } else if ("td".equalsIgnoreCase(tagName)) {
         contentBlock = new TableCell();
+      } else if ("br".equalsIgnoreCase(tagName)) {
+        contentBlock = new HardBreak();
       } else if ("a".equalsIgnoreCase(tagName)) {
         // TODO only simple plain text links are supported until now; dive into nodes of a-element
         // for further linked content
