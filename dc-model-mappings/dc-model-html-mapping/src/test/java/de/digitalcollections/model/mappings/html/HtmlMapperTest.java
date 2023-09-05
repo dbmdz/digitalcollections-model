@@ -4,7 +4,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import de.digitalcollections.model.text.StructuredContent;
+import de.digitalcollections.model.text.contentblock.ContentBlock;
+import de.digitalcollections.model.text.contentblock.ContentBlockNode;
+import de.digitalcollections.model.text.contentblock.ContentBlockNodeWithAttributes;
+import java.util.List;
 import org.jsoup.nodes.Element;
+import org.jsoup.parser.Parser;
 import org.junit.jupiter.api.Test;
 
 public class HtmlMapperTest {
@@ -44,6 +49,25 @@ public class HtmlMapperTest {
     StructuredContent sc = HtmlMapper.toStructuredContent(html);
     assertThat(sc.getContentBlocks().size()).isEqualTo(1);
     // TODO better assert
+  }
+
+  @Test
+  public void testHtml2StructuredContentTable() {
+    String html =
+        "<html><body><table><tr><td colspan=\"1\">1.1</td><td colspan=\"2\">1.2</td></tr><tr><td>1.1</td><td>1.2</td></tr></table></body></html>";
+
+    StructuredContent sc = HtmlMapper.toStructuredContent(html, Parser.xmlParser());
+    List<ContentBlock> tables = sc.getContentBlocks();
+    assertThat(tables.size()).isEqualTo(1);
+    List<ContentBlock> tableRows = ((ContentBlockNode) tables.get(0)).getContentBlocks();
+    assertThat(tableRows.size()).isEqualTo(2);
+    List<ContentBlock> tableCells = ((ContentBlockNode) tableRows.get(0)).getContentBlocks();
+    assertThat(tableCells.size()).isEqualTo(2);
+    ContentBlockNodeWithAttributes firstTableCell =
+        (ContentBlockNodeWithAttributes) tableCells.get(0);
+    assertThat(firstTableCell.getAttribute("colspan")).isEqualTo(1);
+    assertThat(firstTableCell.getAttribute("rowspan")).isNull();
+    assertThat(firstTableCell.getAttribute("colwidth")).isNull();
   }
 
   @Test
