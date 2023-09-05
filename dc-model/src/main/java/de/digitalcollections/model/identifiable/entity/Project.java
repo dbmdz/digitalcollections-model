@@ -1,7 +1,9 @@
 package de.digitalcollections.model.identifiable.entity;
 
 import de.digitalcollections.model.text.LocalizedStructuredContent;
+import de.digitalcollections.model.text.StructuredContent;
 import java.time.LocalDate;
+import java.util.Locale;
 import lombok.experimental.SuperBuilder;
 
 /**
@@ -75,6 +77,14 @@ public class Project extends Entity {
       c.init();
       setInternalReferences(c);
       return c;
+    }
+
+    public B text(Locale locale, StructuredContent content) {
+      if (text == null) {
+        text = new LocalizedStructuredContent();
+      }
+      text.put(locale, content);
+      return self();
     }
   }
 }

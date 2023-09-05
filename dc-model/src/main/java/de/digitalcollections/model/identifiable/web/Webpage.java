@@ -8,9 +8,11 @@ import de.digitalcollections.model.identifiable.IdentifiableType;
 import de.digitalcollections.model.identifiable.Node;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
 import de.digitalcollections.model.text.LocalizedText;
+import de.digitalcollections.model.text.StructuredContent;
 import de.digitalcollections.model.view.RenderingHints;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Locale;
 import lombok.experimental.SuperBuilder;
 
 /** A Webpage of a Website. */
@@ -177,6 +179,14 @@ public class Webpage extends Identifiable implements INode<Webpage>, ManagedCont
         renderingHints = new RenderingHints();
       }
       renderingHints.setTemplateName(templateName);
+      return self();
+    }
+
+    public B text(Locale locale, StructuredContent content) {
+      if (text == null) {
+        text = new LocalizedStructuredContent();
+      }
+      text.put(locale, content);
       return self();
     }
   }
