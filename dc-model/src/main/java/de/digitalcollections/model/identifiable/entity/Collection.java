@@ -5,9 +5,11 @@ import de.digitalcollections.model.content.PublicationStatus;
 import de.digitalcollections.model.identifiable.INode;
 import de.digitalcollections.model.identifiable.Node;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
+import de.digitalcollections.model.text.StructuredContent;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import lombok.experimental.SuperBuilder;
 
@@ -193,6 +195,14 @@ public class Collection extends Entity implements INode<Collection>, ManagedCont
 
     public B publicationStart(String publicationStart) {
       this.publicationStart = LocalDate.parse(publicationStart);
+      return self();
+    }
+
+    public B text(Locale locale, StructuredContent content) {
+      if (text == null) {
+        text = new LocalizedStructuredContent();
+      }
+      text.put(locale, content);
       return self();
     }
   }
