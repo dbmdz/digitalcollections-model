@@ -2,11 +2,9 @@ package de.digitalcollections.model.identifiable.entity;
 
 import de.digitalcollections.model.identifiable.entity.agent.Agent;
 import de.digitalcollections.model.text.LocalizedStructuredContent;
-import de.digitalcollections.model.text.StructuredContent;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import lombok.experimental.SuperBuilder;
 import org.wikidata.wdtk.datamodel.interfaces.TimeValue;
 
@@ -71,14 +69,6 @@ public class Article extends Entity {
       C c = prebuild();
       c.init();
       return c;
-    }
-
-    public B text(Locale locale, StructuredContent content) {
-      if (text == null) {
-        text = new LocalizedStructuredContent();
-      }
-      text.put(locale, content);
-      return self();
     }
   }
 }

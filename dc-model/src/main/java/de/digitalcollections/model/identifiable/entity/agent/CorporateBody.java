@@ -155,14 +155,6 @@ public class CorporateBody extends Agent {
       return self();
     }
 
-    public B text(Locale locale, StructuredContent content) {
-      if (text == null) {
-        text = new LocalizedStructuredContent();
-      }
-      text.put(locale, content);
-      return self();
-    }
-
     public B text(Locale locale, String text) {
       if (this.text == null) {
         this.text = new LocalizedStructuredContent();
