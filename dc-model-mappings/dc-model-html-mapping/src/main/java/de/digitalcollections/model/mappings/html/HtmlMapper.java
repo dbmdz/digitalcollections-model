@@ -4,6 +4,7 @@ import de.digitalcollections.model.text.StructuredContent;
 import de.digitalcollections.model.text.contentblock.BulletList;
 import de.digitalcollections.model.text.contentblock.ContentBlock;
 import de.digitalcollections.model.text.contentblock.ContentBlockNode;
+import de.digitalcollections.model.text.contentblock.ContentBlockNodeWithAttributes;
 import de.digitalcollections.model.text.contentblock.HardBreak;
 import de.digitalcollections.model.text.contentblock.ListItem;
 import de.digitalcollections.model.text.contentblock.Mark;
@@ -33,6 +34,22 @@ import org.jsoup.parser.Parser;
  */
 public class HtmlMapper {
 
+  private static void addTableCellAttributes(
+      Element element, ContentBlockNodeWithAttributes tableBlock) {
+    String colspan = element.attr("colspan");
+    if (!colspan.isBlank()) {
+      tableBlock.addAttribute("colspan", Integer.valueOf(colspan));
+    }
+    String rowspan = element.attr("rowspan");
+    if (!rowspan.isBlank()) {
+      tableBlock.addAttribute("rowspan", Integer.valueOf(rowspan));
+    }
+    String colwidth = element.attr("colwidth");
+    if (!colwidth.isBlank()) {
+      tableBlock.addAttribute("colwidth", Integer.valueOf(colwidth));
+    }
+  }
+
   public static ContentBlock getContentBlock(Node node) {
     ContentBlock contentBlock = null;
 
@@ -50,8 +67,10 @@ public class HtmlMapper {
         contentBlock = new TableRow();
       } else if ("th".equalsIgnoreCase(tagName)) {
         contentBlock = new TableHeader();
+        addTableCellAttributes(element, (ContentBlockNodeWithAttributes) contentBlock);
       } else if ("td".equalsIgnoreCase(tagName)) {
         contentBlock = new TableCell();
+        addTableCellAttributes(element, (ContentBlockNodeWithAttributes) contentBlock);
       } else if ("br".equalsIgnoreCase(tagName)) {
         contentBlock = new HardBreak();
       } else if ("a".equalsIgnoreCase(tagName)) {
