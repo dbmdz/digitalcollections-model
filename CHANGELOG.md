@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added missing builders and missing `hashCode`, `equals`, `toString` methods
 - Added mapping logic for table elements to `HtmlMapper`
 - Added possibility to define a custom parser in `HtmlMapper`
+- Added builder for `RenderingHints`
 
 ## [12.1.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/12.1.0) - 2023-08-01
 

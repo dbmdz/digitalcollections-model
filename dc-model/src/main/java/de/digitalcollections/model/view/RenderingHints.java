@@ -1,6 +1,9 @@
 package de.digitalcollections.model.view;
 
+import lombok.experimental.SuperBuilder;
+
 /** Contains hints for rendering a webpage */
+@SuperBuilder
 public class RenderingHints {
 
   /** Defines if an in-page navigation (a TOC) is rendered */
@@ -8,6 +11,13 @@ public class RenderingHints {
 
   /** Defines the name of the template to use for rendering */
   private String templateName;
+
+  public RenderingHints() {}
+
+  public RenderingHints(boolean showInPageNavigation, String templateName) {
+    this.showInPageNavigation = showInPageNavigation;
+    this.templateName = templateName;
+  }
 
   public String getTemplateName() {
     return templateName;
