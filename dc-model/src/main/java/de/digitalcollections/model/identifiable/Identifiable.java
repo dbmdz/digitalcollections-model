@@ -16,7 +16,11 @@ import de.digitalcollections.model.text.StructuredContent;
 import de.digitalcollections.model.text.contentblock.ContentBlock;
 import de.digitalcollections.model.text.contentblock.Paragraph;
 import de.digitalcollections.model.view.RenderingHintsPreviewImage;
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.Set;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -200,7 +204,8 @@ public class Identifiable extends UniqueObject {
   @Override
   protected void init() {
     super.init();
-    this.identifiableObjectType = IdentifiableObjectType.getByClass(getClass());
+    if (identifiableObjectType == null)
+      identifiableObjectType = IdentifiableObjectType.getByClass(getClass());
     if (identifiers == null) {
       identifiers = new HashSet<>(0);
     }
