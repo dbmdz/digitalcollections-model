@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [12.0.1](https://github.com/dbmdz/digitalcollections-model/releases/tag/12.2.1) - 2023-09-15
+
+### Fixed
+
+- Buuilders don't reset the `identifiableObjectType` anymore, if previously set
+
 
 ## [12.2.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/12.2.0) - 2023-09-12
 
