@@ -48,6 +48,8 @@ public class HtmlMapper {
     if (!colwidth.isBlank()) {
       tableBlock.addAttribute("colwidth", Integer.valueOf(colwidth));
     }
+    element.attributes().dataset().entrySet().stream()
+        .forEach(attr -> tableBlock.addAttribute("data-" + attr.getKey(), attr.getValue()));
   }
 
   public static ContentBlock getContentBlock(Node node) {

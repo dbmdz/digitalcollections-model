@@ -54,7 +54,7 @@ public class HtmlMapperTest {
   @Test
   public void testHtml2StructuredContentTable() {
     String html =
-        "<html><body><table><tr><td colspan=\"1\">1.1</td><td colspan=\"2\">1.2</td></tr><tr><td>1.1</td><td>1.2</td></tr></table></body></html>";
+        "<html><body><table><tr><td colspan=\"1\" data-foo=\"bar\">1.1</td><td colspan=\"2\">1.2</td></tr><tr><td>1.1</td><td>1.2</td></tr></table></body></html>";
 
     StructuredContent sc = HtmlMapper.toStructuredContent(html, Parser.xmlParser());
     List<ContentBlock> tables = sc.getContentBlocks();
@@ -68,6 +68,7 @@ public class HtmlMapperTest {
     assertThat(firstTableCell.getAttribute("colspan")).isEqualTo(1);
     assertThat(firstTableCell.getAttribute("rowspan")).isNull();
     assertThat(firstTableCell.getAttribute("colwidth")).isNull();
+    assertThat(firstTableCell.getAttribute("data-foo")).isEqualTo("bar");
   }
 
   @Test
