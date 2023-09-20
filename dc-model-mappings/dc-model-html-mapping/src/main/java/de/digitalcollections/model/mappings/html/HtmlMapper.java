@@ -8,6 +8,7 @@ import de.digitalcollections.model.text.contentblock.ContentBlockNodeWithAttribu
 import de.digitalcollections.model.text.contentblock.HardBreak;
 import de.digitalcollections.model.text.contentblock.ListItem;
 import de.digitalcollections.model.text.contentblock.Mark;
+import de.digitalcollections.model.text.contentblock.Paragraph;
 import de.digitalcollections.model.text.contentblock.Table;
 import de.digitalcollections.model.text.contentblock.TableCell;
 import de.digitalcollections.model.text.contentblock.TableHeader;
@@ -63,6 +64,8 @@ public class HtmlMapper {
         contentBlock = new BulletList();
       } else if ("li".equalsIgnoreCase(tagName)) {
         contentBlock = new ListItem();
+      } else if ("p".equalsIgnoreCase(tagName)) {
+        contentBlock = new Paragraph();
       } else if ("table".equalsIgnoreCase(tagName)) {
         contentBlock = new Table();
       } else if ("tr".equalsIgnoreCase(tagName)) {
