@@ -10,11 +10,13 @@ public class CreationInfo {
   public static Builder builder() {
     return new Builder();
   }
+
   /** The creator of the digital object */
   private Agent creator;
 
   /** The date, when the digital object was created */
   private LocalDate date;
+
   /** The geolocation, where the creation of the digital object took geolocation */
   private GeoLocation geoLocation;
 
