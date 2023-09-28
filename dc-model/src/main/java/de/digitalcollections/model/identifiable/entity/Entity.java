@@ -27,6 +27,7 @@ import lombok.experimental.SuperBuilder;
 public class Entity extends Identifiable {
 
   protected CustomAttributes customAttributes;
+
   /** A "navigable" date, required e.g. when you need to the display an entity on a timeline. */
   protected LocalDate navDate;
 

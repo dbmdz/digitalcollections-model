@@ -27,8 +27,10 @@ public class DigitalObject extends Entity {
 
   /** Sorted list of file resources like images, audio files etc. */
   private List<FileResource> fileResources;
+
   /** The related item (can be null, if not applicable). */
   private Item item;
+
   /** licence of the digital object. */
   private License license;
 
