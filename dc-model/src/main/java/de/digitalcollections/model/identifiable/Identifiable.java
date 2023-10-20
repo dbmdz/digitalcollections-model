@@ -330,6 +330,11 @@ public class Identifiable extends UniqueObject {
       return description(Locale.forLanguageTag(lang), text);
     }
 
+    public B description(LocalizedStructuredContent description) {
+      this.description = description;
+      return self();
+    }
+
     public B dontOpenPreviewImageInNewWindow() {
       if (previewImageRenderingHints == null) {
         previewImageRenderingHints = new RenderingHintsPreviewImage();
