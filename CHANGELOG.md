@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `FilterOperation`s for regular expression matching (case sensitive, insensitive and "not")
+- Expand `FilterCriterion.Builder` by regexp operations
+
 ## [12.2.1](https://github.com/dbmdz/digitalcollections-model/releases/tag/12.2.1) - 2023-09-15
 
 ### Fixed
