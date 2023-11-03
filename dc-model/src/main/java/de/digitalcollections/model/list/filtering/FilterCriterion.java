@@ -310,6 +310,54 @@ public class FilterCriterion<T> {
       return this;
     }
 
+    /**
+     * Case sensitive regular expression matching
+     *
+     * @param value operand
+     * @return this builder
+     */
+    public Builder regex(String value) {
+      this.filterOperation = FilterOperation.REGEX;
+      this.value = value;
+      return this;
+    }
+
+    /**
+     * Case insensitive regular expression matching
+     *
+     * @param value operand
+     * @return this builder
+     */
+    public Builder iregex(String value) {
+      this.filterOperation = FilterOperation.IREGEX;
+      this.value = value;
+      return this;
+    }
+
+    /**
+     * Case sensitive regular expression not matching
+     *
+     * @param value operand
+     * @return this builder
+     */
+    public Builder notRegex(String value) {
+      this.filterOperation = FilterOperation.NOT_REGEX;
+      this.value = value;
+      return this;
+    }
+
+    /**
+     * Case insensitive regular expression not matching
+     *
+     * @param value operand
+     * @return this builder
+     */
+    public Builder notIRegex(String value) {
+      this.filterOperation = FilterOperation.NOT_IREGEX;
+      this.value = value;
+      return this;
+    }
+
     public Builder withExpression(String expression) {
       this.expression = expression;
       return this;
