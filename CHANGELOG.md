@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [12.3.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/12.3.0) - 2023-11-23
+
 ### Added
 
 - Added mapping of data attributes to table cell and paragraph elements
