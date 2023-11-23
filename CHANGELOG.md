@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added mapping of data attributes to table cell and paragraph elements
 - `FilterOperation`s for regular expression matching (case sensitive, insensitive and "not")
 - Expand `FilterCriterion.Builder` by regexp operations
 
