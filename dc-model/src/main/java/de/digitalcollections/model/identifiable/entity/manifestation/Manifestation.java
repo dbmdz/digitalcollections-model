@@ -407,7 +407,11 @@ public class Manifestation extends Entity {
    */
   private String dumpShortenedRelations(List<EntityRelation> relations) {
     return "["
-        + relations.stream().map(EntityRelation::toShortenedString).collect(Collectors.joining(","))
+        + (relations == null
+            ? "null"
+            : relations.stream()
+                .map(EntityRelation::toShortenedString)
+                .collect(Collectors.joining(",")))
         + "]";
   }
 
