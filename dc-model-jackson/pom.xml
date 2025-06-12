@@ -4,9 +4,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>de.digitalcollections.model</groupId>
+    <groupId>dev.mdz.model</groupId>
     <artifactId>dc-model-parent</artifactId>
-    <version>12.3.1-SNAPSHOT</version>
+    <version>13.0.0-SNAPSHOT</version>
   </parent>
 
   <name>DigitalCollections: Model (Jackson)</name>
@@ -52,7 +52,7 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>de.digitalcollections.model</groupId>
+      <groupId>dev.mdz.model</groupId>
       <artifactId>dc-model</artifactId>
       <version>${project.version}</version>
     </dependency>
