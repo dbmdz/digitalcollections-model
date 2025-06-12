@@ -1,32 +1,36 @@
 {
-    "$schema":"https://docs.renovatebot.com/renovate-schema.json",
-    "branchConcurrentLimit":0,
-    "extends":[
-        "config:base",
-        ":preserveSemverRanges",
-        ":dependencyDashboard",
-        ":rebaseStalePrs",
-        ":enableVulnerabilityAlertsWithLabel(security)",
-        "group:recommended"
-    ],
-    "groupName":"all dependencies",
-    "groupSlug":"all",
-    "labels":[
-        "dependencies"
-    ],
-    "lockFileMaintenance":{
-        "enabled":false
+  "$schema":"https://docs.renovatebot.com/renovate-schema.json",
+  "branchConcurrentLimit":0,
+  "extends":[
+    "config:base",
+    ":preserveSemverRanges",
+    ":dependencyDashboard",
+    ":rebaseStalePrs",
+    ":enableVulnerabilityAlertsWithLabel(security)",
+    "group:recommended"
+  ],
+  "groupName":"all dependencies",
+  "groupSlug":"all",
+  "labels":[
+    "dependencies"
+  ],
+  "lockFileMaintenance":{
+    "enabled":false
+  },
+  "packageRules":[
+    {
+      "packageNames": ["fmt-maven-plugin"],
+      "version": "2.25"
     },
-    "packageRules":[
-        {
-            "groupName":"all dependencies",
-            "groupSlug":"all",
-            "matchPackageNames":[
-                "*"
-            ]
-        }
-    ],
-    "schedule":[
-        "every weekend"
-    ]
+    {
+      "groupName":"all dependencies",
+      "groupSlug":"all",
+      "matchPackageNames":[
+        "*"
+      ]
+    }
+  ],
+  "schedule": [
+    "every weekend"
+  ]
 }
