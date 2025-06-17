@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [13.0.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/13.0.0) - 2025-06-17
+
 ### Changed
 
 - **Breaking** Changing groupID and Maven Central publishing
