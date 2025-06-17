@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Breaking** Changing groupID and Maven Central publishing
 - Security dependency fixes
 
+### Removed
+
+- **Breaking** Removed obsolete `dc-model-mappings` and `dc-model-html-mapping`
+
 ## [12.3.0](https://github.com/dbmdz/digitalcollections-model/releases/tag/12.3.0) - 2023-11-23
 
 ### Added

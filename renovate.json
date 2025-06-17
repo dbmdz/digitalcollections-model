@@ -1,33 +1,35 @@
 {
-  "$schema":"https://docs.renovatebot.com/renovate-schema.json",
-  "branchConcurrentLimit":0,
-  "extends":[
-    "config:base",
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "branchConcurrentLimit": 0,
+  "extends": [
+    "config:recommended",
     ":preserveSemverRanges",
     ":dependencyDashboard",
     ":rebaseStalePrs",
     ":enableVulnerabilityAlertsWithLabel(security)",
     "group:recommended"
   ],
-  "groupName":"all dependencies",
-  "groupSlug":"all",
-  "labels":[
+  "groupName": "all dependencies",
+  "groupSlug": "all",
+  "labels": [
     "dependencies"
   ],
-  "lockFileMaintenance":{
-    "enabled":false
+  "lockFileMaintenance": {
+    "enabled": false
   },
-  "packageRules":[
+  "packageRules": [
     {
-      "packageNames": ["fmt-maven-plugin"],
-      "version": "2.25"
-    },
-    {
-      "groupName":"all dependencies",
-      "groupSlug":"all",
-      "matchPackageNames":[
+      "groupName": "all dependencies",
+      "groupSlug": "all",
+      "matchPackageNames": [
         "*"
       ]
+    },
+    {
+      "matchPackageNames": [
+        "com.spotify.fmt:fmt-maven-plugin"
+      ],
+      "enabled": false
     }
   ],
   "schedule": [
