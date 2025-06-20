@@ -175,7 +175,7 @@
         <configuration>
           <publishingServerId>central</publishingServerId>
           <autoPublish>true</autoPublish>
-          <deploymentName>${project.groupId}:${project.artifactId}:${project.version}</deploymentName>
+          <deploymentName>digitalcollections-model:${project.version}</deploymentName>
         </configuration>
       </plugin>
     </plugins>
