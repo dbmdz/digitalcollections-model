@@ -72,17 +72,17 @@
       <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter</artifactId>
-        <version>5.13.1</version>
+        <version>5.13.3</version>
       </dependency>
       <dependency>
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok</artifactId>
-        <version>1.18.34</version>
+        <version>1.18.38</version>
       </dependency>
       <dependency>
         <groupId>org.wikidata.wdtk</groupId>
         <artifactId>wdtk-datamodel</artifactId>
-        <version>0.14.7</version>
+        <version>0.16.0</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -213,7 +213,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>3.2.7</version>
+            <version>3.2.8</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>
